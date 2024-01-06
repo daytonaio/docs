@@ -1,0 +1,169 @@
+
+
+.cursor-pointer {
+    cursor: pointer;
+    pointer-events: all;
+}
+
+
+
+
+.content-subtitle h4 {
+    padding-top:1.5rem;
+    padding-bottom:0.8rem;
+    /* padding-left:0.5rem; */
+    font-size:1.2rem;
+ 
+}
+.content-subtitle ol {
+  padding-top: 0.8rem;
+  padding-bottom: 0.2rem;
+}
+
+.content-subtitle ul {
+  padding-bottom: 0.2rem;
+  display:block;
+}
+
+.keyboard-shortcut {
+  background-color: rgba(248, 248, 255, 0.864);
+  border:1px solid rgb(230, 217, 200);
+  border-radius: 4px;
+  font-size: 0.88rem;
+  box-shadow: 0.5px 0.5px 1px 1px gray;
+  padding: 0.8px 6px;
+  color:#282828;
+}
+
+
+code {
+    border-radius: 0.2rem;
+    color: whitesmoke;
+    padding: 0.6px 5.6px;
+    margin: 0 2px;
+    font-size: 0.88rem;
+    font-weight: 200;
+    background-color: rgba(240, 248, 255, 0.321);
+    box-shadow: 0 0.32px 0 0.32px #ffffffb5 ;
+}
+
+p > code {
+   color: whitesmoke;
+}
+
+em > code {
+  color:whitesmoke;
+}
+
+
+details.idp-details {
+  cursor: pointer;
+  pointer-events:all;
+  padding:0.6rem 0;
+  color:#fff;
+  margin:1.4rem 0;
+  border-top: 1px solid #2ecc71;
+  border-bottom: 1px solid #2ecc71;
+}
+
+
+
+details[open]{
+  border-top: 0;
+  border-bottom:0;
+  transition-duration: 250ms;
+  cursor:auto;
+}
+
+details[open] > summary {
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+
+.not-content details {
+    cursor: pointer;
+    pointer-events: all;
+    border: 1px solid antiquewhite;
+    padding:3%;
+    margin:1rem;
+}
+
+.not-content details > summary {
+    font-weight:500;
+    .small {
+      font-size:400;
+    }
+    border: 1px solid #2ecc71;
+    padding:0.3em 0.5em;
+}
+
+.not-content details[open] > summary {
+    padding:0.3em 0.5em;
+    margin-bottom:0.8em;
+    font-size:400;
+  }
+
+
+.content content > code {
+    font-family:monospace;
+    font-weight: 400;
+    font-size:medium;
+    background-color: darkgray 80%;
+}
+
+.content content {
+    padding-left: 0.5em;
+}
+
+
+
+  .container {
+    margin: auto;
+    border:1px solid #2ecc71;
+    margin-top: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  /* TODO: Table row is not taking over the full table body */
+  .container tbody {
+    width: 100%;
+  }
+  .container tr {
+    display: flexbox;
+  }
+
+  .container td, th {
+    padding: 6px 16px;
+    text-align: center;
+    color:#fff;
+  }
+
+  .table-color tr:nth-child(even) {
+    background-color: #161616;
+  }
+
+  .table-color tr > td:nth-child(1) {
+   height: 100%;
+  }
+
+  .table-row {
+    display: flex;
+
+  }
+
+svg.icon-display {
+    display: inline;
+    vertical-align: middle;
+  }
+
+svg.rotate-30 {
+  transform: rotate(30deg);
+}
+
+.bitbucket-button {
+  background-color: dodgerblue;
+  border-radius: 0.2rem;
+  display: inline-flex;
+  padding: 2.4px;
+}

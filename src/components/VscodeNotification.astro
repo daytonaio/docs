@@ -1,5 +1,13 @@
 ---
 import { Icon } from "@astrojs/starlight/components"
+
+interface Props {
+  notification?: string;
+  notificationLink?: string;
+  source?: string;
+}
+
+const {notification, notificationLink, source} = Astro.props
 ---
 <div class="not-content">
     <div class="modal-layout">
@@ -8,10 +16,11 @@ import { Icon } from "@astrojs/starlight/components"
           <div class="notification-title">
             <Icon name="information" color="cornflowerblue" size="2em" />
             <div class="notification-message">
-              Your application running on port 4321 is available.
-              <span class="notification-link">See all forwarded ports</span>
+              {notification ? notification : ""}
+            { notificationLink &&  <span class="notification-link">{notificationLink}</span>}
             </div>
           </div>
+          <div class="vscode-notification-button-group">
           <button class="close-button">
             <Icon name="setting" color="gray" size="1.5em" />
           </button>
@@ -19,10 +28,14 @@ import { Icon } from "@astrojs/starlight/components"
             <Icon name="close" color="gray" size="1.5em" />
           </button>
         </div>
+        </div>
 
-        <div class="notification-actions">
+        <div class="vscode-notification-actions">
+          <p class="vscode-notification-source">{source ? `Source: ${source}` : " "}</p>
+          <span class="vscode-notification-button-group">
           <span class="vscode-notification-button open-in-browser">Open in Browser</span>
           <span class="vscode-notification-button preview-in-editor">Preview in Editor</span>
+        </span>
         </div>
       </div>
     </div>

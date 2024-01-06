@@ -15,16 +15,23 @@
     "@astrojs/starlight": "^0.15.1",
     "@astrojs/starlight-tailwind": "^2.0.1",
     "@astrojs/tailwind": "^5.0.3",
+    "@astropub/icons": "^0.2.0",
+    "add": "^2.0.6",
     "astro": "^4.0.7",
     "astro-expressive-code": "^0.30.1",
     "dotenv": "^16.3.1",
     "envalid": "^8.0.0",
     "express": "^4.18.2",
+    "nanostores": "^0.9.5",
+    "pnpm": "^8.13.1",
     "sass": "^1.69.5",
     "sharp": "^0.32.5",
     "starlight-openapi": "^0.3.1",
     "tailwindcss": "^3.0.24",
     "vite": "^4.3.3",
     "vite-plugin-svgr": "^2.4.0"
+  },
+  "devDependencies": {
+    "node-html-parser": "^6.1.11"
   }
 }

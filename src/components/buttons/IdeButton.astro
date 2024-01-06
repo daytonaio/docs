@@ -1,0 +1,33 @@
+---
+type ToolType = "daytona" | "jetbrains" | "vscode" | "github" | "bitbucket" | "gitlab"
+type ButtonType = "primary" | "secondary" | "cancel"
+type FontType = "light" | "normal" | "bold"
+import {Icons} from "../../assets/icons/Icons"
+import Icon from "../Icons.astro"
+interface Props {
+    icon?: keyof typeof Icons;
+    tool: ToolType;
+    type: ButtonType;
+    font: FontType;
+    text?: string;
+    viewBox: string;
+    iconColor:string;
+    iconSize:string;
+    strokeWidth: number;
+    rightIcon: keyof typeof Icons;
+    rightIconColor: string;
+    rightViewBox: string;
+    rightStrokeWidth: number;
+    rightIconSize: string;
+}
+
+const { icon, tool, type, font, text, viewBox, iconColor, iconSize, strokeWidth, rightIcon, rightIconColor, rightViewBox, rightStrokeWidth, rightIconSize } = Astro.props;
+
+---
+
+<span class="button-layout" data-type={`${tool}${font ? `-${font}`: "-normal"}-${type ? type : "primary"}`}>
+    <!-- This shit needs to be refactored -->
+   {icon && <Icon icon={icon} color={iconColor && iconColor} class="button-icon" viewBox={viewBox && viewBox} strokeWidth={strokeWidth && strokeWidth}  size={iconSize && iconSize} class="icon-display"/> }
+    {text && <span class="button-text">{text}</p>}
+        {rightIcon && <Icon icon={rightIcon} color={rightIconColor && rightIconColor} class="button-icon" viewBox={rightViewBox && rightViewBox} strokeWidth={rightStrokeWidth && rightStrokeWidth}  size={rightIconSize && rightIconSize} class="icon-display"/> }
+</span>

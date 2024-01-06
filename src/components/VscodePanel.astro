@@ -1,0 +1,76 @@
+---
+
+import Table from './Table/Table.astro';
+import TableRow from './Table/TableRow.astro';
+import Icon from "./Icons.astro"
+interface PanelContent {
+    header: string;
+    content: string;
+}
+interface Props<T extends boolean> {
+    name: string | string[]
+    panelExists: T;
+    panelProperties?: T extends true ? PanelContent[] : never
+}
+
+
+const {name, panelExists, panelProperties} = Astro.props;
+---
+<div class="not-content">
+    <div class="vscode-panel-modal-layout">
+     
+            <div class="notification-header">
+                <div class="vscode-panel-title">
+                    <div class="vscode-panel-text">
+                        PROBLEMS
+                    </div>
+                    <div class="vscode-panel-text">
+                        OUTPUT
+                    </div>
+                    <div class="vscode-panel-text">
+                        DEBUG CONSOLE
+                    </div>
+                    <div class="vscode-panel-text">
+                        TERMINAL
+                    </div>
+                    <div class="vscode-panel-text">
+                        PORTS
+                        <span class="vscode-panel-number">1</span>
+                    </div>
+                    <div class="vscode-panel-text highlighted-panel">
+                        DAYTONA PORTS
+                    </div>
+
+                </div>
+
+
+            </div>
+           {panelExists && (<div class="vscode-panel">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Port</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td><div class="green-light"/></td>
+                    <td>4321</td>
+                    <td class="port-url">
+                        <u>4321-workspace-id.dashboard-url</u>
+                        <div class="vscode-panel-button-group">
+                            <Icon icon="vscode-copy"  />
+                            <Icon icon="vscode-globe" />
+                            <Icon icon="vscode-preview-editor" />
+                            <Icon icon="vscode-lock" />
+
+                        </div>
+                        </td>
+                    <td>Private</td>
+                </tr>
+            </table>
+        </div>)} 
+
+  
+    </div>
+</div>

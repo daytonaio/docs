@@ -10,7 +10,10 @@
         "openFiles": ["CONTRIBUTING.md"]
       },
       "vscode": {
-        "extensions": ["astro-build.astro-vscode", "esbenp.prettier-vscode"]
+        "extensions": ["astro-build.astro-vscode",
+         "esbenp.prettier-vscode", 
+         "unifiedjs.mdx-vscode",
+        "vuedx.grammarly-vscode"]
       }
     }
   }

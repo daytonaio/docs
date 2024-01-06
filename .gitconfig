@@ -1,0 +1,15 @@
+## Use difftastic as git diff tool to see changes in terminal, for more, see https://difftastic.wilfred.me.uk/git.html
+[diff]
+        tool = difftastic
+
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+        difftool = true
+
+[alias]
+        dft = difftool

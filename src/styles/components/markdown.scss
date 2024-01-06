@@ -19,7 +19,9 @@
         color: var(--secondary-text-color) !important;
       }
     }
+
   }
+
 
   > blockquote {
     margin: 59px 0 64px;
@@ -78,6 +80,7 @@
   > ol {
     padding-inline-start: 18px;
     li {
+      margin: 20px;
       &::marker {
         color: var(--secondary-text-color);
       }
@@ -95,7 +98,7 @@
   > ul {
     background: var(--block-bg-color);
     padding: 30px 30px 30px 45px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     margin-top: 0;
     list-style-image: url(/src/assets/icons/facts.svg);
 
@@ -128,5 +131,11 @@
         color: var(--primary-text-color);
       }
     }
+  }
+  .expressive-code {
+    margin: 20px 0;
+  }
+  .starlight-aside--note {
+    margin: 10px 0;
   }
 }

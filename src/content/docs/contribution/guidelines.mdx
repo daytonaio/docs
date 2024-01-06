@@ -72,13 +72,17 @@ __To write good documentation, you can follow these steps:__
 
 ## Structure
 ---
+
+
 ### Best practices for SEO 
 
 When you are creating a sub-section in a documentation. By default the top level is two hash symbol `##`. Do follow a top-down approach and starting with two hash symbols like `##` and then add more hash symbols under each section. On rendering, two hash symbols will be resolved to `<h2>` element in the browser and vice versa. It will help search engines understand how the website is structured and it's content.
 
+
 ### Adding documentation
 
 All the documentation related content sit in the folder `/src/content/docs`. A [folder] will be resolved to a togglable button on the left, and an [*.md] or [*.mdx] file will be resolved to its respective sub sections.
+
 
 ### Left sidebar
 
@@ -121,6 +125,7 @@ sidebar:
 
 To check more about how to use Astro and Starlight, check [the astro documentation](https://docs.astro.build/core-concepts/) and [Starlight specific configuration](https://starlight.astro.build/).
 
+
 ### Right sidebar
 The right sidebar helps readers navigate within the current content, and only `##` and `###` will be rendered on the right sidebar. 
 
@@ -133,6 +138,16 @@ The right sidebar helps readers navigate within the current content, and only `#
 
 ## Content
 
+
+### Titles 
+
+By default, [Starlight](https://starlight.astro.build/) would include a top level title `Overview`, so an introduction title like `What's Daytona VS Code Extension`, or `What is IDP` is not necessary. 
+
+If a hyperlink is needed within a paragraph, and that paragraph includes a phrase, or listing for summarisation, the hyperlink should be included in the paragraph but not the content body. 
+
+### Keyboard keys
+
+If a keyboard key is included,
 
 
 ## Terminologies
