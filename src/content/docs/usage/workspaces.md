@@ -49,10 +49,10 @@ Daytona workspaces simplify the setup and configuration of development environme
 1. **Starting Creation**: In your terminal use the following command:
 
 ```bash
-daytona Create
+daytona create
 ```
 
-2. **More Information**: Please refer to the CLI documentation for more information
+2. **More Information**: Please refer to the [CLI documentation](/docs/tools/cli) for more information
 
 ### Creation States
 
