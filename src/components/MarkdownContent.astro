@@ -1,0 +1,15 @@
+
+<div class="markdown-content"><slot /></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let table = document.querySelector('table');
+
+        if (table) {
+            let wrapperDiv = document.createElement('div');
+            wrapperDiv.classList.add('table-wrapper');
+            table.parentNode.insertBefore(wrapperDiv, table);
+            wrapperDiv.appendChild(table);
+        }
+    });
+</script>

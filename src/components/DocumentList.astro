@@ -1,0 +1,30 @@
+---
+const { title } = Astro.props;
+---
+
+<style>
+section {
+    all: unset;
+}
+
+h1 {
+    all: unset;
+    font-family: "Berkeley Mono", monospace;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+ul {
+    all: unset;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+</style>
+
+<section>
+    <h1>{title}</h1>
+    <ul>
+        <slot/>
+    </ul>
+</section>

@@ -1,0 +1,82 @@
+---
+title: Targets
+description: Install Daytona on Linux, macOS, and Windows
+sidebar:
+  label: Configure Target Providers
+---
+
+Daytona supports deploying Dev Environments to a specific target, allowing you to host your Dev Environments on the appropriate infrastructure for your use case.
+Currently, Daytona supports Docker as a provider for both local and remote targets.
+
+## Add a Docker Target
+You can use Docker as a Provider for deploying Dev Environments.
+When choosing Docker as a Provider, you have the choice of creating either a local or remote target:
+
+*   __[Remote](#remote)__  
+    The target uses a remote installation of Docker to deploy Dev Environments.
+    This requires access to an SSH daemon on the desired host machine, and access to a user with permission to create Docker containers.
+*   __[Local](#local)__  
+    The target uses your local installation of Docker to deploy Dev Environments.
+    This allows you to use Daytona without needing external servers or infrastructure.
+
+### Remote
+You can add a target for an installation of Docker on a remote host.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   A remote host running Linux and Docker.
+
+__Procedure__
+1.  Select `New Target` to create a target.
+2.  When prompted for a provider, select `docker-provider`.
+
+3.  Configure the following options when promoted:
+    1.  __Container Image__  
+        The base image used by Daytona to deploy new Dev Environments.
+        The default value is `daytonaio/workspace-project`.
+    2.  __Remote Hostname__  
+        The hostname of the remote host.
+    3.  __Remote Password__  
+        The password for the remote user.
+    4.  __Remote Port__  
+        The TCP port used to access the remote host's SSH daemon.
+        Unless otherwise configured on your remote host, this should be set to the default value (`22`)
+    5.  __Remote User__  
+        The username used to execute the required commands on the remote host.
+    6.  __Sock Path__  
+        The Docker UNIX socket location on the remote host.
+        Unless otherwise configured after installing Docker, this should be set to the default value (`/var/run/docker.sock`)
+4.  Press `Enter` to add the target.
+
+### Local
+You can add a target for your local installation of Docker.
+
+:::note
+By default, a fresh installation of Daytona comes pre-configured with a local Docker target enabled.
+These instructions are only applicable if you need to recreate the local target after removing it.
+:::
+
+__Prerequisites__
+*   A working installation of Daytona.
+
+1.  Execute the following command to enter an interactive terminal UI:
+    ```shell
+    daytona server target set
+    ```
+2.  Select `New Target` to create a target.
+3.  When prompted for a provider, select `docker-provider`.
+4.  After selecting the provider, enter `local`.
+5.  Leave the default values selected and hit `Enter` to add the target.
+
+## Remove a Target
+You can remove an existing target from Daytona.
+
+__Prerequisites__
+*   A working installation of Daytona.
+
+__Procedure__
+1.  Execute the following command to enter the interactive terminal UI:
+    ```shell
+    daytona server target set
+    ```
+2.  Select the target to remove.
