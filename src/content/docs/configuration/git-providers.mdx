@@ -24,15 +24,18 @@ __Procedure__
         Select if you're hosting repositories on GitHub.com.
     *   __[GitLab](#gitlab)__  
         Select if you're hosting repositories on GitLab.com.
-    *   __[GitLab Self-Managed](#gitlab-self-managed)__  
-        Select if you're hosting repositories on GitLab's self-hosted offering.
-        Self-hosted GitLab Community Edition (CE) installations, GitLab Self-Managed, and GitLab Dedicated offerings are supported.
     *   __[Bitbucket](#bitbucket)__  
         Select if you're hosting repositories on Atlassian's Bitbucket Cloud offering.
-    *   __[Codeberg](#codeberg)__  
-        Select if you're hosting repositories on Codeberg.org.
-    *   __[Gitea](#gitea)__  
-        Select if you're hosting repositories on an installation of Gitea.
+    *   __Other__
+        *   __[GitHub Enterprise Server](#github-enterprise-server)__  
+            Select if you're hosting repositories on GitHub Enterprise Server.
+        *   __[GitLab Self-Managed](#gitlab-self-managed)__  
+            Select if you're hosting repositories on GitLab's self-hosted offering.
+            Self-hosted GitLab Community Edition (CE) installations, GitLab Self-Managed, and GitLab Dedicated offerings are supported.
+        *   __[Codeberg](#codeberg)__  
+            Select if you're hosting repositories on Codeberg.org.
+        *   __[Gitea](#gitea)__  
+            Select if you're hosting repositories on an installation of Gitea.
 
 ### Provider-Specific Notes
 
@@ -44,6 +47,23 @@ For more information on creating a Personal Access Token for Daytona, visit GitH
 After selecting GitLab as your provider, you will be prompted for a Personal Access Token.
 For more information on creating a Personal Access Token for Daytona, visit GitLub's [Create a personal access token][gl-token] documentation.
 
+#### Bitbucket
+After selecting Bitbucket as your provider, you will be prompted for:
+
+1.  __Username__  
+    Your Atlassian username.
+2.  __Personal Access Token (App Password)__  
+    For more information on creating a Personal Access Token, visit Bitbucket's [Create an App password][bit-token] documentation.
+
+#### GitHub Enterprise Server
+After selecting GitHub Enterprise Server as your provider, you will be prompted for:
+
+1.  __Self-managed API URL__  
+    This is the base URL for your GitHub Enterprise Server instance's API.
+    This is typically in the format `https://<GITHUB_HOST>`.
+2.  __Personal Access Token__  
+    For more information on creating a Personal Access Token for Daytona, visit GitHub's [Creating a personal access token (classic)][gh-token] documentation.
+
 #### GitLab Self-Managed
 After selecting GitLab Self-Managed as your provider, you will be prompted for:
 
@@ -52,14 +72,6 @@ After selecting GitLab Self-Managed as your provider, you will be prompted for:
     This is typically in the format `https://<GITLAB_INSTANCE_BASE>/api/v4`.
 2.  __Personal Access Token__  
     For more information on creating a Personal Access Token for Daytona, visit GitLab's [Create a personal access token][gl-token] documentation.
-
-#### Bitbucket
-After selecting Bitbucket as your provider, you will be prompted for:
-
-1.  __Username__  
-    Your Atlassian username.
-2.  __Personal Access Token (App Password)__  
-    For more information on creating a Personal Access Token, visit Bitbucket's [Create an App password][bit-token] documentation.
 
 #### Codeberg
 After selecting Codeberg as your provider, you will be prompted for a Personal Access Token.

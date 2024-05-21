@@ -4,7 +4,7 @@
       "dockerfile": "Dockerfile"
     },
     "remoteUser": "root",
-    "postCreateCommand": "pnpm install",
+    "postCreateCommand": "yarn install",
     "waitFor": "postCreateCommand",
     "customizations": {
       "codespaces": {

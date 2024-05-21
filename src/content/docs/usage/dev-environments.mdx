@@ -15,13 +15,14 @@ __Prerequisites__
 *   A working installation of Daytona.
 *   At least 1 Target configured.
 
+### From a Configured Git Provider
 __Procedure__
 1.  Execute the following command to start the guided Dev Environment creation process:
     ```shell
     daytona create
     ```
 2.  Select the Git Provider and repository you want your Dev Environment to be configured with.
-3.  Wait for the process to change.
+3.  Wait for Daytona to create the Dev Environment.
 
 :::tip
 To automatically open a new workspace in Visual Studio Code after creation, use the `--code` flag.
@@ -31,6 +32,19 @@ __Example:__
 daytona create --code
 ```
 :::
+
+### From an Arbitrary Git URL
+__Procedure__
+1.  Execute the following command to create a Dev Environment from a remote Git repository:
+    ```shell
+    daytona create <REPO_URL>
+    ```
+
+    __Example__
+    ```shell
+    daytona create https://github.com/daytonaio/daytona.git
+    ```
+2.  Wait for Daytona to create the Dev Environment.
 
 ## List Dev Environments
 You can list all previously created Dev Environments.
@@ -89,6 +103,7 @@ Out of the box, Daytona can be configured to open your Dev Environment in the fo
     *   Rider
     *   RubyMine
     *   WebStorm
+*   Terminal SSH
 
 1.  Execute the following command to enter the IDE selection terminal UI:
     ```shell
