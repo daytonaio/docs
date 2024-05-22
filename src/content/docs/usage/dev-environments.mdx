@@ -1,0 +1,115 @@
+---
+title: Dev Environments
+description: Learn how to create and manage Dev Environments using Daytona.
+sidebar:
+  label: Create a Dev Environment
+---
+
+Dev Environments contain your project's codebase, dependencies and packages, and configuration.
+Daytona allows you to create Dev Environments on various Git Providers
+
+## Create a Dev Environment
+You can create a Dev Environment.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   At least 1 Target configured.
+
+### From a Configured Git Provider
+__Procedure__
+1.  Execute the following command to start the guided Dev Environment creation process:
+    ```shell
+    daytona create
+    ```
+2.  Select the Git Provider and repository you want your Dev Environment to be configured with.
+3.  Wait for Daytona to create the Dev Environment.
+
+:::tip
+To automatically open a new workspace in Visual Studio Code after creation, use the `--code` flag.
+
+__Example:__
+```shell
+daytona create --code
+```
+:::
+
+### From an Arbitrary Git URL
+__Procedure__
+1.  Execute the following command to create a Dev Environment from a remote Git repository:
+    ```shell
+    daytona create <REPO_URL>
+    ```
+
+    __Example__
+    ```shell
+    daytona create https://github.com/daytonaio/daytona.git
+    ```
+2.  Wait for Daytona to create the Dev Environment.
+
+## List Dev Environments
+You can list all previously created Dev Environments.
+
+1.  Execute the following command to see a list of Dev Environments:
+    ```shell
+    daytona list
+    ```
+
+## Open An Existing Dev Environment
+You can open an existing Dev Environment in your IDE.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   At least 1 existing Development Environment.
+
+__Procedure__
+1.  Execute the following command to list existing Dev Environments:
+    ```shell
+    daytona code
+    ```
+2.  Select the Dev Environment you want to open.
+
+:::note
+You can configure your preferred IDE.
+Refer to __[Set the Default IDE](#set-the-default-ide)__ for more information.
+:::
+
+## Delete a Dev Environment
+You can delete an existing Dev Environment.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   At least 1 existing Development Environment.
+
+__Procedure__
+1.  Run the following command:
+    ```shell
+    $ daytona delete
+    ```
+2.  Select the desired Development Environment for deletion in the list and hit `Enter`.
+3.  Confirm the action.
+
+## Set the Default IDE
+Daytona allows you to connect to your Dev Environment using your preferred IDE.
+Out of the box, Daytona can be configured to open your Dev Environment in the following IDEs:
+
+*   Visual Studio Code (VSCode)
+    *   Desktop (Linux, macOS, Windows)
+    *   Browser
+*   JetBrains IDEs
+    *   CLion
+    *   GoLand
+    *   IntelliJ IDEA Ultimate
+    *   PhpStorm
+    *   Rider
+    *   RubyMine
+    *   WebStorm
+*   Terminal SSH
+
+1.  Execute the following command to enter the IDE selection terminal UI:
+    ```shell
+    daytona ide
+    ```
+2.  Select your preferred IDE from the list presented.
+
+Your preferred IDE will be opened automatically and connected to your Dev Environment when using the `daytona open` command.
+

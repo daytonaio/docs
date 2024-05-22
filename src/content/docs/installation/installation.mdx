@@ -1,0 +1,97 @@
+---
+title: Installation
+description: Learn how to install Daytona on Linux, macOS, and Windows.
+sidebar:
+  label: Installation
+---
+
+You can install Daytona on Linux, macOS, and Windows systems on both x86-64 and AArch64 architectures.
+The recommended installation method leverages a shell script to automate setup.
+Alternatively, you can install Daytona through a third-party package manager.
+
+## Recommended Installation Method
+The recommended way to install Daytona is by executing the official installation script.
+This script will download the appropriate binary for your machine and ensure it's executable.
+
+### Linux and macOS
+__Prerequisites__
+*   A POSIX-compatible shell such as bash or zsh.
+
+__Procedure__
+
+1.  Run the following command in your shell:
+    ```shell
+    (curl -sf -L https://download.daytona.io/daytona/install.sh | sudo bash) && daytona server -y && daytona
+    ```
+2.  Read and follow the instructions printed in your console.
+
+:::note
+You can install Daytona by manually downloading the binary and placing it in your `PATH`.
+
+```shell
+# for Linux (x86-64)
+curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-linux-amd64 -o daytona
+# for Linux (AArch64)
+curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-linux-arm64 -o daytona
+# for macOS (x86-64/Intel-based)
+curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-darwin-amd64 -o daytona
+# for macOS (AArch64/Apple Silicon)
+curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-darwin-arm64 -o daytona
+```
+:::
+
+### Windows
+__Prerequisites__
+*    A functional PowerShell installation.
+
+__Procedure__
+1.  Run the following command in PowerShell:
+    ```powershell
+    $architecture = if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") { "amd64" } else { "arm64" }
+    md -Force "$Env:APPDATA\bin\daytona"; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12';
+    Invoke-WebRequest -URI "https://download.daytona.io/daytona/latest/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
+    $env:Path += ";" + $Env:APPDATA + "\bin\daytona"; [Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::User);
+    daytona serve;
+    ```
+
+:::note
+You can install Daytona by manually downloading the binary and placing it in your `PATH`.
+
+```powershell
+# x86-64
+curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-windows-amd64.exe -o daytona
+# AArch64
+curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-windows-arm64.exe -o daytona
+```
+:::
+
+## Package Managers
+Daytona is available for a number of package managers across Linux and macOS.
+
+:::note
+Packages listed below aren't officially supported by Daytona developers.
+They may not be updated to the latest released version of Daytona.
+The recommended method is to [install Daytona using the upstream installation script](#recommended-installation-method).
+:::
+
+### Nix
+Daytona is available on nixpkgs unstable as [`daytona-bin`](https://search.nixos.org/packages?channel=unstable&show=daytona-bin).
+
+#### Ephemeral Usage
+You can use `nix-shell` to try Daytona before permanently installing it on your system.
+
+__Prerequisites__
+*   A working installation of Nix or NixOS.
+
+__Procedure__
+1.  Execute the following command to spawn a shell with the Daytona binary:
+    ```shell
+    nix-shell -p daytona-bin
+    ```
+
+#### Install Globally
+To permanently install Daytona on your system, you can add it to the relevant global configuration:
+
+* On NixOS systems, add `daytona-bin` as a system package in `/etc/nixos/configuration.nix`.
+* On other Linux systems, add `daytona-bin` as a local package using [home-manager](https://github.com/nix-community/home-manager).
+* On macOS systems, add `daytona-bin` as a system package using [nix-darwin](https://github.com/LnL7/nix-darwin).
