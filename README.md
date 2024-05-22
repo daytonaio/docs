@@ -1,54 +1,4 @@
-# Daytona Development Environment Management Platform: Documentation
-
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
-
-## 🚀 Project Structure
-
-Inside your Daytona DEM Documentation project, powered by Astro + Starlight, you'll find the following structure:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   ├── docs/
-│   │   │   ├── getting-started.md
-│   │   │   ├── architecture.md
-│   │   │   ├── installation/
-│   │   │   │   ├── single-node.md
-│   │   │   │   ├── cluster.md
-│   │   │   │   ├── idps.md
-│   │   │   │   ├── domains.md
-│   │   │   │   └── uninstall.md
-│   │   │   ├── configuration/
-│   │   │   │   ├── user-types.md
-│   │   │   │   ├── git-providers.md
-│   │   │   │   ├── teams.md
-│   │   │   │   ├── templates.md
-│   │   │   │   └── licensing.md
-│   │   │   ├── usage/
-│   │   │   │   ├── workspaces.md
-│   │   │   │   ├── ides.md
-│   │   │   │   ├── account.md
-│   │   │   │   └── projects.md
-│   │   │   ├── administration/
-│   │   │   │   ├── application-logs.md
-│   │   │   │   ├── audit-logs.md
-│   │   │   │   ├── high-density.md
-│   │   │   │   ├── telemetry.md
-│   │   │   │   └── appearance.md
-│   │   │   └── tools/
-│   │   │       ├── api.md
-│   │   │       ├── cli.md
-│   │   │       ├── vs-code-extension.md
-│   │   │       └── jetbrains-gateway.md
-│   │   └── config.ts
-│   └── env.d.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
+# Daytona Documentation
 
 Daytona uses Starlight to manage documentation content. Place your `.md` or `.mdx` files in the `src/content/docs/` directory to match the structure above. These files will automatically become available as routes.
 
@@ -75,5 +25,3 @@ Explore [Starlight’s documentation](https://starlight.astro.build/), delve int
 
 ### NOTES
 - For API we are using [Starlight OpenAPI](https://github.com/HiDeoo/starlight-openapi/)
-- Currently openapi doesn't work - render menu but breaks on content
-- OpenAPI JSON needs to be converted to YAML with https://editor.swagger.io/
