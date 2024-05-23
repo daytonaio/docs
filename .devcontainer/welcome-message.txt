@@ -1,11 +1,5 @@
-🌟 Welcome to Starlight!
+Welcome to the Daytona Documentation!
 
-🛠️  Your environment is fully setup with all required software installed.
-
-Next steps:
-
-  - Preview the docs site:
-    cd docs && pnpm dev --host
-
-  - Run tests:
-    cd packages/starlight && pnpm test
+The server has been auto-started and can be accessed on port 4321.
+When you make changes to content, the pages are automatically rebuilt.
+Auto-reload is enabled while viewing the website in your browser.
