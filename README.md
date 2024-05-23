@@ -10,14 +10,14 @@ Place static assets, such as icons and manifest files, into the `public/` direct
 
 Execute these commands from the root of your project in a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Builds your production site to `./dist/`         |
-| `npm run preview`         | Previews your build locally before deployment    |
-| `npm run astro ...`       | Runs CLI commands like `astro add`, `astro check`|
-| `npm run astro -- --help` | Provides help for using the Astro CLI            |
+| Command                    | Action                                           |
+| :------------------------- | :----------------------------------------------- |
+| `yarn install`             | Installs dependencies                            |
+| `yarn run dev`             | Starts local dev server at `localhost:4321`      |
+| `yarn run build`           | Builds your production site to `./dist/`         |
+| `yarn run preview`         | Previews your build locally before deployment    |
+| `yarn run astro ...`       | Runs CLI commands like `astro add`, `astro check`|
+| `yarn run astro -- --help` | Provides help for using the Astro CLI            |
 
 ## 👀 Looking for more information on how to structure and develop docs with Astro and Starlight?
 
