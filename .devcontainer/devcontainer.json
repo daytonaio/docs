@@ -5,6 +5,7 @@
     },
     "remoteUser": "root",
     "postCreateCommand": "yarn install",
+    "postStartCommand": "yarn start",
     "waitFor": "postCreateCommand",
     "customizations": {
       "codespaces": {
@@ -14,5 +15,6 @@
         "extensions": ["astro-build.astro-vscode",
          "esbenp.prettier-vscode"]
       }
-    }
+    },
+    "forwardPorts": [4321]
   }
