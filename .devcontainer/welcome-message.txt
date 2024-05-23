@@ -1,5 +1,8 @@
 Welcome to the Daytona Documentation!
 
-The server has been auto-started and can be accessed on port 4321.
+To run the development server, execute the following command:
+
+    yarn start
+
 When you make changes to content, the pages are automatically rebuilt.
 Auto-reload is enabled while viewing the website in your browser.

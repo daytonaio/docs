@@ -5,7 +5,6 @@
     },
     "remoteUser": "root",
     "postCreateCommand": "yarn install",
-    "postStartCommand": "yarn start",
     "waitFor": "postCreateCommand",
     "customizations": {
       "codespaces": {
