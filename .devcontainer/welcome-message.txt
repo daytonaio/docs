@@ -1,11 +1,8 @@
-🌟 Welcome to Starlight!
+Welcome to the Daytona Documentation!
 
-🛠️  Your environment is fully setup with all required software installed.
+To run the development server, execute the following command:
 
-Next steps:
+    yarn start
 
-  - Preview the docs site:
-    cd docs && pnpm dev --host
-
-  - Run tests:
-    cd packages/starlight && pnpm test
+When you make changes to content, the pages are automatically rebuilt.
+Auto-reload is enabled while viewing the website in your browser.

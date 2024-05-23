@@ -14,5 +14,6 @@
         "extensions": ["astro-build.astro-vscode",
          "esbenp.prettier-vscode"]
       }
-    }
+    },
+    "forwardPorts": [4321]
   }
