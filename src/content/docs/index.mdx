@@ -1,6 +1,6 @@
 ---
 title: Documentation Home
-description: Start managing your Dev Environments with Daytona.
+description: Start managing your Workspaces with Daytona.
 template: doc
 head:
   - tag: title
@@ -32,22 +32,27 @@ import DocumentListItem from "@components/DocumentListItem.astro";
     href="/installation/installation"
   />
   <DocumentListItem
-    title="Create your first Dev Environment"
-    subtitle="Once you have Daytona installed, create your first Dev Environment."
-    href="/usage/dev-environments#create-a-dev-environment"
+    title="Create your first Workspace"
+    subtitle="Once you have Daytona installed, create your first Workspace."
+    href="/usage/workspaces#create-a-workspace"
   />
 </DocumentList>
 
 <DocumentList title="Configure">
   <DocumentListItem
     title="Add a Git Provider"
-    subtitle="Create Dev Environments from repositories hosted across GitHub, GitLab, Bitbucket, and others."
+    subtitle="Create Workspaces from repositories hosted across GitHub, GitLab, Bitbucket, and others."
     href="/configuration/git-providers#adding-a-git-provider"
   />
   <DocumentListItem
+    title="Add a remote Docker target"
+    subtitle="Deploy your Workspaces on a remote host using Docker."
+    href="/configuration/targets#adding-a-docker-target"
+  />
+  <DocumentListItem
     title="Set your default IDE"
-    subtitle="Automatically open your Dev Environments in Visual Studio Code and a selection of JetBrains IDEs."
-    href="/usage/dev-environments#setting-the-default-ide"
+    subtitle="Automatically open your Workspaces in Visual Studio Code and a selection of JetBrains IDEs."
+    href="/usage/workspaces#set-the-default-ide"
   />
 </DocumentList>
 
