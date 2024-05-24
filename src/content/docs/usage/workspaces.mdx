@@ -1,0 +1,115 @@
+---
+title: Workspaces
+description: Learn how to create and manage Workspaces using Daytona.
+sidebar:
+  label: Workspaces
+---
+
+Workspaces contain your project's codebase, dependencies and packages, and configuration.
+Daytona allows you to create Workspaces on various Git Providers
+
+## Create a Workspace
+You can create a Workspace.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   At least 1 Target configured.
+
+### From a Configured Git Provider
+__Procedure__
+1.  Execute the following command to start the guided Workspace creation process:
+    ```shell
+    daytona create
+    ```
+2.  Select the Git Provider and repository you want your Workspace to be configured with.
+3.  Wait for Daytona to create the Workspace.
+
+:::tip
+To automatically open a new Workspace in Visual Studio Code after creation, use the `--code` flag.
+
+__Example:__
+```shell
+daytona create --code
+```
+:::
+
+### From an Arbitrary Git URL
+__Procedure__
+1.  Execute the following command to create a Workspace from a remote Git repository:
+    ```shell
+    daytona create <REPO_URL>
+    ```
+
+    __Example__
+    ```shell
+    daytona create https://github.com/daytonaio/daytona.git
+    ```
+2.  Wait for Daytona to create the Workspace.
+
+## List Workspaces
+You can list all previously created Workspaces.
+
+1.  Execute the following command to see a list of Workspaces:
+    ```shell
+    daytona list
+    ```
+
+## Open An Existing Workspace
+You can open an existing Workspace in your IDE.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   At least 1 existing Workspace.
+
+__Procedure__
+1.  Execute the following command to list existing Workspaces:
+    ```shell
+    daytona code
+    ```
+2.  Select the Workspace you want to open.
+
+:::note
+You can configure your preferred IDE.
+Refer to __[Set the Default IDE](#set-the-default-ide)__ for more information.
+:::
+
+## Delete a Workspace
+You can delete an existing Workspace.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   At least 1 existing Workspace.
+
+__Procedure__
+1.  Run the following command:
+    ```shell
+    $ daytona delete
+    ```
+2.  Select the desired Workspace for deletion in the list and hit `Enter`.
+3.  Confirm the action.
+
+## Set the Default IDE
+Daytona allows you to connect to your Workspace using your preferred IDE.
+Out of the box, Daytona can be configured to open your Workspace in the following IDEs:
+
+*   Visual Studio Code (VSCode)
+    *   Desktop (Linux, macOS, Windows)
+    *   Browser
+*   JetBrains IDEs
+    *   CLion
+    *   GoLand
+    *   IntelliJ IDEA Ultimate
+    *   PhpStorm
+    *   Rider
+    *   RubyMine
+    *   WebStorm
+*   Terminal SSH
+
+1.  Execute the following command to enter the IDE selection terminal UI:
+    ```shell
+    daytona ide
+    ```
+2.  Select your preferred IDE from the list presented.
+
+Your preferred IDE will be opened automatically and connected to your Workspace when using the `daytona open` command.
+

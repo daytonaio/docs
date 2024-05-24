@@ -72,8 +72,8 @@ export default defineConfig({
         "label": "Usage",
         "items": [
           {
-            "label": "Dev Environments",
-            "link": "/usage/dev-environments",
+            "label": "Workspaces",
+            "link": "/usage/workspaces",
             attrs: {
               icon: 'git-commit.svg'
             },
