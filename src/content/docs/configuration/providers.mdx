@@ -65,10 +65,10 @@ A default Target using the Docker Provider is also added, allowing the creation 
 When using Docker as a Provider, you have the choice of creating either a local or remote target:
 
 *   __[Remote](#remote)__  
-    The target uses a remote installation of Docker to deploy Dev Environments.
+    The target uses a remote installation of Docker to deploy Workspaces.
     This requires access to an SSH daemon on the desired host machine, and access to a user with permission to create Docker containers.
 *   __[Local](#local)__  
-    The target uses your local installation of Docker to deploy Dev Environments.
+    The target uses your local installation of Docker to deploy Workspaces.
     This allows you to use Daytona without needing external servers or infrastructure.
 
 #### Remote
@@ -76,7 +76,7 @@ You can add a target for an installation of Docker on a remote host.
 When following the [Set a Target procedure](#set-a-target), note the following configuration options:
 
 1.  __Container Image__  
-    The base image used by Daytona to deploy new Dev Environments.
+    The base image used by Daytona to deploy new Workspaces.
     The default value is `daytonaio/workspace-project`.
 2.  __Remote Hostname__  
     The hostname of the remote host.
