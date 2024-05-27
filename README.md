@@ -72,7 +72,7 @@ Daytona's documentation is organized into broad topics:
     Practical information on using Daytona.
 
 ## Contributing
-Daytona is licensed under the [Elastic License 2.0](LICENSE). If you would like to contribute to the software, you must:
+Daytona is licensed under the [Apache License 2.0](LICENSE). If you would like to contribute to the software, you must:
 
 1. Read the Developer Certificate of Origin Version 1.1 (https://developercertificate.org/)
 2. Sign all commits to the Daytona project.
@@ -80,9 +80,13 @@ Daytona is licensed under the [Elastic License 2.0](LICENSE). If you would like 
 This ensures that users, distributors, and other contributors can rely on all the software related to Daytona being contributed under the terms of the [License](LICENSE). No contributions will be accepted without following this process.
 
 ## License
-This repository contains the Daytona Enterprise Demo installer, covered under the [Apache License 2.0](LICENSE), except where noted (any Daytona logos or trademarks are not covered under the Apache License 2.0, and should be explicitly noted by a LICENSE file.)
+This repository contains Daytona's Documentation website, covered under the Apache License 2.0, except where noted (any Daytona logos or trademarks are not covered under the Apache License, and should be explicitly noted by a LICENSE file.)
 
-Others are allowed to make their own distribution of the software in this repository under the license, but they cannot use any of the Daytona trademarks, cloud services, etc.
+Daytona is a product produced from this open source software, exclusively by Daytona Platforms, Inc. It is distributed under our commercial terms.
+
+Others are allowed to make their own distribution of the software, but they cannot use any of the Daytona trademarks, cloud services, etc.
+
+We explicitly grant permission for you to make a build that includes our trademarks while developing Daytona itself. You may not publish or share the build, and you may not use that build to run Daytona for any other purpose.
 
 ## Code of Conduct
 This project has adapted the Code of Conduct from the [Contributor Covenant](https://www.contributor-covenant.org/). For more information see the [Code of Conduct](CODE_OF_CONDUCT.md) or contact [codeofconduct@daytona.io.](mailto:codeofconduct@daytona.io) with any additional questions or comments.
