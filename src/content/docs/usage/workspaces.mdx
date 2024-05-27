@@ -88,7 +88,7 @@ __Procedure__
 2.  Select the desired Workspace for deletion in the list and hit `Enter`.
 3.  Confirm the action.
 
-## Set the Default IDE
+## IDEs
 Daytona allows you to connect to your Workspace using your preferred IDE.
 Out of the box, Daytona can be configured to open your Workspace in the following IDEs:
 
@@ -105,11 +105,21 @@ Out of the box, Daytona can be configured to open your Workspace in the followin
     *   WebStorm
 *   Terminal SSH
 
+### Set the Default IDE
+You can set the default IDE used by Daytona.
+After setting the default IDE, it will be opened automatically and connected to your Workspace when using the `daytona open` command.
+
+__Prerequisites__
+*   A working installation of Daytona.
+
+__Procedure__
 1.  Execute the following command to enter the IDE selection terminal UI:
     ```shell
     daytona ide
     ```
 2.  Select your preferred IDE from the list presented.
 
-Your preferred IDE will be opened automatically and connected to your Workspace when using the `daytona open` command.
-
+:::note
+When using the `daytona open` command with `VS Code - Browser` as your default IDE, Daytona will set up an instance of OpenVSCode Server on your local machine.
+Following successful set up, Visual Studio Code will automatically open in your default browser and connect to your Workspace.
+:::
