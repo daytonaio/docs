@@ -29,7 +29,7 @@ export default defineConfig({
         "label": "Home",
         link: '/',
         attrs: {
-          icon: 'flag.svg'
+          icon: 'home.svg'
         },
       },
       {
@@ -39,7 +39,7 @@ export default defineConfig({
             "label": "What is Daytona?",
             "link": "/explanation/what-is-daytona",
             attrs: {
-              icon: 'git-commit.svg'
+              icon: 'flag.svg'
             },
           },
         ]
@@ -51,7 +51,7 @@ export default defineConfig({
             "label": "Installation",
             "link": "/installation/installation",
             attrs: {
-              icon: 'git-commit.svg'
+              icon: 'copy.svg'
             },
           }
         ]
@@ -63,7 +63,7 @@ export default defineConfig({
             "label": "Git Providers",
             "link": "/configuration/git-providers",
             attrs: {
-              icon: 'git-commit.svg'
+              icon: 'git-branch.svg'
             },
           },
         ]
@@ -75,7 +75,7 @@ export default defineConfig({
             "label": "Workspaces",
             "link": "/usage/workspaces",
             attrs: {
-              icon: 'git-commit.svg'
+              icon: 'layout.svg'
             },
           },
         ]
@@ -87,14 +87,14 @@ export default defineConfig({
             "label": "CLI",
             "link": "/reference/cli",
             attrs: {
-              icon: 'git-commit.svg'
+              icon: 'terminal.svg'
             },
           },
           {
             "label": "Server",
             "link": "/reference/server",
             attrs: {
-              icon: 'git-commit.svg'
+              icon: 'computer.svg'
             },
           },
         ]
