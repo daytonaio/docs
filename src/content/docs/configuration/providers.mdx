@@ -8,8 +8,8 @@ sidebar:
 Daytona abstracts the management and deployment of Workspaces into 2 related concepts:
 
 1.  __Provider__  
-    A platform capable of deploying Workspaces on.
-    Examples of Providers may include:
+    A plugin that interfaces with [Daytona Server](/reference/server), responsible for Workspace deployment and lifecycle management.
+    Examples of platforms Providers may connect with include:
     *   Container management platforms such as Docker or Podman;
     *   Cloud hosting providers such as AWS or DigitalOcean.
 2.  __Target__  
@@ -22,8 +22,51 @@ The [Daytona Server](/reference/server) communicates with Providers to execute o
 
 This makes it possible to create new Providers to govern Workspace management on any platform or hosting providers.
 
-## Managing Targets
+## Managing Providers
+### Install a Provider
+You can install a Provider.
+Once a new Provider is installed, you can use it when setting a Target.
 
+__Prerequisites__
+*   A working installation of Daytona.
+
+__Procedure__
+1.  Execute the following command to install a new Provider:
+    ```shell
+    daytona provider install
+    ```
+2.  Select the Provider you want to install from the list.
+
+### Uninstall a Provider
+You can uninstall an existing Provider.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   At least 1 Provider installed.
+
+__Procedure__
+1.  Execute the following command to uninstall a Provider:
+    ```shell
+    daytona provider uninstall
+    ```
+2.  Select the Provider you want to uninstall from the list.
+
+### Update a Provider
+You can update an existing Provider.
+This allows you to apply the latest enhancements and bug fixes.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   At least 1 Provider installed.
+
+__Procedure__
+1.  Execute the following command to update a Provider:
+    ```shell
+    daytona provider update
+    ```
+2.  Select the Provider you want to update from the list.
+
+## Managing Targets
 ### Set a Target
 You can set a new Target for Daytona to use when managing Workspaces.
 
@@ -57,11 +100,12 @@ __Procedure__
     ```
 2.  Select the target to remove.
 
-## Using the Docker Provider
+## Officially Supported Providers
+### Docker
 After installation, Daytona installs a Provider for Docker (`daytona-provider-docker`) by default.
 A default Target using the Docker Provider is also added, allowing the creation of Workspaces on your local machine.
 
-### Add a Docker Target
+#### Add a Target
 When using Docker as a Provider, you have the choice of creating either a local or remote target:
 
 *   __[Remote](#remote)__  
@@ -71,7 +115,7 @@ When using Docker as a Provider, you have the choice of creating either a local 
     The target uses your local installation of Docker to deploy Workspaces.
     This allows you to use Daytona without needing external servers or infrastructure.
 
-#### Remote
+##### Remote
 You can add a target for an installation of Docker on a remote host.
 When following the [Set a Target procedure](#set-a-target), note the following configuration options:
 
@@ -82,6 +126,7 @@ When following the [Set a Target procedure](#set-a-target), note the following c
     The hostname of the remote host.
 3.  __Remote Password__  
     The password for the remote user.
+    If password authentication is disabled on the remote host, you can choose an SSH key in the next step.
 4.  __Remote Port__  
     The TCP port used to access the remote host's SSH daemon.
     Unless otherwise configured on your remote host, this should be set to the default value (`22`)
@@ -90,7 +135,10 @@ When following the [Set a Target procedure](#set-a-target), note the following c
 6.  __Sock Path__  
     The Docker UNIX socket location on the remote host.
     Unless otherwise configured after installing Docker, this should be set to the default value (`/var/run/docker.sock`)
+7.  __Remote Private Key Path__
+    The SSH private key used to connect to the remote host.
+    If you are using password authentication, you can choose "None".
 
-#### Local
+##### Local
 By default, Daytona comes pre-configured with a local Docker Target.
 If you have removed the default Docker Target, you can recreate it using the [Set a Target procedure](#set-a-target).
