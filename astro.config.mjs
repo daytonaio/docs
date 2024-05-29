@@ -75,7 +75,7 @@ export default defineConfig({
             "label": "Workspaces",
             "link": "/usage/workspaces",
             attrs: {
-              icon: 'layout.svg'
+              icon: 'computer.svg'
             },
           },
         ]
@@ -94,7 +94,7 @@ export default defineConfig({
             "label": "Server",
             "link": "/reference/server",
             attrs: {
-              icon: 'computer.svg'
+              icon: 'globe.svg'
             },
           },
         ]
