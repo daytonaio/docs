@@ -33,6 +33,10 @@
     padding-top: 0 !important;
   }
 
+  > :last-child {
+    margin-bottom: 0;
+  }
+
   > p, ol, ul {
     a {
       color: var(--primary-text-color);

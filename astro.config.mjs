@@ -24,6 +24,9 @@ export default defineConfig({
     social: {
       github: 'https://github.com/daytonaio/daytona'
     },
+    editLink: {
+      baseUrl: 'https://github.com/daytonaio/docs/blob/main/',
+    },
     "sidebar": [
       {
         "label": "Home",
@@ -119,6 +122,7 @@ export default defineConfig({
       ThemeProvider: './src/components/ThemeProvider.astro',
       ThemeSelect: './src/components/ThemeSelect.astro',
       Head: './src/components/Head.astro',
+      EditLink: './src/components/EditLink.astro'
     },
     expressiveCode: {
       themes: [myThemeDark, myThemeLight],
