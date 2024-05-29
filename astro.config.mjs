@@ -54,7 +54,7 @@ export default defineConfig({
             "label": "Installation",
             "link": "/installation/installation",
             attrs: {
-              icon: 'git-commit.svg'
+              icon: 'installation.svg'
             },
           }
         ]
