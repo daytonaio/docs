@@ -69,6 +69,13 @@ export default defineConfig({
               icon: 'git-commit.svg'
             },
           },
+          {
+            "label": "Providers",
+            "link": "/configuration/providers",
+            attrs: {
+              icon: 'git-commit.svg'
+            },
+          },
         ]
       },
       {
