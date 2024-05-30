@@ -51,7 +51,7 @@ export default defineConfig({
             "label": "Installation",
             "link": "/installation/installation",
             attrs: {
-              icon: 'copy.svg'
+              icon: 'install.svg'
             },
           }
         ]
