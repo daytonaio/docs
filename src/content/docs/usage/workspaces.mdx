@@ -4,6 +4,7 @@ description: Learn how to create and manage Workspaces using Daytona.
 sidebar:
   label: Workspaces
 ---
+import Aside from '@components/Aside.astro'
 
 Workspaces contain your project's codebase, dependencies and packages, and configuration.
 Daytona allows you to create Workspaces on various Git Providers
@@ -24,14 +25,14 @@ __Procedure__
 2.  Select the Git Provider and repository you want your Workspace to be configured with.
 3.  Wait for Daytona to create the Workspace.
 
-:::tip
+<Aside type="tip">
 To automatically open a new Workspace in Visual Studio Code after creation, use the `--code` flag.
 
 __Example:__
 ```shell
 daytona create --code
 ```
-:::
+</Aside>
 
 ### From an Arbitrary Git URL
 __Procedure__
@@ -169,10 +170,10 @@ __Procedure__
     daytona forward 4321 example-dev-env --public
     ```
 
-:::tip
+<Aside type="tip">
 Alternatively, you can generate a public URL by executing the following command in a Workspace's shell:
 
 ```shell
 daytona forward <PORT> --public
 ```
-:::
+</Aside>
