@@ -8,7 +8,7 @@ sidebar:
 Daytona abstracts the management and deployment of Workspaces into 2 related concepts:
 
 1.  __Provider__  
-    A plugin that interfaces with the [Daytona Server](/reference/server), responsible for Workspace deployment and lifecycle management.
+    A plugin that interfaces with the [Daytona Server](../reference/server), responsible for Workspace deployment and lifecycle management.
     Examples of platforms Providers may connect with include:
     *   Container management platforms such as Docker or Podman;
     *   Cloud hosting providers such as AWS or DigitalOcean.
@@ -18,7 +18,7 @@ Daytona abstracts the management and deployment of Workspaces into 2 related con
     Daytona allows you to configure new and existing Targets, and choose between them at Workspace creation time.
 
 Daytona's architecture decentralizes the role of a Provider into a separate service.
-The [Daytona Server](/reference/server) communicates with Providers to execute operations relating to Workspace creation and lifecycle management.
+The [Daytona Server](../reference/server) communicates with Providers to execute operations relating to Workspace creation and lifecycle management.
 
 This makes it possible to create new Providers to govern Workspace management on any platform or hosting providers.
 

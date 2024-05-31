@@ -2,7 +2,7 @@
   "name": "docs",
   "license": "Apache-2.0",
   "type": "module",
-  "version": "0.16.0-pre",
+  "version": "0.16.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
