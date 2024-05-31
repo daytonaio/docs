@@ -104,7 +104,7 @@ export default defineConfig({
             "label": "Server",
             "link": "/reference/server",
             attrs: {
-              icon: 'globe.svg'
+              icon: 'server.svg'
             },
           },
         ]
