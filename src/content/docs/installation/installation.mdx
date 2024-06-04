@@ -4,6 +4,7 @@ description: Learn how to install Daytona on Linux, macOS, and Windows.
 sidebar:
   label: Installation
 ---
+import Aside from '@components/Aside.astro'
 
 You can install Daytona on Linux, macOS, and Windows systems on both x86-64 and AArch64 architectures.
 The recommended installation method leverages a shell script to automate setup.
@@ -25,7 +26,7 @@ __Procedure__
     ```
 2.  Read and follow the instructions printed in your console.
 
-:::note
+<Aside type="note">
 You can install Daytona by manually downloading the binary and placing it in your `PATH`.
 
 ```shell
@@ -38,7 +39,7 @@ curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-darwin-amd64 -o 
 # for macOS (AArch64/Apple Silicon)
 curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-darwin-arm64 -o daytona
 ```
-:::
+</Aside>
 
 ### Windows
 __Prerequisites__
@@ -54,7 +55,7 @@ __Procedure__
     daytona serve;
     ```
 
-:::note
+<Aside type="note">
 You can install Daytona by manually downloading the binary and placing it in your `PATH`.
 
 ```powershell
@@ -63,16 +64,16 @@ curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-windows-amd64.ex
 # AArch64
 curl -sf -L https://download.daytona.io/daytona/v0.16.0/daytona-windows-arm64.exe -o daytona
 ```
-:::
+</Aside>
 
 ## Package Managers
 Daytona is available for a number of package managers across Linux and macOS.
 
-:::note
+<Aside type="note">
 Packages listed below aren't officially supported by Daytona developers.
 They may not be updated to the latest released version of Daytona.
 The recommended method is to [install Daytona using the upstream installation script](#recommended-installation-method).
-:::
+</Aside>
 
 ### Homebrew
 Homebrew can be used to install Daytona on macOS and Linux.
