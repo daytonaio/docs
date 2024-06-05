@@ -107,6 +107,13 @@ export default defineConfig({
               icon: 'server.svg'
             },
           },
+          {
+            "label": "Builders",
+            "link": "/reference/builders",
+            attrs: {
+              icon: 'tools.svg'
+            },
+          },
         ]
       }
     ],
