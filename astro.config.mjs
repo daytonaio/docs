@@ -88,6 +88,13 @@ export default defineConfig({
               icon: 'computer.svg'
             },
           },
+          {
+            "label": "Builders",
+            "link": "/usage/builders",
+            attrs: {
+              icon: 'tools.svg'
+            },
+          },
         ]
       },
       {
@@ -105,13 +112,6 @@ export default defineConfig({
             "link": "/reference/server",
             attrs: {
               icon: 'server.svg'
-            },
-          },
-          {
-            "label": "Builders",
-            "link": "/reference/builders",
-            attrs: {
-              icon: 'tools.svg'
             },
           },
         ]
