@@ -25,7 +25,7 @@ When [creating a Workspace](./workspaces#create-a-workspace), you can choose bet
 Daytona can auto-detect the most appropriate Builder for your project.
 When choosing this option, Daytona uses the following logic to determine which Builder to use:
 
-1.  Check if a Dev Container configuration is present at `.devcontainer/devcontainer.json`, relative to the repository root.
+1.  Check if a Dev Container configuration is present at `.devcontainer.json` or `.devcontainer/devcontainer.json`, relative to the repository root.
 2.  If present, use the [Dev Container Builder](#dev-container).
 3.  If not present, use the [None Builder](#none).
 
