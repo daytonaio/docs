@@ -8,61 +8,792 @@ sidebar:
 The `daytona` CLI provides access to all of Daytona's core features.
 You can access help for each command using the `--help`/`-h` flag.
 
-## Available Commands
+## daytona
+Daytona is a Dev Environment Manager
 
-### `autocomplete`
-Install a completion script for your shell enviornment.
+```shell
+daytona [flags]
+```
 
-### `code`
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona api-key
+Api Key commands
+
+```shell
+daytona api-key [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona api-key generate
+Generate a new API key
+
+```shell
+daytona api-key generate [NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--save` | `-s` | Save the API key to your default profile on this machine |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona api-key list
+List API keys
+
+```shell
+daytona api-key list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona api-key revoke
+Revoke an API key
+
+```shell
+daytona api-key revoke [NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--yes` | `-y` | Skip confirmation prompt |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona autocomplete
+Adds completion script for your shell enviornment
+
+```shell
+daytona autocomplete [bash|zsh|fish|powershell] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona code
 Open a workspace in your preferred IDE
 
-### `create`
+```shell
+daytona code [WORKSPACE] [PROJECT] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--ide` | `-i` | Specify the IDE ('vscode' or 'browser') |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona container-registry
+Manage container registries
+
+```shell
+daytona container-registry [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona container-registry delete
+Delete a container registry
+
+```shell
+daytona container-registry delete [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona container-registry list
+Lists container registries
+
+```shell
+daytona container-registry list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona container-registry set
+Set container registry
+
+```shell
+daytona container-registry set [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--password` | `-p` | Password |
+| `--server` | `-s` | Server |
+| `--username` | `-u` | Username |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona create
 Create a workspace
 
-### `delete`
+```shell
+daytona create [REPOSITORY_URL] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--code` | `-c` | Open the workspace in the IDE after workspace creation |
+| `--ide` | `-i` | Specify the IDE ('vscode' or 'browser') |
+| `--manual` |  | Manually enter the git repositories |
+| `--multi-project` |  | Workspace with multiple projects/repos |
+| `--name` |  | Specify the workspace name |
+| `--provider` |  | Specify the provider (e.g. 'docker-provider') |
+| `--target` | `-t` | Specify the target (e.g. 'local') |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona delete
 Delete a workspace
 
-### `forward`
+```shell
+daytona delete [WORKSPACE] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Delete all workspaces |
+| `--yes` | `-y` | Confirm deletion without prompt |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona docs
+Opens the Daytona documentation in your default browser.
+
+```shell
+daytona docs [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona env
+Manage profile environment variables that are added to all workspaces
+
+
+```shell
+daytona env [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona env list
+List profile environment variables
+
+```shell
+daytona env list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona env set
+Set profile environment variables
+
+```shell
+daytona env set [KEY=VALUE]... [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona forward
 Forward a port from a project to your local machine
 
-### `git-providers`
+```shell
+daytona forward [PORT] [WORKSPACE] [PROJECT] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--public` |  | Should be port be available publicly via an URL |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona git-providers
+Manage Git providers
+
+```shell
+daytona git-providers [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona git-providers add
+Register a Git providers
+
+```shell
+daytona git-providers add [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona git-providers delete
+Unregister a Git providers
+
+```shell
+daytona git-providers delete [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona git-providers list
 Lists your registered Git providers
 
-### `help`
-Provides additional help.
+```shell
+daytona git-providers list [flags]
+```
 
-### `ide`
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona ide
 Choose the default IDE
 
-### `info`
+```shell
+daytona ide [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona info
 Show workspace info
 
-### `list`
+```shell
+daytona info [WORKSPACE] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona list
 List workspaces
 
-### `profile`
+```shell
+daytona list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--verbose` | `-v` | Show verbose output |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona profile
 Manage profiles
 
-### `purge`
+```shell
+daytona profile [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona profile add
+Add profile
+
+```shell
+daytona profile add [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--api-key` | `-k` | API Key |
+| `--api-url` | `-a` | API URL |
+| `--name` | `-n` | Profile name |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona profile delete
+Delete profile [PROFILE_NAME]
+
+```shell
+daytona profile delete [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona profile edit
+Edit profile [PROFILE_NAME]
+
+```shell
+daytona profile edit [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--api-key` | `-k` | API Key |
+| `--api-url` | `-a` | API URL |
+| `--name` | `-n` | Profile name |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona profile list
+List profiles
+
+```shell
+daytona profile list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona provider
+Manage providers
+
+```shell
+daytona provider [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona provider install
+Install provider
+
+```shell
+daytona provider install [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona provider list
+List installed providers
+
+```shell
+daytona provider list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona provider uninstall
+Uninstall provider
+
+```shell
+daytona provider uninstall [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona provider update
+Update provider
+
+```shell
+daytona provider update [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Update all providers |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona purge
 Purges all Daytona data from the current device
 
-### `server`
-Start the server process
+```shell
+daytona purge [flags]
+```
 
-### `ssh`
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--yes` | `-y` | Execute purge without prompt |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona serve
+Run the server process in the current terminal session
+
+```shell
+daytona serve [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona server
+Start the server process in daemon mode
+
+```shell
+daytona server [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--yes` | `-y` | Execute purge without prompt |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona server config
+Output local Daytona Server config
+
+```shell
+daytona server config [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona server configure
+Configure Daytona Server
+
+```shell
+daytona server configure [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona server logs
+Output Daytona Server logs
+
+```shell
+daytona server logs [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--follow` | `-f` | Follow logs |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona server restart
+Restarts the Daytona Server daemon
+
+```shell
+daytona server restart [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona server start
+Start the Daytona Server daemon
+
+```shell
+daytona server start [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona server stop
+Stops the Daytona Server daemon
+
+```shell
+daytona server stop [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona ssh
 SSH into a project using the terminal
 
-### `start`
+```shell
+daytona ssh [WORKSPACE] [PROJECT] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona start
 Start a workspace
 
-### `stop`
+```shell
+daytona start [WORKSPACE] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Start all workspaces |
+| `--project` | `-p` | Start a single project in the workspace (project name) |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona stop
 Stop a workspace
 
-### `use`
-Set the active profile.
+```shell
+daytona stop [WORKSPACE] [flags]
+```
 
-### `version`
-Displays the currently installed version of Daytona.
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Stop all workspaces |
+| `--project` | `-p` | Stop a single project in the workspace (project name) |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
-### `whoami`
-Displays the currently active profile.
+
+## daytona target
+Manage provider targets
+
+```shell
+daytona target [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona target list
+List targets
+
+```shell
+daytona target list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona target remove
+Remove target
+
+```shell
+daytona target remove [TARGET_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--yes` | `-y` | Confirm deletion of all workspaces without prompt |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona target set
+Set provider target
+
+```shell
+daytona target set [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona use
+Set the active profile
+
+```shell
+daytona use [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona version
+Print the version number
+
+```shell
+daytona version [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
+## daytona whoami
+Display information about the active user
+
+```shell
+daytona whoami [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+
+
