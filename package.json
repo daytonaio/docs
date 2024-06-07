@@ -2,7 +2,7 @@
   "name": "docs",
   "license": "Apache-2.0",
   "type": "module",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "scripts": {
     "dev": "astro dev --host",
     "start": "yarn run dev",
