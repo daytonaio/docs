@@ -11,17 +11,16 @@ Daytona provides control over how the resulting Project environment is created, 
 
 When [creating a Workspace](./workspaces#create-a-workspace), you can choose between the following Builders during the Advanced Configuration step:
 
-1.  [__Automatic__](#automatic)  
+1.  [__Automatic__](#automatic-builder)  
     Daytona builds the Project image after auto-detecting the most appropriate Builder.
-2.  [__Dev Container__](#dev-container)  
+2.  [__Dev Container__](#dev-container-builder)  
     Daytona builds the Project image according to the Dev Container configuration located in the project.
-3.  [__Custom Image__](#custom-image)  
+3.  [__Custom Image__](#custom-image-builder)  
     Daytona builds the Project image using an image you specify.
 4.  [__None__](#none)  
     Daytona creates the Project using the default base image.
 
-## Supported Builders
-### Automatic
+## Automatic Builder
 Daytona can auto-detect the most appropriate Builder for your project.
 When choosing this option, Daytona uses the following logic to determine which Builder to use:
 
@@ -29,7 +28,7 @@ When choosing this option, Daytona uses the following logic to determine which B
 2.  If present, use the [Dev Container Builder](#dev-container).
 3.  If not present, use the [None Builder](#none).
 
-### Dev Container
+## Dev Container Builder
 You can build the Project image using the Dev Container standard.
 The following options are accepted when using this Builder:
 
@@ -43,7 +42,7 @@ For guidance on how to add Dev Container configuration to your project's reposit
 For more information on the Dev Container standard, refer to the official documentation at [containers.dev](https://containers.dev/).
 </Aside>
 
-### Custom Image
+## Custom Image Builder
 You can build the Project image by specifying a custom base container.
 The following options are accepted when using this Builder:
 
@@ -56,6 +55,6 @@ The following options are accepted when using this Builder:
 4.  __Environment variables__  
     A list of environment variables  in the format `KEY=VALUE`.
 
-### None
+## None
 Daytona can build a Project using the default base image.
 Unless otherwise configured using `daytona server configure`, the default base image is set to `daytonaio/workspace-project`.
