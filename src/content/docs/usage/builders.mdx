@@ -59,3 +59,25 @@ The following options are accepted when using this Builder:
 ### None
 Daytona can build a Project using the default base image.
 Unless otherwise configured using `daytona server configure`, the default base image is set to `daytonaio/workspace-project`.
+
+## Setting a Custom Build Registry
+You can set a custom build registry for images built by a Daytona builder.
+After an image is built, it will be uploaded to the configured container registry to speed up future Workspace creation for the same Project.
+
+__Prerequisites__
+*   A working installation of Daytona.
+*   An account on an accessible container registry with permission to push/pull images.
+
+__Procedure__
+1.  Execute the following command to configure the custom build registry:
+    ```shell
+    daytona container-registry set
+    ```
+2.  Set the required options:
+    1.  __Server URL__  
+        The full URL to your custom container registry.
+    2.  __Username__  
+        The username Daytona should use to log in to the container registry.
+    3.  __Password__  
+        The password for your container registry account.
+3.  Press `Enter` to set the custom build registry.
