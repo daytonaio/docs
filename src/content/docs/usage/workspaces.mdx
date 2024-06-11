@@ -78,8 +78,8 @@ You can configure your preferred IDE.
 Refer to __[Set the Default IDE](#set-the-default-ide)__ for more information.
 :::
 
-## Delete a Workspace
-You can delete an existing Workspace interactively.
+## Delete Workspaces
+You can delete 1 or more Workspaces interactively.
 
 __Prerequisites__
 *   A working installation of Daytona.
@@ -90,7 +90,11 @@ __Procedure__
     ```shell
     daytona delete
     ```
-2.  Select the desired Workspace for deletion in the list and hit `Enter`.
+2.  Mark Workspaces for deletion by highlighting them and pressing `x`.
+    <Aside type="note">
+    Pressing `Enter` without using `x` to select individual Workspaces will select the currently highlighted Workspace for deletion.
+    </Aside>
+3.  Press `Enter`.
 3.  Confirm the action.
 
 ### Non-Interactively
