@@ -1,45 +1,47 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from 'astro:assets'
 import textArrowIcon from '@assets/icons/text-arrow.svg?raw'
-import Default from '@astrojs/starlight/components/Footer.astro';
-import ThemeSelect from "./ThemeSelect.astro";
-
+import Default from '@astrojs/starlight/components/Footer.astro'
+import ThemeSelect from './ThemeSelect.astro'
 ---
 
 <Default {...Astro.props}>
-    <slot />
+  <slot />
 </Default>
 <footer class="docs-footer__container">
-    <div class="docs-footer__container__support-links">
-        <p>
-            <Fragment set:html={textArrowIcon} />Need help? - <a
-                href="#">Reach support</a>
-        </p>
-        <p>
-            <Fragment set:html={textArrowIcon} />Latest project
-            updates? - <a href="https://github.com/daytonaio/daytona/releases/tag/v0.16.0">View Changelog</a>
-        </p>
-        <p>
-            <Fragment set:html={textArrowIcon} />Dotfiles Insider
-            - <a href="https://www.daytona.io/dotfiles/">Read our blog</a>
-        </p>
+  <div class="docs-footer__container__support-links">
+    <p>
+      <Fragment set:html={textArrowIcon} />Need help? - <a href="#"
+        >Reach support</a
+      >
+    </p>
+    <p>
+      <Fragment set:html={textArrowIcon} />Latest project updates? - <a
+        href="https://github.com/daytonaio/daytona/releases/tag/v0.19.0"
+        >View Changelog</a
+      >
+    </p>
+    <p>
+      <Fragment set:html={textArrowIcon} />Dotfiles Insider - <a
+        href="https://www.daytona.io/dotfiles/">Read our blog</a
+      >
+    </p>
+  </div>
+
+  <div class="docs-footer__container__bottom">
+    <div class="docs-footer__container__bottom-block">
+      <div><p>© {new Date().getFullYear()} Daytona Platforms, Inc.</p></div>
+      <div class="divider"></div>
     </div>
 
-    <div class="docs-footer__container__bottom">
-        <div class="docs-footer__container__bottom-block">
-            <div><p>© {new Date().getFullYear()} Daytona Platforms, Inc.</p></div>
-            <div class="divider"></div>
-        </div>
+    <ThemeSelect />
 
-        <ThemeSelect />
-
-        <div class="menu-list">
-            <a href="https://www.daytona.io/company/privacy-policys">Privacy policy</a
-            >
-            <a href="https://www.daytona.io/company/terms-of-service"
-            >Terms of Service</a
-            >
-        </div>
-
+    <div class="menu-list">
+      <a href="https://www.daytona.io/company/privacy-policys">Privacy policy</a
+      >
+      <a href="https://www.daytona.io/company/terms-of-service"
+        >Terms of Service</a
+      >
     </div>
+  </div>
 </footer>
