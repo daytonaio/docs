@@ -7,25 +7,22 @@
   }
 
   > h2[id]{
-    padding-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 40px;    
   }
 
   > h3[id] {
-    padding-top: 40px;
-    margin-bottom: 20px;
+    margin: 40px 0;
   }
 
   > h4[id] {
-    padding-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 40px;
   }
   > p {
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
 
   > hr {
-    margin-top: 60px;
+    margin: 40px 0;
   }
 
   > :first-child {
@@ -84,13 +81,7 @@
     }
   }
 
-  > h6 + p {
-    margin-bottom: 20px;
-  }
-
-  > p {
-    margin-bottom: 2em;
-
+  > p {    
     @include for-mobile-screen-sizes {
       margin-bottom: 40px
     }
@@ -257,7 +248,7 @@
 
   > ol {
     padding-inline-start: 18px;
-    margin: 0 0 6px;
+    margin: 0;
     li {
       padding-left: 10px;
       margin: 0 0 4px;
@@ -266,7 +257,7 @@
       font-size: 1rem;
       line-height: 1.6;
       letter-spacing: -0.01em;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       color: var(--secondary-text-color);
        &::marker {
         color: var(--primary-text-color);
@@ -274,6 +265,10 @@
 
       p {
         margin: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
       }
     }
 
@@ -283,9 +278,9 @@
   }
 
   > ul {
-    // background: var(--block-bg-color);
-    padding: 0px 10px 10px 16px;
-    margin-bottom: 6px;
+    // background: var(--block-bg-color);    
+    padding: 0px 10px 10px 0px;    
+    margin-bottom: 0px;
     margin-top: 0;
     list-style-image: url(/src/assets/icons/facts.svg);
 
@@ -326,6 +321,10 @@
         @include for-mobile-screen-sizes {
           font-size: 1rem;
         }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
       }
     }
 
@@ -477,10 +476,12 @@
       }
     }
 
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
-  .expressive-code {
-    //padding-left: 30px;
+  .expressive-code {    
     margin-top: 20px;
     margin-bottom: 20px;
   }
