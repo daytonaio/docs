@@ -6,19 +6,13 @@
     }
   }
 
-  > h2[id]{
-    margin-top: 40px;    
+  > h2[id], > h3[id], > h4[id], > h5[id] {
+    margin-top: 56px;
+    margin-bottom: 16px;    
   }
 
-  > h3[id] {
-    margin: 40px 0;
-  }
-
-  > h4[id] {
-    margin-top: 40px;
-  }
   > p {
-    margin: 20px 0;
+    margin: 24px 0;
   }
 
   > hr {
@@ -248,16 +242,15 @@
 
   > ol {
     padding-inline-start: 18px;
-    margin: 0;
+    margin: 0 0 24px;
     li {
       padding-left: 10px;
-      margin: 0 0 4px;
+      margin: 0 0 4px;      
       font-family: Inter, sans-serif;
       font-weight: 400;
       font-size: 1rem;
       line-height: 1.6;
-      letter-spacing: -0.01em;
-      margin-bottom: 10px;
+      letter-spacing: -0.01em;      
       color: var(--secondary-text-color);
        &::marker {
         color: var(--primary-text-color);
@@ -279,8 +272,8 @@
 
   > ul {
     // background: var(--block-bg-color);    
-    padding: 0px 10px 10px 0px;    
-    margin-bottom: 0px;
+    padding: 0px 10px 0 0;    
+    margin-bottom: 24px;
     margin-top: 0;
     list-style-image: url(/src/assets/icons/facts.svg);
 
@@ -295,7 +288,7 @@
       line-height: 1.6;
       letter-spacing: -0.01em;
       padding-left: 10px;
-      margin: 0 0 4px;
+      margin: 0 0 4px;      
       color: var(--secondary-text-color);
 
       strong {
@@ -411,8 +404,9 @@
   }
 
   .starlight-aside {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin: 0;
     padding: 24px;
     border-inline-start: 2px solid;
     background-color: var(--block-bg-color);
@@ -482,8 +476,8 @@
   }
 
   .expressive-code {    
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 32px;
+    margin-bottom: 32px;    
   }
 
   .expressive-code {
