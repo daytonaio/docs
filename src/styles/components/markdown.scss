@@ -6,26 +6,17 @@
     }
   }
 
-  > h2[id]{
-    padding-top: 40px;
-    margin-bottom: 20px;
+  > h2[id], > h3[id], > h4[id], > h5[id] {
+    margin-top: 56px;
+    margin-bottom: 16px;    
   }
 
-  > h3[id] {
-    padding-top: 40px;
-    margin-bottom: 20px;
-  }
-
-  > h4[id] {
-    padding-top: 20px;
-    margin-bottom: 10px;
-  }
   > p {
-    margin-bottom: 20px;
+    margin: 24px 0;
   }
 
   > hr {
-    margin-top: 60px;
+    margin: 40px 0;
   }
 
   > :first-child {
@@ -84,13 +75,7 @@
     }
   }
 
-  > h6 + p {
-    margin-bottom: 20px;
-  }
-
-  > p {
-    margin-bottom: 2em;
-
+  > p {    
     @include for-mobile-screen-sizes {
       margin-bottom: 40px
     }
@@ -257,16 +242,15 @@
 
   > ol {
     padding-inline-start: 18px;
-    margin: 0 0 6px;
+    margin: 0 0 24px;
     li {
       padding-left: 10px;
-      margin: 0 0 4px;
+      margin: 0 0 4px;      
       font-family: Inter, sans-serif;
       font-weight: 400;
       font-size: 1rem;
       line-height: 1.6;
-      letter-spacing: -0.01em;
-      margin-bottom: 8px;
+      letter-spacing: -0.01em;      
       color: var(--secondary-text-color);
        &::marker {
         color: var(--primary-text-color);
@@ -274,6 +258,10 @@
 
       p {
         margin: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
       }
     }
 
@@ -283,9 +271,9 @@
   }
 
   > ul {
-    // background: var(--block-bg-color);
-    padding: 0px 10px 10px 16px;
-    margin-bottom: 6px;
+    // background: var(--block-bg-color);    
+    padding: 0px 10px 0 0;    
+    margin-bottom: 24px;
     margin-top: 0;
     list-style-image: url(/src/assets/icons/facts.svg);
 
@@ -300,7 +288,7 @@
       line-height: 1.6;
       letter-spacing: -0.01em;
       padding-left: 10px;
-      margin: 0 0 4px;
+      margin: 0 0 4px;      
       color: var(--secondary-text-color);
 
       strong {
@@ -326,6 +314,10 @@
         @include for-mobile-screen-sizes {
           font-size: 1rem;
         }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
       }
     }
 
@@ -412,8 +404,9 @@
   }
 
   .starlight-aside {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin: 0;
     padding: 24px;
     border-inline-start: 2px solid;
     background-color: var(--block-bg-color);
@@ -477,12 +470,14 @@
       }
     }
 
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
-  .expressive-code {
-    //padding-left: 30px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  .expressive-code {    
+    margin-top: 32px;
+    margin-bottom: 32px;    
   }
 
   .expressive-code {
