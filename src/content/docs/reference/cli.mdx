@@ -4,9 +4,21 @@ description: A reference of supported operations using the Daytona CLI.
 sidebar:
   label: Daytona CLI Reference
 ---
+import Aside from "@components/Aside.astro";
 
-The `daytona` CLI provides access to all of Daytona's core features.
-You can access help for each command using the `--help`/`-h` flag.
+The `daytona` command-line tool provides access to Daytona's core features.
+You can use the `daytona` tool for the following operations:
+
+*   Managing the lifecycle of the Daytona Server.
+*   Managing [Workspaces](../usage/workspaces), [Git Providers](../configuration/git-providers), [Providers](../configuration/providers), and other Daytona components.
+*   Configuring the [Daytona Server](./server) interactively.
+
+This reference lists all commands supported by the `daytona` command-line tool complete with a description of their behaviour, and any supported flags.
+You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
+
+<Aside type="note">
+This reference does not apply to the `daytona` command when run inside of a Workspace.
+</Aside>
 
 ## daytona
 Daytona is a Dev Environment Manager
@@ -200,6 +212,7 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | Delete all workspaces |
+| `--force` | `-f` | Delete a workspace by force |
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 | `--output` | `-o` | Output format. Must be one of (yaml, json) |
@@ -533,6 +546,7 @@ daytona purge [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--force` | `-f` | Delete all workspaces by force |
 | `--yes` | `-y` | Execute purge without prompt |
 | `--help` |  | help for daytona |
 | `--output` | `-o` | Output format. Must be one of (yaml, json) |
