@@ -139,6 +139,7 @@ export default defineConfig({
       EditLink: './src/components/EditLink.astro'
     },
     expressiveCode: {
+      minSyntaxHighlightingColorContrast: 0,
       themes: [myThemeDark, myThemeLight],
     },
   })],
