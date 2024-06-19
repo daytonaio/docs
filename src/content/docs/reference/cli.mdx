@@ -7,8 +7,6 @@ sidebar:
 import Aside from "@components/Aside.astro";
 
 The `daytona` command-line tool provides access to Daytona's core features.
-The tool acts as both an interface to a running Daytona Server, and as an interface to start and stop the server.
-
 You can use the `daytona` tool for the following operations:
 
 *   Managing the lifecycle of the Daytona Server.
@@ -214,6 +212,7 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | Delete all workspaces |
+| `--force` | `-f` | Delete a workspace by force |
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 | `--output` | `-o` | Output format. Must be one of (yaml, json) |
@@ -547,6 +546,7 @@ daytona purge [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--force` | `-f` | Delete all workspaces by force |
 | `--yes` | `-y` | Execute purge without prompt |
 | `--help` |  | help for daytona |
 | `--output` | `-o` | Output format. Must be one of (yaml, json) |

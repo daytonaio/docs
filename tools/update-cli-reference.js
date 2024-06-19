@@ -18,8 +18,6 @@ sidebar:
 import Aside from "@components/Aside.astro";
 
 The \`daytona\` command-line tool provides access to Daytona's core features.
-The tool acts as both an interface to a running Daytona Server, and as an interface to start and stop the server.
-
 You can use the \`daytona\` tool for the following operations:
 
 *   Managing the lifecycle of the Daytona Server.
