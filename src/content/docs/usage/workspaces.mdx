@@ -79,11 +79,11 @@ Refer to __[Set the Default IDE](#set-the-default-ide)__ for more information.
 :::
 
 ## Delete Workspaces
-You can delete 1 or more Workspaces interactively.
+You can delete one or more Workspaces interactively.
 
 __Prerequisites__
 *   A working installation of Daytona.
-*   At least 1 existing Workspace.
+*   At least one existing Workspace.
 
 __Procedure__
 1.  Run the following command:
@@ -98,21 +98,17 @@ __Procedure__
 3.  Confirm the action.
 
 ### Non-Interactively
-You can delete 1 or more existing Workspaces non-interactively.
+You can delete one or more existing Workspaces non-interactively.
 
 __Prerequisites__
 *   A working installation of Daytona.
-*   At least 1 existing Workspace.
+*   At least one existing Workspace.
 
 __Procedure__
-1.  Run the following command where `WORKSPACE` is a space-separated list of 1 or more Workspace names:
-    ```shell
-    daytona delete <WORKSPACE, ...>
-    ```
+1.  Run the following command, specifying the workspace names/UUIDs to delete:
 
-    __Example__
     ```shell
-    daytona delete web-microservices erlang-test
+    daytona delete WORKSPACE_1 WORKSPACE_2
     ```
 2.  Confirm the action.
 
