@@ -585,6 +585,7 @@
           font-weight: 400;
           letter-spacing: -0.0075rem;
           border-bottom: 1px solid transparent;
+          line-height: 28px;
 
           &[role=tab][aria-selected=true] {
             border-bottom: 1px solid var(--primary-text-color);
