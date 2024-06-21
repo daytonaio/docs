@@ -66,6 +66,20 @@ daytona create --code
 
 2. Wait for Daytona to create the Workspace.
 
+<Aside type="tip">
+Below is a list with create command flags (for single-project workspace creation only) through which a custom project configuration can be set.
+- `--custom-image` & `--custom-image-user` flags for setting custom image and user. Both flags are required together.
+- `--devcontainer-path` flag sets a custom devcontainer file path and implicitly sets devcontainer as a project builder choice. 
+- `--builder` flag sets one of the available builder choices (currently: auto/devcontainer/none) 
+
+__Example:__
+```shell
+daytona create <REPO_URL> --custom-image=daytona-workspace:latest --custom-image-user=daytona
+daytona create <REPO_URL> --devcontainer-path=.devcontainer/devcontainer.json
+daytona create <REPO_URL> --builder=auto
+```
+</Aside>
+
 ## List Workspaces
 
 You can list all previously created Workspaces.
