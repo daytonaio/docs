@@ -95,6 +95,13 @@ export default defineConfig({
               icon: 'tools.svg'
             },
           },
+          {
+            "label": "Server",
+            "link": "/usage/server",
+            attrs: {
+              icon: 'server.svg'
+            },
+          },
         ]
       },
       {
@@ -105,13 +112,6 @@ export default defineConfig({
             "link": "/reference/cli",
             attrs: {
               icon: 'terminal.svg'
-            },
-          },
-          {
-            "label": "Server",
-            "link": "/reference/server",
-            attrs: {
-              icon: 'server.svg'
             },
           },
         ]
