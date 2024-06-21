@@ -36,6 +36,8 @@ __Procedure__
             Select if you're hosting repositories on Codeberg.org.
         *   __[Gitea](#gitea)__  
             Select if you're hosting repositories on an installation of Gitea.
+        *   __[Gitness](#gitness)__  
+            Select if you're hosting repositories on a Gitness instance.
 
 ### Provider-Specific Notes
 
@@ -85,6 +87,14 @@ After selecting Gitea as your provider, you will be prompted for:
 2.  __Personal Access Token__  
     For more information on creating a Personal Access Token for Daytona, visit Gitea's [Generating and listing API tokens][gitea-token] documentation.
 
+#### Gitness
+After selecting Gitness as your provider, you will be prompted for:
+
+1.  __Self-managed API URL__  
+    This is the base URL for the Gitness installation's API.
+2.  __Personal Access Token__  
+    For more information on creating a Personal Access Token for Daytona, visit Gitness's [Generate user token][gitness-token] documentation.
+
 ## List Connected Git Providers
 You can list the currently connected Git Providers.
 
@@ -116,3 +126,4 @@ __Procedure__
 [bit-token]: https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/
 [codeberg-token]: https://docs.codeberg.org/advanced/access-token/
 [gitea-token]: https://docs.gitea.com/1.21/development/api-usage#generating-and-listing-api-tokens
+[gitness-token]: https://docs.gitness.com/administration/user-management#generate-user-token
