@@ -37,7 +37,7 @@ Remember to stay responsive to feedback during the review process and make any n
 To contribute using Daytona, follow these steps:
 
 1. **Fork the Docs repo**: Fork the [Daytona Docs repository][sl] to your GitHub account to create an isolated copy where you can work without affecting the original project.
-2. **Access Daytona**: Start a new workspace using the GitHub repositor link and Daytona URL of your Daytona instance, for example 'https://YOUR-DAYTONA.INSTANCE/#https://github.com/YOUR-USERNAME/docs'. If you don't have access to Daytona you can easily [install](https://github.com/daytonaio/installer) it on your own server. Now, start a workspace through a Daytona dashboard. Optionally, you can install a preferred [Daytona extension](https://download.daytona.io/) in your IDE.
+2. **Access Daytona**: Start a new workspace using the GitHub repositor link and Daytona URL of your Daytona instance, for example '<https://YOUR-DAYTONA.INSTANCE/#https://github.com/YOUR-USERNAME/docs>'. If you don't have access to Daytona you can easily [install](https://github.com/daytonaio/installer) it on your own server. Now, start a workspace through a Daytona dashboard. Optionally, you can install a preferred [Daytona extension](https://download.daytona.io/) in your IDE.
 3. **Sync Your Fork**: Before making changes, sync your fork with the main repository to ensure you're working with the latest version.
 4. **Branch Out**: Create a new branch for your work. Use a descriptive name that reflects the changes you're planning to make.
 5. **Make Changes and Test**: Use the preferred IDE to edit, preview, and validate your changes to the documentation.
@@ -92,6 +92,7 @@ You should then be able to open a preview <http://localhost:4321> and see your c
 This cheat sheet provides the essential Git commands necessary for contributing to the Daytona Documentation as specified in the previous sections.
 
 ### Fork and Clone Repository
+
 ```sh
 # Fork the repository on GitHub to your account using GitHub website
 
@@ -101,6 +102,7 @@ cd docs
 ```
 
 ### Sync Your Fork with the Original Repository
+
 ```sh
 # Add the original repository as an upstream remote
 git remote add upstream https://github.com/daytonaio/docs.git
@@ -116,12 +118,14 @@ git merge upstream/main
 ```
 
 ### Create a New Branch for Your Changes
+
 ```sh
 # Create a new branch and switch to it, e.g. we are updating Gettings Started page
 git checkout -b update-getting-started
 ```
 
 ### Make Changes and Commit Them
+
 ```sh
 # Add all new and modified files to the staging area
 git add .
@@ -131,12 +135,14 @@ git commit -m "Add a guide on integrating Daytona with VS Code"
 ```
 
 ### Push Changes to Your Fork on GitHub
+
 ```sh
 # Push your branch to your GitHub fork
 git push -u origin update-getting-started
 ```
 
 ### Create a Pull Request
+
 ```sh
 # Go to the original repository on GitHub
 # Click on 'New Pull Request' and select your branch
@@ -144,6 +150,7 @@ git push -u origin update-getting-started
 ```
 
 ### Update Your Branch with the Latest Changes from the Main Repository (if needed)
+
 ```sh
 # Fetch the latest changes from the original repository
 git fetch upstream
@@ -156,6 +163,7 @@ git push -f origin update-getting-started
 ```
 
 ### Merge Changes from Main into Your Branch (if there are conflicts after a rebase)
+
 ```sh
 # Merge changes from the main branch into your feature branch
 git merge main
@@ -208,7 +216,4 @@ To add a language, you will need its BCP-47 tag and a label. See [“Adding a ne
 [slack]: https://join.slack.com/t/slack-qvd5984/shared_invite/zt-26jeiddev-ay4B8dp0OvZGPqmmOOM_ug
 [issues]: https://github.com/daytonaio/docs/issues
 [sl]: https://github.com/daytonaio/docs/pulls
-[pulls]: https://github.com/daytonaio/docs/pulls
-[new-issue]: https://github.com/daytonaio/docs/issues/new/choose
-[pr-docs]: https://docs.github.com/en/get-started/quickstart/contributing-to-projects#making-a-pull-request
 [api-docs]: https://docs.astro.build/en/reference/integrations-reference/

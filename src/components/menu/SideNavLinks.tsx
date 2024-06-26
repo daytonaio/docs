@@ -61,8 +61,8 @@ export const SideNavLinks = () => {
           {stars === undefined
             ? ''
             : stars === null
-            ? 'Star'
-            : GITHUB_STARS_FORMATTER.format(stars)}
+              ? 'Star'
+              : GITHUB_STARS_FORMATTER.format(stars)}
         </a>
       </div>
     </>

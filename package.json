@@ -4,13 +4,16 @@
   "type": "module",
   "version": "0.20.1",
   "scripts": {
+    "postinstall": "is-ci || husky init",
     "dev": "astro dev --host",
     "start": "yarn run dev",
     "build": "astro build",
     "preview": "astro preview --host",
     "astro": "astro",
     "update-cli-reference": "node ./tools/update-cli-reference.js",
-    "update-server-reference": "node ./tools/update-server-reference.js"
+    "update-server-reference": "node ./tools/update-server-reference.js",
+    "prepare": "husky",
+    "format": "prettier --write \"**/src/**/*.{ts,tsx,astro}\" && markdownlint-cli2 \"**/*.{mdx,md}\" \"#node_modules\" --fix"
   },
   "dependencies": {
     "@astrojs/mdx": "2.2.4",
@@ -36,6 +39,21 @@
     "yaml": "^2.4.3"
   },
   "devDependencies": {
-    "@types/react": "^18.2.74"
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/react": "^18.2.74",
+    "husky": "^9.0.11",
+    "is-ci": "^3.0.1",
+    "lint-staged": "^15.2.7",
+    "markdownlint-cli2": "^0.13.0",
+    "prettier": "^3.3.2",
+    "prettier-plugin-astro": "^0.14.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,astro}": [
+      "prettier --write"
+    ],
+    "*.mdx": [
+      "markdownlint-cli2 --fix"
+    ]
   }
 }
