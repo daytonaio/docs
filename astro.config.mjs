@@ -114,6 +114,13 @@ export default defineConfig({
               icon: 'terminal.svg'
             },
           },
+          {
+            "label": "API",
+            "link": "/reference/api",
+            attrs: {
+              icon: 'switch.svg'
+            },
+          },
         ]
       }
     ],
