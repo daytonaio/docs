@@ -1,8 +1,8 @@
 {
 	"name": "daytona-code-light",
 	"colors": {
-		"editor.background": "#fff",
-		"editor.foreground": "#121212",
+		"editor.background": "#0A0A0A",
+		"editor.foreground": "#000",
 		"activityBarBadge.background": "#007acc",
 		"sideBarTitle.foreground": "#bbbbbb"
 	},
@@ -15,7 +15,7 @@
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#686868"
+				"foreground": "#a2a2a2"
 			}
 		},
 		{
@@ -34,7 +34,7 @@
 				"constant.other.color"
 			],
 			"settings": {
-				"foreground": "#ffffff"
+				"foreground": "#000"
 			}
 		},
 		{
@@ -85,7 +85,7 @@
 				"keyword.other.substitution"
 			],
 			"settings": {
-				"foreground": "#121212"
+				"foreground": "#000"
 			}
 		},
 		{
@@ -96,7 +96,7 @@
 				"markup.deleted.git_gutter"
 			],
 			"settings": {
-				"foreground": "#121212"
+				"foreground": "#000"
 			}
 		},
 		{
@@ -118,7 +118,7 @@
 				"meta.block variable.other"
 			],
 			"settings": {
-				"foreground": "#121212"
+				"foreground": "#000"
 			}
 		},
 		{
@@ -128,7 +128,7 @@
 				"string.other.link"
 			],
 			"settings": {
-				"foreground": "#121212"
+				"foreground": "#000"
 			}
 		},
 		{
@@ -143,7 +143,7 @@
 				"keyword.other"
 			],
 			"settings": {
-				"foreground": "#121212"
+				"foreground": "#000"
 			}
 		},
 		{
@@ -425,7 +425,7 @@
 				"source.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.dictionary.json support.type.property-name.json"
 			],
 			"settings": {
-				"foreground": "#121212"
+				"foreground": "#000"
 			}
 		},
 		{
@@ -492,7 +492,7 @@
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#121212"
+				"foreground": "#000"
 			}
 		},
 		{
@@ -503,7 +503,7 @@
 			],
 			"settings": {
 				"fontStyle": "bold",
-				"foreground": "#121212"
+				"foreground": "#000"
 			}
 		},
 		{
