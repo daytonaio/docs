@@ -9,117 +9,139 @@ Git Providers — sometimes known as software forges or Source Code Managers (SC
 Daytona allows you to configure Git Providers and use repositories hosted on them to create Workspaces.
 
 ## Add a Git Provider
+
 You can add a Git Provider to Daytona.
 
 __Prerequisites__
-*   A working installation of Daytona.
+
+* A working installation of Daytona.
 
 __Procedure__
-1.  To start the process, execute the following command:
+
+1. To start the process, execute the following command:
+
     ```shell
     daytona git-providers add
     ```
-2.  Select the Git Provider you want to configure from the list:
-    *   __[GitHub](#github)__  
+
+2. Select the Git Provider you want to configure from the list:
+    * __[GitHub](#github)__  
         Select if you're hosting repositories on GitHub.com.
-    *   __[GitLab](#gitlab)__  
+    * __[GitLab](#gitlab)__  
         Select if you're hosting repositories on GitLab.com.
-    *   __[Bitbucket](#bitbucket)__  
+    * __[Bitbucket](#bitbucket)__  
         Select if you're hosting repositories on Atlassian's Bitbucket Cloud offering.
-    *   __Other__
-        *   __[GitHub Enterprise Server](#github-enterprise-server)__  
+    * __Other__
+        * __[GitHub Enterprise Server](#github-enterprise-server)__  
             Select if you're hosting repositories on GitHub Enterprise Server.
-        *   __[GitLab Self-Managed](#gitlab-self-managed)__  
+        * __[GitLab Self-Managed](#gitlab-self-managed)__  
             Select if you're hosting repositories on GitLab's self-hosted offering.
             Self-hosted GitLab Community Edition (CE) installations, GitLab Self-Managed, and GitLab Dedicated offerings are supported.
-        *   __[Codeberg](#codeberg)__  
+        * __[Codeberg](#codeberg)__  
             Select if you're hosting repositories on Codeberg.org.
-        *   __[Gitea](#gitea)__  
+        * __[Gitea](#gitea)__  
             Select if you're hosting repositories on an installation of Gitea.
-        *   __[Gitness](#gitness)__  
+        * __[Gitness](#gitness)__  
             Select if you're hosting repositories on a Gitness instance.
 
 ### Provider-Specific Notes
 
 #### GitHub
+
 After selecting GitHub as your provider, you will be prompted for a Personal Access Token.
 For more information on creating a Personal Access Token for Daytona, visit GitHub's [Creating a personal access token (classic)][gh-token] documentation.
 
 #### GitLab
+
 After selecting GitLab as your provider, you will be prompted for a Personal Access Token.
 For more information on creating a Personal Access Token for Daytona, visit GitLub's [Create a personal access token][gl-token] documentation.
 
 #### Bitbucket
+
 After selecting Bitbucket as your provider, you will be prompted for:
 
-1.  __Username__  
+1. __Username__  
     Your Atlassian username.
-2.  __Personal Access Token (App Password)__  
+2. __Personal Access Token (App Password)__  
     For more information on creating a Personal Access Token, visit Bitbucket's [Create an App password][bit-token] documentation.
 
 #### GitHub Enterprise Server
+
 After selecting GitHub Enterprise Server as your provider, you will be prompted for:
 
-1.  __Self-managed API URL__  
+1. __Self-managed API URL__  
     This is the base URL for your GitHub Enterprise Server instance's API.
     This is typically in the format `https://<GITHUB_HOST>`.
-2.  __Personal Access Token__  
+2. __Personal Access Token__  
     For more information on creating a Personal Access Token for Daytona, visit GitHub's [Creating a personal access token (classic)][gh-token] documentation.
 
 #### GitLab Self-Managed
+
 After selecting GitLab Self-Managed as your provider, you will be prompted for:
 
-1.  __Self-managed API URL__  
+1. __Self-managed API URL__  
     This is the base URL for the self-hosted GitLab API.
     This is typically in the format `https://<GITLAB_INSTANCE_BASE>/api/v4`.
-2.  __Personal Access Token__  
+2. __Personal Access Token__  
     For more information on creating a Personal Access Token for Daytona, visit GitLab's [Create a personal access token][gl-token] documentation.
 
 #### Codeberg
+
 After selecting Codeberg as your provider, you will be prompted for a Personal Access Token.
 For more information on creating a Personal Access Token for Daytona, visit Codeberg's [Generating an Access Token][codeberg-token] documentation.
 
 #### Gitea
+
 After selecting Gitea as your provider, you will be prompted for:
 
-1.  __Self-managed API URL__  
+1. __Self-managed API URL__  
     This is the base URL for the Gitea installation's API.
-2.  __Personal Access Token__  
+2. __Personal Access Token__  
     For more information on creating a Personal Access Token for Daytona, visit Gitea's [Generating and listing API tokens][gitea-token] documentation.
 
 #### Gitness
+
 After selecting Gitness as your provider, you will be prompted for:
 
-1.  __Self-managed API URL__  
+1. __Self-managed API URL__  
     This is the base URL for the Gitness installation's API.
-2.  __Personal Access Token__  
+2. __Personal Access Token__  
     For more information on creating a Personal Access Token for Daytona, visit Gitness's [Generate user token][gitness-token] documentation.
 
 ## List Connected Git Providers
+
 You can list the currently connected Git Providers.
 
 __Prerequisites__
-*   A working installation of Daytona.
+
+* A working installation of Daytona.
 
 __Procedure__
-1.  Execute the following command to list currently connected Git Providers:
+
+1. Execute the following command to list currently connected Git Providers:
+
     ```shell
     daytona git-providers list
     ```
 
 ## Remove a Git Provider
+
 You can remove an existing provider interactively.
 
 __Prerequisites__
-*   A working installation of Daytona.
-*   A Git Provider to remove.
+
+* A working installation of Daytona.
+* A Git Provider to remove.
 
 __Procedure__
-1.  Execute the following command:
+
+1. Execute the following command:
+
     ```shell
     daytona git-providers delete
     ```
-2.  Select your desired provider from the list to remove it.
+
+2. Select your desired provider from the list to remove it.
 
 [gh-token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic
 [gl-token]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token

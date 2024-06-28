@@ -1,148 +1,151 @@
 ---
-import { Image } from 'astro:assets';
-
+import { Image } from 'astro:assets'
 
 function getSVG(name: string) {
-    const filepath = `/src/assets/sidebar/${name}`;
-    const files = import.meta.glob<string>('/src/assets/sidebar/*.svg',  {query: '?raw', import: 'default'});
+  const filepath = `/src/assets/sidebar/${name}`
+  const files = import.meta.glob<string>('/src/assets/sidebar/*.svg', {
+    query: '?raw',
+    import: 'default',
+  })
 
-    if (!(filepath in files)) {
-        throw new Error(`${filepath} not found`);
-    }
+  if (!(filepath in files)) {
+    throw new Error(`${filepath} not found`)
+  }
 
-    return files[filepath]()
+  return files[filepath]()
 }
 
 interface Props {
-    sublist: any
-    nested?: boolean;
+  sublist: any
+  nested?: boolean
 }
 
-const { sublist, nested } = Astro.props;
+const { sublist, nested } = Astro.props
 ---
 
 <ul class:list={{ 'top-level': !nested }}>
-    {
-        sublist.map((entry) => (
-                <li>
-                    {entry.type === 'link' ? (
-                            <a
-                                    href={entry.href}
-                                    aria-current={entry.isCurrent && 'page'}
-                                    class:list={[ entry.attrs.class]}
-                            >
-                                {entry.attrs?.icon && (<Fragment set:html={getSVG(entry.attrs.icon)} />)}
-                                <span>{entry.label}</span>
-                            </a>
-                    ) : (
-                            <div
-                            >
-                                <summary>
-                                    <div class="group-label">
-                                        <span class="large">{entry.label}</span>
-                                    </div>
-                                </summary>
-                                <Astro.self sublist={entry.entries} nested />
-                            </div>
-                    )}
-                </li>
-        ))
-    }
+  {
+    sublist.map(entry => (
+      <li>
+        {entry.type === 'link' ? (
+          <a
+            href={entry.href}
+            aria-current={entry.isCurrent && 'page'}
+            class:list={[entry.attrs.class]}
+          >
+            {entry.attrs?.icon && (
+              <Fragment set:html={getSVG(entry.attrs.icon)} />
+            )}
+            <span>{entry.label}</span>
+          </a>
+        ) : (
+          <div>
+            <summary>
+              <div class="group-label">
+                <span class="large">{entry.label}</span>
+              </div>
+            </summary>
+            <Astro.self sublist={entry.entries} nested />
+          </div>
+        )}
+      </li>
+    ))
+  }
 </ul>
 
 <style>
-    ul {
-        --sl-sidebar-item-padding-inline: 0.5rem;
-        list-style: none;
-        padding: 0;
-    }
+  ul {
+    --sl-sidebar-item-padding-inline: 0.5rem;
+    list-style: none;
+    padding: 0;
+  }
 
-    li {
-        overflow-wrap: anywhere;
-    }
+  li {
+    overflow-wrap: anywhere;
+  }
 
-    .large {
-        font-family: 'Berkeley Mono', monospace;
-        font-size: 0.75rem;
-        font-weight: 400;
-        line-height: 1;
-        letter-spacing: -0.12px;
-        text-transform: uppercase;
-        color: var(--secondary-text-color);
-    }
+  .large {
+    font-family: 'Berkeley Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.12px;
+    text-transform: uppercase;
+    color: var(--secondary-text-color);
+  }
 
-    summary {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 24px 0 8px 0;
-        line-height: 1;
-        user-select: none;
-    }
-    summary::marker,
-    summary::-webkit-details-marker {
-        display: none;
-    }
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0 8px 0;
+    line-height: 1;
+    user-select: none;
+  }
+  summary::marker,
+  summary::-webkit-details-marker {
+    display: none;
+  }
 
-    .caret {
-        transition: transform 0.2s ease-in-out;
-        flex-shrink: 0;
-    }
-    :global([dir='rtl']) .caret {
-        transform: rotateZ(180deg);
-    }
-    [open] > summary .caret {
-        transform: rotateZ(90deg);
-    }
+  .caret {
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+  }
+  :global([dir='rtl']) .caret {
+    transform: rotateZ(180deg);
+  }
+  [open] > summary .caret {
+    transform: rotateZ(90deg);
+  }
 
-    li > a {
-        display: flex;
-        align-items: center;
-        font-family: 'Berkeley Mono', monospace;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.4;
-        letter-spacing: -0.04rem;
-        text-decoration: none;
-        color: var(--primary-text-color);
-        padding: 8px 0;
+  li > a {
+    display: flex;
+    align-items: center;
+    font-family: 'Berkeley Mono', monospace;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.04rem;
+    text-decoration: none;
+    color: var(--primary-text-color);
+    padding: 8px 0;
+    transition: 0.6s;
+
+    > svg {
+      margin-right: 10px;
+      width: 16px;
+      height: 16px;
+
+      path {
         transition: 0.6s;
-
-        > svg {
-            margin-right: 10px;
-            width: 16px;
-            height: 16px;
-
-            path {
-                transition: .6s;
-                fill: var(--primary-text-color);
-            }
-        }
+        fill: var(--primary-text-color);
+      }
     }
-    a:focus, a:hover {
-        color: var(--hover-color);
-        > svg {
-            path {
-                fill: var(--hover-color);
-            }
-        }
+  }
+  a:focus,
+  a:hover {
+    color: var(--hover-color);
+    > svg {
+      path {
+        fill: var(--hover-color);
+      }
     }
+  }
 
-    [aria-current='page'],
-    [aria-current='page']:hover,
-    [aria-current='page']:focus {
-        color: var(--hover-color);
-        > svg {
-            path {
-                fill: var(--hover-color);
-            }
-        }
+  [aria-current='page'],
+  [aria-current='page']:hover,
+  [aria-current='page']:focus {
+    color: var(--hover-color);
+    > svg {
+      path {
+        fill: var(--hover-color);
+      }
     }
+  }
 
-    a > *:not(:last-child),
-    .group-label > *:not(:last-child) {
-        margin-inline-end: 0.25em;
-    }
-
+  a > *:not(:last-child),
+  .group-label > *:not(:last-child) {
+    margin-inline-end: 0.25em;
+  }
 </style>

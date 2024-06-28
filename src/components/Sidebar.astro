@@ -1,13 +1,11 @@
 ---
-
-import SidebarSublist from './SidebarSublist.astro';
+import SidebarSublist from './SidebarSublist.astro'
 import { SideNavLinks } from './menu/SideNavLinks'
 
-const { sidebar } = Astro.props;
+const { sidebar } = Astro.props
 ---
 
 <SidebarSublist sublist={sidebar} />
 <div class="mobile-nav-btn nav__items_side_menu">
-    <SideNavLinks client:load />
+  <SideNavLinks client:load />
 </div>
-
