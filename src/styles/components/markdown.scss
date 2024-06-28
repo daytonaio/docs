@@ -560,6 +560,49 @@
       }
     }
   }
+
+  > starlight-tabs {
+    margin-bottom: 56px;
+
+    .tablist-wrapper {
+      ul[role=tablist] {
+        border-bottom: 1px solid var(--border-extra);
+      }
+
+      .tab {
+        margin-bottom: -1px;
+        &:last-child {
+          a {
+            margin-right: 0;
+          }
+        }
+        a {
+          font-family: "Berkeley Mono", monospace;
+          text-transform: uppercase;
+          font-size: 0.75em;
+          padding: 0;
+          margin-right: 16px;
+          font-weight: 400;
+          letter-spacing: -0.0075rem;
+          border-bottom: 1px solid transparent;
+          line-height: 28px;
+
+          &[role=tab][aria-selected=true] {
+            border-bottom: 1px solid var(--primary-text-color);
+          }
+        }
+      }
+    }
+
+    > section[role=tabpanel] {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+  }
 }
 
 section {
