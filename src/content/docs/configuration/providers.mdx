@@ -5,6 +5,8 @@ sidebar:
   label: Providers
 ---
 
+import Aside from '@components/Aside.astro'
+
 Daytona abstracts the management and deployment of Workspaces into 2 related concepts:
 
 1. **Provider**  
@@ -163,7 +165,10 @@ When following the [Set a Target procedure](#set-a-target), note the following c
     Unless otherwise configured on your remote host, this should be set to the default value (`22`)
 5. **Remote User**  
      The username used to execute the required commands on the remote host.
-
+    <Aside type="caution">
+      Non-root user is required so correct ownership is assumed inside the
+      project container.
+    </Aside>
 6. **Sock Path**  
     The Docker UNIX socket location on the remote host.
     Unless otherwise configured after installing Docker, this should be set to the default value (`/var/run/docker.sock`)
