@@ -4,7 +4,7 @@
   "type": "module",
   "version": "0.22.0",
   "scripts": {
-    "postinstall": "is-ci || husky init",
+    "postinstall": "is-ci || husky",
     "dev": "astro dev --host",
     "start": "yarn run dev",
     "build": "astro build",

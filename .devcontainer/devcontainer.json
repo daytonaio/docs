@@ -1,19 +1,28 @@
 {
-    "name": "Daytona Docs",
-    "build": {
-      "dockerfile": "Dockerfile"
+  "name": "Daytona Docs",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "root",
+  "postCreateCommand": "yarn install",
+  "waitFor": "postCreateCommand",
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "CONTRIBUTING.md"
+      ]
     },
-    "remoteUser": "root",
-    "postCreateCommand": "yarn install",
-    "waitFor": "postCreateCommand",
-    "customizations": {
-      "codespaces": {
-        "openFiles": ["CONTRIBUTING.md"]
-      },
-      "vscode": {
-        "extensions": ["astro-build.astro-vscode",
-         "esbenp.prettier-vscode"]
-      }
-    },
-    "forwardPorts": [4321]
-  }
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode",
+        "esbenp.prettier-vscode",
+        "unifiedjs.vscode-mdx",
+        "SimonSiefke.svg-preview",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+  "forwardPorts": [
+    4321
+  ]
+}

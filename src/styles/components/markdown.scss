@@ -327,7 +327,7 @@
       list-style: none;
 
       li:before {
-        content: '-';
+        content: '- ';
         color: var(--primary-text-color);
       }
     }
