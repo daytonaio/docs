@@ -51,13 +51,6 @@ export default defineConfig({
                 icon: 'flag.svg',
               },
             },
-            {
-              label: 'Telemetry',
-              link: '/about/telemetry',
-              attrs: {
-                icon: 'shield.svg',
-              },
-            },
           ],
         },
         {
@@ -132,6 +125,18 @@ export default defineConfig({
               link: '/reference/api',
               attrs: {
                 icon: 'switch.svg',
+              },
+            },
+          ],
+        },
+        {
+          label: 'Misc',
+          items: [
+            {
+              label: 'Telemetry',
+              link: '/misc/telemetry',
+              attrs: {
+                icon: 'pulse.svg',
               },
             },
           ],

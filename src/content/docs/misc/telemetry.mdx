@@ -13,26 +13,23 @@ Participation is optional and you may opt-out at any time.
 The goal of gathering telemetry data in the CLI is exclusively for the purpose of improving the Daytona ecosystem.
 Data gathered from the CLI will allow us to gain more insights into the usage of the binary, help us track errors and improve user experience.
 
-The data **DOES** include:
+The data **does** include:
 
-- CLI command usage
-  - Name of the command that was ran, how was it called (was an alias used?), the source (e.g. local CLI or inside of a project), the version of the binary and the execution time
-- API server request and response data
-  - In the request and response payloads, only public data is included. This data may include: any public git repositories used to create workspaces, any public container images used to create workspaces.
-  - The data also includes the path of the request - note: the path is stripped of any URL params that might include PII (e.g. URI: `/workspace/:workspaceId/:projectName/state` => the URI is provided as is - `workspaceId` and `projectName` are not provided to the telemetry service)
-  - Additionally, the request method, binary version, query and source are gathered
-- Relevant server events
-  - Currently, only workspace lifecycle events are gathered (creation, stop, start, delete, etc.)
-  - This might be expanded upon in the future
+- CLI command usage: This includes the name of the command that was run, how it was called (e.g., was an alias used?),
+  the source (e.g., local CLI or inside of a project), the version of the binary, and the execution time.
+- API server request and response data: In the request and response payloads, only public data is included.
+  This data may include any public git repositories used to create workspaces and any public container images used to create workspaces.
+  The data also includes the path of the request, with URL params that might include PII stripped (e.g., URI: `/workspace/:workspaceId/:projectName/state` is provided as is,
+  with workspaceId and projectName not provided to the telemetry service).
+  Additionally, the request method, binary version, query, and source are gathered.
+- Relevant server events: Currently, only workspace lifecycle events are gathered (creation, stop, start, delete, etc.), but this might be expanded upon in the future.
 
-The data does **NOT** include:
+The data does **not** include:
 
-- CLI command arguments
-  - Arguments might contain PII or user secrets so they are left out
-- Full API request and response payloads
-  - payloads may contain PII or user secrets so only public data is shared to the telemetry collection service
-- Any environment variables set on projects created by the user, including Daytona-set environment variables
-- Geolocation information about the user nor their IP address
+- CLI command arguments: Arguments might contain PII or user secrets, so they are left out.
+- Full API request and response payloads: Payloads may contain PII or user secrets, so only public data is shared with the telemetry collection service.
+- Environment variables: Any environment variables set on projects created by the user, including Daytona-set environment variables, are not included.
+- Geolocation information and IP address: No geolocation information about the user or their IP address is included.
 
 ### Gathering policy
 
