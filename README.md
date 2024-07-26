@@ -67,7 +67,7 @@ Daytona's documentation is organized into broad topics:
 
 - **Configuration**
   Information around configuring the main components of Daytona.
-- **Explanation**  
+- **About**  
    Background and conceptual information about Daytona and DEMs.
 - **Installation**  
    Information around installing Daytona under different environments.
