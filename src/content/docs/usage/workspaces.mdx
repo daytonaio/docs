@@ -57,7 +57,7 @@ This method ensures that your Workspace is set up with the latest codebase and c
 4. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
 
 <Aside type="tip">
-You can open a new Workspace in Visual Studio Code after creation by using the `--code` flag.
+You can open a new Workspace in an IDE after creation by using the `--code` flag.
 
 ```shell
 daytona create --code
@@ -176,7 +176,7 @@ Refer to **[Set the Default IDE](#set-the-default-ide)** for more information.
 
 ## Delete Workspaces
 
-Daytona allows you to delete one or more Workspaces, helping you manage your development environments by removing those that are no longer needed. This ensures you maintain a clutter-free and efficient Workspace.
+Daytona allows you to delete one or more Workspaces, helping you manage your development environments by removing those that are no longer needed.
 
 **Prerequisites**
 
@@ -334,7 +334,7 @@ You can access services running in a Workspace on your local machine.
    daytona forward 4321 example-dev-env
    ```
 
-   Upon running this command, Daytona will establish a port forwarding connection from the specified port in the Workspace to your local machine or via a shareable public URL. The terminal will display a message indicating the local port where the forwarded connection is available:
+   Upon running this command, Daytona will establish a port forwarding connection from the specified port in the Workspace to your local machine. The terminal will display a message indicating the local port where the forwarded connection is available:
 
    `Port available at http://localhost:4321`
 
