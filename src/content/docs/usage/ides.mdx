@@ -1,0 +1,70 @@
+---
+title: IDEs
+description: Connect to your Workspace using your preferred IDE.
+sidebar:
+  label: IDEs
+---
+
+import Aside from '@components/Aside.astro'
+
+Daytona allows you to connect to your Workspace using your preferred IDE. IDEs play a crucial role in modern software development by providing a centralized and efficient environment for developers to create, test, and deploy their applications.
+
+Out of the box, Daytona can be configured to open your Workspace in the following IDEs:
+
+- **Visual Studio Code (VSCode)**
+
+  - Desktop (Linux, macOS, Windows)
+  - Browser
+
+- **JetBrains IDEs**
+  - CLion
+  - GoLand
+  - IntelliJ IDEA Ultimate
+  - PhpStorm
+  - Rider
+  - RubyMine
+  - WebStorm
+- **Terminal SSH**
+
+## Set the Default IDE
+
+You can set the default IDE used by Daytona.
+
+**Prerequisites**
+
+- **A working installation of Daytona.**
+
+  Verify your Daytona installation is up-to-date to avoid compatibility issues.
+
+**Procedure**
+
+1. Run the following command to enter the IDE selection terminal UI:
+
+   ```shell
+   daytona ide
+   ```
+
+   Upon running this command, Daytona will display a list of available IDEs, allowing you to select your default choice.
+
+   ```text
+        Choose Your Default IDE
+
+        VS Code
+        VS Code - Browser
+        Terminal SSH
+        CLion
+        GoLand
+        ...
+   ```
+
+2. Select your preferred IDE from the list presented. Upon selecting your preferred IDE, Daytona will set it as the default IDE and display a confirmation message.
+
+   ```text
+       Default IDE:  VS Code
+   ```
+
+   You can now use the `daytona code` command to automatically open the default IDE already connected to your Workspace.
+
+:::note
+When using the `daytona code` command with `VS Code - Browser` as your default IDE, Daytona will install OpenVSCode Server inside your project, forward the appropriate port to your local machine, and open your default browser automatically.
+:::
