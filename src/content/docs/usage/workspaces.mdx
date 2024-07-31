@@ -13,7 +13,7 @@ They ensure that changes in one project do not inadvertently affect another, pro
 
 ## Create a Workspace
 
-Creating your own Workspace in Daytona is a straightforward process that ensures you have a dedicated environment for your projects. Follow the steps to set up your Workspace efficiently.
+Creating your own Workspace in Daytona is a straightforward process that ensures you have a dedicated environment for your projects.
 
 **Prerequisites**
 
@@ -25,21 +25,36 @@ Creating your own Workspace in Daytona is a straightforward process that ensures
 
   Targets are essential for deploying your Workspaces, so make sure you have configured at least one.
 
-### From a Configured Git Provider
+### From a Git Repository
 
-Creating a Workspace from a configured Git Provider allows you to link your development environment directly to a repository hosted on platforms such as GitHub, GitLab, Bitbucket, or Gitea.
-
-This method ensures that your Workspace is set up with the latest codebase and configuration from the specified repository.
+Creating a Workspace allows you to set up a new environment either by selecting a repository from a configured Git provider like GitHub, GitLab, Bitbucket, or Gitea, or by manually entering a Git repository URL.
 
 **Procedure**
 
-1. Execute the following command to start the guided Workspace creation process:
+1. Run the following command to start the guided Workspace creation process:
 
    ```shell
    daytona create
    ```
 
-2. Select the Git Provider and the repository you want your Workspace to be configured with. This selection links your Workspace directly to your version control system.
+   <Aside type="tip">
+   You can open a new Workspace in an IDE by using the `--code` flag.
+
+   ```shell
+   daytona create --code
+   ```
+
+   </Aside>
+
+2. Select the Git Provider you want to use or select to enter a custom repository URL. Daytona provides two options for linking your repository:
+
+   - **Selecting from a List of Repositories**
+
+     If you choose a Git provider (e.g., GitHub), you will be presented with a list of your repositories from which you can select the desired repository.
+
+   - **Entering a Custom Repository URL**
+
+     Alternatively, you can select the option to enter a custom repository URL manually if the repository is not listed under your Git provider account or is from an external source.
 
    ```text
       Choose a Provider
@@ -49,29 +64,36 @@ This method ensures that your Workspace is set up with the latest codebase and c
       Enter a custom repository URL
    ```
 
-3. Enter a name for your Workspace. Provide a descriptive name for your Workspace that reflects its purpose or project.
+3. Select the repository from the list or enter the URL of the Git repository you want to link with your Workspace.
+
+4. Enter a name for your Workspace.
+
    <Aside type="note">
      You can press `F10` to configure advanced settings for your Workspace,
      including setting the [Builder](../usage/builders).
    </Aside>
-4. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
 
-<Aside type="tip">
-You can open a new Workspace in an IDE after creation by using the `--code` flag.
+5. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
 
-```shell
-daytona create --code
-```
-
-</Aside>
+   ```text
+      WORKSPACE | ✓ Request submitted
+      WORKSPACE | ✓ Creating workspace daytona
+      daytona   | Creating project daytona
+      daytona   | Pulling image...
+      daytona   | Pulling from daytonaio/workspace-project
+      ...
+      daytona   | Project daytona created
+      daytona   | Starting project daytona
+      daytona   | Project daytona started
+   ```
 
 ### From an Arbitrary Git URL
 
-Creating a Workspace from a remote Git repository involves specifying the URL of the repository. This method is useful for setting up environments that are not linked to a pre-configured Git Provider in Daytona.
+Creating a Workspace from an arbitrary Git URL allows you to set up a new environment by directly specifying the URL of the remote repository. This method is useful for setting up environments that are not linked to a pre-configured Git Provider in Daytona.
 
 **Procedure**
 
-1. Execute the following command to create a Workspace from a remote Git repository:
+1. Run the following command to create a Workspace from a remote Git repository:
 
    ```shell
    daytona create <REPO_URL>
@@ -97,8 +119,6 @@ Creating a Workspace from a remote Git repository involves specifying the URL of
       daytona   | Project daytona started
    ```
 
-2. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
-
 <Aside type="tip">
 You can set the Project Builder at Workspace creation time using command-line flags.
 These flags only apply when creating Workspaces with a single Project.
@@ -121,7 +141,7 @@ daytona create <REPO_URL> --builder=auto
 
 Daytona allows you to keep track of your development environments by listing all previously created Workspaces. This helps you manage multiple projects and ensure that you can easily access and maintain your Workspaces.
 
-1. Execute the following command to see a list of Workspaces:
+1. Run the following command:
 
    ```shell
    daytona list
@@ -139,17 +159,9 @@ Daytona allows you to keep track of your development environments by listing all
 
 Daytona allows you to open an existing Workspace in your IDE. This enables you to quickly access and work on your projects in your preferred development environment. With Daytona, you can effortlessly switch between different Workspaces and maintain an efficient workflow.
 
-**Prerequisites**
-
-- **A working installation of Daytona.**
-
-  Verify your Daytona installation is up-to-date to avoid compatibility issues.
-
-- **At least one existing Workspace.**
-
 **Procedure**
 
-1. Execute the following command to list existing Workspaces:
+1. Run the following command:
 
    ```shell
    daytona code
@@ -171,20 +183,12 @@ Daytona allows you to open an existing Workspace in your IDE. This enables you t
 
 :::note
 You can configure your preferred IDE.
-Refer to **[Set the Default IDE](#set-the-default-ide)** for more information.
+Refer to **[Set the Default IDE](/usage/ides#set-the-default-ide)** for more information.
 :::
 
 ## Delete Workspaces
 
 Daytona allows you to delete one or more Workspaces, helping you manage your development environments by removing those that are no longer needed.
-
-**Prerequisites**
-
-- **A working installation of Daytona.**
-
-  Verify your Daytona installation is up-to-date to avoid compatibility issues.
-
-- **At least one existing Workspace.**
 
 **Procedure**
 
@@ -220,14 +224,6 @@ Daytona allows you to delete one or more Workspaces, helping you manage your dev
 
 Daytona allows you to delete one or more existing Workspaces non-interactively, allowing for quick and automated cleanup of your development environments without manual selection.
 
-**Prerequisites**
-
-- **A working installation of Daytona.**
-
-  Verify your Daytona installation is up-to-date to avoid compatibility issues.
-
-- **At least one existing Workspace.**
-
 **Procedure**
 
 1. Run the following command, specifying the workspace names/UUIDs to delete:
@@ -247,82 +243,22 @@ Daytona allows you to delete one or more existing Workspaces non-interactively, 
 
 2. Confirm the action to delete the selected Workspace.
 
-## IDEs
-
-Daytona allows you to connect to your Workspace using your preferred IDE.
-Out of the box, Daytona can be configured to open your Workspace in the following IDEs:
-
-- Visual Studio Code (VSCode)
-  - Desktop (Linux, macOS, Windows)
-  - Browser
-- JetBrains IDEs
-  - CLion
-  - GoLand
-  - IntelliJ IDEA Ultimate
-  - PhpStorm
-  - Rider
-  - RubyMine
-  - WebStorm
-- Terminal SSH
-
-### Set the Default IDE
-
-You can set the default IDE used by Daytona.
-After setting the default IDE, it will be opened automatically and connected to your Workspace when using the `daytona code` command.
-
-**Prerequisites**
-
-- **A working installation of Daytona.**
-
-  Verify your Daytona installation is up-to-date to avoid compatibility issues.
-
-**Procedure**
-
-1. Execute the following command to enter the IDE selection terminal UI:
-
-   ```shell
-   daytona ide
-   ```
-
-   Upon running this command, Daytona will display a list of available IDEs, allowing you to select your default choice.
-
-   ```text
-    Choose Your Default IDE
-
-    ┃ VS Code
-      VS Code - Browser
-      Terminal SSH
-      CLion
-      GoLand
-      ...
-   ```
-
-2. Select your preferred IDE from the list presented.
-
-:::note
-When using the `daytona code` command with `VS Code - Browser` as your default IDE, Daytona will install OpenVSCode Server inside your project, forward the appropriate port to your local machine, and open your default browser automatically.
-:::
-
-### Forward Ports from a Workspace
+## Forward Ports from a Workspace
 
 Daytona supports flexible port forwarding, allowing you to access services running in a Workspace locally or via a shareable public URL.
 With port forwarding, you can work on your project in a Workspace and test your code externally.
 
-#### Access a Port Locally
+### Access a Port Locally
 
 You can access services running in a Workspace on your local machine.
 
 **Prerequisites**
 
-- **A working installation of Daytona**
-
-  Verify your Daytona installation is up-to-date to avoid compatibility issues.
-
-- **A running Workspace with at least one service accessible via TCP/UDP.**
+- A running Workspace with at least one service accessible via TCP/UDP.
 
 **Procedure**
 
-1. Execute the following command to forward a port from a running Workspace to your local machine:
+1. Run the following command to forward a port from a running Workspace to your local machine:
 
    ```shell
    daytona forward <PORT> <WORKSPACE> <PROJECT>
@@ -338,7 +274,7 @@ You can access services running in a Workspace on your local machine.
 
    `Port available at http://localhost:4321`
 
-#### Access a Port via Public URL
+### Access a Port via Public URL
 
 You can access services running in a Workspace via a generated public URL.
 This allows you to share your work with others in real-time.
@@ -350,15 +286,11 @@ By using this feature, you acknowledge that your data is processed in accordance
 
 **Prerequisites**
 
-- **A working installation of Daytona.**
-
-  Verify your Daytona installation is up-to-date to avoid compatibility issues.
-
 - A running Workspace with at least one service accessible via TCP/UDP.
 
 **Procedure**
 
-1. Execute the following command to generate a public URL for a port on a running Workspace:
+1. Run the following command to generate a public URL for a port on a running Workspace:
 
    ```shell
    daytona forward <PORT> <WORKSPACE> <PROJECT> --public
