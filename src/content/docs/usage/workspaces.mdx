@@ -17,11 +17,11 @@ Creating your own Workspace in Daytona is a straightforward process that ensures
 
 **Prerequisites**
 
-- **A working installation of Daytona**.
+- **A [working installation of Daytona](/installation/installation)**.
 
   Verify your Daytona installation is up-to-date to avoid compatibility issues.
 
-- **At least one Target configured**.
+- **At least [one Target configured](../configuration/providers#managing-targets)**.
 
   Targets are essential for deploying your Workspaces, so make sure you have configured at least one.
 
@@ -38,11 +38,11 @@ Creating a Workspace allows you to set up a new environment either by selecting 
    ```
 
    <Aside type="tip">
-   You can open a new Workspace in an IDE by using the `--code` flag.
+      You can open a new Workspace in an [IDE](/usage/ide) by using the `--code` flag.
 
-   ```shell
-   daytona create --code
-   ```
+      ```shell
+      daytona create --code
+      ```
 
    </Aside>
 
@@ -119,23 +119,10 @@ Creating a Workspace from an arbitrary Git URL allows you to set up a new enviro
       daytona   | Project daytona started
    ```
 
-<Aside type="tip">
-You can set the Project Builder at Workspace creation time using command-line flags.
-These flags only apply when creating Workspaces with a single Project.
-- To use the Custom Image Builder, set both `--custom-image` and `--custom-image-user` flags.
-- To use the Dev Container Builder, set the`--devcontainer-path` flag to the Dev Container configuration path within the repository.
-- To explicitly specify the Builder, set the`--builder` flag.
-    Accepted values are `auto`, `devcontainer`, or `none`.
-
-**Example**
-
-```shell
-daytona create <REPO_URL> --custom-image=daytona-workspace:latest --custom-image-user=daytona
-daytona create <REPO_URL> --devcontainer-path=.devcontainer/devcontainer.json
-daytona create <REPO_URL> --builder=auto
-```
-
-</Aside>
+   <Aside type="tip">
+   You can set the Project Builder at Workspace creation time using command-line
+   flags. Refer to **[Builders](/usage/builders)** for more information.
+   </Aside>
 
 ## List Workspaces
 
@@ -182,7 +169,7 @@ Daytona allows you to open an existing Workspace in your IDE. This enables you t
 2. Select the Workspace you want to open.
 
 :::note
-You can configure your preferred IDE.
+You can configure Daytona to use your preferred IDE.
 Refer to **[Set the Default IDE](/usage/ide#set-the-default-ide)** for more information.
 :::
 
@@ -204,7 +191,7 @@ Daytona allows you to delete one or more Workspaces, helping you manage your dev
       Select Workspaces To Delete
       1 item
 
-      ┃ MyProject
+      ┃ MyWorkspace
       ┃ abcdefg12hi3 (local)
       ┃ github.com/username/MyProject.git
 
@@ -212,13 +199,27 @@ Daytona allows you to delete one or more Workspaces, helping you manage your dev
 
 2. Mark Workspaces for deletion by highlighting them and pressing `x`.
 
-   <Aside type="note">
-     Pressing `Enter` without using `x` to select individual Workspaces will
-     select the currently highlighted Workspace for deletion.
-   </Aside>
-
 3. Press `Enter` on the selected Workspace to delete it.
+
+   ```text
+      Delete: MyWorkspace
+
+      ┃  abcdefg12hi3 (local)
+      ┃  github.com/username/MyProject.git
+   ```
+
 4. Confirm the action.
+
+   ```text
+      Delete workspace(s): [MyWorkspace]?
+      Are you sure you want to delete the workspace(s): [MyWorkspace]?
+
+      [Yes]   [No]
+   ```
+
+   ```text
+      Workspace MyWorkspace successfully deleted
+   ```
 
 ### Non-Interactively
 
@@ -235,13 +236,17 @@ Daytona allows you to delete one or more existing Workspaces non-interactively, 
    Upon running this command, Daytona will prompt you to confirm the deletion of the specified Workspace. You will be able to see the Workspace name that you are about to delete, and you will have the option to confirm or cancel the action.
 
    ```text
-      Delete workspace(s): [MyProject]?
-      Are you sure you want to delete the workspace(s): [MyProject]?
+      Delete workspace(s): [MyWorkspace]?
+      Are you sure you want to delete the workspace(s): [MyWorkspace]?
 
       [Yes]   [No]
    ```
 
 2. Confirm the action to delete the selected Workspace.
+
+   ```text
+      Workspace MyWorkspace successfully deleted
+   ```
 
 ## Forward Ports from a Workspace
 
