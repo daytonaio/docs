@@ -8,7 +8,7 @@
 
   > h2[id], > h3[id], > h4[id], > h5[id] {
     margin-top: 56px;
-    margin-bottom: 16px;    
+    margin-bottom: 16px;
   }
 
   > p {
@@ -75,7 +75,7 @@
     }
   }
 
-  > p {    
+  > p {
     @include for-mobile-screen-sizes {
       margin-bottom: 40px
     }
@@ -245,12 +245,12 @@
     margin: 0 0 24px;
     li {
       padding-left: 10px;
-      margin: 0 0 4px;      
+      margin: 0 0 4px;
       font-family: Inter, sans-serif;
       font-weight: 400;
       font-size: 1rem;
       line-height: 1.6;
-      letter-spacing: -0.01em;      
+      letter-spacing: -0.01em;
       color: var(--secondary-text-color);
        &::marker {
         color: var(--primary-text-color);
@@ -271,8 +271,8 @@
   }
 
   > ul {
-    // background: var(--block-bg-color);    
-    padding: 0px 10px 0 0;    
+    // background: var(--block-bg-color);
+    padding: 0px 10px 0 0;
     margin-bottom: 24px;
     margin-top: 0;
     list-style-image: url(/src/assets/icons/facts.svg);
@@ -288,7 +288,7 @@
       line-height: 1.6;
       letter-spacing: -0.01em;
       padding-left: 10px;
-      margin: 0 0 4px;      
+      margin: 0 0 4px;
       color: var(--secondary-text-color);
 
       strong {
@@ -475,18 +475,27 @@
     }
   }
 
-  .expressive-code {    
-    margin-top: 32px;
-    margin-bottom: 32px;    
-  }
-
   .expressive-code {
+    margin-top: 32px;
+    margin-bottom: 32px;
     border: 1px solid var(--border-extra);
     border-radius: 3px;
 
+    .copy {
+      display: none;
+    }
+
+    &[data-language="shell"] .copy,
+    .frame.is-terminal .copy {
+      display:flex;
+    }
+
+    &[data-language="text"] .copy {
+      display: none;
+    }
+
     .frame.is-terminal {
       .header {
-
         border: none;
         background: var(--bg-color);
         border-bottom: 1px solid var(--border-extra);
@@ -508,6 +517,7 @@
         --button-spacing: 44px;
       }
     }
+
     .copy .feedback {
       background-color: var(--hover-color);
       &:after {
@@ -518,12 +528,15 @@
     .frame pre {
       background: var(--bg-color);
     }
+
     pre {
       border: none;
     }
-     pre > code {
+
+    pre > code {
       padding: 16px 0;
     }
+
     .ec-line {
       font-family: 'Berkeley Mono', monospace;
       font-size: 0.875rem;
@@ -531,6 +544,7 @@
       line-height: 1.6;
       letter-spacing: -0.035rem;
     }
+
     .copy {
       background: unset;
       opacity: 1;
@@ -559,7 +573,7 @@
         }
       }
     }
-  }
+}
 
   > starlight-tabs {
     margin-bottom: 56px;
