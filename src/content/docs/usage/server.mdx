@@ -11,6 +11,159 @@ The primary method of interacting with the server is through the Daytona CLI, al
 ## Configuring the Server
 
 The server configuration is located in different directories depending on your operating system.
-The configuration can be viewed using the `daytona server config` command across all operating systems.
+The server configuration can be viewed by using the following command across all operating systems:
 
-Server configuration can be manually edited by using the `daytona server configure` command.
+```shell
+  daytona server config
+```
+
+Daytona server configuration contains the following properties:
+
+- **Server ID**
+  
+    A unique identifier for the Daytona server instance.
+
+    Example: `12a34bc5-d67e-890f-1gh2-34i5jk6l7m89`
+
+- **API URL**
+  
+    The URL endpoint for the Daytona API.
+
+    Example: `https://api-12a34bc5-d67e-890f-1gh2-34i5jk6l7m89.try-eu.daytona.app`
+
+- **API Port**
+  
+    The port number on which the Daytona API is accessible.
+
+    Example: `3986`
+
+- **Default Project Image**
+  
+    The default Docker image used for projects.
+
+    Example: `daytonaio/workspace-project:latest`
+
+- **Default Project User**
+  
+    The default user for the projects.
+
+    Example: `daytona`
+
+- **Default Project Post Start Commands**
+  
+    A list of commands to be executed after the project starts.
+
+    Example: `[]` (empty array)
+
+- **FRPS Domain**
+  
+    The domain used by the FRP (Fast Reverse Proxy) server.
+
+    Example: `try-eu.daytona.app`
+
+- **Headscale Port**
+  
+    The port number for the Headscale service.
+
+    Example: `3987`
+
+- **Binaries Path**
+  
+    The directory path where server binaries are stored.
+
+    Example: `/Users/Library/Application Support/daytona/server/binaries`
+
+- **Logs Path**
+  
+    The directory path where server logs are stored.
+
+    Example: `/Users/Library/Application Support/daytona/server/daytona.log`
+
+- **Builder Image**
+  
+    The Docker image used by the local builder.
+
+    Example: `daytonaio/workspace-project:latest`
+
+- **Local Builder Registry Port**
+  
+    The port number for the local builder registry.
+
+    Example: `3988`
+
+- **Build Image Namespace**
+  
+    The namespace for build images. This is used to organize and manage images within a specific scope.
+
+Server configuration can be manually edited by using the following command:
+
+```shell
+daytona server configure
+```
+
+  ```text  
+    Providers Directory
+    Directory will be created if it does not exist
+    > /Users/Library/Application Support/daytona/providers
+
+    Registry URL
+    > https://download.daytona.io/daytona
+
+    Server Download URL
+    > https://download.daytona.io/daytona/install.sh
+
+    Default Project Image
+    > daytonaio/workspace-project:latest
+
+    Default Project User
+    > daytona
+
+    Builder Image
+    Image dependencies: docker, @devcontainers/cli (node package)
+    > daytonaio/workspace-project:latest
+
+    Builder Registry
+    To add options, add a container registry with 'daytona cr set'
+    > Local registry managed by Daytona
+
+    Build Image Namespace
+    Namespace to be used when tagging and pushing build images
+    >
+
+    Local Builder Registry Port
+    > 3988
+
+    Local Builder Registry Image
+    > registry:0.0.0
+
+    API Port
+    > 3986
+
+    Headscale Port
+    > 3987
+
+    Binaries Path
+    Directory will be created if it does not exist
+    > /Users/Library/Application Support/daytona/server/binaries
+
+    Log File Path
+    File will be created if it does not exist
+    > /Users/Library/Application Support/daytona/server/daytona.log
+
+    Frps Domain
+    > try-eu.daytona.app
+
+    Frps Port
+    > 7000
+
+    Frps Protocol
+    > https
+  ```
+
+  Upon successful configuration, Daytona will validate the settings and ensure all specified directories and files are correctly set up, preparing the server for optimal operation.
+
+  ```text
+  Server configuration updated. You need to restart the server for the changes to take effect.
+  ```
+
+  You can use the `daytona server restart` command to restart the server for the changes to take effect.
