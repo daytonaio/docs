@@ -12,13 +12,20 @@ Daytona provides control over how the resulting Project environment is created, 
 
 When [creating a Workspace](./workspaces#create-a-workspace), you can choose between the following Builders during the Advanced Configuration step:
 
-1. [**Automatic**](#automatic-builder)  
+1. [**Automatic**](#automatic-builder)
+
    Daytona builds the Project image after auto-detecting the most appropriate Builder.
-2. [**Dev Container**](#dev-container-builder)  
+
+2. [**Dev Container**](#dev-container-builder)
+
    Daytona builds the Project image according to the Dev Container configuration located in the project.
-3. [**Custom Image**](#custom-image-builder)  
+
+3. [**Custom Image**](#custom-image-builder)
+
    Daytona builds the Project image using an image you specify.
-4. [**None**](#none)  
+
+4. [**None**](#none)
+
    Daytona creates the Project using the default base image.
 
 ## Automatic Builder
@@ -30,14 +37,27 @@ When choosing this option, Daytona uses the following logic to determine which B
 2. If present, use the [Dev Container Builder](#dev-container-builder).
 3. If not present, use the [None Builder](#none).
 
+To use the Automatic Builder, set the `--builder` flag value to `auto` during the [Workspace creation](/usage/workspaces#create-a-workspace). This flag only applies when creating Workspaces with a single Project.
+
+```shell
+   daytona create <REPO_URL> --builder=auto
+```
+
 ## Dev Container Builder
 
 You can build the Project image using the Dev Container standard.
-The following options are accepted when using this Builder:
+The following option is available when using this Builder:
 
-1. **Devcontainer file path**  
+1. **Devcontainer file path**
+
    The path where the Dev Container configuration is located, relative to the repository root.
    The default value is `.devcontainer/devcontainer.json`.
+
+To use the Dev Container Builder, set the `--devcontainer-path` flag to the Dev Container configuration path within the repository during the [Workspace creation](/usage/workspaces#create-a-workspace). This flag only applies when creating Workspaces with a single Project.
+
+```shell
+   daytona create <REPO_URL> --devcontainer-path=.devcontainer/devcontainer.json
+```
 
 <Aside type="tip">
 For guidance on how to add Dev Container configuration to your project's repository, refer to Daytona's [Creating a Development Container](https://www.daytona.io/dotfiles/creating-a-development-container) guide.
@@ -51,14 +71,26 @@ For more information on the Dev Container standard, refer to the official docume
 You can build the Project image by specifying a custom base container.
 The following options are accepted when using this Builder:
 
-1. **Custom container image**  
+1. **Custom container image**
+
    The name of the base container image for the Project.
-2. **Container user**  
+
+2. **Container user**
+
    The user to execute commands as during the image build process.
-3. **Post start commands**  
+
+3. **Post start commands**
+
    Commands to execute once the Project is started.
-4. **Environment variables**  
+
+4. **Environment variables**
    A list of environment variables in the format `KEY=VALUE`.
+
+To use the Custom Image Builder, set both `--custom-image` and `--custom-image-user` flags during the [Workspace creation](/usage/workspaces#create-a-workspace). These flags only apply when creating Workspaces with a single Project.
+
+```shell
+   daytona create <REPO_URL> --custom-image=daytona-workspace:latest --custom-image-user=daytona
+```
 
 ## None
 
@@ -72,7 +104,6 @@ After an image is built, it will be uploaded to the configured container registr
 
 **Prerequisites**
 
-- A working installation of Daytona.
 - An account on an accessible container registry with permission to push/pull images.
 
 **Procedure**
@@ -84,12 +115,18 @@ After an image is built, it will be uploaded to the configured container registr
    ```
 
 2. Set the required options:
-   1. **Server URL**  
+   1. **Server URL**
+
       The full URL to your custom container registry.
-   2. **Username**  
+
+   2. **Username**
+
       The username Daytona should use to log in to the container registry.
-   3. **Password**  
+
+   3. **Password**
+
       The password for your container registry account.
+
 3. Press `Enter` to set the custom build registry.
 4. Execute the following command to configure the server:
 
@@ -98,5 +135,12 @@ After an image is built, it will be uploaded to the configured container registr
    ```
 
 5. Press `Enter` until the "Builder Registry" section is highlighted.
+
+   ```text
+      ┃ Builder Registry
+      ┃ To add options, add a container registry with 'daytona cr set'
+      ┃ > Local registry managed by Daytona
+   ```
+
 6. Select the custom registry configured previously using `Up`/`Down`.
 7. Press `Enter` until the command exits to save the configuration.

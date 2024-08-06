@@ -95,6 +95,13 @@ export default defineConfig({
               },
             },
             {
+              label: 'IDEs',
+              link: '/usage/ide',
+              attrs: {
+                icon: 'layout.svg',
+              },
+            },
+            {
               label: 'Builders',
               link: '/usage/builders',
               attrs: {
