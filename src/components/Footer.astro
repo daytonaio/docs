@@ -5,9 +5,9 @@ import Default from '@astrojs/starlight/components/Footer.astro'
 import ThemeSelect from './ThemeSelect.astro'
 import { version } from '../../package.json'
 import { major, minor, patch } from 'semver'
-const [maj, min, pat] = [major(version), minor(version), patch(version)]
-const release = `${maj}.${min}.${pat}`
-const releaseLink = `https://github.com/daytonaio/daytona/releases/tag/v${release}`
+const [maj, min] = [major(version), minor(version)]
+const release = `${maj}.${min}`
+const releaseLink = `https://github.com/daytonaio/daytona/releases/tag/v${release}.0`
 ---
 
 <Default {...Astro.props}>
