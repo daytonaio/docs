@@ -2,22 +2,37 @@
 title: Server
 description: A reference for the Daytona server.
 sidebar:
-  label: Server
+  label: Server 
 ---
 
-The Daytona Server is a daemon that runs on your machine and handles actions relating to Workspaces.
-The primary method of interacting with the server is through the Daytona CLI, although it's possible to interact manually using a HTTP interface.
+The Daytona Server is a daemon that runs on your machine and handles [Workspaces](/usage/workspaces) related actions.
+It provides capabilities for [starting](#start-the-server), [configuring](#configure-the-server), and [stopping](#stop-the-server) server operations.
+The primary method of interacting with the server is through the Daytona CLI. Users can also interact with the Daytona Server using its HTTP interface.
 
-## Configuring the Server
+## Start the Server
 
-The server configuration is located in different directories depending on your operating system.
+Run the following command to start the Daytona Server:
+
+```shell
+  daytona server start
+```
+
+Upon running this command, Daytona will start the The Daytona Server daemon.
+
+```text
+    Starting the Daytona Server daemon...
+```
+
+## Configure the Server
+
+The Daytona Server configuration is located in different directories depending on your operating system.
 The server configuration can be viewed by using the following command across all operating systems:
 
 ```shell
   daytona server config
 ```
 
-Daytona server configuration contains the following properties:
+The Daytona Server configuration contains the following properties:
 
 - **Server ID**
   
@@ -127,7 +142,7 @@ Daytona server configuration contains the following properties:
 
     Example: `https://download.daytona.io/daytona/install.sh`
 
-Server configuration can be manually edited by using the following command:
+The Daytona Server configuration can be manually edited by using the following command:
 
 ```shell
 daytona server configure
@@ -195,10 +210,40 @@ daytona server configure
     > https
   ```
 
-  Upon successful configuration, Daytona will validate the settings and ensure all specified directories and files are correctly set up, preparing the server for optimal operation.
+Upon successful configuration, Daytona will validate the settings and ensure all specified directories and files are correctly set up, preparing the server for optimal operation.
 
   ```text
-Server configuration updated. You need to restart the server for the changes to take effect.
+    Server configuration updated. You need to restart the server for the changes to take effect.
   ```
 
-  You can use the `daytona server restart` command to restart the server for the changes to take effect.
+Use the `daytona server restart` command to restart the server for the changes to take effect.
+
+## Restart the Server
+
+Run the following command to restart the Daytona Server:
+
+```shell
+  daytona server start
+```
+
+Upon running this command, Daytona will automatically stop and start The Daytona Server daemon.
+
+```text
+    Stopping the Daytona Server daemon...
+    Starting the Daytona Server daemon...
+    Daytona Server daemon restarted successfully
+```
+
+## Stop the Server
+
+Run the following command to stop the Daytona Server:
+
+```shell
+  daytona server stop
+```
+
+Upon running this command, Daytona will stop the Daytona Server daemon.
+
+```text
+    Stopping the Daytona Server daemon...
+```
