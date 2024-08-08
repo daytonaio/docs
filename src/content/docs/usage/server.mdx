@@ -49,17 +49,23 @@ Daytona server configuration contains the following properties:
 
     Example: `daytona`
 
-- **Default Project Post Start Commands**
-  
-    A list of commands to be executed after the project starts.
-
-    Example: `[]` (empty array)
-
 - **FRPS Domain**
   
     The domain used by the FRP (Fast Reverse Proxy) server.
 
     Example: `try-eu.daytona.app`
+
+- **FRPS Port**
+  
+    The port used by the FRP (Fast Reverse Proxy) server.
+
+    Example: `7000`
+
+- **FRPS Protocol**
+  
+    The protocol used by the FRP (Fast Reverse Proxy) server.
+
+    Example: `https`
 
 - **Headscale Port**
   
@@ -73,7 +79,7 @@ Daytona server configuration contains the following properties:
 
     Example: `/Users/Library/Application Support/daytona/server/binaries`
 
-- **Logs Path**
+- **Log File Path**
   
     The directory path where server logs are stored.
 
@@ -91,9 +97,35 @@ Daytona server configuration contains the following properties:
 
     Example: `3988`
 
+- **Local Builder Registry Image**
+  
+    The registry image used by the local builder registry.
+
+    Example: `registry:2.3.8`
+
 - **Build Image Namespace**
   
     The namespace for build images. This is used to organize and manage images within a specific scope.
+
+    Example: `daytona`
+
+- **Providers Dir**
+  
+    The directory path where provider configuration is stored.
+
+    Example: `/Users/Library/Application Support/daytona/providers`
+
+- **Registry URL**
+  
+   The URL for the Daytona registry.
+
+    Example: `https://download.daytona.io/daytona`
+
+- **Server Download URL**
+  
+    The URL for downloading the Daytona server.
+
+    Example: `https://download.daytona.io/daytona/install.sh`
 
 Server configuration can be manually edited by using the following command:
 
@@ -104,6 +136,9 @@ daytona server configure
   ```text  
     Providers Directory
     Directory will be created if it does not exist
+    > /Users/Library/Application Support/daytona/providers
+
+    Providers Directory
     > /Users/Library/Application Support/daytona/providers
 
     Registry URL
@@ -163,7 +198,7 @@ daytona server configure
   Upon successful configuration, Daytona will validate the settings and ensure all specified directories and files are correctly set up, preparing the server for optimal operation.
 
   ```text
-  Server configuration updated. You need to restart the server for the changes to take effect.
+Server configuration updated. You need to restart the server for the changes to take effect.
   ```
 
   You can use the `daytona server restart` command to restart the server for the changes to take effect.
