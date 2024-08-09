@@ -28,35 +28,47 @@ This makes it possible to create new Providers to govern Workspace management on
 
 ### Install a Provider
 
-You can install a Provider.
-Once a new Provider is installed, you can use it when setting a Target.
+Daytona allows you to install a Provider to interface with the Daytona Server. Once a new Provider is installed, it manages Workspace deployment and lifecycle management.
 
 **Prerequisites**
 
-- A working installation of Daytona.
+- **A [working installation of Daytona](/installation/installation)**.
+
+    Verify your Daytona installation is up-to-date to avoid compatibility issues.
 
 **Procedure**
 
-1. Execute the following command to install a new Provider:
+1. Run the following command to start the guided Providers installation:
 
     ```shell
     daytona provider install
     ```
 
-2. Select the Provider you want to install from the list.
+2. Select the Provider you want to install from the list or select a specific version.
+
+    ```text
+        Choose a provider to install
+        1 item
+        ===
+        │ docker-provider
+        │ v0.0.0
+
+        Select a specific version
+    ```
+
+    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](#managing-targets) to use with the created Provider.
+
+    ```text
+        Provider docker-provider has been successfully installed
+    ```
 
 ### Uninstall a Provider
 
-You can uninstall an existing Provider.
-
-**Prerequisites**
-
-- A working installation of Daytona.
-- At least one Provider installed.
+Daytona allows you to uninstall an existing Provider, helping you manage your Providers by removing those that are no longer needed.
 
 **Procedure**
 
-1. Execute the following command to uninstall a Provider:
+1. Run the following command to uninstall a Provider:
 
     ```shell
     daytona provider uninstall
@@ -64,19 +76,25 @@ You can uninstall an existing Provider.
 
 2. Select the Provider you want to uninstall from the list.
 
+    ```text
+        Choose a provider to uninstall
+        1 item
+        ===
+        │ docker-provider
+        │ v0.0.0
+    ```
+
+    ```text
+        Provider docker-provider has been successfully uninstalled
+    ```
+
 ### Update a Provider
 
-You can update an existing Provider.
-This allows you to apply the latest enhancements and bug fixes.
-
-**Prerequisites**
-
-- A working installation of Daytona.
-- At least one Provider installed.
+Daytona allows you to update an existing Provider, enabling you to apply the latest enhancements and bug fixes.
 
 **Procedure**
 
-1. Execute the following command to update a Provider:
+1. Run the following command to update a Provider:
 
     ```shell
     daytona provider update
@@ -84,50 +102,139 @@ This allows you to apply the latest enhancements and bug fixes.
 
 2. Select the Provider you want to update from the list.
 
+    ```text
+        Choose a provider to update
+        1 item
+        ===
+        │ docker-provider
+        │ v0.0.0
+    ```
+
+    ```text
+        Provider docker-provider has been successfully updated
+    ```
+
 ## Managing Targets
 
 ### Set a Target
 
-You can set a new Target for Daytona to use when managing Workspaces.
+Daytona allows you to set a Target to use when managing Workspaces.
 
 **Prerequisites**
 
-- A working installation of Daytona.
-- At least one Provider installed.
+- **At least [one Provider](#managing-providers) installed.**
+
+    Providers are essential for managing and deploying your Workspaces, so make sure you have configured at least one.
 
 **Procedure**
 
-1. Execute the following command:
+1. Run the following command to set a Target:
 
     ```shell
     daytona target set
     ```
 
 2. Select the appropriate Provider for the environment you want to deploy to.
+
+    ```text
+        Choose a provider
+        1 item
+        ===
+        │ docker-provider
+        │ v0.0.0
+    ```
+
 3. Select `New Target`.
 4. Enter a name for your Target.
 5. Enter the appropriate configuration options when prompted.
-6. Click `Enter` to add the Target.
 
-### Remove a Target
+    ```text
+        Remote Password
+        >
 
-You can remove an existing target.
-Once a Target is removed, you will not be able to manage or deploy Workspaces without adding another Target with the same configuration.
+        Remote Port
+        >
 
-**Prerequisites**
+        Remote User
+        Note: non-root user required
+        >
 
-- A working installation of Daytona.
-- At least one configured Target.
+        Sock Path
+        > /var/run/docker.sock
+
+        Workspace Data Dir       
+        The directory on the remote host where the workspace data will be stored
+        > /tmp/daytona-data
+
+        Remote Private Key Path
+        daytona_config
+        known_hosts
+        Custom path
+        None
+    ```
+
+6. Click `Enter` to confirm setting the Target.
+
+    ```text
+        Target set successfully
+     ```
+
+### List Targets
+
+Daytona allows you to keep track of your Targets by listing all previously created Targets with their details.
+
+1. Run the following command to list currently set Targets:
+
+   ```shell
+   daytona target list
+   ```
+
+   Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the Provider it is connected to, and its configured options.
+
+   ```text
+    Target      Provider            Options
+    ───────────────────────────────────────────────────────────────────────
+    MyTarget    docker-provider     {
+                                        "Sock Path": "/var/run/docker.sock"
+                                    }
+   ```
+
+### Delete a Target
+
+Daytona allows you to delete Targets, helping you manage and remove those that are no longer needed. Once a Target is deleted, you will not be able to manage or deploy Workspaces on that Target.
 
 **Procedure**
 
-1. Execute the following command to enter the interactive terminal UI:
+1. Run the following command:
 
     ```shell
-    daytona target set
+    daytona target delete
     ```
 
-2. Select the target to remove.
+    Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the unique identifier of the Workspace, and the repository it is connected to.
+
+2. Press `Enter` on the selected Target to delete it.
+
+    ```text
+        Choose a Target
+        1 item
+        ===
+        │ MyTarget          
+        │ docker-provider
+    ```
+
+3. Confirm the action.
+
+    ```text
+        ┃ Delete all workspaces within MyTarget?
+        ┃ You might not be able to easily remove these workspaces later.
+        ┃
+        ┃   [Yes]     [No]
+    ```
+
+    ```text
+        Target MyTarget removed successfully
+    ```
 
 ## Officially Supported Providers
 
@@ -152,27 +259,37 @@ When using Docker as a Provider, you have the choice of creating either a local 
 You can add a target for an installation of Docker on a remote host.
 When following the [Set a Target procedure](#set-a-target), note the following configuration options:
 
-1. **Container Image**  
+1. **Container Image**
+
     The base image used by Daytona to deploy new Workspaces.
     The default value is `daytonaio/workspace-project`.
-2. **Remote Hostname**  
+
+2. **Remote Hostname**
+
     The hostname of the remote host.
-3. **Remote Password**  
+3. **Remote Password**
+
     The password for the remote user.
     If password authentication is disabled on the remote host, you can choose an SSH key in the next step.
-4. **Remote Port**  
+4. **Remote Port**
+
     The TCP port used to access the remote host's SSH daemon.
     Unless otherwise configured on your remote host, this should be set to the default value (`22`)
-5. **Remote User**  
+5. **Remote User**
+
      The username used to execute the required commands on the remote host.
+
     <Aside type="caution">
       Non-root user is required so correct ownership is assumed inside the
       project container.
     </Aside>
-6. **Sock Path**  
+
+6. **Sock Path**
+
     The Docker UNIX socket location on the remote host.
     Unless otherwise configured after installing Docker, this should be set to the default value (`/var/run/docker.sock`)
 7. **Remote Private Key Path**
+
     The SSH private key used to connect to the remote host.
     If you are using password authentication, you can choose "None".
 

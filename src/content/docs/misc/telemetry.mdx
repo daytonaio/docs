@@ -5,7 +5,7 @@ sidebar:
   label: Telemetry
 ---
 
-All telemetry data is **completely anonymous** and does **not** include any personally identifiable information (PII) or user secrets.
+All telemetry data is **completely anonymous** and **does not** include any personally identifiable information (PII) or user secrets.
 Participation is optional and you may opt-out at any time.
 
 ## The Goal
@@ -15,26 +15,49 @@ Data gathered from the CLI will allow us to gain more insights into the usage of
 
 The data **does** include:
 
-- CLI command usage: This includes the name of the command that was run, how it was called (e.g., was an alias used?),
+- **CLI command usage**
+
+  This includes the name of the command that was run, how it was called (e.g., was an alias used?),
   the source (e.g., local CLI or inside of a project), the version of the binary, and the execution time.
-- API server request and response data: In the request and response payloads, only public data is included.
+
+- **API server request and response data**
+
+  In the request and response payloads, only public data is included.
   This data may include any public git repositories used to create workspaces and any public container images used to create workspaces.
-  The data also includes the path of the request, with URL params that might include PII stripped (e.g., URI: `/workspace/:workspaceId/:projectName/state` is provided as is,
-  with workspaceId and projectName not provided to the telemetry service).
+
+  The data also includes the path of the request, with URL parameters that might include PII stripped (e.g., URI: `/workspace/:workspaceId/:projectName/state` is provided as is,
+  with `workspaceId` and `projectName` not provided to the telemetry service).
   Additionally, the request method, binary version, query, and source are gathered.
-- Relevant server events: Currently, only workspace lifecycle events are gathered (creation, stop, start, delete, etc.), but this might be expanded upon in the future.
 
-The data does **not** include:
+- **Relevant server events**
 
-- CLI command arguments: Arguments might contain PII or user secrets, so they are left out.
-- Full API request and response payloads: Payloads may contain PII or user secrets, so only public data is shared with the telemetry collection service.
-- Environment variables: Any environment variables set on projects created by the user, including Daytona-set environment variables, are not included.
-- Geolocation information and IP address: No geolocation information about the user or their IP address is included.
+  Currently, only workspace lifecycle events are gathered (creation, stop, start, delete, etc.), but this might be expanded in the future.
+
+The data **does not** include:
+
+- **CLI command arguments**
+
+  Arguments might contain PII or user secrets, so they are left out.
+
+- **Full API request and response payloads**
+
+  Payloads may contain PII or user secrets, so only public data is shared with the telemetry collection service.
+
+- **Environment variables**
+
+  Any environment variables set on projects created by the user, including Daytona-set environment variables, are not included.
+
+- **Geolocation information and IP address**
+
+  No geolocation information about the user or their IP address is included.
 
 ## Gathering Policy
 
 Telemetry gathering in the CLI is **opt-out**. This means that telemetry data is gathered by default because it does not include any PII.
-To disable telemetry, users can run `daytona telemetry disable`.
+
+- To disable telemetry, users can run `daytona telemetry disable`.
+
+- To enable telemetry, users can run `daytona telemetry enable`.
 
 ## CLI Identifier
 
