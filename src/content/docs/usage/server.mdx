@@ -2,15 +2,248 @@
 title: Server
 description: A reference for the Daytona server.
 sidebar:
-  label: Server
+  label: Server 
 ---
 
-The Daytona Server is a daemon that runs on your machine and handles actions relating to Workspaces.
-The primary method of interacting with the server is through the Daytona CLI, although it's possible to interact manually using a HTTP interface.
+The Daytona Server is a daemon that runs on your machine and handles [Workspaces](/usage/workspaces) related actions.
+It provides capabilities for [starting](#start-the-server), [configuring](#configure-the-server), and [stopping](#stop-the-server) server operations.
+The primary method of interacting with the server is through the Daytona CLI. Users can also interact with the Daytona Server using its HTTP interface.
 
-## Configuring the Server
+## Start the Server
 
-The server configuration is located in different directories depending on your operating system.
-The configuration can be viewed using the `daytona server config` command across all operating systems.
+Run the following command to start the Daytona Server:
 
-Server configuration can be manually edited by using the `daytona server configure` command.
+```shell
+  daytona server start
+```
+
+Upon running this command, Daytona will start the The Daytona Server daemon.
+
+```text
+    Starting the Daytona Server daemon...
+```
+
+## Configure the Server
+
+The Daytona Server configuration is located in different directories depending on your operating system.
+The server configuration can be viewed by using the following command across all operating systems:
+
+```shell
+  daytona server config
+```
+
+The Daytona Server configuration contains the following properties:
+
+- **Server ID**
+  
+    A unique identifier for the Daytona server instance.
+
+    Example: `12a34bc5-d67e-890f-1gh2-34i5jk6l7m89`
+
+- **API URL**
+  
+    The URL endpoint for the Daytona API.
+
+    Example: `https://api-12a34bc5-d67e-890f-1gh2-34i5jk6l7m89.try-eu.daytona.app`
+
+- **API Port**
+  
+    The port number on which the Daytona API is accessible.
+
+    Example: `3986`
+
+- **Default Project Image**
+  
+    The default Docker image used for projects.
+
+    Example: `daytonaio/workspace-project:latest`
+
+- **Default Project User**
+  
+    The default user for the projects.
+
+    Example: `daytona`
+
+- **FRPS Domain**
+  
+    The domain used by the FRP (Fast Reverse Proxy) server.
+
+    Example: `try-eu.daytona.app`
+
+- **FRPS Port**
+  
+    The port used by the FRP (Fast Reverse Proxy) server.
+
+    Example: `7000`
+
+- **FRPS Protocol**
+  
+    The protocol used by the FRP (Fast Reverse Proxy) server.
+
+    Example: `https`
+
+- **Headscale Port**
+  
+    The port number for the Headscale service.
+
+    Example: `3987`
+
+- **Binaries Path**
+  
+    The directory path where server binaries are stored.
+
+    Example: `/Users/Library/Application Support/daytona/server/binaries`
+
+- **Log File Path**
+  
+    The directory path where server logs are stored.
+
+    Example: `/Users/Library/Application Support/daytona/server/daytona.log`
+
+- **Builder Image**
+  
+    The Docker image used by the local builder.
+
+    Example: `daytonaio/workspace-project:latest`
+
+- **Local Builder Registry Port**
+  
+    The port number for the local builder registry.
+
+    Example: `3988`
+
+- **Local Builder Registry Image**
+  
+    The registry image used by the local builder registry.
+
+    Example: `registry:2.3.8`
+
+- **Build Image Namespace**
+  
+    The namespace for build images. This is used to organize and manage images within a specific scope.
+
+    Example: `daytona`
+
+- **Providers Dir**
+  
+    The directory path where provider configuration is stored.
+
+    Example: `/Users/Library/Application Support/daytona/providers`
+
+- **Registry URL**
+  
+   The URL for the Daytona registry.
+
+    Example: `https://download.daytona.io/daytona`
+
+- **Server Download URL**
+  
+    The URL for downloading the Daytona server.
+
+    Example: `https://download.daytona.io/daytona/install.sh`
+
+The Daytona Server configuration can be manually edited by using the following command:
+
+```shell
+daytona server configure
+```
+
+  ```text  
+    Providers Directory
+    Directory will be created if it does not exist
+    > /Users/Library/Application Support/daytona/providers
+
+    Providers Directory
+    > /Users/Library/Application Support/daytona/providers
+
+    Registry URL
+    > https://download.daytona.io/daytona
+
+    Server Download URL
+    > https://download.daytona.io/daytona/install.sh
+
+    Default Project Image
+    > daytonaio/workspace-project:latest
+
+    Default Project User
+    > daytona
+
+    Builder Image
+    Image dependencies: docker, @devcontainers/cli (node package)
+    > daytonaio/workspace-project:latest
+
+    Builder Registry
+    To add options, add a container registry with 'daytona cr set'
+    > Local registry managed by Daytona
+
+    Build Image Namespace
+    Namespace to be used when tagging and pushing build images
+    >
+
+    Local Builder Registry Port
+    > 3988
+
+    Local Builder Registry Image
+    > registry:0.0.0
+
+    API Port
+    > 3986
+
+    Headscale Port
+    > 3987
+
+    Binaries Path
+    Directory will be created if it does not exist
+    > /Users/Library/Application Support/daytona/server/binaries
+
+    Log File Path
+    File will be created if it does not exist
+    > /Users/Library/Application Support/daytona/server/daytona.log
+
+    Frps Domain
+    > try-eu.daytona.app
+
+    Frps Port
+    > 7000
+
+    Frps Protocol
+    > https
+  ```
+
+Upon successful configuration, Daytona will validate the settings and ensure all specified directories and files are correctly set up, preparing the server for optimal operation.
+
+  ```text
+    Server configuration updated. You need to restart the server for the changes to take effect.
+  ```
+
+Use the `daytona server restart` command to restart the server for the changes to take effect.
+
+## Restart the Server
+
+Run the following command to restart the Daytona Server:
+
+```shell
+  daytona server start
+```
+
+Upon running this command, Daytona will automatically stop and start The Daytona Server daemon.
+
+```text
+    Stopping the Daytona Server daemon...
+    Starting the Daytona Server daemon...
+    Daytona Server daemon restarted successfully
+```
+
+## Stop the Server
+
+Run the following command to stop the Daytona Server:
+
+```shell
+  daytona server stop
+```
+
+Upon running this command, Daytona will stop the Daytona Server daemon.
+
+```text
+    Stopping the Daytona Server daemon...
+```
