@@ -37,19 +37,13 @@ Creating a Workspace allows you to set up a new environment either by selecting 
    daytona create
    ```
 
-
-2. Select the Git Provider and repository you want your Workspace to be configured with.
-3. Enter a name for your Workspace.
-   <Aside type="note">
-     You can press `F10` to configure advanced settings for your Workspace,
-     including setting the [Builder](/usage/builders).
-
    <Aside type="tip">
       You can open a new Workspace in an [IDE](/usage/ide) by using the `--code` flag.
 
       ```shell
       daytona create --code
       ```
+
    </Aside>
 
 2. Select the Git Provider you want to use or select to enter a custom repository URL. Daytona provides two options for linking your repository:
@@ -76,7 +70,7 @@ Creating a Workspace allows you to set up a new environment either by selecting 
 
    <Aside type="note">
      You can press `F10` to configure advanced settings for your Workspace,
-     including setting the [Builder](../usage/builders).
+     including setting the [Builder](/usage/builders).
    </Aside>
 
 5. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
@@ -125,29 +119,10 @@ Creating a Workspace from an arbitrary Git URL allows you to set up a new enviro
       daytona   | Project daytona started
    ```
 
-<Aside type="tip">
-You can set the Project Builder at Workspace creation time using command-line flags.
-These flags only apply when creating Workspaces with a single Project.
-- To use the Custom Image Builder, set both `--custom-image` and `--custom-image-user` flags.
-- To use the Dev Container Builder, set the`--devcontainer-path` flag to the Dev Container configuration path within the repository.
-- To explicitly specify the Builder, set the`--builder` flag.
-    Accepted values are `auto`, `devcontainer`, or `none`.
-
-**Example**
-
-```shell
-daytona create <REPO_URL> --custom-image=daytona-workspace:latest --custom-image-user=daytona
-daytona create <REPO_URL> --devcontainer-path=.devcontainer/devcontainer.json
-daytona create <REPO_URL> --builder=auto
-```
-
-</Aside>
-
    <Aside type="tip">
    You can set the Project Builder at Workspace creation time using command-line
    flags. Refer to **[Builders](/usage/builders)** for more information.
    </Aside>
-
 
 ## List Workspaces
 
