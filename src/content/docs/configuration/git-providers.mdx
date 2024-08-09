@@ -12,11 +12,131 @@ Daytona allows you to integrate your preferred Git Provider, enhancing your deve
 
 By adding a Git Provider, your credentials are securely embedded into your Workspaces. This allows for seamless Git operations without repeated authentication.
 
-__Prerequisite__
+## Add a Git Provider
 
-- __A [working installation of Daytona](/installation/installation)__.
+1. Run the following command to add a Git Provider:
 
-    Verify your Daytona installation is up-to-date to avoid compatibility issues.
+    ```shell
+    daytona git-providers add
+    ```
+
+    Upon running this command, Daytona will prompt you to select the Git Provider you want to add.
+
+    ```text
+        Choose a Git provider
+        GitHub
+        GitLab
+        Bitbucket
+        Other
+    ```
+
+2. Select the Git Provider you want to configure from the list:
+
+    - __[GitHub](#github)__
+
+        Select if you are hosting repositories on GitHub.
+
+    - __[GitLab](#gitlab)__
+
+        Select if you are hosting repositories on GitLab.
+
+    - __[Bitbucket](#bitbucket)__
+
+        Select if you are hosting repositories on Atlassian's Bitbucket Cloud platform.
+
+    - __Other__
+
+        - __[GitHub Enterprise Server](#github-enterprise-server)__
+
+            Select if you are hosting repositories on GitHub Enterprise Server.
+
+        - __[GitLab Self-Managed](#gitlab-self-managed)__
+
+            Select if you are hosting repositories on GitLab's self-hosted platform.
+
+            Self-hosted GitLab Community Edition (CE) installations, GitLab Self-Managed, and GitLab Dedicated platforms are supported.
+
+        - __[Bitbucket Server](#bitbucket-server)__
+
+            Select if you are hosting repositories on Bitbucket Server.
+
+        - __[Codeberg](#codeberg)__
+
+            Select if you are hosting repositories on Codeberg.
+
+        - __[Gitea](#gitea)__
+
+            Select if you are hosting repositories on Gitea.
+
+        - __[Gitness](#gitness)__
+
+            Select if you are hosting repositories on Gitness.
+
+        - __[Azure DevOps](#azure-devops)__
+
+            Select if you are hosting repositories on Azure DevOps.
+
+        - __[AWS CodeCommit](#aws-codecommit)__
+
+            Select if you are hosting repositories on AWS CodeCommit.
+
+3. Enter your Git Provider credentials for Daytona to authenticate and enable secure access to your repositories.
+
+    ```text
+        Personal access token
+        >
+    ```
+
+    Some Git Providers require additional information such as your _username_ or the _URL_ of your self-managed API instance to complete the configuration.
+
+    ```text
+        Git provider has been registered
+    ```
+
+## List Connected Git Providers
+
+Daytona allows you to keep track of your Git Providers by listing all previously created Git Providers.
+
+__Procedure__
+
+1. Run the following command to list currently connected Git Providers:
+
+    ```shell
+    daytona git-providers list
+    ```
+
+    Upon running this command, Daytona will display a list of your connected Git Providers.
+
+    ```text
+        GitHub (username)
+        GitLab (username)
+    ```
+
+## Delete a Git Provider
+
+Daytona allows you to delete Git Providers, helping you manage and delete those that are no longer needed. Once a Git Provider is deleted, you will not be able to manage or deploy Workspaces without adding another Git Provider.
+
+__Procedure__
+
+1. Run the following command to delete a Git Provider:
+
+    ```shell
+    daytona git-providers delete
+    ```
+
+    Upon running this command, Daytona will display a list of existing Git Providers you can delete.
+
+    ```text
+        Choose a Git provider
+        GitHub
+        GitLab
+    ```
+
+2. Select the Git Provider you want to delete.
+
+    ```text
+        Git provider has been removed
+    ```
 
 ## GitHub
 
@@ -517,51 +637,6 @@ Daytona allows you to connect your AWS CodeCommit account and access your reposi
 
     ```text
         Git provider has been registered
-    ```
-
-## List Connected Git Providers
-
-Daytona allows you to keep track of your Git Providers by listing all previously created Git Providers.
-
-__Procedure__
-
-1. Run the following command to list currently connected Git Providers:
-
-    ```shell
-    daytona git-providers list
-    ```
-
-    Upon running this command, Daytona will display a list of your connected Git Providers.
-
-    ```text
-        GitHub (username)
-        GitLab (username)
-    ```
-
-## Delete a Git Provider
-
-Daytona allows you to delete Git Providers, helping you manage and delete those that are no longer needed. Once a Git Provider is deleted, you will not be able to manage or deploy Workspaces without adding another Git Provider.
-
-__Procedure__
-
-1. Run the following command to delete a Git Provider:
-
-    ```shell
-    daytona git-providers delete
-    ```
-
-    Upon running this command, Daytona will display a list of existing Git Providers you can delete.
-
-    ```text
-        Choose a Git provider
-        GitHub
-        GitLab
-    ```
-
-2. Select the Git Provider you want to delete.
-
-    ```text
-        Git provider has been removed
     ```
 
 [gh-token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic
