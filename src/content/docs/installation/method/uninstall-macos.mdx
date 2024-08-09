@@ -1,10 +1,10 @@
 ---
-title: Linux Uninstallation
+title: macOS Uninstallation
 ---
 import Aside from "@components/Aside.astro";
 export const partial = true;
 
-You can uninstall Daytona after using the official installation script.
+You can uninstall Daytona by following this procedure.
 
 <Aside type="caution">
 This procedure is destructive and irreversible.
@@ -21,5 +21,12 @@ __Procedure__
 
     ```shell
     daytona purge
+    sudo rm $(where daytona)
+    ```
+
+    Run the following commands if the `daytona purge` command does not work, or if you want to manually purge local Daytona data and remove the binary:
+
+    ```shell
+    rm -rf ~/Library/Application\ Support/daytona
     sudo rm $(where daytona)
     ```
