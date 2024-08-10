@@ -26,7 +26,20 @@ Upon running this command, Daytona will start the The Daytona Server daemon.
 ## Configure the Server
 
 The Daytona Server configuration is located in different directories depending on your operating system.
-The server configuration can be viewed by using the following command across all operating systems:
+
+- On macOS, the configuration file is located at:
+
+    `~/Library/Application\ Support/daytona/server/config.json`.
+
+- On Linux, the configuration file is located at:
+
+    `~/.config/daytona/server/config.json`.
+
+- On Windows, the configuration file is located at:
+
+    `C:\Users\YOUR_USERNAME\AppData\Roaming\daytona\server\config.json`.
+
+The Daytona Server configuration can be viewed by using the following command across all operating systems:
 
 ```shell
   daytona server config
@@ -46,11 +59,15 @@ The Daytona Server configuration contains the following properties:
 
     Example: `https://api-12a34bc5-d67e-890f-1gh2-34i5jk6l7m89.try-eu.daytona.app`
 
+    The API URL property cannot be manually edited, but you can use it to connect to Daytona with other clients.
+
 - **API Port**
   
     The port number on which the Daytona API is accessible.
 
     Example: `3986`
+
+    If you have something running on port 3986, you can change it to a port that you have available.
 
 - **Default Project Image**
   
@@ -58,11 +75,15 @@ The Daytona Server configuration contains the following properties:
 
     Example: `daytonaio/workspace-project:latest`
 
+    The Default Project Image property can be manually edited to use a different default project image.
+
 - **Default Project User**
   
-    The default user for the projects.
+    The default user for projects.
 
     Example: `daytona`
+
+    The Default Project User property can be manually edited to use a different default project user.
 
 - **FRPS Domain**
   
@@ -70,11 +91,15 @@ The Daytona Server configuration contains the following properties:
 
     Example: `try-eu.daytona.app`
 
+    The FRPS Domain property can be manually edited to use a different FRP domain.
+
 - **FRPS Port**
   
     The port used by the FRP (Fast Reverse Proxy) server.
 
     Example: `7000`
+
+    The FRPS Port property can be manually edited to use a different FRP port.
 
 - **FRPS Protocol**
   
@@ -82,11 +107,15 @@ The Daytona Server configuration contains the following properties:
 
     Example: `https`
 
+    The FRPS Protocol property can be manually edited to use a different FRP protocol.
+
 - **Headscale Port**
   
     The port number for the Headscale service.
 
     Example: `3987`
+
+    The Headscale Port property can be manually edited to use a different Headscale port.
 
 - **Binaries Path**
   
@@ -94,11 +123,15 @@ The Daytona Server configuration contains the following properties:
 
     Example: `/Users/Library/Application Support/daytona/server/binaries`
 
+    The Binaries Path directory will be created if it does not exist, and the property can be manually edited to use a different binaries path.
+
 - **Log File Path**
   
     The directory path where server logs are stored.
 
     Example: `/Users/Library/Application Support/daytona/server/daytona.log`
+
+    The Log File Path file will be created if it does not exist, and the property can be manually edited to use a different log file path.
 
 - **Builder Image**
   
@@ -106,11 +139,15 @@ The Daytona Server configuration contains the following properties:
 
     Example: `daytonaio/workspace-project:latest`
 
+    The Builder Image property can be manually edited to use a different builder image.
+
 - **Local Builder Registry Port**
   
     The port number for the local builder registry.
 
     Example: `3988`
+
+    The Local Builder Registry Port property can be manually edited to use a different local builder registry port.
 
 - **Local Builder Registry Image**
   
@@ -118,11 +155,15 @@ The Daytona Server configuration contains the following properties:
 
     Example: `registry:2.3.8`
 
+    The Local Builder Registry Image property can be manually edited to use a different local builder registry image.
+
 - **Build Image Namespace**
   
     The namespace for build images. This is used to organize and manage images within a specific scope.
 
     Example: `daytona`
+
+    The Build Image Namespace property can be manually edited to use a different build image namespace.
 
 - **Providers Dir**
   
@@ -223,7 +264,7 @@ Use the `daytona server restart` command to restart the server for the changes t
 Run the following command to restart the Daytona Server:
 
 ```shell
-  daytona server start
+  daytona server restart
 ```
 
 Upon running this command, Daytona will automatically stop and start The Daytona Server daemon.
