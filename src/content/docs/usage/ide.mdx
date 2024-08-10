@@ -1,43 +1,36 @@
 ---
 title: IDEs
-description: Connect to your Workspace using your preferred IDE.
+description: Connect to your Workspace using your default IDE.
 sidebar:
   label: IDEs
 ---
 
 import Aside from '@components/Aside.astro'
 
-Daytona allows you to connect to your Workspace using your preferred IDE.
+Daytona allows you to connect to your [Workspace](/usage/workspaces#open-an-existing-workspace) using your default IDE.
 
 Out of the box, Daytona can be configured to open your Workspace in the following IDEs:
 
 - **Visual Studio Code (VSCode)**
 
-  - Desktop (Linux, macOS, Windows)
-  - Browser
+  - [Desktop (Linux, macOS, Windows)](#vs-code)
+  - [Browser](#vs-code-browser)
 
 - **JetBrains IDEs**
-  - CLion
-  - GoLand
-  - IntelliJ IDEA Ultimate
-  - PhpStorm
-  - Rider
-  - RubyMine
-  - WebStorm
+  - [CLion](#jetbrains-clion)
+  - [GoLand](#jetbrains-goland)
+  - [IntelliJ IDEA Ultimate](#jetbrains-intellij-idea-ultimate)
+  - [PhpStorm](#jetbrains-phpstorm)
+  - [PyCharm Professional](#jetbrains-pycharm-professional)
+  - [Rider](#jetbrains-rider)
+  - [RubyMine](#jetbrains-rubymine)
+  - [WebStorm](#jetbrains-webstorm)
 
-- **Terminal SSH**
+- [Terminal SSH](#terminal-ssh)
 
 ## Set the Default IDE
 
-You can set the default IDE used by Daytona.
-
-**Prerequisites**
-
-- **A working installation of Daytona.**
-
-  Verify your Daytona installation is up-to-date to avoid compatibility issues.
-
-**Procedure**
+You can set the default IDE to connect to your Workspace used by Daytona.
 
 1. Run the following command to set the default IDE:
 
@@ -61,11 +54,299 @@ You can set the default IDE used by Daytona.
 2. Select your preferred IDE from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
 
    ```text
-       Default IDE:  VS Code
+    Default IDE:  VS Code
    ```
 
    You can now use the `daytona code` command to automatically open the default IDE already connected to your Workspace.
 
-:::note
-When using the `daytona code` command with `VS Code - Browser` as your default IDE, Daytona will install OpenVSCode Server inside your project, forward the appropriate port to your local machine, and open your default browser automatically.
-:::
+## VS Code
+
+Daytona allows you to connect to your Workspace using Visual Studio Code (VSCode) IDE.
+
+1. Run the following command to set your default IDE to VS Code:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `VS Code` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | VS Code
+    ```
+
+2. Select `VS Code` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE:  VS Code
+    ```
+
+    You can now use the `daytona code` command to automatically open the default IDE already connected to your Workspace.
+
+## VS Code Browser
+
+Daytona allows you to connect to your Workspace using Visual Studio Code (VSCode) Browser IDE.
+
+1. Run the following command to set your default IDE to VSCode Browser:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `VS Code` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | VS Code - Browser
+    ```
+
+2. Select `VS Code - Browser` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE:  VS Code - Browser
+    ```
+
+    You can now use the `daytona code` command to automatically open the VS Code - Browser IDE already connected to your Workspace.
+
+    <br />
+
+    :::note
+      When using the `daytona code` command with `VS Code - Browser` as your default IDE, Daytona will install OpenVSCode Server inside your project, forward the appropriate port to your local machine, and open your default browser automatically.
+    :::
+
+## JetBrains CLion
+
+Daytona allows you to connect to your Workspace using JetBrains CLion IDE.
+
+1. Run the following command to set your default IDE to JetBrains CLion IDE:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `CLion` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | CLion
+    ```
+
+2. Select `CLion` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE:  CLion
+    ```
+
+    You can now use the `daytona code` command to automatically open the JetBrains CLion IDE already connected to your Workspace.
+
+## JetBrains GoLand
+
+Daytona allows you to connect to your Workspace using JetBrains GoLand IDE.
+
+1. Run the following command to set your default IDE to JetBrains GoLand IDE:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `GoLand` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | GoLand
+    ```
+
+2. Select `GoLand` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE:  GoLand
+    ```
+
+    You can now use the `daytona code` command to automatically open the JetBrains GoLand IDE already  connected to your Workspace.
+
+## JetBrains IntelliJ IDEA Ultimate
+
+Daytona allows you to connect to your Workspace using JetBrains IntelliJ IDEA Ultimate IDE.
+
+1. Run the following command to set your default IDE to JetBrains IntelliJ IDEA Ultimate IDE:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `IntelliJ IDEA Ultimate` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | IntelliJ IDEA Ultimate
+    ```
+
+2. Select `IntelliJ IDEA Ultimate` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE: IntelliJ IDEA Ultimate
+    ```
+
+    You can now use the `daytona code` command to automatically open the JetBrains IntelliJ IDEA Ultimate IDE already connected to your Workspace.
+
+## JetBrains PhpStorm
+
+Daytona allows you to connect to your Workspace using JetBrains PhpStorm IDE.
+
+1. Run the following command to set your default IDE to JetBrains PhpStorm IDE:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `PhpStorm` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | PhpStorm
+    ```
+
+2. Select `PhpStorm` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE: PhpStorm
+    ```
+
+    You can now use the `daytona code` command to automatically open the JetBrains PhpStorm IDE already connected to your Workspace.
+
+## JetBrains PyCharm Professional
+
+Daytona allows you to connect to your Workspace using JetBrains PyCharm Professional IDE.
+
+1. Run the following command to set your default IDE to JetBrains PyCharm Professional IDE:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `PyCharm Professional` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | PyCharm Professional
+    ```
+
+2. Select `PyCharm Professional` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE: PyCharm Professional
+    ```
+
+    You can now use the `daytona code` command to automatically open the JetBrains PyCharm Professional IDE already connected to your Workspace.
+
+## JetBrains Rider
+
+Daytona allows you to connect to your Workspace using JetBrains Rider IDE.
+
+1. Run the following command to set your default IDE to JetBrains Rider IDE:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `Rider` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | Rider
+    ```
+
+2. Select `Rider` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE: Rider
+    ```
+
+    You can now use the `daytona code` command to automatically open the JetBrains Rider IDE already connected to your Workspace.
+
+## JetBrains RubyMine
+
+Daytona allows you to connect to your Workspace using JetBrains RubyMine IDE.
+
+1. Run the following command to set your default IDE to JetBrains RubyMine IDE:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `RubyMine` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | RubyMine
+    ```
+
+2. Select `RubyMine` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE: RubyMine
+    ```
+
+    You can now use the `daytona code` command to automatically open the JetBrains RubyMine IDE already connected to your Workspace.
+
+## JetBrains WebStorm
+
+Daytona allows you to connect to your Workspace using JetBrains WebStorm IDE.
+
+1. Run the following command to set your default IDE to JetBrains WebStorm IDE:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `WebStorm` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | WebStorm
+    ```
+
+2. Select `WebStorm` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE: WebStorm
+    ```
+
+    You can now use the `daytona code` command to automatically open the JetBrains WebStorm IDE already connected to your Workspace.
+
+## Terminal SSH
+
+Daytona allows you to connect to your Workspace using Terminal SSH.
+
+1. Run the following command to set your default IDE to Terminal SSH:
+
+   ```shell
+   daytona ide
+   ```
+
+    Upon running this command, Daytona will display a list of available IDEs, allowing you to select `Terminal SSH` as your default choice.
+
+    ```text
+      Choose Your Default IDE
+
+      | Terminal SSH
+    ```
+
+2. Select `Terminal SSH` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+    ```text
+    Default IDE: Terminal SSH
+    ```
+
+    You can now use the `daytona code` command to automatically open the Terminal SSH already connected to your Workspace.
