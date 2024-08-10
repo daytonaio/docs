@@ -30,3 +30,23 @@ __Procedure__
     rm -rf ~/Library/Application\ Support/daytona
     sudo rm $(where daytona)
     ```
+
+    Additionally, to fully remove all Daytona-related configurations and components, run the following command:
+
+    ```shell
+    rm -f ~/.ssh/daytona_config
+    ```
+
+    Edit your `~/.ssh/config` file to remove the `Include daytona_config entry`. You can do this manually by running the following command:
+
+    ```shell
+    nano ~/.ssh/config
+    ```
+
+    Remove the local Daytona registry container by running the following command:
+
+    ```shell
+    docker rm /daytona-registry
+    ```
+
+    If you have generated any autocomplete scripts for Daytona, you will need to remove them manually from your shell configuration files (e.g., `.bashrc`, `.zshrc`).
