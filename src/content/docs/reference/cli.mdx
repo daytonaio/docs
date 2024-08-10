@@ -9,9 +9,8 @@ import Aside from "@components/Aside.astro";
 The `daytona` command-line tool provides access to Daytona's core features.
 You can use the `daytona` tool for the following operations:
 
-* Managing the lifecycle of the Daytona Server.
-* Managing [Workspaces](/usage/workspaces), [Git Providers](/configuration/git-providers), [Providers](/configuration/providers), and other Daytona components.
-* Configuring the [Daytona Server](/usage/server) interactively.
+* Managing the lifecycle and configuring the [Daytona Server](/usage/server).
+* Managing [Workspaces](../usage/workspaces), [Git Providers](../configuration/git-providers), [Providers](../configuration/providers), [Builders](../usage/builders), [IDEs](../usage/ide) and other Daytona components.
 
 This reference lists all commands supported by the `daytona` command-line tool complete with a description of their behaviour, and any supported flags.
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
@@ -22,173 +21,245 @@ This reference does not apply to the `daytona` command when run inside of a Work
 
 ## daytona
 
-Daytona is a Dev Environment Manager
+Daytona is an open-source Development Environment Manager.
 
 ```shell
 daytona [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona api-key
 
-Api Key commands
+Daytona [API](/reference/api) Key commands.
 
 ```shell
 daytona api-key [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona api-key generate
 
-Generate a new API key
+Generate a new API key for accessing Daytona services. The command supports saving the key to a default profile and specifying the output format.
 
 ```shell
 daytona api-key generate [NAME] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--save` | `-s` | Save the API key to your default profile on this machine |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Generated API key:  A1BcDEFgHIjkLMN2OPR34StU5VzaBcDiJkLMnOPR6StUvzA
+  Make sure to copy it as you will not be able to see it again.
+  ===
+  You can connect to the Daytona Server from a client machine by running:
+  daytona profile add -a \
+   https://api-ab1cd234-56e7-8f90-123g-h456ijklm789.try-eu.daytona.app \
+   -k A1BcDEFgHIjkLMN2OPR34StU5VzaBcDiJkLMnOPR6StUvzA
+```
 
 ## daytona api-key list
 
-List API keys
+List all existing API keys with their respective names and types. The command supports specifying the output format.
 
 ```shell
 daytona api-key list [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Name                     Type
+  ───────────────────────────────
+  MyAPIKey                 client
+```
 
 ## daytona api-key revoke
 
-Revoke an API key
+Revoke a specified API key. The command supports specifying the output format and confirmation without prompt.
 
 ```shell
 daytona api-key revoke [NAME] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--yes` | `-y` | Skip confirmation prompt |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  API key revoked
+```
 
 ## daytona autocomplete
 
-Adds completion script for your shell enviornment
+Add a completion script for your specified shell environment. The command supports specifying the script and the output format.
 
 ```shell
 daytona autocomplete [bash|zsh|fish|powershell] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Autocomplete script generated and injected successfully.
+  Please source your bash profile to apply the changes or restart your terminal.
+  For manual sourcing, use: source /Users/.bashrc
+```
 
 ## daytona code
 
-Open a workspace in your preferred IDE
+Open a specified workspace and project in your preferred [IDE](/usage/ide). The command supports specifying the IDE and the output format.
 
 ```shell
 daytona code [WORKSPACE] [PROJECT] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--ide` | `-i` | Specify the IDE ('vscode' or 'browser') |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Opening the project 'MyProject' from workspace 'MyWorkspace' in VS Code
+```
 
 ## daytona container-registry
 
-Manage container registries
+Manage operations related to [container registries](/usage/builders#setting-a-custom-build-registry). The command supports specifying the output format.
 
 ```shell
 daytona container-registry [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
-
-## daytona container-registry delete
-
-Delete a container registry
-
-```shell
-daytona container-registry delete [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
-
-## daytona container-registry list
-
-Lists container registries
-
-```shell
-daytona container-registry list [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona container-registry set
 
-Set container registry
+Set the configuration for a container registry. The command supports specifying the password, server URL, username, and the output format.
 
 ```shell
 daytona container-registry set [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--password` | `-p` | Password |
 | `--server` | `-s` | Server |
 | `--username` | `-u` | Username |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Registry set successfully
+```
+
+## daytona container-registry list
+
+List all existing container registries with their respective details. The command supports specifying the output format.
+
+```shell
+daytona container-registry list [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Server                Username               Password
+  ───────────────────────────────────────────────────────
+  myserver              username               **********
+```
+
+## daytona container-registry delete
+
+Delete a specified container registry. The command supports specifying the output format.
+
+```shell
+daytona container-registry delete [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+  ```text
+    Container registry deleted successfully
+  ```
 
 ## daytona create
 
-Create a workspace
+Create a [Workspace](/usage/workspaces#create-a-workspace) by specifying the repository URL. The command supports opening the workspace in an [IDE](/usage/ide), specifying the IDE, setting a [Provider](/configuration/providers) and a [Target](/configuration/providers#managing-targets), manual repository entry, and multiple projects.
 
 ```shell
 daytona create [REPOSITORY_URL] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--code` | `-c` | Open the workspace in the IDE after workspace creation |
@@ -198,614 +269,1036 @@ __Flags__
 | `--name` |  | Specify the workspace name |
 | `--provider` |  | Specify the provider (e.g. 'docker-provider') |
 | `--target` | `-t` | Specify the target (e.g. 'local') |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+  ```text
+    WORKSPACE | ✓ Request submitted
+    WORKSPACE | ✓ Creating workspace daytona
+    daytona   | Creating project daytona
+    daytona   | Pulling image...
+    daytona   | Pulling from daytonaio/workspace-project
+    ...
+    daytona   | Project daytona created
+    daytona   | Starting project daytona
+    daytona   | Project daytona started
+  ```
 
 ## daytona delete
 
-Delete a workspace
+Delete a specified [Workspace](/usage/workspaces#delete-workspaces). The command supports deleting all workspaces, forced deletion, and confirmation without prompt.
 
 ```shell
 daytona delete [WORKSPACE] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | Delete all workspaces |
 | `--force` | `-f` | Delete a workspace by force |
 | `--yes` | `-y` | Confirm deletion without prompt |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+   ```text
+      Workspace MyWorkspace successfully deleted
+   ```
 
 ## daytona docs
 
-Opens the Daytona documentation in your default browser.
+Open the Daytona documentation in the default browser. The command supports specifying the output format.
 
 ```shell
 daytona docs [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Opening the Daytona documentation in your default browser. 
+  If opening fails, you can go to https://www.daytona.io/docs/ manually.
+```
 
 ## daytona env
 
-Manage profile environment variables that are added to all workspaces
+Manage profile environment variables that are applied to all workspaces. The command supports specifying the output format.
 
 ```shell
 daytona env [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
-
-## daytona env list
-
-List profile environment variables
-
-```shell
-daytona env list [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona env set
 
-Set profile environment variables
+Set profile environment variables using key-value pairs. The command supports specifying the output format.
 
 ```shell
 daytona env set [KEY=VALUE]... [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Profile environment variables have been successfully set
+```
+
+## daytona env list
+
+List all profile environment variables. The command supports specifying the output format.
+
+```shell
+daytona env list [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Key                        Value 
+  ──────────────────────────────────
+  MyKey                      MyValue
+```
 
 ## daytona forward
 
-Forward a port from a project to your local machine
+[Forward a port](/usage/workspaces#forward-ports-from-a-workspace) from a specified project to the local machine. The command supports making the port available publicly via a URL.
 
 ```shell
 daytona forward [PORT] [WORKSPACE] [PROJECT] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--public` |  | Should be port be available publicly via an URL |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--public` |  | Should be port be available publicly via a URL |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Port available at https://api.try-eu.daytona.app:4321
+```
 
 ## daytona git-providers
 
-Manage Git providers
+Manage [Git Providers](/configuration/git-providers). The command supports specifying the output format.
 
 ```shell
 daytona git-providers [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona git-providers add
 
-Register a Git providers
+Register and add a Git Provider. The command supports specifying the output format.
 
 ```shell
 daytona git-providers add [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
-## daytona git-providers delete
+Example of a successful CLI output:
 
-Unregister a Git providers
-
-```shell
-daytona git-providers delete [flags]
+```text
+  Git provider has been registered
 ```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona git-providers list
 
-Lists your registered Git providers
+List your registered Git Providers. The command supports specifying the output format.
 
 ```shell
 daytona git-providers list [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  GitHub (username)
+  GitLab (username)
+```
+
+## daytona git-providers delete
+
+Delete a specified Git provider. The command supports specifying the output format.
+
+```shell
+daytona git-providers delete [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Git provider has been removed
+```
 
 ## daytona ide
 
-Choose the default IDE
+Set the default [IDE](/usage/ide) for workspaces. The command supports specifying the output format.
 
 ```shell
 daytona ide [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Default IDE:  VS Code
+```
 
 ## daytona info
 
-Show workspace info
+Display information about a specified [Workspace](/usage/workspaces). The command supports specifying the output format.
 
 ```shell
 daytona info [WORKSPACE] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Workspace Info
+
+  Name          MyWorkspace
+  ID            42273f99036b
+  State         running
+  Branch        main
+  Target        local
+  Repository    github.com/username/MyProject
+  Project       MyProject
+```
 
 ## daytona list
 
-List workspaces
+List all Workspaces with their respective details. The command supports verbose output and specifying the output format.
 
 ```shell
 daytona list [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--verbose` | `-v` | Show verbose output |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Workspace        Repository          Target     Status
+  ─────────────────────────────────────────────────────────────────────
+  MyWorkspace      username/MyProject  local      RUNNING (30 minutes)
+```
 
 ## daytona profile
 
-Manage profiles
+Manage user profiles for Daytona. The command supports specifying the output format.
 
 ```shell
 daytona profile [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona profile add
 
-Add profile
+Add a new profile by specifying configuration. The command supports adding an API key, an API URL, a profile name, and specifying the output format.
 
 ```shell
 daytona profile add [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--api-key` | `-k` | API Key |
 | `--api-url` | `-a` | API URL |
 | `--name` | `-n` | Profile name |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
-## daytona profile delete
+Example of a successful CLI output:
 
-Delete profile [PROFILE_NAME]
-
-```shell
-daytona profile delete [flags]
+```text
+  Profile MyProfile added and set as active
+  Server URL: https://api.try-eu.daytona.app
 ```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
-
-## daytona profile edit
-
-Edit profile [PROFILE_NAME]
-
-```shell
-daytona profile edit [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--api-key` | `-k` | API Key |
-| `--api-url` | `-a` | API URL |
-| `--name` | `-n` | Profile name |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona profile list
 
-List profiles
+List all profiles. The command supports specifying the output format.
 
 ```shell
 daytona profile list [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  ID              Name            Status       API URL
+  ───────────────────────────────────────────────────────────────────────────
+  MyProfile       MyProfile       Active       https://api.try-eu.daytona.app
+```
+
+## daytona profile edit
+
+Edit an existing profile. The command supports editing an API key, an API URL, and a profile name.
+
+```shell
+daytona profile edit [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--api-key` | `-k` | API Key |
+| `--api-url` | `-a` | API URL |
+| `--name` | `-n` | Profile name |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Profile MyProfile edited
+  Server URL: https://api.try-eu.daytona.app
+```
+
+## daytona profile delete
+
+Delete a specified profile. The command supports specifying the output format.
+
+```shell
+daytona profile delete [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+## daytona project-config
+
+Manage configuration for a specified project. The command supports specifying the output format.
+
+```shell
+daytona project-config [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+## daytona project-config add
+
+Add a configuration for a specified project. The command supports manually entering the Git repository and specifying the output format.
+
+```shell
+daytona project-config add [flags]
+```
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--manual` |  | Manually enter the Git repository. |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Project config added successfully
+```
+
+## daytona project-config update
+
+Update a specified project configuration. The command supports specifying the output format.
+
+```shell
+daytona project-config update [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Project config updated successfully
+```
+
+## daytona project-config info
+
+Display the configuration information for a specified project. The command supports specifying the output format.
+
+```shell
+daytona project-config info [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Project Config Info
+
+  Name          MyConfig
+  Repository    github.com/username/MyProject
+  Image         daytonaio/workspace-project:latest
+  User          MyUsername
+```
+
+## daytona project-config list
+
+List all project configurations. The command supports specifying the output format.
+
+```shell
+daytona project-config list [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Name            Repository              Build           Default
+  ───────────────────────────────────────────────────────────────
+  MyConfig        username/MyProject      Automatic       Yes
+```
+
+## daytona project-config set-default
+
+Set a specified project configuration as the default configuration. The command supports specifying the output format.
+
+```shell
+daytona project-config set-default [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Project config 'MyConfig' set as default
+```
+
+## daytona project-config delete
+
+Delete a specified project configuration. The command supports specifying the output format.
+
+```shell
+daytona project-config delete [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Project config deleted successfully
+```
 
 ## daytona provider
 
-Manage providers
+Manage [Providers](/configuration/providers). The command supports specifying the output format.
 
 ```shell
 daytona provider [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona provider install
 
-Install provider
+Install a specified Provide. The command supports specifying the output format.
 
 ```shell
 daytona provider install [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
-## daytona provider list
+Example of a successful CLI output:
 
-List installed providers
-
-```shell
-daytona provider list [flags]
+```text
+  Provider docker-provider has been successfully installed
 ```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
-
-## daytona provider uninstall
-
-Uninstall provider
-
-```shell
-daytona provider uninstall [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona provider update
 
-Update provider
+Update a specified Provider or all Providers. The command supports specifying the output format.
 
 ```shell
 daytona provider update [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | Update all providers |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Provider docker-provider has been successfully updated
+```
+
+## daytona provider list
+
+List all installed Providers. The command supports specifying the output format.
+
+```shell
+daytona provider list [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+## daytona provider uninstall
+
+Uninstall a specified Provider. The command supports specifying the output format.
+
+```shell
+daytona provider uninstall [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Provider docker-provider has been successfully uninstalled
+```
 
 ## daytona purge
 
-Purges all Daytona data from the current device
+Purge all Daytona data from the current device. The command supports forced deletion and executing purge without prompt.
 
 ```shell
 daytona purge [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--force` | `-f` | Delete all workspaces by force |
 | `--yes` | `-y` | Execute purge without prompt |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Deleting all workspaces
+  Deleting the SSH configuration file
+  Deleting autocompletion data
+  All Daytona data has been successfully cleared from the device.
+  You may now delete the binary
+```
 
 ## daytona serve
 
-Run the server process in the current terminal session
+Run the server process in the current terminal session. The command supports specifying the output format.
 
 ```shell
 daytona serve [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Using default FRPS config
+  Starting Daytona server
+  Starting local container registry
+  Pulling image...
+  Pulling from library/registr
+  Pull complete
+  Image pulled successfully
+```
 
 ## daytona server
 
-Start the server process in daemon mode
+Start the server process in daemon mode. The command supports confirmation without prompt and specifying the output format.
 
 ```shell
 daytona server [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--yes` | `-y` | Execute purge without prompt |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--yes` | `-y` | Skip the confirmation prompt |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona server config
 
-Output local Daytona Server config
+Output the local [Daytona Server configuration](/usage/server#configuring-the-server). The command supports specifying the output format.
 
 ```shell
 daytona server config [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona server configure
 
-Configure Daytona Server
+Configure the [Daytona Server](/usage/server#configuring-the-server). The command supports specifying the output format.
 
 ```shell
 daytona server configure [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona server logs
 
-Output Daytona Server logs
+Output Daytona Server logs. The command supports following logs and specifying the output format.
 
 ```shell
 daytona server logs [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--follow` | `-f` | Follow logs |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona server restart
 
-Restarts the Daytona Server daemon
+Restart the Daytona Server daemon. The command supports specifying the output format.
 
 ```shell
 daytona server restart [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Stopping the Daytona Server daemon...
+  Starting the Daytona Server daemon...
+  Daytona Server daemon restarted successfully
+```
 
 ## daytona server start
 
-Start the Daytona Server daemon
+Start the Daytona Server daemon. The command supports specifying the output format.
 
 ```shell
 daytona server start [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Starting the Daytona Server daemon...
+  Starting Daytona server
+  Starting local container registry
+```
 
 ## daytona server stop
 
-Stops the Daytona Server daemon
+Stop the Daytona Server daemon. The command supports specifying the output format.
 
 ```shell
 daytona server stop [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Stopping the Daytona Server daemon...
+```
 
 ## daytona ssh
 
-SSH into a project using the terminal
+SSH into a project using the terminal. The command supports specifying the output format.
 
 ```shell
 daytona ssh [WORKSPACE] [PROJECT] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona start
 
-Start a workspace
+Start a specified workspace. The command supports starting all workspaces or a single project within a workspace, and specifying the output format.
 
 ```shell
 daytona start [WORKSPACE] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | Start all workspaces |
 | `--project` | `-p` | Start a single project in the workspace (project name) |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Workspace 'MyWorkspace' is starting
+```
 
 ## daytona stop
 
-Stop a workspace
+Stop a specified workspace. The command supports stopping all workspaces or a single project within a workspace, and specifying the output format.
 
 ```shell
 daytona stop [WORKSPACE] [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | Stop all workspaces |
 | `--project` | `-p` | Stop a single project in the workspace (project name) |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Workspace 'MyWorkspace' is stopping
+```
 
 ## daytona target
 
-Manage provider targets
+Manage [Targets](/configuration/providers#managing-targets). The command supports specifying the output format.
 
 ```shell
 daytona target [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
-
-## daytona target list
-
-List targets
-
-```shell
-daytona target list [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
-
-## daytona target remove
-
-Remove target
-
-```shell
-daytona target remove [TARGET_NAME] [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--yes` | `-y` | Confirm deletion of all workspaces without prompt |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
 
 ## daytona target set
 
-Set provider target
+Set a specified target. The command supports specifying the output format.
 
 ```shell
 daytona target set [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Target set successfully
+```
+
+## daytona target list
+
+List all targets. The command supports specifying the output format.
+
+```shell
+daytona target list [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Target      Provider            Options
+  ───────────────────────────────────────────────────────────────────────
+  MyTarget    docker-provider     {
+                                    "Sock Path": "/var/run/docker.sock"
+                                  }
+```
+
+## daytona target remove
+
+Remove a specified target. The command supports confirming deletion of all workspaces without prompt and specifying the output format.
+
+```shell
+daytona target remove [TARGET_NAME] [flags]
+```
+
+**Flags**
+
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--yes` | `-y` | Confirm deletion of all workspaces without prompt |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Target MyTarget removed successfully
+```
 
 ## daytona use
 
-Set the active profile
+Set the active profile. The command supports specifying the output format.
 
 ```shell
 daytona use [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Active profile set to: MyProfile
+```
 
 ## daytona version
 
-Print the version number
+Print the version number. The command supports specifying the output format.
 
 ```shell
 daytona version [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  Daytona version v0.0.0
+```
 
 ## daytona whoami
 
-Display information about the active user
+Display information about the active user. The command supports specifying the output format.
 
 ```shell
 daytona whoami [flags]
 ```
 
-__Flags__
+**Flags**
+
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--help` | `-h` | Help for Daytona. |
+| `--output` | `-o` | Output format. Must be one of (`yaml`, `json`). |
+
+Example of a successful CLI output:
+
+```text
+  You are currently on profile MyProfile
+
+  Profile ID:         myprofile
+  API URL:            https://api.try-eu.daytona.app
+```
