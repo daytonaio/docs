@@ -3,6 +3,11 @@ import { Image } from 'astro:assets'
 import textArrowIcon from '@assets/icons/text-arrow.svg?raw'
 import Default from '@astrojs/starlight/components/Footer.astro'
 import ThemeSelect from './ThemeSelect.astro'
+import { version } from '../../package.json'
+import { major, minor, patch } from 'semver'
+const [maj, min] = [major(version), minor(version)]
+const release = `${maj}.${min}`
+const releaseLink = `https://github.com/daytonaio/daytona/releases/tag/v${release}.0`
 ---
 
 <Default {...Astro.props}>
@@ -17,8 +22,7 @@ import ThemeSelect from './ThemeSelect.astro'
     </p>
     <p>
       <Fragment set:html={textArrowIcon} />Latest project updates? - <a
-        href="https://github.com/daytonaio/daytona/releases/tag/v0.24.0"
-        >View Changelog</a
+        href={releaseLink}>View Changelog</a
       >
     </p>
     <p>
