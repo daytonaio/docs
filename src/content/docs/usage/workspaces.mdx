@@ -15,11 +15,7 @@ They ensure that changes in one project do not inadvertently affect another, pro
 
 Creating your own Workspace in Daytona is a straightforward process that ensures you have a dedicated environment for your projects.
 
-**Prerequisites**
-
-- **A [working installation of Daytona](/installation/installation)**.
-
-  Verify your Daytona installation is up-to-date to avoid compatibility issues.
+**Prerequisite**
 
 - **At least [one Target configured](../configuration/providers#managing-targets)**.
 
@@ -28,8 +24,6 @@ Creating your own Workspace in Daytona is a straightforward process that ensures
 ### From a Git Repository
 
 Creating a Workspace allows you to set up a new environment either by selecting a repository from a configured Git provider like GitHub, GitLab, Bitbucket, or Gitea, or by manually entering a Git repository URL.
-
-**Procedure**
 
 1. Run the following command to start the guided Workspace creation process:
 
@@ -45,6 +39,8 @@ Creating a Workspace allows you to set up a new environment either by selecting 
       ```
 
    </Aside>
+
+   <br />
 
 2. Select the Git Provider you want to use or select to enter a custom repository URL. Daytona provides two options for linking your repository:
 
@@ -68,10 +64,14 @@ Creating a Workspace allows you to set up a new environment either by selecting 
 
 4. Enter a name for your Workspace.
 
+   <br />
+
    <Aside type="note">
      You can press `F10` to configure advanced settings for your Workspace,
      including setting the [Builder](/usage/builders).
    </Aside>
+
+   <br />
 
 5. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
 
@@ -90,8 +90,6 @@ Creating a Workspace allows you to set up a new environment either by selecting 
 ### From an Arbitrary Git URL
 
 Creating a Workspace from an arbitrary Git URL allows you to set up a new environment by directly specifying the URL of the remote repository. This method is useful for setting up environments that are not linked to a pre-configured Git Provider in Daytona.
-
-**Procedure**
 
 1. Run the following command to create a Workspace from a remote Git repository:
 
@@ -146,8 +144,6 @@ Daytona allows you to keep track of your development environments by listing all
 
 Daytona allows you to open an existing Workspace in your IDE. This enables you to quickly access and work on your projects in your preferred development environment. With Daytona, you can effortlessly switch between different Workspaces and maintain an efficient workflow.
 
-**Procedure**
-
 1. Run the following command:
 
    ```shell
@@ -176,8 +172,6 @@ Refer to **[Set the Default IDE](/usage/ide#set-the-default-ide)** for more info
 ## Delete Workspaces
 
 Daytona allows you to delete one or more Workspaces, helping you manage your development environments by removing those that are no longer needed.
-
-**Procedure**
 
 1. Run the following command:
 
@@ -225,8 +219,6 @@ Daytona allows you to delete one or more Workspaces, helping you manage your dev
 
 Daytona allows you to delete one or more existing Workspaces non-interactively, allowing for quick and automated cleanup of your development environments without manual selection.
 
-**Procedure**
-
 1. Run the following command, specifying the workspace names/UUIDs to delete:
 
    ```shell
@@ -257,11 +249,9 @@ With port forwarding, you can work on your project in a Workspace and test your 
 
 You can access services running in a Workspace on your local machine.
 
-**Prerequisites**
+**Prerequisite**
 
 - A running Workspace with at least one service accessible via TCP/UDP.
-
-**Procedure**
 
 1. Run the following command to forward a port from a running Workspace to your local machine:
 
@@ -289,11 +279,9 @@ This feature uses a free public proxy service hosted by Daytona Platforms, Inc.
 By using this feature, you acknowledge that your data is processed in accordance with Daytona's [Privacy Policy](https://www.daytona.io/company/privacy-policy) and [Terms of Service](https://www.daytona.io/company/terms-of-service).
 :::
 
-**Prerequisites**
+**Prerequisite**
 
 - A running Workspace with at least one service accessible via TCP/UDP.
-
-**Procedure**
 
 1. Run the following command to generate a public URL for a port on a running Workspace:
 
