@@ -112,6 +112,20 @@ Set Git provider
 | `200` | OK |
 
 
+## POST /gitprovider/context/url
+Get URL from Git repository
+
+### Parameters
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `repository` | body | true | undefined | Git repository |
+
+### Responses
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+
 ## GET /gitprovider/context/\{gitUrl\}
 Get Git context
 
@@ -128,6 +142,20 @@ Get Git context
 
 ## GET /gitprovider/for-url/\{url\}
 Get Git provider
+
+### Parameters
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `url` | path | true | string | Url |
+
+### Responses
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+
+## GET /gitprovider/id-for-url/\{url\}
+Get Git provider ID
 
 ### Parameters
 | Name | Location | Required | Type | Description |
@@ -257,6 +285,83 @@ Delete profile data
 | Status Code | Description |
 | :-------- | :---------- |
 | `204` | No Content |
+
+
+## GET /project-config
+List project configs
+
+### Responses
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+## PUT /project-config
+Set project config data
+
+### Parameters
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `projectConfig` | body | true | undefined | Project config |
+
+### Responses
+| Status Code | Description |
+| :-------- | :---------- |
+| `201` | Created |
+
+
+## GET /project-config/default/\{gitUrl\}
+Get project configs by git url
+
+### Parameters
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `gitUrl` | path | true | string | Git URL |
+
+### Responses
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+
+## GET /project-config/\{configName\}
+Get project config data
+
+### Parameters
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `configName` | path | true | string | Config name |
+
+### Responses
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+## DELETE /project-config/\{configName\}
+Delete project config data
+
+### Parameters
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `configName` | path | true | string | Config name |
+
+### Responses
+| Status Code | Description |
+| :-------- | :---------- |
+| `204` | No Content |
+
+
+## PATCH /project-config/\{configName\}/set-default
+Set project config to default
+
+### Parameters
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `configName` | path | true | string | Config name |
+
+### Responses
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
 
 
 ## GET /provider
