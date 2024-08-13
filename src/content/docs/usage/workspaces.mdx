@@ -319,3 +319,217 @@ daytona forward <PORT> --public
 ```
 
 </Aside>
+
+## Project Configuration
+
+Project Configuration contains all necessary properties to define and manage projects within a Workspace. It stores information such as the repository URL, build configuration, and environment variables. This allows for easy reuse of previously set configurations, ensuring a consistent and reproducible setup across multiple projects.
+
+A Project Configuration encapsulates all the essential elements for setting up a project, including:
+
+- **Repository URL**
+
+   The URL of the Git repository associated with the project.
+
+- **Build Configuration**
+
+  - [Automatic](/usage/builders#automatic-builder)
+  - [Devcontainer](/usage/builders#dev-container-builder)
+  - [Custom image](/usage/builders#custom-image-builder)
+  - [None](/usage/builders#none)
+
+- **Environment Variables**
+
+   Environment variables specified in the `KEY=VALUE` format.
+
+- **Project Configuration name**
+
+   A unique name for the Project Configuration.
+
+You can use the `daytona project-config` command to manage Project Configurations in Daytona.
+
+## Add a Project Configuration
+
+Daytona allows you to add a new Project Configuration, enabling you to store and reuse project properties across multiple Workspaces.
+
+1. Run the following command to add a new Project Configuration:
+
+   ```shell
+   daytona project-config add
+   ```
+
+2. Enter the repository URL of the project you want to configure.
+
+   ```text
+      Git repository
+      >
+   ```
+
+3. Select the build configuration for the project.
+
+   ```text
+      Choose a build configuration
+      Automatic
+      Devcontainer
+      Custom image
+      None
+   ```
+
+4. Enter the environment variables for the project in the `KEY=VALUE` format.
+
+   ```text
+      Environment Variables
+      Enter environment variables in the format KEY=VALUE
+      To pass machine env variables at runtime, use $VALUE
+   ```
+
+5. Enter a name for the Project Configuration.
+
+   ```text
+      Project config name
+      >
+   ```
+
+   Upon completion, Daytona will save the Project Configuration, allowing you to reuse it across multiple Workspaces.
+
+## Project Configuration Information
+
+Daytona allows you to view detailed information of a Project Configuration, providing you with an overview of the properties stored within it.
+
+1. Run the following command to view the details of a Project Configuration:
+
+   ```shell
+   daytona project-config info
+   ```
+
+   Upon running this command, Daytona will display a list of your Project Configurations
+
+2. Select the Project Configuration you want to view.
+
+   ```text
+      Select a Project Config To View
+      1 item
+
+      ┃  MyProjectConfig
+      ┃  https://github.com/username/MyProject
+   ```
+
+   Upon selecting the Project Configuration, Daytona will display the details of the selected configuration. You will be able to view the Project Configuration name, the repository URL it is linked to, the build configuration, and the Devcontainer path.
+
+   ```text
+      Project Config Info
+
+      Name                    MyProjectConfig
+      Repository              https://github.com/username/MyProject
+      Build                   Devcontainer
+      Devcontainer path       .devcontainer/devcontainer.json
+   ```
+
+## List Project Configuration
+
+Daytona allows you to list all Project Configurations, providing you with an overview of the properties stored within each configuration.
+
+1. Run the following command to list all Project Configurations:
+
+   ```shell
+   daytona project-config list
+   ```
+
+   Upon running this command, Daytona will display a list of your Project Configurations. You will be able to view the Project Configuration name, the repository URL it is connected to, the build configuration, and if it is set as a default configuration.
+
+   ```text
+      Name                Repository             Build             Default
+      ─────────────────────────────────────────────────────────────────────
+      MyProjectConfig     daytonaio/daytona      Devcontainer      Yes
+   ```
+
+## Set Default Project Configuration
+
+Daytona allows you to set a default Project Configuration, enabling you to define a configuration that will be used by default when creating new Workspaces.
+
+1. Run the following command to set a default Project Configuration:
+
+   ```shell
+   daytona project-config set-default
+   ```
+
+2. Select the Project Configuration you want to set as the default.
+
+   ```text
+      Select a Project Config To Set As Default
+      1 item
+
+      ┃  MyProjectConfig
+      ┃  https://github.com/username/MyProject
+   ```
+
+   Upon selecting the default Project Configuration, Daytona will set it as the default configuration for new Workspaces.
+
+   ```text
+      Project config 'MyProjectConfig' set as default
+   ```
+
+## Update Project Configuration
+
+Daytona allows you to update an existing Project Configuration, enabling you to modify the properties stored within it.
+
+1. Run the following command to update a Project Configuration:
+
+   ```shell
+   daytona project-config update
+   ```
+
+2. Select the Project Configuration you want to update.
+
+   ```text
+      Select a Project Config To Update
+      1 item
+
+      ┃  MyProjectConfig
+      ┃  https://github.com/username/MyProject
+   ```
+
+3. Update the properties of the Project Configuration.
+
+   ```text
+      Choose a build configuration
+      Automatic
+      Devcontainer
+      Custom image
+      None
+   ```
+
+   ```text
+      Environment Variables
+      Enter environment variables in the format KEY=VALUE
+      To pass machine env variables at runtime, use $VALUE
+   ```
+
+   Upon completion, Daytona will save the updated Project Configuration, allowing you to reuse it across Workspaces.
+
+   ```text
+      Project config updated successfully
+   ```
+
+## Delete Project Configuration
+
+Daytona allows you to delete an existing Project Configuration, enabling you to remove properties that are no longer needed.
+
+1. Run the following command to delete a Project Configuration:
+
+   ```shell
+   daytona project-config delete
+   ```
+
+2. Select the Project Configuration you want to delete.
+
+   ```text
+      Select a Project Config To Delete
+      1 item
+
+      ┃  MyProjectConfig
+      ┃  https://github.com/username/MyProject
+   ```
+
+   ```text
+      Project config deleted successfully
+   ```
