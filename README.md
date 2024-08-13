@@ -23,7 +23,7 @@ Daytona's user and developer documentation.
 <p align="center">
     <a href="https://github.com/daytonaio/docs/issues/new?assignees=&labels=bug">Report Bug</a>
     ·
-  <a href="https://join.slack.com/t/daytonacommunity/shared_invite/zt-273yohksh-Q5YSB5V7tnQzX2RoTARr7Q">Join Our Slack</a>
+  <a href="https://go.daytona.io/slack">Join Our Slack</a>
     ·
     <a href="https://twitter.com/daytonaio">Twitter</a>
   </p>
@@ -102,4 +102,4 @@ This project has adapted the Code of Conduct from the [Contributor Covenant](htt
 ## Questions
 
 If you need guideance on contributing to Daytona, talk to us on
-[Slack](https://join.slack.com/t/daytonacommunity/shared_invite/zt-273yohksh-Q5YSB5V7tnQzX2RoTARr7Q).
+[Slack](https://go.daytona.io/slack).
