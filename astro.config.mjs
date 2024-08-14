@@ -95,6 +95,13 @@ export default defineConfig({
               },
             },
             {
+              label: 'Projects',
+              link: '/usage/projects',
+              attrs: {
+                icon: 'folder.svg',
+              },
+            },
+            {
               label: 'IDEs',
               link: '/usage/ide',
               attrs: {
