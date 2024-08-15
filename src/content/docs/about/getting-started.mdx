@@ -10,9 +10,18 @@ import DocumentList from "@components/DocumentList.astro";
 import DocumentListItem from "@components/DocumentListItem.astro";
 import CardGrid from '@components/cards/CardGrid.astro';
 import TitleCard from '@components/cards/TitleCard.astro';
+import ImageCard from '@components/cards/ImageCard.astro';
 import bitbucketLogo from '@assets/index/icons/Bitbucket.svg?raw';
 import githubLogo from '@assets/index/icons/GitHub.svg?raw';
 import gitlabLogo from '@assets/index/icons/GitLab.svg?raw';
+import VSlogo from '@assets/index/icons/VS.svg?url';
+import PClogo from '@assets/index/images/pycharm.png';
+import IJlogo from '@assets/index/images/intelliJ.png';
+import WSlogo from '@assets/index/images/webstorm.png';
+import GOlogo from '@assets/index/images/goLand.png';
+import CLlogo from '@assets/index/images/clion.png';
+import RDlogo from '@assets/index/images/rider.png';
+import RMlogo from '@assets/index/images/rubyMine.png';
 
 This section will guide you through the initial steps required to set up and start using Daytona effectively. This guide will ensure that you are well-equipped to manage and deploy your development environments using Daytona. It covers the essential steps, from installation to the creation of your first Workspace, providing clear instructions to help you get up and running quickly.
 
@@ -104,6 +113,34 @@ For more details on available Providers and related commands, use the `daytona p
 <DocumentListItem
     title="Install a Provider"
     subtitle="Learn how to install a Provider and interface with the Daytona Server."
+    href="/configuration/git-providers"
+    expanded
+  />
+</DocumentList>
+
+## Setting the Default IDE
+
+Daytona allows you to connect to your development environment using a variety of [IDEs](/usage/ide), including popular options like [Visual Studio Code (VSCode)](/usage/ide#vs-code), JetBrains IDEs, and [Terminal SSH](/usage/ide#terminal-ssh). By setting the default IDE, you can automatically open your development environment in your preferred environment, streamlining your workflow and reducing setup time.
+
+<br />
+
+<CardGrid gridNumber={9} mobileGridNumber={2} colsMinWidth='64px' colsMinWidthMobile='98px'>
+ <ImageCard icon={VSlogo} link="/usage/ide#vs-code" imageAlt="Visual Studio logo" />
+ <ImageCard  imageDark={PClogo} link="/usage/ide#jetbrains-pycharm-professional" imageAlt="PyCharm logo" />
+ <ImageCard  imageDark={IJlogo} link="/usage/ide#jetbrains-intellij-idea-ultimate" imageAlt="IntelliJ logo" />
+    <ImageCard  imageDark={WSlogo} link="/usage/ide#jetbrains-webstorm" imageAlt="WebStorm logo" />
+    <ImageCard  imageDark={GOlogo} link="/usage/ide#jetbrains-goland" imageAlt="GoLand logo" />
+    <ImageCard  imageDark={CLlogo} link="/usage/ide#jetbrains-clion" imageAlt="CLion logo" />
+    <ImageCard  imageDark={RDlogo} link="/usage/ide#jetbrains-rider" imageAlt="Rider logo" />
+    <ImageCard  imageDark={RMlogo} link="/usage/ide#jetbrains-rubymine" imageAlt="RubyMine logo"/>
+</CardGrid>
+
+For more details on setting the default IDE and related commands, use the `daytona ide` command to explore options and manage your configurations.
+
+<DocumentList>
+<DocumentListItem
+    title="Set Default IDE"
+    subtitle="Learn how to set your default IDE to automatically open your development environment."
     href="/configuration/git-providers"
     expanded
   />
