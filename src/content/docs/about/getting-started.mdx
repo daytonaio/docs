@@ -187,3 +187,34 @@ To select a Builder, use the appropriate flags during the [Workspace creation pr
     expanded
   />
 </DocumentList>
+
+## Configuring Daytona Server
+
+The [Daytona Server](/usage/server) is a crucial component that runs as a daemon on your machine, responsible for managing [Workspaces](/usage/workspaces), [Providers](/configuration/providers), and other system configurations. The Daytona Server provides a centralized interface for interacting with the Daytona platform, allowing you to manage your development environments. The Daytona Server can be easily managed by using the [Daytona CLI](/reference/cli).
+
+Daytona offers flexible configuration options for the server. The configuration file, which contains settings such as the server ID, API port, and default project image, is located in different directories depending on your operating system:
+
+- On macOS, the configuration file is located at:
+
+    `~/Library/Application\ Support/daytona/server/config.json`.
+
+- On Linux, the configuration file is located at:
+
+    `~/.config/daytona/server/config.json`.
+
+- On Windows, the configuration file is located at:
+
+    `C:\Users\YOUR_USERNAME\AppData\Roaming\daytona\server\config.json`.
+
+To view the Daytona Server configuration, use the `daytona server config` command. This command displays the server configuration properties, allowing you to manage and customize the server settings as needed.
+
+Daytona allows you to edit the server configuration directly by using the `daytona server configure` command. This command opens the configuration file, enabling you to modify the server settings based on your requirements.
+
+<DocumentList>
+<DocumentListItem
+    title="Configure the Daytona Server"
+    subtitle="Learn how to configure the Daytona Server and manage server settings."
+    href="/usage/server"
+    expanded
+  />
+</DocumentList>
