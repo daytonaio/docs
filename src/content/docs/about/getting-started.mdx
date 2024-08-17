@@ -69,7 +69,7 @@ Once you have completed the installation, you will be ready to start using Dayto
 <DocumentListItem
     title="Install Daytona"
     subtitle="Learn how to install Daytona on Linux, macOS, or Windows."
-    href="installation/installation"
+    href="/installation/installation"
     expanded
   />
 </DocumentList>
@@ -99,23 +99,6 @@ For more details on available Git Providers and related commands, use the `dayto
   />
 </DocumentList>
 
-## Creating your Workspace
-
-Once you have completed the initial setup and configuration steps, you can [create your Workspace](/usage/workspaces#create-a-workspace) using Daytona. A Workspace represents an isolated development environment where you can manage your code, build projects, and collaborate with team members.
-
-Creating a Workspace involves defining the necessary configurations, such as the Git repository URL and selecting the appropriate [Git Provider](/configuration/git-providers). Daytona simplifies this process by providing a user-friendly interface to set up and manage your Workspaces efficiently.
-
-To create a Workspace, use the `daytona create` command and follow the prompts to configure your Workspace settings. Once created, you can access your Workspace and interact with your codebase.
-
-<DocumentList>
-<DocumentListItem
-    title="Create a Workspace"
-    subtitle="Learn how to create your Workspace using Daytona."
-    href="/usage/workspaces"
-    expanded
-  />
-</DocumentList>
-
 ## Installing a Provider
 
 A [Provider](/configuration/providers) is a plugin that interfaces with the [Daytona Server](/usage/server), handling development environment deployment and lifecycle management.
@@ -128,7 +111,7 @@ For more details on available Providers and related commands, use the `daytona p
 <DocumentListItem
     title="Install a Provider"
     subtitle="Learn how to install a Provider and interface with the Daytona Server."
-    href="/configuration/git-providers"
+    href="/configuration/providers"
     expanded
   />
 </DocumentList>
@@ -180,29 +163,19 @@ For more details on setting the default IDE and related commands, use the `dayto
   />
 </DocumentList>
 
-## Selecting a Builder (Advanced)
+## Creating your Workspace
 
-Daytona allows you to control how your development environment is built by selecting a [Builder](/usage/builders). A Builder is responsible for creating a container image with all the tools, dependencies, and configurations needed for your development environment.
+Once you have completed the initial setup and configuration steps, you can [create your Workspace](/usage/workspaces#create-a-workspace) using Daytona. A Workspace represents an isolated development environment where you can manage your code, build projects, and collaborate with team members.
 
-When setting up your Workspace, you can choose from the following Builder options:
+Creating a Workspace involves defining the necessary configurations, such as the Git repository URL and selecting the appropriate [Git Provider](/configuration/git-providers). Daytona simplifies this process by providing a user-friendly interface to set up and manage your Workspaces efficiently.
 
-- [Automatic](/usage/builders#automatic-builder) auto-detects and uses the most appropriate Builder based on your project.
-
-- [Dev Container](/usage/builders#dev-container-builder) builds the development environment image using a Dev Container configuration located in your repository.
-
-- [Custom Image](/usage/builders#custom-image-builder) allows you to specify a custom container image to build your development environment.
-
-- [None](/usage/builders#none) uses Daytona's default base image to build the development environment.
-
-Daytona automatically detects and applies the most suitable Builder if you do not make a selection, ensuring that your development environment is optimally configured without requiring any manual configuration.
-
-To select a Builder, use the appropriate flags during the [Workspace creation process](/usage/workspaces#create-a-workspace). This flexibility ensures your environment is tailored to meet your development environment's specific needs.
+To create a Workspace, use the `daytona create` command and follow the prompts to configure your Workspace settings. Once created, you can access your Workspace and interact with your codebase.
 
 <DocumentList>
 <DocumentListItem
-    title="Select a Builder"
-    subtitle="Learn how to select a Builder for your Workspace and customize your development environment."
-    href="/usage/builders"
+    title="Create a Workspace"
+    subtitle="Learn how to create your Workspace using Daytona."
+    href="/usage/workspaces"
     expanded
   />
 </DocumentList>
