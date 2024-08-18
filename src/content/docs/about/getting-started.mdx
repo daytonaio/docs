@@ -80,6 +80,25 @@ The installation process may vary depending on your operating system and specifi
 
 Once you have completed the installation, you will be ready to start using Daytona to manage and develop your development environments. If you encounter any issues during installation, consult by reaching out to Daytona's [Slack community](https://go.daytona.io/slack) for assistance.
 
+## Using the CLI
+
+The Daytona Command-Line Interface (CLI) is the primary method of interacting with the Daytona platform. The CLI provides a comprehensive set of commands that allow you to manage Workspaces, Providers, and other system configurations.
+
+To access the Daytona CLI, open your terminal and use the `daytona` command followed by the desired subcommand. The CLI offers a wide range of commands, each serving a specific purpose, such as creating Workspaces, managing Providers, setting Targets, and configuring system settings.
+
+For a complete list of available commands and their descriptions, refer to the [CLI Reference](/reference/cli). This reference guide provides detailed information on each command, including usage examples and command options, helping you leverage the full potential of the Daytona CLI.
+
+Additionally, you can use the `daytona --help` command to list all commands, offering a convenient way to explore available options.
+
+<DocumentList>
+<DocumentListItem
+    title="CLI Reference"
+    subtitle="Learn how to use the Daytona Command-Line Interface (CLI) to manage your development environments."
+    href="/reference/cli"
+    expanded
+  />
+</DocumentList>
+
 ## Adding a Git Provider
 
 You can integrate Daytona with a Git Provider to manage version control operations and interact with your Git repositories.
@@ -186,73 +205,6 @@ To create a Workspace, use the `daytona create` command and follow the prompts t
     title="Create a Workspace"
     subtitle="Learn how to create your Workspace using Daytona."
     href="/usage/workspaces#create-a-workspace"
-    expanded
-  />
-</DocumentList>
-
-## Configuring Daytona Server
-
-The [Daytona Server](/usage/server) is a component that runs as a daemon on your machine, responsible for managing [Workspaces](/usage/workspaces), [Providers](/configuration/providers), and other system configurations. The Daytona Server provides a centralized interface for interacting with the Daytona platform, allowing you to manage your development environments. The Daytona Server can be easily managed by using the [Daytona CLI](/reference/cli).
-
-Daytona offers flexible configuration options for the server. The configuration file, which contains settings such as the server ID, API port, and default project image, is located in different directories depending on your operating system:
-
-- On macOS, the configuration file is located at:
-
-    `~/Library/Application\ Support/daytona/server/config.json`.
-
-- On Linux, the configuration file is located at:
-
-    `~/.config/daytona/server/config.json`.
-
-- On Windows, the configuration file is located at:
-
-    `C:\Users\YOUR_USERNAME\AppData\Roaming\daytona\server\config.json`.
-
-To view the Daytona Server configuration, use the `daytona server config` command. This command displays the server configuration properties, allowing you to manage and customize the server settings as needed.
-
-Daytona allows you to edit the server configuration directly by using the `daytona server configure` command. This command opens the configuration file, enabling you to modify the server settings based on your requirements.
-
-<DocumentList>
-<DocumentListItem
-    title="Configure the Daytona Server"
-    subtitle="Learn how to configure the Daytona Server and manage server settings."
-    href="/usage/server"
-    expanded
-  />
-</DocumentList>
-
-## Using the CLI
-
-The Daytona Command-Line Interface (CLI) is the primary method of interacting with the Daytona platform. The CLI provides a comprehensive set of commands that allow you to manage Workspaces, Providers, and other system configurations.
-
-To access the Daytona CLI, open your terminal and use the `daytona` command followed by the desired subcommand. The CLI offers a wide range of commands, each serving a specific purpose, such as creating Workspaces, managing Providers, setting Targets, and configuring system settings.
-
-For a complete list of available commands and their descriptions, refer to the [CLI Reference](/reference/cli). This reference guide provides detailed information on each command, including usage examples and command options, helping you leverage the full potential of the Daytona CLI.
-
-Additionally, you can use the `daytona --help` command to list all commands, offering a convenient way to explore available options.
-
-<DocumentList>
-<DocumentListItem
-    title="CLI Reference"
-    subtitle="Learn how to use the Daytona Command-Line Interface (CLI) to manage your development environments."
-    href="/reference/cli"
-    expanded
-  />
-</DocumentList>
-
-## Interacting with the API
-
-Daytona provides an API that allows you to interact with the platform programmatically. The API offers a set of endpoints that enable you to perform various actions, such as creating Workspaces, managing Providers, setting Targets, and configuring system settings.
-
-To access the Daytona API, you can use the Daytona CLI or interact with the API directly using HTTP requests. The API endpoints are designed to provide flexibility and control over the Daytona platform. By integrating with the API, you can automate tasks, streamline workflows, and extend the functionality of Daytona to suit your specific requirements.
-
-For more information on the Daytona API and available endpoints, refer to the [API Reference](/reference/api). This reference guide provides detailed information on each API endpoint, including request parameters, response formats, and usage examples.
-
-<DocumentList>
-<DocumentListItem
-    title="API Reference"
-    subtitle="Learn how to interact with the Daytona API to manage your development environments programmatically."
-    href="/reference/api"
     expanded
   />
 </DocumentList>
