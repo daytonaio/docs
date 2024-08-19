@@ -1,11 +1,27 @@
 {
-  "name": "Daytona Docs",
-  "build": {
-    "dockerfile": "Dockerfile"
+  "name": "Daytona Documentation",
+  "image": "ubuntu:22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2.4.7": {
+      "username": "daytona",
+      "userUid": 1000,
+      "userGid": 1000,
+      "configureZshAsDefaultShell": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "lts",
+      "nvmVersion": "0.40.0"
+    },
+    "ghcr.io/devcontainers-contrib/features/typescript:2": {},
+    "ghcr.io/devcontainers/features/git:1": {}
   },
-  "remoteUser": "root",
-  "postCreateCommand": "yarn install",
-  "waitFor": "postCreateCommand",
+  "overrideFeatureInstallOrder": [
+    "ghcr.io/devcontainers/features/common-utils",
+    "ghcr.io/devcontainers/features/git",
+    "ghcr.io/devcontainers/features/node",
+    "ghcr.io/devcontainers-contrib/features/typescript"
+  ],
   "customizations": {
     "codespaces": {
       "openFiles": [
@@ -24,5 +40,10 @@
   },
   "forwardPorts": [
     4321
-  ]
+  ],
+  "workspaceFolder": "/workspaces/docs",
+  "onCreateCommand": "sudo cp /workspaces/docs/.devcontainer/welcome-message.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
+  "postCreateCommand": "yarn install",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "remoteUser": "daytona"
 }
