@@ -22,6 +22,7 @@ import GOlogo from '@assets/index/images/goLand.png';
 import CLlogo from '@assets/index/images/clion.png';
 import RDlogo from '@assets/index/images/rider.png';
 import RMlogo from '@assets/index/images/rubyMine.png';
+import TerminalSSHlogo from '@assets/index/icons/terminal.svg';
 
 This section will guide you through the steps required to install, configure, and use Daytona to manage your development environments.
 
@@ -101,9 +102,11 @@ Additionally, you can use the `daytona --help` command to list all commands, off
 
 ## Adding a Git Provider
 
-You can integrate Daytona with a Git Provider to manage version control operations and interact with your Git repositories.
+You can integrate Daytona with a [Git Provider](/configuration/git-providers) to manage version control operations and interact with your Git repositories.
 
-Daytona supports a variety of [Git Providers](/configuration/git-providers), including [GitHub](/configuration/git-providers#github), [GitLab](/configuration/git-providers#gitlab), [Bitbucket](/configuration/git-providers#bitbucket), and self-hosted solutions. This integration supports and enables interacting with your codebase, cloning repositories, and pushing changes directly from Daytona.
+Daytona supports a variety of Git Providers, including [GitHub](/configuration/git-providers#github), [GitLab](/configuration/git-providers#gitlab), [Bitbucket](/configuration/git-providers#bitbucket), [GitHub Enterprise Server](/configuration/git-providers#github-enterprise-server), [GitLab Self-Managed](/configuration/git-providers#gitlab-self-managed), [Bitbucket Server](/configuration/git-providers#bitbucket-server), [Codeberg](/configuration/git-providers#codeberg), [Gitea](/configuration/git-providers#gitea), [Gitness](/configuration/git-providers#gitness), [Azure DevOps](/configuration/git-providers#azure-devops), and [AWS CodeCommit](/configuration/git-providers#aws-codecommit).
+
+This integration supports and enables interacting with your codebase, cloning repositories, and pushing changes directly from Daytona.
 
 <br />
 
@@ -126,9 +129,35 @@ Use the `daytona git-providers --help` command to view available options for man
 
 ## Installing a Provider
 
-A [Provider](/configuration/providers) is a plugin that interfaces with the [Daytona Server](/usage/server), handling the deployment of the development environment and its lifecycle of management.
+[Providers](/configuration/providers) are plugins through which Daytona integrates with various technologies to create and manage development environments. Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run your environments, whether through containerization, orchestration, or cloud-based virtual machines.
 
-Providers enable you to deploy your development environments with container management platforms and cloud hosting services.
+By default, a Docker Provider is configured with `localhost` as the Target.
+
+1. Run the following command to install a Provider:
+
+    ```shell
+    daytona provider install
+    ```
+
+2. Select the Docker Provider you want to install from the list.
+
+    ```text
+        Choose a provider to install
+        1 item
+        ===
+        docker-provider
+        v0.0.0
+    ```
+
+    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying development environments.
+
+    ```text
+        Provider docker-provider has been successfully installed
+    ```
+
+If this configuration meets your requirements, you can proceed with [setting a Target](#setting-a-target).
+
+You can install additional Providers to extend Daytona's capabilities and support a wide range of container management platforms and cloud hosting services.
 
 Follow the instructions provided in the [Providers installation](/configuration/providers#managing-providers) guide to install and manage a Provider. The guide includes detailed steps for installing Providers for various container management platforms and cloud hosting services.
 
@@ -143,9 +172,11 @@ Follow the instructions provided in the [Providers installation](/configuration/
 
 ## Setting a Target
 
-Once you have installed a Provider, you can set a [Target](/configuration/providers#managing-targets) to define how Daytona manages and deploys your development environment.
+A [Target](/configuration/providers#managing-targets) refers to the specific destination or environment where your development setups, facilitated by various Providers, are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
 
-Each Target is associated with a Provider and includes details for creating and managing your development environment in a specific location, such as a local machine, cloud server, or remote Docker instance.  
+A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider.
+
+Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
 Once you set your Target, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Targets or delete those you no longer need.
 
@@ -171,14 +202,15 @@ By setting the default IDE, you can automatically open your development environm
 <br />
 
 <CardGrid gridNumber={9} mobileGridNumber={2} colsMinWidth='64px' colsMinWidthMobile='98px'>
- <ImageCard icon={VSlogo} link="/usage/ide#vs-code" imageAlt="Visual Studio logo" />
- <ImageCard imageDark={PClogo} link="/usage/ide#jetbrains-pycharm-professional" imageAlt="PyCharm logo" />
- <ImageCard imageDark={IJlogo} link="/usage/ide#jetbrains-intellij-idea-ultimate" imageAlt="IntelliJ logo" />
-    <ImageCard imageDark={WSlogo} link="/usage/ide#jetbrains-webstorm" imageAlt="WebStorm logo" />
-    <ImageCard imageDark={GOlogo} link="/usage/ide#jetbrains-goland" imageAlt="GoLand logo" />
-    <ImageCard imageDark={CLlogo} link="/usage/ide#jetbrains-clion" imageAlt="CLion logo" />
-    <ImageCard imageDark={RDlogo} link="/usage/ide#jetbrains-rider" imageAlt="Rider logo" />
-    <ImageCard imageDark={RMlogo} link="/usage/ide#jetbrains-rubymine" imageAlt="RubyMine logo"/>
+  <ImageCard icon={VSlogo} link="/usage/ide#vs-code" imageAlt="Visual Studio logo" />
+  <ImageCard imageDark={PClogo} link="/usage/ide#jetbrains-pycharm-professional" imageAlt="PyCharm logo" />
+  <ImageCard imageDark={IJlogo} link="/usage/ide#jetbrains-intellij-idea-ultimate" imageAlt="IntelliJ logo" />
+  <ImageCard imageDark={WSlogo} link="/usage/ide#jetbrains-webstorm" imageAlt="WebStorm logo" />
+  <ImageCard imageDark={GOlogo} link="/usage/ide#jetbrains-goland" imageAlt="GoLand logo" />
+  <ImageCard imageDark={CLlogo} link="/usage/ide#jetbrains-clion" imageAlt="CLion logo" />
+  <ImageCard imageDark={RDlogo} link="/usage/ide#jetbrains-rider" imageAlt="Rider logo" />
+  <ImageCard imageDark={RMlogo} link="/usage/ide#jetbrains-rubymine" imageAlt="RubyMine logo"/>
+  <ImageCard imageDark={TerminalSSHlogo} link="/usage/ide#terminal-ssh" imageAlt="Terminal SSH logo"/>
 </CardGrid>
 
 Use the `daytona ide` command to view available configuration options for setting the default IDE.
