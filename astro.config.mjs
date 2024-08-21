@@ -51,6 +51,13 @@ export default defineConfig({
                 icon: 'flag.svg',
               },
             },
+            {
+              label: 'Getting Started',
+              link: '/about/getting-started',
+              attrs: {
+                icon: 'bookmark.svg',
+              },
+            },
           ],
         },
         {
