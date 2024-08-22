@@ -22,19 +22,19 @@ import DocumentListItem from "@components/DocumentListItem.astro";
 <DocumentList title="Start Here">
   <DocumentListItem
     title="What is Daytona?"
-    subtitle="Understand what Development Environment Management (DEM) is, and how Daytona can help."
+    subtitle="Learn about Daytona and how it can help you manage your development environments."
     href="about/what-is-daytona"
-    expanded
+  />
+  <DocumentListItem
+    title="Getting Started"
+    subtitle="Get started with Daytona and learn how to use and configure your development environments."
+    href="about/getting-started"
   />
   <DocumentListItem
     title="Install Daytona"
-    subtitle="Install Daytona on Linux, macOS, or Windows."
+    subtitle="Install Daytona on Linux, macOS, or Windows operating system."
     href="installation/installation"
-  />
-  <DocumentListItem
-    title="Create your first Workspace"
-    subtitle="Once you have Daytona installed, create your first Workspace."
-    href="usage/workspaces#create-a-workspace"
+    expanded
   />
 </DocumentList>
 
@@ -45,26 +45,54 @@ import DocumentListItem from "@components/DocumentListItem.astro";
     href="configuration/git-providers#add-a-git-provider"
   />
   <DocumentListItem
-    title="Add a remote Docker target"
-    subtitle="Deploy your Workspaces on a remote host using Docker."
-    href="configuration/providers#add-a-target"
+    title="Install a Provider"
+    subtitle="Install a new Provider to interface with the Daytona Server and manage your Workspaces."
+    href="configuration/providers#managing-providers"
+  />
+    <DocumentListItem
+    title="Officially Supported Providers"
+    subtitle="View the list of officially supported Providers that Daytona can use to manage Workspaces."
+    href="configuration/providers#officially-supported-providers"
   />
   <DocumentListItem
-    title="Set your default IDE"
-    subtitle="Automatically open your Workspaces in Visual Studio Code and a selection of JetBrains IDEs."
+    title="Set a Target"
+    subtitle="Set a Target configuration that governs how Daytona manages and deploys Workspaces."
+    href="configuration/providers#managing-targets"
+  />
+</DocumentList>
+
+<DocumentList title="Use">
+  <DocumentListItem
+    title="Create a Workspace"
+    subtitle="Create a development environment from a Git repository and start deploying."
+    href="usage/workspaces"
+  />
+  <DocumentListItem
+    title="Set Default IDE"
+    subtitle="Automatically open your Workspace in Visual Studio Code and a selection of JetBrains IDEs."
     href="usage/ide#set-the-default-ide"
+  />
+  <DocumentListItem
+    title="Build a Container Image"
+    subtitle="Use Builders to create a development container image for your Workspace."
+    href="usage/builders"
+  />
+  <DocumentListItem
+    title="Configure Daytona Server"
+    subtitle="Daytona Server runs on your machine and handles actions relating to Workspaces."
+    href="usage/server"
   />
 </DocumentList>
 
 <DocumentList title="Dive Deeper">
   <DocumentListItem
-    title="Command-Line Reference"
-    subtitle="Learn about all of Daytona's commands and how you can leverage them to increase productivity."
+    title="CLI Reference"
+    subtitle="Learn about the Daytona CLI and how to interact with Daytona from the command line."
     href="reference/cli"
   />
   <DocumentListItem
-    title="Daytona Server"
-    subtitle="Learn about the Daytona Server and how to manually configure it."
-    href="usage/server"
+    title="API Reference"
+    subtitle="Explore the Daytona API and learn how to interact with Daytona programmatically."
+    href="reference/api"
   />
 </DocumentList>
