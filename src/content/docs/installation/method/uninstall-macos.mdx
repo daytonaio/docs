@@ -17,14 +17,13 @@ Ensure you have a backup of any Workspace data and relevant configuration before
 
     ```shell
     daytona purge
-    sudo rm $(where daytona)
     ```
 
     Run the following commands if the `daytona purge` command does not work, or if you want to manually purge local Daytona data and remove the binary:
 
     ```shell
     rm -rf ~/Library/Application\ Support/daytona
-    sudo rm $(where daytona)
+    sudo rm $(whereis daytona | awk '{print $2}')
     ```
 
     Additionally, to fully remove all Daytona-related configurations and components, run the following command:
