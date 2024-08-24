@@ -159,26 +159,26 @@ By default, a Docker Provider is configured with `localhost` as the Target.
 
 You can install additional Providers to extend Daytona's capabilities and support a wide range of container management platforms and cloud hosting services.
 
-Follow the instructions provided in the [Providers installation](/configuration/providers#managing-providers) guide to install and manage a Provider. The guide includes detailed steps for installing Providers for various container management platforms and cloud hosting services.
+Follow the instructions provided in the [Providers installation](/configuration/providers) guide to install and manage a Provider. The guide includes detailed steps for installing Providers for various container management platforms and cloud hosting services.
 
 <DocumentList>
 <DocumentListItem
     title="Install a Provider"
     subtitle="Learn how to install a Provider and interface with the Daytona Server."
-    href="/configuration/providers#managing-providers"
+    href="/configuration/providers"
     expanded
   />
 </DocumentList>
 
 ## Setting a Target
 
-A [Target](/configuration/providers#managing-targets) refers to the specific destination or environment where your development setups, facilitated by various Providers, are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
+A [Target](/configuration/targets) refers to the specific destination or environment where your development setups, facilitated by various Providers, are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
 
 A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
 Once you set your Target, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Targets or delete those you no longer need.
 
-Follow the instructions provided in the [managing Targets](/configuration/providers#managing-targets) guide to set a Target and configure your development environment deployment settings.
+Follow the instructions provided in the [managing Targets](/configuration/targets) guide to set a Target and configure your development environment deployment settings.
 
 Use the `daytona target --help` command to view available configuration options for setting a Target.
 
@@ -186,7 +186,7 @@ Use the `daytona target --help` command to view available configuration options 
 <DocumentListItem
     title="Set a Target"
     subtitle="Learn how to set a Target to define how Daytona manages your development environment."
-    href="/configuration/providers#managing-targets"
+    href="/configuration/targets"
     expanded
   />
 </DocumentList>
