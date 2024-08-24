@@ -89,6 +89,13 @@ export default defineConfig({
                 icon: 'git-commit.svg',
               },
             },
+            {
+              label: 'Targets',
+              link: '/configuration/targets',
+              attrs: {
+                icon: 'tag.svg',
+              },
+            },
           ],
         },
         {
