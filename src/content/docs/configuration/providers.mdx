@@ -6,6 +6,8 @@ sidebar:
 ---
 
 import Aside from '@components/Aside.astro'
+import DocumentList from "@components/DocumentList.astro";
+import DocumentListItem from "@components/DocumentListItem.astro";
 
 Providers are plugins through which Daytona integrates with various technologies to create and manage development environments. Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run your environments, whether through containerization, orchestration, or cloud-based virtual machines.
 
@@ -95,8 +97,7 @@ Daytona allows you to uninstall an existing Provider, helping you manage your Pr
 
 ## Docker
 
-Daytona installs a Provider for Docker (`docker-provider`) by default.
-A default Target using the Docker Provider is also added, allowing the creation of Workspaces on your local machine.
+The Docker Provider allows Daytona to create Workspace projects on Docker containers. The Provider integrates Daytona with Docker, enabling you to manage Workspaces on a Docker instance. Daytona installs a Provider for Docker (`docker-provider`) by default and adds a default [Target](/configuration/targets#docker) using the Docker Provider, allowing the creation of Workspaces on your local machine.
 
 1. Run the following command to install a Docker Provider:
 
@@ -118,102 +119,27 @@ A default Target using the Docker Provider is also added, allowing the creation 
     Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
     ```text
+        ⡿  Installing...
+    ```
+
+    ```text
         Provider docker-provider has been successfully installed
     ```
 
-### Add Docker Target
-
-When using Docker as a Provider, you have the choice of creating either a local or remote [Target](/configuration/targets):
-
-- **[Remote](#remote)**  
-  The target uses a remote installation of Docker to deploy Workspaces.
-  This requires access to an SSH daemon on the desired host machine, and access to a user with permission to create Docker containers.
-- **[Local](#local)**  
-  The target uses your local installation of Docker to deploy Workspaces.
-  This allows you to use Daytona without needing external servers or infrastructure.
-
-#### Remote
-
-You can add a target for an installation of Docker on a remote host.
-When following the [set a Target](/configuration/targets#set-a-target) procedure, note the following configuration options:
-
-1. **Container Image**
-
-    The base image used by Daytona to deploy new Workspaces.
-    The default value is `daytonaio/workspace-project`.
-
-2. **Remote Hostname**
-
-    The hostname of the remote host.
-
-3. **Remote Password**
-
-    The password for the remote user.
-    If password authentication is disabled on the remote host, you can choose an SSH key in the next step.
-
-4. **Remote Port**
-
-    The TCP port used to access the remote host's SSH daemon.
-    Unless otherwise configured on your remote host, this should be set to the default value (`22`)
-
-5. **Remote User**
-
-     The username used to execute the required commands on the remote host.
-
-    <br />
-
-    <Aside type="caution">
-      Non-root user is required so correct ownership is assumed inside the
-      project container.
-    </Aside>
-
-    <br />
-
-6. **Sock Path**
-
-    The Docker UNIX socket location on the remote host.
-    Unless otherwise configured after installing Docker, this should be set to the default value (`/var/run/docker.sock`).
-
-7. **Remote Private Key Path**
-
-    The SSH private key used to connect to the remote host.
-    If you are using password authentication, you can choose "None".
-
-#### Local
-
-By default, Daytona comes pre-configured with a local Docker Target.
-If you have removed the default Docker Target, you can recreate it using the [set a Target](/configuration/targets#set-a-target) procedure.
+<DocumentList>
+<DocumentListItem
+    title="Set a Docker Target"
+    subtitle="Learn how to set a local or remote Docker Target to deploy and manage Workspaces."
+    href="/configuration/targets#docker"
+    expanded
+  />
+</DocumentList>
 
 ## AWS
 
-The AWS Provider allows Daytona to create and manage Workspace projects on Amazon EC2 instances. The Provider integrates Daytona with AWS, enabling you to deploy and manage Workspaces in a scalable and flexible cloud environment.
+The AWS Provider allows Daytona to create and manage Workspace projects on Amazon EC2 instances. The Provider integrates Daytona with AWS, enabling you to manage Workspaces in a scalable and flexible cloud environment.
 
 To use the AWS Provider, ensure that your AWS programmatic access user has the `AmazonEC2FullAccess` permissions. This policy grants the necessary permissions to manage EC2 instances, which is crucial for Daytona's Workspace project creation and management.
-
-### Add AWS Target
-
-The AWS Provider does not have any default [Targets](/configuration/targets). You must create and configure a Target before using the Provider.
-
-1. Run the **`daytona target set`** command to set a Target for the AWS Provider.
-
-When setting up a Target for the AWS Provider, you will need to configure several properties. Below is a breakdown of these properties, their types, and usage:
-
-| Property           | Type   | Optional | Default Value  | Input Masked |
-|--------------------|--------|----------|----------------|--------------|
-| **Region**         | String | true     | us-east-1      | false        |
-| **Image Id**       | String | true     | ami-04a81a99f5ec58529 | false  |
-| **Instance Type**  | String | true     | t2.micro       | false        |
-| **Device Name**    | String | true     | /dev/sda1      | false        |
-| **Volume Size**    | String | true     | 10             | false        |
-| **Volume Type**    | String | true     | gp3            | false        |
-| **Access Key Id**  | String | false    |                | true         |
-| **Secret Access Key** | String | false |               | true         |
-
-These configuration options allow you to customize the AWS environment for your Daytona Workspaces.
-
-Once a Target is set, you can use it to create and manage Workspaces on Amazon EC2 instances, leveraging the full capabilities of AWS for your projects.
-
-### Add AWS Provider
 
 1. Run the following command to install an AWS Provider:
 
@@ -235,34 +161,25 @@ Once a Target is set, you can use it to create and manage Workspaces on Amazon E
     Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
     ```text
+        ⡿  Installing...
+    ```
+
+    ```text
         Provider aws-provider has been successfully installed
     ```
 
+<DocumentList>
+<DocumentListItem
+    title="Set an AWS Target"
+    subtitle="Learn how to set an AWS Target to deploy and manage Workspaces."
+    href="/configuration/targets#aws"
+    expanded
+  />
+</DocumentList>
+
 ## DigitalOcean
 
-The DigitalOcean Provider allows Daytona to create Workspace projects on DigitalOcean VMs, known as droplets. The Provider integrates Daytona with DigitalOcean, enabling you to deploy and manage Workspaces on a flexible and scalable cloud platform.
-
-### Add DigitalOcean Target
-
-The DigitalOcean Provider does not have any default [Targets](/configuration/targets). You must create and configure a Target before using the Provider.
-
-1. Run the **`daytona target set`** command to set a Target for the DigitalOcean Provider.
-
-When setting up a Target for the DigitalOcean Provider, you will need to configure several properties. Below is a breakdown of these properties, their types, and usage:
-
-| Property      | Type   | Optional | Default Value     | Input Masked |
-|---------------|--------|----------|-------------------|--------------|
-| **Auth Token**| String | true     |                   | true         |
-| **Disk Size** | Int    | false    | 20                | false        |
-| **Image**     | String | false    | ubuntu-22-04-x64  | false        |
-| **Region**    | String | false    | fra1              | false        |
-| **Size**      | String | false    | s-2vcpu-4gb       | false        |
-
-These configuration options allow you to customize the DigitalOcean environment for your Daytona Workspaces.
-
-Once a Target is set, you can use it to create and manage Workspaces on DigitalOcean droplets, leveraging the full capabilities of DigitalOcean for your projects.
-
-### Add DigitalOcean Provider
+The DigitalOcean Provider allows Daytona to create Workspace projects on DigitalOcean VMs, known as droplets. The Provider integrates Daytona with DigitalOcean, enabling you to manage Workspaces on a flexible and scalable cloud platform.
 
 1. Run the following command to install a DigitalOcean Provider:
 
@@ -284,34 +201,25 @@ Once a Target is set, you can use it to create and manage Workspaces on DigitalO
     Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
     ```text
+        ⡿  Installing...
+    ```
+
+    ```text
         Provider digitalocean-provider has been successfully installed
     ```
 
+<DocumentList>
+<DocumentListItem
+    title="Set a DigitalOcean Target"
+    subtitle="Learn how to set a DigitalOcean Target to deploy and manage Workspaces."
+    href="/configuration/targets#digitalocean"
+    expanded
+  />
+</DocumentList>
+
 ## Fly
 
-The Fly Provider allows Daytona to create Workspace projects on Fly VMs, known as Fly Machines. The Provider integrates Daytona with the Fly.io platform, enabling you to deploy and manage Workspaces in a globally distributed cloud environment.
-
-### Add Fly Target
-
-The Fly Provider does not have any default [Targets](/configuration/targets). You must create and configure a Target before using the Provider.
-
-1. Run the **`daytona target set`** command to set a Target for the Fly Provider.
-
-When setting up a Target for the Fly Provider, you will need to configure several properties. Below is a breakdown of these properties, their types, and usage:
-
-| Property     | Type   | Optional | Default Value   | Input Masked |
-|--------------|--------|----------|-----------------|--------------|
-| **AuthToken**| String | false    |                 | true         |
-| **OrgSlug**  | String | false    |                 | false        |
-| **Region**   | String | true     |                 | false        |
-| **DiskSize** | String | true     | 10              | false        |
-| **Size**     | String | true     | shared-cpu-4x   | false        |
-
-These configuration options allow you to customize the Fly.io environment for your Daytona Workspaces.
-
-Once a Target is set, you can use it to create and manage Workspaces on Fly Machines, leveraging the full capabilities of Fly.io for your projects.
-
-### Add Fly Provider
+The Fly Provider allows Daytona to create Workspace projects on Fly VMs, known as Fly Machines. The Provider integrates Daytona with the Fly.io platform, enabling you to manage Workspaces in a globally distributed cloud environment.
 
 1. Run the following command to install a Fly Provider:
 
@@ -333,5 +241,18 @@ Once a Target is set, you can use it to create and manage Workspaces on Fly Mach
     Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
     ```text
+        ⡿  Installing...
+    ```
+
+    ```text
         Provider fly-provider has been successfully installed
     ```
+
+<DocumentList>
+<DocumentListItem
+    title="Set a Fly Target"
+    subtitle="Learn how to set a Fly Target to deploy and manage Workspaces."
+    href="/configuration/targets#fly"
+    expanded
+  />
+</DocumentList>

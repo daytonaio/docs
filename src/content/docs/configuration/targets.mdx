@@ -31,15 +31,21 @@ Daytona allows you to set a Target to use when managing Workspaces.
 
     ```text
         Choose a provider
-        1 item
+        4 items
         ===
+        aws-provider
+        v0.0.0
+        digitalocean-provider
+        v0.0.0
+        fly-provider
+        v0.0.0
         docker-provider
         v0.0.0
     ```
 
 3. Select `New Target`.
 4. Enter a name for your Target.
-5. Enter the appropriate configuration options when prompted.
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a remote Docker Target.
 
     ```text
         Remote Password
@@ -126,3 +132,198 @@ Daytona allows you to delete Targets, helping you manage and remove those that a
     ```text
         Target MyTarget removed successfully
     ```
+
+## Docker
+
+Daytona allows you to set a Docker Target to use for deploying and managing Workspaces. The Docker Target enables you to deploy Workspaces on your local or remote machine using Docker.
+
+1. Run the following command to set a Target:
+
+    ```shell
+    daytona target set
+    ```
+
+2. Select `docker-provider` to use the Docker Provider.
+
+    ```text
+        Choose a provider
+        1 item
+        ===
+        docker-provider
+        v0.0.0
+    ```
+
+3. Select `local` to set a local Docker target, or `New Target` to set a remote Docker target.
+
+    - A local machine uses your local installation of Docker to deploy Workspaces and requires configuring the `Sock Path` to the Docker socket.
+
+    - A remote machine uses a remote installation of Docker to deploy Workspaces and requires configuring the remote `password`, `port`, `user`, `sock path`, `Workspace data directory`, and `private key path`.
+
+4. Enter a name for your Target.
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a local Docker Target.
+
+    ```text
+        Sock Path
+        > /var/run/docker.sock
+    ```
+
+6. Click `Enter` to confirm setting the Target.
+
+    ```text
+        Target set successfully
+     ```
+
+## AWS
+
+Daytona allows you to set an AWS Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+    ```shell
+    daytona target set
+    ```
+
+2. Select `aws-provider` to use the AWS Provider.
+
+    ```text
+        Choose a provider
+        1 item
+        ===
+        aws-provider
+        v0.0.0
+    ```
+
+3. Select `New Target`.
+4. Enter a name for your Target.
+5. Enter the appropriate configuration options when prompted.
+
+    ```text
+    The type of instance to launch. Default is t2.micro. 
+    List of available instance types https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/i
+    >
+
+    Region
+    The geographic area where AWS resourced are hosted. Default is us-east-1.
+    > 
+
+    Secret Access Key
+    If empty, it will be fetched from the AWS_SECRET_ACCESS_KEY environment variable.
+    >
+
+    Volume Size
+    The size of the instance volume, in GB. Default is 20 GB. 
+    It is recommended that the disk size should be more than 20 GB.
+    >
+
+    Volume Type
+    The type of volume. Default is gp3. 
+    List of available volume types https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html 
+    >
+    ```
+
+6. Click `Enter` to confirm setting the Target.
+
+    ```text
+        Target set successfully
+     ```
+
+## DigitalOcean
+
+Daytona allows you to set a DigitalOcean Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+    ```shell
+    daytona target set
+    ```
+
+2. Select `digitalocean-provider` to use the DigitalOcean Provider.
+
+    ```text
+        Choose a provider
+        1 item
+        ===
+        digitalocean-provider
+        v0.0.0
+    ```
+
+3. Select `New Target`.
+4. Enter a name for your Target.
+5. Enter the appropriate configuration options when prompted.
+
+    ```text
+    Auth Token
+    If empty, token will be fetched from the DIGITALOCEAN_ACCESS_TOKEN environment variable.
+    >
+
+    Disk Size
+    > 
+
+    Image
+    >
+
+    Region
+    >
+
+    Size
+    >
+    ```
+
+6. Click `Enter` to confirm setting the Target.
+
+    ```text
+        Target set successfully
+     ```
+
+## Fly
+
+Daytona allows you to set a DigitalOcean Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+    ```shell
+    daytona target set
+    ```
+
+2. Select `fly-provider` to use the Fly Provider.
+
+    ```text
+        Choose a provider
+        1 item
+        ===
+        fly-provider
+        v0.0.0
+    ```
+
+3. Select `New Target`.
+4. Enter a name for your Target.
+5. Enter the appropriate configuration options when prompted.
+
+    ```text
+    Auth Token
+    If empty, token will be fetched from the FLY_ACCESS_TOKEN environment variable. 
+    >
+
+    Disk Size
+    The size of the disk in GB.
+    > 
+
+    Org Slug
+    The organization name to create the fly machine in.
+    >
+
+    Region
+    The region where the fly machine resides. If not specified, near region will be used.
+    >
+
+    Size
+    The size of the fly machine. Default is shared-cpu-4x. 
+    List of available sizes https://fly.io/docs/about/pricing/#started-fly-machines
+    >
+    ```
+
+6. Click `Enter` to confirm setting the Target.
+
+    ```text
+        Target set successfully
+     ```
