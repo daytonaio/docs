@@ -45,7 +45,7 @@ Daytona allows you to set a Target to use when managing Workspaces.
 
 3. Select `New Target`.
 4. Enter a name for your Target.
-5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a remote Docker Target.
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Target. The following example shows setting a remote Docker Target.
 
     ```text
         Remote Password
@@ -160,7 +160,7 @@ Daytona allows you to set a Docker Target to use for deploying and managing Work
     - A remote machine uses a remote installation of Docker to deploy Workspaces and requires configuring the remote `password`, `port`, `user`, `sock path`, `Workspace data directory`, and `private key path`.
 
 4. Enter a name for your Target.
-5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a local Docker Target.
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Target. The following example shows setting a local Docker Target.
 
     ```text
         Sock Path
@@ -203,21 +203,24 @@ Daytona allows you to set an AWS Target to use for deploying and managing Worksp
     >
 
     Region
-    The geographic area where AWS resourced are hosted. Default is us-east-1.
+    The geographic area where AWS resources are hosted. Default is us-east-1.
+    List of available regions https://docs.aws.amazon.com/general/latest/gr/rande.html
     > 
 
     Secret Access Key
-    If empty, it will be fetched from the AWS_SECRET_ACCESS_KEY environment variable.
+    Find this in the AWS Console under "My Security Credentials" (https://aws.amazon.com/premiumsupport/knowledge-center/manage-access-keys/).
+    Leave blank if you've set the AWS_SECRET_ACCESS_KEY environment variable, or enter your key here.
     >
 
     Volume Size
-    The size of the instance volume, in GB. Default is 20 GB. 
+    The size of the instance volume, in GB. Default is 20 GB.
     It is recommended that the disk size should be more than 20 GB.
+    List of volume size limits: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html
     >
 
     Volume Type
-    The type of volume. Default is gp3. 
-    List of available volume types https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html 
+    The type of volume. Default is gp3.
+    List of available volume types https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html
     >
     ```
 
