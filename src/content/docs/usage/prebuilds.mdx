@@ -27,7 +27,7 @@ Prebuilds work by registering a listener for webhook events from the Git Provide
 
    <br />
 
-   Upon running the command, Daytona will prompt you to select a project configuration you plan to work on. You can then decide on a commit interval (e.g. `5`, _every 5 commits_) after which a build should be triggered, any specific trigger files whose changes should immediately start the build process, and retention (the maximum number of builds to store at a time).
+   Upon running the command, Daytona will prompt you to select a project configuration you plan to work on. You can then decide on a commit interval (e.g. `5`, _every 5 commits_) after which a build should be triggered, any specific trigger files whose changes should immediately start the build process, and build retention (the maximum number of builds to store at a time).
 
    ```text
    Select a Project Config To Prebuild
@@ -83,8 +83,6 @@ Daytona allows you to view detailed information of a Prebuild, providing you wit
    daytona prebuilds info
    ```
 
-   Upon running this command, Daytona will display a list of your Prebuilds.
-
 2. Select the Prebuild you want to view.
 
    ```text
@@ -94,7 +92,7 @@ Daytona allows you to view detailed information of a Prebuild, providing you wit
    abcd1234efg (every 5 commits)
    ```
 
-   Upon selecting the Prebuild, Daytona will display the details of the selected Prebuild. You will be able to view the Prebuild ID, the branch it is linked to, the commit interval, the trigger files, and the build retention.
+   Upon selecting the Prebuild, Daytona will display the details of the selected Prebuild. You will be able to view the Prebuild ID, the project configuration, the branch it is linked to, the commit interval, the trigger files, and the build retention.
 
    ```text
    Prebuild Configuration Info                                                                   
@@ -116,8 +114,6 @@ Daytona allows you to update a Prebuild, helping you manage and modify the Prebu
    daytona prebuilds update
    ```
 
-   Upon running this command, Daytona will display a list of your Prebuilds to update.
-
 2. Select the Prebuild you want to update.
 
    ```text
@@ -127,7 +123,7 @@ Daytona allows you to update a Prebuild, helping you manage and modify the Prebu
    abcd1234efg (every 5 commits)
    ```
 
-   Upon selecting the Prebuild, Daytona will prompt you to update the commit interval, trigger files, and build retention.
+   Upon selecting the Prebuild, Daytona will prompt you to update the Prebuild commit interval, trigger files, and build retention.
 
    ```text
    Commit interval
@@ -145,6 +141,8 @@ Daytona allows you to update a Prebuild, helping you manage and modify the Prebu
    >
    ```
 
+   Upon updating the Prebuild configuration, Daytona will display a success message.
+
    ```text
    Prebuild updated successfully
    ```
@@ -158,8 +156,6 @@ Daytona allows you to delete Prebuilds, helping you manage and remove those that
    ```shell
    daytona prebuilds delete
    ```
-
-   Upon running this command, Daytona will display a list of your Prebuilds to delete.
 
 2. Select the Prebuild you want to delete.
 
