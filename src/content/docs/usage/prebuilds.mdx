@@ -5,9 +5,11 @@ sidebar:
   label: Prebuilds
 ---
 
-Prebuilds are designed to speed up development by setting up a [project configuration](/usage/projects#project-configuration) that listens to changes in the connected Git Provider repository. This ensures a quicker project creation process when initiating a Workspace.
+Prebuilds are designed to accelerate development by pre-building your Workspace. When you start a Workspace, the prebuilt environment is used, ensuring that the Workspace is initiated almost instantly.
 
-Prebuilds work by registering a listener to webhook events from the Git Provider by sending a public API endpoint that the Git Provider will use to send requests.
+Prebuilds achieve this by setting up a [project configuration](/usage/projects#project-configuration) that monitors changes in the connected Git Provider's repository.
+
+Prebuilds work by registering a listener for webhook events from the Git Provider. A public API endpoint is provided, which the Git Provider uses to send these requests.
 
 ## Add a Prebuild
 
