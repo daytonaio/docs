@@ -5,6 +5,8 @@ sidebar:
   label: Prebuilds
 ---
 
+import Aside from '@components/Aside.astro'
+
 Prebuilds are designed to accelerate development by pre-building your Workspace. When you start a Workspace, the prebuilt environment is used, ensuring that the Workspace is initiated almost instantly.
 
 Prebuilds achieve this by setting up a [project configuration](/usage/projects#project-configuration) that monitors changes in the connected Git Provider's repository.
@@ -19,7 +21,13 @@ Prebuilds work by registering a listener for webhook events from the Git Provide
    daytona prebuilds add
    ```
 
-   Using the command opens a view that prompts you to select a project configuration and the Git branch you plan to work on. You can then decide on a commit interval after which a build should be triggered, as well as any specific trigger files whose changes should immediately start the build process.
+   <Aside type="note">
+      Add a `--run` flag to the command to automatically run the build after creating the Prebuild.
+   </Aside>
+
+   <br />
+
+   Upon running the command, Daytona will prompt you to select a project configuration and the Git branch you plan to work on. You can then decide on a commit interval (e.g. `5`, _every 5 commits_) after which a build should be triggered, as well as any specific trigger files whose changes should immediately start the build process.
 
    ```text
    Commit interval
@@ -31,6 +39,12 @@ Prebuilds work by registering a listener for webhook events from the Git Provide
    Enter full paths for files whose changes you want to explicitly trigger a prebuild. Use new lines for multiple entries.
    ```
 
+   ```text
+   Retention
+   Maximum number of resulting builds stored at a time
+   >
+   ```
+
 Subsequent `daytona create` calls will automatically detect the most recent existing build and use it to create the project.
 
 ## List Prebuilds
@@ -40,13 +54,114 @@ Daytona allows you to list all Prebuilds, providing you with an overview of the 
 1. Run the following command to list all Prebuilds:
 
    ```shell
-   daytona build list
+   daytona prebuilds list
    ```
 
-   Upon running this command, Daytona will display a list of your Prebuilds. You will be able to view the ID, the Configuration Hash it is linked to, the current state, the Prebuild ID, and the creation timestamp.
+   Upon running this command, Daytona will display a list of your Prebuilds. You will be able to view the project configuration, the branch it is linked to, the commit interval, the trigger files, and the build retention.
 
       ```text
-      ID                Configuration Hash   State    Prebuild ID   Created
-      ───────────────────────────────────────────────────────────────────────────
-      abcdefghij12345   abcd1234efgh56789    pending  abcd12        3 minutes ago
+      Project Config   Branch  Commit Interval  Trigger files  Build Retention
+      ────────────────────────────────────────────────────────────────────────
+      MyConfig         main    5                None           3
+   ```
+
+## Prebuilds Information
+
+Daytona allows you to view detailed information of a Prebuild, providing you with an overview of the properties stored within it.
+
+1. Run the following command to view the details of a Prebuild:
+
+   ```shell
+   daytona prebuilds info
+   ```
+
+   Upon running this command, Daytona will display a list of your Prebuilds.
+
+2. Select the Prebuild you want to view.
+
+   ```text
+   Select a Prebuild To View
+   1 item
+   MyConfig (main)                                                              
+   abcd1234efg (every 5 commits)
+   ```
+
+   Upon selecting the Prebuild, Daytona will display the details of the selected Prebuild. You will be able to view the Prebuild ID, the branch it is linked to, the commit interval, the trigger files, and the build retention.
+
+   ```text
+   Prebuild Configuration Info                                                                   
+                                                                                                  
+   ID                   abcd1234efg
+   Project config       MyConfig
+   Branch               main
+   Commit interval      5
+   Build retention      3
+   ```
+
+## Update Prebuilds
+
+Daytona allows you to update a Prebuild, helping you manage and modify the Prebuild configuration.
+
+1. Run the following command to update a Prebuild:
+
+   ```shell
+   daytona prebuilds update
+   ```
+
+   Upon running this command, Daytona will display a list of your Prebuilds to update.
+
+2. Select the Prebuild you want to update.
+
+   ```text
+   Select a Prebuild To Update
+   1 item
+   MyConfig (main)                                                              
+   abcd1234efg (every 5 commits)
+   ```
+
+   Upon selecting the Prebuild, Daytona will prompt you to update the commit interval, trigger files, and build retention.
+
+   ```text
+   Commit interval
+   >
+   ```
+
+   ```text
+   Trigger Files
+   Enter full paths for files whose changes you want to explicitly trigger a prebuild. Use new lines for multiple entries.
+   ```
+
+   ```text
+   Retention
+   Maximum number of resulting builds stored at a time
+   >
+   ```
+
+   ```text
+   Prebuild updated successfully
+   ```
+
+## Delete Prebuilds
+
+Daytona allows you to delete Prebuilds, helping you manage and remove those that are no longer needed.
+
+1. Run the following command to delete a Prebuild:
+
+   ```shell
+   daytona prebuilds delete
+   ```
+
+   Upon running this command, Daytona will display a list of your Prebuilds to delete.
+
+2. Select the Prebuild you want to delete.
+
+   ```text
+   Select a Prebuild To Delete
+   1 item
+   MyConfig (main)
+   abcd1234efg (every 5 commits)
+   ```
+
+   ```text
+   Prebuild deleted successfully
    ```
