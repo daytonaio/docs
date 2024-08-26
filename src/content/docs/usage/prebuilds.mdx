@@ -27,10 +27,18 @@ Prebuilds work by registering a listener for webhook events from the Git Provide
 
    <br />
 
-   Upon running the command, Daytona will prompt you to select a project configuration and the Git branch you plan to work on. You can then decide on a commit interval (e.g. `5`, _every 5 commits_) after which a build should be triggered, as well as any specific trigger files whose changes should immediately start the build process.
+   Upon running the command, Daytona will prompt you to select a project configuration you plan to work on. You can then decide on a commit interval (e.g. `5`, _every 5 commits_) after which a build should be triggered, any specific trigger files whose changes should immediately start the build process, and retention (the maximum number of builds to store at a time).
+
+   ```text
+   Select a Project Config To Prebuild
+   1 item
+   MyConfig
+   https://github.com/username/myproject.git
+   ```
 
    ```text
    Commit interval
+   Leave blank to ignore push events
    >
    ```
 
