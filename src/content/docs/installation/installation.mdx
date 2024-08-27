@@ -4,14 +4,15 @@ description: Learn how to install Daytona on Linux, macOS, and Windows.
 sidebar:
   label: Installation
 ---
+
 import Aside from '@components/Aside.astro'
 
-import Nix from "./method/nix.mdx";
-import Homebrew from "./method/homebrew.mdx";
-import ScriptUnix from "./method/script-unix.mdx";
-import UninstallUnix from "./method/uninstall-unix.mdx";
-import UninstallMacOS from "./method/uninstall-macos.mdx";
-import ScriptPowerShell from "./method/script-powershell.mdx";
+import Homebrew from './method/homebrew.mdx'
+import Nix from './method/nix.mdx'
+import ScriptPowerShell from './method/script-powershell.mdx'
+import ScriptUnix from './method/script-unix.mdx'
+import UninstallMacOS from './method/uninstall-macos.mdx'
+import UninstallUnix from './method/uninstall-unix.mdx'
 
 You can install Daytona on [Linux](#linux), [macOS](#macos), and [Windows](#windows) systems.
 Each operating system supports both x86_64 and AArch64 architectures.
@@ -24,46 +25,46 @@ You can install Daytona on a modern Linux system.
 Daytona supports both x86_64 and AArch64 architectures.
 The following installation options are available on Linux:
 
-* __[Official Installation Script](#official-installation-script)__  
-    The recommended method to install Daytona on Linux.
-    This installation script is supported by Daytona's developers upstream.
-* __[Homebrew](#homebrew)__  
-    Install Daytona on Linux using the Homebrew package manager.
-* __[Nix](#nix)__  
-    Install Daytona on NixOS and other Linux systems with a working Nix installation.
+- **[Official Installation Script](#official-installation-script)**  
+   The recommended method to install Daytona on Linux.
+  This installation script is supported by Daytona's developers upstream.
+- **[Homebrew](#homebrew)**  
+   Install Daytona on Linux using the Homebrew package manager.
+- **[Nix](#nix)**  
+   Install Daytona on NixOS and other Linux systems with a working Nix installation.
 
 ### Official Installation Script
 
-<ScriptUnix/>
+<ScriptUnix />
 
 <Aside type="note">
 You can install Daytona by manually downloading the binary and placing it in your `PATH`.
 
 ```shell
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.25/daytona-linux-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.26/daytona-linux-amd64 -o daytona
 # AArch64
-curl -sf -L https://download.daytona.io/daytona/v0.25/daytona-linux-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.26/daytona-linux-arm64 -o daytona
 ```
 
 </Aside>
 
 #### Uninstall Daytona
 
-<UninstallUnix/>
+<UninstallUnix />
 
 ### Homebrew
 
-<Homebrew/>
+<Homebrew />
 
 ### Nix
 
-<Nix/>
-#### Install Globally
-To permanently install Daytona on your system, you can add it to the relevant configuration.
+<Nix />
+#### Install Globally To permanently install Daytona on your system, you can add
+it to the relevant configuration.
 
-* On NixOS systems, add `daytona-bin` as a system package in `/etc/nixos/configuration.nix`.
-* On other Linux systems, use [home-manager](https://github.com/nix-community/home-manager) and add `daytona-bin` as a local package.
+- On NixOS systems, add `daytona-bin` as a system package in `/etc/nixos/configuration.nix`.
+- On other Linux systems, use [home-manager](https://github.com/nix-community/home-manager) and add `daytona-bin` as a local package.
 
 ## macOS
 
@@ -71,48 +72,48 @@ You can install Daytona on a modern macOS system.
 Daytona supports both x86_64 (Intel-based) and AArch64 (Apple Silicon) architectures.
 The following installation options are available on macOS:
 
-* __[Official Installation Script](#official-installation-script-1)__  
-    The recommended method to install Daytona on macOS.
-    This installation script is supported by Daytona's developers upstream.
-* __[Homebrew](#homebrew-1)__  
-    Install Daytona on macOS using the Homebrew package manager.
-* __[Nix](#nix-1)__  
-    Install Daytona on macOS using nix-darwin or home-manager.
+- **[Official Installation Script](#official-installation-script-1)**  
+   The recommended method to install Daytona on macOS.
+  This installation script is supported by Daytona's developers upstream.
+- **[Homebrew](#homebrew-1)**  
+   Install Daytona on macOS using the Homebrew package manager.
+- **[Nix](#nix-1)**  
+   Install Daytona on macOS using nix-darwin or home-manager.
 
 ### Official Installation Script
 
-<ScriptUnix/>
+<ScriptUnix />
 
 <Aside type="note">
 You can install Daytona by manually downloading the binary and placing it in your `PATH`.
 
 ```shell
 # x86-64/Intel-based
-curl -sf -L https://download.daytona.io/daytona/v0.25/daytona-darwin-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.26/daytona-darwin-amd64 -o daytona
 # AArch64/Apple Silicon
-curl -sf -L https://download.daytona.io/daytona/v0.25/daytona-darwin-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.26/daytona-darwin-arm64 -o daytona
 ```
 
 </Aside>
 
 #### Uninstall Daytona
 
-<UninstallMacOS/>
+<UninstallMacOS />
 
 ### Homebrew
 
-<Homebrew/>
+<Homebrew />
 
 ### Nix
 
-<Nix/>
+<Nix />
 
 #### Install Globally
 
 To permanently install Daytona on your system, you can add it to the relevant configuration.
 
-* If you're using [nix-darwin](https://github.com/LnL7/nix-darwin), add `daytona-bin` as a system package.
-* If you're using [home-manager](https://github.com/nix-community/home-manager), add `daytona-bin` as a local package.
+- If you're using [nix-darwin](https://github.com/LnL7/nix-darwin), add `daytona-bin` as a system package.
+- If you're using [home-manager](https://github.com/nix-community/home-manager), add `daytona-bin` as a local package.
 
 ## Windows
 
@@ -120,10 +121,10 @@ You can install Daytona on a modern Windows system.
 Daytona supports both x86_64 and AArch64 architectures.
 The following installation options are available on Windows:
 
-* __[Official Installation Script](#official-installation-script-2)__  
-    The recommended method to install Daytona on Windows.
-    This installation script is supported by Daytona's developers upstream.
+- **[Official Installation Script](#official-installation-script-2)**  
+   The recommended method to install Daytona on Windows.
+  This installation script is supported by Daytona's developers upstream.
 
 ### Official Installation Script
 
-<ScriptPowerShell/>
+<ScriptPowerShell />

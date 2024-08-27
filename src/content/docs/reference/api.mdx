@@ -5,230 +5,351 @@ description: A reference of supported operations using the Daytona API.
 
 
 ## GET /apikey
+
 List API keys
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## POST /apikey/\{apiKeyName\}
+
 Generate an API key
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `apiKeyName` | path | true | string | API key name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## DELETE /apikey/\{apiKeyName\}
+
 Revoke API key
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `apiKeyName` | path | true | string | API key name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
+## GET /build
+
+List builds
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+## POST /build
+
+Create a build
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `createBuildDto` | body | true | undefined | Create Build DTO |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `201` | Created |
+
+## DELETE /build
+
+Delete ALL builds
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `204` | No Content |
+
+## DELETE /build/prebuild/\{prebuildId\}
+
+Delete builds
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `prebuildId` | path | true | string | Prebuild ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `204` | No Content |
+
+## GET /build/\{buildId\}
+
+Get build data
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `buildId` | path | true | string | Build ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+## DELETE /build/\{buildId\}
+
+Delete build
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `buildId` | path | true | string | Build ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `204` | No Content |
 
 ## GET /container-registry
+
 List container registries
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /container-registry/\{server\}
+
 Get container registry credentials
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `server` | path | true | string | Container Registry server name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## PUT /container-registry/\{server\}
+
 Set container registry credentials
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `server` | path | true | string | Container Registry server name |
 | `containerRegistry` | body | true | undefined | Container Registry credentials to set |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `201` | Created |
 
 ## DELETE /container-registry/\{server\}
+
 Remove a container registry credentials
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `server` | path | true | string | Container Registry server name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `204` | No Content |
 
-
 ## GET /gitprovider
+
 List Git providers
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## PUT /gitprovider
+
 Set Git provider
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitProviderConfig` | body | true | undefined | Git provider |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
+## POST /gitprovider/context
+
+Get Git context
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `repository` | body | true | undefined | Get repository context |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
 
 ## POST /gitprovider/context/url
+
 Get URL from Git repository
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `repository` | body | true | undefined | Git repository |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
-
-
-## GET /gitprovider/context/\{gitUrl\}
-Get Git context
-
-### Parameters
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| `gitUrl` | path | true | string | Git URL |
-
-### Responses
-| Status Code | Description |
-| :-------- | :---------- |
-| `200` | OK |
-
 
 ## GET /gitprovider/for-url/\{url\}
+
 Get Git provider
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `url` | path | true | string | Url |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /gitprovider/id-for-url/\{url\}
+
 Get Git provider ID
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `url` | path | true | string | Url |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## DELETE /gitprovider/\{gitProviderId\}
+
 Remove Git provider
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitProviderId` | path | true | string | Git provider |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /gitprovider/\{gitProviderId\}/namespaces
+
 Get Git namespaces
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitProviderId` | path | true | string | Git provider |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /gitprovider/\{gitProviderId\}/user
+
 Get Git context
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitProviderId` | path | true | string | Git Provider Id |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /gitprovider/\{gitProviderId\}/\{namespaceId\}/repositories
+
 Get Git repositories
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitProviderId` | path | true | string | Git provider |
 | `namespaceId` | path | true | string | Namespace |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /gitprovider/\{gitProviderId\}/\{namespaceId\}/\{repositoryId\}/branches
+
 Get Git repository branches
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitProviderId` | path | true | string | Git provider |
@@ -236,15 +357,17 @@ Get Git repository branches
 | `repositoryId` | path | true | string | Repository |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /gitprovider/\{gitProviderId\}/\{namespaceId\}/\{repositoryId\}/pull-requests
+
 Get Git repository PRs
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitProviderId` | path | true | string | Git provider |
@@ -252,338 +375,488 @@ Get Git repository PRs
 | `repositoryId` | path | true | string | Repository |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /profile
+
 Get profile data
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## PUT /profile
+
 Set profile data
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `profileData` | body | true | undefined | Profile data |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `201` | Created |
 
 ## DELETE /profile
+
 Delete profile data
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `204` | No Content |
 
-
 ## GET /project-config
+
 List project configs
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## PUT /project-config
+
 Set project config data
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `projectConfig` | body | true | undefined | Project config |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `201` | Created |
 
-
 ## GET /project-config/default/\{gitUrl\}
+
 Get project configs by git url
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitUrl` | path | true | string | Git URL |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
+## GET /project-config/prebuild
+
+List prebuilds
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+## POST /project-config/prebuild/process-git-event
+
+ProcessGitEvent
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `workspace` | body | true | undefined | Webhook event |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
 
 ## GET /project-config/\{configName\}
+
 Get project config data
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `configName` | path | true | string | Config name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## DELETE /project-config/\{configName\}
+
 Delete project config data
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `configName` | path | true | string | Config name |
+| `force` | query | undefined | boolean | Force |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `204` | No Content |
 
+## GET /project-config/\{configName\}/prebuild
 
-## PATCH /project-config/\{configName\}/set-default
-Set project config to default
+List prebuilds for project config
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `configName` | path | true | string | Config name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
+## PUT /project-config/\{configName\}/prebuild
+
+Set prebuild
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `configName` | path | true | string | Config name |
+| `prebuild` | body | true | undefined | Prebuild |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `201` | Created |
+
+## GET /project-config/\{configName\}/prebuild/\{prebuildId\}
+
+Get prebuild
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `configName` | path | true | string | Project config name |
+| `prebuildId` | path | true | string | Prebuild ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+## DELETE /project-config/\{configName\}/prebuild/\{prebuildId\}
+
+Delete prebuild
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `configName` | path | true | string | Project config name |
+| `prebuildId` | path | true | string | Prebuild ID |
+| `force` | query | undefined | boolean | Force |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `204` | No Content |
+
+## PATCH /project-config/\{configName\}/set-default
+
+Set project config to default
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `configName` | path | true | string | Config name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
 
 ## GET /provider
+
 List providers
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## POST /provider/install
+
 Install a provider
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `provider` | body | true | undefined | Provider to install |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /provider/\{provider\}/target-manifest
+
 Get provider target manifest
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `provider` | path | true | string | Provider name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## POST /provider/\{provider\}/uninstall
+
 Uninstall a provider
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `provider` | path | true | string | Provider to uninstall |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /server/config
+
 Get the server configuration
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## POST /server/config
+
 Set the server configuration
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `config` | body | true | undefined | Server configuration |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## POST /server/network-key
+
 Generate a new authentication key
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /target
+
 List targets
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## PUT /target
+
 Set a target
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `target` | body | true | undefined | Target to set |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `201` | Created |
 
-
 ## DELETE /target/\{target\}
+
 Remove a target
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `target` | path | true | string | Target name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `204` | No Content |
 
-
 ## GET /workspace
+
 List workspaces
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `verbose` | query | undefined | boolean | Verbose |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## POST /workspace
+
 Create a workspace
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `workspace` | body | true | undefined | Create workspace |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## GET /workspace/\{workspaceId\}
+
 Get workspace info
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `workspaceId` | path | true | string | Workspace ID or Name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
 ## DELETE /workspace/\{workspaceId\}
+
 Remove workspace
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `workspaceId` | path | true | string | Workspace ID |
 | `force` | query | undefined | boolean | Force |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## POST /workspace/\{workspaceId\}/start
+
 Start workspace
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `workspaceId` | path | true | string | Workspace ID or Name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## POST /workspace/\{workspaceId\}/stop
+
 Stop workspace
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `workspaceId` | path | true | string | Workspace ID or Name |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## POST /workspace/\{workspaceId\}/\{projectId\}/start
+
 Start project
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `workspaceId` | path | true | string | Workspace ID or Name |
 | `projectId` | path | true | string | Project ID |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## POST /workspace/\{workspaceId\}/\{projectId\}/state
+
 Set project state
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `workspaceId` | path | true | string | Workspace ID or Name |
@@ -591,24 +864,24 @@ Set project state
 | `setState` | body | true | undefined | Set State |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
 
-
 ## POST /workspace/\{workspaceId\}/\{projectId\}/stop
+
 Stop project
 
 ### Parameters
+
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `workspaceId` | path | true | string | Workspace ID or Name |
 | `projectId` | path | true | string | Project ID |
 
 ### Responses
+
 | Status Code | Description |
 | :-------- | :---------- |
 | `200` | OK |
-
-
-
