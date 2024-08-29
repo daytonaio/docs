@@ -133,9 +133,9 @@ Daytona allows you to delete Targets, helping you manage and remove those that a
         Target MyTarget removed successfully
     ```
 
-## Docker
+## Docker (Local)
 
-Daytona allows you to set a Docker Target to use for deploying and managing Workspaces. The Docker Target enables you to deploy Workspaces on your local or remote machine using Docker.
+Daytona allows you to set a local Docker Target to use for deploying and managing Workspaces. The local Docker Target enables you to deploy Workspaces on your local machine using Docker.
 
 1. Run the following command to set a Target:
 
@@ -153,18 +153,85 @@ Daytona allows you to set a Docker Target to use for deploying and managing Work
         v0.0.0
     ```
 
-3. Select `local` to set a local Docker target, or `New Target` to set a remote Docker target.
+3. Select `local` to set a local Docker Target.
 
-    - A local machine uses your local installation of Docker to deploy Workspaces and requires configuring the `Sock Path` to the Docker socket.
-
-    - A remote machine uses a remote installation of Docker to deploy Workspaces and requires configuring the remote `password`, `port`, `user`, `sock path`, `Workspace data directory`, and `private key path`.
+    ```text
+        Choose a Target
+        1 item
+        ===
+        local
+        docker-provider
+    ```
 
 4. Enter a name for your Target.
-5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Target. The following example shows setting a local Docker Target.
+5. Enter the appropriate configuration options when prompted.
 
     ```text
         Sock Path
         > /var/run/docker.sock
+    ```
+
+6. Click `Enter` to confirm setting the Target.
+
+    ```text
+        Target set successfully
+     ```
+
+## Docker (Remote)
+
+Daytona allows you to set a remote Docker Target to use for deploying and managing Workspaces. The remote Docker Target enables you to deploy Workspaces on a remote machine using Docker.
+
+1. Run the following command to set a Target:
+
+    ```shell
+    daytona target set
+    ```
+
+2. Select `docker-provider` to use the Docker Provider.
+
+    ```text
+        Choose a Provider
+        1 item
+        ===
+        docker-provider
+        v0.0.0
+    ```
+
+3. Select `New Target` to set a remote Docker target.
+
+    ```text
+        Choose a Target
+        1 item
+        ===
+        + New Target
+    ```
+
+4. Enter a name for your Target.
+5. Enter the appropriate configuration options when prompted.
+
+    ```text
+        Remote Password
+        >
+
+        Remote Port
+        >
+
+        Remote User
+        Note: non-root user required
+        >
+
+        Sock Path
+        > /var/run/docker.sock
+
+        Workspace Data Dir       
+        The directory on the remote host where the workspace data will be stored
+        > /tmp/daytona-data
+
+        Remote Private Key Path
+        daytona_config
+        known_hosts
+        Custom path
+        None
     ```
 
 6. Click `Enter` to confirm setting the Target.
