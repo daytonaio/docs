@@ -5,8 +5,6 @@ sidebar:
   label: Prebuilds
 ---
 
-import Aside from '@components/Aside.astro'
-
 Prebuilds are designed to accelerate development by pre-building your Workspace. When you start a Workspace, the prebuilt environment is used, ensuring that the Workspace is initiated almost instantly.
 
 Prebuilds achieve this by setting up a [project configuration](/usage/projects#project-configuration) that monitors changes in the connected Git Provider's repository.
@@ -20,12 +18,6 @@ Prebuilds work by registering a listener for webhook events from the Git Provide
    ```shell
    daytona prebuilds add
    ```
-
-   <Aside type="note">
-      Add a `--run` flag to the command to automatically run the build after creating the Prebuild.
-   </Aside>
-
-   <br />
 
    Upon running the command, Daytona will prompt you to select a project configuration you plan to work on. You can then decide on a commit interval (e.g. `5`, _every 5 commits_) after which a build should be triggered, any specific trigger files whose changes should immediately start the build process, and build retention (the maximum number of builds to store at a time).
 
@@ -57,21 +49,21 @@ Subsequent `daytona create` calls will automatically detect the most recent exis
 
 ## Use a Prebuild
 
-Once you added a Prebuild, it becomes active immediately based on the [project configuration](usage/projects#project-configuration) you provided. The Prebuild will automatically run whenever the specified conditions are met, such as when the defined number of commits is reached. For instance, if you specified a commit interval of `5`, the Prebuild will run after every `5` commits to the repository.
+Once you added a Prebuild, it becomes active immediately based on the [project configuration](usage/projects#project-configuration) you provided. The Prebuild will automatically run whenever the specified conditions are met, such as when the defined number of commits is reached.
 
-As soon as you add a Prebuild, a build process will automatically start in the background unless you have configured it otherwise. The initial build process may take some time to complete, but subsequent builds will be significantly faster. However, if you try to create a Workspace before this build is completed, Daytona will start a fresh build, which might take longer.
+For instance, if you specified a commit interval of `5`, the Prebuild will run after every `5` commits to the repository. Populate the **Trigger files** field with files whose changes you want to immediately trigger a Prebuild, without having to wait for the commit interval. Use the **Retention** field to define how many successful builds you want Daytona to remember (defaults to `3`).
 
-It is recommended to wait (e.g., 10 minutes) for the initial build to complete before creating a Workspace.
+As soon as you add a Prebuild, a build process will automatically start in the background unless you have configured it otherwise. The initial build process may take some time to complete, but subsequent builds will be significantly faster. You can view the initial build's progress by running `daytona builds list`.
 
-You can now create a Workspace using the Prebuild by running the following command:
+Once the build process is complete, run the following command to create a Workspace using the configured project configuration:
 
 ```shell
-daytona create
+daytona create [PROJECT_CONFIG_NAME]
 ```
 
-Upon running this command, Daytona will detect the most recent Prebuild associated with the selected project configuration. The Workspace will then use this Prebuild, significantly speeding up the setup process.
+Upon running this command, Daytona will detect the most recent Prebuild associated with the selected project configuration. The Workspace will then use this Prebuild, significantly speeding up the setup process by utilizing the cached environment
 
-During the Workspace creation process, if the initial Prebuild has finished, the setup will be almost instantaneous, utilizing the cached environment. Otherwise, a new build will be triggered, potentially slowing down the Workspace creation.
+During the Workspace creation process, if the initial Prebuild has finished, the setup will be almost instantaneous. Otherwise, a new build will be triggered, potentially slowing down the Workspace creation.
 
 ## List Prebuilds
 
