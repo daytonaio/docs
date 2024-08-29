@@ -55,6 +55,24 @@ Prebuilds work by registering a listener for webhook events from the Git Provide
 
 Subsequent `daytona create` calls will automatically detect the most recent existing build and use it to create the project.
 
+## Use a Prebuild
+
+Once you added a Prebuild, it becomes active immediately based on the [project configuration](usage/projects#project-configuration) you provided. The Prebuild will automatically run whenever the specified conditions are met, such as when the defined number of commits is reached. For instance, if you specified a commit interval of `5`, the Prebuild will run after every `5` commits to the repository.
+
+As soon as you add a Prebuild, a build process will automatically start in the background unless you have configured it otherwise. The initial build process may take some time to complete, but subsequent builds will be significantly faster. However, if you try to create a Workspace before this build is completed, Daytona will start a fresh build, which might take longer.
+
+It is recommended to wait (e.g., 10 minutes) for the initial build to complete before creating a Workspace.
+
+You can now create a Workspace using the Prebuild by running the following command:
+
+```shell
+daytona create
+```
+
+Upon running this command, Daytona will detect the most recent Prebuild associated with the selected project configuration. The Workspace will then use this Prebuild, significantly speeding up the setup process.
+
+During the Workspace creation process, if the initial Prebuild has finished, the setup will be almost instantaneous, utilizing the cached environment. Otherwise, a new build will be triggered, potentially slowing down the Workspace creation.
+
 ## List Prebuilds
 
 Daytona allows you to list all Prebuilds, providing you with an overview of the properties stored within each Prebuild configuration.
