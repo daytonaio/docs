@@ -19,33 +19,33 @@ Daytona allows you to install a Provider to interface with the Daytona Server. O
 
 1. Run the following command to install a Provider:
 
-    ```shell
-    daytona provider install
-    ```
+```shell
+daytona provider install
+```
 
 2. Select the Provider you want to install from the list or select a specific version.
 
-    ```text
-        Choose a provider to install
-        5 items
-        ===
-        fly-provider
-        v0.0.0
-        aws-provider
-        v0.0.0
-        docker-provider
-        v0.0.0
-        digitalocean-provider
-        v0.0.0
+```text
+Choose a provider to install
+5 items
+===
+fly-provider
+v0.0.0
+aws-provider
+v0.0.0
+docker-provider
+v0.0.0
+digitalocean-provider
+v0.0.0
 
-        Select a specific version
-    ```
+Select a specific version
+```
 
-    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](/configuration/targets) to use with the created Provider.
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](/configuration/targets) to use with the created Provider.
 
-    ```text
-        Provider docker-provider has been successfully installed
-    ```
+```text
+Provider docker-provider has been successfully installed
+```
 
 ## List Providers
 
@@ -53,17 +53,17 @@ Daytona allows you to list all installed Providers, providing you with an overvi
 
 1. Run the following command to list all installed Providers:
 
-    ```shell
-    daytona provider list
-    ```
+```shell
+daytona provider list
+```
 
-    Upon running this command, Daytona will display a list of your installed Providers and their respective versions.
+Upon running this command, Daytona will display a list of your installed Providers and their respective versions.
 
-    ```text
-        Name                                Version               
-        ───────────────────────────────────────────
-        docker-provider                     v.0.0.0
-   ```
+```text
+Name                                Version               
+───────────────────────────────────────────
+docker-provider                     v.0.0.0
+```
 
 ## Update a Provider
 
@@ -71,23 +71,23 @@ Daytona allows you to update an existing Provider, enabling you to apply the lat
 
 1. Run the following command to update a Provider:
 
-    ```shell
-    daytona provider update
-    ```
+```shell
+daytona provider update
+```
 
 2. Select the Provider you want to update from the list.
 
-    ```text
-        Choose a provider to update
-        1 item
-        ===
-        docker-provider
-        v0.0.0
-    ```
+```text
+Choose a provider to update
+1 item
+===
+docker-provider
+v0.0.0
+```
 
-    ```text
-        Provider docker-provider has been successfully updated
-    ```
+```text
+Provider docker-provider has been successfully updated
+```
 
 ## Uninstall a Provider
 
@@ -95,23 +95,23 @@ Daytona allows you to uninstall an existing Provider, helping you manage your Pr
 
 1. Run the following command to uninstall a Provider:
 
-    ```shell
-    daytona provider uninstall
-    ```
+```shell
+daytona provider uninstall
+```
 
 2. Select the Provider you want to uninstall from the list.
 
-    ```text
-        Choose a provider to uninstall
-        1 item
-        ===
-        docker-provider
-        v0.0.0
-    ```
+```text
+Choose a provider to uninstall
+1 item
+===
+docker-provider
+v0.0.0
+```
 
-    ```text
-        Provider docker-provider has been successfully uninstalled
-    ```
+```text
+Provider docker-provider has been successfully uninstalled
+```
 
 ## Docker
 
@@ -119,28 +119,28 @@ The Docker Provider allows Daytona to create Workspace projects as Docker contai
 
 1. Run the following command to install a Docker Provider:
 
-    ```shell
-    daytona provider install
-    ```
+```shell
+daytona provider install
+```
 
 2. Select `docker-provider` to install Docker as your Provider.
 
-    ```text
-        Choose a provider to install
-        ===
-        > docker-provider
-          v0.0.0
-    ```
+```text
+Choose a provider to install
+===
+> docker-provider
+    v0.0.0
+```
 
-    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
-    ```text
-        ⡿  Installing...
-    ```
+```text
+⡿  Installing...
+```
 
-    ```text
-        Provider docker-provider has been successfully installed
-    ```
+```text
+Provider docker-provider has been successfully installed
+```
 
 <DocumentList>
 <DocumentListItem
@@ -159,28 +159,28 @@ To use the AWS Provider, ensure that your AWS programmatic access user has the `
 
 1. Run the following command to install an AWS Provider:
 
-    ```shell
-    daytona provider install
-    ```
+```shell
+daytona provider install
+```
 
 2. Select `aws-provider` to install AWS as your Provider.
 
-    ```text
-        Choose a provider to install
-        ===
-        > aws-provider
-          v0.0.0
-    ```
+```text
+Choose a provider to install
+===
+> aws-provider
+    v0.0.0
+```
 
-    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
-    ```text
-        ⡿  Installing...
-    ```
+```text
+⡿  Installing...
+```
 
-    ```text
-        Provider aws-provider has been successfully installed
-    ```
+```text
+Provider aws-provider has been successfully installed
+```
 
 <DocumentList>
 <DocumentListItem
@@ -197,28 +197,28 @@ The DigitalOcean Provider allows Daytona to create Workspace projects on Digital
 
 1. Run the following command to install a DigitalOcean Provider:
 
-    ```shell
-    daytona provider install
-    ```
+```shell
+daytona provider install
+```
 
 2. Select `digitalocean-provider` to install DigitalOcean as your Provider.
 
-    ```text
-        Choose a provider to install
-        ===
-        > digitalocean-provider
-          v0.0.0
-    ```
+```text
+Choose a provider to install
+===
+> digitalocean-provider
+    v0.0.0
+```
 
-    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
-    ```text
-        ⡿  Installing...
-    ```
+```text
+⡿  Installing...
+```
 
-    ```text
-        Provider digitalocean-provider has been successfully installed
-    ```
+```text
+Provider digitalocean-provider has been successfully installed
+```
 
 <DocumentList>
 <DocumentListItem
@@ -235,28 +235,28 @@ The Fly Provider allows Daytona to create Workspace projects on Fly VMs, known a
 
 1. Run the following command to install a Fly Provider:
 
-    ```shell
-    daytona provider install
-    ```
+```shell
+daytona provider install
+```
 
 2. Select `fly-provider` to install Fly as your Provider.
 
-    ```text
-        Choose a provider to install
-        ===
-        > fly-provider
-          v0.0.0
-    ```
+```text
+Choose a provider to install
+===
+> fly-provider
+    v0.0.0
+```
 
-    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
-    ```text
-        ⡿  Installing...
-    ```
+```text
+⡿  Installing...
+```
 
-    ```text
-        Provider fly-provider has been successfully installed
-    ```
+```text
+Provider fly-provider has been successfully installed
+```
 
 <DocumentList>
 <DocumentListItem
