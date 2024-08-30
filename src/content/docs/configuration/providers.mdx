@@ -6,31 +6,18 @@ sidebar:
 ---
 
 import Aside from '@components/Aside.astro'
+import DocumentList from "@components/DocumentList.astro";
+import DocumentListItem from "@components/DocumentListItem.astro";
 
-Daytona abstracts the management and deployment of Workspaces into 2 related concepts:
+Providers are plugins through which Daytona integrates with various technologies to create and manage development environments. Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run your environments, whether through containerization, orchestration, or cloud-based virtual machines.
 
-1. **Provider**  
-    A plugin that interfaces with the [Daytona Server](/usage/server), responsible for Workspace deployment and lifecycle management.
-    Examples of platforms Providers may connect with include:
-    - Container management platforms such as Docker or Podman;
-    - Cloud hosting providers such as AWS or DigitalOcean.
-2. **Target**  
-    A set of configuration that governs how Daytona manages and deploys Workspaces.
-    Each Target is tied to an individual Provider.
-    Daytona allows you to configure new and existing Targets, and choose between them at Workspace creation time.
+Daytona's architecture decentralizes the role of a Provider into a separate service. The [Daytona Server](/usage/server) communicates with Providers to execute operations relating to Workspace creation and lifecycle management.
 
-Daytona's architecture decentralizes the role of a Provider into a separate service.
-The [Daytona Server](/usage/server) communicates with Providers to execute operations relating to Workspace creation and lifecycle management.
-
-This makes it possible to create new Providers to govern Workspace management on any platform or hosting providers.
-
-## Managing Providers
-
-### Install a Provider
+## Install a Provider
 
 Daytona allows you to install a Provider to interface with the Daytona Server. Once a new Provider is installed, it manages Workspace deployment and lifecycle management.
 
-1. Run the following command to start the guided Providers installation:
+1. Run the following command to install a Provider:
 
     ```shell
     daytona provider install
@@ -40,45 +27,45 @@ Daytona allows you to install a Provider to interface with the Daytona Server. O
 
     ```text
         Choose a provider to install
-        1 item
+        5 items
         ===
-        │ docker-provider
-        │ v0.0.0
+        fly-provider
+        v0.0.0
+        aws-provider
+        v0.0.0
+        docker-provider
+        v0.0.0
+        digitalocean-provider
+        v0.0.0
 
         Select a specific version
     ```
 
-    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](#managing-targets) to use with the created Provider.
+    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](/configuration/targets) to use with the created Provider.
 
     ```text
         Provider docker-provider has been successfully installed
     ```
 
-### Uninstall a Provider
+## List Providers
 
-Daytona allows you to uninstall an existing Provider, helping you manage your Providers by removing those that are no longer needed.
+Daytona allows you to list all installed Providers, providing you with an overview of the Providers available for managing Workspaces.
 
-1. Run the following command to uninstall a Provider:
+1. Run the following command to list all installed Providers:
 
     ```shell
-    daytona provider uninstall
+    daytona provider list
     ```
 
-2. Select the Provider you want to uninstall from the list.
+    Upon running this command, Daytona will display a list of your installed Providers and their respective versions.
 
     ```text
-        Choose a provider to uninstall
-        1 item
-        ===
-        │ docker-provider
-        │ v0.0.0
-    ```
+        Name                                Version               
+        ───────────────────────────────────────────
+        docker-provider                     v.0.0.0
+   ```
 
-    ```text
-        Provider docker-provider has been successfully uninstalled
-    ```
-
-### Update a Provider
+## Update a Provider
 
 Daytona allows you to update an existing Provider, enabling you to apply the latest enhancements and bug fixes.
 
@@ -94,190 +81,188 @@ Daytona allows you to update an existing Provider, enabling you to apply the lat
         Choose a provider to update
         1 item
         ===
-        │ docker-provider
-        │ v0.0.0
+        docker-provider
+        v0.0.0
     ```
 
     ```text
         Provider docker-provider has been successfully updated
     ```
 
-## Managing Targets
+## Uninstall a Provider
 
-### Set a Target
+Daytona allows you to uninstall an existing Provider, helping you manage your Providers by removing those that are no longer needed.
 
-Daytona allows you to set a Target to use when managing Workspaces.
-
-**Prerequisite**
-
-- **At least [one Provider installed](#managing-providers).**
-
-    Providers are essential for managing and deploying your Workspaces, so make sure you have configured at least one.
-
-1. Run the following command to set a Target:
+1. Run the following command to uninstall a Provider:
 
     ```shell
-    daytona target set
+    daytona provider uninstall
     ```
 
-2. Select the appropriate Provider for the environment you want to deploy to.
+2. Select the Provider you want to uninstall from the list.
 
     ```text
-        Choose a provider
+        Choose a provider to uninstall
         1 item
         ===
-        │ docker-provider
-        │ v0.0.0
+        docker-provider
+        v0.0.0
     ```
 
-3. Select `New Target`.
-4. Enter a name for your Target.
-5. Enter the appropriate configuration options when prompted.
-
     ```text
-        Remote Password
-        >
-
-        Remote Port
-        >
-
-        Remote User
-        Note: non-root user required
-        >
-
-        Sock Path
-        > /var/run/docker.sock
-
-        Workspace Data Dir       
-        The directory on the remote host where the workspace data will be stored
-        > /tmp/daytona-data
-
-        Remote Private Key Path
-        daytona_config
-        known_hosts
-        Custom path
-        None
+        Provider docker-provider has been successfully uninstalled
     ```
 
-6. Click `Enter` to confirm setting the Target.
+## Docker
 
-    ```text
-        Target set successfully
-     ```
+The Docker Provider allows Daytona to create Workspace projects as Docker containers. Daytona installs a Provider for Docker (`docker-provider`) by default and adds a default [Target](/configuration/targets#docker) using the Docker Provider, allowing the creation of Workspaces on your local machine.
 
-### List Targets
-
-Daytona allows you to keep track of your Targets by listing all previously created Targets with their details.
-
-1. Run the following command to list currently set Targets:
-
-   ```shell
-   daytona target list
-   ```
-
-   Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the Provider it is connected to, and its configured options.
-
-   ```text
-    Target      Provider            Options
-    ───────────────────────────────────────────────────────────────────────
-    MyTarget    docker-provider     {
-                                        "Sock Path": "/var/run/docker.sock"
-                                    }
-   ```
-
-### Delete a Target
-
-Daytona allows you to delete Targets, helping you manage and remove those that are no longer needed. Once a Target is deleted, you will not be able to manage or deploy Workspaces on that Target.
-
-1. Run the following command:
+1. Run the following command to install a Docker Provider:
 
     ```shell
-    daytona target delete
+    daytona provider install
     ```
 
-    Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the unique identifier of the Workspace, and the repository it is connected to.
-
-2. Press `Enter` on the selected Target to delete it.
+2. Select `docker-provider` to install Docker as your Provider.
 
     ```text
-        Choose a Target
-        1 item
+        Choose a provider to install
         ===
-        │ MyTarget          
-        │ docker-provider
+        > docker-provider
+          v0.0.0
     ```
 
-3. Confirm the action.
+    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
     ```text
-        ┃ Delete all workspaces within MyTarget?
-        ┃ You might not be able to easily remove these workspaces later.
-        ┃
-        ┃   [Yes]     [No]
+        ⡿  Installing...
     ```
 
     ```text
-        Target MyTarget removed successfully
+        Provider docker-provider has been successfully installed
     ```
 
-## Officially Supported Providers
+<DocumentList>
+<DocumentListItem
+    title="Set a Docker Target"
+    subtitle="Learn how to set a local or remote Docker Target to deploy and manage Workspaces."
+    href="/configuration/targets#docker"
+    expanded
+  />
+</DocumentList>
 
-### Docker
+## AWS
 
-After installation, Daytona installs a Provider for Docker (`daytona-provider-docker`) by default.
-A default Target using the Docker Provider is also added, allowing the creation of Workspaces on your local machine.
+The AWS Provider allows Daytona to create and manage Workspace projects on Amazon EC2 instances. The Provider integrates Daytona with AWS, enabling you to manage Workspaces in a scalable and flexible cloud environment.
 
-#### Add a Target
+To use the AWS Provider, ensure that your AWS programmatic access user has the `AmazonEC2FullAccess` permissions. This policy grants the necessary permissions to manage EC2 instances, which is crucial for Daytona's Workspace project creation and management.
 
-When using Docker as a Provider, you have the choice of creating either a local or remote target:
+1. Run the following command to install an AWS Provider:
 
-- **[Remote](#remote)**  
-  The target uses a remote installation of Docker to deploy Workspaces.
-  This requires access to an SSH daemon on the desired host machine, and access to a user with permission to create Docker containers.
-- **[Local](#local)**  
-  The target uses your local installation of Docker to deploy Workspaces.
-  This allows you to use Daytona without needing external servers or infrastructure.
+    ```shell
+    daytona provider install
+    ```
 
-##### Remote
+2. Select `aws-provider` to install AWS as your Provider.
 
-You can add a target for an installation of Docker on a remote host.
-When following the [Set a Target procedure](#set-a-target), note the following configuration options:
+    ```text
+        Choose a provider to install
+        ===
+        > aws-provider
+          v0.0.0
+    ```
 
-1. **Container Image**
+    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
-    The base image used by Daytona to deploy new Workspaces.
-    The default value is `daytonaio/workspace-project`.
+    ```text
+        ⡿  Installing...
+    ```
 
-2. **Remote Hostname**
+    ```text
+        Provider aws-provider has been successfully installed
+    ```
 
-    The hostname of the remote host.
-3. **Remote Password**
+<DocumentList>
+<DocumentListItem
+    title="Set an AWS Target"
+    subtitle="Learn how to set an AWS Target to deploy and manage Workspaces."
+    href="/configuration/targets#aws"
+    expanded
+  />
+</DocumentList>
 
-    The password for the remote user.
-    If password authentication is disabled on the remote host, you can choose an SSH key in the next step.
-4. **Remote Port**
+## DigitalOcean
 
-    The TCP port used to access the remote host's SSH daemon.
-    Unless otherwise configured on your remote host, this should be set to the default value (`22`)
-5. **Remote User**
+The DigitalOcean Provider allows Daytona to create Workspace projects on DigitalOcean VMs, known as Droplets. The Provider integrates Daytona with DigitalOcean, enabling you to manage Workspaces on a flexible and scalable cloud platform.
 
-     The username used to execute the required commands on the remote host.
+1. Run the following command to install a DigitalOcean Provider:
 
-    <Aside type="caution">
-      Non-root user is required so correct ownership is assumed inside the
-      project container.
-    </Aside>
+    ```shell
+    daytona provider install
+    ```
 
-6. **Sock Path**
+2. Select `digitalocean-provider` to install DigitalOcean as your Provider.
 
-    The Docker UNIX socket location on the remote host.
-    Unless otherwise configured after installing Docker, this should be set to the default value (`/var/run/docker.sock`)
-7. **Remote Private Key Path**
+    ```text
+        Choose a provider to install
+        ===
+        > digitalocean-provider
+          v0.0.0
+    ```
 
-    The SSH private key used to connect to the remote host.
-    If you are using password authentication, you can choose "None".
+    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
 
-##### Local
+    ```text
+        ⡿  Installing...
+    ```
 
-By default, Daytona comes pre-configured with a local Docker Target.
-If you have removed the default Docker Target, you can recreate it using the [Set a Target procedure](#set-a-target).
+    ```text
+        Provider digitalocean-provider has been successfully installed
+    ```
+
+<DocumentList>
+<DocumentListItem
+    title="Set a DigitalOcean Target"
+    subtitle="Learn how to set a DigitalOcean Target to deploy and manage Workspaces."
+    href="/configuration/targets#digitalocean"
+    expanded
+  />
+</DocumentList>
+
+## Fly
+
+The Fly Provider allows Daytona to create Workspace projects on Fly VMs, known as Fly Machines. The Provider integrates Daytona with the Fly.io platform, enabling you to manage Workspaces in a globally distributed cloud environment.
+
+1. Run the following command to install a Fly Provider:
+
+    ```shell
+    daytona provider install
+    ```
+
+2. Select `fly-provider` to install Fly as your Provider.
+
+    ```text
+        Choose a provider to install
+        ===
+        > fly-provider
+          v0.0.0
+    ```
+
+    Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+
+    ```text
+        ⡿  Installing...
+    ```
+
+    ```text
+        Provider fly-provider has been successfully installed
+    ```
+
+<DocumentList>
+<DocumentListItem
+    title="Set a Fly Target"
+    subtitle="Learn how to set a Fly Target to deploy and manage Workspaces."
+    href="/configuration/targets#fly"
+    expanded
+  />
+</DocumentList>
