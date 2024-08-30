@@ -32,7 +32,7 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
+| `--version` | `-v` | Display the version of Daytona |
 
 ## daytona api-key
 
@@ -46,7 +46,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona api-key generate
 
@@ -60,7 +59,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona api-key list
 
@@ -73,8 +71,8 @@ daytona api-key list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona api-key revoke
 
@@ -89,7 +87,6 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--yes` | `-y` | Skip confirmation prompt |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona autocomplete
 
@@ -103,7 +100,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona build
 
@@ -117,7 +113,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona build delete
 
@@ -133,7 +128,6 @@ __Flags__
 | `--all` | `-a` | Delete ALL builds |
 | `--prebuild-id` |  | Delete ALL builds from prebuild |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona build info
 
@@ -146,8 +140,8 @@ daytona build info [BUILD] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona build list
 
@@ -160,8 +154,8 @@ daytona build list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona build logs
 
@@ -174,9 +168,9 @@ daytona build logs [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--continue-on-completed` |  | Continue streaming logs after the build is completed |
 | `--follow` | `-f` | Follow logs |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona build run
 
@@ -190,7 +184,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona code
 
@@ -203,9 +196,8 @@ daytona code [WORKSPACE] [PROJECT] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--ide` | `-i` | Specify the IDE ('vscode' or 'browser') |
+| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona container-registry
 
@@ -219,7 +211,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona container-registry delete
 
@@ -233,7 +224,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona container-registry list
 
@@ -246,8 +236,8 @@ daytona container-registry list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona container-registry set
 
@@ -264,7 +254,6 @@ __Flags__
 | `--server` | `-s` | Server |
 | `--username` | `-u` | Username |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona create
 
@@ -284,14 +273,13 @@ __Flags__
 | `--custom-image` |  | Create the project with the custom image passed as the flag value; Requires setting --custom-image-user flag as well |
 | `--custom-image-user` |  | Create the project with the custom image user passed as the flag value; Requires setting --custom-image flag as well |
 | `--devcontainer-path` |  | Automatically assign the devcontainer builder with the path passed as the flag value |
-| `--ide` | `-i` | Specify the IDE ('vscode' or 'browser') |
+| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--manual` |  | Manually enter the Git repositories |
 | `--multi-project` |  | Workspace with multiple projects/repos |
 | `--name` |  | Specify the workspace name |
 | `--provider` |  | Specify the provider (e.g. 'docker-provider') |
 | `--target` | `-t` | Specify the target (e.g. 'local') |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona delete
 
@@ -308,7 +296,6 @@ __Flags__
 | `--force` | `-f` | Delete a workspace by force |
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona docs
 
@@ -322,7 +309,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona env
 
@@ -336,7 +322,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona env list
 
@@ -349,8 +334,8 @@ daytona env list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona env set
 
@@ -364,7 +349,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona forward
 
@@ -379,7 +363,6 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--public` |  | Should be port be available publicly via an URL |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona git-providers
 
@@ -393,7 +376,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona git-providers add
 
@@ -407,7 +389,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona git-providers delete
 
@@ -421,7 +402,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona git-providers list
 
@@ -434,8 +414,8 @@ daytona git-providers list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona ide
 
@@ -449,7 +429,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona info
 
@@ -462,8 +441,8 @@ daytona info [WORKSPACE] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona list
 
@@ -476,9 +455,9 @@ daytona list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--verbose` | `-v` | Show verbose output |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona prebuild
 
@@ -492,7 +471,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona prebuild add
 
@@ -507,7 +485,6 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--run` |  | Run the prebuild once after adding it |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona prebuild delete
 
@@ -522,7 +499,6 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--force` | `-f` | Force delete prebuild |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona prebuild info
 
@@ -535,8 +511,8 @@ daytona prebuild info [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona prebuild list
 
@@ -549,8 +525,8 @@ daytona prebuild list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona prebuild update
 
@@ -565,7 +541,6 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--run` |  | Run the prebuild once after updating it |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona profile
 
@@ -579,7 +554,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona profile add
 
@@ -596,7 +570,6 @@ __Flags__
 | `--api-url` | `-a` | API URL |
 | `--name` | `-n` | Profile name |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona profile delete
 
@@ -610,7 +583,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona profile edit
 
@@ -627,7 +599,6 @@ __Flags__
 | `--api-url` | `-a` | API URL |
 | `--name` | `-n` | Profile name |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona profile list
 
@@ -640,8 +611,8 @@ daytona profile list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona project-config
 
@@ -655,7 +626,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona project-config add
 
@@ -670,7 +640,6 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--manual` |  | Manually enter the Git repository |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona project-config delete
 
@@ -687,7 +656,6 @@ __Flags__
 | `--force` | `-f` | Force delete prebuild |
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona project-config info
 
@@ -700,8 +668,8 @@ daytona project-config info [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona project-config list
 
@@ -714,8 +682,8 @@ daytona project-config list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona project-config set-default
 
@@ -729,7 +697,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona project-config update
 
@@ -743,7 +710,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona provider
 
@@ -757,7 +723,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona provider install
 
@@ -771,7 +736,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona provider list
 
@@ -784,8 +748,8 @@ daytona provider list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona provider uninstall
 
@@ -799,7 +763,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona provider update
 
@@ -814,7 +777,6 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--all` | `-a` | Update all providers |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona purge
 
@@ -830,7 +792,6 @@ __Flags__
 | `--force` | `-f` | Delete all workspaces by force |
 | `--yes` | `-y` | Execute purge without prompt |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona serve
 
@@ -844,7 +805,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona server
 
@@ -859,7 +819,6 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--yes` | `-y` | Skip the confirmation prompt |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona server config
 
@@ -872,8 +831,8 @@ daytona server config [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona server configure
 
@@ -887,7 +846,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona server logs
 
@@ -903,7 +861,6 @@ __Flags__
 | `--file` |  | Read logs from local server log file |
 | `--follow` | `-f` | Follow logs |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona server restart
 
@@ -917,7 +874,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona server start
 
@@ -931,7 +887,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona server stop
 
@@ -945,7 +900,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona ssh
 
@@ -959,7 +913,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona start
 
@@ -975,7 +928,6 @@ __Flags__
 | `--all` | `-a` | Start all workspaces |
 | `--project` | `-p` | Start a single project in the workspace (project name) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona stop
 
@@ -991,7 +943,6 @@ __Flags__
 | `--all` | `-a` | Stop all workspaces |
 | `--project` | `-p` | Stop a single project in the workspace (project name) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona target
 
@@ -1005,7 +956,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona target list
 
@@ -1018,8 +968,8 @@ daytona target list [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona target remove
 
@@ -1034,7 +984,6 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--yes` | `-y` | Confirm deletion of all workspaces without prompt |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona target set
 
@@ -1048,7 +997,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona telemetry
 
@@ -1062,7 +1010,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona telemetry disable
 
@@ -1076,7 +1023,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona telemetry enable
 
@@ -1090,7 +1036,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona use
 
@@ -1104,7 +1049,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona version
 
@@ -1118,7 +1062,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
 
 ## daytona whoami
 
@@ -1131,5 +1074,5 @@ daytona whoami [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
-| `--output` | `-o` | Output format. Must be one of (yaml, json) |
