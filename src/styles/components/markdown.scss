@@ -276,6 +276,7 @@
     margin-bottom: 24px;
     margin-top: 0;
     list-style-image: url(/src/assets/icons/facts.svg);
+    margin-left: 14px;
 
     @include for-mobile-screen-sizes {
       margin-bottom: 40px;
