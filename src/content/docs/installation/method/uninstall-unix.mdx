@@ -15,33 +15,33 @@ Ensure you have a backup of any Workspace data and relevant configuration before
 
 1. Run the following commands to purge local Daytona data and remove the binary:
 
-    ```shell
-    daytona purge
-    ```
+```shell
+daytona purge
+```
 
-    Run the following commands if the `daytona purge` command does not work, or if you want to manually purge local Daytona data and remove the binary:
+Run the following commands if the `daytona purge` command does not work, or if you want to manually purge local Daytona data and remove the binary:
 
-    ```shell
-    rm -rf ~/Library/Application\ Support/daytona
-    sudo rm $(whereis daytona | awk '{print $2}')
-    ```
+```shell
+rm -rf ~/Library/Application\ Support/daytona
+sudo rm $(whereis daytona | awk '{print $2}')
+```
 
-    Additionally, to fully remove all Daytona-related configurations and components, run the following command:
+Additionally, to fully remove all Daytona-related configurations and components, run the following command:
 
-    ```shell
-    rm -f ~/.ssh/daytona_config
-    ```
+```shell
+rm -f ~/.ssh/daytona_config
+```
 
-    Edit your `~/.ssh/config` file to remove the `Include daytona_config entry`. You can do this manually by running the following command:
+Edit your `~/.ssh/config` file to remove the `Include daytona_config entry`. You can do this manually by running the following command:
 
-    ```shell
-    nano ~/.ssh/config
-    ```
+```shell
+nano ~/.ssh/config
+```
 
-    Remove the local Daytona registry container by running the following command:
+Remove the local Daytona registry container by running the following command:
 
-    ```shell
-    docker rm /daytona-registry
-    ```
+```shell
+docker rm /daytona-registry
+```
 
-    If you have generated any autocomplete scripts for Daytona, you will need to remove them manually from your shell configuration files (e.g., `.bashrc`, `.zshrc`).
+If you have generated any autocomplete scripts for Daytona, you will need to remove them manually from your shell configuration files (e.g., `.bashrc`, `.zshrc`).
