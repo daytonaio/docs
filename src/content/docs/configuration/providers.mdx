@@ -11,7 +11,7 @@ import DocumentListItem from "@components/DocumentListItem.astro";
 
 Providers are plugins through which Daytona integrates with various technologies to create and manage development environments. Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run your environments, whether through containerization, orchestration, or cloud-based virtual machines.
 
-Daytona's architecture decentralizes the role of a Provider into a separate service. The [Daytona Server](/usage/server) communicates with Providers to execute operations relating to Workspace creation and lifecycle management.
+Daytona's architecture decentralizes the role of a Provider into a separate service. The [Daytona Server](/docs/usage/server) communicates with Providers to execute operations relating to Workspace creation and lifecycle management.
 
 ## Install a Provider
 
@@ -41,7 +41,7 @@ v0.0.0
 Select a specific version
 ```
 
-Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](/configuration/targets) to use with the created Provider.
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](/docs/configuration/targets) to use with the created Provider.
 
 ```text
 Provider docker-provider has been successfully installed
@@ -115,7 +115,7 @@ Provider docker-provider has been successfully uninstalled
 
 ## Docker
 
-The Docker Provider allows Daytona to create Workspace projects as Docker containers. Daytona installs a Provider for Docker (`docker-provider`) by default and adds a default [Target](/configuration/targets#docker) using the Docker Provider, allowing the creation of Workspaces on your local machine.
+The Docker Provider allows Daytona to create Workspace projects as Docker containers. Daytona installs a Provider for Docker (`docker-provider`) by default and adds a default [Target](/docs/configuration/targets#docker) using the Docker Provider, allowing the creation of Workspaces on your local machine.
 
 1. Run the following command to install a Docker Provider:
 
@@ -146,7 +146,7 @@ Provider docker-provider has been successfully installed
 <DocumentListItem
     title="Set a Docker Target"
     subtitle="Learn how to set a local or remote Docker Target to deploy and manage Workspaces."
-    href="/configuration/targets#docker"
+    href="/docs/configurationtargets#docker"
     expanded
   />
 </DocumentList>
@@ -186,7 +186,7 @@ Provider aws-provider has been successfully installed
 <DocumentListItem
     title="Set an AWS Target"
     subtitle="Learn how to set an AWS Target to deploy and manage Workspaces."
-    href="/configuration/targets#aws"
+    href="/docs/configurationtargets#aws"
     expanded
   />
 </DocumentList>
@@ -224,7 +224,7 @@ Provider digitalocean-provider has been successfully installed
 <DocumentListItem
     title="Set a DigitalOcean Target"
     subtitle="Learn how to set a DigitalOcean Target to deploy and manage Workspaces."
-    href="/configuration/targets#digitalocean"
+    href="/docs/configurationtargets#digitalocean"
     expanded
   />
 </DocumentList>
@@ -262,7 +262,7 @@ Provider fly-provider has been successfully installed
 <DocumentListItem
     title="Set a Fly Target"
     subtitle="Learn how to set a Fly Target to deploy and manage Workspaces."
-    href="/configuration/targets#fly"
+    href="/docs/configurationtargets#fly"
     expanded
   />
 </DocumentList>
