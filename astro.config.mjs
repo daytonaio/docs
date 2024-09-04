@@ -119,7 +119,7 @@ export default defineConfig({
               label: 'Prebuilds',
               link: '/usage/prebuilds',
               attrs: {
-                icon: 'grid.svg',
+                icon: 'prebuilds.svg',
               },
             },
             {
