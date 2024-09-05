@@ -22,6 +22,7 @@ const myThemeLight = ExpressiveCodeTheme.fromJSONString(jsonLightString)
 // https://astro.build/config
 export default defineConfig({
   site: PUBLIC_WEB_URL,
+  base: '/docs',
   integrations: [
     react(),
     starlight({
