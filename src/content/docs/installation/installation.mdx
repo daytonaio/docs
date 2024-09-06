@@ -15,7 +15,9 @@ import UninstallMacOS from './method/uninstall-macos.mdx'
 import UninstallUnix from './method/uninstall-unix.mdx'
 
 You can install Daytona on [Linux](#linux), [macOS](#macos), and [Windows](#windows) systems.
-Each operating system supports both x86_64 and AArch64 architectures.
+Each operating system supports both x86_64 and ARM64 architectures.
+
+Daytona leverages [Docker](https://docs.docker.com/engine/install/) to create and manage isolated development environments.
 
 After installing Daytona using the best method for your environment, you can [create a Workspace](/docs/usage/workspaces#create-a-workspace), [add a Git Provider](/docs/configuration/git-providers#add-a-git-provider), [install a Provider](/docs/configuration/providers#install-a-provider), and [use the CLI reference](/docs/reference/cli) to understand Daytona's full array of functionality.
 
@@ -42,9 +44,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.28/daytona-linux-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.29/daytona-linux-amd64 -o daytona
 # AArch64
-curl -sf -L https://download.daytona.io/daytona/v0.28/daytona-linux-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.29/daytona-linux-arm64 -o daytona
 ```
 
 </Aside>
@@ -90,9 +92,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64/Intel-based
-curl -sf -L https://download.daytona.io/daytona/v0.28/daytona-darwin-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.29/daytona-darwin-amd64 -o daytona
 # AArch64/Apple Silicon
-curl -sf -L https://download.daytona.io/daytona/v0.28/daytona-darwin-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.29/daytona-darwin-arm64 -o daytona
 ```
 
 </Aside>
@@ -129,3 +131,9 @@ The following installation options are available on Windows:
 ### Official Installation Script
 
 <ScriptPowerShell />
+
+<br />
+
+:::note
+If you are using Windows Subsystem for Linux (WSL), you can follow the [instructions](https://github.com/daytonaio/daytona/issues/282) on how to run Daytona when using an IDE reliant on the SSH client.
+:::
