@@ -7,7 +7,7 @@ sidebar:
 
 Prebuilds are designed to accelerate development by pre-building your Workspace. When you start a Workspace, the prebuilt environment is used, ensuring that the Workspace is initiated almost instantly.
 
-Prebuilds achieve this by setting up a [project configuration](/usage/projects#project-configuration) that monitors changes in the connected Git Provider's repository.
+Prebuilds achieve this by setting up a [project configuration](/docs/usage/projects#project-configuration) that monitors changes in the connected Git Provider's repository.
 
 Prebuilds work by registering a listener for webhook events from the Git Provider. A public API endpoint is provided, which the Git Provider uses to send these requests.
 
@@ -49,7 +49,7 @@ Subsequent `daytona create` calls will automatically detect the most recent exis
 
 ## Use a Prebuild
 
-Once you added a Prebuild, it becomes active immediately based on the [project configuration](usage/projects#project-configuration) you provided. The Prebuild will automatically run whenever the specified conditions are met, such as when the defined number of commits is reached.
+Once you added a Prebuild, it becomes active immediately based on the [project configuration](/docs/usage/projects#project-configuration) you provided. The Prebuild will automatically run whenever the specified conditions are met, such as when the defined number of commits is reached.
 
 For instance, if you specified a commit interval of `5`, the Prebuild will run after every `5` commits to the repository. Populate the **Trigger files** field with files whose changes you want to immediately trigger a Prebuild, without having to wait for the commit interval. Use the **Retention** field to define how many successful builds you want Daytona to remember (defaults to `3`).
 
