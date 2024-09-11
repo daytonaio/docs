@@ -5,7 +5,7 @@ sidebar:
   label: Targets
 ---
 
-A Target refers to the specific destination or environment where your development setups, facilitated by various [Providers](/configuration/providers), are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
+A Target refers to the specific destination or environment where your development setups, facilitated by various [Providers](/docs/configuration/providers), are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
 
 A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
@@ -17,7 +17,7 @@ Daytona allows you to set a Target to use when managing Workspaces.
 
 **Prerequisite**
 
-- **At least [one Provider installed](/configuration/providers).**
+- **At least [one Provider installed](/docs/configuration/providers).**
 
     Providers are essential for managing and deploying your Workspaces, so make sure you have configured at least one.
 
@@ -48,6 +48,12 @@ v0.0.0
 5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a remote Docker Target.
 
 ```text
+Name
+>
+
+Remote Hostname
+>
+
 Remote Password
 >
 
@@ -137,6 +143,12 @@ Target MyTarget removed successfully
 
 Daytona allows you to set a local Docker Target to use for deploying and managing Workspaces. The local Docker Target enables you to deploy Workspaces on your local machine using Docker.
 
+:::note
+Before setting a local Docker Target, ensure that [Docker](https://docs.docker.com/engine/install/) is installed and running on your local machine.
+:::
+
+<br />
+
 1. Run the following command to set a Target:
 
 ```shell
@@ -181,6 +193,12 @@ Target set successfully
 
 Daytona allows you to set a remote Docker Target to use for deploying and managing Workspaces. The remote Docker Target enables you to deploy Workspaces on a remote machine using Docker.
 
+:::note
+Before setting a remote Docker Target, ensure that [Docker](https://docs.docker.com/engine/install/) is installed and running on the remote server.
+:::
+
+<br />
+
 1. Run the following command to set a Target:
 
 ```shell
@@ -210,6 +228,12 @@ Choose a Target
 5. Enter the appropriate configuration options when prompted.
 
 ```text
+Name
+>
+
+Remote Hostname
+>
+
 Remote Password
 >
 

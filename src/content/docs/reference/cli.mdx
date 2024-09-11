@@ -196,6 +196,7 @@ daytona code [WORKSPACE] [PROJECT] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--auto-start` | `-a` | Automatically start the project if it is not running |
 | `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--help` |  | help for daytona |
 
@@ -273,11 +274,11 @@ __Flags__
 | `--custom-image` |  | Create the project with the custom image passed as the flag value; Requires setting --custom-image-user flag as well |
 | `--custom-image-user` |  | Create the project with the custom image user passed as the flag value; Requires setting --custom-image flag as well |
 | `--devcontainer-path` |  | Automatically assign the devcontainer builder with the path passed as the flag value |
+| `--env` |  | Specify environment variables (e.g. --env 'KEY1=VALUE1' --env 'KEY2=VALUE2' ...') |
 | `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
-| `--manual` |  | Manually enter the Git repositories |
+| `--manual` |  | Manually enter the Git repository |
 | `--multi-project` |  | Workspace with multiple projects/repos |
 | `--name` |  | Specify the workspace name |
-| `--provider` |  | Specify the provider (e.g. 'docker-provider') |
 | `--target` | `-t` | Specify the target (e.g. 'local') |
 | `--help` |  | help for daytona |
 
@@ -638,7 +639,14 @@ daytona project-config add [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--branch` |  | Specify the Git branch to use in the project |
+| `--builder` |  | Specify the builder (currently auto/devcontainer/none) |
+| `--custom-image` |  | Create the project with the custom image passed as the flag value; Requires setting --custom-image-user flag as well |
+| `--custom-image-user` |  | Create the project with the custom image user passed as the flag value; Requires setting --custom-image flag as well |
+| `--devcontainer-path` |  | Automatically assign the devcontainer builder with the path passed as the flag value |
+| `--env` |  | Specify environment variables (e.g. --env 'KEY1=VALUE1' --env 'KEY2=VALUE2' ...') |
 | `--manual` |  | Manually enter the Git repository |
+| `--name` |  | Specify the project config name |
 | `--help` |  | help for daytona |
 
 ## daytona project-config delete
@@ -906,12 +914,13 @@ __Flags__
 SSH into a project using the terminal
 
 ```shell
-daytona ssh [WORKSPACE] [PROJECT] [flags]
+daytona ssh [WORKSPACE] [PROJECT] [CMD...] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--auto-start` | `-a` | Automatically start the project if it is not running |
 | `--help` |  | help for daytona |
 
 ## daytona start
@@ -926,6 +935,7 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | Start all workspaces |
+| `--code` | `-c` | Open the workspace in the IDE after workspace start |
 | `--project` | `-p` | Start a single project in the workspace (project name) |
 | `--help` |  | help for daytona |
 

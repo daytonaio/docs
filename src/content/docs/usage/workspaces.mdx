@@ -17,7 +17,7 @@ Creating your own Workspace in Daytona is a straightforward process that ensures
 
 **Prerequisite**
 
-- **At least [one Target configured](/configuration/targets)**.
+- **At least [one Target configured](/docs/configuration/targets)**.
 
   Targets are essential for deploying your Workspaces, so make sure you have configured at least one.
 
@@ -32,7 +32,7 @@ daytona create
 ```
 
 <Aside type="tip">
-You can open a new Workspace in an [IDE](/usage/ide) by using the `--code` flag.
+You can open a new Workspace in an [IDE](/docs/usage/ide) by using the `--code` flag.
 
 ```shell
 daytona create --code
@@ -42,31 +42,36 @@ daytona create --code
 
 <br />
 
-2. Select the Git Provider you want to use or select to enter a custom repository URL. Daytona provides two options for linking your repository:
+2. To create a Daytona Workspace, select one of the three provided options:
 
-- **Selecting from a List of Repositories**
+- **Select from a List of Repositories**
 
    If you choose a Git provider (e.g., GitHub), you will be presented with a list of your repositories from which you can select the desired repository.
 
-- **Entering a Custom Repository URL**
+- **Enter a Custom Repository URL**
 
    Alternatively, you can select the option to enter a custom repository URL manually if the repository is not listed under your Git provider account or is from an external source.
 
+- **Create from Sample**
+
+     If you do not have a repository ready, you can choose to create a Workspace from a sample project provided by Daytona. This option allows you to set up a new development environment using quick-start templates.
+
 ```text
 Choose a Provider
-2 items
+3 items
 ===
 GitHub
 Enter a custom repository URL
+Create from Sample
 ```
 
-3. Select the repository from the list or enter the URL of the Git repository you want to link with your Workspace.
+3. Select the Git repository from the list, enter the URL of the Git repository you want to link with your Workspace, or choose to create a Workspace from a sample project.
 
 4. Enter a name for your Workspace.
 
 <Aside type="note">
    You can press `F10` to configure advanced settings for your Workspace,
-   including setting the [Builder](/usage/builders).
+   including setting the [Builder](/docs/usage/builders).
 </Aside>
 
 <br />
@@ -117,7 +122,7 @@ daytona   | Project daytona started
 
 <Aside type="tip">
 You can set the Project Builder at Workspace creation time using command-line
-flags. Refer to **[Builders](/usage/builders)** for more information.
+flags. Refer to **[Builders](/docs/usage/builders)** for more information.
 </Aside>
 
 ## List Workspaces
@@ -163,7 +168,7 @@ Select a Workspace To Open
 
 :::note
 You can configure Daytona to use your preferred IDE.
-Refer to **[Set the Default IDE](/usage/ide#set-the-default-ide)** for more information.
+Refer to **[Set the Default IDE](/docs/usage/ide#set-the-default-ide)** for more information.
 :::
 
 ## Delete Workspaces
