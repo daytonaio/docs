@@ -36,7 +36,7 @@ Its core architecture leverages React, while documentation content is authored u
 
 ### Using Daytona (Recommended)
 
-The most efficient way to begin working on the documentation is by utilizing a development environment manager (DEM) like Daytona. 
+The most efficient way to begin working on the documentation is by utilizing a development environment manager (DEM) like Daytona.
 To set up a Workspace with the necessary dependencies and configurations for local preview, run the following command:
 
 ```shell
