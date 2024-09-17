@@ -11,7 +11,7 @@ export const partial = true
 ```powershell
 $architecture = if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") { "amd64" } else { "arm64" }
 md -Force "$Env:APPDATA\bin\daytona"; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12';
-Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.31/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
+Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.32/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
 $env:Path += ";" + $Env:APPDATA + "\bin\daytona"; [Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::User);
 daytona serve;
 ```
@@ -21,9 +21,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```powershell
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.31/daytona-windows-amd64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.32/daytona-windows-amd64.exe -o daytona
 # AArch64
-curl -sf -L https://download.daytona.io/daytona/v0.31/daytona-windows-arm64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.32/daytona-windows-arm64.exe -o daytona
 ```
 
 </Aside>
