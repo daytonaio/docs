@@ -28,7 +28,7 @@ body {
 
 }
 
-body.light {
+html[data-theme="light"] body {
   --bg-color: #fff;
   --border-color: #dedede;
   --border-extra: #dedede;
