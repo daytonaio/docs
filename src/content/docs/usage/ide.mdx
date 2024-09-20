@@ -29,6 +29,8 @@ Out of the box, Daytona can be configured to open your Workspace in the followin
 
 - [Jupyter](#jupyter)
 
+- [Cursor](#cursor)
+
 - [Terminal SSH](#terminal-ssh)
 
 ## Set the Default IDE
@@ -364,10 +366,6 @@ Daytona allows you to connect to your Workspace using Jupyter IDE.
 
 1. Run the following command to set your default IDE to Jupyter:
 
-```shell
-daytona ide
-```
-
 Upon running this command, Daytona will display a list of available IDEs, allowing you to select `Jupyter` as your default choice.
 
 ```text
@@ -383,6 +381,33 @@ Default IDE: Jupyter
 ```
 
 You can now use the `daytona code` command to automatically open the Jupyter IDE already connected to your Workspace.
+
+## Cursor
+
+Daytona allows you to connect to your Workspace using Cursor IDE.
+
+:::note
+After installing the [Cursor](https://www.cursor.com/) IDE, run the `Install 'cursor' command` from the command palette.
+:::
+
+<br />
+
+1. Run the following command to set your default IDE to Cursor:
+
+Upon running this command, Daytona will display a list of available IDEs, allowing you to select `Cursor` as your default choice.
+
+```text
+Choose Your Default IDE
+| Cursor
+```
+
+2. Select `Cursor` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+```text
+Default IDE: Cursor
+```
+
+You can now use the `daytona code` command to automatically open the Cursor IDE already connected to your Workspace.
 
 ## Terminal SSH
 
