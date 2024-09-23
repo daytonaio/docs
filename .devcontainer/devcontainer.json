@@ -42,7 +42,7 @@
     4321
   ],
   "workspaceFolder": "/workspaces/docs",
-  "onCreateCommand": "sudo cp /workspaces/docs/.devcontainer/welcome-message.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
+  "onCreateCommand": "sudo cp ${containerWorkspaceFolder}/.devcontainer/welcome-message.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
   "postCreateCommand": "yarn install",
   "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
   "remoteUser": "daytona"
