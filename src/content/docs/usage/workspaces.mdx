@@ -129,6 +129,15 @@ flags. Refer to **[Builders](/docs/usage/builders)** for more information.
 
 Daytona allows you to create a Workspace with multiple projects, enabling you to work on multiple codebases simultaneously within a single environment.
 
+Multiple projects are deployed within the same virtual machine or instance depending on the [Provider](/docs/configuration/providers) infrastructure, allowing you to manage and develop multiple projects in a unified Workspace.
+
+- The [Docker Provider](/docs/configuration/providers#docker) deploys projects within the same container.
+- The [AWS Provider](/docs/configuration/providers#aws) deploys projects within the same EC2 instance.
+- The [DigitalOcean Provider](/docs/configuration/providers#digitalocean) deploys projects within the same Droplet.
+- The [Fly Provider](/docs/configuration/providers#fly) deploys projects within the same virtual machine.
+
+Regardless of the infrastructure type, all projects are managed consistently within the Workspace.
+
 1. Run the following command to start the guided Workspace creation process with multiple projects:
 
 ```shell
