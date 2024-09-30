@@ -126,6 +126,7 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | Delete ALL builds |
+| `--force` | `-f` | Force delete build |
 | `--prebuild-id` |  | Delete ALL builds from prebuild |
 | `--help` |  | help for daytona |
 
@@ -276,14 +277,14 @@ __Flags__
 Create a workspace
 
 ```shell
-daytona create [REPOSITORY_URL] [flags]
+daytona create [REPOSITORY_URL | PROJECT_CONFIG_NAME]... [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--blank` |  | Create a blank project without using existing configurations |
-| `--branch` |  | Specify the Git branch to use in the project |
+| `--branch` |  | Specify the Git branches to use in the projects |
 | `--builder` |  | Specify the builder (currently auto/devcontainer/none) |
 | `--code` | `-c` | Open the workspace in the IDE after workspace creation |
 | `--custom-image` |  | Create the project with the custom image passed as the flag value; Requires setting --custom-image-user flag as well |
@@ -655,7 +656,6 @@ daytona project-config add [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--branch` |  | Specify the Git branch to use in the project |
 | `--builder` |  | Specify the builder (currently auto/devcontainer/none) |
 | `--custom-image` |  | Create the project with the custom image passed as the flag value; Requires setting --custom-image-user flag as well |
 | `--custom-image-user` |  | Create the project with the custom image user passed as the flag value; Requires setting --custom-image flag as well |
@@ -816,6 +816,20 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--force` | `-f` | Delete all workspaces by force |
 | `--yes` | `-y` | Execute purge without prompt |
+| `--help` |  | help for daytona |
+
+## daytona restart
+
+Restart a workspace
+
+```shell
+daytona restart [WORKSPACE] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--project` | `-p` | Restart a single project in the workspace (project name) |
 | `--help` |  | help for daytona |
 
 ## daytona serve
