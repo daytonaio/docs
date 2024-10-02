@@ -57,7 +57,7 @@ daytona create --code
      If you do not have a repository ready, you can choose to create a Workspace from a sample project provided by Daytona. This option allows you to set up a new development environment using quick-start templates.
 
 ```text
-Choose a Provider
+Choose a Git Provider
 3 items
 ===
 GitHub
@@ -124,6 +124,112 @@ daytona   | Project daytona started
 You can set the Project Builder at Workspace creation time using command-line
 flags. Refer to **[Builders](/docs/usage/builders)** for more information.
 </Aside>
+
+## Create a Workspace with Multiple Projects
+
+Daytona allows you to create a Workspace that contains multiple repositories, which we refer to as Projects. This enables you to work on several codebases simultaneously within a single environment.
+
+Multiple projects are deployed within the same virtual machine or instance depending on the [Provider](/docs/configuration/providers) infrastructure, allowing you to manage and develop multiple projects in a unified Workspace.
+
+- The [Docker Provider](/docs/configuration/providers#docker) deploys each project in its own container.
+- The [AWS Provider](/docs/configuration/providers#aws) deploys projects within the same EC2 instance.
+- The [DigitalOcean Provider](/docs/configuration/providers#digitalocean) deploys projects within the same Droplet.
+- The [Fly Provider](/docs/configuration/providers#fly) deploys projects within the same virtual machine.
+
+Regardless of the infrastructure type, all projects are managed consistently within the Workspace.
+
+1. Run the following command to start the guided Workspace creation process with multiple projects:
+
+```shell
+daytona create --multi-project
+```
+
+2. To create a Daytona Workspace with multiple projects, select one of the three provided options:
+
+- **Select from a List of Repositories**
+
+   If you choose a Git provider (e.g., GitHub), you will be presented with a list of your repositories from which you can select the desired repository.
+
+- **Enter a Custom Repository URL**
+
+   Alternatively, you can select the option to enter a custom repository URL manually if the repository is not listed under your Git provider account or is from an external source.
+
+- **Create from Sample**
+
+     If you do not have a repository ready, you can choose to create a Workspace from a sample project provided by Daytona. This option allows you to set up a new development environment using quick-start templates.
+
+```text
+Choose a Git Provider
+3 items
+===
+GitHub
+Enter a custom repository URL
+Create from Sample
+```
+
+3. Select the Git repository from the list, enter the URL of the Git repository you want to link with your Workspace, or choose to create a Workspace from a sample project.
+
+After your selection, you will be prompted to add a second project to the Workspace.
+
+```text
+Choose a Git Provider (Project #2)
+3 items
+===
+GitHub
+Enter a custom repository URL
+Create from Sample
+```
+
+4. Select the Git repository from the list for the second project, enter the URL of the Git repository you want to link with your Workspace, or choose to create a Workspace from a sample project.
+
+After adding the second project, you will be prompted to add another project to the Workspace.
+
+```text
+Add another project?
+
+[Yes] [No]
+```
+
+Selecting `Yes` will allow you to add additional projects to the Workspace. Once you have added all the projects you need, select `No` to complete the Workspace creation process.
+
+After adding all the projects, you will be prompted with a summary of the Workspace configuration.
+
+```text
+SUMMARY
+
+Project #1 - https://github.com/daytonaio/sample-python.git
+   Build       Automatic
+   Image       daytonaio/workspace-project:latest
+   User        daytona
+
+Project #2 - https://github.com/daytonaio/sample-go.git
+   Build       Automatic
+   Image       daytonaio/workspace-project:latest
+   User        daytona
+```
+
+5. Enter a name for your Workspace.
+
+<Aside type="note">
+   You can press `F10` to configure advanced settings for your Workspace,
+   including setting the [Builder](/docs/usage/builders).
+</Aside>
+
+<br />
+
+6. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
+
+```text
+WORKSPACE | ✓ Request submitted
+WORKSPACE | ✓ Creating workspace daytona
+daytona   | Creating project daytona
+daytona   | Pulling image...
+daytona   | Pulling from daytonaio/workspace-project
+...
+daytona   | Project daytona created
+daytona   | Starting project daytona
+daytona   | Project daytona started
+```
 
 ## List Workspaces
 
