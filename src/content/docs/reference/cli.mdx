@@ -169,7 +169,6 @@ daytona build logs [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--continue-on-completed` |  | Continue streaming logs after the build is completed |
 | `--follow` | `-f` | Follow logs |
 | `--help` |  | help for daytona |
 
@@ -475,6 +474,21 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--verbose` | `-v` | Show verbose output |
+| `--help` |  | help for daytona |
+
+## daytona logs
+
+View logs for a workspace/project
+
+```shell
+daytona logs [WORKSPACE] [PROJECT_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--follow` | `-f` | Follow logs |
+| `--workspace` | `-w` | View workspace logs |
 | `--help` |  | help for daytona |
 
 ## daytona prebuild
