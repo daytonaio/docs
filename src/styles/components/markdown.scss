@@ -89,7 +89,7 @@
       letter-spacing: -0.04em;
       border: 0.5px solid var(--border-extra);
       padding: 2px 6px;
-      color: var(--primary-text-color);
+      color: var(--hover-color);
       background-color: var(--block-bg-color);
       border-radius: 4px;
       white-space: nowrap;
@@ -302,7 +302,7 @@
         font-size: 0.88rem;
         font-weight: 400;
         line-height: 1.4;
-        color: var(--primary-text-color);
+        color: var(--hover-color);
         letter-spacing: -0.02em;
         background-color: var(--block-bg-color);
         padding: 0.1rem 0.4rem;
