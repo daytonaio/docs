@@ -13,26 +13,26 @@ They ensure that changes in one project do not inadvertently affect another, pro
 
 ## Create a Workspace
 
-Creating your own Workspace in Daytona is a straightforward process that ensures you have a dedicated environment for your projects.
+Creating a Workspace in Daytona is a straightforward process that ensures you have a dedicated development environment for your projects.
 
-**Prerequisite**
+Daytona provides two primary methods for creating a Workspace:
 
-- **At least [one Target configured](/docs/configuration/targets)**.
-
-  Targets are essential for deploying your Workspaces, so make sure you have configured at least one.
+- [**From a Git Repository**](#from-a-git-repository)
+- [**From an Arbitrary Git URL**](#from-an-arbitrary-git-url)
+- [**With Multiple Projects**](#create-a-workspace-with-multiple-projects)
 
 ### From a Git Repository
 
-Creating a Workspace allows you to set up a new environment either by selecting a repository from a configured Git provider like GitHub, GitLab, Bitbucket, or Gitea, or by manually entering a Git repository URL.
+Creating a Workspace from a Git repository sets up a new development environment using a [connected Git Provider](/docs/configuration/git-providers) or a custom Git repository URL.
 
-1. Run the following command to start the guided Workspace creation process:
+1. Run the following command to create a Workspace from a Git repository:
 
 ```shell
 daytona create
 ```
 
 <Aside type="tip">
-You can skip automatically opening the Workspace in an [IDE](/docs/usage/ide) by using the `--no-ide` flag.
+Skip automatically opening the Workspace in an [IDE](/docs/usage/ide) by using the `--no-ide` flag.
 
 ```shell
 daytona create --no-ide
@@ -42,19 +42,19 @@ daytona create --no-ide
 
 <br />
 
-2. To create a Daytona Workspace, select one of the three provided options:
+2. Select one of the three provided options:
 
 - **Select from a List of Repositories**
 
-   If you choose a Git provider (e.g., GitHub), you will be presented with a list of your repositories from which you can select the desired repository.
+   If you [connected a Git Provider](/docs/configuration/git-providers), you will be presented with a list of your repositories from which you can select to connect with your Workspace.
 
 - **Enter a Custom Repository URL**
 
-   Alternatively, you can select the option to enter a custom repository URL manually if the repository is not listed under your Git provider account or is from an external source.
+   Alternatively, select the option to enter a custom repository URL manually if the repository is not listed under your Git Provider account or is from an external source.
 
 - **Create from Sample**
 
-     If you do not have a repository ready, you can choose to create a Workspace from a sample project provided by Daytona. This option allows you to set up a new development environment using quick-start templates.
+   If you do not have a Git repository ready, you can create a Workspace from a Sample project provided by Daytona. This option sets up a new development environment using quick-start templates.
 
 ```text
 Choose a Git Provider
@@ -69,14 +69,44 @@ Create from Sample
 
 4. Enter a name for your Workspace.
 
-<Aside type="note">
-   You can press `F10` to configure advanced settings for your Workspace,
+```text
+Workspace name
+>
+```
+
+<Aside type="tip">
+   Press `F10` to configure advanced settings for your Workspace,
    including setting the [Builder](/docs/usage/builders).
 </Aside>
 
 <br />
 
-5. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
+5. Select a Target to deploy your Workspace to. Selecting a Target will prompt you to input the [Target configuration](/docs/configuration/targets). The configurations vary based on the selected Target.
+
+```text
+Choose a Target
+6 items
+===
+local
+docker-provider
+
+Add a Fly.io Provider Target
+fly-provider (needs installing)
+
+Add a Docker Provider Target
+docker-provider (needs installing)
+
+Add a Digital Ocean Provider Target
+digitalocean-provider (needs installing)
+
+Add an AWS Provider Target
+aws-provider (needs installing)
+
+Add an Azure Provider Target
+azure-provider (needs installing)
+```
+
+Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Workspace based on its contents. You will see progress information in the terminal, indicating the process of creating a Workspace.
 
 ```text
 WORKSPACE | ✓ Request submitted
@@ -92,7 +122,7 @@ daytona   | Project daytona started
 
 ### From an Arbitrary Git URL
 
-Creating a Workspace from an arbitrary Git URL allows you to set up a new environment by directly specifying the URL of the remote repository. This method is useful for setting up environments that are not linked to a pre-configured Git Provider in Daytona.
+Creating a Workspace from an arbitrary Git URL sets up a new development environment by directly specifying the URL of the remote repository. This method is used to set up environments that are not linked to a pre-configured Git Provider in Daytona.
 
 1. Run the following command to create a Workspace from a remote Git repository:
 
@@ -106,7 +136,34 @@ daytona create <REPO_URL>
 daytona create https://github.com/daytonaio/daytona.git
 ```
 
-Upon running this command, Daytona will clone the specified Git repository and set up a new Workspace based on its contents. You will see progress information in the terminal, indicating the process of the Workspace creation. Once complete, the Workspace will be ready for use with the specified repository.
+2. Select a Target to deploy your Workspace to. Selecting a Target will prompt you to input the [Target configuration](/docs/configuration/targets). The configurations vary based on the selected Target.
+
+```text
+Choose a Target
+6 items
+===
+local
+docker-provider
+
+Add a Fly.io Provider Target
+fly-provider (needs installing)
+
+Add a Docker Provider Target
+docker-provider (needs installing)
+
+Add a Digital Ocean Provider Target
+digitalocean-provider (needs installing)
+
+Add an AWS Provider Target
+aws-provider (needs installing)
+
+Add an Azure Provider Target
+azure-provider (needs installing)
+```
+
+Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Workspace based on its contents. You will see progress information in the terminal, indicating the process of creating a Workspace.
+
+Once complete, the Workspace will be ready for use with the specified repository and configuration.
 
 ```text
 WORKSPACE | ✓ Request submitted
@@ -121,7 +178,7 @@ daytona   | Project daytona started
 ```
 
 <Aside type="tip">
-You can set the Project Builder at Workspace creation time using command-line
+Set the Project Builder at Workspace creation time using command-line
 flags. Refer to **[Builders](/docs/usage/builders)** for more information.
 </Aside>
 
@@ -138,13 +195,13 @@ Multiple projects are deployed within the same virtual machine or instance depen
 
 Regardless of the infrastructure type, all projects are managed consistently within the Workspace.
 
-1. Run the following command to start the guided Workspace creation process with multiple projects:
+1. Run the following command to create a Workspace with multiple projects:
 
 ```shell
 daytona create --multi-project
 ```
 
-2. To create a Daytona Workspace with multiple projects, select one of the three provided options:
+2. Select one of the three provided options:
 
 - **Select from a List of Repositories**
 
@@ -192,7 +249,7 @@ Add another project?
 
 Selecting `Yes` will allow you to add additional projects to the Workspace. Once you have added all the projects you need, select `No` to complete the Workspace creation process.
 
-After adding all the projects, you will be prompted with a summary of the Workspace configuration.
+After adding all projects, you will be prompted with a summary of the Workspace configuration.
 
 ```text
 SUMMARY
@@ -210,14 +267,39 @@ Project #2 - https://github.com/daytonaio/sample-go.git
 
 5. Enter a name for your Workspace.
 
-<Aside type="note">
-   You can press `F10` to configure advanced settings for your Workspace,
-   including setting the [Builder](/docs/usage/builders).
-</Aside>
+```text
+Workspace name
+>
+```
 
-<br />
+6. Select a Target to deploy your Workspace to. Selecting a Target will prompt you to input the [Target configuration](/docs/configuration/targets). The configurations vary based on the selected Target.
 
-6. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
+```text
+Choose a Target
+6 items
+===
+local
+docker-provider
+
+Add a Fly.io Provider Target
+fly-provider (needs installing)
+
+Add a Docker Provider Target
+docker-provider (needs installing)
+
+Add a Digital Ocean Provider Target
+digitalocean-provider (needs installing)
+
+Add an AWS Provider Target
+aws-provider (needs installing)
+
+Add an Azure Provider Target
+azure-provider (needs installing)
+```
+
+Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Workspace based on its contents. You will see progress information in the terminal, indicating the process of creating a Workspace.
+
+Once complete, the Workspace will be ready for use with the specified repository and configuration.
 
 ```text
 WORKSPACE | ✓ Request submitted
@@ -421,7 +503,7 @@ https://4321-ABC1DeF2GhI3JkLmNoP4RSTuVZ5.try-eu.daytona.app
 This URL can be shared with others to provide real-time access to the service running on the specified port in your Workspace.
 
 <Aside type="tip">
-Alternatively, you can generate a public URL by executing the following command in a Workspace's shell:
+Alternatively, generate a public URL by executing the following command in a Workspace's shell:
 
 ```shell
 daytona forward <PORT> --public
