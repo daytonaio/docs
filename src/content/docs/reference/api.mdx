@@ -257,7 +257,7 @@ Get URL from Git repository
 
 ## GET /gitprovider/for-url/\{url\}
 
-Get Git provider
+List Git providers for url
 
 ### Parameters
 
@@ -280,6 +280,22 @@ Get Git provider ID
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `url` | path | true | string | Url |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
+## GET /gitprovider/\{gitProviderId\}
+
+Get Git provider
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `gitProviderId` | path | true | string | ID |
 
 ### Responses
 
@@ -312,6 +328,8 @@ Get Git namespaces
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitProviderId` | path | true | string | Git provider |
+| `page` | query | undefined | integer | Page number |
+| `per_page` | query | undefined | integer | Number of items per page |
 
 ### Responses
 
@@ -345,6 +363,8 @@ Get Git repositories
 | :--- | :------- | :------- | :--- | :---------- |
 | `gitProviderId` | path | true | string | Git provider |
 | `namespaceId` | path | true | string | Namespace |
+| `page` | query | undefined | integer | Page number |
+| `per_page` | query | undefined | integer | Number of items per page |
 
 ### Responses
 
@@ -363,6 +383,8 @@ Get Git repository branches
 | `gitProviderId` | path | true | string | Git provider |
 | `namespaceId` | path | true | string | Namespace |
 | `repositoryId` | path | true | string | Repository |
+| `page` | query | undefined | integer | Page number |
+| `per_page` | query | undefined | integer | Number of items per page |
 
 ### Responses
 
@@ -381,6 +403,8 @@ Get Git repository PRs
 | `gitProviderId` | path | true | string | Git provider |
 | `namespaceId` | path | true | string | Namespace |
 | `repositoryId` | path | true | string | Repository |
+| `page` | query | undefined | integer | Page number |
+| `per_page` | query | undefined | integer | Number of items per page |
 
 ### Responses
 
