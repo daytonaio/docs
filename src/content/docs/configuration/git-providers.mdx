@@ -87,6 +87,16 @@ Personal access token
 
 Some Git Providers require additional information such as your _username_ or the _URL_ of your self-managed API instance to complete the configuration.
 
+4. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
+>
+```
+
+Upon successful authentication, Daytona will display the following message:
+
 ```text
 Git provider has been registered
 ```
@@ -104,8 +114,50 @@ daytona git-providers list
 Upon running this command, Daytona will display a list of your connected Git Providers.
 
 ```text
-GitHub (username)
-GitLab (username)
+GitHub (alias)
+GitLab (alias)
+```
+
+## Update a Git Provider
+
+Daytona allows you to update an existing Git Provider, enabling you to apply the latest enhancements and bug fixes.
+
+1. Run the following command to update a Git Provider:
+
+```shell
+daytona git-providers update
+```
+
+Upon running this command, Daytona will display a list of your connected Git Providers.
+
+```text
+Choose a Git provider 
+> github (alias)
+```
+
+2. Select the Git Provider you want to update from the list.
+
+3. Enter your Git Provider credentials for Daytona to authenticate and enable secure access to your repositories.
+
+```text
+Personal access token
+>
+```
+
+Some Git Providers require additional information such as your _username_ or the _URL_ of your self-managed API instance to complete the configuration.
+
+4. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
+>
+```
+
+Upon successful update, Daytona will display the following message:
+
+```text
+Git provider has been updated
 ```
 
 ## Delete a Git Provider
@@ -127,6 +179,8 @@ GitLab
 ```
 
 2. Select the Git Provider you want to delete.
+
+Upon successful selection, Daytona will display the following message:
 
 ```text
 Git provider has been removed
@@ -157,6 +211,14 @@ For more information on creating a Personal Access Token, visit GitHub's [Creati
 
 ```text
 Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
 >
 ```
 
@@ -191,6 +253,14 @@ For more information on creating a Personal Access Token, visit GitLab's [Create
 
 ```text
 Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
 >
 ```
 
@@ -230,6 +300,14 @@ Username
 
 ```text
 Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
 >
 ```
 
@@ -278,6 +356,14 @@ Personal access token
 >
 ```
 
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
+>
+```
+
 Upon successful authentication, Daytona will display the following message:
 
 ```text
@@ -320,6 +406,14 @@ For example: http://gitlab-host/api/v4/
 
 ```text
 Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
 >
 ```
 
@@ -373,6 +467,14 @@ Personal access token
 >
 ```
 
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
+>
+```
+
 Upon successful authentication, Daytona will display the following message:
 
 ```text
@@ -409,6 +511,14 @@ For more information on creating a Personal Access Token, visit Codeberg's [Gene
 
 ```text
 Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
 >
 ```
 
@@ -457,6 +567,14 @@ Personal access token
 >
 ```
 
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
+>
+```
+
 Upon successful authentication, Daytona will display the following message:
 
 ```text
@@ -502,6 +620,14 @@ Personal access token
 >
 ```
 
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
+>
+```
+
 Upon successful authentication, Daytona will display the following message:
 
 ```text
@@ -544,6 +670,14 @@ For example: https://dev.azure.com/organization
 
 ```text
 Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
 >
 ```
 
@@ -600,6 +734,14 @@ For example: https://ap-south-1.console.aws.amazon.com
 
 ```text
 Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
 >
 ```
 
