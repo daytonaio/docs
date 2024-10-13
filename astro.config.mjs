@@ -147,18 +147,18 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Reference',
+          label: 'Tools and Resources',
           items: [
             {
               label: 'CLI',
-              link: '/reference/cli',
+              link: '/tools/cli',
               attrs: {
                 icon: 'terminal.svg',
               },
             },
             {
               label: 'API',
-              link: '/reference/api',
+              link: '/tools/api',
               attrs: {
                 icon: 'switch.svg',
               },
