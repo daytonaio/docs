@@ -1,0 +1,117 @@
+<div id="searchbox-wrapper" style="position: relative">
+  <div id="searchbox"></div>
+  <div id="hits"></div>
+</div>
+
+<script>
+  import { algoliasearch } from 'algoliasearch'
+  import instantsearch from 'instantsearch.js'
+  import { configure } from 'instantsearch.js/es/widgets'
+  import hits from 'instantsearch.js/es/widgets/hits/hits'
+  import searchBox from 'instantsearch.js/es/widgets/search-box/search-box'
+
+  // const searchClient = algoliasearch('', '');
+
+  const search = instantsearch({
+    indexName: 'docs',
+    searchClient,
+  })
+
+  search.addWidgets([
+    searchBox({
+      container: '#searchbox',
+      placeholder: 'Search documentation',
+      autofocus: false,
+      ignoreCompositionEvents: true,
+      searchAsYouType: true,
+      showReset: false,
+      showSubmit: false,
+      showLoadingIndicator: false,
+      queryHook: (query, search) => {
+        const trimmedQuery = query.trim()
+        search(trimmedQuery)
+      },
+    }),
+
+    hits({
+      container: '#hits',
+      templates: {
+        empty: '0 results found',
+        item: `
+<div style="padding:4px;">
+    <a href="{{url}}" style="text-decoration:none; color: #fff; font-size: 8px;">
+        <h5 style="font-size: 20px; color: #fff;">
+            {{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}
+        </h5>
+        <p style="font-size: 12px;">
+            {{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}
+        </p>
+    </a>
+</div>
+        `,
+      },
+    }),
+
+    configure({
+      hitsPerPage: 10,
+      clickAnalytics: true,
+      getRankingInfo: false,
+    }),
+  ])
+
+  search.start()
+
+  search.on('render', () => {
+    const searchBoxInput = document.querySelector(
+      '#searchbox input.ais-SearchBox-input'
+    )
+    if (searchBoxInput) {
+      ;(searchBoxInput as HTMLInputElement).style.borderRadius = '8px'
+      ;(searchBoxInput as HTMLInputElement).style.border =
+        '1px solid var(--primary-text-color)'
+      ;(searchBoxInput as HTMLInputElement).style.padding = '5px'
+      ;(searchBoxInput as HTMLInputElement).style.width = '300px'
+      ;(searchBoxInput as HTMLInputElement).style.fontSize = '15px'
+      ;(searchBoxInput as HTMLInputElement).style.paddingLeft = '16px'
+    }
+
+    const hitsContainer = document.querySelector('#hits')
+
+    if (
+      searchBoxInput &&
+      (searchBoxInput as HTMLInputElement).value.trim().length > 0
+    ) {
+      if (hitsContainer) {
+        ;(hitsContainer as HTMLElement).style.display = 'block'
+      }
+    } else {
+      if (hitsContainer) {
+        ;(hitsContainer as HTMLElement).style.display = 'none'
+      }
+    }
+  })
+</script>
+
+<style>
+  #hits {
+    position: absolute;
+    top: 100%;
+    background: var(--bg-color);
+    left: 0;
+    width: 100%;
+    border-radius: 8px;
+    z-index: 1000;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 40px;
+  }
+
+  #hits div:last-child {
+    border-bottom: none;
+  }
+
+  #searchbox-wrapper {
+    position: relative;
+    background: var(--bg-color);
+  }
+</style>
