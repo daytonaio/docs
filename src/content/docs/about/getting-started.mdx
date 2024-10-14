@@ -1,8 +1,6 @@
 ---
 title: Getting Started
 description: Learn how to set up and start using Daytona.
-sidebar:
-  label: Getting Started
 ---
 
 import Aside from '@components/Aside.astro'
@@ -11,6 +9,7 @@ import DocumentListItem from "@components/DocumentListItem.astro";
 import CardGrid from '@components/cards/CardGrid.astro';
 import TitleCard from '@components/cards/TitleCard.astro';
 import ImageCard from '@components/cards/ImageCard.astro';
+import Keyboard from "@components/Keyboard.astro"
 import bitbucketLogo from '@assets/index/icons/Bitbucket.svg?raw';
 import githubLogo from '@assets/index/icons/GitHub.svg?raw';
 import gitlabLogo from '@assets/index/icons/GitLab.svg?raw';
@@ -36,13 +35,13 @@ Daytona supports multiple operating systems and architectures. Ensure your syste
 
 | **Operating System**                         | **Architecture**                                   |
 |-----------------------------------------------| --------------------------------------------------|
-| [Linux](/docs/installation/installation#linux)      | `x86_64` or `ARM64`                               |
-| [macOS](/docs/installation/installation#macos)     | `x86_64 (Intel-based)` or `ARM64 (Apple Silicon)` |
-| [Windows](/docs/installation/installation#windows) | `x86_64` or `ARM64`                               |
+| [**Linux**](/docs/installation/installation#linux)      | **`x86_64`** or **`ARM64`**                               |
+| [**macOS**](/docs/installation/installation#macos)      | **`x86_64 (Intel-based)`** or **`ARM64 (Apple Silicon)`** |
+| [**Windows**](/docs/installation/installation#windows)  | **`x86_64`** or **`ARM64`**                               |
 
 ### Dependencies
 
-Daytona requires specific dependencies to be installed on your system to support the operation and management of your development environments. Ensure these dependencies are installed and properly configured on your system:
+Daytona requires specific dependencies to be installed on your system to support the operation and management of development environments. Ensure these dependencies are installed and properly configured on your system:
 
 | **Dependency**            | **Description**                                                                                 |
 |---------------------------|-------------------------------------------------------------------------------------------------|
@@ -87,9 +86,9 @@ The Daytona Command-Line Interface (CLI) is the primary method of interacting wi
 
 To access the Daytona CLI, open your terminal and use the `daytona` command followed by the desired subcommand. The CLI offers a wide range of commands, each serving a specific purpose, such as creating Workspaces, managing Providers, setting Targets, and configuring system settings.
 
-For a complete list of available commands and their descriptions, refer to the [CLI Reference](/docs/reference/cli). This reference guide provides detailed information on each command, including usage examples and command options, helping you leverage the full potential of the Daytona CLI.
+For a complete list of available commands, refer to the [CLI Reference](/docs/reference/cli). The CLI reference guide provides detailed information on each command, including usage examples and command options, helping you leverage the full potential of Daytona.
 
-Additionally, you can use the `daytona --help` command to list all commands, offering a convenient way to explore available options.
+Use the `daytona --help` command to list all commands, offering a convenient way to explore available options.
 
 <DocumentList>
 <DocumentListItem
@@ -102,19 +101,29 @@ Additionally, you can use the `daytona --help` command to list all commands, off
 
 ## Adding a Git Provider
 
-You can integrate Daytona with a [Git Provider](/docs/configuration/git-providers) to manage version control operations and interact with your Git repositories.
+Integrate Daytona with a [Git Provider](/docs/configuration/git-providers) to manage version control operations and interact with your Git repositories.
 
 Daytona supports a variety of Git Providers, including [GitHub](/docs/configuration/git-providers#github), [GitLab](/docs/configuration/git-providers#gitlab), [Bitbucket](/docs/configuration/git-providers#bitbucket), [GitHub Enterprise Server](/docs/configuration/git-providers#github-enterprise-server), [GitLab Self-Managed](/docs/configuration/git-providers#gitlab-self-managed), [Bitbucket Server](/docs/configuration/git-providers#bitbucket-server), [Codeberg](/docs/configuration/git-providers#codeberg), [Gitea](/docs/configuration/git-providers#gitea), [Gitness](/docs/configuration/git-providers#gitness), [Azure DevOps](/docs/configuration/git-providers#azure-devops), and [AWS CodeCommit](/docs/configuration/git-providers#aws-codecommit).
 
-This integration supports and enables interacting with your codebase, cloning repositories, and pushing changes directly from Daytona.
+The integration supports and enables interacting with your codebase, cloning repositories, and pushing changes directly from Daytona.
 
-<br />
+1. Run the following command to add a Git Provider:
 
-<CardGrid gridNumber={3} mobileGridNumber={1} colsMinWidth='150px' colsMinWidthMobile='100px'>
-    <TitleCard icon={githubLogo} title="GitHub" link="/configuration/git-providers#github" imageAlt="'GitHub logo"/>
-    <TitleCard icon={gitlabLogo} title="GitLab" link="/configuration/git-providers#gitlab" imageAlt="GitLab logo"/>
-    <TitleCard icon={bitbucketLogo} title="Bitbucket" link="/configuration/git-providers#bitbucket" imageAlt="BitBucket logo"/>
-</CardGrid>
+```shell
+daytona git-providers add
+```
+
+2. Select the Git Provider you want to add from the list.
+
+3. Enter your Git Provider credentials for Daytona to authenticate and enable secure access to your repositories.
+
+Upon successful authentication, Daytona will register the Git Provider, allowing you to interact with your repositories directly from Daytona.
+
+```text
+Git provider has been registered
+```
+
+You can install additional [Git Providers](/docs/configuration/git-providers) to manage multiple repositories across different platforms and accounts.
 
 Use the `daytona git-providers --help` command to view available options for managing your Git Provider configurations and interacting with your repositories.
 
@@ -122,7 +131,7 @@ Use the `daytona git-providers --help` command to view available options for man
 <DocumentListItem
     title="Add a Git Provider"
     subtitle="Learn how to add a Git Provider to Daytona and start managing your repositories effectively."
-    href="/docs/configurationg/git-providers#add-a-git-provider"
+    href="/docs/configuration/git-providers#add-a-git-provider"
     expanded
   />
 </DocumentList>
@@ -131,7 +140,7 @@ Use the `daytona git-providers --help` command to view available options for man
 
 [Providers](/docs/configuration/providers) are plugins through which Daytona integrates with various technologies to create and manage development environments. Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run your environments, whether through containerization, orchestration, or cloud-based virtual machines.
 
-By default, a Docker Provider is configured with `localhost` as the Target.
+Daytona supports a variety of Providers, including [Docker](/docs/configuration/providers#docker), [AWS](/docs/configuration/providers#aws), [DigitalOcean](/docs/configuration/providers#digitalocean), and [Fly](/docs/configuration/providers#fly)
 
 1. Run the following command to install a Provider:
 
@@ -139,27 +148,15 @@ By default, a Docker Provider is configured with `localhost` as the Target.
   daytona provider install
   ```
 
-2. Select the Docker Provider you want to install from the list.
-
-  ```text
-  Choose a provider to install
-  1 item
-  ===
-  docker-provider
-  v0.0.0
-  ```
+2. Select the Provider you want to install from the list.
 
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying development environments.
 
 ```text
-Provider docker-provider has been successfully installed
+Provider <provider> has been successfully installed
 ```
 
-If this configuration meets your requirements, you can proceed with [setting a Target](#setting-a-target).
-
-You can install additional Providers to extend Daytona's capabilities and support a wide range of container management platforms and cloud hosting services.
-
-Follow the instructions provided in the [Providers installation](/docs/configuration/providers) guide to install and manage a Provider. The guide includes detailed steps for installing Providers for various container management platforms and cloud hosting services.
+You can install additional [Providers](/docs/configuration/providers) to extend Daytona's capabilities and support a wide range of container management platforms and cloud hosting services.
 
 <DocumentList>
 <DocumentListItem
@@ -176,9 +173,30 @@ A [Target](/docs/configuration/targets) refers to the specific destination or en
 
 A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
+Daytona supports a variety of Targets, including [Docker (Local)](/docs/configuration/targets#docker), [Docker (Remote)](/docs/configuration/targets#docker), [AWS](/docs/configuration/targets#aws), [DigitalOcean](/docs/configuration/targets#digitalocean), and [Fly](/docs/configuration/targets#fly).
+
 Once you set your Target, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Targets or delete those you no longer need.
 
-Follow the instructions provided in the [managing Targets](/docs/configuration/targets) guide to set a Target and configure your development environment deployment settings.
+1. Run the following command to set a Target:
+
+```shell
+daytona target set
+```
+
+2. Select the appropriate Provider for the environment you want to deploy to.
+3. Select **`New Target`**.
+4. Enter a name for your Target.
+5. Enter the Target appropriate configuration options when prompted.
+
+    The configuration options vary based on the selected Provider.
+
+6. Click <Keyboard shortcuts={["Enter"]} slot="html"/> to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+You can set additional [Targets](/docs/configuration/targets) for different development environments, allowing you to manage and switch between them as needed.
 
 Use the `daytona target --help` command to view available configuration options for setting a Target.
 
@@ -193,7 +211,7 @@ Use the `daytona target --help` command to view available configuration options 
 
 ## Choosing the Default IDE
 
-Daytona allows you to connect to your development environment using a variety of [IDEs](/docs/usage/ide), including popular options like [Visual Studio Code (VSCode)](/docs/usage/ide#vs-code), JetBrains IDEs, [Jupyter](/docs/usage/ide#jupyter), [Cursor](/docs/usage/ide#cursor), and [Terminal SSH](/docs/usage/ide#terminal-ssh).
+Connect to your development environment using a variety of [IDEs](/docs/usage/ide), including popular options like [Visual Studio Code (VSCode)](/docs/usage/ide#vs-code), JetBrains IDEs, [Jupyter](/docs/usage/ide#jupyter), [Cursor](/docs/usage/ide#cursor), and [Terminal SSH](/docs/usage/ide#terminal-ssh).
 
 By setting the default IDE, you can automatically open your development environment in your preferred environment, optimizing your workflow and reducing setup time.
 
@@ -211,7 +229,23 @@ By setting the default IDE, you can automatically open your development environm
   <ImageCard imageDark={TerminalSSHlogo} link="/usage/ide#terminal-ssh" imageAlt="Terminal SSH logo"/>
 </CardGrid>
 
-Use the `daytona ide` command to view available configuration options for setting the default IDE.
+1. Run the following command to set the default IDE:
+
+```shell
+daytona ide
+```
+
+2. Select your preferred IDE from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+```text
+Default IDE:  <IDE>
+```
+
+Use the `daytona code` command to automatically open the default IDE already connected to your Workspace.
+
+You can choose additional [IDEs](/docs/configuration/git-providers) and set them as the default for your development environments.
+
+Use the `daytona ide --help` command to view available configuration options for the IDE.
 
 <DocumentList>
 <DocumentListItem
@@ -224,11 +258,41 @@ Use the `daytona ide` command to view available configuration options for settin
 
 ## Creating your Workspace
 
-Once you have completed the initial setup and configuration steps, you can [create your Workspace](/docs/usage/workspaces#create-a-workspace) using Daytona. A Workspace represents an isolated development environment where you can manage your code, build projects, and collaborate with team members.
-
-Creating a Workspace involves defining the necessary configurations, such as selecting the appropriate [Git Provider](/docs/configuration/git-providers) or entering the Git repository URL. Daytona simplifies this process by providing a user-friendly interface to set up and manage your Workspaces.
+[Create a Workspace](/docs/usage/workspaces#create-a-workspace) using Daytona to manage your development environments. A Workspace represents an isolated development environment where you can manage your code, build projects, and interact with your team.
 
 To create a Workspace, use the `daytona create` command and follow the prompts to configure your Workspace settings. Once created, you can access your Workspace and interact with your codebase.
+
+1. Run the following command to start the guided Workspace creation process:
+
+```shell
+daytona create
+```
+
+2. Select one of the three provided options:
+
+- **Select from a List of Repositories**
+- **Enter a Custom Repository URL**
+- **Create from Sample**
+
+3. Select the Git repository from the list, enter the URL of the Git repository you want to link with your Workspace, or choose to create a Workspace from a sample project.
+
+4. Enter a name for your Workspace.
+
+5. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
+
+```text
+WORKSPACE | ✓ Request submitted
+WORKSPACE | ✓ Creating workspace daytona
+daytona   | Creating project daytona
+daytona   | Pulling image...
+daytona   | Pulling from daytonaio/workspace-project
+...
+daytona   | Project daytona created
+daytona   | Starting project daytona
+daytona   | Project daytona started
+```
+
+Use the `daytona create --help` command to view available configuration options for creating a Workspace.
 
 <DocumentList>
 <DocumentListItem
