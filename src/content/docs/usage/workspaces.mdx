@@ -349,8 +349,39 @@ Workspace MyWorkspace successfully deleted
 
 ## Forward Ports from a Workspace
 
-Daytona supports port forwarding, allowing you to access services running in a Workspace via a shareable public URL.
-With port forwarding, you can work on your [Projects](/docs/usage/projects) in a Workspace and test your code externally.
+Daytona supports flexible port forwarding, allowing you to access services running in a Workspace locally or via a shareable public URL.
+With port forwarding, you can work on your project in a Workspace and test your code externally.
+
+### Access a Port Locally
+
+You can access services running in a Workspace on your local machine.
+
+**Prerequisite**
+
+- A running Workspace with at least one service accessible via TCP/UDP.
+
+1. Run the following command to forward a port from a running Workspace to your local machine:
+
+```shell
+daytona forward <PORT> <WORKSPACE> <PROJECT>
+```
+
+**Example:** Allow local access to port 4321 of the `example-dev-env` Workspace.
+
+```shell
+daytona forward 4321 example-dev-env
+```
+
+Upon running this command, Daytona will establish a port forwarding connection from the specified port in the Workspace to your local machine. The terminal will display a message indicating the local port where the forwarded connection is available:
+
+```text
+Port available at http://localhost:4321
+```
+
+### Access a Port via Public URL
+
+You can access services running in a Workspace via a generated public URL.
+This allows you to share your work with others in real-time.
 
 :::note
 This feature uses a free public proxy service hosted by Daytona Platforms, Inc.
@@ -364,17 +395,36 @@ By using this feature, you acknowledge that your data is processed in accordance
 1. Run the following command to generate a public URL for a port on a running Workspace:
 
 ```shell
-daytona forward <PORT> <WORKSPACE> <PROJECT>
+daytona forward <PORT> <WORKSPACE> <PROJECT> --public
 ```
 
-**Example:** Generate a public URL to access port `4321` of the `example-dev-env` Workspace.
+**Example:** Generate a URL to access port 4321 of the `example-dev-env` Workspace.
 
 ```shell
-daytona forward 4321 example-dev-env
+daytona forward 4321 example-dev-env --public
 ```
 
-Upon running this command, Daytona will establish a public port forwarding connection and display a message indicating the public port where the forwarded connection is available.
+Upon running this command, Daytona will first establish a local port forwarding connection and display a message indicating the local port where the forwarded connection is available.
 
 ```text
-Port available at https://4321-ABC1DeF2GhI3JkLmNoP4RSTuVZ5.try-eu.daytona.app
+Port available at http://localhost:4321
 ```
+
+Then, Daytona will proceed to forward the port to a public URL. The terminal will display progress information and, upon completion, provide the generated public URL.
+
+```text
+Forwarding port to a public URL...
+Port available at:
+https://4321-ABC1DeF2GhI3JkLmNoP4RSTuVZ5.try-eu.daytona.app
+```
+
+This URL can be shared with others to provide real-time access to the service running on the specified port in your Workspace.
+
+<Aside type="tip">
+Alternatively, you can generate a public URL by executing the following command in a Workspace's shell:
+
+```shell
+daytona forward <PORT>
+```
+
+</Aside>
