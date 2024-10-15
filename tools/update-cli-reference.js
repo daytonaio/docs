@@ -129,7 +129,7 @@ const commandOpts = {
     output: {
         type: "string",
         short: "o",
-        default: `${__dirname}/../src/content/docs/reference/cli.mdx`
+        default: `${__dirname}/../src/content/docs/tools/cli.mdx`
     }
 }
 
