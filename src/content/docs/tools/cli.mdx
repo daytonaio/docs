@@ -524,13 +524,17 @@ __Flags__
 Add a prebuild configuration
 
 ```shell
-daytona prebuild add [flags]
+daytona prebuild add [PROJECT_CONFIG] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--branch` | `-b` | Git branch for the prebuild |
+| `--commit-interval` | `-c` | Commit interval for running a prebuild - leave blank to ignore push events |
+| `--retention` | `-r` | Maximum number of resulting builds stored at a time |
 | `--run` |  | Run the prebuild once after adding it |
+| `--trigger-files` | `-t` | Full paths of files whose changes should explicitly trigger a  prebuild |
 | `--help` |  | help for daytona |
 
 ## daytona prebuild delete
@@ -580,13 +584,17 @@ __Flags__
 Update a prebuild configuration
 
 ```shell
-daytona prebuild update [flags]
+daytona prebuild update [PROJECT_CONFIG] [PREBUILD_ID] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--branch` | `-b` | Git branch for the prebuild |
+| `--commit-interval` | `-c` | Commit interval for running a prebuild - leave blank to ignore push events |
+| `--retention` | `-r` | Maximum number of resulting builds stored at a time |
 | `--run` |  | Run the prebuild once after updating it |
+| `--trigger-files` | `-t` | Full paths of files whose changes should explicitly trigger a  prebuild |
 | `--help` |  | help for daytona |
 
 ## daytona profile

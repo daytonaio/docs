@@ -2,7 +2,7 @@
   "name": "docs",
   "license": "Apache-2.0",
   "type": "module",
-  "version": "0.38.0",
+  "version": "0.39.0",
   "scripts": {
     "postinstall": "is-ci || husky",
     "dev": "astro dev --host",
@@ -23,7 +23,7 @@
     "@astrojs/starlight-tailwind": "^2.0.1",
     "@astrojs/tailwind": "5.1.0",
     "algoliasearch": "^5.8.1",
-    "astro": "4.5.16",
+    "astro": "4.16.1",
     "astro-expressive-code": "^0.34.1",
     "dotenv": "^16.4.5",
     "envalid": "^8.0.0",
@@ -48,7 +48,8 @@
     "lint-staged": "^15.2.7",
     "markdownlint-cli2": "^0.13.0",
     "prettier": "^3.3.2",
-    "prettier-plugin-astro": "^0.14.0"
+    "prettier-plugin-astro": "^0.14.0",
+    "typescript": "^5.6.3"
   },
   "lint-staged": {
     "*.{ts,tsx,astro}": [
