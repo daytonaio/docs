@@ -81,11 +81,14 @@
         empty: '0 results found',
         item: `
 					<div style="padding:4px;">
-						<a href="{{url}}" style="text-decoration:none; color: #fff; font-size: 8px;">
-							<h5 style="font-size: 20px; color: #fff;">
+						<a href="{{url}}" style="text-decoration:none; font-size: 8px;">
+							<h5 style="font-size: 20px;">
 								{{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}
 							</h5>
-							<p style="font-size: 12px;">
+                            <h6 style="font-size: 13px; color: #686868; padding-top:0px; padding-bottom: 4px;">
+                                {{slug}}
+                            </h6>
+							<p style="font-size: 13px; padding-bottom: 16px;">
 								{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}
 							</p>
 						</a>
@@ -164,11 +167,6 @@
 
   #searchbox-wrapper::-webkit-scrollbar {
     display: none;
-  }
-
-  #hits {
-    list-style-type: none;
-    counter-reset: none;
   }
 
   .no-scroll {
