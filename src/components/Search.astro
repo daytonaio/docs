@@ -138,6 +138,16 @@
       if (hitsContainer) hitsContainer.style.display = 'none'
     }
 
+    const highlights = document.querySelectorAll(
+      '.ais-Highlight-highlighted, mark'
+    )
+
+    highlights.forEach(highlight => {
+      Object.assign((highlight as HTMLElement).style, {
+        backgroundColor: 'var(--hover-color)',
+      })
+    })
+
     const statsContainer = document.querySelector('#stats') as HTMLElement
     if (statsContainer) {
       Object.assign(statsContainer.style, {
