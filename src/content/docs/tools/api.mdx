@@ -789,6 +789,22 @@ Remove a target
 | :-------- | :---------- |
 | `204` | No Content |
 
+## PATCH /target/\{target\}/set-default
+
+Set target to default
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| `target` | path | true | string | Target name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| `200` | OK |
+
 ## GET /workspace
 
 List workspaces
