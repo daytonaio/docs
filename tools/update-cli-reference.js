@@ -35,6 +35,13 @@ This reference does not apply to the \`daytona\` command when run inside of a Wo
 // content to appear below the commands outline
 const append = ``;
 
+const notes = {
+    "daytona autocomplete": `\n<Aside type="note">
+If using bash shell environment, make sure you have bash-completion installed in order to get full autocompletion functionality.
+Linux Installation: \`\`\`sudo apt-get install bash-completion\`\`\`
+macOS Installation: \`\`\`brew install bash-completion\`\`\`
+</Aside>`};
+
 async function fetchRawDocs(ref) {
     const url = "https://api.github.com/repos/daytonaio/daytona/contents/hack/docs";
     const request = await fetch(`${url}?ref=${ref}`);
@@ -99,6 +106,10 @@ function yamlToMarkdown(files) {
                 let row = flagToRow(flag);
                 output += row;
             }
+        }
+
+        if (notes[rawDoc.name]) {
+            output += notes[rawDoc.name];
         }
 
         output += "\n";
