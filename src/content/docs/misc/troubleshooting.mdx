@@ -1,0 +1,24 @@
+---
+title: Troubleshooting
+description: Troubleshooting Daytona
+sidebar:
+  label: Troubleshooting
+---
+
+You can use the following troubleshooting tips to resolve common issues with Daytona.
+
+## Connectivity Issues
+
+### VPNs and Firewalls
+
+If your VPN is configured to handle all IP traffic or if your Firewall is configured to block certain IP addresses, they may prevent Daytona from successfully connecting to our reverse proxy service.
+The issue can be manifested in different ways, including:
+
+- Unable to start the Daytona Server due to a `control not running` error
+- Unable to successfully create Workspaces due to a `Failed to connect to server: Get "http://server/health": lookup server...` error
+- Unable to enter a Workspace using `daytona code` or `daytona ssh` due to a timeout in establishing a Tailscale connection
+
+To work around this issue, you may need to add the following IP address exceptions to your VPN or Firewall:
+
+- `35.198.165.62` - Europe-based reverse proxy
+- `34.133.75.4` - US-based reverse proxy

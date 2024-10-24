@@ -175,6 +175,13 @@ export default defineConfig({
                 icon: 'pulse.svg',
               },
             },
+            {
+              label: 'Troubleshooting',
+              link: '/misc/troubleshooting',
+              attrs: {
+                icon: 'warning.svg',
+              },
+            },
           ],
         },
       ],
