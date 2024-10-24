@@ -10,6 +10,11 @@ title: API
 description: A reference of supported operations using the Daytona API.
 ---
 
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
 `;
 
 // content to appear below the commands outline
@@ -44,7 +49,7 @@ function swaggerToMarkdown(swaggerJSON) {
             output += `## ${method.toUpperCase()} ${escape(path)}\n`;
             output += `${description}\n`;
             output += "\n";
-            
+
             if (Object.keys(parameters).length > 0) {
                 output += "### Parameters\n"
 
