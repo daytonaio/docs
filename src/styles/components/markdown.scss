@@ -618,6 +618,20 @@
       margin-top: 20px;
     }
   }
+
+  .label {
+    margin-top: 0px;
+    margin-bottom: 40px;
+    padding-left: 8px;
+    border-inline-start: 1px solid;
+    background-color: var(--bg-color);
+    border-color: var(--hover-color);
+  }
+
+  .label p {
+    font-size: 0.9rem;
+  }
+
 }
 
 section {
