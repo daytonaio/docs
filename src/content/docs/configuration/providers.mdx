@@ -135,7 +135,7 @@ daytona provider install
 Choose a provider to install
 ===
 > docker-provider
-    v0.0.0
+  v0.0.0
 ```
 
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
@@ -175,7 +175,7 @@ daytona provider install
 Choose a provider to install
 ===
 > aws-provider
-    v0.0.0
+  v0.0.0
 ```
 
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
@@ -213,7 +213,7 @@ daytona provider install
 Choose a provider to install
 ===
 > digitalocean-provider
-    v0.0.0
+  v0.0.0
 ```
 
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
@@ -251,7 +251,7 @@ daytona provider install
 Choose a provider to install
 ===
 > fly-provider
-    v0.0.0
+  v0.0.0
 ```
 
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
@@ -269,6 +269,50 @@ Provider fly-provider has been successfully installed
     title="Set a Fly Target"
     subtitle="Learn how to set a Fly Target to deploy and manage Workspaces."
     href="/docs/configuration/targets#fly"
+    expanded
+  />
+</DocumentList>
+
+## GCP
+
+The GCP Provider allows Daytona to create Workspace projects on Google Cloud Platform (GCP) compute instances. The Provider integrates Daytona with GCP, enabling you to manage Workspaces in a scalable and flexible cloud environment.
+
+:::note
+Before using the GCP Provider, ensure to create a GCP service account with the `Compute Admin` role. Download the service account key in JSON format and provide it to the GCP provider for authentication. Detailed instructions on creating and configuring the service account can be found [here](https://cloud.google.com/iam/docs/service-accounts-create#console).
+:::
+
+<br />
+
+1. Run the following command to install a GCP Provider:
+
+```shell
+daytona provider install
+```
+
+2. Select **`gcp-provider`** to install GCP as your Provider.
+
+```text
+Choose a provider to install
+===
+> gcp-provider
+  v0.0.0
+```
+
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+
+```text
+⡿  Installing...
+```
+
+```text
+Provider gcp-provider has been successfully installed
+```
+
+<DocumentList>
+<DocumentListItem
+    title="Set a GCP Target"
+    subtitle="Learn how to set a GCP Target to deploy and manage Workspaces."
+    href="/docs/configuration/targets#gcp"
     expanded
   />
 </DocumentList>

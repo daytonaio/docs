@@ -326,7 +326,7 @@ List of available volume types https://docs.aws.amazon.com/ebs/latest/userguide/
 >
 ```
 
-6. Click `Enter` to confirm setting the Target.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -374,7 +374,7 @@ Size
 >
 ```
 
-6. Click `Enter` to confirm setting the Target.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -427,7 +427,67 @@ List of available sizes https://fly.io/docs/about/pricing/#started-fly-machines
 >
 ```
 
-6. Click `Enter` to confirm setting the Target.
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+## GCP
+
+Daytona allows you to set a Google Cloud Platform (GCP) Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+```shell
+daytona target set
+```
+
+2. Select **`gcp-provider`** to use the GCP Provider.
+
+```text
+Choose a provider
+1 item
+===
+gcp-provider
+v0.0.0
+```
+
+3. Select **`New Target`**.
+4. Enter a name for your Target.
+5. Enter the appropriate configuration options when prompted.
+
+```text
+Zone
+The zone where the instance will be created. Default is us-central1-a.
+>
+
+Machine Type
+The type of machine to create. Default is n1-standard-1.
+>
+
+Disk Type
+The type of disk to create. Default is pd-standard.
+>
+
+Disk Size
+The size of the disk in GB. Default is 20.
+>
+
+VM Image
+The image to use for the VM. Default is projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts.
+>
+
+Credential File
+The path to the GCP credential file.
+>
+
+Project ID
+The GCP project ID.
+>
+```
+
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
