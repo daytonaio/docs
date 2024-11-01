@@ -458,32 +458,53 @@ v0.0.0
 5. Enter the appropriate configuration options when prompted.
 
 ```text
-Zone
-The zone where the instance will be created. Default is us-central1-a.
->
-
-Machine Type
-The type of machine to create. Default is n1-standard-1.
->
-
-Disk Type
-The type of disk to create. Default is pd-standard.
+Name
 >
 
 Disk Size
-The size of the disk in GB. Default is 20.
+The size of the instance volume, in GB. Default is 20 GB.
 >
 
-VM Image
-The image to use for the VM. Default is projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts.
+Disk Type
+The GCP disk type to use for the VM. Default is pd-standard.
+https://cloud.google.com/compute/docs/disks
+List of available disk types can be retrieved using the command:
+gcloud compute disk-types list
 >
 
-Credential File
-The path to the GCP credential file.
+Machine Type
+The GCP machine type to use for the VM. Default is List n1-standard-1.
+https://cloud.google.com/compute/docs/general-purpose-machines
+List of available machine types can be retrieved using the command:
+gcloud compute machine-types list
 >
 
 Project ID
-The GCP project ID.
+The GCP project ID where the resources will be created.
+Leave blank if you've set the GCP_PROJECT_ID.
+How to locate the project ID:
+https://support.google.com/googleapi/answer/7014113?hl=en
+>
+
+VM Image
+The GCP image to use for the VM.
+Default is projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts
+https://cloud.google.com/compute/docs/images
+List of available images can be retrieved using the command:
+gcloud compute images list
+>
+
+Zone
+The GCP zone where the resources will be created. Default is us-central1-a.
+https://cloud.google.com/compute/docs/regions-zones
+List of available zones can be retrieved using the command:
+gcloud compute zones list
+>
+
+Credential File
+Full path to the GCP service account JSON key file.
+Leave blank if you've set the GCP_CREDENTIAL_FILE environment variable.
+Ensure that the file is secure and accessible only to authorized users.
 >
 ```
 
