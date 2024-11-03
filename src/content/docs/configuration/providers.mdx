@@ -157,46 +157,6 @@ Provider docker-provider has been successfully installed
   />
 </DocumentList>
 
-## AWS
-
-The AWS Provider allows Daytona to create and manage Workspace projects on Amazon EC2 instances. The Provider integrates Daytona with AWS, enabling you to manage Workspaces in a scalable and flexible cloud environment.
-
-To use the AWS Provider, ensure that your AWS programmatic access user has the `AmazonEC2FullAccess` permissions. This policy grants the necessary permissions to manage EC2 instances, which is crucial for Daytona's Workspace project creation and management.
-
-1. Run the following command to install an AWS Provider:
-
-```shell
-daytona provider install
-```
-
-2. Select **`aws-provider`** to install AWS as your Provider.
-
-```text
-Choose a provider to install
-===
-> aws-provider
-  v0.0.0
-```
-
-Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
-
-```text
-⡿  Installing...
-```
-
-```text
-Provider aws-provider has been successfully installed
-```
-
-<DocumentList>
-<DocumentListItem
-    title="Set an AWS Target"
-    subtitle="Learn how to set an AWS Target to deploy and manage Workspaces."
-    href="/docs/configurationtargets#aws"
-    expanded
-  />
-</DocumentList>
-
 ## DigitalOcean
 
 The DigitalOcean Provider allows Daytona to create Workspace projects on DigitalOcean VMs, known as Droplets. The Provider integrates Daytona with DigitalOcean, enabling you to manage Workspaces on a flexible and scalable cloud platform.
@@ -235,22 +195,24 @@ Provider digitalocean-provider has been successfully installed
   />
 </DocumentList>
 
-## Fly
+## AWS
 
-The Fly Provider allows Daytona to create Workspace projects on Fly VMs, known as Fly Machines. The Provider integrates Daytona with the Fly.io platform, enabling you to manage Workspaces in a globally distributed cloud environment.
+The AWS Provider allows Daytona to create and manage Workspace projects on Amazon EC2 instances. The Provider integrates Daytona with AWS, enabling you to manage Workspaces in a scalable and flexible cloud environment.
 
-1. Run the following command to install a Fly Provider:
+To use the AWS Provider, ensure that your AWS programmatic access user has the `AmazonEC2FullAccess` permissions. This policy grants the necessary permissions to manage EC2 instances, which is crucial for Daytona's Workspace project creation and management.
+
+1. Run the following command to install an AWS Provider:
 
 ```shell
 daytona provider install
 ```
 
-2. Select **`fly-provider`** to install Fly as your Provider.
+2. Select **`aws-provider`** to install AWS as your Provider.
 
 ```text
 Choose a provider to install
 ===
-> fly-provider
+> aws-provider
   v0.0.0
 ```
 
@@ -261,14 +223,14 @@ Upon selecting the Provider, Daytona will install and configure the chosen Provi
 ```
 
 ```text
-Provider fly-provider has been successfully installed
+Provider aws-provider has been successfully installed
 ```
 
 <DocumentList>
 <DocumentListItem
-    title="Set a Fly Target"
-    subtitle="Learn how to set a Fly Target to deploy and manage Workspaces."
-    href="/docs/configuration/targets#fly"
+    title="Set an AWS Target"
+    subtitle="Learn how to set an AWS Target to deploy and manage Workspaces."
+    href="/docs/configurationtargets#aws"
     expanded
   />
 </DocumentList>
@@ -313,6 +275,44 @@ Provider gcp-provider has been successfully installed
     title="Set a GCP Target"
     subtitle="Learn how to set a GCP Target to deploy and manage Workspaces."
     href="/docs/configuration/targets#gcp"
+    expanded
+  />
+</DocumentList>
+
+## Fly
+
+The Fly Provider allows Daytona to create Workspace projects on Fly VMs, known as Fly Machines. The Provider integrates Daytona with the Fly.io platform, enabling you to manage Workspaces in a globally distributed cloud environment.
+
+1. Run the following command to install a Fly Provider:
+
+```shell
+daytona provider install
+```
+
+2. Select **`fly-provider`** to install Fly as your Provider.
+
+```text
+Choose a provider to install
+===
+> fly-provider
+  v0.0.0
+```
+
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+
+```text
+⡿  Installing...
+```
+
+```text
+Provider fly-provider has been successfully installed
+```
+
+<DocumentList>
+<DocumentListItem
+    title="Set a Fly Target"
+    subtitle="Learn how to set a Fly Target to deploy and manage Workspaces."
+    href="/docs/configuration/targets#fly"
     expanded
   />
 </DocumentList>
