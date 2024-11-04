@@ -62,6 +62,8 @@
     searchClient,
   })
 
+  let debounceTimeout: ReturnType<typeof setTimeout>
+
   search.addWidgets([
     searchBox({
       container: '#searchbox',
@@ -74,7 +76,10 @@
       showLoadingIndicator: false,
       queryHook: (query, search) => {
         const trimmedQuery = query.trim()
-        search(trimmedQuery)
+        clearTimeout(debounceTimeout)
+        debounceTimeout = setTimeout(() => {
+          search(trimmedQuery)
+        }, 400)
       },
     }),
     hits({
