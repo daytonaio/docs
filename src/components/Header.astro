@@ -45,6 +45,9 @@ import Search from '@components/Search.astro'
     <a href={import.meta.env.BASE_URL} class="dotfiles-logo blur-section"
       ><Fragment set:html={documentationIcon} />Documentation
     </a>
+    <p id="search-icon-mobile" class="search-icon">
+      <Fragment set:html={searchIcon} />
+    </p>
   </nav>
 </header>
 
@@ -62,5 +65,15 @@ import Search from '@components/Search.astro'
     padding-top: 6px;
     margin-right: 8px;
     cursor: pointer;
+  }
+
+  #search-icon-mobile {
+    position: absolute;
+    margin-right: 32px;
+    top: 40px;
+    right: 16px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
   }
 </style>
