@@ -16,10 +16,15 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     const searchIcon = document.getElementById('search-icon')
+    const searchIconMobile = document.getElementById('search-icon-mobile')
     const searchBoxWrapper = document.getElementById('searchbox-wrapper')
 
     if (searchIcon) {
       searchIcon.addEventListener('click', toggleSearch)
+    }
+
+    if (searchIconMobile) {
+      searchIconMobile.addEventListener('click', toggleSearch)
     }
 
     document.addEventListener('keydown', event => {
