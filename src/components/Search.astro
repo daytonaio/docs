@@ -142,13 +142,19 @@
 
       const hitsList = hitsContainer.querySelector('.ais-Hits-list')
       if (hitsList) {
-        Object.assign((hitsList as HTMLElement).style, {
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: '8px',
-          padding: '0',
-          marginBottom: '128px',
-        })
+        const updateGridColumns = () => {
+          const isMobile = window.innerWidth <= 768
+          Object.assign((hitsList as HTMLElement).style, {
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+            gap: '8px',
+            padding: '0',
+            marginBottom: '128px',
+          })
+        }
+
+        updateGridColumns()
+        window.addEventListener('resize', updateGridColumns)
       }
 
       const hitItems = hitsContainer.querySelectorAll('.ais-Hits-item')
