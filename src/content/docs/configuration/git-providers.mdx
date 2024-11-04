@@ -83,6 +83,10 @@ Other
 
     Select if you are hosting repositories on AWS CodeCommit.
 
+- __[Gogs](#gogs)__
+
+    Select if you are hosting repositories on Gogs.
+
 3. Enter your Git Provider credentials for Daytona to authenticate and enable secure access to your repositories.
 
 ```text
@@ -734,6 +738,72 @@ Username
 ```text
 Self-managed API URL
 For example: https://ap-south-1.console.aws.amazon.com
+>
+```
+
+```text
+Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
+>
+```
+
+Upon successful authentication, Daytona will display the following message:
+
+```text
+Git provider has been registered
+```
+
+## Gogs
+
+Daytona allows you to connect your Gogs account and access your repositories directly from Daytona.
+
+1. Run the following command to add Gogs as a Git Provider:
+
+```shell
+daytona git-providers add
+```
+
+Upon running this command, Daytona will prompt you to choose a Git Provider you want to add. Select `Other` from the list, and then select `Gogs`.
+
+```text
+Choose a Git provider
+> Other
+```
+
+```text
+Choose a Git provider
+> Gogs
+```
+
+After selecting Gogs as your Git Provider, you will be prompted to enter a Self-Managed API URL (the base URL for the Gogs installation's API) and a Personal Access Token.
+
+To create a Personal Access Token follow these steps:
+
+1. Log into Gogs, and click your profile avatar to open the user menu.
+2. Click `Your Settings` in the user menu. Make sure you have admin access to the repository.
+3. Navigate to `Applications` in the sidebar.
+4. In the Manage personal access tokens section, click Generate New Token.
+5. Type a name for your token and click Generate Token.
+6. Copy and save the token securely (it won't be shown again).
+
+<Aside type="note">
+Gogs does not support fine-grained tokens. Each Personal Access Token will have full access to your account
+</Aside>
+
+<br />
+
+2. Enter your Self-Managed API URL and Personal Access Token for Daytona to authenticate and enable secure access to your Gogs repositories.
+
+```text
+Self-managed API URL
+For example: https://gogs-host.com
 >
 ```
 
