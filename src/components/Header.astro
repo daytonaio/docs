@@ -51,6 +51,25 @@ import Search from '@components/Search'
   </nav>
 </header>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchIcon = document.getElementById('search-icon')
+    const searchIconMobile = document.getElementById('search-icon-mobile')
+
+    if (searchIcon) {
+      searchIcon.addEventListener('click', () => {
+        window.dispatchEvent(new CustomEvent('toggleSearch'))
+      })
+    }
+
+    if (searchIconMobile) {
+      searchIconMobile.addEventListener('click', () => {
+        window.dispatchEvent(new CustomEvent('toggleSearch'))
+      })
+    }
+  })
+</script>
+
 <Search client:load />
 
 <style>
