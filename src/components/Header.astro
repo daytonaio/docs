@@ -5,7 +5,7 @@ import daytonaLogoIcon from '@assets/icons/logo-icon.svg?raw'
 import documentationIcon from '@assets/icons/documentation-icon.svg?raw'
 import searchIcon from '@assets/icons/search.svg?raw'
 import Version from '@components/Version.astro'
-import Search from '@components/Search.astro'
+import Search from '@components/SearchReact'
 ---
 
 <header class="navbar">
@@ -51,7 +51,7 @@ import Search from '@components/Search.astro'
   </nav>
 </header>
 
-<Search />
+<Search client:load />
 
 <style>
   .mobile-navigation {
