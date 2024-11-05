@@ -20,9 +20,6 @@ const searchClient = algoliasearch(
 function SearchReact() {
   const [isSearchVisible, setIsSearchVisible] = useState(false)
 
-  const searchIconRef = useRef(null)
-  const searchIconMobileRef = useRef(null)
-
   useEffect(() => {
     const toggleSearch = () => {
       setIsSearchVisible(prev => !prev)
