@@ -95,3 +95,7 @@ mark {
   background-color: var(--bg-color);
   font-style: normal;
 }
+
+.ais-SearchBox-submit, .ais-SearchBox-reset {
+  display: none;
+}
