@@ -36,6 +36,11 @@
   box-sizing: border-box;
 }
 
+.ais-SearchBox-input:focus {
+  outline: none;
+  border: 1px solid var(--secondary-text-color);
+}
+
 .stats-pagination-wrapper {
   display: flex;
   justify-content: space-between;
