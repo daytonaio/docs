@@ -5,7 +5,7 @@ sidebar:
   label: Daytona CLI Reference
 ---
 import Aside from "@components/Aside.astro";
-import Label from '@components/Label.astro'
+import Label from "@components/Label.astro";
 
 <Label>
   Distribution: **Open Source**, **Cloud**, **Self-Managed**
@@ -95,7 +95,7 @@ __Flags__
 
 ## daytona autocomplete
 
-Adds completion script for your shell enviornment
+Adds a completion script for your shell environment
 
 ```shell
 daytona autocomplete [bash|zsh|fish|powershell] [flags]
@@ -207,7 +207,7 @@ daytona code [WORKSPACE] [PROJECT] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, jupyter, fleet, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
+| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, jupyter, fleet, zed, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
@@ -301,7 +301,7 @@ __Flags__
 | `--devcontainer-path` |  | Automatically assign the devcontainer builder with the path passed as the flag value |
 | `--env` |  | Specify environment variables (e.g. --env 'KEY1=VALUE1' --env 'KEY2=VALUE2' ...') |
 | `--git-provider-config` |  | Specify the Git provider configuration ID or alias |
-| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, jupyter, fleet, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
+| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, jupyter, fleet, zed, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--manual` |  | Manually enter the Git repository |
 | `--multi-project` |  | Workspace with multiple projects/repos |
 | `--name` |  | Specify the workspace name |
@@ -1001,6 +1001,7 @@ daytona ssh [WORKSPACE] [PROJECT] [CMD...] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--option` | `-o` | Specify SSH options in KEY=VALUE format. |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
