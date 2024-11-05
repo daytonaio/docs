@@ -65,8 +65,6 @@ function SearchReact() {
           <InstantSearch indexName="docs" searchClient={searchClient}>
             <SearchBox
               translations={{ placeholder: 'Search daytona.io' }}
-              submit={false}
-              reset={false}
               autoFocus={true}
             />
             <div
