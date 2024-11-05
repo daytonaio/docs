@@ -17,7 +17,7 @@ const searchClient = algoliasearch(
   import.meta.env.PUBLIC_ALGOLIA_API_KEY
 )
 
-function SearchReact() {
+function Search() {
   const [isSearchVisible, setIsSearchVisible] = useState(false)
 
   useEffect(() => {
@@ -114,4 +114,4 @@ function Hit({ hit }) {
   )
 }
 
-export default SearchReact
+export default Search
