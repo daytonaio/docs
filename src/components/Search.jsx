@@ -63,7 +63,12 @@ function Search() {
               className="stats-pagination-wrapper"
             >
               <Stats />
-              <Pagination />
+              <Pagination
+                showFirst={false}
+                showPrevious={true}
+                showNext={true}
+                showLast={false}
+              />
             </div>
             <Hits hitComponent={Hit} />
             <Configure
