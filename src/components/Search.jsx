@@ -36,25 +36,11 @@ function SearchReact() {
     }
 
     document.addEventListener('keydown', handleKeyDown)
-
-    const searchIcon = searchIconRef.current
-    const searchIconMobile = searchIconMobileRef.current
-
-    if (searchIcon) {
-      searchIcon.addEventListener('click', toggleSearch)
-    }
-    if (searchIconMobile) {
-      searchIconMobile.addEventListener('click', toggleSearch)
-    }
+    window.addEventListener('toggleSearch', toggleSearch)
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
-      if (searchIcon) {
-        searchIcon.removeEventListener('click', toggleSearch)
-      }
-      if (searchIconMobile) {
-        searchIconMobile.removeEventListener('click', toggleSearch)
-      }
+      window.removeEventListener('toggleSearch', toggleSearch)
     }
   }, [])
 
