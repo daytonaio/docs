@@ -10,7 +10,7 @@ import {
   Stats,
 } from 'react-instantsearch-dom'
 
-import './Search.css'
+import '../styles/components/search.scss';
 
 const searchClient = algoliasearch(
   import.meta.env.PUBLIC_ALGOLIA_APP_ID,
