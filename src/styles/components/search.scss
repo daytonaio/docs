@@ -103,3 +103,26 @@ mark {
 .ais-SearchBox-submit, .ais-SearchBox-reset {
   display: none;
 }
+
+.mobile-navigation {
+  @media (max-width: 650px) {
+    padding: 20px 0 !important;
+  }
+}
+
+#search-icon {
+  background: -var(--bg-color);
+  padding-top: 6px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+#search-icon-mobile {
+  position: absolute;
+  margin-right: 32px;
+  top: 40px;
+  right: 16px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
