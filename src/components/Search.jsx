@@ -49,12 +49,12 @@ function Search() {
   }, [])
 
   useEffect(() => {
-    if (isSearchVisible) {
+    if (isSearchVisible && searchQuery) {
       document.body.classList.add('no-scroll')
     } else {
       document.body.classList.remove('no-scroll')
     }
-  }, [isSearchVisible])
+  }, [isSearchVisible, searchQuery])
 
   return (
     <>
