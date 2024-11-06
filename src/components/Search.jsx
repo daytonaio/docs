@@ -19,6 +19,7 @@ const searchClient = algoliasearch(
 
 function Search() {
   const [isSearchVisible, setIsSearchVisible] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     const toggleSearch = () => {
@@ -63,20 +64,25 @@ function Search() {
             <SearchBox
               translations={{ placeholder: 'Search daytona.io' }}
               autoFocus={true}
+              onChange={event => setSearchQuery(event.currentTarget.value)}
             />
-            <div
-              id="stats-pagination-wrapper"
-              className="stats-pagination-wrapper"
-            >
-              <Stats />
-              <Pagination
-                showFirst={false}
-                showPrevious={true}
-                showNext={true}
-                showLast={false}
-              />
-            </div>
-            <Hits hitComponent={Hit} />
+            {searchQuery && (
+              <>
+                <div
+                  id="stats-pagination-wrapper"
+                  className="stats-pagination-wrapper"
+                >
+                  <Stats />
+                  <Pagination
+                    showFirst={false}
+                    showPrevious={true}
+                    showNext={true}
+                    showLast={false}
+                  />
+                </div>
+                <Hits hitComponent={Hit} />
+              </>
+            )}
             <Configure
               hitsPerPage={10}
               clickAnalytics={true}
