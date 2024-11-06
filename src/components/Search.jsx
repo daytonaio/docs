@@ -32,12 +32,18 @@ function Search() {
       }
     }
 
+    const handleSearchClick = event => {
+      if (event.target.closest('.search-click')) {
+        toggleSearch()
+      }
+    }
+
     document.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('toggleSearch', toggleSearch)
+    document.addEventListener('click', handleSearchClick)
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('toggleSearch', toggleSearch)
+      document.removeEventListener('click', handleSearchClick)
     }
   }, [])
 
