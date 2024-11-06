@@ -28,7 +28,7 @@ import '../styles/components/search.scss'
     </div>
     <a href={import.meta.env.BASE_URL} class="dotfiles-logo">v<Version /> </a>
     <div class="nav__items_side_menu">
-      <p id="search-icon" class="search-trigger">
+      <p id="search-icon" class="search-click">
         <Fragment set:html={searchIcon} />
       </p>
       <SideNavLinks client:load />
@@ -47,7 +47,7 @@ import '../styles/components/search.scss'
     <a href={import.meta.env.BASE_URL} class="dotfiles-logo blur-section"
       ><Fragment set:html={documentationIcon} />Documentation
     </a>
-    <p id="search-icon-mobile" class="search-trigger">
+    <p id="search-icon-mobile" class="search-click">
       <Fragment set:html={searchIcon} />
     </p>
   </nav>
