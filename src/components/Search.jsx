@@ -23,7 +23,12 @@ function Search() {
 
   useEffect(() => {
     const toggleSearch = () => {
-      setIsSearchVisible(prev => !prev)
+      setIsSearchVisible(prev => {
+        if (prev) {
+          setSearchQuery('');
+        }
+        return !prev;
+      })
     }
 
     const handleKeyDown = event => {
@@ -65,6 +70,7 @@ function Search() {
               translations={{ placeholder: 'Search daytona.io' }}
               autoFocus={true}
               onChange={event => setSearchQuery(event.currentTarget.value)}
+              value={searchQuery}
             />
             {searchQuery && (
               <>
