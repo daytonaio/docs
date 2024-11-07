@@ -7,10 +7,10 @@ import {
   InstantSearch,
   Pagination,
   SearchBox,
-  Stats,
+  connectStats,
 } from 'react-instantsearch-dom'
 
-import '../styles/components/search.scss';
+import '../styles/components/search.scss'
 
 const searchClient = algoliasearch(
   import.meta.env.PUBLIC_ALGOLIA_APP_ID,
@@ -20,14 +20,16 @@ const searchClient = algoliasearch(
 function Search() {
   const [isSearchVisible, setIsSearchVisible] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [debounceQuery, setDebounceQuery] = useState('')
+  const debounceTimeoutRef = useRef(null)
 
   useEffect(() => {
     const toggleSearch = () => {
       setIsSearchVisible(prev => {
         if (prev) {
-          setSearchQuery('');
+          setSearchQuery('')
         }
-        return !prev;
+        return !prev
       })
     }
 
@@ -61,6 +63,22 @@ function Search() {
     }
   }, [isSearchVisible, searchQuery])
 
+  useEffect(() => {
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current)
+    }
+
+    debounceTimeoutRef.current = setTimeout(() => {
+      setDebounceQuery(searchQuery)
+    }, 400)
+
+    return () => {
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current)
+      }
+    }
+  }, [searchQuery])
+
   return (
     <>
       {isSearchVisible && (
@@ -72,7 +90,7 @@ function Search() {
               onChange={event => setSearchQuery(event.currentTarget.value)}
               value={searchQuery}
             />
-            {searchQuery && (
+            {debounceQuery && (
               <>
                 <div
                   id="stats-pagination-wrapper"
@@ -84,6 +102,7 @@ function Search() {
                     showPrevious={true}
                     showNext={true}
                     showLast={false}
+                    padding={1}
                   />
                 </div>
                 <Hits hitComponent={Hit} />
@@ -136,5 +155,11 @@ function Hit({ hit }) {
     </div>
   )
 }
+
+const CustomStats = ({ nbHits }) => (
+  <div className="custom-stats">{nbHits} results</div>
+)
+
+const Stats = connectStats(CustomStats)
 
 export default Search
