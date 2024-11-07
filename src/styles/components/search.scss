@@ -1,3 +1,26 @@
+#search-icon {
+  background: -var(--bg-color);
+  padding-top: 6px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+#search-icon-mobile {
+  position: absolute;
+  margin-right: 32px;
+  top: 40px;
+  right: 16px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.mobile-navigation {
+  @media (max-width: 650px) {
+    padding: 20px 0 !important;
+  }
+}
+
 .searchbox-wrapper {
   position: fixed;
   margin-top: 32px;
@@ -16,12 +39,8 @@
   display: none;
 }
 
-.no-scroll {
-  overflow: hidden;
-}
-
 .ais-SearchBox-form {
-  width: 90%;
+  max-width: 1248px;
   margin: 0 auto;
   display: block;
 }
@@ -41,28 +60,34 @@
   border: 1px solid var(--secondary-text-color);
 }
 
+.ais-SearchBox-submit, .ais-SearchBox-reset {
+  display: none;
+}
+
 .stats-pagination-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;
+  max-width: 1248px;
   margin: 0 auto;
   padding: 32px 0;
-}
-
-.ais-Stats {
-  margin: 0;
-  font-size: 16px;
 }
 
 .ais-Pagination {
   display: flex;
   list-style-type: none;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: visible;
 }
 
 .ais-Pagination-item {
   display: inline-block;
   margin: 0 5px;
+  flex-shrink: 0;
 }
 
 .ais-Pagination-link {
@@ -71,8 +96,17 @@
   font-size: 16px;
 }
 
+.ais-Pagination::-webkit-scrollbar {
+  display: none;
+}
+
+.ais-Stats {
+  margin: 0;
+  font-size: 16px;
+}
+
 .ais-Hits-list {
-  width: 90%;
+  max-width: 1248px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -100,29 +134,6 @@ mark {
   font-style: normal;
 }
 
-.ais-SearchBox-submit, .ais-SearchBox-reset {
-  display: none;
-}
-
-.mobile-navigation {
-  @media (max-width: 650px) {
-    padding: 20px 0 !important;
-  }
-}
-
-#search-icon {
-  background: -var(--bg-color);
-  padding-top: 6px;
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-#search-icon-mobile {
-  position: absolute;
-  margin-right: 32px;
-  top: 40px;
-  right: 16px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  z-index: 10;
+.no-scroll {
+  overflow: hidden;
 }
