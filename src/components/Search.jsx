@@ -122,8 +122,19 @@ function Search() {
 
 function Hit({ hit }) {
   return (
-    <div style={{ padding: '4px' }}>
-      <a href={hit.url} style={{ textDecoration: 'none', fontSize: '8px' }}>
+    <div
+      tabIndex="0"
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          window.location.href = hit.url;
+        }
+      }}
+    >
+      <a
+        href={hit.url}
+        tabIndex="-1"
+        style={{ textDecoration: 'none', fontSize: '8px' }}
+      >
         <h5 style={{ fontSize: '20px', display: 'flex', alignItems: 'center' }}>
           <span style={{ fontSize: '10px', marginRight: '8px' }}>🟦</span>
           <span style={{ marginLeft: '4px' }}>
