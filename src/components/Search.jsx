@@ -105,7 +105,7 @@ function Search() {
                     padding={1}
                   />
                 </div>
-                <Hits hitComponent={Hit} />
+                <Hits hitComponent={(props) => <Hit {...props} setIsSearchVisible={setIsSearchVisible} />} />
               </>
             )}
             <Configure
@@ -120,7 +120,10 @@ function Search() {
   )
 }
 
-function Hit({ hit }) {
+function Hit({ hit, setIsSearchVisible }) {
+  const handleClick = () => {
+    setIsSearchVisible(false)
+  }
   return (
     <div
       tabIndex="0"
@@ -133,6 +136,7 @@ function Hit({ hit }) {
       <a
         href={hit.url}
         tabIndex="-1"
+        onClick={handleClick}
         style={{ textDecoration: 'none', fontSize: '8px' }}
       >
         <h5 style={{ fontSize: '20px', display: 'flex', alignItems: 'center' }}>
