@@ -21,6 +21,7 @@ function Search() {
   const [isSearchVisible, setIsSearchVisible] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [debounceQuery, setDebounceQuery] = useState('')
+  const [displayHits, setDisplayHits] = useState(false)
   const debounceTimeoutRef = useRef(null)
 
   useEffect(() => {
@@ -56,12 +57,12 @@ function Search() {
   }, [])
 
   useEffect(() => {
-    if (isSearchVisible && searchQuery) {
+    if (isSearchVisible && debounceQuery && displayHits) {
       document.body.classList.add('no-scroll')
     } else {
       document.body.classList.remove('no-scroll')
     }
-  }, [isSearchVisible, searchQuery])
+  }, [isSearchVisible, debounceQuery, displayHits])
 
   useEffect(() => {
     if (debounceTimeoutRef.current) {
@@ -96,7 +97,7 @@ function Search() {
                   id="stats-pagination-wrapper"
                   className="stats-pagination-wrapper"
                 >
-                  <Stats />
+                  <Stats setDisplayHits={setDisplayHits} />
                   <Pagination
                     showFirst={false}
                     showPrevious={true}
@@ -105,7 +106,11 @@ function Search() {
                     padding={1}
                   />
                 </div>
-                <Hits hitComponent={(props) => <Hit {...props} setIsSearchVisible={setIsSearchVisible} />} />
+                <Hits
+                  hitComponent={props => (
+                    <Hit {...props} setIsSearchVisible={setIsSearchVisible} />
+                  )}
+                />
               </>
             )}
             <Configure
@@ -127,18 +132,13 @@ function Hit({ hit, setIsSearchVisible }) {
   return (
     <div
       tabIndex="0"
-      onKeyDown={(e) => {
+      onKeyDown={e => {
         if (e.key === 'Enter') {
-          window.location.href = hit.url;
+          window.location.href = hit.url
         }
       }}
     >
-      <a
-        href={hit.url}
-        tabIndex="-1"
-        onClick={handleClick}
-        style={{ textDecoration: 'none', fontSize: '8px' }}
-      >
+      <a href={hit.url} tabIndex="-1" onClick={handleClick}>
         <h5 style={{ fontSize: '20px', display: 'flex', alignItems: 'center' }}>
           <span style={{ fontSize: '10px', marginRight: '8px' }}>🟦</span>
           <span style={{ marginLeft: '4px' }}>
@@ -171,9 +171,13 @@ function Hit({ hit, setIsSearchVisible }) {
   )
 }
 
-const CustomStats = ({ nbHits }) => (
-  <div className="custom-stats">{nbHits} results</div>
-)
+const CustomStats = ({ nbHits, setDisplayHits }) => {
+  useEffect(() => {
+    setDisplayHits(nbHits > 0)
+  }, [nbHits, setDisplayHits])
+
+  return <div className="custom-stats">{nbHits} results</div>
+}
 
 const Stats = connectStats(CustomStats)
 
