@@ -23,36 +23,63 @@ function Search() {
   const [debounceQuery, setDebounceQuery] = useState('')
   const [displayHits, setDisplayHits] = useState(false)
   const debounceTimeoutRef = useRef(null)
+  const searchWrapperRef = useRef(null)
 
   useEffect(() => {
     const toggleSearch = () => {
       setIsSearchVisible(prev => {
         if (prev) {
-          setSearchQuery('')
+          setSearchQuery('');
+          setDebounceQuery('');
+          setDisplayHits(false);
         }
-        return !prev
-      })
-    }
+        return !prev;
+      });
+    };
 
     const handleKeyDown = event => {
       if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
         event.preventDefault()
         toggleSearch()
       }
+
+      if (event.key === 'Escape') {
+        setIsSearchVisible(false);
+        setSearchQuery('');
+        setDebounceQuery('');
+        setDisplayHits(false);
+      }
     }
 
     const handleSearchClick = event => {
       if (event.target.closest('.search-click')) {
+        event.preventDefault()
+        event.stopPropagation()
         toggleSearch()
       }
     }
 
+    const handleClickOutside = event => {
+      if (
+        searchWrapperRef.current &&
+        !searchWrapperRef.current.contains(event.target) &&
+        !event.target.closest('.search-click')
+      ) {
+        setIsSearchVisible(false);
+        setSearchQuery('');
+        setDebounceQuery('');
+        setDisplayHits(false);
+      }
+    };
+
     document.addEventListener('keydown', handleKeyDown)
     document.addEventListener('click', handleSearchClick)
+    document.addEventListener('mousedown', handleClickOutside)
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('click', handleSearchClick)
+      document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
 
@@ -83,7 +110,7 @@ function Search() {
   return (
     <>
       {isSearchVisible && (
-        <div id="searchbox-wrapper" className="searchbox-wrapper">
+        <div id="searchbox-wrapper" className="searchbox-wrapper" ref={searchWrapperRef}>
           <InstantSearch indexName="docs" searchClient={searchClient}>
             <SearchBox
               translations={{ placeholder: 'Search daytona.io' }}
