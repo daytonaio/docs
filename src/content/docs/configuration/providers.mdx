@@ -135,7 +135,7 @@ daytona provider install
 Choose a provider to install
 ===
 > docker-provider
-    v0.0.0
+  v0.0.0
 ```
 
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
@@ -153,6 +153,44 @@ Provider docker-provider has been successfully installed
     title="Set a Docker Target"
     subtitle="Learn how to set a local or remote Docker Target to deploy and manage Workspaces."
     href="/docs/configuration/targets/#docker-local"
+    expanded
+  />
+</DocumentList>
+
+## DigitalOcean
+
+The DigitalOcean Provider allows Daytona to create Workspace projects on DigitalOcean VMs, known as Droplets. The Provider integrates Daytona with DigitalOcean, enabling you to manage Workspaces on a flexible and scalable cloud platform.
+
+1. Run the following command to install a DigitalOcean Provider:
+
+```shell
+daytona provider install
+```
+
+2. Select **`digitalocean-provider`** to install DigitalOcean as your Provider.
+
+```text
+Choose a provider to install
+===
+> digitalocean-provider
+  v0.0.0
+```
+
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+
+```text
+⡿  Installing...
+```
+
+```text
+Provider digitalocean-provider has been successfully installed
+```
+
+<DocumentList>
+<DocumentListItem
+    title="Set a DigitalOcean Target"
+    subtitle="Learn how to set a DigitalOcean Target to deploy and manage Workspaces."
+    href="/docs/configuration/targets#digitalocean"
     expanded
   />
 </DocumentList>
@@ -175,7 +213,7 @@ daytona provider install
 Choose a provider to install
 ===
 > aws-provider
-    v0.0.0
+  v0.0.0
 ```
 
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
@@ -197,23 +235,25 @@ Provider aws-provider has been successfully installed
   />
 </DocumentList>
 
-## DigitalOcean
+## Azure
 
-The DigitalOcean Provider allows Daytona to create Workspace projects on DigitalOcean VMs, known as Droplets. The Provider integrates Daytona with DigitalOcean, enabling you to manage Workspaces on a flexible and scalable cloud platform.
+The Azure Provider allows Daytona to create Workspace projects on Azure compute instances. The Provider integrates Daytona with Azure, enabling you to manage Workspaces in a scalable and flexible cloud environment.
 
-1. Run the following command to install a DigitalOcean Provider:
+<br />
+
+1. Run the following command to install a Azure Provider:
 
 ```shell
 daytona provider install
 ```
 
-2. Select **`digitalocean-provider`** to install DigitalOcean as your Provider.
+2. Select **`azure-provider`** to install Azure as your Provider.
 
 ```text
 Choose a provider to install
 ===
-> digitalocean-provider
-    v0.0.0
+> azure-provider
+  v0.0.0
 ```
 
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
@@ -223,14 +263,98 @@ Upon selecting the Provider, Daytona will install and configure the chosen Provi
 ```
 
 ```text
-Provider digitalocean-provider has been successfully installed
+Provider azure-provider has been successfully installed
 ```
 
 <DocumentList>
 <DocumentListItem
-    title="Set a DigitalOcean Target"
-    subtitle="Learn how to set a DigitalOcean Target to deploy and manage Workspaces."
-    href="/docs/configuration/targets#digitalocean"
+    title="Set an Azure Target"
+    subtitle="Learn how to set an Azure Target to deploy and manage Workspaces."
+    href="/docs/configuration/targets#azure"
+    expanded
+  />
+</DocumentList>
+
+## GCP
+
+The GCP Provider allows Daytona to create Workspace projects on Google Cloud Platform (GCP) compute instances. The Provider integrates Daytona with GCP, enabling you to manage Workspaces in a scalable and flexible cloud environment.
+
+:::note
+Before using the GCP Provider, ensure to create a GCP service account with the `Compute Admin` role. Download the service account key in JSON format and provide it to the GCP provider for authentication. Detailed instructions on creating and configuring the service account can be found [here](https://cloud.google.com/iam/docs/service-accounts-create#console).
+:::
+
+<br />
+
+1. Run the following command to install a GCP Provider:
+
+```shell
+daytona provider install
+```
+
+2. Select **`gcp-provider`** to install GCP as your Provider.
+
+```text
+Choose a provider to install
+===
+> gcp-provider
+  v0.0.0
+```
+
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+
+```text
+⡿  Installing...
+```
+
+```text
+Provider gcp-provider has been successfully installed
+```
+
+<DocumentList>
+<DocumentListItem
+    title="Set a GCP Target"
+    subtitle="Learn how to set a GCP Target to deploy and manage Workspaces."
+    href="/docs/configuration/targets#gcp"
+    expanded
+  />
+</DocumentList>
+
+## Hetzner
+
+The Hetzner Provider allows Daytona to create Workspace projects on Hetzner Cloud VMs. The Provider integrates Daytona with Hetzner, enabling you to manage Workspaces in a scalable and flexible cloud environment.
+
+<br />
+
+1. Run the following command to install a Hetzner Provider:
+
+```shell
+daytona provider install
+```
+
+2. Select **`hetzner-provider`** to install Hetzner as your Provider.
+
+```text
+Choose a provider to install
+===
+> hetzner-provider
+  v0.0.0
+```
+
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.
+
+```text
+⡿  Installing...
+```
+
+```text
+Provider hetzner-provider has been successfully installed
+```
+
+<DocumentList>
+<DocumentListItem
+    title="Set a Hetzner Target"
+    subtitle="Learn how to set a Hetzner Target to deploy and manage Workspaces."
+    href="/docs/configuration/targets#hetzner"
     expanded
   />
 </DocumentList>
@@ -251,7 +375,7 @@ daytona provider install
 Choose a provider to install
 ===
 > fly-provider
-    v0.0.0
+  v0.0.0
 ```
 
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces.

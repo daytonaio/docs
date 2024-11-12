@@ -51,12 +51,15 @@ v0.0.0
 
 3. Select **`New Target`**.
 4. Enter a name for your Target.
-5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a remote Docker Target.
 
 ```text
 Name
 >
+```
 
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a [remote Docker Target](#docker-local).
+
+```text
 Remote Hostname
 >
 
@@ -187,6 +190,12 @@ docker-provider
 ```
 
 4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
 5. Enter the appropriate configuration options when prompted.
 
 ```text
@@ -236,6 +245,12 @@ Choose a Target
 ```
 
 4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
 5. Enter the appropriate configuration options when prompted.
 
 ```text
@@ -275,6 +290,60 @@ None
 Target set successfully
 ```
 
+## DigitalOcean
+
+Daytona allows you to set a DigitalOcean Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+```shell
+daytona target set
+```
+
+2. Select **`digitalocean-provider`** to use the DigitalOcean Provider.
+
+```text
+Choose a provider
+1 item
+===
+digitalocean-provider
+v0.0.0
+```
+
+3. Select **`New Target`**.
+4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
+5. Enter the appropriate configuration options when prompted.
+
+```text
+Auth Token
+If empty, token will be fetched from the DIGITALOCEAN_ACCESS_TOKEN environment variable.
+>
+
+Disk Size
+> 
+
+Image
+>
+
+Region
+>
+
+Size
+>
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
 ## AWS
 
 Daytona allows you to set an AWS Target to use for deploying and managing Workspaces.
@@ -297,6 +366,12 @@ v0.0.0
 
 3. Select **`New Target`**.
 4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
 5. Enter the appropriate configuration options when prompted.
 
 ```text
@@ -326,15 +401,15 @@ List of available volume types https://docs.aws.amazon.com/ebs/latest/userguide/
 >
 ```
 
-6. Click `Enter` to confirm setting the Target.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
 ```
 
-## DigitalOcean
+## Azure
 
-Daytona allows you to set a DigitalOcean Target to use for deploying and managing Workspaces.
+Daytona allows you to set an Azure Target to use for deploying and managing Workspaces.
 
 1. Run the following command to set a Target:
 
@@ -342,39 +417,235 @@ Daytona allows you to set a DigitalOcean Target to use for deploying and managin
 daytona target set
 ```
 
-2. Select **`digitalocean-provider`** to use the DigitalOcean Provider.
+2. Select **`azure-provider`** to use the Azure Provider.
 
 ```text
 Choose a provider
 1 item
 ===
-digitalocean-provider
+azure-provider
 v0.0.0
 ```
 
 3. Select **`New Target`**.
 4. Enter a name for your Target.
-5. Enter the appropriate configuration options when prompted.
 
 ```text
-Auth Token
-If empty, token will be fetched from the DIGITALOCEAN_ACCESS_TOKEN environment variable.
->
-
-Disk Size
-> 
-
-Image
->
-
-Region
->
-
-Size
+Name
 >
 ```
 
-6. Click `Enter` to confirm setting the Target.
+5. Enter the appropriate configuration options when prompted.
+
+```text
+Client ID
+Leave blank if you've set the AZURE_CLIENT_ID environment variable, or enter your Client Id here.
+To find the this, look for "appId" in the output after generating client credentials.
+https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
+>
+
+Client Secret
+Leave blank if you've set the AZURE_CLIENT_SECRET environment variable, or enter your Client     
+Secret here.
+To find the this, look for "password" in the output after generating client credentials
+https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
+>
+
+Disk Size
+The size of the instance volume, in GB. Default is 30 GB. It is recommended that the disk size should be more than 30 GB.
+>
+
+Disk Type
+The type of the azure managed disk. Default is StandardSSD_LRS. List of available disk types:                                                                    
+https://docs.microsoft.com/azure/virtual-machines/linux/disks-typesList of available disk types per location can be retrieved using the command:
+az vm list-skus --location <your-region> --output table
+>
+
+Image URN
+The identifier of the Azure virtual machine image to launch an instance. Default is Canonical:ubuntu-24_04-lts:server:latest.
+List of available images:
+https://learn.microsoft.com/en-us/azure/virtual-machines/linux/cli-ps-findimage
+>
+
+Region
+The geographic area where Azure resources are hosted. Default is centralus.
+List of available regions can be retrieved using the command:
+"az account list-locations -o table"
+>
+
+Resource Group
+If not set, Daytona will create a "daytona" resource group. How to create resource group:
+https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal
+>
+
+Subscription ID
+Leave blank if you've set the AZURE_SUBSCRIPTION_ID environment variable, or enter your Subscription Id here.
+How to find subscription id:                                                                     
+https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription
+>
+
+Tenant ID
+Leave blank if you've set the AZURE_TENANT_ID environment variable, or enter your Tenant Id here.
+To find the this, look for "tenant" in the output after generating client credentials.           
+https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
+>
+
+VM Size
+Leave blank if you've set the AZURE_TENANT_ID environment variable, or enter your Tenant Id here.
+To find the this, look for "tenant" in the output after generating client credentials.           
+https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
+>
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+## GCP
+
+Daytona allows you to set a Google Cloud Platform (GCP) Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+```shell
+daytona target set
+```
+
+2. Select **`gcp-provider`** to use the GCP Provider.
+
+```text
+Choose a provider
+1 item
+===
+gcp-provider
+v0.0.0
+```
+
+3. Select **`New Target`**.
+4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
+5. Enter the appropriate configuration options when prompted.
+
+```text
+Disk Size
+The size of the instance volume, in GB. Default is 20 GB.
+>
+
+Disk Type
+The GCP disk type to use for the VM. Default is pd-standard.
+https://cloud.google.com/compute/docs/disks
+List of available disk types can be retrieved using the command:
+gcloud compute disk-types list
+>
+
+Machine Type
+The GCP machine type to use for the VM. Default is List n1-standard-1.
+https://cloud.google.com/compute/docs/general-purpose-machines
+List of available machine types can be retrieved using the command:
+gcloud compute machine-types list
+>
+
+Project ID
+The GCP project ID where the resources will be created.
+Leave blank if you've set the GCP_PROJECT_ID.
+How to locate the project ID:
+https://support.google.com/googleapi/answer/7014113?hl=en
+>
+
+VM Image
+The GCP image to use for the VM.
+Default is projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts
+https://cloud.google.com/compute/docs/images
+List of available images can be retrieved using the command:
+gcloud compute images list
+>
+
+Zone
+The GCP zone where the resources will be created. Default is us-central1-a.
+https://cloud.google.com/compute/docs/regions-zones
+List of available zones can be retrieved using the command:
+gcloud compute zones list
+>
+
+Credential File
+Full path to the GCP service account JSON key file.
+Leave blank if you've set the GCP_CREDENTIAL_FILE environment variable.
+Ensure that the file is secure and accessible only to authorized users.
+>
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+## Hetzner
+
+Daytona allows you to set a Hetzner Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+```shell
+daytona target set
+```
+
+2. Select **`hetzner-provider`** to use the Hetzner Provider.
+
+```text
+Choose a provider
+1 item
+===
+hetzner-provider
+v0.0.0
+```
+
+3. Select **`New Target`**.
+4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
+5. Enter the appropriate configuration options when prompted.
+
+```text
+API Token
+If empty, token will be fetched from the HETZNER_API_TOKEN environment        
+variable.
+>
+
+Disk Image
+The Hetzner image to use for the VM. Default is ubuntu-24.04.
+https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-   
+images
+>
+
+Disk Size
+The size of the instance volume, in GB. Default is 20 GB.
+>
+
+Location
+The locations where the resources will be created. Default is fsn1.
+https://docs.hetzner.com/cloud/general/locations
+>
+
+Location
+Server Type
+The Hetzner server type to use for the VM. Default is List cpx11.
+https://docs.hetzner.com/cloud/servers/overview
+>
+```
+
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -402,6 +673,12 @@ v0.0.0
 
 3. Select **`New Target`**.
 4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
 5. Enter the appropriate configuration options when prompted.
 
 ```text
@@ -427,7 +704,7 @@ List of available sizes https://fly.io/docs/about/pricing/#started-fly-machines
 >
 ```
 
-6. Click `Enter` to confirm setting the Target.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
