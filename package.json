@@ -12,6 +12,7 @@
     "astro": "astro",
     "update-cli-reference": "node ./tools/update-cli-reference.js",
     "update-server-reference": "node ./tools/update-server-reference.js",
+    "update-llms": "node ./tools/update-llms.js",
     "prepare": "husky",
     "format": "prettier --write \"**/src/**/*.{ts,tsx,astro}\" && markdownlint-cli2 \"**/*.{mdx,md}\" \"#node_modules\" --fix"
   },
