@@ -26,13 +26,15 @@
   margin-top: 32px;
   top: 32px;
   left: 0;
-  width: 100%;
+  right: 0;
+  max-width: 1248px;
   background: var(--bg-color);
-  z-index: 1000;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-height: 100%;
   overflow-y: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .searchbox-wrapper::-webkit-scrollbar {
