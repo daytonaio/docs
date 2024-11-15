@@ -2,7 +2,7 @@
   "name": "docs",
   "license": "Apache-2.0",
   "type": "module",
-  "version": "0.43.0",
+  "version": "0.45.0",
   "scripts": {
     "postinstall": "is-ci || husky",
     "dev": "astro dev --host",
@@ -13,6 +13,7 @@
     "update-cli-reference": "node ./tools/update-cli-reference.js",
     "update-server-reference": "node ./tools/update-server-reference.js",
     "update-llms": "node ./tools/update-llms.js",
+    "update-search": "node ./tools/update-search.js",
     "prepare": "husky",
     "format": "prettier --write \"**/src/**/*.{ts,tsx,astro}\" && markdownlint-cli2 \"**/*.{mdx,md}\" \"#node_modules\" --fix"
   },
@@ -23,6 +24,7 @@
     "@astrojs/starlight": "^0.21.4",
     "@astrojs/starlight-tailwind": "^2.0.1",
     "@astrojs/tailwind": "5.1.0",
+    "algoliasearch": "^5.12.0",
     "astro": "4.16.1",
     "astro-expressive-code": "^0.34.1",
     "dotenv": "^16.4.5",
@@ -30,6 +32,8 @@
     "express": "^4.20.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-instantsearch": "^7.13.7",
+    "react-instantsearch-dom": "^6.40.4",
     "sass": "^1.74.1",
     "semver": "^7.6.0",
     "sharp": "^0.33.3",
@@ -42,6 +46,7 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/react": "^18.2.74",
+    "@types/react-instantsearch-dom": "^6",
     "husky": "^9.0.11",
     "is-ci": "^3.0.1",
     "lint-staged": "^15.2.7",
