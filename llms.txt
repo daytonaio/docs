@@ -1,5 +1,7 @@
 # Daytona
 
+> Daytona is a self-hosted and secure open source development environment manager.
+
 ## Docs
 
 - [Getting Started](https://daytona.io/docs/about/getting-started)

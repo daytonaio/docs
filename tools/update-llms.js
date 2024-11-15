@@ -67,7 +67,7 @@ const searchDocs = () => {
 };
 
 const generateLlmsFile = docsData => {
-    const llmsContent = ['# Daytona', '', '## Docs', '', ...docsData.map(doc => `- [${doc.title}](https://daytona.io${doc.url})`)];
+    const llmsContent = ['# Daytona', '', '> Daytona is a self-hosted and secure open source development environment manager.', '', '## Docs', '', ...docsData.map(doc => `- [${doc.title}](https://daytona.io${doc.url})`)];
     fs.writeFileSync(path.join(__dirname, '../llms.txt'), llmsContent.join('\n'), 'utf8');
     console.log('llms.txt index updated');
 };
