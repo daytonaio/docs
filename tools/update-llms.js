@@ -13,7 +13,7 @@ const EXCLUDE_FILES = new Set(['404.md', 'api.mdx']);
 const processContent = content =>
     content
         .split('\n')
-        .filter(line => !/^\s*(import|export)\b/.test(line.trim()))
+        .filter(line => !/^(import\s+.*from\s+['"](@components\/|@assets\/).*['"];?|export\s+(default|const|let|function|class)\b)/.test(line.trim()))
         .join('\n')
         .trim();
 
@@ -44,6 +44,7 @@ const parseMarkdownFile = filePath => {
 
 const searchDocs = () => {
     const results = [];
+    const fullContentArray = [];
 
     const traverseDirectory = directory => {
         fs.readdirSync(directory).forEach(file => {
@@ -57,21 +58,45 @@ const searchDocs = () => {
                 (file.endsWith('.md') || file.endsWith('.mdx')) &&
                 !EXCLUDE_FILES.has(file)
             ) {
+                const fileContent = fs.readFileSync(fullPath, 'utf8');
+                const cleanContent = processContent(fileContent);
+                fullContentArray.push(cleanContent);
                 results.push(...parseMarkdownFile(fullPath));
             }
         });
     };
 
     traverseDirectory(DOCS_PATH);
-    return results;
+    return { results, fullContent: fullContentArray.join('\n\n') };
 };
 
-const generateLlmsFile = docsData => {
-    const llmsContent = ['# Daytona', '', '> Daytona is a self-hosted and secure open source development environment manager.', '', '## Docs', '', ...docsData.map(doc => `- [${doc.title}](https://daytona.io${doc.url})`)];
+const generateLlmsTxtFile = docsData => {
+    const llmsContent = [
+        '# Daytona',
+        '',
+        '> Daytona is a self-hosted and secure open source development environment manager.',
+        '',
+        '## Docs',
+        '',
+        ...docsData.map(doc => `- [${doc.title}](https://daytona.io${doc.url})`),
+    ];
     fs.writeFileSync(path.join(__dirname, '../llms.txt'), llmsContent.join('\n'), 'utf8');
     console.log('llms.txt index updated');
 };
 
-const main = () => generateLlmsFile(searchDocs());
+const generateLlmsFullTxtFile = fullContent => {
+    fs.writeFileSync(
+        path.join(__dirname, '../llms-full.txt'),
+        fullContent,
+        'utf8'
+    );
+    console.log('llms-full.txt index updated');
+};
+
+const main = () => {
+    const { results, fullContent } = searchDocs();
+    generateLlmsTxtFile(results);
+    generateLlmsFullTxtFile(fullContent);
+};
 
 main();
