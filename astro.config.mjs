@@ -163,6 +163,13 @@ export default defineConfig({
                 icon: 'switch.svg',
               },
             },
+            {
+              label: 'Docker Extension',
+              link: '/tools/docker-extension',
+              attrs: {
+                icon: 'docker.svg',
+              },
+            },
           ],
         },
         {
