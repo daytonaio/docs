@@ -8,6 +8,7 @@ import {
   Pagination,
   SearchBox,
   connectStats,
+  Index,
 } from 'react-instantsearch-dom'
 
 import '../styles/components/search.scss'
@@ -117,36 +118,44 @@ function Search() {
             <SearchBox
               translations={{ placeholder: 'Search daytona.io' }}
               autoFocus={true}
-              onChange={event => setSearchQuery(event.currentTarget.value)}
+              onChange={(event) => setSearchQuery(event.currentTarget.value)}
               value={searchQuery}
             />
             {debounceQuery && (
               <>
-                <div
-                  id="stats-pagination-wrapper"
-                  className="stats-pagination-wrapper"
-                >
-                  <Stats setDisplayHits={setDisplayHits} />
-                  <Pagination
-                    showFirst={false}
-                    showPrevious={true}
-                    showNext={true}
-                    showLast={false}
-                    padding={1}
+                <Index indexName="docs">
+                  <div className="stats-pagination-wrapper">
+                    <Stats setDisplayHits={setDisplayHits} indexName="docs" />
+                    <Pagination
+                      showFirst={false}
+                      showPrevious={true}
+                      showNext={true}
+                      showLast={false}
+                      padding={1}
+                    />
+                  </div>
+                  <Hits hitComponent={(props) => <Hit {...props} setIsSearchVisible={setIsSearchVisible} />} />
+                </Index>
+                <Index indexName="blogs_test">
+                  <div className="stats-pagination-wrapper" style={{ marginTop: '24px' }}>
+                    <Stats setDisplayHits={setDisplayHits} indexName="blogs_test" />
+                    <Pagination
+                      showFirst={false}
+                      showPrevious={true}
+                      showNext={true}
+                      showLast={false}
+                      padding={1}
+                    />
+                  </div>
+                  <Hits
+                    hitComponent={(props) => (
+                      <Hit {...props} setIsSearchVisible={setIsSearchVisible} indexName="blogs_test" />
+                    )}
                   />
-                </div>
-                <Hits
-                  hitComponent={props => (
-                    <Hit {...props} setIsSearchVisible={setIsSearchVisible} />
-                  )}
-                />
+                </Index>
               </>
             )}
-            <Configure
-              hitsPerPage={10}
-              clickAnalytics={true}
-              getRankingInfo={false}
-            />
+            <Configure hitsPerPage={10} clickAnalytics={true} getRankingInfo={false} />
           </InstantSearch>
         </div>
       )}
@@ -154,20 +163,38 @@ function Search() {
   )
 }
 
-function Hit({ hit, setIsSearchVisible }) {
+function Hit({ hit, setIsSearchVisible, indexName }) {
   const handleClick = () => {
-    setIsSearchVisible(false)
+    setIsSearchVisible(false);
   }
+
+  const hitUrl =
+    indexName === 'blogs_test'
+      ? `https://www.daytona.io/dotfiles/${hit.slug}`
+      : hit.url;
+
   return (
     <div
       tabIndex="0"
       onKeyDown={e => {
         if (e.key === 'Enter') {
-          window.location.href = hit.url
+          window.location.href = hitUrl
         }
       }}
     >
-      <a href={hit.url} tabIndex="-1" onClick={handleClick}>
+      <a href={hitUrl} tabIndex="-1" onClick={handleClick}>
+        {indexName === 'blogs_test' && hit.featuredImage?.url && (
+          <img
+            src={hit.featuredImage.url}
+            alt={hit.featuredImage.alt || 'Blog image'}
+            style={{
+              width: '100%',
+              maxWidth: '500px',
+              marginBottom: '12px',
+              border: '1px solid var(--border-color)',
+            }}
+          />
+        )}
         <h5 style={{ fontSize: '20px', display: 'flex', alignItems: 'center' }}>
           <span style={{ fontSize: '10px', marginRight: '8px' }}>🟦</span>
           <span style={{ marginLeft: '4px' }}>
@@ -179,13 +206,24 @@ function Hit({ hit, setIsSearchVisible }) {
             fontSize: '12px',
             color: '#686868',
             fontWeight: 500,
-            paddingTop: '0px',
-            paddingBottom: '4px',
             paddingLeft: '24px',
           }}
         >
           {hit.slug}
         </h6>
+        {indexName === 'blogs_test' &&
+          hit.author?.name &&
+          hit.publishedDate && (
+            <p
+              style={{
+                fontSize: '14px',
+                paddingLeft: '24px',
+                paddingBottom: '8px',
+              }}
+            >
+              {hit.publishedDate} :: {hit.author.name}
+            </p>
+          )}
         <p
           style={{
             fontSize: '12px',
@@ -200,13 +238,29 @@ function Hit({ hit, setIsSearchVisible }) {
   )
 }
 
-const CustomStats = ({ nbHits, setDisplayHits }) => {
-  useEffect(() => {
-    setDisplayHits(nbHits > 0)
-  }, [nbHits, setDisplayHits])
+const CustomStats = ({ nbHits, indexName }) => {
+  return (
+    <div className="custom-stats">
+      {indexName === 'docs' && (
+        <div>
+          <span style={{ color: 'var(--primary-text-color)' }}>
+            Documentation {" "}
+          </span>
+          ({nbHits} results)
+        </div>
+      )}
+      {indexName === 'blogs_test' && (
+        <div>
+          <span style={{ color: 'var(--primary-text-color)' }}>
+            Blog {" "}
+          </span>
+          ({nbHits} results)
+        </div>
+      )}
 
-  return <div className="custom-stats">{nbHits} results</div>
-}
+    </div>
+  );
+};
 
 const Stats = connectStats(CustomStats)
 
