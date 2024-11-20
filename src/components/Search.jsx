@@ -12,10 +12,12 @@ import {
 
 import '../styles/components/search.scss'
 
-const searchClient = algoliasearch(
-  import.meta.env.PUBLIC_ALGOLIA_APP_ID,
-  import.meta.env.PUBLIC_ALGOLIA_API_KEY
-)
+const ALGOLIA_APP_ID = import.meta.env.PUBLIC_ALGOLIA_APP_ID || null;
+const ALGOLIA_API_KEY = import.meta.env.PUBLIC_ALGOLIA_API_KEY || null;
+
+const searchClient = ALGOLIA_APP_ID && ALGOLIA_API_KEY
+  ? algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY)
+  : null;
 
 function Search() {
   const [isSearchVisible, setIsSearchVisible] = useState(false)

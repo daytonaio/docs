@@ -8,6 +8,10 @@ import Version from '@components/Version.astro'
 import Search from '@components/Search'
 
 import '../styles/components/search.scss'
+
+const algoliaEnabled =
+  import.meta.env.PUBLIC_ALGOLIA_APP_ID &&
+  import.meta.env.PUBLIC_ALGOLIA_API_KEY
 ---
 
 <header class="navbar">
@@ -28,9 +32,13 @@ import '../styles/components/search.scss'
     </div>
     <a href={import.meta.env.BASE_URL} class="dotfiles-logo">v<Version /> </a>
     <div class="nav__items_side_menu">
-      <p id="search-icon" class="search-click">
-        <Fragment set:html={searchIcon} />
-      </p>
+      {
+        algoliaEnabled && (
+          <p id="search-icon" class="search-click">
+            <Fragment set:html={searchIcon} />
+          </p>
+        )
+      }
       <SideNavLinks client:load />
     </div>
   </nav>
@@ -47,10 +55,14 @@ import '../styles/components/search.scss'
     <a href={import.meta.env.BASE_URL} class="dotfiles-logo blur-section"
       ><Fragment set:html={documentationIcon} />Documentation
     </a>
-    <p id="search-icon-mobile" class="search-click">
-      <Fragment set:html={searchIcon} />
-    </p>
+    {
+      algoliaEnabled && (
+        <p id="search-icon-mobile" class="search-click">
+          <Fragment set:html={searchIcon} />
+        </p>
+      )
+    }
   </nav>
 </header>
 
-<Search client:load />
+{algoliaEnabled && <Search client:load />}
