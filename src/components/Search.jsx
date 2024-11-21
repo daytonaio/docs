@@ -21,78 +21,70 @@ const searchClient = ALGOLIA_APP_ID && ALGOLIA_API_KEY
   : null;
 
 function Search() {
-  const [isSearchVisible, setIsSearchVisible] = useState(false)
+  const [searchVisibility, setSearchVisibility] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [debounceQuery, setDebounceQuery] = useState('')
+  const [debounceQuery, setSearchDebounceQuery] = useState('')
   const [displayHits, setDisplayHits] = useState(false)
   const debounceTimeoutRef = useRef(null)
   const searchWrapperRef = useRef(null)
 
   useEffect(() => {
     const toggleSearch = () => {
-      setIsSearchVisible(prev => {
+      setSearchVisibility(prev => {
         if (prev) {
-          setSearchQuery('');
-          setDebounceQuery('');
-          setDisplayHits(false);
+          clearSearchState()
         }
         return !prev;
       });
     };
 
-    const handleKeyDown = event => {
+    const handleKeyDown = (event) => {
       if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
         event.preventDefault()
         toggleSearch()
+      } else if (event.key === 'Escape') {
+        clearSearchState()
+        setSearchVisibility(false);
       }
+    };
 
-      if (event.key === 'Escape') {
-        setIsSearchVisible(false);
-        setSearchQuery('');
-        setDebounceQuery('');
-        setDisplayHits(false);
-      }
-    }
-
-    const handleSearchClick = event => {
+    const handleSearchClick = (event) => {
       if (event.target.closest('.search-click')) {
         event.preventDefault()
         event.stopPropagation()
         toggleSearch()
       }
-    }
+    };
 
-    const handleClickOutside = event => {
+    const handleClickOutside = (event) => {
       if (
         searchWrapperRef.current &&
         !searchWrapperRef.current.contains(event.target) &&
         !event.target.closest('.search-click')
       ) {
-        setIsSearchVisible(false);
-        setSearchQuery('');
-        setDebounceQuery('');
-        setDisplayHits(false);
+        clearSearchState()
+        setSearchVisibility(false);
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown)
-    document.addEventListener('click', handleSearchClick)
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('click', handleSearchClick);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-      document.removeEventListener('click', handleSearchClick)
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('click', handleSearchClick);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
-    if (isSearchVisible && debounceQuery && displayHits) {
+    if (searchVisibility && debounceQuery && displayHits) {
       document.body.classList.add('no-scroll')
     } else {
       document.body.classList.remove('no-scroll')
     }
-  }, [isSearchVisible, debounceQuery, displayHits])
+  }, [searchVisibility, debounceQuery, displayHits])
 
   useEffect(() => {
     if (debounceTimeoutRef.current) {
@@ -100,85 +92,72 @@ function Search() {
     }
 
     debounceTimeoutRef.current = setTimeout(() => {
-      setDebounceQuery(searchQuery)
+      setSearchDebounceQuery(searchQuery)
     }, 400)
 
     return () => {
       if (debounceTimeoutRef.current) {
-        clearTimeout(debounceTimeoutRef.current)
+        clearTimeout(debounceTimeoutRef.current);
       }
-    }
-  }, [searchQuery])
+    };
+  }, [searchQuery]);
+
+  const clearSearchState = () => {
+    setSearchQuery('')
+    setSearchDebounceQuery('')
+    setDisplayHits(false)
+  };
 
   return (
-    <>
-      {isSearchVisible && (
-        <div id="searchbox-wrapper" className="searchbox-wrapper" ref={searchWrapperRef}>
-          <InstantSearch indexName="docs" searchClient={searchClient}>
-            <SearchBox
-              translations={{ placeholder: 'Search daytona.io' }}
-              autoFocus={true}
-              onChange={(event) => setSearchQuery(event.currentTarget.value)}
-              value={searchQuery}
-            />
-            {debounceQuery && (
-              <>
-                <Index indexName="docs">
-                  <div className="stats-pagination-wrapper">
-                    <Stats setDisplayHits={setDisplayHits} indexName="docs" />
-                    <Pagination
-                      showFirst={false}
-                      showPrevious={true}
-                      showNext={true}
-                      showLast={false}
-                      padding={1}
-                    />
-                  </div>
-                  <Hits hitComponent={(props) => <Hit {...props} setIsSearchVisible={setIsSearchVisible} />} />
-                </Index>
-                <Index indexName="blogs_test">
-                  <div className="stats-pagination-wrapper" style={{ marginTop: '24px' }}>
-                    <Stats setDisplayHits={setDisplayHits} indexName="blogs_test" />
-                    <Pagination
-                      showFirst={false}
-                      showPrevious={true}
-                      showNext={true}
-                      showLast={false}
-                      padding={1}
-                    />
-                  </div>
-                  <Hits
-                    hitComponent={(props) => (
-                      <Hit {...props} setIsSearchVisible={setIsSearchVisible} indexName="blogs_test" />
-                    )}
-                  />
-                </Index>
-              </>
-            )}
-            <Configure hitsPerPage={10} clickAnalytics={true} getRankingInfo={false} />
-          </InstantSearch>
-        </div>
-      )}
-    </>
-  )
+    searchVisibility && (
+      <div id="searchbox-wrapper" className="searchbox-wrapper" ref={searchWrapperRef}>
+        <InstantSearch indexName="docs" searchClient={searchClient}>
+          <SearchBox
+            translations={{ placeholder: 'Search daytona.io' }}
+            autoFocus
+            onChange={(event) => setSearchQuery(event.currentTarget.value)}
+            value={searchQuery}
+          />
+          {debounceQuery && (
+            <>
+              <SearchIndex indexName="docs" setDisplayHits={setDisplayHits} setSearchVisibility={setSearchVisibility} />
+              <SearchIndex indexName="blogs_test" setDisplayHits={setDisplayHits} setSearchVisibility={setSearchVisibility} />
+            </>
+          )}
+          <Configure hitsPerPage={10} clickAnalytics getRankingInfo={false} />
+        </InstantSearch>
+      </div>
+    )
+  );
 }
 
-function Hit({ hit, setIsSearchVisible, indexName }) {
-  const handleClick = () => {
-    setIsSearchVisible(false);
-  }
+function SearchIndex({ indexName, setDisplayHits, setSearchVisibility }) {
+  return (
+    <Index indexName={indexName}>
+      <div className="stats-pagination-wrapper" style={indexName === 'blogs_test' ? { marginTop: '24px' } : {}}>
+        <Stats setDisplayHits={setDisplayHits} indexName={indexName} />
+        <Pagination showFirst={false} showPrevious showNext showLast={false} padding={1} />
+      </div>
+      <Hits hitComponent={(props) => <Hit {...props} setSearchVisibility={setSearchVisibility} indexName={indexName} />} />
+    </Index>
+  );
+}
 
-  const hitUrl =
-    indexName === 'blogs_test'
-      ? `https://www.daytona.io/dotfiles/${hit.slug}`
-      : hit.url;
+function Hit({ hit, setSearchVisibility, indexName }) {
+  const handleClick = () => {
+    setSearchVisibility(false);
+  };
+
+  const hitUrl = indexName === 'blogs_test'
+    ? `https://www.daytona.io/dotfiles/${hit.slug}`
+    : hit.url;
 
   return (
     <div
       tabIndex="0"
-      onKeyDown={e => {
+      onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          window.location.href = hitUrl
+          window.location.href = hitUrl;
         }
       }}
     >
@@ -201,66 +180,31 @@ function Hit({ hit, setIsSearchVisible, indexName }) {
             <Highlight attribute="title" hit={hit} />
           </span>
         </h5>
-        <h6
-          style={{
-            fontSize: '12px',
-            color: '#686868',
-            fontWeight: 500,
-            paddingLeft: '24px',
-          }}
-        >
+        <h6 style={{ fontSize: '12px', color: '#686868', fontWeight: 500, paddingLeft: '24px' }}>
           {hit.slug}
         </h6>
-        {indexName === 'blogs_test' &&
-          hit.author?.name &&
-          hit.publishedDate && (
-            <p
-              style={{
-                fontSize: '14px',
-                paddingLeft: '24px',
-                paddingBottom: '8px',
-              }}
-            >
-              {hit.publishedDate} :: {hit.author.name}
-            </p>
-          )}
-        <p
-          style={{
-            fontSize: '12px',
-            paddingBottom: '16px',
-            paddingLeft: '24px',
-          }}
-        >
+        {indexName === 'blogs_test' && hit.author?.name && hit.publishedDate && (
+          <p style={{ fontSize: '14px', paddingLeft: '24px', paddingBottom: '8px' }}>
+            {hit.publishedDate} :: {hit.author.name}
+          </p>
+        )}
+        <p style={{ fontSize: '12px', paddingBottom: '16px', paddingLeft: '24px' }}>
           <Highlight attribute="description" hit={hit} />
         </p>
       </a>
     </div>
-  )
+  );
 }
 
-const CustomStats = ({ nbHits, indexName }) => {
-  return (
-    <div className="custom-stats">
-      {indexName === 'docs' && (
-        <div>
-          <span style={{ color: 'var(--primary-text-color)' }}>
-            Documentation {" "}
-          </span>
-          ({nbHits} results)
-        </div>
-      )}
-      {indexName === 'blogs_test' && (
-        <div>
-          <span style={{ color: 'var(--primary-text-color)' }}>
-            Blog {" "}
-          </span>
-          ({nbHits} results)
-        </div>
-      )}
-
-    </div>
-  );
-};
+const CustomStats = ({ nbHits, indexName }) => (
+  <div className="custom-stats">
+    <span style={{ color: 'var(--primary-text-color)' }}>
+      {indexName === 'docs' ? 'Documentation' : 'Blog'}
+      {" "}
+    </span>
+    ({nbHits} results)
+  </div>
+);
 
 const Stats = connectStats(CustomStats)
 
