@@ -137,7 +137,7 @@ function searchDocs() {
 function main() {
   const docsData = searchDocs()
   fs.writeFileSync(
-    path.join(__dirname, 'search.json'),
+    path.join(__dirname, '../src/assets/search.json'),
     JSON.stringify(docsData, null, 2),
     'utf8'
   )
