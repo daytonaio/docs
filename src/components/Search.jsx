@@ -21,18 +21,20 @@ const searchClient = ALGOLIA_APP_ID && ALGOLIA_API_KEY
   : null;
 
 function Search() {
-  const [searchVisibility, setSearchVisibility] = useState(false)
+  const [isSearchVisible, setIsSearchVisible] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [debounceQuery, setSearchDebounceQuery] = useState('')
+  const [debounceQuery, setDebounceQuery] = useState('')
   const [displayHits, setDisplayHits] = useState(false)
   const debounceTimeoutRef = useRef(null)
   const searchWrapperRef = useRef(null)
 
   useEffect(() => {
     const toggleSearch = () => {
-      setSearchVisibility(prev => {
+      setIsSearchVisible(prev => {
         if (prev) {
-          clearSearchState()
+          setSearchQuery('');
+          setDebounceQuery('');
+          setDisplayHits(false);
         }
         return !prev;
       });
@@ -43,8 +45,10 @@ function Search() {
         event.preventDefault()
         toggleSearch()
       } else if (event.key === 'Escape') {
-        clearSearchState()
-        setSearchVisibility(false);
+        setIsSearchVisible(false);
+        setSearchQuery('');
+        setDebounceQuery('');
+        setDisplayHits(false);
       }
     };
 
@@ -62,8 +66,10 @@ function Search() {
         !searchWrapperRef.current.contains(event.target) &&
         !event.target.closest('.search-click')
       ) {
-        clearSearchState()
-        setSearchVisibility(false);
+        setIsSearchVisible(false);
+        setSearchQuery('');
+        setDebounceQuery('');
+        setDisplayHits(false);
       }
     };
 
@@ -79,12 +85,12 @@ function Search() {
   }, []);
 
   useEffect(() => {
-    if (searchVisibility && debounceQuery && displayHits) {
+    if (isSearchVisible && debounceQuery && displayHits) {
       document.body.classList.add('no-scroll')
     } else {
       document.body.classList.remove('no-scroll')
     }
-  }, [searchVisibility, debounceQuery, displayHits])
+  }, [isSearchVisible, debounceQuery, displayHits])
 
   useEffect(() => {
     if (debounceTimeoutRef.current) {
@@ -92,7 +98,7 @@ function Search() {
     }
 
     debounceTimeoutRef.current = setTimeout(() => {
-      setSearchDebounceQuery(searchQuery)
+      setDebounceQuery(searchQuery)
     }, 400)
 
     return () => {
@@ -102,14 +108,8 @@ function Search() {
     };
   }, [searchQuery]);
 
-  const clearSearchState = () => {
-    setSearchQuery('')
-    setSearchDebounceQuery('')
-    setDisplayHits(false)
-  };
-
   return (
-    searchVisibility && (
+    isSearchVisible && (
       <div id="searchbox-wrapper" className="searchbox-wrapper" ref={searchWrapperRef}>
         <InstantSearch indexName="docs" searchClient={searchClient}>
           <SearchBox
@@ -120,8 +120,8 @@ function Search() {
           />
           {debounceQuery && (
             <>
-              <SearchIndex indexName="docs" setDisplayHits={setDisplayHits} setSearchVisibility={setSearchVisibility} />
-              <SearchIndex indexName="blogs_test" setDisplayHits={setDisplayHits} setSearchVisibility={setSearchVisibility} />
+              <SearchIndex indexName="docs" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
+              <SearchIndex indexName="blogs_test" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
             </>
           )}
           <Configure hitsPerPage={10} clickAnalytics getRankingInfo={false} />
@@ -131,37 +131,60 @@ function Search() {
   );
 }
 
-function SearchIndex({ indexName, setDisplayHits, setSearchVisibility }) {
+function SearchIndex({ indexName, setDisplayHits, setIsSearchVisible }) {
   return (
     <Index indexName={indexName}>
       <div className="stats-pagination-wrapper" style={indexName === 'blogs_test' ? { marginTop: '24px' } : {}}>
         <Stats setDisplayHits={setDisplayHits} indexName={indexName} />
         <Pagination showFirst={false} showPrevious showNext showLast={false} padding={1} />
       </div>
-      <Hits hitComponent={(props) => <Hit {...props} setSearchVisibility={setSearchVisibility} indexName={indexName} />} />
+      <Hits hitComponent={(props) => <Hit {...props} setIsSearchVisible={setIsSearchVisible} indexName={indexName} />} />
     </Index>
   );
 }
 
-function Hit({ hit, setSearchVisibility, indexName }) {
-  const handleClick = () => {
-    setSearchVisibility(false);
-  };
+function Hit({ hit, setIsSearchVisible, indexName }) {
+  const handleClick = (e) => {
+    e.preventDefault();
+    const currentUrl = window.location.href;
+    const hitUrl = indexName === 'blogs_test'
+      ? `https://www.daytona.io/dotfiles/${hit.slug}`
+      : hit.url;
 
-  const hitUrl = indexName === 'blogs_test'
-    ? `https://www.daytona.io/dotfiles/${hit.slug}`
-    : hit.url;
+    if (currentUrl.includes(hitUrl)) {
+      const element = document.querySelector(`[data-slug='${hit.slug}']`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = hitUrl;
+    }
+    setIsSearchVisible(false);
+  };
 
   return (
     <div
       tabIndex="0"
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          window.location.href = hitUrl;
+          handleClick(e);
         }
       }}
     >
-      <a href={hitUrl} tabIndex="-1" onClick={handleClick}>
+      <a href={hit.url} tabIndex="-1" onClick={handleClick}>
+        {indexName === 'docs' && (
+          <>
+            <h5 style={{ fontSize: '20px', display: 'flex', alignItems: 'center' }}>
+              <span style={{ fontSize: '10px', marginRight: '8px' }}>🟦</span>
+              <span style={{ marginLeft: '4px' }}>
+                <Highlight attribute="title" hit={hit} />
+              </span>
+            </h5>
+            <h6 style={{ fontSize: '12px', color: '#686868', fontWeight: 500, paddingLeft: '24px' }}>
+              {hit.slug}
+            </h6>
+          </>
+        )}
         {indexName === 'blogs_test' && hit.featuredImage?.url && (
           <img
             src={hit.featuredImage.url}
@@ -174,16 +197,13 @@ function Hit({ hit, setSearchVisibility, indexName }) {
             }}
           />
         )}
-        <h5 style={{ fontSize: '20px', display: 'flex', alignItems: 'center' }}>
-          <span style={{ fontSize: '10px', marginRight: '8px' }}>🟦</span>
-          <span style={{ marginLeft: '4px' }}>
-            <Highlight attribute="title" hit={hit} />
-          </span>
-        </h5>
-        {indexName === 'docs' && (
-          <h6 style={{ fontSize: '12px', color: '#686868', fontWeight: 500, paddingLeft: '24px' }}>
-            {hit.slug}
-          </h6>
+        {indexName === 'blogs_test' && (
+          <h5 style={{ fontSize: '20px', display: 'flex', alignItems: 'center' }}>
+            <span style={{ fontSize: '10px', marginRight: '8px' }}>🟦</span>
+            <span style={{ marginLeft: '4px' }}>
+              <Highlight attribute="title" hit={hit} />
+            </span>
+          </h5>
         )}
         {indexName === 'blogs_test' && hit.author?.name && hit.publishedDate && (
           <p style={{ fontSize: '14px', paddingLeft: '24px', paddingBottom: '8px' }}>
@@ -198,15 +218,21 @@ function Hit({ hit, setSearchVisibility, indexName }) {
   );
 }
 
-const CustomStats = ({ nbHits, indexName }) => (
-  <div className="custom-stats">
-    <span style={{ color: 'var(--primary-text-color)' }}>
-      {indexName === 'docs' ? 'Documentation' : 'Blog'}
-      {" "}
-    </span>
-    ({nbHits} results)
-  </div>
-);
+const CustomStats = ({ nbHits, indexName, setDisplayHits }) => {
+  useEffect(() => {
+    setDisplayHits(nbHits > 0)
+  }, [nbHits, setDisplayHits])
+
+  return (
+    <div className="custom-stats">
+      <span style={{ color: 'var(--primary-text-color)' }}>
+        {indexName === 'docs' ? 'Documentation' : 'Blog'}
+        {" "}
+      </span>
+      ({nbHits} results)
+    </div>
+  );
+};
 
 const Stats = connectStats(CustomStats)
 
