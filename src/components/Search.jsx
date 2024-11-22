@@ -180,9 +180,11 @@ function Hit({ hit, setSearchVisibility, indexName }) {
             <Highlight attribute="title" hit={hit} />
           </span>
         </h5>
-        <h6 style={{ fontSize: '12px', color: '#686868', fontWeight: 500, paddingLeft: '24px' }}>
-          {hit.slug}
-        </h6>
+        {indexName === 'docs' && (
+          <h6 style={{ fontSize: '12px', color: '#686868', fontWeight: 500, paddingLeft: '24px' }}>
+            {hit.slug}
+          </h6>
+        )}
         {indexName === 'blogs_test' && hit.author?.name && hit.publishedDate && (
           <p style={{ fontSize: '14px', paddingLeft: '24px', paddingBottom: '8px' }}>
             {hit.publishedDate} :: {hit.author.name}
