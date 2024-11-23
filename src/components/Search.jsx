@@ -121,6 +121,7 @@ function Search() {
           {debounceQuery && (
             <>
               <SearchIndex indexName="docs" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
+              <hr style={{ marginBottom: '40px' }} />
               <SearchIndex indexName="blogs_test" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
             </>
           )}
@@ -133,12 +134,14 @@ function Search() {
 
 function SearchIndex({ indexName, setDisplayHits, setIsSearchVisible }) {
   return (
-    <Index indexName={indexName}>
-      <div className="stats-pagination-wrapper" style={indexName === 'blogs_test' ? { marginTop: '24px' } : {}}>
-        <Stats setDisplayHits={setDisplayHits} indexName={indexName} />
-        <Pagination showFirst={false} showPrevious showNext showLast={false} padding={1} />
+    <Index indexName={indexName} >
+      <div data-index={indexName}>
+        <div className="stats-pagination-wrapper" style={indexName === 'blogs_test' ? { marginTop: '24px' } : {}}>
+          <Stats setDisplayHits={setDisplayHits} indexName={indexName} />
+          <Pagination showFirst={false} showPrevious showNext showLast={false} padding={1} />
+        </div>
+        <Hits hitComponent={(props) => <Hit {...props} setIsSearchVisible={setIsSearchVisible} indexName={indexName} />} />
       </div>
-      <Hits hitComponent={(props) => <Hit {...props} setIsSearchVisible={setIsSearchVisible} indexName={indexName} />} />
     </Index>
   );
 }
