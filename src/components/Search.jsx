@@ -112,20 +112,24 @@ function Search() {
     isSearchVisible && (
       <div id="searchbox-wrapper" className="searchbox-wrapper" ref={searchWrapperRef}>
         <InstantSearch indexName="docs" searchClient={searchClient}>
-          <SearchBox
-            translations={{ placeholder: 'Search daytona.io' }}
-            autoFocus
-            onChange={(event) => setSearchQuery(event.currentTarget.value)}
-            value={searchQuery}
-          />
-          {debounceQuery && (
-            <>
-              <SearchIndex indexName="docs" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
-              <hr style={{ marginBottom: '40px' }} />
-              <SearchIndex indexName="blogs_test" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
-            </>
-          )}
-          <Configure hitsPerPage={10} clickAnalytics getRankingInfo={false} />
+          <div className="search-bar-container">
+            <SearchBox
+              translations={{ placeholder: 'Search daytona.io' }}
+              autoFocus
+              onChange={(event) => setSearchQuery(event.currentTarget.value)}
+              value={searchQuery}
+            />
+          </div>
+          <div className="search-content">
+            {debounceQuery && (
+              <>
+                <SearchIndex indexName="docs" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
+                <hr style={{ marginBottom: '40px' }} />
+                <SearchIndex indexName="blogs_test" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
+              </>
+            )}
+            <Configure hitsPerPage={10} clickAnalytics getRankingInfo={false} />
+          </div>
         </InstantSearch>
       </div>
     )

@@ -29,12 +29,24 @@
   right: 0;
   max-width: 1248px;
   background: var(--bg-color);
-  padding: 20px 20px 0px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-height: 100%;
   overflow-y: auto;
   margin-left: auto;
   margin-right: auto;
+}
+
+.search-bar-container {
+  position: sticky;
+  top: 0;
+  background: var(--bg-color);
+  padding: 20px 20px 0 20px;
+  z-index: 1;
+}
+
+.search-content {
+  padding: 0 20px;
+  flex-grow: 1;
 }
 
 .searchbox-wrapper::-webkit-scrollbar {
