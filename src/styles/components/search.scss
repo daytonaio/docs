@@ -29,7 +29,7 @@
   right: 0;
   max-width: 1248px;
   background: var(--bg-color);
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-height: 100%;
   overflow-y: auto;
@@ -51,10 +51,11 @@
   width: 100%;
   border-radius: 4px;
   border: 1px solid var(--secondary-text-color);
-  padding: 16px;
+  padding: 20px;
   font-size: 15px;
   text-align: left;
   box-sizing: border-box;
+  margin-bottom: 40px;
 }
 
 .ais-SearchBox-input:focus {
@@ -73,7 +74,7 @@
   width: 100%;
   max-width: 1248px;
   margin: 0 auto;
-  padding: 32px 0;
+  padding-bottom: 40px;
 }
 
 .ais-Pagination {
@@ -118,7 +119,11 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   padding: 0;
-  margin-bottom: 32px;
+  padding-bottom: 32px;
+}
+
+[data-index="blogs_test"] .ais-Hits-list {
+  padding-bottom: 256px;
 }
 
 @media (max-width: 768px) {
