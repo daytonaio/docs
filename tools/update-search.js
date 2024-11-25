@@ -23,12 +23,30 @@ function processContent(content) {
 }
 
 function extractSentence(text) {
-  const match = text.match(/[^.!?]*[.!?]/)
-  return match ? match[0].trim() : ''
+  const match = text.match(/[^.!?]*[.!?]/);
+  return match ? match[0].trim() : text.trim().split('\n')[0]
 }
 
 function extractHyperlinks(text) {
   return text.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '$1')
+}
+
+function isSentence(sentence) {
+  return /^[A-Z0-9\[]/.test(sentence.trim());
+}
+
+function extractRealSentence(text) {
+  const sentences = text.split(/\n\n+/).map(s => s.trim()).filter(s => s.length > 0);
+  for (let sentence of sentences) {
+    if (isSentence(sentence)) {
+      const hyperlinkMatch = sentence.match(/^\[([^\]]+)\]\(([^\)]+)\)/);
+      if (hyperlinkMatch) {
+        return extractSentence(hyperlinkMatch[1]);
+      }
+      return extractSentence(sentence);
+    }
+  }
+  return '';
 }
 
 function extractHeadings(content, slug) {
@@ -40,7 +58,7 @@ function extractHeadings(content, slug) {
     const heading = match[2].trim()
     const textBelow = match[3].trim()
     const description = extractHyperlinks(
-      textBelow.split('\n')[0].trim() || extractSentence(textBelow)
+      extractRealSentence(textBelow)
     )
     const headingSlug = `${slug}#${heading
       .toLowerCase()
@@ -65,7 +83,7 @@ function parseMarkdownFile(filePath) {
   const cleanContent = processContent(content)
 
   const title = data.title || cleanContent.match(/^#\s+(.*)/)?.[1] || 'Untitled'
-  const description = extractHyperlinks(extractSentence(cleanContent))
+  const description = extractHyperlinks(extractRealSentence(cleanContent))
   const slug = filePath
     .replace(DOCS_PATH, '')
     .replace(/\\/g, '/')
@@ -119,7 +137,7 @@ function searchDocs() {
 function main() {
   const docsData = searchDocs()
   fs.writeFileSync(
-    path.join(__dirname, 'search.json'),
+    path.join(__dirname, '../public/search.json'),
     JSON.stringify(docsData, null, 2),
     'utf8'
   )

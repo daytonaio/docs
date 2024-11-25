@@ -80,13 +80,13 @@ const generateLlmsTxtFile = docsData => {
         '',
         ...docsData.map(doc => `- [${doc.title}](https://daytona.io${doc.url})`),
     ];
-    fs.writeFileSync(path.join(__dirname, '../llms.txt'), llmsContent.join('\n'), 'utf8');
+    fs.writeFileSync(path.join(__dirname, '../public/llms.txt'), llmsContent.join('\n'), 'utf8');
     console.log('llms.txt index updated');
 };
 
 const generateLlmsFullTxtFile = fullContent => {
     fs.writeFileSync(
-        path.join(__dirname, '../llms-full.txt'),
+        path.join(__dirname, '../public/llms-full.txt'),
         fullContent,
         'utf8'
     );
