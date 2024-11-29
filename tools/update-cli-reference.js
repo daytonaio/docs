@@ -1,12 +1,11 @@
-import * as _fs from "fs";
-const fs = _fs.promises;
-import { extname } from "path";
-const __dirname = import.meta.dirname;
+import * as _fs from 'fs'
+import { extname } from 'path'
+import { parseArgs } from 'util'
+import * as yaml from 'yaml'
 
-import { parseArgs } from "util";
-import pkg from "../package.json" assert { type: "json" };
+const fs = _fs.promises
 
-import * as yaml from "yaml";
+const __dirname = import.meta.dirname
 
 // content to appear above the commands outline
 const prepend = `---
@@ -35,119 +34,120 @@ You can access this documentation on a per-command basis by appending the \`--he
 <Aside type="note">
 This reference does not apply to the \`daytona\` command when run inside of a Workspace.
 </Aside>
-`;
+`
 
 // content to appear below the commands outline
-const append = ``;
+const append = ``
 
 const notes = {
-    "daytona autocomplete": `\n<Aside type="note">
+  'daytona autocomplete': `\n<Aside type="note">
 If using bash shell environment, make sure you have bash-completion installed in order to get full autocompletion functionality.
 Linux Installation: \`\`\`sudo apt-get install bash-completion\`\`\`
 macOS Installation: \`\`\`brew install bash-completion\`\`\`
-</Aside>`};
+</Aside>`,
+}
 
 async function fetchRawDocs(ref) {
-    const url = "https://api.github.com/repos/daytonaio/daytona/contents/hack/docs";
-    const request = await fetch(`${url}?ref=${ref}`);
-    const response = await request.json();
+  const url =
+    'https://api.github.com/repos/daytonaio/daytona/contents/hack/docs'
+  const request = await fetch(`${url}?ref=${ref}`)
+  const response = await request.json()
 
-    const files = [];
+  const files = []
 
-    for (const file of response) {
-        const { download_url } = file;
+  for (const file of response) {
+    const { download_url } = file
 
-        if (!download_url) continue;
+    if (!download_url) continue
 
-        const contentsReq = await fetch(download_url);
-        let contents = await contentsReq.text();
+    const contentsReq = await fetch(download_url)
+    let contents = await contentsReq.text()
 
-        contents = yaml.parse(contents);
+    contents = yaml.parse(contents)
 
-        files.push(contents);
-    }
+    files.push(contents)
+  }
 
-    return files;
+  return files
 }
 
 function flagToRow(flag) {
-    let { name, shorthand, usage } = flag;
+  let { name, shorthand, usage } = flag
 
-    name = `\`--${name}\``;
-    shorthand = shorthand ? `\`-${shorthand}\`` : "";
-    usage = usage ? usage : "";
+  name = `\`--${name}\``
+  shorthand = shorthand ? `\`-${shorthand}\`` : ''
+  usage = usage ? usage : ''
 
-    return `| ${name} | ${shorthand} | ${usage} |\n`;
+  return `| ${name} | ${shorthand} | ${usage} |\n`
 }
 
 function yamlToMarkdown(files) {
-    return files.map((rawDoc) => {
-        let output = "";
-        output += `## ${rawDoc.name}\n`;
-        output += `${rawDoc.synopsis}\n\n`;
+  return files.map(rawDoc => {
+    let output = ''
+    output += `## ${rawDoc.name}\n`
+    output += `${rawDoc.synopsis}\n\n`
 
-        if (!rawDoc.usage) {
-            rawDoc.usage = `${rawDoc.name} [flags]`;
-        }
+    if (!rawDoc.usage) {
+      rawDoc.usage = `${rawDoc.name} [flags]`
+    }
 
-        output += "```shell\n";
-        output += `${rawDoc.usage}\n`;
-        output += "```\n\n";
+    output += '```shell\n'
+    output += `${rawDoc.usage}\n`
+    output += '```\n\n'
 
+    output += '__Flags__\n'
+    output += '| Long | Short | Description |\n'
+    output += '| :--- | :---- | :---------- |\n'
 
-        output += "__Flags__\n";
-        output += "| Long | Short | Description |\n";
-        output += "| :--- | :---- | :---------- |\n";
-        
-        if (rawDoc.options) {
-            for (const flag of rawDoc.options) {
-                let row = flagToRow(flag);
-                output += row;
-            }
-        }
+    if (rawDoc.options) {
+      for (const flag of rawDoc.options) {
+        let row = flagToRow(flag)
+        output += row
+      }
+    }
 
-        if (rawDoc.inherited_options) {
-            for (const flag of rawDoc.inherited_options) {
-                let row = flagToRow(flag);
-                output += row;
-            }
-        }
+    if (rawDoc.inherited_options) {
+      for (const flag of rawDoc.inherited_options) {
+        let row = flagToRow(flag)
+        output += row
+      }
+    }
 
-        if (notes[rawDoc.name]) {
-            output += notes[rawDoc.name];
-        }
+    if (notes[rawDoc.name]) {
+      output += notes[rawDoc.name]
+    }
 
-        output += "\n";
+    output += '\n'
 
-        return output;
-    });
+    return output
+  })
 }
 
 async function process(args) {
-    const { output, ref } = args.values;
-    console.log(`grabbing docs for ${ref}...`);
+  const { output, ref } = args.values
+  console.log(`grabbing docs for ${ref}...`)
 
-    // grab the files from GitHub
-    let files = await fetchRawDocs(ref);
-    let transformed = yamlToMarkdown(files);
+  // grab the files from GitHub
+  let files = await fetchRawDocs(ref)
+  let transformed = yamlToMarkdown(files)
 
-    const singleMarkdown = transformed.join("\n");
-    console.log(`writing to '${output}'...`);
-    await fs.writeFile(output, `${prepend}\n${singleMarkdown}\n${append}`);
-    console.log("done");
+  const singleMarkdown = transformed.join('\n')
+  console.log(`writing to '${output}'...`)
+  await fs.writeFile(output, `${prepend}\n${singleMarkdown}\n${append}`)
+  console.log('done')
 }
 
 const commandOpts = {
-    ref: {
-        type: "string",
-        default: `v${pkg.version}`
-    },
-    output: {
-        type: "string",
-        short: "o",
-        default: `${__dirname}/../src/content/docs/tools/cli.mdx`
-    }
+  ref: {
+    type: 'string',
+    default: `v0.47.0`,
+  },
+  output: {
+    type: 'string',
+    short: 'o',
+    default: `${__dirname}/../src/content/docs/tools/cli.mdx`,
+  },
 }
 
-const args = parseArgs({ options: commandOpts });
-process(args);
+const args = parseArgs({ options: commandOpts })
+process(args)
