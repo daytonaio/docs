@@ -84,7 +84,7 @@ Use the `daytona --help` command to list all commands, offering a convenient way
 
 Integrate Daytona with a [Git Provider](/docs/configuration/git-providers) to manage version control operations and interact with your Git repositories.
 
-Daytona supports a variety of Git Providers, including [GitHub](/docs/configuration/git-providers#github), [GitLab](/docs/configuration/git-providers#gitlab), [Bitbucket](/docs/configuration/git-providers#bitbucket), [GitHub Enterprise Server](/docs/configuration/git-providers#github-enterprise-server), [GitLab Self-Managed](/docs/configuration/git-providers#gitlab-self-managed), [Bitbucket Server](/docs/configuration/git-providers#bitbucket-server), [Codeberg](/docs/configuration/git-providers#codeberg), [Gitea](/docs/configuration/git-providers#gitea), [Gitness](/docs/configuration/git-providers#gitness), [Azure DevOps](/docs/configuration/git-providers#azure-devops), [AWS CodeCommit](/docs/configuration/git-providers#aws-codecommit) and [Gogs](/docs/configuration/git-providers#gogs).
+Daytona supports a variety of Git Providers, including [GitHub](/docs/configuration/git-providers#github), [GitLab](/docs/configuration/git-providers#gitlab), [Bitbucket](/docs/configuration/git-providers#bitbucket), [GitHub Enterprise Server](/docs/configuration/git-providers#github-enterprise-server), [GitLab Self-Managed](/docs/configuration/git-providers#gitlab-self-managed), [Bitbucket Server](/docs/configuration/git-providers#bitbucket-server), [Codeberg](/docs/configuration/git-providers#codeberg), [Gitea](/docs/configuration/git-providers#gitea), [Gitness](/docs/configuration/git-providers#gitness), [Azure DevOps](/docs/configuration/git-providers#azure-devops), [AWS CodeCommit](/docs/configuration/git-providers#aws-codecommit), [Gogs](/docs/configuration/git-providers#gogs) and [Gitee](/docs/configuration/git-providers#gitee).
 
 The integration supports and enables interacting with your codebase, cloning repositories, and pushing changes directly from Daytona.
 
@@ -415,6 +415,10 @@ Other
 - __[Gogs](#gogs)__
 
     Select if you are hosting repositories on Gogs.
+
+- __[Gitee](#gitee)__
+
+    Select if you are hosting repositories on Gitee.
 
 3. Enter your Git Provider credentials for Daytona to authenticate and enable secure access to your repositories.
 
@@ -1153,6 +1157,64 @@ Upon successful authentication, Daytona will display the following message:
 
 ```text
 Git provider has been registered
+```
+
+## Gitee
+
+Daytona allows you to connect your Gitee account and access your repositories directly from Daytona.
+
+1. Run the following command to add Gitee as a Git Provider:
+
+```shell
+daytona git-providers add
+```
+
+Upon running this command, Daytona will prompt you to choose a Git Provider you want to add. Select `Other` from the list, and then select `Gitee`.
+
+```text
+Choose a Git provider
+> Other
+```
+
+```text
+Choose a Git provider
+> Gitee
+```
+
+2. Enter your Personal Access Token for Daytona to authenticate and enable secure access to your Gitee repositories.
+
+To create a Personal Access Token follow these steps:
+
+1. Log into Gitee, and click your profile avatar to open the user menu.
+2. Click `Settings` in the user menu. Make sure you have admin access to the repository.
+3. Navigate to `Personal access tokens` in the sidebar.
+4. In the Manage personal access tokens section, click Generate New Token.
+5. Enter a description for your token, and select following scopes:
+    - `user_info`
+    - `projects`
+    - `pull_requests`
+    - `groups`
+    - `emails`
+6. Click Commit to generate the token. You'll prompted to enter your password for verification.
+7. Copy and save the token securely (it won't be shown again).
+
+```text
+Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
+>
+```
+
+Upon successful authentication, Daytona will display the following message:
+
+```text
+Gitee provider has been registered
 ```
 
 [gh-token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic
@@ -2401,9 +2463,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.45/daytona-linux-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-linux-amd64 -o daytona
 # ARM64
-curl -sf -L https://download.daytona.io/daytona/v0.45/daytona-linux-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-linux-arm64 -o daytona
 ```
 
 :::
@@ -2426,9 +2488,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64/Intel-based
-curl -sf -L https://download.daytona.io/daytona/v0.45/daytona-darwin-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-darwin-amd64 -o daytona
 # ARM64/Apple Silicon
-curl -sf -L https://download.daytona.io/daytona/v0.45/daytona-darwin-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-darwin-arm64 -o daytona
 ```
 
 :::
@@ -2444,7 +2506,7 @@ Install Daytona on Windows using the following PowerShell script:
 ```powershell
 $architecture = if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") { "amd64" } else { "arm64" }
 md -Force "$Env:APPDATA\bin\daytona"; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12';
-Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.45/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
+Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.47/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
 $env:Path += ";" + $Env:APPDATA + "\bin\daytona"; [Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::User);
 daytona serve;
 ```
@@ -2454,9 +2516,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```sh
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.45/daytona-windows-amd64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-windows-amd64.exe -o daytona
 # AArch64
-curl -sf -L https://download.daytona.io/daytona/v0.45/daytona-windows-arm64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-windows-arm64.exe -o daytona
 ```
 
 :::
@@ -3530,8 +3592,22 @@ daytona server logs [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--file` |  | Read logs from local server log file |
+| `--file` |  | Read specific log file |
 | `--follow` | `-f` | Follow logs |
+| `--local` | `-l` | Read local server log files |
+| `--help` |  | help for daytona |
+
+## daytona server logs list
+
+Lists Daytona Server Log Files
+
+```shell
+daytona server logs list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
 ## daytona server restart
