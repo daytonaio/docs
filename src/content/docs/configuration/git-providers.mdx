@@ -87,6 +87,10 @@ Other
 
     Select if you are hosting repositories on Gogs.
 
+- __[Gitee](#gitee)__
+
+    Select if you are hosting repositories on Gitee.
+
 3. Enter your Git Provider credentials for Daytona to authenticate and enable secure access to your repositories.
 
 ```text
@@ -806,6 +810,64 @@ Self-managed API URL
 For example: https://gogs-host.com
 >
 ```
+
+```text
+Personal access token
+>
+```
+
+3. Enter your Git Provider alias to identify it within Daytona.
+
+```text
+Alias                                                                         
+Will default to username if left empty                                        
+>
+```
+
+Upon successful authentication, Daytona will display the following message:
+
+```text
+Git provider has been registered
+```
+
+## Gitee
+
+Daytona allows you to connect your Gitee account and access your repositories directly from Daytona.
+
+1. Run the following command to add Gitee as a Git Provider:
+
+```shell
+daytona git-providers add
+```
+
+Upon running this command, Daytona will prompt you to choose a Git Provider you want to add. Select `Other` from the list, and then select `Gitee`.
+
+```text
+Choose a Git provider
+> Other
+```
+
+```text
+Choose a Git provider
+> Gitee
+```
+
+2. Enter your Personal Access Token for Daytona to authenticate and enable secure access to your Gitee repositories.
+
+To create a Personal Access Token follow these steps:
+
+1. Log into Gitee, and click your profile avatar to open the user menu.
+2. Click `Settings` in the user menu. Make sure you have admin access to the repository.
+3. Navigate to `Personal access tokens` in the sidebar.
+4. In the Manage personal access tokens section, click Generate New Token.
+5. Enter a description for your token, and select following scopes:
+    - `user_info`
+    - `projects`
+    - `pull_requests`
+    - `groups`
+    - `emails`
+6. Click Commit to generate the token. You'll prompted to enter your password for verification.
+7. Copy and save the token securely (it won't be shown again).
 
 ```text
 Personal access token
