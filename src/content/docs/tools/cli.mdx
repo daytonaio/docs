@@ -411,12 +411,18 @@ __Flags__
 Register a Git provider
 
 ```shell
-daytona git-providers add [flags]
+daytona git-providers add [GIT_PROVIDER_ID] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--alias` | `-a` | Alias |
+| `--base-api-url` | `-b` | Base API Url |
+| `--signing-key` | `-k` | Signing Key |
+| `--signing-method` | `-s` | Signing Method (ssh, gpg) |
+| `--token` | `-t` | Personal Access Token |
+| `--username` | `-u` | Username |
 | `--help` |  | help for daytona |
 
 ## daytona git-providers delete
@@ -1015,6 +1021,7 @@ daytona ssh [WORKSPACE] [PROJECT] [CMD...] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--edit` | `-e` | Edit the project's SSH config |
 | `--option` | `-o` | Specify SSH options in KEY=VALUE format. |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |

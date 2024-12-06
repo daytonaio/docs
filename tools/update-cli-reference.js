@@ -77,6 +77,9 @@ function flagToRow(flag) {
   name = `\`--${name}\``
   shorthand = shorthand ? `\`-${shorthand}\`` : ''
   usage = usage ? usage : ''
+  if (usage.endsWith('\n')) {
+    usage = usage.slice(0, -1)
+  }
 
   return `| ${name} | ${shorthand} | ${usage} |\n`
 }
@@ -140,7 +143,7 @@ async function process(args) {
 const commandOpts = {
   ref: {
     type: 'string',
-    default: `v0.47.0`,
+    default: `v0.48.0`,
   },
   output: {
     type: 'string',

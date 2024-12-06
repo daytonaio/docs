@@ -1214,7 +1214,7 @@ Will default to username if left empty
 Upon successful authentication, Daytona will display the following message:
 
 ```text
-Gitee provider has been registered
+Git provider has been registered
 ```
 
 [gh-token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic
@@ -2463,9 +2463,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-linux-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.48/daytona-linux-amd64 -o daytona
 # ARM64
-curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-linux-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.48/daytona-linux-arm64 -o daytona
 ```
 
 :::
@@ -2488,9 +2488,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64/Intel-based
-curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-darwin-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.48/daytona-darwin-amd64 -o daytona
 # ARM64/Apple Silicon
-curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-darwin-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.48/daytona-darwin-arm64 -o daytona
 ```
 
 :::
@@ -2506,7 +2506,7 @@ Install Daytona on Windows using the following PowerShell script:
 ```powershell
 $architecture = if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") { "amd64" } else { "arm64" }
 md -Force "$Env:APPDATA\bin\daytona"; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12';
-Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.47/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
+Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.48/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
 $env:Path += ";" + $Env:APPDATA + "\bin\daytona"; [Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::User);
 daytona serve;
 ```
@@ -2516,9 +2516,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```sh
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-windows-amd64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.48/daytona-windows-amd64.exe -o daytona
 # AArch64
-curl -sf -L https://download.daytona.io/daytona/v0.47/daytona-windows-arm64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.48/daytona-windows-arm64.exe -o daytona
 ```
 
 :::
@@ -3056,12 +3056,18 @@ __Flags__
 Register a Git provider
 
 ```shell
-daytona git-providers add [flags]
+daytona git-providers add [GIT_PROVIDER_ID] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--alias` | `-a` | Alias |
+| `--base-api-url` | `-b` | Base API Url |
+| `--signing-key` | `-k` | Signing Key |
+| `--signing-method` | `-s` | Signing Method (ssh, gpg) |
+| `--token` | `-t` | Personal Access Token |
+| `--username` | `-u` | Username |
 | `--help` |  | help for daytona |
 
 ## daytona git-providers delete
@@ -3660,6 +3666,7 @@ daytona ssh [WORKSPACE] [PROJECT] [CMD...] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--edit` | `-e` | Edit the project's SSH config |
 | `--option` | `-o` | Specify SSH options in KEY=VALUE format. |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
