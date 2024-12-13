@@ -120,6 +120,8 @@
 - [daytona project-config](https://daytona.io/docs/tools/cli#daytona-project-config)
 - [daytona project-config add](https://daytona.io/docs/tools/cli#daytona-project-config-add)
 - [daytona project-config delete](https://daytona.io/docs/tools/cli#daytona-project-config-delete)
+- [daytona project-config export](https://daytona.io/docs/tools/cli#daytona-project-config-export)
+- [daytona project-config import](https://daytona.io/docs/tools/cli#daytona-project-config-import)
 - [daytona project-config info](https://daytona.io/docs/tools/cli#daytona-project-config-info)
 - [daytona project-config list](https://daytona.io/docs/tools/cli#daytona-project-config-list)
 - [daytona project-config set-default](https://daytona.io/docs/tools/cli#daytona-project-config-set-default)

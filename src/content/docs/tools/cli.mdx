@@ -737,6 +737,35 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
+## daytona project-config export
+
+Export a project config
+
+```shell
+daytona project-config export [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Export all project configs |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+## daytona project-config import
+
+Import project config from JSON
+
+```shell
+daytona project-config import [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--file` | `-f` | Import project config from a JSON file. Use '-' to read from stdin. |
+| `--help` |  | help for daytona |
+
 ## daytona project-config info
 
 Show project config info
