@@ -164,6 +164,13 @@ export default defineConfig({
               },
             },
             {
+              label: 'Workspace Toolbox',
+              link: '/tools/workspace-toolbox',
+              attrs: {
+                icon: '',
+              },
+            },
+            {
               label: 'Docker Extension',
               link: '/tools/docker-extension',
               attrs: {
