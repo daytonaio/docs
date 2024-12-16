@@ -66,7 +66,7 @@ function swaggerToMarkdown(swaggerJSON) {
             description: paramDescription,
           } = responseDetails
 
-          output += `| \`${name}\` | ${location} | ${required} | ${type} | ${paramDescription} |\n`
+          output += `| **\`${name}\`** | ${location} | ${required} | ${type} | ${paramDescription} |\n`
         }
 
         output += '\n'
@@ -82,7 +82,7 @@ function swaggerToMarkdown(swaggerJSON) {
           const responseDetails = responses[response]
           const { description: responseDescription } = responseDetails
 
-          output += `| \`${response}\` | ${responseDescription} |\n`
+          output += `| **\`${response}\`** | ${responseDescription} |\n`
         }
 
         output += '\n'
