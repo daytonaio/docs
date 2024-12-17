@@ -1,0 +1,36 @@
+---
+title: Runners
+description: Learn how to use and manage Runners in Daytona.
+---
+
+A Runner is a standalone service that can be deployed anywhere. The user can deploy a Runner on a target system by executing a set of instructions and commands generated upon Runner registration.
+
+Once deployed, the Runner starts up and connects to the [Daytona Server](/docs/usage/server), at which point its status is marked as `Active`.
+
+The Runner sends all requests, while the Server only responds. The Runner sends requests such as _Heartbeat_ (to share its status) and _Job Requests_ (to ask Daytona Server for tasks assigned to it).
+
+A single Runner can use multiple [Providers](/docs/configuration/providers), configured during deployment or later via jobs, enabling flexibility for various environments.
+
+## Register a Runner
+
+Daytona provides an option to register a new Runner, allowing you to deploy it on a target system and connect it to the Daytona Server.
+
+1. Run the following command to register a new Runner:
+
+```shell
+daytona runner register
+```
+
+Upon running the command, Daytona will generate a code snippet containing the server API URL and API key required to deploy the Runner on the target system.
+
+2. Paste the code snippet into the target system's terminal and execute it to deploy the Runner.
+
+## Start a Runner
+
+Once the Runner is deployed on the target system, you can start it by running the following command:
+
+```shell
+daytona runner start
+```
+
+The Runner will connect to the Daytona Server and its status will be marked as `Active`.
