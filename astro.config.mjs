@@ -151,6 +151,13 @@ export default defineConfig({
                 icon: 'server.svg',
               },
             },
+            {
+              label: 'Runners',
+              link: '/usage/runners',
+              attrs: {
+                icon: '',
+              },
+            },
           ],
         },
         {
