@@ -110,13 +110,6 @@ export default defineConfig({
               },
             },
             {
-              label: 'Projects',
-              link: '/usage/projects',
-              attrs: {
-                icon: 'folder.svg',
-              },
-            },
-            {
               label: 'Prebuilds',
               link: '/usage/prebuilds',
               attrs: {
