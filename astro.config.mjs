@@ -91,10 +91,17 @@ export default defineConfig({
               },
             },
             {
-              label: 'Targets',
+              label: 'Target Config',
               link: '/configuration/targets',
               attrs: {
                 icon: 'tag.svg',
+              },
+            },
+            {
+              label: 'Workspace Config',
+              link: '/configuration/workspaces',
+              attrs: {
+                icon: 'computer.svg',
               },
             },
           ],
@@ -107,6 +114,13 @@ export default defineConfig({
               link: '/usage/workspaces',
               attrs: {
                 icon: 'computer.svg',
+              },
+            },
+            {
+              label: 'Targets',
+              link: '/usage/targets',
+              attrs: {
+                icon: 'tag.svg',
               },
             },
             {
