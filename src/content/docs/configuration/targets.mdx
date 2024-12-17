@@ -1,529 +1,711 @@
 ---
 title: Targets
-description: Learn how to create and manage Targets using Daytona.
+description: Learn how to manage Target configuration across Workspaces.
 sidebar:
   label: Targets
 ---
 
-import Aside from '@components/Aside.astro'
 import Label from '@components/Label.astro'
 
 <Label>
-  Distribution: **Open Source**, **Cloud**, **Self-Managed**
+  Distribution: **Open Source**
 </Label>
 
-Targets serve as isolated environments containing your codebase, dependencies, packages, and configuration, providing a consistent and reproducible setup for development, testing, and deployment.
+A Target refers to the specific destination or environment where your development setups, facilitated by various [Providers](/docs/configuration/providers), are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
 
-They ensure that changes in one project do not inadvertently affect another, promoting a more stable and reliable workflow. This is particularly beneficial in collaborative settings, as it ensures that all team members are working with the same configuration, reducing the likelihood of environment-related issues.
+A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
-## Create a Target
+Once you set your Target, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Targets or delete those you no longer need.
 
-Creating a Target in Daytona is a straightforward process that ensures you have a dedicated development environment for your projects.
+## Set a Target
 
-Daytona provides two primary methods for creating a Target:
+Daytona allows you to set a Target to use when managing Workspaces.
 
-- [**From a Git Repository**](#from-a-git-repository)
-- [**From an Arbitrary Git URL**](#from-an-arbitrary-git-url)
-- [**With Multiple Projects**](#create-a-target-with-multiple-projects)
+**Prerequisite**
 
-### From a Git Repository
+- **At least [one Provider installed](/docs/configuration/providers).**
 
-Creating a Target from a Git repository sets up a new development environment using a [connected Git Provider](/docs/configuration/git-providers) or a custom Git repository URL.
+    Providers are essential for managing and deploying your Workspaces, so make sure you have configured at least one.
 
-1. Run the following command to create a Target from a Git repository:
+1. Run the following command to set a Target:
 
 ```shell
-daytona create
+daytona target set
 ```
 
-<Aside type="tip">
-Skip automatically opening the Target in an [IDE](/docs/usage/ide) by using the `--no-ide` flag.
+2. Select the appropriate Provider for the environment you want to deploy to.
+
+```text
+Choose a provider
+4 items
+===
+aws-provider
+v0.0.0
+digitalocean-provider
+v0.0.0
+fly-provider
+v0.0.0
+docker-provider
+v0.0.0
+```
+
+3. Select **`New Target`**.
+4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a [remote Docker Target](#docker-local).
+
+```text
+Remote Hostname
+>
+
+Remote Password
+>
+
+Remote Port
+>
+
+Remote User
+Note: non-root user required
+>
+
+Sock Path
+> /var/run/docker.sock
+
+Workspace Data Dir       
+The directory on the remote host where the workspace data will be stored
+> /tmp/daytona-data
+
+Remote Private Key Path
+daytona_config
+known_hosts
+Custom path
+None
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+:::note
+Adding or updating a Target automatically sets it to be the default option for creating workspaces.
+Change this by running `daytona target set-default` and selecting the Target you want or override it directly by using the `--target` flag when running `daytona create`.
+:::
+
+## List Targets
+
+Daytona allows you to keep track of your Targets by listing all previously created Targets with their details.
+
+1. Run the following command to list currently set Targets:
 
 ```shell
-daytona create --no-ide
+daytona target list
 ```
 
-</Aside>
+Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the Provider it is connected to, and its configured options.
+
+```text
+Target      Provider            Options
+───────────────────────────────────────────────────────────────────────
+MyTarget    docker-provider     {
+                                    "Sock Path": "/var/run/docker.sock"
+                                }
+```
+
+## Delete a Target
+
+Daytona allows you to delete Targets, helping you manage and remove those that are no longer needed. Once a Target is deleted, you will not be able to manage or deploy Workspaces on that Target.
+
+1. Run the following command:
+
+```shell
+daytona target delete
+```
+
+Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the unique identifier of the Workspace, and the repository it is connected to.
+
+2. Press **`Enter`** on the selected Target to delete it.
+
+```text
+Choose a Target
+1 item
+===
+MyTarget          
+docker-provider
+```
+
+3. Confirm the action.
+
+```text
+Delete all workspaces within MyTarget?
+You might not be able to easily remove these workspaces later.
+
+[Yes]     [No]
+```
+
+```text
+Target MyTarget removed successfully
+```
+
+## Docker (Local)
+
+Daytona allows you to set a local Docker Target to use for deploying and managing Workspaces. The local Docker Target enables you to deploy Workspaces on your local machine using Docker.
+
+:::note
+Before setting a local Docker Target, ensure that [Docker](https://docs.docker.com/engine/install/) is installed and running on your local machine.
+:::
 
 <br />
 
-2. Select one of the three provided options:
+1. Run the following command to set a Target:
 
-- **Select from a List of Repositories**
-
-   If you [connected a Git Provider](/docs/configuration/git-providers), you will be presented with a list of your repositories from which you can select to connect with your Target.
-
-- **Enter a Custom Repository URL**
-
-   Alternatively, select the option to enter a custom repository URL manually if the repository is not listed under your Git Provider account or is from an external source.
-
-- **Create from Sample**
-
-   If you do not have a Git repository ready, you can create a Target from a Sample project provided by Daytona. This option sets up a new development environment using quick-start templates.
-
-```text
-Choose a Git Provider
-3 items
-===
-GitHub
-Enter a custom repository URL
-Create from Sample
+```shell
+daytona target set
 ```
 
-3. Select the Git repository from the list, enter the URL of the Git repository you want to link with your Target, or choose to create a Target from a sample project.
+2. Select **`docker-provider`** to use the Docker Provider.
+
+```text
+Choose a provider
+1 item
+===
+docker-provider
+v0.0.0
+```
+
+3. Select **`local`** to set a local Docker Target.
+
+```text
+Choose a Target
+1 item
+===
+local
+docker-provider
+```
 
 4. Enter a name for your Target.
 
 ```text
-Target name
+Name
 >
 ```
 
-<Aside type="tip">
-   Press `F10` to configure advanced settings for your Target,
-   including setting the [Builder](/docs/usage/builders).
-</Aside>
+5. Enter the appropriate configuration options when prompted.
+
+```text
+Sock Path
+> /var/run/docker.sock
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+## Docker (Remote)
+
+Daytona allows you to set a remote Docker Target to use for deploying and managing Workspaces. The remote Docker Target enables you to deploy Workspaces on a remote machine using Docker.
+
+:::note
+Before setting a remote Docker Target, ensure that [Docker](https://docs.docker.com/engine/install/) is installed and running on the remote server.
+:::
 
 <br />
 
-5. Select a Target to deploy your Target to. Selecting a Target will prompt you to input the [Target configuration](/docs/configuration/targets). The configurations vary based on the selected Target.
+1. Run the following command to set a Target:
+
+```shell
+daytona target set
+```
+
+2. Select **`docker-provider`** to use the Docker Provider.
+
+```text
+Choose a Provider
+1 item
+===
+docker-provider
+v0.0.0
+```
+
+3. Select **`New Target`** to set a remote Docker target.
 
 ```text
 Choose a Target
-6 items
+1 item
 ===
-local
-docker-provider
-
-Add a Docker Provider Target
-docker-provider (needs installing)
-
-Add a Digital Ocean Provider Target
-digitalocean-provider (needs installing)
-
-Add an AWS Provider Target
-aws-provider (needs installing)
-
-Add a GCP Provider Target
-gcp-provider (needs installing)
-
-Add an Azure Provider Target
-azure-provider (needs installing)
-
-Add a Hetzner Provider Target
-hetzner-provider (needs installing)
-
-Add a Fly.io Provider Target
-fly-provider (needs installing)
++ New Target
 ```
 
-Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Target based on its contents. You will see progress information in the terminal, indicating the process of creating a Target.
+4. Enter a name for your Target.
 
 ```text
-TARGET   | ✓ Request submitted
-TARGET   | ✓ Creating target daytona
-daytona  | Creating project daytona
-daytona  | Pulling image...
-daytona  | Pulling from daytonaio/target-project
-...
-daytona  | Project daytona created
-daytona  | Starting project daytona
-daytona  | Project daytona started
-```
-
-### From an Arbitrary Git URL
-
-Creating a Target from an arbitrary Git URL sets up a new development environment by directly specifying the URL of the remote repository.
-
-1. Run the following command to create a Target from a remote Git repository:
-
-```shell
-daytona create <REPO_URL>
-```
-
-**Example**
-
-```shell
-daytona create https://github.com/daytonaio/daytona.git
-```
-
-2. Select a Target to deploy your Target to. Selecting a Target will prompt you to input the [Target configuration](/docs/configuration/targets). The configurations vary based on the selected Target.
-
-```text
-Choose a Target
-6 items
-===
-local
-docker-provider
-
-Add a Fly.io Provider Target
-fly-provider (needs installing)
-
-Add a Docker Provider Target
-docker-provider (needs installing)
-
-Add a Digital Ocean Provider Target
-digitalocean-provider (needs installing)
-
-Add an AWS Provider Target
-aws-provider (needs installing)
-
-Add an Azure Provider Target
-azure-provider (needs installing)
-```
-
-Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Target based on its contents. You will see progress information in the terminal, indicating the process of creating a Target.
-
-Once complete, the Target will be ready for use with the specified repository and configuration.
-
-```text
-TARGET   | ✓ Request submitted
-TARGET   | ✓ Creating target daytona
-daytona  | Creating project daytona
-daytona  | Pulling image...
-daytona  | Pulling from daytonaio/target-project
-...
-daytona  | Project daytona created
-daytona  | Starting project daytona
-daytona  | Project daytona started
-```
-
-<Aside type="tip">
-Set the Project Builder at Target creation time using command-line
-flags. Refer to **[Builders](/docs/usage/builders)** for more information.
-</Aside>
-
-## Create a Target with Multiple Projects
-
-Daytona allows you to create a Target that contains multiple repositories, which we refer to as Projects. This enables you to work on several codebases simultaneously within a single environment.
-
-Multiple projects are deployed within the same virtual machine or instance depending on the [Provider](/docs/configuration/providers) infrastructure, allowing you to manage and develop multiple projects in a unified Target.
-
-- The [Docker Provider](/docs/configuration/providers#docker) deploys each project in its own container.
-- The [AWS Provider](/docs/configuration/providers#aws) deploys projects within the same EC2 instance.
-- The [DigitalOcean Provider](/docs/configuration/providers#digitalocean) deploys projects within the same Droplet.
-- The [Fly Provider](/docs/configuration/providers#fly) deploys projects within the same virtual machine.
-
-Regardless of the infrastructure type, all projects are managed consistently within the Target.
-
-1. Run the following command to create a Target with multiple projects:
-
-```shell
-daytona create --multi-project
-```
-
-2. Select one of the three provided options:
-
-- **Select from a List of Repositories**
-
-   If you choose a Git provider (e.g., GitHub), you will be presented with a list of your repositories from which you can select the desired repository.
-
-- **Enter a Custom Repository URL**
-
-   Alternatively, select the option to enter a custom repository URL manually if the repository is not listed under your Git provider account or is from an external source.
-
-- **Create from Sample**
-
-     If you do not have a repository ready, choose to create a Target from a sample project provided by Daytona. This option allows you to set up a new development environment using quick-start templates.
-
-```text
-Choose a Git Provider
-3 items
-===
-GitHub
-Enter a custom repository URL
-Create from Sample
-```
-
-3. Select the Git repository from the list, enter the URL of the Git repository you want to link with your Target, or choose to create a Target from a sample project.
-
-After your selection, you will be prompted to add a second project to the Target.
-
-```text
-Choose a Git Provider (Project #2)
-3 items
-===
-GitHub
-Enter a custom repository URL
-Create from Sample
-```
-
-4. Select the Git repository from the list for the second project, enter the URL of the Git repository you want to link with your Target, or choose to create a Target from a sample project.
-
-After adding the second project, you will be prompted to add another project to the Target.
-
-```text
-Add another project?
-
-[Yes] [No]
-```
-
-Selecting `Yes` will allow you to add additional projects to the Target. Once you have added all the projects you need, select `No` to complete the Target creation process.
-
-After adding all projects, you will be prompted with a summary of the Target configuration.
-
-```text
-SUMMARY
-
-Project #1 - https://github.com/daytonaio/sample-python.git
-   Build       Automatic
-   Image       daytonaio/target-project:latest
-   User        daytona
-
-Project #2 - https://github.com/daytonaio/sample-go.git
-   Build       Automatic
-   Image       daytonaio/target-project:latest
-   User        daytona
-```
-
-5. Enter a name for your Target.
-
-```text
-Target name
+Name
 >
 ```
 
-6. Select a Target to deploy your Target to. Selecting a Target will prompt you to input the [Target configuration](/docs/configuration/targets). The configurations vary based on the selected Target.
+5. Enter the appropriate configuration options when prompted.
 
 ```text
-Choose a Target
-6 items
+Name
+>
+
+Remote Hostname
+>
+
+Remote Password
+>
+
+Remote Port
+>
+
+Remote User
+Note: non-root user required
+>
+
+Sock Path
+> /var/run/docker.sock
+
+Workspace Data Dir       
+The directory on the remote host where the workspace data will be stored
+> /tmp/daytona-data
+
+Remote Private Key Path
+daytona_config
+known_hosts
+Custom path
+None
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+## DigitalOcean
+
+Daytona allows you to set a DigitalOcean Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+```shell
+daytona target set
+```
+
+2. Select **`digitalocean-provider`** to use the DigitalOcean Provider.
+
+```text
+Choose a provider
+1 item
 ===
-local
-docker-provider
-
-Add a Docker Provider Target
-docker-provider (needs installing)
-
-Add a Digital Ocean Provider Target
-digitalocean-provider (needs installing)
-
-Add an AWS Provider Target
-aws-provider (needs installing)
-
-Add a GCP Provider Target
-gcp-provider (needs installing)
-
-Add an Azure Provider Target
-azure-provider (needs installing)
-
-Add a Hetzner Provider Target
-hetzner-provider (needs installing)
-
-Add a Fly.io Provider Target
-fly-provider (needs installing)
+digitalocean-provider
+v0.0.0
 ```
 
-Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Target based on its contents. You will see progress information in the terminal, indicating the process of creating a Target.
-
-Once complete, the Target will be ready for use with the specified repository and configuration.
+3. Select **`New Target`**.
+4. Enter a name for your Target.
 
 ```text
-TARGET   | ✓ Request submitted
-TARGET   | ✓ Creating target daytona
-daytona  | Creating project daytona
-daytona  | Pulling image...
-daytona  | Pulling from daytonaio/target-project
-...
-daytona  | Project daytona created
-daytona  | Starting project daytona
-daytona  | Project daytona started
+Name
+>
 ```
 
-## List Targets
+5. Enter the appropriate configuration options when prompted.
 
-Daytona allows you to keep track of your development environments by listing all previously created Targets. This helps you manage multiple projects and ensure that you can easily access and maintain your Targets.
+```text
+Auth Token
+If empty, token will be fetched from the DIGITALOCEAN_ACCESS_TOKEN environment variable.
+>
 
-1. Run the following command:
+Disk Size
+> 
+
+Image
+>
+
+Region
+>
+
+Size
+>
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+## AWS
+
+Daytona allows you to set an AWS Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
 
 ```shell
-daytona list
+daytona target set
 ```
 
-Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the repository it is connected to, the target of the Target, and its status.
+2. Select **`aws-provider`** to use the AWS Provider.
 
 ```text
-Target        Repository          Target     Status
-─────────────────────────────────────────────────────────────────────
-MyTarget      username/MyProject  local      RUNNING (30 minutes)
-```
-
-## Open An Existing Target
-
-Daytona allows you to open an existing Target in your IDE. This enables you to quickly access and work on your projects in your preferred development environment. With Daytona, you can effortlessly switch between different Targets and maintain an efficient workflow.
-
-1. Run the following command:
-
-```shell
-daytona code
-```
-
-Upon running this command, Daytona will display a list of your Target with their details. You will be able to see the Target name, the unique identifier of the Target, and the repository it is connected to.
-
-```text
-Select a Target To Open
+Choose a provider
 1 item
-
-┃  MyProject
-┃  abcdefg12hi3 (local)
-┃  github.com/username/MyProject.git
+===
+aws-provider
+v0.0.0
 ```
 
-2. Select the Target you want to open.
-
-:::note
-Configure Daytona to use your preferred IDE.
-Refer to **[Set the Default IDE](/docs/usage/ide#set-the-default-ide)** for more information.
-:::
-
-## Delete Targets
-
-Daytona allows you to delete one or more Targets, helping you manage your development environments by removing those that are no longer needed.
-
-1. Run the following command:
-
-```shell
-daytona delete
-```
-
-Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the unique identifier of the Target, and the repository it is connected to.
+3. Select **`New Target`**.
+4. Enter a name for your Target.
 
 ```text
-Select Target To Delete
+Name
+>
+```
+
+5. Enter the appropriate configuration options when prompted.
+
+```text
+The type of instance to launch. Default is t2.micro. 
+List of available instance types https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/i
+>
+
+Region
+The geographic area where AWS resources are hosted. Default is us-east-1.
+List of available regions https://docs.aws.amazon.com/general/latest/gr/rande.html
+> 
+
+Secret Access Key
+Find this in the AWS Console under "My Security Credentials" (https://aws.amazon.com/premiumsupport/knowledge-center/manage-access-keys/).
+Leave blank if you've set the AWS_SECRET_ACCESS_KEY environment variable, or enter your key here.
+>
+
+Volume Size
+The size of the instance volume, in GB. Default is 20 GB.
+It is recommended that the disk size should be more than 20 GB.
+List of volume size limits: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html
+>
+
+Volume Type
+The type of volume. Default is gp3.
+List of available volume types https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html
+>
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+## Azure
+
+Daytona allows you to set an Azure Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+```shell
+daytona target set
+```
+
+2. Select **`azure-provider`** to use the Azure Provider.
+
+```text
+Choose a provider
 1 item
-
-┃ MyTarget
-┃ abcdefg12hi3 (local)
-┃ github.com/username/MyProject.git
+===
+azure-provider
+v0.0.0
 ```
 
-2. Mark Targets for deletion by highlighting them and pressing `x`.
-
-3. Press `Enter` on the selected Target to delete it.
+3. Select **`New Target`**.
+4. Enter a name for your Target.
 
 ```text
-Delete: MyTarget
-
-┃  abcdefg12hi3 (local)
-┃  github.com/username/MyProject.git
+Name
+>
 ```
 
-4. Confirm the action.
+5. Enter the appropriate configuration options when prompted.
 
 ```text
-Delete target(s): [MyTarget]?
-Are you sure you want to delete the target(s): [MyTarget]?
+Client ID
+Leave blank if you've set the AZURE_CLIENT_ID environment variable, or enter your Client Id here.
+To find the this, look for "appId" in the output after generating client credentials.
+https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
+>
 
-[Yes]   [No]
+Client Secret
+Leave blank if you've set the AZURE_CLIENT_SECRET environment variable, or enter your Client     
+Secret here.
+To find the this, look for "password" in the output after generating client credentials
+https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
+>
+
+Disk Size
+The size of the instance volume, in GB. Default is 30 GB. It is recommended that the disk size should be more than 30 GB.
+>
+
+Disk Type
+The type of the azure managed disk. Default is StandardSSD_LRS. List of available disk types:                                                                    
+https://docs.microsoft.com/azure/virtual-machines/linux/disks-typesList of available disk types per location can be retrieved using the command:
+az vm list-skus --location <your-region> --output table
+>
+
+Image URN
+The identifier of the Azure virtual machine image to launch an instance. Default is Canonical:ubuntu-24_04-lts:server:latest.
+List of available images:
+https://learn.microsoft.com/en-us/azure/virtual-machines/linux/cli-ps-findimage
+>
+
+Region
+The geographic area where Azure resources are hosted. Default is centralus.
+List of available regions can be retrieved using the command:
+"az account list-locations -o table"
+>
+
+Resource Group
+If not set, Daytona will create a "daytona" resource group. How to create resource group:
+https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal
+>
+
+Subscription ID
+Leave blank if you've set the AZURE_SUBSCRIPTION_ID environment variable, or enter your Subscription Id here.
+How to find subscription id:                                                                     
+https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription
+>
+
+Tenant ID
+Leave blank if you've set the AZURE_TENANT_ID environment variable, or enter your Tenant Id here.
+To find the this, look for "tenant" in the output after generating client credentials.           
+https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
+>
+
+VM Size
+Leave blank if you've set the AZURE_TENANT_ID environment variable, or enter your Tenant Id here.
+To find the this, look for "tenant" in the output after generating client credentials.           
+https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
+>
 ```
+
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
-Target MyTarget successfully deleted
+Target set successfully
 ```
 
-### Non-Interactively
+## GCP
 
-Daytona allows you to delete one or more existing Targets non-interactively, allowing for quick and automated cleanup of your development environments without manual selection.
+Daytona allows you to set a Google Cloud Platform (GCP) Target to use for deploying and managing Workspaces.
 
-1. Run the following command, specifying the Target names/UUIDs to delete:
+1. Run the following command to set a Target:
 
 ```shell
-daytona delete TARGET_1 TARGET_2
+daytona target set
 ```
 
-Upon running this command, Daytona will prompt you to confirm the deletion of the specified Target. You will be able to see the Target name that you are about to delete, and you will have the option to confirm or cancel the action.
+2. Select **`gcp-provider`** to use the GCP Provider.
 
 ```text
-Delete target(s): [MyTarget]?
-Are you sure you want to delete the target(s): [MyTarget]?
-
-[Yes]   [No]
+Choose a provider
+1 item
+===
+gcp-provider
+v0.0.0
 ```
 
-2. Confirm the action to delete the selected Target.
+3. Select **`New Target`**.
+4. Enter a name for your Target.
 
 ```text
-Target MyTarget successfully deleted
+Name
+>
 ```
 
-## Forward Ports from a Target
-
-Daytona supports flexible port forwarding, allowing you to access services running in a Target locally or via a shareable public URL.
-With port forwarding, you can work on your project in a Target and test your code externally.
-
-### Access a Port Locally
-
-You can access services running in a Target on your local machine.
-
-**Prerequisite**
-
-- A running Target with at least one service accessible via TCP/UDP.
-
-1. Run the following command to forward a port from a running Target to your local machine:
-
-```shell
-daytona forward <PORT> <TARGET> <PROJECT>
-```
-
-**Example:** Allow local access to port 4321 of the `example-dev-env` Target.
-
-```shell
-daytona forward 4321 example-dev-env
-```
-
-Upon running this command, Daytona will establish a port forwarding connection from the specified port in the Target to your local machine. The terminal will display a message indicating the local port where the forwarded connection is available:
+5. Enter the appropriate configuration options when prompted.
 
 ```text
-Port available at http://localhost:4321
+Disk Size
+The size of the instance volume, in GB. Default is 20 GB.
+>
+
+Disk Type
+The GCP disk type to use for the VM. Default is pd-standard.
+https://cloud.google.com/compute/docs/disks
+List of available disk types can be retrieved using the command:
+gcloud compute disk-types list
+>
+
+Machine Type
+The GCP machine type to use for the VM. Default is List n1-standard-1.
+https://cloud.google.com/compute/docs/general-purpose-machines
+List of available machine types can be retrieved using the command:
+gcloud compute machine-types list
+>
+
+Project ID
+The GCP project ID where the resources will be created.
+Leave blank if you've set the GCP_PROJECT_ID.
+How to locate the project ID:
+https://support.google.com/googleapi/answer/7014113?hl=en
+>
+
+VM Image
+The GCP image to use for the VM.
+Default is projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts
+https://cloud.google.com/compute/docs/images
+List of available images can be retrieved using the command:
+gcloud compute images list
+>
+
+Zone
+The GCP zone where the resources will be created. Default is us-central1-a.
+https://cloud.google.com/compute/docs/regions-zones
+List of available zones can be retrieved using the command:
+gcloud compute zones list
+>
+
+Credential File
+Full path to the GCP service account JSON key file.
+Leave blank if you've set the GCP_CREDENTIAL_FILE environment variable.
+Ensure that the file is secure and accessible only to authorized users.
+>
 ```
 
-### Access a Port via Public URL
-
-You can access services running in a Target via a generated public URL.
-This allows you to share your work with others in real-time.
-
-:::note
-This feature uses a free public proxy service hosted by Daytona Platforms, Inc.
-By using this feature, you acknowledge that your data is processed in accordance with Daytona's [Privacy Policy](https://www.daytona.io/company/privacy-policy) and [Terms of Service](https://www.daytona.io/company/terms-of-service).
-:::
-
-**Prerequisite**
-
-- A running Target with at least one service accessible via TCP/UDP.
-
-1. Run the following command to generate a public URL for a port on a running Target:
-
-```shell
-daytona forward <PORT> <TARGET> <PROJECT> --public
-```
-
-**Example:** Generate a URL to access port 4321 of the `example-dev-env` Target.
-
-```shell
-daytona forward 4321 example-dev-env --public
-```
-
-Upon running this command, Daytona will first establish a local port forwarding connection and display a message indicating the local port where the forwarded connection is available.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
-Port available at http://localhost:4321
+Target set successfully
 ```
 
-Then, Daytona will proceed to forward the port to a public URL. The terminal will display progress information and, upon completion, provide the generated public URL.
+## Hetzner
 
-```text
-Forwarding port to a public URL...
-Port available at:
-https://4321-ABC1DeF2GhI3JkLmNoP4RSTuVZ5.try-eu.daytona.app
-```
+Daytona allows you to set a Hetzner Target to use for deploying and managing Workspaces.
 
-This URL can be shared with others to provide real-time access to the service running on the specified port in your Target.
-
-<Aside type="tip">
-Alternatively, generate a public URL by executing the following command in a Target's shell:
+1. Run the following command to set a Target:
 
 ```shell
-daytona forward <PORT>
+daytona target set
 ```
 
-</Aside>
+2. Select **`hetzner-provider`** to use the Hetzner Provider.
+
+```text
+Choose a provider
+1 item
+===
+hetzner-provider
+v0.0.0
+```
+
+3. Select **`New Target`**.
+4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
+5. Enter the appropriate configuration options when prompted.
+
+```text
+API Token
+If empty, token will be fetched from the HETZNER_API_TOKEN environment        
+variable.
+>
+
+Disk Image
+The Hetzner image to use for the VM. Default is ubuntu-24.04.
+https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-   
+images
+>
+
+Disk Size
+The size of the instance volume, in GB. Default is 20 GB.
+>
+
+Location
+The locations where the resources will be created. Default is fsn1.
+https://docs.hetzner.com/cloud/general/locations
+>
+
+Location
+Server Type
+The Hetzner server type to use for the VM. Default is List cpx11.
+https://docs.hetzner.com/cloud/servers/overview
+>
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
+
+## Fly
+
+Daytona allows you to set a DigitalOcean Target to use for deploying and managing Workspaces.
+
+1. Run the following command to set a Target:
+
+```shell
+daytona target set
+```
+
+2. Select **`fly-provider`** to use the Fly Provider.
+
+```text
+Choose a provider
+1 item
+===
+fly-provider
+v0.0.0
+```
+
+3. Select **`New Target`**.
+4. Enter a name for your Target.
+
+```text
+Name
+>
+```
+
+5. Enter the appropriate configuration options when prompted.
+
+```text
+Auth Token
+If empty, token will be fetched from the FLY_ACCESS_TOKEN environment variable. 
+>
+
+Disk Size
+The size of the disk in GB.
+> 
+
+Org Slug
+The organization name to create the fly machine in.
+>
+
+Region
+The region where the fly machine resides. If not specified, near region will be used.
+>
+
+Size
+The size of the fly machine. Default is shared-cpu-4x. 
+List of available sizes https://fly.io/docs/about/pricing/#started-fly-machines
+>
+```
+
+6. Click **`Enter`** to confirm setting the Target.
+
+```text
+Target set successfully
+```
