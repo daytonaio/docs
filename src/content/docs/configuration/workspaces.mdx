@@ -1,0 +1,213 @@
+---
+title: Workspace Configurations
+description: Learn how to manage and reuse Workspaces Configurations across multiple Workspaces.
+---
+
+A Workspace configuration is designed to simplify the management of development environments, allowing you to predefine settings that can be easily applied to any new or existing Workspace.
+
+A Workspace configuration contains all necessary properties to define and manage Workspaces within a Workspace. It stores information such as the repository URL, build configuration, and environment variables. This allows for easy reuse of previously set configurations, ensuring a consistent and reproducible setup across multiple Workspaces.
+
+A Workspace configuration encapsulates all the essential elements for setting up a Workspace, including:
+
+- **Repository URL**
+
+   The URL of the Git repository associated with the Workspace.
+
+- **Build Configuration**
+
+  - [Automatic](/docs/usage/builders#automatic) auto-detects the most appropriate Builder for your Workspace.
+  - [Devcontainer](/docs/usage/builders#dev-container) utilizes a predefined development container specified by a `devcontainer.json` file.
+  - [Custom image](/docs/usage/builders#custom-image) builds the Workspace image by specifying a custom base container.
+  - [None](/docs/usage/builders#none) builds a Workspace by using the default base image (`daytonaio/workspace-project`).
+
+- **Environment Variables**
+
+   Environment variables are specified in the `KEY=VALUE` format. These variables are essential for the Workspace's build and runtime environments. You can set the variables directly or pass them from the machine's environment during execution.
+
+- **Workspace Configuration name**
+
+   A unique identifier for the Workspace Configuration, which distinguishes it from other configurations within the system.
+
+With the `daytona workspace-config` command, you can add, view, update, list, set as default, or delete Workspace Configurations, giving you full control over the configuration and reuse of your Workspace setups across different Workspaces.
+
+## Add a Workspace Configuration
+
+Daytona allows you to add a new Workspace Configuration, enabling you to store and reuse Workspace properties across multiple Workspaces.
+
+1. Run the following command to add a new Workspace Configuration:
+
+```shell
+daytona workspace-config add
+```
+
+2. Enter the repository URL of the Workspace you want to configure.
+
+```text
+Git repository
+>
+```
+
+3. Select the build configuration for the Workspace.
+
+```text
+Choose a build configuration
+Automatic
+Devcontainer
+Custom image
+None
+```
+
+4. Enter the environment variables for the Workspace in the `KEY=VALUE` format.
+
+```text
+Environment Variables
+Enter environment variables in the format KEY=VALUE
+To pass machine env variables at runtime, use $VALUE
+```
+
+5. Enter a name for the Workspace Configuration.
+
+```text
+Workspace config name
+>
+```
+
+   Upon completion, Daytona will save the Workspace Configuration, allowing you to reuse it across multiple Workspaces.
+
+## Workspace Configuration Information
+
+Daytona allows you to view detailed information of a Workspace Configuration, providing you with an overview of the properties stored within it.
+
+1. Run the following command to view the details of a Workspace Configuration:
+
+```shell
+daytona workspace-config info
+```
+
+Upon running this command, Daytona will display a list of your Workspace Configurations
+
+2. Select the Workspace Configuration you want to view.
+
+```text
+Select a Workspace Config To View
+1 item
+┃  MyWorkspaceConfig
+┃  https://github.com/username/MyWorkspace
+```
+
+   Upon selecting the Workspace Configuration, Daytona will display the details of the selected configuration. You will be able to view the Workspace Configuration name, the repository URL it is linked to, the build configuration, and the Devcontainer path.
+
+```text
+Workspace Config Info
+Name                    MyWorkspaceConfig
+Repository              https://github.com/username/MyWorkspace
+Build                   Devcontainer
+Devcontainer path       .devcontainer/devcontainer.json
+```
+
+## List Workspace Configuration
+
+Daytona allows you to list all Workspace Configurations, providing you with an overview of the properties stored within each configuration.
+
+1. Run the following command to list all Workspace Configurations:
+
+```shell
+daytona workspace-config list
+```
+
+Upon running this command, Daytona will display a list of your Workspace Configurations. You will be able to view the Workspace Configuration name, the repository URL it is connected to, the build configuration, and if it is set as a default configuration.
+
+```text
+Name                  Repository            Build            Default
+────────────────────────────────────────────────────────────────────
+MyWorkspaceConfig     daytonaio/daytona     Devcontainer     Yes
+```
+
+## Set Default Workspace Configuration
+
+Daytona allows you to set a default Workspace Configuration, enabling you to define a configuration that will be used by default when creating new Workspaces.
+
+1. Run the following command to set a default Workspace Configuration:
+
+```shell
+daytona workspace-config set-default
+```
+
+2. Select the Workspace Configuration you want to set as the default.
+
+```text
+Select a Workspace Config To Set As Default
+1 item
+┃  MyWorkspaceConfig
+┃  https://github.com/username/MyWorkspace
+```
+
+   Upon selecting the default Workspace Configuration, Daytona will set it as the default configuration for new Workspaces.
+
+```text
+Workspace config 'MyWorkspaceConfig' set as default
+```
+
+## Update Workspace Configuration
+
+Daytona allows you to update an existing Workspace Configuration, enabling you to modify the properties stored within it.
+
+1. Run the following command to update a Workspace Configuration:
+
+```shell
+daytona workspace-config update
+```
+
+2. Select the Workspace Configuration you want to update.
+
+```text
+Select a Workspace Config To Update
+1 item
+┃  MyWorkspaceConfig
+┃  https://github.com/username/MyWorkspace
+```
+
+3. Update the properties of the Workspace Configuration.
+
+```text
+Choose a build configuration
+Automatic
+Devcontainer
+Custom image
+None
+```
+
+```text
+Environment Variables
+Enter environment variables in the format KEY=VALUE
+To pass machine env variables at runtime, use $VALUE
+```
+
+Upon completion, Daytona will save the updated Workspace Configuration, allowing you to reuse it across Workspaces.
+
+```text
+Workspace config updated successfully
+```
+
+## Delete Workspace Configuration
+
+Daytona allows you to delete an existing Workspace Configuration, enabling you to remove properties that are no longer needed.
+
+1. Run the following command to delete a Workspace Configuration:
+
+```shell
+daytona workspace-config delete
+```
+
+2. Select the Workspace Configuration you want to delete.
+
+```text
+Select a Workspace Config To Delete
+1 item
+┃  MyWorkspaceConfig
+┃  https://github.com/username/MyWorkspace
+```
+
+```text
+Workspace config deleted successfully
+```
