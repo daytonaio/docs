@@ -126,6 +126,8 @@ function Search() {
                 <SearchIndex indexName="docs" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
                 <hr style={{ marginBottom: '40px' }} />
                 <SearchIndex indexName="blogs_test" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
+                <hr style={{ marginBottom: '40px' }} />
+                <SearchIndex indexName="website" setDisplayHits={setDisplayHits} setIsSearchVisible={setIsSearchVisible} />
               </>
             )}
             <Configure hitsPerPage={10} clickAnalytics getRankingInfo={false} />
@@ -153,10 +155,15 @@ function SearchIndex({ indexName, setDisplayHits, setIsSearchVisible }) {
 function Hit({ hit, setIsSearchVisible, indexName }) {
   const handleClick = (e) => {
     e.preventDefault();
+    let hitUrl = hit.url;
+
+    if (indexName === 'blogs_test') {
+      hitUrl = `https://www.daytona.io/dotfiles/${hit.slug}`;
+    } else if (indexName === 'website') {
+      hitUrl = `https://www.daytona.io/${hit.slug}`;
+    }
+
     const currentUrl = window.location.href;
-    const hitUrl = indexName === 'blogs_test'
-      ? `https://www.daytona.io/dotfiles/${hit.slug}`
-      : hit.url;
 
     if (currentUrl.includes(hitUrl)) {
       const element = document.querySelector(`[data-slug='${hit.slug}']`);
@@ -179,7 +186,7 @@ function Hit({ hit, setIsSearchVisible, indexName }) {
       }}
     >
       <a href={hit.url} tabIndex="-1" onClick={handleClick}>
-        {indexName === 'docs' && (
+        {(indexName === 'docs' || indexName === 'website') && (
           <>
             <h5 style={{ fontSize: '20px', display: 'flex', alignItems: 'center' }}>
               <span style={{ fontSize: '10px', marginRight: '8px' }}>🟦</span>
@@ -230,10 +237,23 @@ const CustomStats = ({ nbHits, indexName, setDisplayHits }) => {
     setDisplayHits(nbHits > 0)
   }, [nbHits, setDisplayHits])
 
+  const getIndexLabel = () => {
+    switch(indexName) {
+      case 'docs':
+        return 'Documentation';
+      case 'blogs_test':
+        return 'Blog';
+      case 'website':
+        return 'Website';
+      default:
+        return 'Results';
+    }
+  }
+
   return (
     <div className="custom-stats">
       <span style={{ color: 'var(--primary-text-color)' }}>
-        {indexName === 'docs' ? 'Documentation' : 'Blog'}
+        {getIndexLabel()}
         {" "}
       </span>
       ({nbHits} results)
