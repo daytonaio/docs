@@ -1,6 +1,8 @@
 ---
-title: Target Configurations
-description: Learn how to configure Target Configurations in Daytona.
+title: Targets
+description: Learn how to manage Target configuration across Workspaces.
+sidebar:
+  label: Targets
 ---
 
 import Label from '@components/Label.astro'
@@ -9,15 +11,57 @@ import Label from '@components/Label.astro'
   Distribution: **Open Source**
 </Label>
 
-A Target Configuration refers to the specific destination or environment where your development setup, facilitated by various [Providers](/docs/configuration/providers), is deployed and managed. Providers define the method and technology used to create your environments, while Targets Configurations specify the precise location or platform where these environments will reside.
+A Target is an isolated processing unit where Workspaces are executed. It can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure.
 
-A Target Configuration can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Target Configurations offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
+## Create a Target
 
-Once you set your Target Configuration, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Target Configurations or delete those you no longer need.
+Daytona provides an option to create a Target.
 
-## Set a Target Configuration
+1. Run the following command to create a Target:
 
-Daytona provides an option to set a Target Configuration to use when managing Workspaces.
+```shell
+daytona target create
+```
+
+## Start a Target
+
+Daytona provides an option to start a Target.
+
+1. Run the following command to start a Target:
+
+```shell
+daytona target start
+```
+
+## Stop a Target
+
+Daytona provides an option to stop a Target.
+
+1. Run the following command to stop a Target:
+
+```shell
+daytona target stop
+```
+
+## Remove a Target
+
+Daytona provides an option to remove a Target.
+
+1. Run the following command to remove a Target:
+
+```shell
+daytona target remove
+```
+
+{/* A Target refers to the specific destination or environment where your development setups, facilitated by various [Providers](/docs/configuration/providers), are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
+
+A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
+
+Once you set your Target, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Targets or delete those you no longer need.
+
+## Set a Target
+
+Daytona allows you to set a Target to use when managing Workspaces.
 
 **Prerequisite**
 
@@ -25,7 +69,7 @@ Daytona provides an option to set a Target Configuration to use when managing Wo
 
     Providers are essential for managing and deploying your Workspaces, so make sure you have configured at least one.
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to set a Target:
 
 ```shell
 daytona target set
@@ -48,14 +92,14 @@ v0.0.0
 ```
 
 3. Select **`New Target`**.
-4. Enter a name for your Target Configuration.
+4. Enter a name for your Target.
 
 ```text
 Name
 >
 ```
 
-5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a [remote Docker Target Configuration](#docker-local).
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a [remote Docker Target](#docker-local).
 
 ```text
 Remote Hostname
@@ -85,28 +129,28 @@ Custom path
 None
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
 ```
 
 :::note
-Adding or updating a Target Configuration automatically sets it to be the default option for creating workspaces.
-Change this by running `daytona target set-default` and selecting the Target Configuration you want or override it directly by using the `--target` flag when running `daytona create`.
+Adding or updating a Target automatically sets it to be the default option for creating workspaces.
+Change this by running `daytona target set-default` and selecting the Target you want or override it directly by using the `--target` flag when running `daytona create`.
 :::
 
-## List Target Configurations
+## List Targets
 
-Daytona provides an option to keep track of your Target Configurations by listing all previously created Target Configurations with their details.
+Daytona allows you to keep track of your Targets by listing all previously created Targets with their details.
 
-1. Run the following command to list currently set Target Configurations:
+1. Run the following command to list currently set Targets:
 
 ```shell
 daytona target list
 ```
 
-Upon running this command, Daytona will display a list of your Target Configurations with their details. You will be able to see the Target Configuration name, the Provider it is connected to, and its configured options.
+Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the Provider it is connected to, and its configured options.
 
 ```text
 Target      Provider            Options
@@ -116,9 +160,9 @@ MyTarget    docker-provider     {
                                 }
 ```
 
-## Delete a Target Configuration
+## Delete a Target
 
-Daytona provides an option to delete Target Configurations, helping you manage and remove those that are no longer needed. Once a Target Configuration is deleted, you will not be able to manage or deploy Workspaces on that Target Configuration.
+Daytona allows you to delete Targets, helping you manage and remove those that are no longer needed. Once a Target is deleted, you will not be able to manage or deploy Workspaces on that Target.
 
 1. Run the following command:
 
@@ -126,9 +170,9 @@ Daytona provides an option to delete Target Configurations, helping you manage a
 daytona target delete
 ```
 
-Upon running this command, Daytona will display a list of your Target Configurations with their details. You will be able to see the Configuration name, the unique identifier of the Workspace, and the repository it is connected to.
+Upon running this command, Daytona will display a list of your Targets with their details. You will be able to see the Target name, the unique identifier of the Workspace, and the repository it is connected to.
 
-2. Press **`Enter`** on the selected Configuration to delete it.
+2. Press **`Enter`** on the selected Target to delete it.
 
 ```text
 Choose a Target
@@ -153,15 +197,15 @@ Target MyTarget removed successfully
 
 ## Docker (Local)
 
-Daytona allows you to set a local Docker Target Configuration to use for deploying and managing Workspaces. The local Docker Target Configuration enables you to deploy Workspaces on your local machine using Docker.
+Daytona allows you to set a local Docker Target to use for deploying and managing Workspaces. The local Docker Target enables you to deploy Workspaces on your local machine using Docker.
 
 :::note
-Before setting a local Docker Target Configuration, ensure that [Docker](https://docs.docker.com/engine/install/) is installed and running on your local machine.
+Before setting a local Docker Target, ensure that [Docker](https://docs.docker.com/engine/install/) is installed and running on your local machine.
 :::
 
 <br />
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to set a Target:
 
 ```shell
 daytona target set
@@ -177,7 +221,7 @@ docker-provider
 v0.0.0
 ```
 
-3. Select **`local`** to set a local Docker Target Configuration.
+3. Select **`local`** to set a local Docker Target.
 
 ```text
 Choose a Target
@@ -187,7 +231,7 @@ local
 docker-provider
 ```
 
-4. Enter a name for your Target Configuration.
+4. Enter a name for your Target.
 
 ```text
 Name
@@ -201,7 +245,7 @@ Sock Path
 > /var/run/docker.sock
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -209,15 +253,15 @@ Target set successfully
 
 ## Docker (Remote)
 
-Daytona allows you to set a remote Docker Target Configuration to use for deploying and managing Workspaces. The remote Docker Target Configuration enables you to deploy Workspaces on a remote machine using Docker.
+Daytona allows you to set a remote Docker Target to use for deploying and managing Workspaces. The remote Docker Target enables you to deploy Workspaces on a remote machine using Docker.
 
 :::note
-Before setting a remote Docker Target Configuration, ensure that [Docker](https://docs.docker.com/engine/install/) is installed and running on the remote server.
+Before setting a remote Docker Target, ensure that [Docker](https://docs.docker.com/engine/install/) is installed and running on the remote server.
 :::
 
 <br />
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to set a Target:
 
 ```shell
 daytona target set
@@ -233,7 +277,7 @@ docker-provider
 v0.0.0
 ```
 
-3. Select **`New Target`** to set a remote Docker Target Configuration.
+3. Select **`New Target`** to set a remote Docker target.
 
 ```text
 Choose a Target
@@ -242,7 +286,7 @@ Choose a Target
 + New Target
 ```
 
-4. Enter a name for your Target Configuration.
+4. Enter a name for your Target.
 
 ```text
 Name
@@ -282,7 +326,7 @@ Custom path
 None
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -290,9 +334,9 @@ Target set successfully
 
 ## DigitalOcean
 
-Daytona allows you to set a DigitalOcean Target Configuration to use for deploying and managing Workspaces.
+Daytona allows you to set a DigitalOcean Target to use for deploying and managing Workspaces.
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to set a Target:
 
 ```shell
 daytona target set
@@ -309,7 +353,7 @@ v0.0.0
 ```
 
 3. Select **`New Target`**.
-4. Enter a name for your Target Configuration.
+4. Enter a name for your Target.
 
 ```text
 Name
@@ -336,7 +380,7 @@ Size
 >
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -344,9 +388,9 @@ Target set successfully
 
 ## AWS
 
-Daytona allows you to set an AWS Target Configuration to use for deploying and managing Workspaces.
+Daytona allows you to set an AWS Target to use for deploying and managing Workspaces.
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to set a Target:
 
 ```shell
 daytona target set
@@ -363,7 +407,7 @@ v0.0.0
 ```
 
 3. Select **`New Target`**.
-4. Enter a name for your Target Configuration.
+4. Enter a name for your Target.
 
 ```text
 Name
@@ -399,7 +443,7 @@ List of available volume types https://docs.aws.amazon.com/ebs/latest/userguide/
 >
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -407,9 +451,9 @@ Target set successfully
 
 ## Azure
 
-Daytona allows you to set an Azure Target Configuration to use for deploying and managing Workspaces.
+Daytona allows you to set an Azure Target to use for deploying and managing Workspaces.
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to set a Target:
 
 ```shell
 daytona target set
@@ -426,7 +470,7 @@ v0.0.0
 ```
 
 3. Select **`New Target`**.
-4. Enter a name for your Target Configuration.
+4. Enter a name for your Target.
 
 ```text
 Name
@@ -495,7 +539,7 @@ https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
 >
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -503,9 +547,9 @@ Target set successfully
 
 ## GCP
 
-Daytona allows you to set a Google Cloud Platform (GCP) Target Configuration to use for deploying and managing Workspaces.
+Daytona allows you to set a Google Cloud Platform (GCP) Target to use for deploying and managing Workspaces.
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to set a Target:
 
 ```shell
 daytona target set
@@ -522,7 +566,7 @@ v0.0.0
 ```
 
 3. Select **`New Target`**.
-4. Enter a name for your Target Configuration.
+4. Enter a name for your Target.
 
 ```text
 Name
@@ -579,7 +623,7 @@ Ensure that the file is secure and accessible only to authorized users.
 >
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -587,9 +631,9 @@ Target set successfully
 
 ## Hetzner
 
-Daytona allows you to set a Hetzner Target Configuration to use for deploying and managing Workspaces.
+Daytona allows you to set a Hetzner Target to use for deploying and managing Workspaces.
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to set a Target:
 
 ```shell
 daytona target set
@@ -606,7 +650,7 @@ v0.0.0
 ```
 
 3. Select **`New Target`**.
-4. Enter a name for your Target Configuration.
+4. Enter a name for your Target.
 
 ```text
 Name
@@ -643,7 +687,7 @@ https://docs.hetzner.com/cloud/servers/overview
 >
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
@@ -651,9 +695,9 @@ Target set successfully
 
 ## Fly
 
-Daytona allows you to set a DigitalOcean Target Configuration to use for deploying and managing Workspaces.
+Daytona allows you to set a DigitalOcean Target to use for deploying and managing Workspaces.
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to set a Target:
 
 ```shell
 daytona target set
@@ -670,7 +714,7 @@ v0.0.0
 ```
 
 3. Select **`New Target`**.
-4. Enter a name for your Target Configuration.
+4. Enter a name for your Target.
 
 ```text
 Name
@@ -702,8 +746,8 @@ List of available sizes https://fly.io/docs/about/pricing/#started-fly-machines
 >
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm setting the Target.
 
 ```text
 Target set successfully
-```
+``` */}
