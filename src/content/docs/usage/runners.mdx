@@ -7,7 +7,7 @@ A Runner is a standalone service that can be deployed anywhere. The user can dep
 
 Once deployed, the Runner starts up and connects to the [Daytona Server](/docs/usage/server), at which point its status is marked as `Running`.
 
-The Runner sends all requests, while the Server only responds. The Runner sends requests such as _Heartbeat_ (to share its status) and _Job Requests_ (to ask Daytona Server for tasks assigned to it).
+The Runner sends all requests, while the Server only responds. The Runner sends requests such as _Heartbeat_ (to share its status) and _Job Requests_ (to ask Daytona Server for jobs assigned to it).
 
 A single Runner can use multiple [Providers](/docs/configuration/providers), configured during deployment or later via jobs, enabling flexibility for various environments.
 
