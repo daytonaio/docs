@@ -5,7 +5,7 @@ description: Learn how to use and manage Runners in Daytona.
 
 A Runner is a standalone service that can be deployed anywhere. The user can deploy a Runner on a target system by executing a set of instructions and commands generated upon Runner registration.
 
-Once deployed, the Runner starts up and connects to the [Daytona Server](/docs/usage/server), at which point its status is marked as `Active`.
+Once deployed, the Runner starts up and connects to the [Daytona Server](/docs/usage/server), at which point its status is marked as `Running`.
 
 The Runner sends all requests, while the Server only responds. The Runner sends requests such as _Heartbeat_ (to share its status) and _Job Requests_ (to ask Daytona Server for tasks assigned to it).
 
@@ -33,4 +33,4 @@ Once the Runner is deployed on the target system, you can start it by running th
 daytona runner start
 ```
 
-The Runner will connect to the Daytona Server and its status will be marked as `Active`.
+The Runner will connect to the Daytona Server and its status will be marked as `Running`.
