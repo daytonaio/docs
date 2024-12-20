@@ -28,7 +28,7 @@ Daytona provides an option to set a Target Configuration to use when managing Wo
 1. Run the following command to set a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config set
 ```
 
 2. Select the appropriate Provider for the environment you want to deploy to.
@@ -93,7 +93,7 @@ Target set successfully
 
 :::note
 Adding or updating a Target Configuration automatically sets it to be the default option for creating workspaces.
-Change this by running `daytona target set-default` and selecting the Target Configuration you want or override it directly by using the `--target` flag when running `daytona create`.
+Change this by running `daytona target-config set-default` and selecting the Target Configuration you want or override it directly by using the `--target-config` flag when running `daytona create`.
 :::
 
 ## List Target Configurations
@@ -103,7 +103,7 @@ Daytona provides an option to keep track of your Target Configurations by listin
 1. Run the following command to list currently set Target Configurations:
 
 ```shell
-daytona target list
+daytona target-config list
 ```
 
 Upon running this command, Daytona will display a list of your Target Configurations with their details. You will be able to see the Target Configuration name, the Provider it is connected to, and its configured options.
@@ -123,7 +123,7 @@ Daytona provides an option to delete Target Configurations, helping you manage a
 1. Run the following command:
 
 ```shell
-daytona target delete
+daytona target-config delete
 ```
 
 Upon running this command, Daytona will display a list of your Target Configurations with their details. You will be able to see the Configuration name, the unique identifier of the Workspace, and the repository it is connected to.
@@ -164,7 +164,7 @@ Before setting a local Docker Target Configuration, ensure that [Docker](https:/
 1. Run the following command to set a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config set
 ```
 
 2. Select **`docker-provider`** to use the Docker Provider.
@@ -220,7 +220,7 @@ Before setting a remote Docker Target Configuration, ensure that [Docker](https:
 1. Run the following command to set a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config set
 ```
 
 2. Select **`docker-provider`** to use the Docker Provider.
@@ -295,7 +295,7 @@ Daytona allows you to set a DigitalOcean Target Configuration to use for deployi
 1. Run the following command to set a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config set
 ```
 
 2. Select **`digitalocean-provider`** to use the DigitalOcean Provider.
@@ -349,7 +349,7 @@ Daytona allows you to set an AWS Target Configuration to use for deploying and m
 1. Run the following command to set a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config set
 ```
 
 2. Select **`aws-provider`** to use the AWS Provider.
@@ -412,7 +412,7 @@ Daytona allows you to set an Azure Target Configuration to use for deploying and
 1. Run the following command to set a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config set
 ```
 
 2. Select **`azure-provider`** to use the Azure Provider.
@@ -508,7 +508,7 @@ Daytona allows you to set a Google Cloud Platform (GCP) Target Configuration to 
 1. Run the following command to set a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config set
 ```
 
 2. Select **`gcp-provider`** to use the GCP Provider.
@@ -592,7 +592,7 @@ Daytona allows you to set a Hetzner Target Configuration to use for deploying an
 1. Run the following command to set a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config set
 ```
 
 2. Select **`hetzner-provider`** to use the Hetzner Provider.
@@ -656,7 +656,7 @@ Daytona allows you to set a DigitalOcean Target Configuration to use for deployi
 1. Run the following command to set a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config set
 ```
 
 2. Select **`fly-provider`** to use the Fly Provider.
