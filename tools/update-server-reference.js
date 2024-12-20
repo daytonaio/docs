@@ -109,7 +109,7 @@ async function process(args) {
 const commandOpts = {
   ref: {
     type: 'string',
-    default: `v0.49.0`,
+    default: `v0.50.0`,
   },
   output: {
     type: 'string',
