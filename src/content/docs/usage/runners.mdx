@@ -18,19 +18,19 @@ Daytona provides an option to register a new Runner, allowing you to deploy it o
 1. Run the following command to register a new Runner:
 
 ```shell
-daytona runner register
+daytona server runner register
 ```
 
 Upon running the command, Daytona will generate a code snippet containing the server API URL and API key required to deploy the Runner on the target system.
 
-2. Paste the code snippet into the target system's terminal and execute it to deploy the Runner.
+2. Paste the code snippet into the target system's terminal and execute it to configure the Runner.
 
 ## Start a Runner
 
-Once the Runner is deployed on the target system, you can start it by running the following command:
+Once the Runner is configured on the target system, you can start it by running the following command:
 
 ```shell
-daytona runner start
+daytona server runner start
 ```
 
 The Runner will connect to the Daytona Server and its status will be marked as `Running`.
