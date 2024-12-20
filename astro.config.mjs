@@ -91,15 +91,15 @@ export default defineConfig({
               },
             },
             {
-              label: 'Target Config',
-              link: '/configuration/targets',
+              label: 'Target Configs',
+              link: '/configuration/target-config',
               attrs: {
                 icon: 'tag.svg',
               },
             },
             {
-              label: 'Workspace Config',
-              link: '/configuration/workspaces',
+              label: 'Workspace Templates',
+              link: '/configuration/workspace-templates',
               attrs: {
                 icon: 'computer.svg',
               },
