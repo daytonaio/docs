@@ -11,7 +11,49 @@ import Label from '@components/Label.astro'
   Distribution: **Open Source**
 </Label>
 
-A Target refers to the specific destination or environment where your development setups, facilitated by various [Providers](/docs/configuration/providers), are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
+A Target is an isolated processing unit where Workspaces are executed. It can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure.
+
+## Create a Target
+
+Daytona provides an option to create a Target.
+
+1. Run the following command to create a Target:
+
+```shell
+daytona target create
+```
+
+## Start a Target
+
+Daytona provides an option to start a Target.
+
+1. Run the following command to start a Target:
+
+```shell
+daytona target start
+```
+
+## Stop a Target
+
+Daytona provides an option to stop a Target.
+
+1. Run the following command to stop a Target:
+
+```shell
+daytona target stop
+```
+
+## Remove a Target
+
+Daytona provides an option to remove a Target.
+
+1. Run the following command to remove a Target:
+
+```shell
+daytona target remove
+```
+
+{/* A Target refers to the specific destination or environment where your development setups, facilitated by various [Providers](/docs/configuration/providers), are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
 
 A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
@@ -708,4 +750,4 @@ List of available sizes https://fly.io/docs/about/pricing/#started-fly-machines
 
 ```text
 Target set successfully
-```
+``` */}
