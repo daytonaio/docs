@@ -13,11 +13,11 @@ A Target Configuration refers to the specific destination or environment where y
 
 A Target Configuration can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Target Configurations offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
-Once you set your Target Configuration, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Target Configurations or delete those you no longer need.
+Once you add your Target Configuration, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Target Configurations or delete those you no longer need.
 
-## Set a Target Configuration
+## Add a Target Configuration
 
-Daytona provides an option to set a Target Configuration to use when managing Workspaces.
+Daytona provides an option to add a Target Configuration to use when managing Workspaces.
 
 **Prerequisite**
 
@@ -25,10 +25,10 @@ Daytona provides an option to set a Target Configuration to use when managing Wo
 
     Providers are essential for managing and deploying your Workspaces, so make sure you have configured at least one.
 
-1. Run the following command to set a Target Configuration:
+1. Run the following command to add a Target Configuration:
 
 ```shell
-daytona target-config set
+daytona target-config add
 ```
 
 2. Select the appropriate Provider for the environment you want to deploy to.
@@ -55,7 +55,7 @@ Name
 >
 ```
 
-5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows setting a [remote Docker Target Configuration](#docker-local).
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows adding a [remote Docker Target Configuration](#docker-local).
 
 ```text
 Remote Hostname
@@ -85,16 +85,11 @@ Custom path
 None
 ```
 
-6. Click **`Enter`** to confirm setting the Target Configuration.
+6. Click **`Enter`** to confirm adding the Target Configuration.
 
 ```text
-Target set successfully
+Target added successfully
 ```
-
-:::note
-Adding or updating a Target Configuration automatically sets it to be the default option for creating workspaces.
-Change this by running `daytona target-config set-default` and selecting the Target Configuration you want or override it directly by using the `--target-config` flag when running `daytona create`.
-:::
 
 ## List Target Configurations
 
