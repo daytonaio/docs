@@ -9,6 +9,7 @@ import DocumentListItem from "@components/DocumentListItem.astro";
 import CardGrid from '@components/cards/CardGrid.astro';
 import TitleCard from '@components/cards/TitleCard.astro';
 import ImageCard from '@components/cards/ImageCard.astro';
+import Image from '@components/Image.astro';
 import Keyboard from "@components/Keyboard.astro"
 import bitbucketLogo from '@assets/index/icons/Bitbucket.svg?raw';
 import githubLogo from '@assets/index/icons/GitHub.svg?raw';
@@ -22,8 +23,83 @@ import CLlogo from '@assets/index/images/clion.png';
 import RDlogo from '@assets/index/images/rider.png';
 import RMlogo from '@assets/index/images/rubyMine.png';
 import TerminalSSHlogo from '@assets/index/icons/terminal.svg';
+import ArchitectureDiagramLight from '@assets/index/images/architecture-diagram-light.png';
+import ArchitectureDiagramDark from '@assets/index/images/architecture-diagram-dark.png';
 
-This section will guide you through the steps required to install, configure, and use Daytona to manage your development environments.
+Welcome to Daytona! This guide will help you get started with Daytona, an open-source Development Environment Manager (DEM) designed to simplify the creation, management, and deployment of development environments.
+
+## Understanding Daytona
+
+Daytona is an open-source Development Environment Manager (DEM) licensed under the Apache License 2.0. Daytona allows you to manage and deploy [Workspaces](/docs/usage/workspaces) — reproducible development environments based on standard OCI containers, with built-in support for the Dev Container standard.
+
+### Architecture Diagram
+
+The Daytona architecture diagram represents the Daytona platform, showcasing the components and services available in its [Open Source](#open-source) and [Enterprise](#enterprise) editions. The Open Source version is designed to provide core functionality for development, while the Enterprise edition builds on this foundation with enhanced features tailored for larger organizations, including advanced authentication, authorization, dashboard, observability capabilities, and resource management.
+
+<br />
+
+<Image
+  iconLight={ArchitectureDiagramLight}
+  iconDark={ArchitectureDiagramDark}
+  height="100%"
+  width="100%"
+  imageAlt="Daytona Architecture Diagram"
+/>
+
+### Open Source
+
+Daytona Open Source version includes the [Daytona API](/docs/tools/api), which serves as the central interface for programmatically interacting with Daytona.
+
+#### Interfaces
+
+The Open Source version supports multiple interfaces to enhance developer flexibility. These include the [Command Line Interface (CLI)](/docs/tools/cli) for direct control, [IDEs](/docs/usage/ide) such as [Visual Studio Code (VSCode)](/docs/usage/ide#vs-code), [Jupyter](/docs/usage/ide#jupyter), [Zed](/docs/usage/ide#zed), [Cursor](/docs/usage/ide#cursor), JetBrains IDEs for integrated development, and [Terminal SSH](/docs/usage/ide#terminal-ssh).
+
+Additionally, Daytona SDK is provided to enable developers to create custom integrations and extend platform functionality.
+
+#### Git Providers
+
+The Open Source version integrates with [Git Providers](/docs/configuration/git-providers), enabling efficient source code management and synchronization with Workspaces. Supported Git Providers include [GitHub](/docs/configuration/git-providers#github), [GitLab](/docs/configuration/git-providers#gitlab), [Bitbucket](/docs/configuration/git-providers#bitbucket), [GitHub Enterprise Server](/docs/configuration/git-providers#github-enterprise-server), [GitLab Self-Managed](/docs/configuration/git-providers#gitlab-self-managed), [Bitbucket Server](/docs/configuration/git-providers#bitbucket-server), [Codeberg](/docs/configuration/git-providers#codeberg), [Gitea](/docs/configuration/git-providers#gitea), [Gitness](/docs/configuration/git-providers#gitness), [Azure DevOps](/docs/configuration/git-providers#azure-devops), [AWS CodeCommit](/docs/configuration/git-providers#aws-codecommit), [Gogs](/docs/configuration/git-providers#gogs), and [Gitee](/docs/configuration/git-providers#gitee). This integration facilitates collaborative development workflows and streamlines the connection between repositories and development environments.
+
+#### Container Registries and Providers
+
+The Open Source offering includes support for multiple Container Registries and [Providers](/docs/configuration/providers), ensuring that containerized images can be used efficiently within development environments. Supported Providers include [Docker](/docs/configuration/providers#docker), [DigitalOcean](/docs/configuration/providers#digitalocean), [AWS](/docs/configuration/providers#aws), [Azure](/docs/configuration/providers#azure), [GCP](/docs/configuration/providers#gcp), [Hetzner](/docs/configuration/providers#hetzner), and [Fly](/docs/configuration/providers#fly).
+
+#### Targets
+
+[Targets](/docs/configuration/targets) represent isolated processing units where Workspaces are executed. They can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure. Daytona supports a variety of Targets, including [Docker (Local)](/docs/configuration/targets#docker), [Docker (Remote)](/docs/configuration/targets#docker), [DigitalOcean](/docs/configuration/targets#digitalocean), [AWS](/docs/configuration/targets#aws), [Azure](/docs/configuration/targets#azure), [GCP](/docs/configuration/targets#gcp), [Hetzner](/docs/configuration/targets#hetzner), and [Fly](/docs/configuration/targets#fly).
+
+### Enterprise
+
+The Enterprise edition of Daytona extends the capabilities of the Open Source version with additional features and services tailored for enterprise-grade development environments. These enhancements include advanced security, authentication, and authorization mechanisms, as well as observability and resource management tools to optimize workspace performance and utilization.
+
+#### Dashboard
+
+The Enterprise version introduces a Dashboard, which provides a centralized interface for managing and monitoring the platform, improving visibility and control over development environments.
+
+#### Authentication
+
+Authentication features support Single Sign-On (SSO) and standards such as Security Assertion Markup Language (SAML) and
+System for Cross-domain Identity Management (SCIM), ensuring secure access to the platform. This enables seamless integration with enterprise identity systems and simplifies user management.
+
+#### Authorization
+
+Authorization capabilities allow for granular control of access and permissions across users, teams, organizations, and projects. This ensures secure collaboration and adherence to organizational policies by providing role-based access management.
+
+#### Observability
+
+Observability tools offer enhanced monitoring, logging, and tracing capabilities for Workspaces and development activities. This ensures that teams can track system performance, debug issues effectively, and maintain operational insights into their environments.
+
+#### Resource Management
+
+Resource Management is expanded with enterprise features, enhancing workspace classes and quota management to meet large-scale, organization-wide requirements.
+
+#### Identitiy Providers (IDP)
+
+The Enterprise version integrates with Identity Providers (IDP) to enhance authentication and identity management. Supported IDPs include EntraID, Cognito, Okta, OpenID, Google, and others. These integrations ensure that enterprises can use their existing identity systems to manage user authentication, enabling secure and compliant access to the platform.
+
+#### Security
+
+Daytona Enterprise enhances security by integrating with advanced security tools and services. These include JFrog, Snyk, Sonatype, and more, ensuring that vulnerabilities in dependencies and containerized environments are identified and mitigated. These security integrations provide automated scanning, reporting, and remediation, reinforcing the integrity of development workflows and applications.
 
 ## Before You Begin
 
