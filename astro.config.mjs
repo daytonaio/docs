@@ -91,6 +91,13 @@ export default defineConfig({
               },
             },
             {
+              label: 'Container Registries',
+              link: '/configuration/container-registries',
+              attrs: {
+                icon: '',
+              },
+            },
+            {
               label: 'Targets',
               link: '/configuration/targets',
               attrs: {
