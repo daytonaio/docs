@@ -1,0 +1,85 @@
+---
+title: Container Registries
+description: Configure container registries for your Workspace in Daytona
+---
+
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+Container Registries are used to store and manage container images that are used to deploy applications. Daytona's architecture allows you to configure multiple container registries. This allows you to use different registries for different environments, such as development, testing, and production.
+
+## Add a Container Registry
+
+Daytona provides an option to add a container registry for your Workspace.
+
+1. Run the following command to add a container registry:
+
+```shell
+daytona container-registry add
+```
+
+Upon running the command, you will be prompted to enter the following details:
+
+- **Server URL**: The URL of the container registry.
+- **Username**: The username to authenticate with the container registry.
+- **Password**: The password to authenticate with the container registry.
+
+```text
+Server URL
+>
+
+Username
+>
+
+Password
+>
+```
+
+```text
+Registry set successfully
+```
+
+## List Container Registries
+
+Daytona provides an option to list the container registries configured for your Workspaces.
+
+1. Run the following command to list the container registries:
+
+```shell
+daytona container-registry list
+```
+
+Upon running this command, Daytona will display a list of your configured container registries with their respective details.
+
+```text
+Server                  Username            Password                     
+─────────────────────────────────────────────────────────────────────    
+myregistry.com          daytona             ********  
+```
+
+## Delete a Container Registry
+
+Daytona provides an option to delete a container registry from your Workspace.
+
+1. Run the following command to delete a container registry:
+
+```shell
+daytona container-registry delete
+```
+
+Upon running this command, you will be prompted to select the container registry you want to delete.
+
+```text
+Choose a container registry
+1 item
+===
+myregistry.com
+daytona
+```
+
+```text
+Container registry deleted successfully
+```
