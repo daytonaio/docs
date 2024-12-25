@@ -1,0 +1,65 @@
+---
+import { Image as AstroImage } from 'astro:assets'
+
+const { imageAlt, iconLight, iconDark, height, width } = Astro.props
+---
+
+<theme-aware-image>
+  <picture>
+    <source
+      srcset={iconDark.src}
+      data-dark-src={iconDark.src}
+      data-light-src={iconLight.src}
+    />
+    <AstroImage
+      src={iconLight}
+      alt={imageAlt}
+      style={`height: ${height || 'auto'}; width: ${width || 'auto'};`}
+      class="theme-image"
+    />
+  </picture>
+</theme-aware-image>
+
+<script>
+  class ThemeAwareImage extends HTMLElement {
+    constructor() {
+      super()
+      this.updateImage(
+        document.documentElement.dataset.theme as 'light' | 'dark'
+      )
+
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          if (mutation.attributeName === 'data-theme') {
+            const theme = document.documentElement.dataset.theme as
+              | 'light'
+              | 'dark'
+            this.updateImage(theme)
+          }
+        })
+      })
+
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme'],
+      })
+    }
+
+    updateImage(theme: 'light' | 'dark') {
+      const source = this.querySelector('source')
+      const img = this.querySelector('img')
+
+      if (source && img) {
+        const newSrc =
+          theme === 'dark' ? source.dataset.darkSrc : source.dataset.lightSrc
+
+        if (newSrc) {
+          source.srcset = newSrc
+          img.src = newSrc
+        }
+      }
+    }
+  }
+
+  customElements.define('theme-aware-image', ThemeAwareImage)
+</script>
