@@ -60,9 +60,13 @@ Additionally, Daytona SDK is provided to enable developers to create custom inte
 
 The Open Source version integrates with [Git Providers](/docs/configuration/git-providers), enabling efficient source code management and synchronization with Workspaces. Supported Git Providers include [GitHub](/docs/configuration/git-providers#github), [GitLab](/docs/configuration/git-providers#gitlab), [Bitbucket](/docs/configuration/git-providers#bitbucket), [GitHub Enterprise Server](/docs/configuration/git-providers#github-enterprise-server), [GitLab Self-Managed](/docs/configuration/git-providers#gitlab-self-managed), [Bitbucket Server](/docs/configuration/git-providers#bitbucket-server), [Codeberg](/docs/configuration/git-providers#codeberg), [Gitea](/docs/configuration/git-providers#gitea), [Gitness](/docs/configuration/git-providers#gitness), [Azure DevOps](/docs/configuration/git-providers#azure-devops), [AWS CodeCommit](/docs/configuration/git-providers#aws-codecommit), [Gogs](/docs/configuration/git-providers#gogs), and [Gitee](/docs/configuration/git-providers#gitee). This integration facilitates collaborative development workflows and streamlines the connection between repositories and development environments.
 
-#### Container Registries and Providers
+#### Container Registries
 
-The Open Source offering includes support for multiple Container Registries and [Providers](/docs/configuration/providers), ensuring that containerized images can be used efficiently within development environments. Supported Providers include [Docker](/docs/configuration/providers#docker), [DigitalOcean](/docs/configuration/providers#digitalocean), [AWS](/docs/configuration/providers#aws), [Azure](/docs/configuration/providers#azure), [GCP](/docs/configuration/providers#gcp), [Hetzner](/docs/configuration/providers#hetzner), and [Fly](/docs/configuration/providers#fly).
+Daytona supports multiple Container Registries to store and manage containerized images. Supported Container Registries include Google Container Registry, Azure Container Registry, Amazon Elastic Container Registry, Docker Hub, and others. This support ensures that containerized images are stored securely and can be accessed efficiently within development environments.
+
+#### Providers
+
+Daytona Providers are plugins that enable integration with various technologies to create and manage development environments. Supported Providers include [Docker](/docs/configuration/providers#docker), [DigitalOcean](/docs/configuration/providers#digitalocean), [AWS](/docs/configuration/providers#aws), [Azure](/docs/configuration/providers#azure), [GCP](/docs/configuration/providers#gcp), [Hetzner](/docs/configuration/providers#hetzner), and [Fly](/docs/configuration/providers#fly). These Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run development environments.
 
 #### Targets
 
