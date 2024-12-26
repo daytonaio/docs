@@ -131,6 +131,13 @@ export default defineConfig({
               },
             },
             {
+              label: 'Samples',
+              link: '/usage/samples',
+              attrs: {
+                icon: 'samples.svg',
+              },
+            },
+            {
               label: 'Builders',
               link: '/usage/builders',
               attrs: {
