@@ -12,6 +12,8 @@ The Daytona SDK provides powerful process and code execution capabilities throug
 
 ## Code Execution
 
+Daytona SDK provides an option to run code snippets in various languages like Python, TypeScript, and more. You can execute code with input, timeout, and environment variables.
+
 ### Running Code
 
 #### Python
@@ -71,6 +73,8 @@ console.log(response.result);
 
 ### Code Execution Options
 
+Daytona SDK provides an option to run code with specific environment variables, working directories, and languages.
+
 #### Python
 
 ```python
@@ -116,6 +120,8 @@ const response = await workspace.process.codeRun(
 ```
 
 ## Process Execution
+
+Daytona SDK provides an option to execute shell commands and manage background processes in Workspaces. You can run commands with input, timeout, and environment variables.
 
 ### Running Commands
 
@@ -165,6 +171,8 @@ console.log(response.output);
 
 ### Process Options
 
+Daytona SDK provides an option to execute commands with specific environment variables, working directories, and shell.
+
 #### Python
 
 ```python
@@ -210,6 +218,8 @@ const response = await workspace.process.processExecuteCommand(
 ```
 
 ## Background Processes
+
+Daytona SDK provides an option to start, stop, and manage background processes in Workspaces. You can run long-running commands, monitor process status, and list all running processes.
 
 ### Managing Long-Running Processes
 
@@ -305,6 +315,8 @@ processes.forEach(process => {
    ```
 
 ## Common Issues
+
+Daytona SDK provides an option to troubleshoot common issues related to process execution and code execution.
 
 ### Process Execution Failed
 

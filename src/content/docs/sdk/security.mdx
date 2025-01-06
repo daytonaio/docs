@@ -12,6 +12,8 @@ This guide covers security best practices and considerations when using the Dayt
 
 ## API Key Management
 
+Daytona SDK provides an option to store API keys securely and manage access controls. You can use environment variables or secure configuration storage to store sensitive information.
+
 ### Secure Storage
 
 #### Environment Variables
@@ -59,6 +61,8 @@ const daytona = new Daytona({
 ```
 
 ## Workspace Security
+
+Daytona SDK provides an option to create isolated workspaces with custom resource limits and access controls. You can configure network isolation, user permissions, and resource quotas for each Workspace.
 
 ### Isolation
 
@@ -108,6 +112,8 @@ await workspace.setPermissions({
 
 ## File System Security
 
+Daytona SDK provides an option to set secure file permissions, validate file operations, and secure sensitive data. You can use secure file operations to protect against unauthorized access and data leaks.
+
 ### File Permissions
 
 ```python
@@ -132,6 +138,8 @@ await workspace.fs.secureOperation(async () => {
 ```
 
 ## Process Execution Security
+
+Daytona SDK provides an option to secure process execution, sanitize command inputs, and validate code execution. You can set execution limits, validate user inputs, and monitor process activity for security compliance.
 
 ### Command Sanitization
 
@@ -195,6 +203,8 @@ function runSecureCode(code: string) {
 
 ## Git Security
 
+Daytona SDK provides an option to secure Git operations, validate Git URLs, and enforce secure authentication. You can use secure Git operations to protect against unauthorized access and data leaks.
+
 ### Secure Git Operations
 
 ```python
@@ -235,6 +245,8 @@ async function cloneSecureRepo(url: string) {
 
 ## Network Security
 
+Daytona SDK provides an option to secure network connections, enable SSL/TLS, and validate certificates. You can configure network access, firewall rules, and monitor network traffic for security compliance.
+
 ### SSL/TLS Configuration
 
 ```python
@@ -260,6 +272,8 @@ const daytona = new Daytona({
 ```
 
 ## Audit and Logging
+
+Daytona SDK provides an option to enable security logging, monitor audit trails, and track security events. You can use security logging to maintain compliance records, track security incidents, and monitor security events for security compliance.
 
 ### Security Logging
 
@@ -292,6 +306,8 @@ function auditLog(event: string, details: Record<string, any>) {
 ```
 
 ## Security Checklist
+
+Use the following checklist to ensure security best practices when using the Daytona SDK:
 
 1. **API Key Security**
    - [ ] Store API keys securely

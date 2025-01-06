@@ -50,7 +50,7 @@ const lspServer = workspace.createLspServer(
 
 ## Supported Languages
 
-The SDK supports LSP for various languages through the `LspLanguageId` enum:
+Daytona SDK provides an option to create LSP servers for various languages through the `LspLanguageId` enum:
 
 ### Python
 
@@ -96,7 +96,7 @@ Daytona SDK provides various LSP features for code analysis and editing:
 
 ### Code Completion
 
-Get code completion suggestions:
+Daytona SDK provides an option to get code completions for a specific position:
 
 #### Python
 
@@ -180,7 +180,7 @@ console.log(`Definition location: ${definition.uri}:${definition.range}`)
 
 ### Hover Information
 
-Daytona SDK provides hover information for code elements:
+Daytona SDK provides hover information for code elements. This includes documentation and type information:
 
 #### Python
 
@@ -225,7 +225,7 @@ console.log(`Hover content: ${hover.contents}`)
            LspLanguageId.TYPESCRIPT,
            "/workspace/project"
        )
-       // Use LSP server...
+       // Use LSP server
    } finally {
        await lspServer.dispose()  // Clean up server
    }
@@ -256,6 +256,8 @@ console.log(`Hover content: ${hover.contents}`)
    - Dispose of unused servers
 
 ## Common Issues
+
+Daytona SDK provides an option to troubleshoot common issues related to LSP servers.
 
 ### Server Initialization
 

@@ -14,7 +14,7 @@ The Daytona SDK provides flexible configuration options to customize its behavio
 
 ### Python Configuration
 
-The `DaytonaConfig` class accepts the following parameters:
+Daytona SDK provides an option to configure settings using the `DaytonaConfig` class. The `DaytonaConfig` class accepts the following parameters:
 
 ```python
 from daytona_sdk import DaytonaConfig
@@ -36,7 +36,7 @@ config = DaytonaConfig(
 
 ### TypeScript Configuration
 
-The `DaytonaConfig` interface includes these properties:
+Daytona SDK provides an option to configure settings using the `DaytonaConfig` interface. The `DaytonaConfig` interface includes these properties:
 
 ```typescript
 import { DaytonaConfig } from '@daytona/sdk';
@@ -161,6 +161,8 @@ const config: DaytonaConfig = {
 
 ### Proxy Configuration
 
+Daytona SDK supports proxy configuration with optional authentication.
+
 ```python
 # Python
 config = DaytonaConfig(
@@ -181,6 +183,8 @@ const config: DaytonaConfig = {
 ```
 
 ### Retry Configuration
+
+Daytona SDK supports automatic retries on specific status codes.
 
 ```python
 # Python
@@ -231,6 +235,8 @@ const config: DaytonaConfig = {
     Enable logging for debugging configuration problems.
 
 ## Troubleshooting
+
+Daytona SDK provides an option to validate configuration settings and troubleshoot common issues.
 
 ### Common Configuration Issues
 

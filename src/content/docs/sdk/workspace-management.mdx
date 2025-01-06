@@ -12,9 +12,9 @@ Workspaces are isolated development environments managed by Daytona. This guide 
 
 ## Creating Workspaces
 
-### Basic Workspace Creation
+Daytona SDK provides an option to create workspaces with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the workspace.
 
-Daytona provides a simple interface for creating workspaces with default configurations. You can create a Workspace with a specific language, custom ID, or default settings.
+### Basic Workspace Creation
 
 #### Python
 
@@ -51,6 +51,8 @@ const workspace = await daytona.create({ id: 'my-workspace' });
 ```
 
 ### Advanced Workspace Creation
+
+Daytona SDK provides an option to create Workspaces with advanced configurations, such as custom images, environment variables, resources, and volumes.
 
 #### Python
 
@@ -246,6 +248,8 @@ const workspace = await daytona.create({
 
 ## Workspace Volumes
 
+Daytona SDK provides an option to mount volumes in Workspaces, which can be used to share data between the host and the Workspace.
+
 ### Volume Configuration
 
 ```python
@@ -325,6 +329,8 @@ try {
 ```
 
 ## Common Issues
+
+Daytona SDK provides an option to troubleshoot common issues related to Workspace creation, management, and resource usage.
 
 ### Workspace Creation Failed
 

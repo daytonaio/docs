@@ -12,6 +12,8 @@ The Daytona SDK provides comprehensive file system operations through the `fs` m
 
 ## Basic Operations
 
+Daytona SDK provides an option to interact with the file system in workspaces. You can perform various operations like listing files, creating directories, reading and writing files, and more.
+
 ### Listing Files and Directories
 
 #### Python
@@ -81,6 +83,8 @@ await workspace.fs.createFolder("/workspace/parent/child", { createParents: true
 
 ### File Operations
 
+Daytona SDK provides options to read, write, upload, download, and delete files.
+
 #### Python
 
 ```python
@@ -135,6 +139,8 @@ await workspace.fs.deleteFolder("/workspace/dir", { recursive: true });
 
 ### File Permissions
 
+Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively.
+
 #### Python
 
 ```python
@@ -164,6 +170,8 @@ console.log(`Permissions: ${perms.mode}`);
 ```
 
 ### File Search and Replace
+
+Daytona SDK provides an option to search for text in files and replace text in files.
 
 #### Python
 
@@ -261,6 +269,8 @@ await workspace.fs.replaceInFiles(
    ```
 
 ## Common Issues
+
+Daytona SDK provides an option to troubleshoot common issues related to file system operations.
 
 ### Permission Denied
 
