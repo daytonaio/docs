@@ -86,6 +86,8 @@ finally:
 
 ### TypeScript Example
 
+TypeScript example using the Daytona SDK, showing how to create a workspace, run some code, and clean up afterwards:
+
 ```typescript
 import { Daytona, DaytonaConfig } from '@daytona/sdk';
 
@@ -125,9 +127,9 @@ main().catch(console.error);
 
 The SDK looks for these environment variables:
 
-- `DAYTONA_API_KEY` - Your Daytona API key
-- `DAYTONA_SERVER_URL` - URL of your Daytona server
-- `DAYTONA_TARGET` - Target environment (defaults to "local")
+- `DAYTONA_API_KEY` - Your Daytona API key.
+- `DAYTONA_SERVER_URL` - URL of your Daytona server.
+- `DAYTONA_TARGET` - Target environment. Defaults to `local`.
 
 You can set these in a `.env` file:
 
@@ -141,41 +143,55 @@ DAYTONA_TARGET=local
 
 The SDK provides several key features:
 
-- 🚀 **Workspace Management**: Create, manage, and remove development environments
-- 📂 **File System Operations**: Full file system access and management
-- 🔄 **Git Integration**: Built-in Git operations support
-- ⚡ **Process Execution**: Run commands and code in isolated environments
-- 🔧 **LSP Support**: Language Server Protocol integration
+- 🚀 **Workspace Management**
+
+    Create, manage, and remove development environments.
+
+- 📂 **File System Operations**
+
+    Full file system access and management.
+
+- 🔄 **Git Integration**
+
+    Built-in Git operations support.
+
+- ⚡ **Process Execution**
+
+    Run commands and code in isolated development environments.
+
+- 🔧 **LSP Support**
+
+    Language Server Protocol integration.
 
 ## Next Steps
 
-- Learn about [Configuration](configuration) options
-- Explore [Workspace Management](workspace)
-- See [File System Operations](filesystem)
-- Check out [Git Operations](git)
-- Understand [Process & Code Execution](process)
-- Learn about [LSP Support](lsp)
+- Learn about [Configuration](/docs/sdk/configuration) options.
+- Explore [Workspace Management](/docs/sdk/workspace-management).
+- See [File System Operations](/docs/sdk/file-system-operations).
+- Check out [Git Operations](/docs/sdk/git-operations).
+- Understand [Process & Code Execution](/docs/sdk/process-code-execution).
+- Learn about [LSP Support](/docs/sdk/language-server-protocol).
 
 ## Common Issues
 
 ### Authentication Failed
 
-- Verify your API key is correct
-- Check if the server URL is accessible
-- Ensure environment variables are properly set
+- Verify your API key is correct.
+- Check if the server URL is accessible.
+- Ensure environment variables are properly set.
 
 ### Workspace Creation Failed
 
-- Check if you have sufficient permissions
-- Verify the target environment is available
-- Ensure network connectivity to the Daytona server
+- Check if you have sufficient permissions.
+- Verify the target environment is available.
+- Ensure network connectivity to the Daytona server.
 
 ## Getting Help
 
-If you encounter any issues:
+If you encounter any issues with the Daytona SDK, follow these steps:
 
-1. Check the [Troubleshooting Guide](troubleshooting)
-2. Review the [Security Guidelines](security)
-3. Search existing GitHub issues
-4. Join our community Discord server
-5. Open a new GitHub issue with detailed information
+1. Check the [Troubleshooting Guide](/docs/sdk/troubleshooting).
+2. Review the [Security Guidelines](/docs/sdk/security)
+3. Search existing GitHub issues.
+4. Join our Slack community.
+5. Open a new GitHub issue with detailed information.
