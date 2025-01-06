@@ -58,7 +58,7 @@ const config: DaytonaConfig = {
 
 ## Environment Variables
 
-The SDK automatically looks for these environment variables:
+Daytona SDK supports environment variables for configuration. The SDK automatically looks for these environment variables:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
@@ -69,6 +69,11 @@ The SDK automatically looks for these environment variables:
 | **`DAYTONA_VERIFY_SSL`** | SSL verification | true |
 
 ### Setting Environment Variables
+
+Daytona SDK can read configuration from environment variables. You can set these environment variables using the following methods:
+
+- [Using a **`.env`** file](#using-a-env-file)
+- [Using Shell Environment](#using-shell-environment)
 
 #### Using a **`.env`** File
 
