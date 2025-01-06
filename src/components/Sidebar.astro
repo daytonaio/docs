@@ -2,10 +2,110 @@
 import SidebarSublist from './SidebarSublist.astro'
 import { SideNavLinks } from './menu/SideNavLinks'
 
+const sdkSidebar = [
+  {
+    type: 'group',
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/sdk',
+        label: 'SDK Home',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/getting-started',
+        label: 'Getting Started',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/configuration',
+        label: 'Configuration',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/workspace-management',
+        label: 'Workspace Management',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/file-system-operations',
+        label: 'File System Operations',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/git-operations',
+        label: 'Git Operations',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/process-code-execution',
+        label: 'Process & Code Execution',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/language-server-protocol',
+        label: 'Language Server Protocol',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/security',
+        label: 'Security Guidelines',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/troubleshooting',
+        label: 'Troubleshooting Guide',
+        attrs: {
+          icon: '',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/migration',
+        label: 'Migration Guide',
+        attrs: {
+          icon: '',
+        },
+      },
+    ],
+  },
+]
+
 const { sidebar } = Astro.props
+
+const currentPath = Astro.url.pathname
+
+const sidebarToUse = currentPath.startsWith('/docs/sdk') ? sdkSidebar : sidebar
 ---
 
-<SidebarSublist sublist={sidebar} />
+<SidebarSublist sublist={sidebarToUse} />
 <div class="mobile-nav-btn nav__items_side_menu">
   <SideNavLinks client:load />
 </div>
