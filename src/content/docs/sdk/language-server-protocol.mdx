@@ -12,6 +12,8 @@ The Daytona SDK provides Language Server Protocol (LSP) support through workspac
 
 ## Creating LSP Servers
 
+Daytona SDK provides an option to create LSP servers for various languages:
+
 ### Python
 
 ```python
@@ -56,12 +58,18 @@ The SDK supports LSP for various languages through the `LspLanguageId` enum:
 from daytona_sdk import LspLanguageId
 
 # Available language IDs
-LspLanguageId.PYTHON      # Python language server
-LspLanguageId.TYPESCRIPT  # TypeScript/JavaScript language server
-LspLanguageId.GO          # Go language server
-LspLanguageId.JAVA        # Java language server
-LspLanguageId.RUST        # Rust language server
+LspLanguageId.PYTHON      
+LspLanguageId.TYPESCRIPT  
+LspLanguageId.GO          
+LspLanguageId.JAVA        
+LspLanguageId.RUST        
 ```
+
+- `LspLanguageId.PYTHON`: Python language server.
+- `LspLanguageId.TYPESCRIPT`: TypeScript/JavaScript language server.
+- `LspLanguageId.GO`: Go language server.
+- `LspLanguageId.JAVA`: Java language server.
+- `LspLanguageId.RUST`: Rust language server.
 
 ### TypeScript
 
@@ -69,14 +77,22 @@ LspLanguageId.RUST        # Rust language server
 import { LspLanguageId } from '@daytona/sdk'
 
 // Available language IDs
-LspLanguageId.PYTHON      // Python language server
-LspLanguageId.TYPESCRIPT  // TypeScript/JavaScript language server
-LspLanguageId.GO          // Go language server
-LspLanguageId.JAVA        // Java language server
-LspLanguageId.RUST        // Rust language server
+LspLanguageId.PYTHON      
+LspLanguageId.TYPESCRIPT  
+LspLanguageId.GO          
+LspLanguageId.JAVA        
+LspLanguageId.RUST        
 ```
 
+- `LspLanguageId.PYTHON`: Python language server.
+- `LspLanguageId.TYPESCRIPT`: TypeScript/JavaScript language server.
+- `LspLanguageId.GO`: Go language server.
+- `LspLanguageId.JAVA`: Java language server.
+- `LspLanguageId.RUST`: Rust language server.
+
 ## LSP Features
+
+Daytona SDK provides various LSP features for code analysis and editing:
 
 ### Code Completion
 
@@ -111,7 +127,7 @@ completions.forEach(completion => {
 
 ### Diagnostics
 
-Get diagnostic information:
+Daytona SDK provides diagnostic information for code errors and warnings:
 
 #### Python
 
@@ -140,7 +156,7 @@ diagnostics.forEach(diagnostic => {
 
 ### Go to Definition
 
-Navigate to symbol definitions:
+Daytona SDK provides the ability to navigate to symbol definitions:
 
 #### Python
 
@@ -164,7 +180,7 @@ console.log(`Definition location: ${definition.uri}:${definition.range}`)
 
 ### Hover Information
 
-Get hover information for symbols:
+Daytona SDK provides hover information for code elements:
 
 #### Python
 
@@ -263,7 +279,7 @@ console.log(`Hover content: ${hover.contents}`)
 
 ### Custom Language Servers
 
-Configure custom language servers:
+Daytona SDK supports custom language servers with additional configuration options:
 
 #### Python
 
@@ -291,7 +307,7 @@ const lspServer = workspace.createLspServer(
 
 ### Server Configuration
 
-Set language server configuration:
+Daytona SDK provides an option to configure LSP servers:
 
 #### Python
 
@@ -313,17 +329,17 @@ await lspServer.configure({
 
 ## Security Considerations
 
-1. **File Access**
-   - Restrict server file access
-   - Validate file paths
-   - Monitor file operations
+- **File Access**
+  - Restrict server file access
+  - Validate file paths
+  - Monitor file operations
 
-2. **Resource Usage**
-   - Set memory limits
-   - Monitor CPU usage
-   - Implement request throttling
+- **Resource Usage**
+  - Set memory limits
+  - Monitor CPU usage
+  - Implement request throttling
 
-3. **Server Security**
-   - Use secure connections
-   - Validate server binaries
-   - Update servers regularly
+- **Server Security**
+  - Use secure connections
+  - Validate server binaries
+  - Update servers regularly
