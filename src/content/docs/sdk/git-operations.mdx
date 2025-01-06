@@ -8,11 +8,13 @@ import Label from '@components/Label.astro'
   Distribution: **Open Source**
 </Label>
 
-The Daytona SDK provides built-in Git support through the `git` module in workspaces. This guide covers all available Git operations and best practices.
+The Daytona SDK provides built-in Git support through the `git` module in Workspaces. This guide covers all available Git operations and best practices.
 
 ## Basic Operations
 
 ### Cloning Repositories
+
+Daytona SDK provides an option to clone Git repositories into Workspaces. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
 
 #### Python
 
@@ -68,6 +70,8 @@ await workspace.git.clone(
 
 ### Repository Status
 
+Daytona SDK provides an option to check the status of Git repositories in Workspaces. You can get the current branch, modified files, staged files, and untracked files.
+
 #### Python
 
 ```python
@@ -111,6 +115,8 @@ branches.forEach(branch => {
 
 ## Branch Operations
 
+Daytona SDK provides an option to manage branches in Git repositories. You can create, switch, and delete branches.
+
 ### Managing Branches
 
 #### Python
@@ -146,6 +152,8 @@ await workspace.git.deleteBranch("/workspace/repo", "feature/old-feature");
 ```
 
 ## Staging and Committing
+
+Daytona SDK provides an option to stage and commit changes in Git repositories. You can stage specific files, all changes, and commit with a message.
 
 ### Working with Changes
 
@@ -197,6 +205,8 @@ commits.forEach(commit => {
 ```
 
 ## Remote Operations
+
+Daytona SDK provides an option to work with remote repositories in Git. You can push changes, pull changes, and list remotes.
 
 ### Working with Remotes
 
