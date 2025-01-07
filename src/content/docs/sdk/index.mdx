@@ -8,7 +8,7 @@ tableOfContents: false
 import DocumentList from "@components/DocumentList.astro";
 import DocumentListItem from "@components/DocumentListItem.astro";
 
-<DocumentList>
+<DocumentList title="About">
   <DocumentListItem
     title="Getting Started"
     subtitle="Learn about Daytona SDK and how it can help you manage your development environments."
@@ -19,11 +19,42 @@ import DocumentListItem from "@components/DocumentListItem.astro";
     subtitle="Get started with Daytona SDK and learn how to use and configure your development environments."
     href="sdk/configuration"
   />
+</DocumentList>
+
+<DocumentList title="Workspaces">
   <DocumentListItem
-    title="Workspace Management"
+    title="Management"
     subtitle="Learn how to create, manage, and remove workspaces using the Daytona SDK."
     href="sdk/workspace-management"
   />
+  <DocumentListItem
+    title="Environment Variables"
+    subtitle="Learn how to set environment variables for Workspaces using the Daytona SDK."
+    href="sdk/workspace-management"
+  />
+  <DocumentListItem
+    title="List Workspaces"
+    subtitle="Learn how to list and view Workspaces using the Daytona SDK."
+    href="sdk/list-workspaces"
+  />
+  <DocumentListItem
+    title="Connect to Workspaces"
+    subtitle="Learn how to connect to Workspaces using the Daytona SDK."
+    href="sdk/connect-to-workspace"
+  />
+  <DocumentListItem
+    title="Internet Access"
+    subtitle="Learn how to enable internet access in your Workspaces using the Daytona SDK."
+    href="sdk/internet-access"
+  />
+  <DocumentListItem
+    title="Security"
+    subtitle="Learn about security best practices and considerations when using the Daytona SDK."
+    href="sdk/security"
+  />
+</DocumentList>
+
+<DocumentList title="Agent Toolbox">
   <DocumentListItem
     title="File System Operations"
     subtitle="Learn how to manage files and directories in your Workspaces using the Daytona SDK."
@@ -44,19 +75,12 @@ import DocumentListItem from "@components/DocumentListItem.astro";
     subtitle="Learn how to use Language Server Protocol (LSP) support in your Workspaces using the Daytona SDK."
     href="sdk/language-server-protocol"
   />
-  <DocumentListItem
-    title="Security Guidelines"
-    subtitle="Learn about security best practices and considerations when using the Daytona SDK."
-    href="sdk/security"
-  />
+</DocumentList>
+
+<DocumentList title="Misc">
   <DocumentListItem
     title="Troubleshooting"
     subtitle="Learn how to troubleshoot common issues when using the Daytona SDK."
     href="sdk/troubleshooting"
-  />
-  <DocumentListItem
-    title="Migration"
-    subtitle="Learn how to migrate from different versions of the Daytona SDK."
-    href="sdk/migration"
   />
 </DocumentList>
