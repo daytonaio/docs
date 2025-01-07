@@ -50,9 +50,7 @@ const workspace = await daytona.create({ language: 'typescript' });
 const workspace = await daytona.create({ id: 'my-workspace' });
 ```
 
-## Managing Workspaces
-
-### Workspace Information
+## Workspace Information
 
 Daytona SDK provides methods to get information about a workspace, such as ID, root directory, and status.
 
@@ -76,7 +74,7 @@ const workspaceId = workspace.id;
 const rootDir = await workspace.getWorkspaceRootDir();
 ```
 
-### Workspace Operations
+## Remove Workspace
 
 Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces.
 
