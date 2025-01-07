@@ -1,0 +1,95 @@
+---
+title: Workspace Management
+---
+
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+Workspaces are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove workspaces using the SDK.
+
+## Creating Workspaces
+
+Daytona SDK provides an option to create workspaces with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the workspace.
+
+### Basic Workspace Creation
+
+#### Python
+
+```python
+from daytona_sdk import Daytona
+
+daytona = Daytona()
+
+# Create a basic workspace
+workspace = daytona.create()
+
+# Create a workspace with specific language
+workspace = daytona.create(language="python")
+
+# Create a workspace with custom ID
+workspace = daytona.create(id="my-workspace")
+```
+
+#### TypeScript
+
+```typescript
+import { Daytona } from '@daytona/sdk';
+
+const daytona = new Daytona();
+
+// Create a basic workspace
+const workspace = await daytona.create();
+
+// Create a workspace with specific language
+const workspace = await daytona.create({ language: 'typescript' });
+
+// Create a workspace with custom ID
+const workspace = await daytona.create({ id: 'my-workspace' });
+```
+
+## Managing Workspaces
+
+### Workspace Information
+
+Daytona SDK provides methods to get information about a workspace, such as ID, root directory, and status.
+
+#### Python
+
+```python
+# Get workspace ID
+workspace_id = workspace.id
+
+# Get workspace root directory
+root_dir = workspace.get_workspace_root_dir()
+```
+
+#### TypeScript
+
+```typescript
+// Get workspace ID
+const workspaceId = workspace.id;
+
+// Get workspace root directory
+const rootDir = await workspace.getWorkspaceRootDir();
+```
+
+### Workspace Operations
+
+Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces.
+
+#### Python
+
+```python
+# Remove workspace
+daytona.remove(workspace)
+```
+
+#### TypeScript
+
+```typescript
+// Remove workspace
+await daytona.remove(workspace);
+```

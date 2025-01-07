@@ -1,0 +1,182 @@
+---
+title: File System Operations
+---
+
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides comprehensive file system operations through the `fs` module in workspaces. This guide covers all available file system operations and best practices.
+
+## Basic Operations
+
+Daytona SDK provides an option to interact with the file system in workspaces. You can perform various operations like listing files, creating directories, reading and writing files, and more.
+
+### Listing Files and Directories
+
+#### Python
+
+```python
+# List files in a directory
+files = workspace.fs.list_files("/workspace")
+for file in files:
+    print(f"Name: {file.name}")
+    print(f"Type: {file.type}")
+    print(f"Size: {file.size}")
+    print(f"Modified: {file.modified}")
+
+```
+
+#### TypeScript
+
+```typescript
+// List files in a directory
+const files = await workspace.fs.listFiles("/workspace");
+
+files.forEach(file => {
+    console.log(`Name: ${file.name}`);
+    console.log(`Type: ${file.type}`);
+    console.log(`Size: ${file.size}`);
+    console.log(`Modified: ${file.modified}`);
+});
+```
+
+### Creating Directories
+
+#### Python
+
+```python
+# Create a directory
+workspace.fs.create_folder("/workspace/new-dir")
+
+# Create with specific permissions
+workspace.fs.create_folder("/workspace/new-dir", "755")
+```
+
+#### TypeScript
+
+```typescript
+// Create a directory
+await workspace.fs.createFolder("/workspace/new-dir");
+
+// Create with specific permissions
+await workspace.fs.createFolder("/workspace/new-dir", "755");
+```
+
+### File Operations
+
+Daytona SDK provides options to read, write, upload, download, and delete files.
+
+#### Python
+
+```python
+# Upload a file
+with open("local_file.txt", "rb") as f:
+    content = f.read()
+workspace.fs.upload_file("/workspace/remote_file.txt", content)
+
+# Download a file
+content = workspace.fs.download_file("/workspace/remote_file.txt")
+with open("local_file.txt", "wb") as f:
+    f.write(content)
+
+# Delete a file
+workspace.fs.delete_file("/workspace/file.txt")
+```
+
+#### TypeScript
+
+```typescript
+// Read file content
+const content = await workspace.fs.readFile("/workspace/file.txt");
+
+// Write file content
+await workspace.fs.writeFile("/workspace/file.txt", "Hello, World!");
+
+// Upload a file
+const content = new Blob(["Hello, World!"], { type: "text/plain" });
+await workspace.fs.uploadFile("/workspace/remote_file.txt", content);
+
+// Download a file
+const content = await workspace.fs.downloadFile("/workspace/remote_file.txt");
+// Save content using browser's download API or File System API
+
+// Delete a file
+await workspace.fs.deleteFile("/workspace/file.txt");
+```
+
+## Advanced Operations
+
+### File Permissions
+
+Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively.
+
+#### Python
+
+```python
+# Set file permissions
+workspace.fs.set_file_permissions("/workspace/file.txt", "644")
+
+# Set directory permissions recursively
+workspace.fs.set_file_permissions("/workspace/dir", "755", recursive=True)
+
+# Get file permissions
+perms = workspace.fs.get_file_permissions("/workspace/file.txt")
+print(f"Permissions: {perms.mode}")
+```
+
+#### TypeScript
+
+```typescript
+// Set file permissions
+await workspace.fs.setFilePermissions("/workspace/file.txt", "644");
+
+// Set directory permissions recursively
+await workspace.fs.setFilePermissions("/workspace/dir", "755", { recursive: true });
+
+// Get file permissions
+const perms = await workspace.fs.getFilePermissions("/workspace/file.txt");
+console.log(`Permissions: ${perms.mode}`);
+```
+
+### File Search and Replace
+
+Daytona SDK provides an option to search for text in files and replace text in files.
+
+#### Python
+
+```python
+# Search for text in files
+results = workspace.fs.search_files(
+    pattern="TODO:",
+    path="/workspace/src",
+    pattern="*.py"
+)
+
+# Replace text in files
+workspace.fs.replace_in_files(
+    files=["/workspace/file1.txt", "/workspace/file2.txt"],
+    pattern="old_text",
+    new_value="new_text"
+)
+```
+
+#### TypeScript
+
+```typescript
+// Search for text in files
+const results = await workspace.fs.searchInFiles({
+    pattern: "TODO:",
+    path="/workspace/src",
+    pattern: "*.ts"
+});
+
+// Replace text in files
+await workspace.fs.replaceInFiles(
+    ["/workspace/file1.txt", "/workspace/file2.txt"],
+    "old_text",
+    "new_text"
+);
+```

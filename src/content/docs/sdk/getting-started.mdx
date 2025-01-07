@@ -1,0 +1,173 @@
+---
+title: Getting Started
+---
+
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
+
+## Prerequisites
+
+To use the Daytona SDK, ensure you have the following:
+
+- Python 3.7+ or Node.js 14+ installed
+- A Daytona server instance
+- API key for authentication (if required)
+
+## Installation
+
+Daytona provides two methods for installing the SDK: `pip` for Python and `npm`, `yarn`, or `pnpm` for TypeScript/JavaScript. Choose the appropriate method based on your preferred language.
+
+### Python Installation
+
+To install the Daytona SDK for Python, run the following command:
+
+```bash
+pip install daytona-sdk
+```
+
+### TypeScript/JavaScript Installation
+
+To install the Daytona SDK for TypeScript or JavaScript, run the following command:
+
+```bash
+# Using npm
+npm install @daytona/sdk
+
+# Using yarn
+yarn add @daytona/sdk
+
+# Using pnpm
+pnpm add @daytona/sdk
+```
+
+## Quick Start
+
+Daytona SDK provides a simple and intuitive interface for interacting with Daytona. Here are a quick examples to get you started:
+
+- [Python Example](#python-example)
+- [TypeScript Example](#typescript-example)
+
+### Python Example
+
+Python example using the Daytona SDK, showing how to create a workspace, run some code, and clean up afterwards:
+
+```python
+from daytona_sdk import Daytona, DaytonaConfig
+
+# Initialize with default configuration
+daytona = Daytona()
+
+# Or with custom configuration
+config = DaytonaConfig(
+    api_key="your-api-key",
+    server_url="https://your-server-url",
+    target="local"
+)
+daytona = Daytona(config)
+
+# Create a workspace
+workspace = daytona.create()
+
+try:
+    # Run some code
+    response = workspace.process.code_run('''
+        print("Hello from Daytona!")
+    ''')
+    print(response.result)
+finally:
+    # Clean up
+    daytona.remove(workspace)
+```
+
+### TypeScript Example
+
+TypeScript example using the Daytona SDK, showing how to create a workspace, run some code, and clean up afterwards:
+
+```typescript
+import { Daytona, DaytonaConfig } from '@daytona/sdk';
+
+// Initialize with default configuration
+const daytona = new Daytona();
+
+// Or with custom configuration
+const config: DaytonaConfig = {
+    apiKey: "your-api-key",
+    serverUrl: "https://your-server-url",
+    target: "local"
+};
+const daytona = new Daytona(config);
+
+async function main() {
+    // Create a workspace
+    const workspace = await daytona.create({
+        language: 'typescript'
+    });
+
+    try {
+        // Run some code
+        const response = await workspace.process.codeRun(`
+            console.log("Hello from Daytona!");
+        `);
+        console.log(response.result);
+    } finally {
+        // Clean up
+        await daytona.remove(workspace);
+    }
+}
+
+main().catch(console.error);
+```
+
+## Environment Variables
+
+The SDK looks for these environment variables:
+
+- `DAYTONA_API_KEY` - Your Daytona API key.
+- `DAYTONA_SERVER_URL` - URL of your Daytona server.
+- `DAYTONA_TARGET` - Target environment. Defaults to `local`.
+
+You can set these in a `.env` file:
+
+```bash
+DAYTONA_API_KEY=your-api-key
+DAYTONA_SERVER_URL=https://your-server-url
+DAYTONA_TARGET=local
+```
+
+## Core Features
+
+The SDK provides several key features:
+
+- 🚀 **Workspace Management**
+
+    Create, manage, and remove development environments.
+
+- 📂 **File System Operations**
+
+    Full file system access and management.
+
+- 🔄 **Git Integration**
+
+    Built-in Git operations support.
+
+- ⚡ **Process Execution**
+
+    Run commands and code in isolated development environments.
+
+- 🔧 **LSP Support**
+
+    Language Server Protocol integration.
+
+## Next Steps
+
+- Learn about [Configuration](/docs/sdk/configuration) options.
+- Explore [Workspace Management](/docs/sdk/workspace-management).
+- See [File System Operations](/docs/sdk/file-system-operations).
+- Check out [Git Operations](/docs/sdk/git-operations).
+- Understand [Process & Code Execution](/docs/sdk/process-code-execution).
+- Learn about [LSP Support](/docs/sdk/language-server-protocol).
