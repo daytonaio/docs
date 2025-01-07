@@ -77,20 +77,6 @@ print(response.output)
 // Execute shell command
 const response = await workspace.process.processExecuteCommand("ls -la");
 console.log(response.output);
-
-// Execute command with input
-const response = await workspace.process.processExecuteCommand(
-    "read -p 'Enter name: ' name && echo Hello, $name",
-    { input: "Daytona" }
-);
-console.log(response.output);
-
-// Execute command with timeout
-const response = await workspace.process.processExecuteCommand(
-    "sleep 2 && echo Done",
-    { timeout: 5000 }
-);
-console.log(response.output);
 ```
 
 ## Background Processes
@@ -102,17 +88,9 @@ Daytona SDK provides an option to start, stop, and manage background processes i
 #### Python
 
 ```python
-# Start background process
-process_id = workspace.process.start_background_process(
-    "python -m http.server 8000"
-)
-
 # Check process status
 status = workspace.process.get_process_status(process_id)
 print(f"Process {process_id} status: {status}")
-
-# Stop background process
-workspace.process.stop_process(process_id)
 
 # List all running processes
 processes = workspace.process.list_processes()
@@ -123,17 +101,9 @@ for process in processes:
 #### TypeScript
 
 ```typescript
-// Start background process
-const processId = await workspace.process.startBackgroundProcess(
-    "python -m http.server 8000"
-);
-
 // Check process status
 const status = await workspace.process.getProcessStatus(processId);
 console.log(`Process ${processId} status: ${status}`);
-
-// Stop background process
-await workspace.process.stopProcess(processId);
 
 // List all running processes
 const processes = await workspace.process.listProcesses();
