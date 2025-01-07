@@ -33,15 +33,14 @@ for file in files:
 
 ```typescript
 // List files in a directory
+const files = await workspace.fs.listFiles("/workspace");
+
 files.forEach(file => {
     console.log(`Name: ${file.name}`);
     console.log(`Type: ${file.type}`);
     console.log(`Size: ${file.size}`);
     console.log(`Modified: ${file.modified}`);
 });
-
-// List files recursively
-const files = await workspace.fs.listFiles("/workspace", { recursive: true });
 ```
 
 ### Creating Directories
