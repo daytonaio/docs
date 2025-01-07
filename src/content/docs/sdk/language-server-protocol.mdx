@@ -89,7 +89,7 @@ Daytona SDK provides an option to get code completions for a specific position:
 #### Python
 
 ```python
-completions = lsp_server.get_completions(
+completions = lsp_server.completions(
     path="/workspace/project/main.py",
     position={"line": 10, "character": 15}
 )
