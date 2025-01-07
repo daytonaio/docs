@@ -14,6 +14,12 @@ const sdkSidebar = [
           icon: 'home.svg',
         },
       },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'About',
+    entries: [
       {
         type: 'link',
         href: '/docs/sdk/getting-started',
@@ -27,23 +33,75 @@ const sdkSidebar = [
         href: '/docs/sdk/configuration',
         label: 'Configuration',
         attrs: {
-          icon: '',
+          icon: 'git-commit.svg',
         },
       },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'Workspaces',
+    entries: [
       {
         type: 'link',
         href: '/docs/sdk/workspace-management',
-        label: 'Workspace Management',
+        label: 'Management',
         attrs: {
           icon: 'computer.svg',
         },
       },
       {
         type: 'link',
-        href: '/docs/sdk/file-system-operations',
-        label: 'File System Operations',
+        href: '/docs/sdk/environment-variables',
+        label: 'Environment Variables',
         attrs: {
-          icon: '',
+          icon: 'tag.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/list-workspaces',
+        label: 'List Workspaces',
+        attrs: {
+          icon: 'prebuilds.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/connect-to-workspace',
+        label: 'Connect to Workspace',
+        attrs: {
+          icon: 'install.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/internet-access',
+        label: 'Internet Access',
+        attrs: {
+          icon: 'switch.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/security',
+        label: 'Security',
+        attrs: {
+          icon: 'shield.svg',
+        },
+      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'Agent Toolbox',
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/sdk/file-system-operations',
+        label: 'File System',
+        attrs: {
+          icon: 'folder.svg',
         },
       },
       {
@@ -56,42 +114,32 @@ const sdkSidebar = [
       },
       {
         type: 'link',
+        href: '/docs/sdk/language-server-protocol',
+        label: 'Language Server Protocol',
+        attrs: {
+          icon: 'pulse.svg',
+        },
+      },
+      {
+        type: 'link',
         href: '/docs/sdk/process-code-execution',
         label: 'Process & Code Execution',
         attrs: {
           icon: 'terminal.svg',
         },
       },
-      {
-        type: 'link',
-        href: '/docs/sdk/language-server-protocol',
-        label: 'Language Server Protocol',
-        attrs: {
-          icon: '',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/sdk/security',
-        label: 'Security Guidelines',
-        attrs: {
-          icon: 'shield.svg',
-        },
-      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'Misc',
+    entries: [
       {
         type: 'link',
         href: '/docs/sdk/troubleshooting',
-        label: 'Troubleshooting Guide',
+        label: 'Troubleshooting',
         attrs: {
           icon: 'warning.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/sdk/migration',
-        label: 'Migration Guide',
-        attrs: {
-          icon: '',
         },
       },
     ],

@@ -38,11 +38,9 @@ const { sublist = [], nested } = Astro.props
           </a>
         ) : entry.type === 'group' ? (
           <div>
-            <summary>
-              <div class="group-label">
-                <span class="large">{entry.label}</span>
-              </div>
-            </summary>
+            <div class="group-label">
+              <span class="large">{entry.label}</span>
+            </div>
             <Astro.self sublist={entry.entries} nested />
           </div>
         ) : null}
