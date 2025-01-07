@@ -64,10 +64,6 @@ workspace_id = workspace.id
 
 # Get workspace root directory
 root_dir = workspace.get_workspace_root_dir()
-
-# Get workspace status
-status = workspace.status()
-print(f"Status: {status.state}")
 ```
 
 #### TypeScript
@@ -86,20 +82,11 @@ console.log(`Status: ${status.state}`);
 
 ### Workspace Operations
 
-Daytona SDK provides methods to perform operations on workspaces, such as starting, stopping, restarting, and removing Workspaces.
+Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces.
 
 #### Python
 
 ```python
-# Stop workspace
-workspace.stop()
-
-# Start workspace
-workspace.start()
-
-# Restart workspace
-workspace.restart()
-
 # Remove workspace
 daytona.remove(workspace)
 ```
@@ -118,72 +105,4 @@ await workspace.restart();
 
 // Remove workspace
 await daytona.remove(workspace);
-```
-
-## Workspace Resources
-
-### Resource Configuration
-
-```python
-# Python
-workspace = daytona.create(
-    resources={
-        "cpu": "2",
-        "memory": "4Gi",
-        "gpu": "1"
-    }
-)
-```
-
-```typescript
-// TypeScript
-const workspace = await daytona.create({
-    resources: {
-        cpu: '2',
-        memory: '4Gi',
-        gpu: '1'
-    }
-});
-```
-
-## Workspace Volumes
-
-Daytona SDK provides an option to mount volumes in Workspaces, which can be used to share data between the host and the Workspace.
-
-### Volume Configuration
-
-```python
-# Python
-workspace = daytona.create(
-    volumes=[
-        {
-            "source": "/local/data",
-            "target": "/workspace/data",
-            "type": "bind"
-        },
-        {
-            "name": "cache",
-            "target": "/workspace/cache",
-            "type": "volume"
-        }
-    ]
-)
-```
-
-```typescript
-// TypeScript
-const workspace = await daytona.create({
-    volumes: [
-        {
-            source: '/local/data',
-            target: '/workspace/data',
-            type: 'bind'
-        },
-        {
-            name: 'cache',
-            target: '/workspace/cache',
-            type: 'volume'
-        }
-    ]
-});
 ```

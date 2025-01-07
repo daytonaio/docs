@@ -27,18 +27,12 @@ for file in files:
     print(f"Size: {file.size}")
     print(f"Modified: {file.modified}")
 
-# List files recursively
-files = workspace.fs.list_files("/workspace", recursive=True)
-
-# List with pattern matching
-files = workspace.fs.list_files("/workspace", pattern="*.py")
 ```
 
 #### TypeScript
 
 ```typescript
 // List files in a directory
-const files = await workspace.fs.listFiles("/workspace");
 files.forEach(file => {
     console.log(`Name: ${file.name}`);
     console.log(`Type: ${file.type}`);
@@ -48,9 +42,6 @@ files.forEach(file => {
 
 // List files recursively
 const files = await workspace.fs.listFiles("/workspace", { recursive: true });
-
-// List with pattern matching
-const files = await workspace.fs.listFiles("/workspace", { pattern: "*.ts" });
 ```
 
 ### Creating Directories
@@ -63,9 +54,6 @@ workspace.fs.create_folder("/workspace/new-dir")
 
 # Create with specific permissions
 workspace.fs.create_folder("/workspace/new-dir", "755")
-
-# Create nested directories
-workspace.fs.create_folder("/workspace/parent/child", create_parents=True)
 ```
 
 #### TypeScript
@@ -76,9 +64,6 @@ await workspace.fs.createFolder("/workspace/new-dir");
 
 // Create with specific permissions
 await workspace.fs.createFolder("/workspace/new-dir", "755");
-
-// Create nested directories
-await workspace.fs.createFolder("/workspace/parent/child", { createParents: true });
 ```
 
 ### File Operations
@@ -88,12 +73,6 @@ Daytona SDK provides options to read, write, upload, download, and delete files.
 #### Python
 
 ```python
-# Read file content
-content = workspace.fs.read_file("/workspace/file.txt")
-
-# Write file content
-workspace.fs.write_file("/workspace/file.txt", "Hello, World!")
-
 # Upload a file
 with open("local_file.txt", "rb") as f:
     content = f.read()
@@ -177,10 +156,10 @@ Daytona SDK provides an option to search for text in files and replace text in f
 
 ```python
 # Search for text in files
-results = workspace.fs.search_in_files(
+results = workspace.fs.search_files(
     pattern="TODO:",
-    paths=["/workspace/src"],
-    file_pattern="*.py"
+    path="/workspace/src",
+    pattern="*.py"
 )
 
 # Replace text in files
@@ -197,8 +176,8 @@ workspace.fs.replace_in_files(
 // Search for text in files
 const results = await workspace.fs.searchInFiles({
     pattern: "TODO:",
-    paths: ["/workspace/src"],
-    filePattern: "*.ts"
+    path="/workspace/src",
+    pattern: "*.ts"
 });
 
 // Replace text in files
@@ -208,84 +187,3 @@ await workspace.fs.replaceInFiles(
     "new_text"
 );
 ```
-
-## Best Practices
-
-1. **Error Handling**
-
-   ```python
-   # Python
-   try:
-       content = workspace.fs.read_file("/workspace/file.txt")
-   except FileNotFoundError:
-       print("File not found")
-   except PermissionError:
-       print("Permission denied")
-   ```
-
-   ```typescript
-   // TypeScript
-   try {
-       const content = await workspace.fs.readFile("/workspace/file.txt");
-   } catch (e) {
-       if (e instanceof FileNotFoundError) {
-           console.error("File not found");
-       } else if (e instanceof PermissionError) {
-           console.error("Permission denied");
-       }
-   }
-   ```
-
-2. **Path Handling**
-
-   ```python
-   # Python
-   from pathlib import Path
-
-   base_path = Path("/workspace")
-   file_path = base_path / "src" / "main.py"
-   workspace.fs.read_file(str(file_path))
-   ```
-
-   ```typescript
-   // TypeScript
-   import { join } from 'path';
-
-   const basePath = "/workspace";
-   const filePath = join(basePath, "src", "main.ts");
-   await workspace.fs.readFile(filePath);
-   ```
-
-3. **Batch Operations**
-
-   ```python
-   # Python
-   # Use batch operations for better performance
-   workspace.fs.replace_in_files(
-       files=workspace.fs.list_files("/workspace/src", pattern="*.py"),
-       pattern="old_text",
-       new_value="new_text"
-   )
-   ```
-
-## Common Issues
-
-Daytona SDK provides an option to troubleshoot common issues related to file system operations.
-
-### Permission Denied
-
-- Check file permissions
-- Verify workspace user permissions
-- Ensure proper ownership
-
-### File Not Found
-
-- Verify file paths
-- Check for case sensitivity
-- Ensure parent directories exist
-
-### Resource Limits
-
-- Monitor disk usage
-- Clean up temporary files
-- Use appropriate file handling methods

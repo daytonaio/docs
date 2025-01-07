@@ -27,20 +27,6 @@ def greet(name):
 print(greet("Daytona"))
 ''')
 print(response.result)
-
-# Run code with input
-response = workspace.process.code_run(
-    'name = input("Enter name: ")\nprint(f"Hello, {name}!")',
-    input="Daytona"
-)
-print(response.result)
-
-# Run code with timeout
-response = workspace.process.code_run(
-    'import time\ntime.sleep(2)\nprint("Done")',
-    timeout=5
-)
-print(response.result)
 ```
 
 #### TypeScript
@@ -71,54 +57,6 @@ const response = await workspace.process.codeRun(
 console.log(response.result);
 ```
 
-### Code Execution Options
-
-Daytona SDK provides an option to run code with specific environment variables, working directories, and languages.
-
-#### Python
-
-```python
-# Run code with environment variables
-response = workspace.process.code_run(
-    'import os\nprint(os.getenv("MY_VAR"))',
-    env={"MY_VAR": "value"}
-)
-
-# Run code in specific working directory
-response = workspace.process.code_run(
-    'import os\nprint(os.getcwd())',
-    cwd="/workspace/project"
-)
-
-# Run code with specific language
-response = workspace.process.code_run(
-    'console.log("Hello!");',
-    language="javascript"
-)
-```
-
-#### TypeScript
-
-```typescript
-// Run code with environment variables
-const response = await workspace.process.codeRun(
-    'console.log(process.env.MY_VAR);',
-    { env: { MY_VAR: "value" } }
-);
-
-// Run code in specific working directory
-const response = await workspace.process.codeRun(
-    'console.log(process.cwd());',
-    { cwd: "/workspace/project" }
-);
-
-// Run code with specific language
-const response = await workspace.process.codeRun(
-    'print("Hello!")',
-    { language: "python" }
-);
-```
-
 ## Process Execution
 
 Daytona SDK provides an option to execute shell commands and manage background processes in Workspaces. You can run commands with input, timeout, and environment variables.
@@ -130,20 +68,6 @@ Daytona SDK provides an option to execute shell commands and manage background p
 ```python
 # Execute shell command
 response = workspace.process.process_execute_command("ls -la")
-print(response.output)
-
-# Execute command with input
-response = workspace.process.process_execute_command(
-    "read -p 'Enter name: ' name && echo Hello, $name",
-    input="Daytona"
-)
-print(response.output)
-
-# Execute command with timeout
-response = workspace.process.process_execute_command(
-    "sleep 2 && echo Done",
-    timeout=5
-)
 print(response.output)
 ```
 
@@ -167,54 +91,6 @@ const response = await workspace.process.processExecuteCommand(
     { timeout: 5000 }
 );
 console.log(response.output);
-```
-
-### Process Options
-
-Daytona SDK provides an option to execute commands with specific environment variables, working directories, and shell.
-
-#### Python
-
-```python
-# Execute command with environment variables
-response = workspace.process.process_execute_command(
-    "echo $MY_VAR",
-    env={"MY_VAR": "value"}
-)
-
-# Execute command in specific working directory
-response = workspace.process.process_execute_command(
-    "pwd",
-    cwd="/workspace/project"
-)
-
-# Execute command with shell
-response = workspace.process.process_execute_command(
-    "echo $SHELL && echo $PATH",
-    shell=True
-)
-```
-
-#### TypeScript
-
-```typescript
-// Execute command with environment variables
-const response = await workspace.process.processExecuteCommand(
-    "echo $MY_VAR",
-    { env: { MY_VAR: "value" } }
-);
-
-// Execute command in specific working directory
-const response = await workspace.process.processExecuteCommand(
-    "pwd",
-    { cwd: "/workspace/project" }
-);
-
-// Execute command with shell
-const response = await workspace.process.processExecuteCommand(
-    "echo $SHELL && echo $PATH",
-    { shell: true }
-);
 ```
 
 ## Background Processes

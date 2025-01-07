@@ -22,17 +22,13 @@ from daytona_sdk import DaytonaConfig
 config = DaytonaConfig(
     api_key="your-api-key",          
     server_url="your-server-url",     
-    target="local",                   
-    timeout=30,                       
-    verify_ssl=True                   
+    target="local"                
 )
 ```
 
 - `api_key`: Your Daytona API key
 - `server_url`: URL of your Daytona server
-- `target`: Target environment
-- `timeout`: Request timeout in seconds
-- `verify_ssl`: Enable SSL verification
+- `target`: Daytona Target to create the Workspaces on.
 
 ### TypeScript Configuration
 
@@ -44,9 +40,7 @@ import { DaytonaConfig } from '@daytona/sdk';
 const config: DaytonaConfig = {
     apiKey: "your-api-key",          
     serverUrl: "your-server-url",     
-    target: "local",                  
-    timeout: 30000,                   
-    verifySsl: true                   
+    target: "local"                  
 };
 ```
 
@@ -65,8 +59,6 @@ Daytona SDK supports environment variables for configuration. The SDK automatica
 | **`DAYTONA_API_KEY`** | Your Daytona API key | None |
 | **`DAYTONA_SERVER_URL`** | URL of your Daytona server | None |
 | **`DAYTONA_TARGET`** | Target environment | "local" |
-| **`DAYTONA_TIMEOUT`** | Request timeout | 30 seconds |
-| **`DAYTONA_VERIFY_SSL`** | SSL verification | true |
 
 ### Setting Environment Variables
 
@@ -107,19 +99,6 @@ $env:DAYTONA_API_KEY="your-api-key"
 $env:DAYTONA_SERVER_URL="https://your-server-url"
 ```
 
-## Target Environments
-
-The Daytona SDK supports different target environments:
-
-| Target | Description |
-|--------|-------------|
-| **`local`** | Local development environment |
-| **`docker`** | Docker-based environment |
-| **`kubernetes`** | Kubernetes cluster |
-| **`aws`** | Amazon Web Services |
-| **`gcp`** | Google Cloud Platform |
-| **`azure`** | Microsoft Azure |
-
 ## Configuration Precedence
 
 The SDK uses the following precedence order for configuration (highest to lowest):
@@ -128,179 +107,3 @@ The SDK uses the following precedence order for configuration (highest to lowest
 2. Environment variables.
 3. Configuration file.
 4. Default values.
-
-## Advanced Configuration
-
-### SSL/TLS Configuration
-
-```python
-# Python
-config = DaytonaConfig(
-    verify_ssl=True,                  
-    ssl_cert="/path/to/cert.pem",     
-    ssl_key="/path/to/key.pem"        
-)
-```
-
-- `verify_ssl`: Enable SSL verification.
-- `ssl_cert`: Custom SSL certificate.
-- `ssl_key`: Custom SSL key.
-
-```typescript
-// TypeScript
-const config: DaytonaConfig = {
-    verifySsl: true,          
-    sslCert: "/path/to/cert.pem",   
-    sslKey: "/path/to/key.pem"       
-};
-```
-
-- `verifySsl`: Enable SSL verification.
-- `sslCert`: Custom SSL certificate.
-- `sslKey`: Custom SSL key.
-
-### Proxy Configuration
-
-Daytona SDK supports proxy configuration with optional authentication.
-
-```python
-# Python
-config = DaytonaConfig(
-    proxy="http://proxy.example.com:8080",
-    proxy_auth=("username", "password")
-)
-```
-
-```typescript
-// TypeScript
-const config: DaytonaConfig = {
-    proxy: "http://proxy.example.com:8080",
-    proxyAuth: {
-        username: "username",
-        password: "password"
-    }
-};
-```
-
-### Retry Configuration
-
-Daytona SDK supports automatic retries on specific status codes.
-
-```python
-# Python
-config = DaytonaConfig(
-    max_retries=3,                    
-    retry_delay=1,                    
-    retry_on_status=[500, 502, 503]  
-)
-```
-
-- `max_retries`: Maximum retry attempts.
-- `retry_delay`: Delay between retries (seconds).
-- `retry_on_status`: Status codes to retry on.
-
-```typescript
-// TypeScript
-const config: DaytonaConfig = {
-    maxRetries: 3,                   
-    retryDelay: 1000,                
-    retryOnStatus: [500, 502, 503] 
-};
-```
-
-- `maxRetries`: Maximum retry attempts.
-- `retryDelay`: Delay between retries (milliseconds).
-- `retryOnStatus`: Status codes to retry on.
-
-## Best Practices
-
-1. **Environment Variables**
-
-    Use environment variables for sensitive information like API keys.
-
-2. **SSL Verification**
-
-    Keep SSL verification enabled in production.
-
-3. **Timeouts**
-
-    Set appropriate timeouts based on your use case.
-
-4. **Error Handling**
-
-    Implement proper error handling for configuration issues.
-
-5. **Logging**
-
-    Enable logging for debugging configuration problems.
-
-## Troubleshooting
-
-Daytona SDK provides an option to validate configuration settings and troubleshoot common issues.
-
-### Common Configuration Issues
-
-1. **Invalid API Key**
-
-Check if the API key is valid and has the necessary permissions.
-
-```python
-# Check API key validity
-daytona = Daytona()
-try:
-    workspace = daytona.create()
-except AuthenticationError as e:
-    print(f"API key invalid: {e}")
-```
-
-2. **Server Connection Failed**
-
-Verify the server URL and network connectivity.
-
-```python
-# Verify server connection
-try:
-    daytona = Daytona()
-    daytona.health_check()
-except ConnectionError as e:
-    print(f"Server connection failed: {e}")
-```
-
-3. **SSL Certificate Issues**
-
-Ensure SSL certificates are valid and correctly configured.
-
-```python
-# Custom SSL configuration
-config = DaytonaConfig(
-    verify_ssl=False,  # Disable for testing only
-    ssl_cert="custom-cert.pem"
-)
-```
-
-### Configuration Validation
-
-Use the `validate_config` function to validate configuration settings.
-
-```python
-# Python
-from daytona_sdk import validate_config
-
-try:
-    validate_config(config)
-except ConfigurationError as e:
-    print(f"Configuration error: {e}")
-```
-
-Use the `validateConfig` function in TypeScript to validate configuration settings.
-
-```typescript
-// TypeScript
-import { validateConfig } from '@daytona/sdk';
-
-try {
-    validateConfig(config);
-} catch (e) {
-    console.error("Configuration error:", e);
-}
-```
