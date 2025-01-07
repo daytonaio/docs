@@ -84,9 +84,6 @@ with open("local_file.txt", "wb") as f:
 
 # Delete a file
 workspace.fs.delete_file("/workspace/file.txt")
-
-# Delete a directory
-workspace.fs.delete_folder("/workspace/dir", recursive=True)
 ```
 
 #### TypeScript
@@ -108,9 +105,6 @@ const content = await workspace.fs.downloadFile("/workspace/remote_file.txt");
 
 // Delete a file
 await workspace.fs.deleteFile("/workspace/file.txt");
-
-// Delete a directory
-await workspace.fs.deleteFolder("/workspace/dir", { recursive: true });
 ```
 
 ## Advanced Operations
