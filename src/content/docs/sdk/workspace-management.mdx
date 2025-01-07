@@ -50,66 +50,6 @@ const workspace = await daytona.create({ language: 'typescript' });
 const workspace = await daytona.create({ id: 'my-workspace' });
 ```
 
-### Advanced Workspace Creation
-
-Daytona SDK provides an option to create Workspaces with advanced configurations, such as custom images, environment variables, resources, and volumes.
-
-#### Python
-
-```python
-from daytona_sdk import Daytona, CreateWorkspaceParams
-
-# Create workspace with advanced options
-workspace = daytona.create(
-    CreateWorkspaceParams(
-        language="python",
-        id="custom-workspace",
-        image="python:3.9-slim",
-        env={
-            "DEBUG": "true",
-            "API_KEY": "secret"
-        },
-        volumes=[
-            {
-                "source": "/local/path",
-                "target": "/workspace/data"
-            }
-        ],
-        resources={
-            "cpu": "2",
-            "memory": "4Gi"
-        }
-    )
-)
-```
-
-#### TypeScript
-
-```typescript
-import { Daytona, CreateWorkspaceParams } from '@daytona/sdk';
-
-// Create workspace with advanced options
-const workspace = await daytona.create({
-    language: 'typescript',
-    id: 'custom-workspace',
-    image: 'node:16-slim',
-    env: {
-        DEBUG: 'true',
-        API_KEY: 'secret'
-    },
-    volumes: [
-        {
-            source: '/local/path',
-            target: '/workspace/data'
-        }
-    ],
-    resources: {
-        cpu: '2',
-        memory: '4Gi'
-    }
-});
-```
-
 ## Managing Workspaces
 
 ### Workspace Information
