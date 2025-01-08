@@ -9,6 +9,9 @@
     "emphasis-style": {
       "style": "underscore"
     },
-    "ol-prefix": false
+    "ol-prefix": false,
+    "fenced-code-language": false,
+    "single-title": false,
+    "heading-increment": false
   }
 }

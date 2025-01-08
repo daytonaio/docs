@@ -3,6 +3,7 @@ title: Process and Code Execution
 ---
 
 import Label from '@components/Label.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Label>
   Distribution: **Open Source**
@@ -12,12 +13,14 @@ The Daytona SDK provides powerful process and code execution capabilities throug
 
 ## Code Execution
 
-Daytona SDK provides an option to run code snippets in various languages like Python, TypeScript, and more. You can execute code with input, timeout, and environment variables.
+Daytona SDK provides an option to execute code in Python and TypeScript.
 
 ### Running Code
 
-#### Python
+Daytona SDK provides an option to run code snippets in Python and TypeScript. You can execute code with input, timeout, and environment variables.
 
+<Tabs>
+<TabItem label="Python">
 ```python
 # Run Python code
 response = workspace.process.code_run('''
@@ -27,10 +30,10 @@ def greet(name):
 print(greet("Daytona"))
 ''')
 print(response.result)
+
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript">
 ```typescript
 // Run TypeScript code
 const response = await workspace.process.codeRun(`
@@ -57,27 +60,33 @@ const response = await workspace.process.codeRun(
 console.log(response.result);
 ```
 
+</TabItem>
+</Tabs>
+
 ## Process Execution
 
-Daytona SDK provides an option to execute shell commands and manage background processes in Workspaces. You can run commands with input, timeout, and environment variables.
+Daytona SDK provides an option to execute shell commands and manage background processes in Workspaces.
 
 ### Running Commands
 
-#### Python
+Daytona SDK provides an option to execute shell commands in Python and TypeScript. You can run commands with input, timeout, and environment variables.
 
+<Tabs>
+<TabItem label="Python">
 ```python
 # Execute shell command
 response = workspace.process.process_execute_command("ls -la")
 print(response.output)
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript">
 ```typescript
 // Execute shell command
 const response = await workspace.process.processExecuteCommand("ls -la");
 console.log(response.output);
 ```
+</TabItem>
+</Tabs>
 
 ## Background Processes
 
@@ -85,21 +94,24 @@ Daytona SDK provides an option to start, stop, and manage background processes i
 
 ### Managing Long-Running Processes
 
-#### Python
+Daytona SDK provides an option to start and stop background processes in Python and TypeScript. You can run long-running commands and monitor process status.
 
+<Tabs>
+<TabItem label="Python">
 ```python
 # Check process status
 status = workspace.process.get_process_status(process_id)
 print(f"Process {process_id} status: {status}")
 
 # List all running processes
+
 processes = workspace.process.list_processes()
 for process in processes:
     print(f"PID: {process.id}, Command: {process.command}")
+
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript">
 ```typescript
 // Check process status
 const status = await workspace.process.getProcessStatus(processId);
@@ -112,10 +124,21 @@ processes.forEach(process => {
 });
 ```
 
+</TabItem>
+</Tabs>
+
 ## Best Practices
+
+Daytona SDK provides best practices for process and code execution in Workspaces.
 
 1. **Resource Management**
 
+- Use background processes for long-running operations
+- Clean up processes after execution
+- Handle process exceptions properly
+
+<Tabs>
+<TabItem label="Python">
    ```python
    # Python - Clean up processes
    try:
@@ -124,7 +147,8 @@ processes.forEach(process => {
    finally:
        workspace.process.stop_process(process_id)
    ```
-
+</TabItem>
+<TabItem label="TypeScript">
    ```typescript
    // TypeScript - Clean up processes
    try {
@@ -134,31 +158,42 @@ processes.forEach(process => {
        await workspace.process.stopProcess(processId);
    }
    ```
+</TabItem>
+</Tabs>
 
 2. **Error Handling**
 
-   ```python
-   # Python
-   try:
-       response = workspace.process.code_run("invalid python code")
-   except ProcessExecutionError as e:
-       print(f"Execution failed: {e}")
-       print(f"Exit code: {e.exit_code}")
-       print(f"Error output: {e.stderr}")
-   ```
+- Handle process exceptions properly
+- Log error details for debugging
+- Use try-catch blocks for error handling
 
-   ```typescript
-   // TypeScript
-   try {
-       const response = await workspace.process.codeRun("invalid typescript code");
-   } catch (e) {
-       if (e instanceof ProcessExecutionError) {
-           console.error("Execution failed:", e);
-           console.error("Exit code:", e.exitCode);
-           console.error("Error output:", e.stderr);
-       }
-   }
-   ```
+<Tabs>
+<TabItem label="Python">
+```python
+# Python
+try:
+    response = workspace.process.code_run("invalid python code")
+except ProcessExecutionError as e:
+    print(f"Execution failed: {e}")
+    print(f"Exit code: {e.exit_code}")
+    print(f"Error output: {e.stderr}")
+```
+</TabItem>
+<TabItem label="TypeScript">
+```typescript
+// TypeScript
+try {
+    const response = await workspace.process.codeRun("invalid typescript code");
+} catch (e) {
+    if (e instanceof ProcessExecutionError) {
+        console.error("Execution failed:", e);
+        console.error("Exit code:", e.exitCode);
+        console.error("Error output:", e.stderr);
+    }
+}
+```
+</TabItem>
+</Tabs>
 
 ## Common Issues
 

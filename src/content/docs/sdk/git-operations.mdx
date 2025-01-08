@@ -3,6 +3,7 @@ title: Git Operations
 ---
 
 import Label from '@components/Label.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Label>
   Distribution: **Open Source**
@@ -16,10 +17,10 @@ Daytona SDK provides an option to clone, check status, and manage Git repositori
 
 ### Cloning Repositories
 
-Daytona SDK provides an option to clone Git repositories into Workspaces. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
+Daytona SDK provides an option to clone Git repositories into Workspaces using Python and TypeScript. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
 
-#### Python
-
+<Tabs>
+<TabItem label="Python">
 ```python
 # Basic clone
 workspace.git.clone(
@@ -28,23 +29,25 @@ workspace.git.clone(
 )
 
 # Clone with authentication
+
 workspace.git.clone(
-    url="https://github.com/user/repo.git",
+    url="<https://github.com/user/repo.git>",
     path="/workspace/repo",
     username="git",
     password="personal_access_token"
 )
 
 # Clone specific branch
+
 workspace.git.clone(
-    url="https://github.com/user/repo.git",
+    url="<https://github.com/user/repo.git>",
     path="/workspace/repo",
     branch="develop"
 )
+
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript">
 ```typescript
 // Basic clone
 await workspace.git.clone(
@@ -70,12 +73,15 @@ await workspace.git.clone(
 );
 ```
 
+</TabItem>
+</Tabs>
+
 ### Repository Status
 
-Daytona SDK provides an option to check the status of Git repositories in Workspaces. You can get the current branch, modified files, staged files, and untracked files.
+Daytona SDK provides an option to check the status of Git repositories in Workspaces. You can get the current branch, modified files, staged files, and untracked files using Python and TypeScript.
 
-#### Python
-
+<Tabs>
+<TabItem label="Python">
 ```python
 # Get repository status
 status = workspace.git.status("/workspace/repo")
@@ -85,17 +91,19 @@ print(f"Staged files: {status.staged}")
 print(f"Untracked files: {status.untracked}")
 
 # Get current branch
+
 branch = workspace.git.current_branch("/workspace/repo")
 print(f"Current branch: {branch}")
 
 # List branches
+
 branches = workspace.git.list_branches("/workspace/repo")
 for branch in branches:
     print(f"Branch: {branch.name} {'(current)' if branch.current else ''}")
+
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript">
 ```typescript
 // Get repository status
 const status = await workspace.git.status("/workspace/repo");
@@ -115,27 +123,34 @@ branches.forEach(branch => {
 });
 ```
 
+</TabItem>
+</Tabs>
+
 ## Branch Operations
 
 Daytona SDK provides an option to manage branches in Git repositories. You can create, switch, and delete branches.
 
 ### Managing Branches
 
-#### Python
+Daytona SDK provides an option to create, switch, and delete branches in Git repositories using Python and TypeScript.
 
+<Tabs>
+<TabItem label="Python">
 ```python
 # Create new branch
 workspace.git.create_branch("/workspace/repo", "feature/new-feature")
 
 # Switch branch
+
 workspace.git.checkout("/workspace/repo", "feature/new-feature")
 
 # Delete branch
+
 workspace.git.delete_branch("/workspace/repo", "feature/old-feature")
+
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript">
 ```typescript
 // Create new branch
 await workspace.git.createBranch("/workspace/repo", "feature/new-feature");
@@ -147,34 +162,40 @@ await workspace.git.checkout("/workspace/repo", "feature/new-feature");
 await workspace.git.deleteBranch("/workspace/repo", "feature/old-feature");
 ```
 
+</TabItem>
+</Tabs>
+
 ## Staging and Committing
 
-Daytona SDK provides an option to stage and commit changes in Git repositories. You can stage specific files, all changes, and commit with a message.
+Daytona SDK provides an option to stage and commit changes in Git repositories. You can stage specific files, all changes, and commit with a message using Python and TypeScript.
 
 ### Working with Changes
 
-#### Python
-
+<Tabs>
+<TabItem label="Python">
 ```python
 # Stage specific files
 workspace.git.add("/workspace/repo", ["file1.txt", "file2.txt"])
 
 # Stage all changes
+
 workspace.git.add("/workspace/repo", ["."])
 
 # Commit changes
+
 workspace.git.commit("/workspace/repo", "feat: add new feature")
 
 # Get commit history
+
 commits = workspace.git.log("/workspace/repo")
 for commit in commits:
     print(f"Commit: {commit.hash}")
     print(f"Author: {commit.author}")
     print(f"Message: {commit.message}")
+
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript">
 ```typescript
 // Stage specific files
 await workspace.git.add("/workspace/repo", ["file1.txt", "file2.txt"]);
@@ -194,29 +215,36 @@ commits.forEach(commit => {
 });
 ```
 
+</TabItem>
+</Tabs>
+
 ## Remote Operations
 
 Daytona SDK provides an option to work with remote repositories in Git. You can push changes, pull changes, and list remotes.
 
 ### Working with Remotes
 
-#### Python
+Daytona SDK provides an option to push, pull, and list remotes in Git repositories using Python and TypeScript.
 
+<Tabs>
+<TabItem label="Python">
 ```python
 # Push changes
 workspace.git.push("/workspace/repo")
 
 # Pull changes
+
 workspace.git.pull("/workspace/repo")
 
 # List remotes
+
 remotes = workspace.git.list_remotes("/workspace/repo")
 for remote in remotes:
     print(f"Remote: {remote.name} URL: {remote.url}")
+
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript">
 ```typescript
 // Push changes
 await workspace.git.push("/workspace/repo");
@@ -230,3 +258,6 @@ await workspace.git.pull("/workspace/repo");
 // Pull from specific remote and branch
 await workspace.git.pull("/workspace/repo", "origin", "main");
 ```
+
+</TabItem>
+</Tabs>
