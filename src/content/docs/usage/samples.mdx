@@ -55,7 +55,7 @@ Example of a **`devcontainer.json`** file for development environment using Go p
 }
 ```
 
-4. Host the Sample repository publicly on a Git repository or another platform.
+4. Host the Sample repository on a Git repository or another platform.
 
 5. Add Sample properties to the [Samples Index](#samples-index).
 
@@ -75,6 +75,7 @@ Samples require a Sample Index (`index.json`) file that serves as a registry of 
 [
   {
     "name": "My Custom Sample",
+    "description": "My custom Samples description",
     "gitUrl": "https://github.com/<username>/<repository>"
   }
 ]
@@ -120,9 +121,9 @@ Custom Samples will be available available when creating a Workspace. The chosen
 
 Daytona provides a collection of default Samples with predefined development configurations, environments, and dependencies. Daytona Samples are available to choose from when [creating a Workspace](/usage/workspaces#create-a-workspace).
 
-Daytona Samples are integrated via Samples Index (`index.json`) file that serves as a registry of available Daytona Samples for creating Workspaces.
+Daytona Samples are integrated via a Samples Index (`index.json`) file that serves as a registry of available Daytona Samples for creating Workspaces.
 
-The chosen Sample will be cloned and used to create the Workspace. Daytona Sample repository will serve as the core content of the Sample used to create a Workspace.
+The chosen Sample will be cloned and used to create the Workspace. The Daytona Sample repository will serve as the core content of the Sample used to create a Workspace.
 
 View the list of available Daytona Samples in the [Samples Index](https://github.com/daytonaio/daytona/blob/main/hack/samples/index.json).
 
