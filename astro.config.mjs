@@ -104,6 +104,13 @@ export default defineConfig({
                 icon: 'computer.svg',
               },
             },
+            {
+              label: 'Server',
+              link: '/configuration/server',
+              attrs: {
+                icon: 'server.svg',
+              },
+            },
           ],
         },
         {
@@ -145,17 +152,10 @@ export default defineConfig({
               },
             },
             {
-              label: 'Server',
-              link: '/usage/server',
-              attrs: {
-                icon: 'server.svg',
-              },
-            },
-            {
               label: 'Runners',
               link: '/usage/runners',
               attrs: {
-                icon: '',
+                icon: 'cluster.svg',
               },
             },
           ],
