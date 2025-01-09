@@ -53,6 +53,13 @@ export default defineConfig({
               },
             },
             {
+              label: 'Architecture',
+              link: '/about/architecture',
+              attrs: {
+                icon: 'globe.svg',
+              },
+            },
+            {
               label: 'Getting Started',
               link: '/about/getting-started',
               attrs: {
