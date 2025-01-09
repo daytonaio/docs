@@ -16,7 +16,7 @@ The Daytona SDK provides Language Server Protocol (LSP) support through workspac
 Daytona SDK provides an option to create LSP servers using Python and TypeScript.
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import Daytona, LspLanguageId
 
@@ -34,7 +34,7 @@ lsp_server = workspace.create_lsp_server(
 
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { Daytona, LspLanguageId } from '@daytona/sdk'
 
@@ -58,11 +58,8 @@ const lspServer = workspace.createLspServer(
 
 Daytona SDK provides an option to create LSP servers for various languages through the `LspLanguageId` enum in Python and TypeScript.
 
-- `LspLanguageId.PYTHON`: Python language server.
-- `LspLanguageId.TYPESCRIPT`: TypeScript/JavaScript language server.
-
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import LspLanguageId
 
@@ -73,7 +70,7 @@ LspLanguageId.TYPESCRIPT
 
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { LspLanguageId } from '@daytona/sdk'
 
@@ -85,6 +82,9 @@ LspLanguageId.TYPESCRIPT
 </TabItem>
 </Tabs>
 
+- `LspLanguageId.PYTHON`: Python language server.
+- `LspLanguageId.TYPESCRIPT`: TypeScript/JavaScript language server.
+
 ## LSP Features
 
 Daytona SDK provides various LSP features for code analysis and editing.
@@ -94,7 +94,7 @@ Daytona SDK provides various LSP features for code analysis and editing.
 Daytona SDK provides an option to get code completions for a specific position in a file using Python and TypeScript.
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 completions = lsp_server.completions(
     path="/workspace/project/main.py",
@@ -106,7 +106,7 @@ for completion in completions:
     print(f"Detail: {completion.detail}")
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 const completions = await lspServer.getCompletions({
     path: "/workspace/project/main.ts",

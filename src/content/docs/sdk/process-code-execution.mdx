@@ -20,7 +20,7 @@ Daytona SDK provides an option to execute code in Python and TypeScript.
 Daytona SDK provides an option to run code snippets in Python and TypeScript. You can execute code with input, timeout, and environment variables.
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 # Run Python code
 response = workspace.process.code_run('''
@@ -29,11 +29,12 @@ def greet(name):
 
 print(greet("Daytona"))
 ''')
+
 print(response.result)
 
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Run TypeScript code
 const response = await workspace.process.codeRun(`
@@ -72,14 +73,14 @@ Daytona SDK provides an option to execute shell commands and manage background p
 Daytona SDK provides an option to execute shell commands in Python and TypeScript. You can run commands with input, timeout, and environment variables.
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 # Execute shell command
 response = workspace.process.process_execute_command("ls -la")
 print(response.output)
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Execute shell command
 const response = await workspace.process.processExecuteCommand("ls -la");
@@ -97,7 +98,7 @@ Daytona SDK provides an option to start, stop, and manage background processes i
 Daytona SDK provides an option to start and stop background processes in Python and TypeScript. You can run long-running commands and monitor process status.
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 # Check process status
 status = workspace.process.get_process_status(process_id)
@@ -111,7 +112,7 @@ for process in processes:
 
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Check process status
 const status = await workspace.process.getProcessStatus(processId);
@@ -138,7 +139,7 @@ Daytona SDK provides best practices for process and code execution in Workspaces
 - Handle process exceptions properly
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
    ```python
    # Python - Clean up processes
    try:
@@ -148,7 +149,7 @@ Daytona SDK provides best practices for process and code execution in Workspaces
        workspace.process.stop_process(process_id)
    ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
    ```typescript
    // TypeScript - Clean up processes
    try {
@@ -168,9 +169,8 @@ Daytona SDK provides best practices for process and code execution in Workspaces
 - Use try-catch blocks for error handling
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
-# Python
 try:
     response = workspace.process.code_run("invalid python code")
 except ProcessExecutionError as e:
@@ -179,9 +179,8 @@ except ProcessExecutionError as e:
     print(f"Error output: {e.stderr}")
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// TypeScript
 try {
     const response = await workspace.process.codeRun("invalid typescript code");
 } catch (e) {

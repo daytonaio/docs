@@ -20,7 +20,7 @@ Daytona SDK provides an option to interact with the file system in Workspaces. Y
 Daytona SDK provides an option to list files and directories in a Workspace using Python and TypeScript.
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 # List files in a directory
 files = workspace.fs.list_files("/workspace")
@@ -32,7 +32,7 @@ for file in files:
 
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // List files in a directory
 const files = await workspace.fs.listFiles("/workspace");
@@ -81,7 +81,7 @@ await workspace.fs.createFolder("/workspace/new-dir", "755");
 Daytona SDK provides options to read, write, upload, download, and delete files in Workspaces using Python and TypeScript.
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 # Upload a file
 with open("local_file.txt", "rb") as f:
@@ -100,7 +100,7 @@ workspace.fs.delete_file("/workspace/file.txt")
 
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Read file content
 const content = await workspace.fs.readFile("/workspace/file.txt");
@@ -132,7 +132,7 @@ Daytona SDK provides advanced file system operations like file permissions, sear
 Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively using Python and TypeScript.
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 # Set file permissions
 workspace.fs.set_file_permissions("/workspace/file.txt", "644")
@@ -148,7 +148,7 @@ print(f"Permissions: {perms.mode}")
 
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Set file permissions
 await workspace.fs.setFilePermissions("/workspace/file.txt", "644");
@@ -162,7 +162,6 @@ console.log(`Permissions: ${perms.mode}`);
 ```
 
 </TabItem>
-
 </Tabs>
 
 ### File Search and Replace
@@ -170,7 +169,7 @@ console.log(`Permissions: ${perms.mode}`);
 Daytona SDK provides an option to search for text in files and replace text in files using Python and TypeScript.
 
 <Tabs>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 ```python
 # Search for text in files
 results = workspace.fs.search_files(
@@ -189,7 +188,7 @@ workspace.fs.replace_in_files(
 
 ```
 </TabItem>
-<TabItem label="TypeScript">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Search for text in files
 const results = await workspace.fs.searchInFiles({
