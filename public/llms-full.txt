@@ -330,6 +330,91 @@ Daytona's functionality is exposed through a command-line tool that runs on Linu
     Third-party Providers can be added to Daytona, as well as extensions to core functionality.
 
 ---
+title: Container Registries
+description: Configure container registries for your Workspace in Daytona
+---
+
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+Container registries store credentials used to pull container images from specified registry servers. Adding container registry credentials is useful for users who want to create Workspaces from private images and those hosted on private registries.
+
+## Add a Container Registry
+
+Daytona provides an option to add a container registry for your Workspace.
+
+1. Run the following command to add a container registry:
+
+```shell
+daytona container-registry add
+```
+
+Upon running the command, you will be prompted to enter the following details:
+
+- **Server URL**: The URL of the container registry.
+- **Username**: The username to authenticate with the container registry.
+- **Password**: The password to authenticate with the container registry.
+
+```text
+Server URL
+>
+
+Username
+>
+
+Password
+>
+```
+
+```text
+Registry set successfully
+```
+
+## List Container Registries
+
+Daytona provides an option to list the container registries configured for your Workspaces.
+
+1. Run the following command to list the container registries:
+
+```shell
+daytona container-registry list
+```
+
+Upon running this command, Daytona will display a list of your configured container registries with their respective details.
+
+```text
+Server                  Username            Password                     
+─────────────────────────────────────────────────────────────────────    
+myregistry.com          daytona             ********  
+```
+
+## Delete a Container Registry
+
+Daytona provides an option to delete a container registry from your Workspace.
+
+1. Run the following command to delete a container registry:
+
+```shell
+daytona container-registry delete
+```
+
+Upon running this command, you will be prompted to select the container registry you want to delete.
+
+```text
+Choose a container registry
+1 item
+===
+myregistry.com
+daytona
+```
+
+```text
+Container registry deleted successfully
+```
+
+---
 title: Git Providers
 description: Connect Daytona with GitHub, GitLab, Bitbucket, and other Git Providers.
 sidebar:
@@ -2479,9 +2564,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.50/daytona-linux-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-linux-amd64 -o daytona
 # ARM64
-curl -sf -L https://download.daytona.io/daytona/v0.50/daytona-linux-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-linux-arm64 -o daytona
 ```
 
 :::
@@ -2500,9 +2585,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64/Intel-based
-curl -sf -L https://download.daytona.io/daytona/v0.50/daytona-darwin-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-darwin-amd64 -o daytona
 # ARM64/Apple Silicon
-curl -sf -L https://download.daytona.io/daytona/v0.50/daytona-darwin-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-darwin-arm64 -o daytona
 ```
 
 :::
@@ -2514,7 +2599,7 @@ Install Daytona on Windows using the following PowerShell script:
 ```powershell
 $architecture = if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") { "amd64" } else { "arm64" }
 md -Force "$Env:APPDATA\bin\daytona"; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12';
-Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.50/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
+Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.51/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
 $env:Path += ";" + $Env:APPDATA + "\bin\daytona"; [Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::User);
 daytona serve;
 ```
@@ -2524,9 +2609,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```sh
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.50/daytona-windows-amd64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-windows-amd64.exe -o daytona
 # AArch64
-curl -sf -L https://download.daytona.io/daytona/v0.50/daytona-windows-arm64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-windows-arm64.exe -o daytona
 ```
 
 :::
@@ -2719,9 +2804,9 @@ sidebar:
 The `daytona` command-line tool provides access to Daytona's core features.
 You can use the `daytona` tool for the following operations:
 
-* Managing the lifecycle of the Daytona Server.
-* Managing [Workspaces](../usage/workspaces), [Git Providers](../configuration/git-providers), [Providers](../configuration/providers), and other Daytona components.
-* Configuring the [Daytona Server](../configuration/server) interactively.
+*   Managing the lifecycle of the Daytona Server.
+*   Managing [Workspaces](../usage/workspaces), [Git Providers](../configuration/git-providers), [Providers](../configuration/providers), and other Daytona components.
+*   Configuring the [Daytona Server](../configuration/server) interactively.
 
 This reference lists all commands supported by the `daytona` command-line tool complete with a description of their behaviour, and any supported flags.
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
@@ -2731,7 +2816,6 @@ This reference does not apply to the `daytona` command when run inside of a Work
 </Aside>
 
 ## daytona
-
 Daytona is a Dev Environment Manager
 
 ```shell
@@ -2744,8 +2828,8 @@ __Flags__
 | `--help` |  | help for daytona |
 | `--version` | `-v` | Display the version of Daytona |
 
-## daytona api-key
 
+## daytona api-key
 Api Key commands
 
 ```shell
@@ -2757,8 +2841,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona api-key generate
 
+## daytona api-key generate
 Generate a new API key
 
 ```shell
@@ -2770,8 +2854,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona api-key list
 
+## daytona api-key list
 List API keys
 
 ```shell
@@ -2784,8 +2868,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona api-key revoke
 
+## daytona api-key revoke
 Revoke an API key
 
 ```shell
@@ -2798,8 +2882,8 @@ __Flags__
 | `--yes` | `-y` | Skip confirmation prompt |
 | `--help` |  | help for daytona |
 
-## daytona autocomplete
 
+## daytona autocomplete
 Adds a completion script for your shell environment
 
 ```shell
@@ -2818,7 +2902,6 @@ macOS Installation: ```brew install bash-completion```
 </Aside>
 
 ## daytona build
-
 Manage builds
 
 ```shell
@@ -2830,8 +2913,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona build delete
 
+## daytona build delete
 Delete a build
 
 ```shell
@@ -2846,8 +2929,8 @@ __Flags__
 | `--prebuild-id` |  | Delete ALL builds from prebuild |
 | `--help` |  | help for daytona |
 
-## daytona build info
 
+## daytona build info
 Show build info
 
 ```shell
@@ -2860,8 +2943,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona build list
 
+## daytona build list
 List all builds
 
 ```shell
@@ -2874,8 +2957,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona build logs
 
+## daytona build logs
 View logs for build
 
 ```shell
@@ -2888,8 +2971,8 @@ __Flags__
 | `--follow` | `-f` | Follow logs |
 | `--help` |  | help for daytona |
 
-## daytona build run
 
+## daytona build run
 Run a build from a project config
 
 ```shell
@@ -2901,8 +2984,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona code
 
+## daytona code
 Open a workspace in your preferred IDE
 
 ```shell
@@ -2912,12 +2995,12 @@ daytona code [WORKSPACE] [PROJECT] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, jupyter, fleet, zed, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
+| `--ide` | `-i` | Specify the IDE (vscode, code-insiders, browser, cursor, codium, ssh, jupyter, fleet, zed, windsurf, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-## daytona config
 
+## daytona config
 Output Daytona configuration
 
 ```shell
@@ -2931,8 +3014,8 @@ __Flags__
 | `--show-api-keys` | `-k` | Show API keys |
 | `--help` |  | help for daytona |
 
-## daytona container-registry
 
+## daytona container-registry
 Manage container registries
 
 ```shell
@@ -2944,8 +3027,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona container-registry delete
 
+## daytona container-registry delete
 Delete a container registry
 
 ```shell
@@ -2957,8 +3040,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona container-registry list
 
+## daytona container-registry list
 Lists container registries
 
 ```shell
@@ -2971,8 +3054,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona container-registry set
 
+## daytona container-registry set
 Set container registry
 
 ```shell
@@ -2987,8 +3070,8 @@ __Flags__
 | `--username` | `-u` | Username |
 | `--help` |  | help for daytona |
 
-## daytona create
 
+## daytona create
 Create a workspace
 
 ```shell
@@ -3006,7 +3089,7 @@ __Flags__
 | `--devcontainer-path` |  | Automatically assign the devcontainer builder with the path passed as the flag value |
 | `--env` |  | Specify environment variables (e.g. --env 'KEY1=VALUE1' --env 'KEY2=VALUE2' ...') |
 | `--git-provider-config` |  | Specify the Git provider configuration ID or alias |
-| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, jupyter, fleet, zed, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
+| `--ide` | `-i` | Specify the IDE (vscode, code-insiders, browser, cursor, codium, ssh, jupyter, fleet, zed, windsurf, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--manual` |  | Manually enter the Git repository |
 | `--multi-project` |  | Workspace with multiple projects/repos |
 | `--name` |  | Specify the workspace name |
@@ -3015,8 +3098,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-## daytona delete
 
+## daytona delete
 Delete a workspace
 
 ```shell
@@ -3031,8 +3114,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
-## daytona docs
 
+## daytona docs
 Opens the Daytona documentation in your default browser.
 
 ```shell
@@ -3044,9 +3127,10 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona env
 
+## daytona env
 Manage profile environment variables that are added to all workspaces
+
 
 ```shell
 daytona env [flags]
@@ -3057,8 +3141,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona env list
 
+## daytona env list
 List profile environment variables
 
 ```shell
@@ -3071,8 +3155,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona env set
 
+## daytona env set
 Set profile environment variables
 
 ```shell
@@ -3084,8 +3168,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona forward
 
+## daytona forward
 Forward a port from a project to your local machine
 
 ```shell
@@ -3098,8 +3182,8 @@ __Flags__
 | `--public` |  | Should be port be available publicly via an URL |
 | `--help` |  | help for daytona |
 
-## daytona git-providers
 
+## daytona git-providers
 Manage Git providers
 
 ```shell
@@ -3111,8 +3195,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona git-providers add
 
+## daytona git-providers add
 Register a Git provider
 
 ```shell
@@ -3130,8 +3214,8 @@ __Flags__
 | `--username` | `-u` | Username |
 | `--help` |  | help for daytona |
 
-## daytona git-providers delete
 
+## daytona git-providers delete
 Unregister a Git provider
 
 ```shell
@@ -3145,8 +3229,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
-## daytona git-providers list
 
+## daytona git-providers list
 Lists your registered Git providers
 
 ```shell
@@ -3159,8 +3243,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona git-providers update
 
+## daytona git-providers update
 Update a Git provider
 
 ```shell
@@ -3172,8 +3256,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona ide
 
+## daytona ide
 Choose the default IDE
 
 ```shell
@@ -3185,8 +3269,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona info
 
+## daytona info
 Show workspace info
 
 ```shell
@@ -3199,8 +3283,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona list
 
+## daytona list
 List workspaces
 
 ```shell
@@ -3214,8 +3298,8 @@ __Flags__
 | `--verbose` | `-v` | Show verbose output |
 | `--help` |  | help for daytona |
 
-## daytona logs
 
+## daytona logs
 View logs for a workspace/project
 
 ```shell
@@ -3229,8 +3313,8 @@ __Flags__
 | `--workspace` | `-w` | View workspace logs |
 | `--help` |  | help for daytona |
 
-## daytona prebuild
 
+## daytona prebuild
 Manage prebuilds
 
 ```shell
@@ -3242,8 +3326,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona prebuild add
 
+## daytona prebuild add
 Add a prebuild configuration
 
 ```shell
@@ -3260,8 +3344,8 @@ __Flags__
 | `--trigger-files` | `-t` | Full paths of files whose changes should explicitly trigger a  prebuild |
 | `--help` |  | help for daytona |
 
-## daytona prebuild delete
 
+## daytona prebuild delete
 Delete a prebuild configuration
 
 ```shell
@@ -3274,8 +3358,8 @@ __Flags__
 | `--force` | `-f` | Force delete prebuild |
 | `--help` |  | help for daytona |
 
-## daytona prebuild info
 
+## daytona prebuild info
 Show prebuild configuration info
 
 ```shell
@@ -3288,8 +3372,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona prebuild list
 
+## daytona prebuild list
 List prebuild configurations
 
 ```shell
@@ -3302,8 +3386,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona prebuild update
 
+## daytona prebuild update
 Update a prebuild configuration
 
 ```shell
@@ -3320,8 +3404,8 @@ __Flags__
 | `--trigger-files` | `-t` | Full paths of files whose changes should explicitly trigger a  prebuild |
 | `--help` |  | help for daytona |
 
-## daytona profile
 
+## daytona profile
 Manage profiles
 
 ```shell
@@ -3333,8 +3417,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona profile add
 
+## daytona profile add
 Add profile
 
 ```shell
@@ -3349,8 +3433,8 @@ __Flags__
 | `--name` | `-n` | Profile name |
 | `--help` |  | help for daytona |
 
-## daytona profile delete
 
+## daytona profile delete
 Delete profile [PROFILE_NAME]
 
 ```shell
@@ -3362,8 +3446,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona profile edit
 
+## daytona profile edit
 Edit profile [PROFILE_NAME]
 
 ```shell
@@ -3378,8 +3462,8 @@ __Flags__
 | `--name` | `-n` | Profile name |
 | `--help` |  | help for daytona |
 
-## daytona profile list
 
+## daytona profile list
 List profiles
 
 ```shell
@@ -3392,8 +3476,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona project-config
 
+## daytona project-config
 Manage project configs
 
 ```shell
@@ -3405,8 +3489,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona project-config add
 
+## daytona project-config add
 Add a project config
 
 ```shell
@@ -3426,8 +3510,8 @@ __Flags__
 | `--name` |  | Specify the project config name |
 | `--help` |  | help for daytona |
 
-## daytona project-config delete
 
+## daytona project-config delete
 Delete a project config
 
 ```shell
@@ -3442,8 +3526,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
-## daytona project-config export
 
+## daytona project-config export
 Export a project config
 
 ```shell
@@ -3457,8 +3541,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona project-config import
 
+## daytona project-config import
 Import project config from JSON
 
 ```shell
@@ -3471,8 +3555,8 @@ __Flags__
 | `--file` | `-f` | Import project config from a JSON file. Use '-' to read from stdin. |
 | `--help` |  | help for daytona |
 
-## daytona project-config info
 
+## daytona project-config info
 Show project config info
 
 ```shell
@@ -3485,8 +3569,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona project-config list
 
+## daytona project-config list
 Lists project configs
 
 ```shell
@@ -3499,8 +3583,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona project-config set-default
 
+## daytona project-config set-default
 Set project config info
 
 ```shell
@@ -3512,8 +3596,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona project-config update
 
+## daytona project-config update
 Update a project config
 
 ```shell
@@ -3525,8 +3609,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona provider
 
+## daytona provider
 Manage providers
 
 ```shell
@@ -3538,8 +3622,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona provider install
 
+## daytona provider install
 Install provider
 
 ```shell
@@ -3552,8 +3636,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-## daytona provider list
 
+## daytona provider list
 List installed providers
 
 ```shell
@@ -3566,8 +3650,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona provider uninstall
 
+## daytona provider uninstall
 Uninstall provider
 
 ```shell
@@ -3579,8 +3663,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona provider update
 
+## daytona provider update
 Update provider
 
 ```shell
@@ -3593,8 +3677,8 @@ __Flags__
 | `--all` | `-a` | Update all providers |
 | `--help` |  | help for daytona |
 
-## daytona purge
 
+## daytona purge
 Purges all Daytona data from the current device
 
 ```shell
@@ -3608,8 +3692,8 @@ __Flags__
 | `--yes` | `-y` | Execute purge without prompt |
 | `--help` |  | help for daytona |
 
-## daytona restart
 
+## daytona restart
 Restart a workspace
 
 ```shell
@@ -3622,8 +3706,8 @@ __Flags__
 | `--project` | `-p` | Restart a single project in the workspace (project name) |
 | `--help` |  | help for daytona |
 
-## daytona serve
 
+## daytona serve
 Run the server process in the current terminal session
 
 ```shell
@@ -3635,8 +3719,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona server
 
+## daytona server
 Start the server process in daemon mode
 
 ```shell
@@ -3649,8 +3733,8 @@ __Flags__
 | `--yes` | `-y` | Skip the confirmation prompt |
 | `--help` |  | help for daytona |
 
-## daytona server config
 
+## daytona server config
 Output local Daytona Server config
 
 ```shell
@@ -3663,8 +3747,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona server configure
 
+## daytona server configure
 Configure Daytona Server
 
 ```shell
@@ -3676,8 +3760,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona server logs
 
+## daytona server logs
 Output Daytona Server logs
 
 ```shell
@@ -3692,8 +3776,8 @@ __Flags__
 | `--local` | `-l` | Read local server log files |
 | `--help` |  | help for daytona |
 
-## daytona server logs list
 
+## daytona server logs list
 Lists Daytona Server Log Files
 
 ```shell
@@ -3705,8 +3789,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona server restart
 
+## daytona server restart
 Restarts the Daytona Server daemon
 
 ```shell
@@ -3718,8 +3802,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona server start
 
+## daytona server start
 Start the Daytona Server daemon
 
 ```shell
@@ -3731,8 +3815,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona server stop
 
+## daytona server stop
 Stops the Daytona Server daemon
 
 ```shell
@@ -3744,8 +3828,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona ssh
 
+## daytona ssh
 SSH into a project using the terminal
 
 ```shell
@@ -3760,8 +3844,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-## daytona start
 
+## daytona start
 Start a workspace
 
 ```shell
@@ -3777,8 +3861,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-## daytona stop
 
+## daytona stop
 Stop a workspace
 
 ```shell
@@ -3792,8 +3876,8 @@ __Flags__
 | `--project` | `-p` | Stop a single project in the workspace (project name) |
 | `--help` |  | help for daytona |
 
-## daytona target
 
+## daytona target
 Manage provider targets
 
 ```shell
@@ -3805,8 +3889,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona target list
 
+## daytona target list
 List targets
 
 ```shell
@@ -3819,8 +3903,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona target remove
 
+## daytona target remove
 Remove target
 
 ```shell
@@ -3833,8 +3917,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion of all workspaces without prompt |
 | `--help` |  | help for daytona |
 
-## daytona target set-default
 
+## daytona target set-default
 Set target to be used by default
 
 ```shell
@@ -3846,8 +3930,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona target set
 
+## daytona target set
 Set provider target
 
 ```shell
@@ -3860,8 +3944,8 @@ __Flags__
 | `--file` | `-f` | Path to JSON file for target configuration, use '-' to read from stdin |
 | `--help` |  | help for daytona |
 
-## daytona telemetry
 
+## daytona telemetry
 Manage telemetry collection
 
 ```shell
@@ -3873,8 +3957,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona telemetry disable
 
+## daytona telemetry disable
 Disable telemetry collection
 
 ```shell
@@ -3886,8 +3970,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona telemetry enable
 
+## daytona telemetry enable
 Enable telemetry collection
 
 ```shell
@@ -3899,8 +3983,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona update
 
+## daytona update
 Update Daytona CLI
 
 ```shell
@@ -3913,8 +3997,8 @@ __Flags__
 | `--version` | `-v` | Version to update to |
 | `--help` |  | help for daytona |
 
-## daytona use
 
+## daytona use
 Use profile [PROFILE_NAME]
 
 ```shell
@@ -3926,8 +4010,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona version
 
+## daytona version
 Print the version number
 
 ```shell
@@ -3939,8 +4023,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona whoami
 
+## daytona whoami
 Display information about the active user
 
 ```shell
@@ -5123,6 +5207,138 @@ Select a Project Config To Delete
 ```text
 Project config deleted successfully
 ```
+
+---
+title: Samples
+description: Learn how to create and manage samples in Daytona.
+sidebar:
+  label: Samples
+---
+
+import Keyboard from "../../../components/Keyboard.astro"
+
+<Label>
+  Distribution: **Open Source**, **Cloud**, **Self-Managed**
+</Label>
+
+Samples are quick-start repositories with predefined development configurations, environments, and dependencies used to create Workspaces.
+
+## Custom Samples
+
+Daytona provides an option to use custom Samples to create Workspaces. Creating custom Samples is a two-step process that involves:
+
+- [**Sample Repository**](#sample-repository)
+
+    A repository containing the Sample code and a `devcontainer.json` file defining the development environment.
+
+- [**Samples Index**](#samples-index)
+
+    Samples Index (`index.json`) file serving as a registry of available Samples for creating Workspaces.
+
+### Sample Repository
+
+Custom Sample repository is a Git repository that contains the Sample code and a `devcontainer.json` file that defines the development environment. The repository serves as the core content of the Sample and is used to create a Workspace.
+
+1. Create a repository representing the custom Sample.
+
+2. Define the custom Sample code, development configurations and dependencies.
+
+3. Create a **`devcontainer.json`** file that defines the development environment.
+
+- Use the [development container standard](https://containers.dev/) to define your development environment. Development containers vary based on the programming language, configurations, and tools used within the Sample.
+
+Example of a **`devcontainer.json`** file for development environment using Go programming language:
+
+```json
+{
+    "name": "Go",
+    "image": "mcr.microsoft.com/devcontainers/go:1-1.21-bookworm",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "golang.Go"
+            ]
+        }
+    },
+    "postCreateCommand": "go test -v"
+}
+```
+
+4. Host the Sample repository on a Git repository or another platform.
+
+5. Add Sample properties to the [Samples Index](#samples-index).
+
+Sample will be used to create a Workspace by cloning the repository and using the `devcontainer.json` file to define the development environment.
+
+### Samples Index
+
+Samples require a Sample Index (`index.json`) file that serves as a registry of available Samples for creating Workspaces. The Samples Index is used to display the available Samples when creating a Workspace.
+
+1. Create an **`index.json`** file representing the Samples Index.
+
+2. Define an array of JSON objects representing the Samples.
+
+    Each JSON object in the array represents a Sample:
+
+```json
+[
+  {
+    "name": "My Custom Sample",
+    "description": "My custom Samples description",
+    "gitUrl": "https://github.com/<username>/<repository>"
+  }
+]
+```
+
+- **`name`**
+
+    Name of the Sample.
+
+- **`gitUrl`**
+
+    Link to the publicly available Sample repository.
+
+3. Host the **`index.json`** file publicly on a Git repository or another platform.
+
+4. Run the following command to configure the Samples Index URL:
+
+```sh
+daytona server configure
+```
+
+5. Enter the public raw URL of the **`index.json`** file in the **`Samples Index URL`** field.
+
+```text
+Samples Index URL
+Leave empty to disable samples
+https://raw.githubusercontent.com/<username>/<repository>/<path>/index.json
+```
+
+```text
+Server configuration updated. You need to restart the server for the changes to take effect.
+```
+
+6. Restart the Daytona server to apply the changes.
+
+```sh
+daytona server restart
+```
+
+Custom Samples will be available available when creating a Workspace. The chosen Sample will be cloned and used to create the Workspace.
+
+## Daytona Samples
+
+Daytona provides a collection of default Samples with predefined development configurations, environments, and dependencies. Daytona Samples are available to choose from when [creating a Workspace](/usage/workspaces#create-a-workspace).
+
+Daytona Samples are integrated via a Samples Index (`index.json`) file that serves as a registry of available Daytona Samples for creating Workspaces.
+
+The chosen Sample will be cloned and used to create the Workspace. The Daytona Sample repository will serve as the core content of the Sample used to create a Workspace.
+
+View the list of available Daytona Samples in the [Samples Index](https://github.com/daytonaio/daytona/blob/main/hack/samples/index.json).
+
+:::tip
+You can contribute to the Daytona Samples by suggesting new Samples to be added to the [Daytona Samples Index](https://github.com/daytonaio/daytona/blob/main/hack/samples/index.json).
+:::
 
 ---
 title: Server
