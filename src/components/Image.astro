@@ -5,7 +5,7 @@ const { imageAlt, iconLight, iconDark, height, width } = Astro.props
 ---
 
 <theme-aware-image>
-  <picture>
+  <picture class="cursor-pointer">
     <source
       srcset={iconDark.src}
       data-dark-src={iconDark.src}
@@ -18,12 +18,80 @@ const { imageAlt, iconLight, iconDark, height, width } = Astro.props
       class="theme-image"
     />
   </picture>
+
+  <dialog class="modal">
+    <picture class="modal-picture">
+      <source
+        srcset={iconDark.src}
+        data-dark-src={iconDark.src}
+        data-light-src={iconLight.src}
+      />
+      <AstroImage
+        src={iconLight}
+        alt={imageAlt}
+        class="modal-image theme-image"
+      />
+    </picture>
+    <button class="close-button" aria-label="Close modal">X</button>
+  </dialog>
 </theme-aware-image>
+
+<style>
+  .modal {
+    padding: 0;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal:not([open]) {
+    display: none;
+  }
+
+  .modal::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .modal-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: black;
+  }
+
+  .close-button:hover {
+    background: #eee;
+  }
+</style>
 
 <script>
   class ThemeAwareImage extends HTMLElement {
     constructor() {
       super()
+      this.setupModal()
       this.updateImage(
         document.documentElement.dataset.theme as 'light' | 'dark'
       )
@@ -45,19 +113,52 @@ const { imageAlt, iconLight, iconDark, height, width } = Astro.props
       })
     }
 
-    updateImage(theme: 'light' | 'dark') {
-      const source = this.querySelector('source')
-      const img = this.querySelector('img')
+    setupModal() {
+      const mainPicture = this.querySelector('picture:not(.modal-picture)')
+      const modal = this.querySelector('dialog')
+      const closeButton = modal?.querySelector('.close-button')
 
-      if (source && img) {
+      if (mainPicture && modal) {
+        mainPicture.addEventListener('click', () => {
+          modal.showModal()
+        })
+
+        closeButton?.addEventListener('click', () => {
+          modal.close()
+        })
+
+        modal.addEventListener('click', e => {
+          if (e.target === modal) {
+            modal.close()
+          }
+        })
+
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && modal.open) {
+            modal.close()
+          }
+        })
+      }
+    }
+
+    updateImage(theme: 'light' | 'dark') {
+      const sources = this.querySelectorAll('source')
+      const images = this.querySelectorAll('img')
+
+      sources.forEach(source => {
         const newSrc =
           theme === 'dark' ? source.dataset.darkSrc : source.dataset.lightSrc
-
         if (newSrc) {
           source.srcset = newSrc
-          img.src = newSrc
         }
-      }
+      })
+
+      images.forEach(img => {
+        const source = img.previousElementSibling as HTMLSourceElement
+        if (source) {
+          img.src = source.srcset
+        }
+      })
     }
   }
 
