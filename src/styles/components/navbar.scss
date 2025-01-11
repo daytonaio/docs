@@ -36,8 +36,8 @@
     display: flex;
 
     & svg {
-      width: 117px;
-      height: 26px;
+      width: 115px;
+      height: 24px;
     }
 
     & svg path {
@@ -66,12 +66,14 @@
   }
   .dotfiles-logo {
     font-family: 'Berkeley Mono', monospace;
+    font-weight: 400;
     font-size: 1rem;
     line-height: 1.2;
-    letter-spacing: -0.04rem;
+    letter-spacing: -.01em;
     display: flex;
     align-items: center;
     color: var(--primary-text-color);
+    padding-right: 4px;
 
     & svg {
       margin-right: 0.5rem;
@@ -86,6 +88,24 @@
         display: none;
       }
     }
+
+    @include for-hover-state {
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .navbar-item {
+    font-family: 'Berkeley Mono', monospace;
+    font-size: .875rem;
+    line-height: 1.4;
+    font-weight: 400;
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+    color: var(--primary-text-color);
+    padding-right: 8px;
+    padding-left: 8px;
 
     @include for-hover-state {
       &:hover {

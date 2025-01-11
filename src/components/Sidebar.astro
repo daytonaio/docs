@@ -2,10 +2,104 @@
 import SidebarSublist from './SidebarSublist.astro'
 import { SideNavLinks } from './menu/SideNavLinks'
 
+const sdkSidebar = [
+  {
+    type: 'group',
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/sdk',
+        label: 'SDK Home',
+        attrs: {
+          icon: 'home.svg',
+        },
+      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'About',
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/sdk/getting-started',
+        label: 'Getting Started',
+        attrs: {
+          icon: 'bookmark.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/configuration',
+        label: 'Configuration',
+        attrs: {
+          icon: 'git-commit.svg',
+        },
+      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'Workspaces',
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/sdk/workspace-management',
+        label: 'Management',
+        attrs: {
+          icon: 'computer.svg',
+        },
+      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'Agent Toolbox',
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/sdk/file-system-operations',
+        label: 'File System',
+        attrs: {
+          icon: 'folder.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/git-operations',
+        label: 'Git Operations',
+        attrs: {
+          icon: 'git-branch.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/language-server-protocol',
+        label: 'Language Server Protocol',
+        attrs: {
+          icon: 'pulse.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/sdk/process-code-execution',
+        label: 'Process & Code Execution',
+        attrs: {
+          icon: 'terminal.svg',
+        },
+      },
+    ],
+  },
+]
+
 const { sidebar } = Astro.props
+
+const currentPath = Astro.url.pathname
+
+const sidebarToUse = currentPath.startsWith('/docs/sdk') ? sdkSidebar : sidebar
 ---
 
-<SidebarSublist sublist={sidebar} />
+<SidebarSublist sublist={sidebarToUse} />
 <div class="mobile-nav-btn nav__items_side_menu">
   <SideNavLinks client:load />
 </div>

@@ -1,0 +1,114 @@
+---
+title: Language Server Protocol
+---
+
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides Language Server Protocol (LSP) support through workspace instances. This enables advanced language features like code completion, diagnostics, and more.
+
+## Creating LSP Servers
+
+Daytona SDK provides an option to create LSP servers for various languages:
+
+### Python
+
+```python
+from daytona_sdk import Daytona, LspLanguageId
+
+# Create workspace
+daytona = Daytona()
+workspace = daytona.create()
+
+# Create LSP server for Python
+lsp_server = workspace.create_lsp_server(
+    language_id=LspLanguageId.PYTHON,
+    path_to_project="/workspace/project"
+)
+```
+
+### TypeScript
+
+```typescript
+import { Daytona, LspLanguageId } from '@daytona/sdk'
+
+// Create workspace
+const daytona = new Daytona()
+const workspace = await daytona.create({
+    language: 'typescript'
+})
+
+// Create LSP server for TypeScript
+const lspServer = workspace.createLspServer(
+    LspLanguageId.TYPESCRIPT,
+    "/workspace/project"
+)
+```
+
+## Supported Languages
+
+Daytona SDK provides an option to create LSP servers for various languages through the `LspLanguageId` enum:
+
+### Python
+
+```python
+from daytona_sdk import LspLanguageId
+
+# Available language IDs
+LspLanguageId.PYTHON      
+LspLanguageId.TYPESCRIPT        
+```
+
+- `LspLanguageId.PYTHON`: Python language server.
+- `LspLanguageId.TYPESCRIPT`: TypeScript/JavaScript language server.
+
+### TypeScript
+
+```typescript
+import { LspLanguageId } from '@daytona/sdk'
+
+// Available language IDs
+LspLanguageId.PYTHON      
+LspLanguageId.TYPESCRIPT    
+```
+
+- `LspLanguageId.PYTHON`: Python language server.
+- `LspLanguageId.TYPESCRIPT`: TypeScript/JavaScript language server.
+
+## LSP Features
+
+Daytona SDK provides various LSP features for code analysis and editing:
+
+### Code Completion
+
+Daytona SDK provides an option to get code completions for a specific position:
+
+#### Python
+
+```python
+completions = lsp_server.completions(
+    path="/workspace/project/main.py",
+    position={"line": 10, "character": 15}
+)
+for completion in completions:
+    print(f"Label: {completion.label}")
+    print(f"Kind: {completion.kind}")
+    print(f"Detail: {completion.detail}")
+```
+
+#### TypeScript
+
+```typescript
+const completions = await lspServer.getCompletions({
+    path: "/workspace/project/main.ts",
+    position: { line: 10, character: 15 }
+})
+completions.forEach(completion => {
+    console.log(`Label: ${completion.label}`)
+    console.log(`Kind: ${completion.kind}`)
+    console.log(`Detail: ${completion.detail}`)
+})
+```

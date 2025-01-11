@@ -330,6 +330,91 @@ Daytona's functionality is exposed through a command-line tool that runs on Linu
     Third-party Providers can be added to Daytona, as well as extensions to core functionality.
 
 ---
+title: Container Registries
+description: Configure container registries for your Workspace in Daytona
+---
+
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+Container registries store credentials used to pull container images from specified registry servers. Adding container registry credentials is useful for users who want to create Workspaces from private images and those hosted on private registries.
+
+## Add a Container Registry
+
+Daytona provides an option to add a container registry for your Workspace.
+
+1. Run the following command to add a container registry:
+
+```shell
+daytona container-registry add
+```
+
+Upon running the command, you will be prompted to enter the following details:
+
+- **Server URL**: The URL of the container registry.
+- **Username**: The username to authenticate with the container registry.
+- **Password**: The password to authenticate with the container registry.
+
+```text
+Server URL
+>
+
+Username
+>
+
+Password
+>
+```
+
+```text
+Registry set successfully
+```
+
+## List Container Registries
+
+Daytona provides an option to list the container registries configured for your Workspaces.
+
+1. Run the following command to list the container registries:
+
+```shell
+daytona container-registry list
+```
+
+Upon running this command, Daytona will display a list of your configured container registries with their respective details.
+
+```text
+Server                  Username            Password                     
+─────────────────────────────────────────────────────────────────────    
+myregistry.com          daytona             ********  
+```
+
+## Delete a Container Registry
+
+Daytona provides an option to delete a container registry from your Workspace.
+
+1. Run the following command to delete a container registry:
+
+```shell
+daytona container-registry delete
+```
+
+Upon running this command, you will be prompted to select the container registry you want to delete.
+
+```text
+Choose a container registry
+1 item
+===
+myregistry.com
+daytona
+```
+
+```text
+Container registry deleted successfully
+```
+
+---
 title: Git Providers
 description: Connect Daytona with GitHub, GitLab, Bitbucket, and other Git Providers.
 sidebar:
@@ -1464,8 +1549,6 @@ Provider aws-provider has been successfully installed
 
 The Azure Provider allows Daytona to create Workspace projects on Azure compute instances. The Provider integrates Daytona with Azure, enabling you to manage Workspaces in a scalable and flexible cloud environment.
 
-<br />
-
 1. Run the following command to install a Azure Provider:
 
 ```shell
@@ -1490,6 +1573,20 @@ Upon selecting the Provider, Daytona will install and configure the chosen Provi
 ```text
 Provider azure-provider has been successfully installed
 ```
+
+:::note
+Ensure the Azure Provider is linked to a service principal with the `Contributor` role for the appropriate Azure subscription.
+<br />
+To create a service principal with the `Contributor` role, use the following Azure CLI command:
+
+```shell
+az ad sp create-for-rbac --role Contributor --scopes /subscriptions/<subscription-id>
+```
+
+Detailed instructions on creating and configuring the service principal can be found in the official [Create an Azure service principal with Azure CLI](https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash) documentation.
+:::
+
+<br />
 
 <DocumentList>
 <DocumentListItem
@@ -2449,6 +2546,10 @@ Each operating system supports both `x86_64` and `ARM64` architectures.
 
 Daytona leverages [Docker](https://docs.docker.com/engine/install/) to create and manage isolated development environments.
 
+## Installation
+
+<br />
+
 <Tabs>
 <TabItem label="Linux">
 
@@ -2463,16 +2564,12 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-linux-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-linux-amd64 -o daytona
 # ARM64
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-linux-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-linux-arm64 -o daytona
 ```
 
 :::
-
-<br />
-
-<Uninstall />
 
 </TabItem>
 <TabItem label="MacOS">
@@ -2488,16 +2585,12 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64/Intel-based
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-darwin-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-darwin-amd64 -o daytona
 # ARM64/Apple Silicon
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-darwin-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-darwin-arm64 -o daytona
 ```
 
 :::
-
-<br />
-
-<Uninstall />
 
 </TabItem>
 <TabItem label="Windows">
@@ -2506,7 +2599,7 @@ Install Daytona on Windows using the following PowerShell script:
 ```powershell
 $architecture = if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") { "amd64" } else { "arm64" }
 md -Force "$Env:APPDATA\bin\daytona"; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12';
-Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.49/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
+Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.51/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
 $env:Path += ";" + $Env:APPDATA + "\bin\daytona"; [Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::User);
 daytona serve;
 ```
@@ -2516,9 +2609,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```sh
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-windows-amd64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-windows-amd64.exe -o daytona
 # AArch64
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-windows-arm64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-windows-arm64.exe -o daytona
 ```
 
 :::
@@ -2536,6 +2629,10 @@ If you are using Windows Subsystem for Linux (WSL), you can follow the [instruct
 <Nix />
 </TabItem>
 </Tabs>
+
+## Uninstallation
+
+<Uninstall />
 
 ---
 title: Telemetry
@@ -2633,17 +2730,65 @@ You can use the following troubleshooting tips to resolve common issues with Day
 
 ### VPNs and Firewalls
 
-If your VPN is configured to handle all IP traffic or if your Firewall is configured to block certain IP addresses, they may prevent Daytona from successfully connecting to our reverse proxy service.
+If your VPN is configured to handle all IP traffic or if your Firewall is configured to block certain IP addresses, they may prevent Daytona from successfully connecting to the reverse proxy service.
 The issue can be manifested in different ways, including:
 
-- Unable to start the Daytona Server due to a `control not running` error
-- Unable to successfully create Workspaces due to a `Failed to connect to server: Get "http://server/health": lookup server...` error
-- Unable to enter a Workspace using `daytona code` or `daytona ssh` due to a timeout in establishing a Tailscale connection
+- Unable to start the Daytona Server due to the `control not running` error.
+- Unable to successfully create Workspaces due to the `Failed to connect to server: Get "http://server/health": lookup server...` error.
+- Unable to enter a Workspace using `daytona code` or `daytona ssh` due to the timeout when establishing a Tailscale connection.
 
 To work around this issue, you may need to add the following IP address exceptions to your VPN or Firewall:
 
 - `35.198.165.62` - Europe-based reverse proxy
 - `34.133.75.4` - US-based reverse proxy
+
+## WSL2 with Visual Studio Code
+
+### Description
+
+Running Daytona on WSL2 does not work seamlessly with the Visual Studio Code IDE. This issue arises because Visual Studio Code relies on the native Windows SSH client, whereas Daytona modifies the Linux SSH configuration file to set up workspace-specific SSH connection configurations.
+
+Daytona uses a ProxyCommand that invokes `daytona ssh-proxy` as defined in the SSH configuration. This configuration assumes that the Daytona binary is located within the Linux filesystem, which creates a conflict with Visual Studio Code's reliance on the Windows environment.
+
+This issue is not specific to Daytona but rather stems from a limitation in the Visual Studio Code remote development plugin. The plugin does not currently support passing a custom "remote SSH path" flag when invoking the `code` CLI. Without this feature, Daytona's reliance on Linux-specific configurations conflicts with Visual Studio Code's dependency on Windows-native tools.
+
+### Solution
+
+While awaiting official support for a "remote SSH path" flag in the Visual Studio Code plugin, the following workaround can address the issue. This solution involves creating a script and modifying configurations to align the Windows and Linux SSH clients for seamless operation.
+
+1. Create a **`wsl_ssh.bat`** script with the following content:
+
+```bash
+C:\Windows\system32\wsl.exe ssh %*
+```
+
+2. Save the **`wsl_ssh.bat`** script in the following directory:
+
+```text
+C:\Users\<USERNAME>\AppData\Roaming\bin\wsl_ssh.bat
+```
+
+3. Update the Visual Studio Code **`settings.json`** file to use the **`wsl_ssh.bat`** script as the SSH path:
+
+```sh
+"remote.SSH.path": "C:\\Users\\<USERNAME>\\AppData\\Roaming\\bin\\wsl_ssh.bat"
+```
+
+:::tip
+The `settings.json` file is located in the following directory:
+
+`C:\Users\<USERNAME>\AppData\Roaming\Code\User\settings.json`
+:::
+
+<br />
+
+4. Create a symlink to synchronize the native SSH configuration with the WSL2 SSH configuration:
+
+```sh
+ln -s /mnt/c/Users/<USERNAME>/.ssh/config config
+```
+
+This ensures the SSH configuration is consistent between environments.
 
 ---
 title: CLI
@@ -2850,7 +2995,7 @@ daytona code [WORKSPACE] [PROJECT] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, jupyter, fleet, zed, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
+| `--ide` | `-i` | Specify the IDE (vscode, code-insiders, browser, cursor, codium, ssh, jupyter, fleet, zed, windsurf, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
@@ -2944,7 +3089,7 @@ __Flags__
 | `--devcontainer-path` |  | Automatically assign the devcontainer builder with the path passed as the flag value |
 | `--env` |  | Specify environment variables (e.g. --env 'KEY1=VALUE1' --env 'KEY2=VALUE2' ...') |
 | `--git-provider-config` |  | Specify the Git provider configuration ID or alias |
-| `--ide` | `-i` | Specify the IDE (vscode, browser, cursor, ssh, jupyter, fleet, zed, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
+| `--ide` | `-i` | Specify the IDE (vscode, code-insiders, browser, cursor, codium, ssh, jupyter, fleet, zed, windsurf, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--manual` |  | Manually enter the Git repository |
 | `--multi-project` |  | Workspace with multiple projects/repos |
 | `--name` |  | Specify the workspace name |
@@ -3796,6 +3941,7 @@ daytona target set [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--file` | `-f` | Path to JSON file for target configuration, use '-' to read from stdin |
 | `--help` |  | help for daytona |
 
 
@@ -3835,6 +3981,20 @@ daytona telemetry enable [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+
+## daytona update
+Update Daytona CLI
+
+```shell
+daytona update [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--version` | `-v` | Version to update to |
 | `--help` |  | help for daytona |
 
 
@@ -5047,6 +5207,138 @@ Select a Project Config To Delete
 ```text
 Project config deleted successfully
 ```
+
+---
+title: Samples
+description: Learn how to create and manage samples in Daytona.
+sidebar:
+  label: Samples
+---
+
+import Keyboard from "../../../components/Keyboard.astro"
+
+<Label>
+  Distribution: **Open Source**, **Cloud**, **Self-Managed**
+</Label>
+
+Samples are quick-start repositories with predefined development configurations, environments, and dependencies used to create Workspaces.
+
+## Custom Samples
+
+Daytona provides an option to use custom Samples to create Workspaces. Creating custom Samples is a two-step process that involves:
+
+- [**Sample Repository**](#sample-repository)
+
+    A repository containing the Sample code and a `devcontainer.json` file defining the development environment.
+
+- [**Samples Index**](#samples-index)
+
+    Samples Index (`index.json`) file serving as a registry of available Samples for creating Workspaces.
+
+### Sample Repository
+
+Custom Sample repository is a Git repository that contains the Sample code and a `devcontainer.json` file that defines the development environment. The repository serves as the core content of the Sample and is used to create a Workspace.
+
+1. Create a repository representing the custom Sample.
+
+2. Define the custom Sample code, development configurations and dependencies.
+
+3. Create a **`devcontainer.json`** file that defines the development environment.
+
+- Use the [development container standard](https://containers.dev/) to define your development environment. Development containers vary based on the programming language, configurations, and tools used within the Sample.
+
+Example of a **`devcontainer.json`** file for development environment using Go programming language:
+
+```json
+{
+    "name": "Go",
+    "image": "mcr.microsoft.com/devcontainers/go:1-1.21-bookworm",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "golang.Go"
+            ]
+        }
+    },
+    "postCreateCommand": "go test -v"
+}
+```
+
+4. Host the Sample repository on a Git repository or another platform.
+
+5. Add Sample properties to the [Samples Index](#samples-index).
+
+Sample will be used to create a Workspace by cloning the repository and using the `devcontainer.json` file to define the development environment.
+
+### Samples Index
+
+Samples require a Sample Index (`index.json`) file that serves as a registry of available Samples for creating Workspaces. The Samples Index is used to display the available Samples when creating a Workspace.
+
+1. Create an **`index.json`** file representing the Samples Index.
+
+2. Define an array of JSON objects representing the Samples.
+
+    Each JSON object in the array represents a Sample:
+
+```json
+[
+  {
+    "name": "My Custom Sample",
+    "description": "My custom Samples description",
+    "gitUrl": "https://github.com/<username>/<repository>"
+  }
+]
+```
+
+- **`name`**
+
+    Name of the Sample.
+
+- **`gitUrl`**
+
+    Link to the publicly available Sample repository.
+
+3. Host the **`index.json`** file publicly on a Git repository or another platform.
+
+4. Run the following command to configure the Samples Index URL:
+
+```sh
+daytona server configure
+```
+
+5. Enter the public raw URL of the **`index.json`** file in the **`Samples Index URL`** field.
+
+```text
+Samples Index URL
+Leave empty to disable samples
+https://raw.githubusercontent.com/<username>/<repository>/<path>/index.json
+```
+
+```text
+Server configuration updated. You need to restart the server for the changes to take effect.
+```
+
+6. Restart the Daytona server to apply the changes.
+
+```sh
+daytona server restart
+```
+
+Custom Samples will be available available when creating a Workspace. The chosen Sample will be cloned and used to create the Workspace.
+
+## Daytona Samples
+
+Daytona provides a collection of default Samples with predefined development configurations, environments, and dependencies. Daytona Samples are available to choose from when [creating a Workspace](/usage/workspaces#create-a-workspace).
+
+Daytona Samples are integrated via a Samples Index (`index.json`) file that serves as a registry of available Daytona Samples for creating Workspaces.
+
+The chosen Sample will be cloned and used to create the Workspace. The Daytona Sample repository will serve as the core content of the Sample used to create a Workspace.
+
+View the list of available Daytona Samples in the [Samples Index](https://github.com/daytonaio/daytona/blob/main/hack/samples/index.json).
+
+:::tip
+You can contribute to the Daytona Samples by suggesting new Samples to be added to the [Daytona Samples Index](https://github.com/daytonaio/daytona/blob/main/hack/samples/index.json).
+:::
 
 ---
 title: Server

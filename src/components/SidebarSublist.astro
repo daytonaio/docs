@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets'
-
 function getSVG(name: string) {
   const filepath = `/src/assets/sidebar/${name}`
   const files = import.meta.glob<string>('/src/assets/sidebar/*.svg', {
@@ -16,11 +14,11 @@ function getSVG(name: string) {
 }
 
 interface Props {
-  sublist: any
+  sublist: any[]
   nested?: boolean
 }
 
-const { sublist, nested } = Astro.props
+const { sublist = [], nested } = Astro.props
 ---
 
 <ul class:list={{ 'top-level': !nested }}>
@@ -30,24 +28,22 @@ const { sublist, nested } = Astro.props
         {entry.type === 'link' ? (
           <a
             href={entry.href}
-            aria-current={entry.isCurrent && 'page'}
-            class:list={[entry.attrs.class]}
+            aria-current={entry.isCurrent ? 'page' : undefined}
+            class:list={[entry.attrs?.class]}
           >
             {entry.attrs?.icon && (
               <Fragment set:html={getSVG(entry.attrs.icon)} />
             )}
             <span>{entry.label}</span>
           </a>
-        ) : (
+        ) : entry.type === 'group' ? (
           <div>
-            <summary>
-              <div class="group-label">
-                <span class="large">{entry.label}</span>
-              </div>
-            </summary>
+            <div class="group-label">
+              <span class="large">{entry.label}</span>
+            </div>
             <Astro.self sublist={entry.entries} nested />
           </div>
-        )}
+        ) : null}
       </li>
     ))
   }

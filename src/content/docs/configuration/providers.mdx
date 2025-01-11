@@ -239,8 +239,6 @@ Provider aws-provider has been successfully installed
 
 The Azure Provider allows Daytona to create Workspace projects on Azure compute instances. The Provider integrates Daytona with Azure, enabling you to manage Workspaces in a scalable and flexible cloud environment.
 
-<br />
-
 1. Run the following command to install a Azure Provider:
 
 ```shell
@@ -265,6 +263,20 @@ Upon selecting the Provider, Daytona will install and configure the chosen Provi
 ```text
 Provider azure-provider has been successfully installed
 ```
+
+:::note
+Ensure the Azure Provider is linked to a service principal with the `Contributor` role for the appropriate Azure subscription.
+<br />
+To create a service principal with the `Contributor` role, use the following Azure CLI command:
+
+```shell
+az ad sp create-for-rbac --role Contributor --scopes /subscriptions/<subscription-id>
+```
+
+Detailed instructions on creating and configuring the service principal can be found in the official [Create an Azure service principal with Azure CLI](https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash) documentation.
+:::
+
+<br />
 
 <DocumentList>
 <DocumentListItem

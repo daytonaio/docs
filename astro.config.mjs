@@ -98,6 +98,20 @@ export default defineConfig({
               },
             },
             {
+              label: 'Container Registries',
+              link: '/configuration/container-registries',
+              attrs: {
+                icon: '',
+              },
+            },
+            {
+              label: 'Targets',
+              link: '/configuration/targets',
+              attrs: {
+                icon: 'tag.svg',
+              },
+            },
+            {
               label: 'Workspace Templates',
               link: '/configuration/workspace-templates',
               attrs: {
@@ -142,6 +156,13 @@ export default defineConfig({
               link: '/usage/ide',
               attrs: {
                 icon: 'layout.svg',
+              },
+            },
+            {
+              label: 'Samples',
+              link: '/usage/samples',
+              attrs: {
+                icon: 'samples.svg',
               },
             },
             {
