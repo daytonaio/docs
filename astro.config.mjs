@@ -56,7 +56,7 @@ export default defineConfig({
               label: 'Architecture',
               link: '/about/architecture',
               attrs: {
-                icon: 'globe.svg',
+                icon: 'architecture.svg',
               },
             },
             {
