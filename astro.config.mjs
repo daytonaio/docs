@@ -104,6 +104,13 @@ export default defineConfig({
                 icon: 'tag.svg',
               },
             },
+            {
+              label: 'API Keys',
+              link: '/configuration/api-keys',
+              attrs: {
+                icon: 'api-key.svg',
+              },
+            },
           ],
         },
         {
