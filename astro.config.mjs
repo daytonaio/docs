@@ -94,7 +94,7 @@ export default defineConfig({
               label: 'Container Registries',
               link: '/configuration/container-registries',
               attrs: {
-                icon: '',
+                icon: 'container-registries.svg',
               },
             },
             {
