@@ -95,6 +95,10 @@ Daytona documentation is divided into the following key sections:
 
   Detailed technical and architectural documentation for Daytona.
 
+- **`SDK`**
+
+  Details on extending and integrating Daytona's functionalities.
+
 - **`Miscellaneous`**
 
   Additional information and resources related to Daytona.
