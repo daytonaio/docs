@@ -497,6 +497,7 @@
 
     .frame.is-terminal {
       .header {
+        display: none;
         border: none;
         background: var(--bg-color);
         border-bottom: 1px solid var(--border-extra);
@@ -515,7 +516,7 @@
       }
 
       .copy {
-        --button-spacing: 44px;
+        --button-spacing: 8px;
       }
     }
 
@@ -616,6 +617,16 @@
       margin-right: 0;
       padding-top: 0px;
       margin-top: 0px;
+    }
+
+    ol {
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-top: 16px;
+      margin-bottom: 16px;
     }
   }
 
