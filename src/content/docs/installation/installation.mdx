@@ -18,6 +18,10 @@ Each operating system supports both `x86_64` and `ARM64` architectures.
 
 Daytona leverages [Docker](https://docs.docker.com/engine/install/) to create and manage isolated development environments.
 
+## Installation
+
+<br />
+
 <Tabs>
 <TabItem label="Linux">
 
@@ -32,16 +36,12 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-linux-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-linux-amd64 -o daytona
 # ARM64
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-linux-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-linux-arm64 -o daytona
 ```
 
 :::
-
-<br />
-
-<Uninstall />
 
 </TabItem>
 <TabItem label="MacOS">
@@ -57,16 +57,12 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```shell
 # x86-64/Intel-based
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-darwin-amd64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-darwin-amd64 -o daytona
 # ARM64/Apple Silicon
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-darwin-arm64 -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-darwin-arm64 -o daytona
 ```
 
 :::
-
-<br />
-
-<Uninstall />
 
 </TabItem>
 <TabItem label="Windows">
@@ -75,7 +71,7 @@ Install Daytona on Windows using the following PowerShell script:
 ```powershell
 $architecture = if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") { "amd64" } else { "arm64" }
 md -Force "$Env:APPDATA\bin\daytona"; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12';
-Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.49/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
+Invoke-WebRequest -URI "https://download.daytona.io/daytona/v0.51/daytona-windows-$architecture.exe" -OutFile "$Env:APPDATA\bin\daytona\daytona.exe";
 $env:Path += ";" + $Env:APPDATA + "\bin\daytona"; [Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::User);
 daytona serve;
 ```
@@ -85,9 +81,9 @@ You can install Daytona by manually downloading the binary and placing it in you
 
 ```sh
 # x86-64
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-windows-amd64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-windows-amd64.exe -o daytona
 # AArch64
-curl -sf -L https://download.daytona.io/daytona/v0.49/daytona-windows-arm64.exe -o daytona
+curl -sf -L https://download.daytona.io/daytona/v0.51/daytona-windows-arm64.exe -o daytona
 ```
 
 :::
@@ -105,3 +101,7 @@ If you are using Windows Subsystem for Linux (WSL), you can follow the [instruct
 <Nix />
 </TabItem>
 </Tabs>
+
+## Uninstallation
+
+<Uninstall />

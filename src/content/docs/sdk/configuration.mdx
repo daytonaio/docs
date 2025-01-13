@@ -1,0 +1,105 @@
+---
+title: Configuration
+---
+
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides flexible configuration options to customize its behavior and connection settings.
+
+## Configuration Options
+
+### Python Configuration
+
+Daytona SDK provides an option to configure settings using the `DaytonaConfig` class. The `DaytonaConfig` class accepts the following parameters:
+
+```python
+from daytona_sdk import DaytonaConfig
+
+config = DaytonaConfig(
+    api_key="your-api-key",          
+    server_url="your-server-url",     
+    target="local"                
+)
+```
+
+- `api_key`: Your Daytona API key
+- `server_url`: URL of your Daytona server
+- `target`: Daytona Target to create the Workspaces on.
+
+### TypeScript Configuration
+
+Daytona SDK provides an option to configure settings using the `DaytonaConfig` interface. The `DaytonaConfig` interface includes these properties:
+
+```typescript
+import { DaytonaConfig } from '@daytona/sdk';
+
+const config: DaytonaConfig = {
+    apiKey: "your-api-key",          
+    serverUrl: "your-server-url",     
+    target: "local"                  
+};
+```
+
+- `apiKey`: Your Daytona API key.
+- `serverUrl`: URL of your Daytona server.
+- `target`: Daytona Target to create the Workspaces on.
+- `timeout`: Request timeout in milliseconds.
+- `verifySsl`: Enable SSL verification.
+
+## Environment Variables
+
+Daytona SDK supports environment variables for configuration. The SDK automatically looks for these environment variables:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| **`DAYTONA_API_KEY`** | Your Daytona API key. | None |
+| **`DAYTONA_SERVER_URL`** | URL of your Daytona server. | None |
+| **`DAYTONA_TARGET`** | Daytona Target to create the Workspaces on. | "local" |
+
+### Setting Environment Variables
+
+Daytona SDK can read configuration from environment variables. You can set these environment variables using the following methods:
+
+- [Using a **`.env`** file](#using-a-env-file)
+- [Using Shell Environment](#using-shell-environment)
+
+#### Using a **`.env`** File
+
+Create a `.env` file in your project root directory:
+
+```bash
+DAYTONA_API_KEY=your-api-key
+DAYTONA_SERVER_URL=https://your-server-url
+DAYTONA_TARGET=local
+```
+
+- `DAYTONA_API_KEY`: Your Daytona API key.
+- `DAYTONA_SERVER_URL`: URL of your Daytona server.
+- `DAYTONA_TARGET`: Daytona Target to create the Workspaces on.
+
+#### Using Shell Environment
+
+Set environment variables in your shell:
+
+```bash
+# Bash/Zsh
+export DAYTONA_API_KEY=your-api-key
+export DAYTONA_SERVER_URL=https://your-server-url
+
+# Windows PowerShell
+$env:DAYTONA_API_KEY="your-api-key"
+$env:DAYTONA_SERVER_URL="https://your-server-url"
+```
+
+## Configuration Precedence
+
+The SDK uses the following precedence order for configuration (highest to lowest):
+
+1. Explicitly passed configuration in code.
+2. Environment variables.
+3. Configuration file.
+4. Default values.

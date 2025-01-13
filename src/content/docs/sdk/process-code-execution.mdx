@@ -1,0 +1,183 @@
+---
+title: Process and Code Execution
+---
+
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides powerful process and code execution capabilities through the `process` module in workspaces. This guide covers all available process operations and best practices.
+
+## Code Execution
+
+Daytona SDK provides an option to run code snippets in various languages like Python, TypeScript, and more. You can execute code with input, timeout, and environment variables.
+
+### Running Code
+
+#### Python
+
+```python
+# Run Python code
+response = workspace.process.code_run('''
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("Daytona"))
+''')
+print(response.result)
+```
+
+#### TypeScript
+
+```typescript
+// Run TypeScript code
+const response = await workspace.process.codeRun(`
+function greet(name: string): string {
+    return \`Hello, \${name}!\`;
+}
+
+console.log(greet("Daytona"));
+`);
+console.log(response.result);
+
+// Run code with input
+const response = await workspace.process.codeRun(
+    'const name = prompt("Enter name: ");\nconsole.log(`Hello, ${name}!`);',
+    { input: "Daytona" }
+);
+console.log(response.result);
+
+// Run code with timeout
+const response = await workspace.process.codeRun(
+    'setTimeout(() => console.log("Done"), 2000);',
+    { timeout: 5000 }
+);
+console.log(response.result);
+```
+
+## Process Execution
+
+Daytona SDK provides an option to execute shell commands and manage background processes in Workspaces. You can run commands with input, timeout, and environment variables.
+
+### Running Commands
+
+#### Python
+
+```python
+# Execute shell command
+response = workspace.process.process_execute_command("ls -la")
+print(response.output)
+```
+
+#### TypeScript
+
+```typescript
+// Execute shell command
+const response = await workspace.process.processExecuteCommand("ls -la");
+console.log(response.output);
+```
+
+## Background Processes
+
+Daytona SDK provides an option to start, stop, and manage background processes in Workspaces. You can run long-running commands, monitor process status, and list all running processes.
+
+### Managing Long-Running Processes
+
+#### Python
+
+```python
+# Check process status
+status = workspace.process.get_process_status(process_id)
+print(f"Process {process_id} status: {status}")
+
+# List all running processes
+processes = workspace.process.list_processes()
+for process in processes:
+    print(f"PID: {process.id}, Command: {process.command}")
+```
+
+#### TypeScript
+
+```typescript
+// Check process status
+const status = await workspace.process.getProcessStatus(processId);
+console.log(`Process ${processId} status: ${status}`);
+
+// List all running processes
+const processes = await workspace.process.listProcesses();
+processes.forEach(process => {
+    console.log(`PID: ${process.id}, Command: ${process.command}`);
+});
+```
+
+## Best Practices
+
+1. **Resource Management**
+
+   ```python
+   # Python - Clean up processes
+   try:
+       process_id = workspace.process.start_background_process("long-running-cmd")
+       # Do work...
+   finally:
+       workspace.process.stop_process(process_id)
+   ```
+
+   ```typescript
+   // TypeScript - Clean up processes
+   try {
+       const processId = await workspace.process.startBackgroundProcess("long-running-cmd");
+       // Do work...
+   } finally {
+       await workspace.process.stopProcess(processId);
+   }
+   ```
+
+2. **Error Handling**
+
+   ```python
+   # Python
+   try:
+       response = workspace.process.code_run("invalid python code")
+   except ProcessExecutionError as e:
+       print(f"Execution failed: {e}")
+       print(f"Exit code: {e.exit_code}")
+       print(f"Error output: {e.stderr}")
+   ```
+
+   ```typescript
+   // TypeScript
+   try {
+       const response = await workspace.process.codeRun("invalid typescript code");
+   } catch (e) {
+       if (e instanceof ProcessExecutionError) {
+           console.error("Execution failed:", e);
+           console.error("Exit code:", e.exitCode);
+           console.error("Error output:", e.stderr);
+       }
+   }
+   ```
+
+## Common Issues
+
+Daytona SDK provides an option to troubleshoot common issues related to process execution and code execution.
+
+### Process Execution Failed
+
+- Check command syntax
+- Verify required dependencies
+- Ensure sufficient permissions
+
+### Process Timeout
+
+- Adjust timeout settings
+- Optimize long-running operations
+- Consider using background processes
+
+### Resource Limits
+
+- Monitor process memory usage
+- Handle process cleanup properly
+- Use appropriate resource constraints

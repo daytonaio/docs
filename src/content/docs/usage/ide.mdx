@@ -32,11 +32,17 @@ Out of the box, Daytona can be configured to open your Workspace in the followin
   - [WebStorm](#jetbrains-webstorm)
   - [Fleet](#jetbrains-fleet)
 
+- [Visual Studio Code Insiders](#vs-code-insiders)
+
+- [VSCodium](#vscodium)
+
 - [Jupyter](#jupyter)
 
 - [Zed](#zed)
 
 - [Cursor](#cursor)
+
+- [Windsurf](#windsurf)
 
 - [Terminal SSH](#terminal-ssh)
 
@@ -89,13 +95,13 @@ Choose Your Default IDE
 | VS Code
 ```
 
-2. Select `VS Code` from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+2. Select **`VS Code`** from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
 
 ```text
 Default IDE:  VS Code
 ```
 
-You can now use the `daytona code` command to automatically open the default IDE already connected to your Workspace.
+You can now use the `daytona code` command to automatically open the Visual Studio Code IDE already connected to your Workspace.
 
 ## VS Code Browser
 
@@ -125,6 +131,71 @@ You can now use the `daytona code` command to automatically open the VS Code - B
 
 :::note
 When using the `daytona code` command with `VS Code - Browser` as your default IDE, Daytona will install OpenVSCode Server inside your project, forward the appropriate port to your local machine, and open your default browser automatically.
+:::
+
+## VS Code Insiders
+
+Daytona allows you to connect to your Workspace using Visual Studio Code Insiders IDE.
+
+1. Run the following command to set your default IDE to VS Code Insiders:
+
+```shell
+daytona ide
+```
+
+Upon running this command, Daytona will display a list of available IDEs, allowing you to select `VS Code Insiders` as your default choice.
+
+```text
+Choose Your Default IDE
+
+| VS Code Insiders
+```
+
+2. Select **`VS Code Insiders`** from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+```text
+Default IDE:  VS Code Insiders
+```
+
+You can now use the `daytona code` command to automatically open the VS Code Insiders IDE already connected to your Workspace.
+
+:::note
+Ensure you have [VS Code Insiders]( https://code.visualstudio.com/insiders/) installed on your local machine. If you have already installed the VS Code Insiders IDE, please ensure it is added to your PATH environment variable. You can verify this by running the following command in your terminal:
+
+```shell
+code-insiders
+```
+
+:::
+
+## VSCodium
+
+Daytona allows you to connect to your Workspace using VSCodium IDE.
+
+1. Run the following command to set your default IDE to VSCodium:
+
+```shell
+daytona ide
+```
+
+Upon running this command, Daytona will display a list of available IDEs, allowing you to select `VSCodium` as your default choice.
+
+```text
+Choose Your Default IDE
+
+| VSCodium
+```
+
+2. Select **`VSCodium`** from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+```text
+Default IDE:  VSCodium
+```
+
+You can now use the `daytona code` command to automatically open the VS Code Insiders IDE already connected to your Workspace.
+
+:::note
+Ensure you have [VSCodium](https://vscodium.com/) installed on your local machine. If you have already installed the Visual Studio Code Insiders IDE, please ensure it is added to your PATH.
 :::
 
 ## JetBrains CLion
@@ -443,6 +514,36 @@ You can now use the `daytona code` command to automatically open the Cursor IDE 
 Daytona allows you to connect to your [Workspace Toolbox](/docs/usage/workspaces#workspace-toolbox) using a Headless IDE.
 
 The Headless IDE provides a seamless development experience, enabling you to perform operations directly within the Workspace environment.
+
+## Windsurf
+
+Daytona allows you to connect to your Workspace using Windsurf IDE.
+
+1. Run the following command to set your default IDE to Windsurf:
+
+```shell
+daytona ide
+```
+
+Upon running this command, Daytona will display a list of available IDEs, allowing you to select `Windsurf` as your default choice.
+
+```text
+Choose Your Default IDE
+
+| Windsurf
+```
+
+2. Select **`Windsurf`** from the list presented. Upon selecting, Daytona will set it as the default IDE and display a confirmation message.
+
+```text
+Default IDE:  Windsurf
+```
+
+You can now use the `daytona code` command to automatically open the Windsurf IDE already connected to your Workspace.
+
+:::note
+Ensure you have [Windsurf](https://codeium.com/windsurf/download) installed on your local machine. If you have already installed the Windsurf IDE, please ensure it is added to your PATH.
+:::
 
 ## Terminal SSH
 
