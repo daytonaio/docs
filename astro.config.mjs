@@ -94,7 +94,7 @@ export default defineConfig({
               label: 'Container Registries',
               link: '/configuration/container-registries',
               attrs: {
-                icon: '',
+                icon: 'container-registries.svg',
               },
             },
             {
@@ -102,6 +102,13 @@ export default defineConfig({
               link: '/configuration/targets',
               attrs: {
                 icon: 'tag.svg',
+              },
+            },
+            {
+              label: 'API Keys',
+              link: '/configuration/api-keys',
+              attrs: {
+                icon: 'api-key.svg',
               },
             },
           ],
