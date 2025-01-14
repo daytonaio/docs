@@ -131,6 +131,13 @@ export default defineConfig({
               },
             },
             {
+              label: 'Agent Toolbox',
+              link: '/usage/agent-toolbox',
+              attrs: {
+                icon: 'agent-toolbox.svg',
+              },
+            },
+            {
               label: 'Projects',
               link: '/usage/projects',
               attrs: {
