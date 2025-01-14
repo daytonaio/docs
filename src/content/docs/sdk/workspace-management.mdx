@@ -3,6 +3,7 @@ title: Workspace Management
 ---
 
 import Label from '@components/Label.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Label>
   Distribution: **Open Source**
@@ -16,25 +17,30 @@ Daytona SDK provides an option to create workspaces with default or custom confi
 
 ### Basic Workspace Creation
 
-#### Python
+Daytona SDK provides methods to create Workspaces with default configurations, specific languages, or custom IDs using Python and TypeScript.
 
+<Tabs>
+<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import Daytona
 
 daytona = Daytona()
 
 # Create a basic workspace
+
 workspace = daytona.create()
 
 # Create a workspace with specific language
+
 workspace = daytona.create(language="python")
 
 # Create a workspace with custom ID
+
 workspace = daytona.create(id="my-workspace")
+
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { Daytona } from '@daytona/sdk';
 
@@ -50,24 +56,26 @@ const workspace = await daytona.create({ language: 'typescript' });
 const workspace = await daytona.create({ id: 'my-workspace' });
 ```
 
-## Managing Workspaces
+</TabItem>
+</Tabs>
 
-### Workspace Information
+## Workspace Information
 
-Daytona SDK provides methods to get information about a workspace, such as ID, root directory, and status.
+Daytona SDK provides methods to get information about a workspace, such as ID, root directory, and status using Python and TypeScript.
 
-#### Python
-
+<Tabs>
+<TabItem label="Python" icon="seti:python">
 ```python
 # Get workspace ID
 workspace_id = workspace.id
 
 # Get workspace root directory
+
 root_dir = workspace.get_workspace_root_dir()
+
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Get workspace ID
 const workspaceId = workspace.id;
@@ -76,20 +84,24 @@ const workspaceId = workspace.id;
 const rootDir = await workspace.getWorkspaceRootDir();
 ```
 
-### Workspace Operations
+</TabItem>
+</Tabs>
 
-Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces.
+## Remove Workspace
 
-#### Python
+Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces using Python and TypeScript.
 
+<Tabs>
+<TabItem label="Python" icon="seti:python">
 ```python
 # Remove workspace
 daytona.remove(workspace)
 ```
-
-#### TypeScript
-
+</TabItem>
+<TabItem label="TypeScript" icon="seti:python">
 ```typescript
 // Remove workspace
 await daytona.remove(workspace);
 ```
+</TabItem>
+</Tabs>

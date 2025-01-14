@@ -477,7 +477,7 @@
   }
 
   .expressive-code {
-    margin-top: 32px;
+    margin-top: 0px;
     margin-bottom: 32px;
     border: 1px solid var(--border-extra);
     border-radius: 3px;
@@ -497,6 +497,7 @@
 
     .frame.is-terminal {
       .header {
+        display: none;
         border: none;
         background: var(--bg-color);
         border-bottom: 1px solid var(--border-extra);
@@ -515,7 +516,7 @@
       }
 
       .copy {
-        --button-spacing: 44px;
+        --button-spacing: 8px;
       }
     }
 
@@ -594,7 +595,7 @@
         a {
           font-family: "Berkeley Mono", monospace;
           text-transform: uppercase;
-          font-size: 0.80em;
+          font-size: 0.90em;
           padding: 0;
           margin-right: 16px;
           font-weight: 400;
@@ -614,8 +615,18 @@
       padding-right: 0;
       margin-left: 0;
       margin-right: 0;
-      padding-top: 20px;
-      margin-top: 20px;
+      padding-top: 0px;
+      margin-top: 0px;
+    }
+
+    ol {
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-top: 16px;
+      margin-bottom: 16px;
     }
   }
 

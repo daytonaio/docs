@@ -17,7 +17,7 @@ List API keys
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /apikey/\{apiKeyName\}
 
@@ -27,13 +27,13 @@ Generate an API key
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `apiKeyName` | path | true | string | API key name |
+| **`apiKeyName`** | path | true | string | API key name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## DELETE /apikey/\{apiKeyName\}
 
@@ -43,13 +43,13 @@ Revoke API key
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `apiKeyName` | path | true | string | API key name |
+| **`apiKeyName`** | path | true | string | API key name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /build
 
@@ -59,7 +59,7 @@ List builds
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /build
 
@@ -69,13 +69,13 @@ Create a build
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `createBuildDto` | body | true | undefined | Create Build DTO |
+| **`createBuildDto`** | body | true | undefined | Create Build DTO |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `201` | Created |
+| **`201`** | Created |
 
 ## DELETE /build
 
@@ -85,13 +85,13 @@ Delete ALL builds
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `force` | query | undefined | boolean | Force |
+| **`force`** | query | undefined | boolean | Force |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `204` | No Content |
+| **`204`** | No Content |
 
 ## DELETE /build/prebuild/\{prebuildId\}
 
@@ -101,14 +101,14 @@ Delete builds
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `prebuildId` | path | true | string | Prebuild ID |
-| `force` | query | undefined | boolean | Force |
+| **`prebuildId`** | path | true | string | Prebuild ID |
+| **`force`** | query | undefined | boolean | Force |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `204` | No Content |
+| **`204`** | No Content |
 
 ## GET /build/\{buildId\}
 
@@ -118,13 +118,13 @@ Get build data
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `buildId` | path | true | string | Build ID |
+| **`buildId`** | path | true | string | Build ID |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## DELETE /build/\{buildId\}
 
@@ -134,14 +134,14 @@ Delete build
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `buildId` | path | true | string | Build ID |
-| `force` | query | undefined | boolean | Force |
+| **`buildId`** | path | true | string | Build ID |
+| **`force`** | query | undefined | boolean | Force |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `204` | No Content |
+| **`204`** | No Content |
 
 ## GET /container-registry
 
@@ -151,7 +151,7 @@ List container registries
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /container-registry/\{server\}
 
@@ -161,13 +161,13 @@ Get container registry credentials
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `server` | path | true | string | Container Registry server name |
+| **`server`** | path | true | string | Container Registry server name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## PUT /container-registry/\{server\}
 
@@ -177,14 +177,14 @@ Set container registry credentials
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `server` | path | true | string | Container Registry server name |
-| `containerRegistry` | body | true | undefined | Container Registry credentials to set |
+| **`server`** | path | true | string | Container Registry server name |
+| **`containerRegistry`** | body | true | undefined | Container Registry credentials to set |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `201` | Created |
+| **`201`** | Created |
 
 ## DELETE /container-registry/\{server\}
 
@@ -194,13 +194,13 @@ Remove a container registry credentials
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `server` | path | true | string | Container Registry server name |
+| **`server`** | path | true | string | Container Registry server name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `204` | No Content |
+| **`204`** | No Content |
 
 ## GET /gitprovider
 
@@ -210,7 +210,7 @@ List Git providers
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## PUT /gitprovider
 
@@ -220,13 +220,13 @@ Set Git provider
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `gitProviderConfig` | body | true | undefined | Git provider |
+| **`gitProviderConfig`** | body | true | undefined | Git provider |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /gitprovider/context
 
@@ -236,13 +236,13 @@ Get Git context
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `repository` | body | true | undefined | Get repository context |
+| **`repository`** | body | true | undefined | Get repository context |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /gitprovider/context/url
 
@@ -252,13 +252,13 @@ Get URL from Git repository
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `repository` | body | true | undefined | Git repository |
+| **`repository`** | body | true | undefined | Git repository |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /gitprovider/for-url/\{url\}
 
@@ -268,13 +268,13 @@ List Git providers for url
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `url` | path | true | string | Url |
+| **`url`** | path | true | string | Url |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /gitprovider/id-for-url/\{url\}
 
@@ -284,13 +284,13 @@ Get Git provider ID
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `url` | path | true | string | Url |
+| **`url`** | path | true | string | Url |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /gitprovider/\{gitProviderId\}
 
@@ -300,13 +300,13 @@ Get Git provider
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `gitProviderId` | path | true | string | ID |
+| **`gitProviderId`** | path | true | string | ID |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## DELETE /gitprovider/\{gitProviderId\}
 
@@ -316,13 +316,13 @@ Remove Git provider
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `gitProviderId` | path | true | string | Git provider |
+| **`gitProviderId`** | path | true | string | Git provider |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /gitprovider/\{gitProviderId\}/namespaces
 
@@ -332,15 +332,15 @@ Get Git namespaces
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `gitProviderId` | path | true | string | Git provider |
-| `page` | query | undefined | integer | Page number |
-| `per_page` | query | undefined | integer | Number of items per page |
+| **`gitProviderId`** | path | true | string | Git provider |
+| **`page`** | query | undefined | integer | Page number |
+| **`per_page`** | query | undefined | integer | Number of items per page |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /gitprovider/\{gitProviderId\}/user
 
@@ -350,13 +350,13 @@ Get Git context
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `gitProviderId` | path | true | string | Git Provider Id |
+| **`gitProviderId`** | path | true | string | Git Provider Id |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /gitprovider/\{gitProviderId\}/\{namespaceId\}/repositories
 
@@ -366,16 +366,16 @@ Get Git repositories
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `gitProviderId` | path | true | string | Git provider |
-| `namespaceId` | path | true | string | Namespace |
-| `page` | query | undefined | integer | Page number |
-| `per_page` | query | undefined | integer | Number of items per page |
+| **`gitProviderId`** | path | true | string | Git provider |
+| **`namespaceId`** | path | true | string | Namespace |
+| **`page`** | query | undefined | integer | Page number |
+| **`per_page`** | query | undefined | integer | Number of items per page |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /gitprovider/\{gitProviderId\}/\{namespaceId\}/\{repositoryId\}/branches
 
@@ -385,17 +385,17 @@ Get Git repository branches
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `gitProviderId` | path | true | string | Git provider |
-| `namespaceId` | path | true | string | Namespace |
-| `repositoryId` | path | true | string | Repository |
-| `page` | query | undefined | integer | Page number |
-| `per_page` | query | undefined | integer | Number of items per page |
+| **`gitProviderId`** | path | true | string | Git provider |
+| **`namespaceId`** | path | true | string | Namespace |
+| **`repositoryId`** | path | true | string | Repository |
+| **`page`** | query | undefined | integer | Page number |
+| **`per_page`** | query | undefined | integer | Number of items per page |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /gitprovider/\{gitProviderId\}/\{namespaceId\}/\{repositoryId\}/pull-requests
 
@@ -405,17 +405,17 @@ Get Git repository PRs
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `gitProviderId` | path | true | string | Git provider |
-| `namespaceId` | path | true | string | Namespace |
-| `repositoryId` | path | true | string | Repository |
-| `page` | query | undefined | integer | Page number |
-| `per_page` | query | undefined | integer | Number of items per page |
+| **`gitProviderId`** | path | true | string | Git provider |
+| **`namespaceId`** | path | true | string | Namespace |
+| **`repositoryId`** | path | true | string | Repository |
+| **`page`** | query | undefined | integer | Page number |
+| **`per_page`** | query | undefined | integer | Number of items per page |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /health
 
@@ -425,7 +425,7 @@ Health check
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /profile
 
@@ -435,7 +435,7 @@ Get profile data
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## PUT /profile
 
@@ -445,13 +445,13 @@ Set profile data
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `profileData` | body | true | undefined | Profile data |
+| **`profileData`** | body | true | undefined | Profile data |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `201` | Created |
+| **`201`** | Created |
 
 ## DELETE /profile
 
@@ -461,7 +461,7 @@ Delete profile data
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `204` | No Content |
+| **`204`** | No Content |
 
 ## GET /project-config
 
@@ -471,7 +471,7 @@ List project configs
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## PUT /project-config
 
@@ -481,13 +481,13 @@ Set project config data
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `projectConfig` | body | true | undefined | Project config |
+| **`projectConfig`** | body | true | undefined | Project config |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `201` | Created |
+| **`201`** | Created |
 
 ## GET /project-config/default/\{gitUrl\}
 
@@ -497,13 +497,13 @@ Get project configs by git url
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `gitUrl` | path | true | string | Git URL |
+| **`gitUrl`** | path | true | string | Git URL |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /project-config/prebuild
 
@@ -513,7 +513,7 @@ List prebuilds
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /project-config/prebuild/process-git-event
 
@@ -523,13 +523,13 @@ ProcessGitEvent
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspace` | body | true | undefined | Webhook event |
+| **`workspace`** | body | true | undefined | Webhook event |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /project-config/\{configName\}
 
@@ -539,13 +539,13 @@ Get project config data
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `configName` | path | true | string | Config name |
+| **`configName`** | path | true | string | Config name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## DELETE /project-config/\{configName\}
 
@@ -555,14 +555,14 @@ Delete project config data
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `configName` | path | true | string | Config name |
-| `force` | query | undefined | boolean | Force |
+| **`configName`** | path | true | string | Config name |
+| **`force`** | query | undefined | boolean | Force |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `204` | No Content |
+| **`204`** | No Content |
 
 ## GET /project-config/\{configName\}/prebuild
 
@@ -572,13 +572,13 @@ List prebuilds for project config
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `configName` | path | true | string | Config name |
+| **`configName`** | path | true | string | Config name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## PUT /project-config/\{configName\}/prebuild
 
@@ -588,14 +588,14 @@ Set prebuild
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `configName` | path | true | string | Config name |
-| `prebuild` | body | true | undefined | Prebuild |
+| **`configName`** | path | true | string | Config name |
+| **`prebuild`** | body | true | undefined | Prebuild |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `201` | Created |
+| **`201`** | Created |
 
 ## GET /project-config/\{configName\}/prebuild/\{prebuildId\}
 
@@ -605,14 +605,14 @@ Get prebuild
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `configName` | path | true | string | Project config name |
-| `prebuildId` | path | true | string | Prebuild ID |
+| **`configName`** | path | true | string | Project config name |
+| **`prebuildId`** | path | true | string | Prebuild ID |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## DELETE /project-config/\{configName\}/prebuild/\{prebuildId\}
 
@@ -622,15 +622,15 @@ Delete prebuild
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `configName` | path | true | string | Project config name |
-| `prebuildId` | path | true | string | Prebuild ID |
-| `force` | query | undefined | boolean | Force |
+| **`configName`** | path | true | string | Project config name |
+| **`prebuildId`** | path | true | string | Prebuild ID |
+| **`force`** | query | undefined | boolean | Force |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `204` | No Content |
+| **`204`** | No Content |
 
 ## PATCH /project-config/\{configName\}/set-default
 
@@ -640,13 +640,13 @@ Set project config to default
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `configName` | path | true | string | Config name |
+| **`configName`** | path | true | string | Config name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /provider
 
@@ -656,7 +656,7 @@ List providers
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /provider/install
 
@@ -666,13 +666,13 @@ Install a provider
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `provider` | body | true | undefined | Provider to install |
+| **`provider`** | body | true | undefined | Provider to install |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /provider/\{provider\}/target-manifest
 
@@ -682,13 +682,13 @@ Get provider target manifest
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `provider` | path | true | string | Provider name |
+| **`provider`** | path | true | string | Provider name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /provider/\{provider\}/uninstall
 
@@ -698,13 +698,13 @@ Uninstall a provider
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `provider` | path | true | string | Provider to uninstall |
+| **`provider`** | path | true | string | Provider to uninstall |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /sample
 
@@ -714,7 +714,7 @@ List samples
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /server/config
 
@@ -724,7 +724,7 @@ Get the server configuration
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /server/config
 
@@ -734,13 +734,13 @@ Set the server configuration
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `config` | body | true | undefined | Server configuration |
+| **`config`** | body | true | undefined | Server configuration |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /server/logs
 
@@ -750,7 +750,7 @@ List server log files
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /server/network-key
 
@@ -760,7 +760,7 @@ Generate a new authentication key
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /target
 
@@ -770,7 +770,7 @@ List targets
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## PUT /target
 
@@ -780,13 +780,13 @@ Set a target
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `target` | body | true | undefined | Target to set |
+| **`target`** | body | true | undefined | Target to set |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `201` | Created |
+| **`201`** | Created |
 
 ## DELETE /target/\{target\}
 
@@ -796,13 +796,13 @@ Remove a target
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `target` | path | true | string | Target name |
+| **`target`** | path | true | string | Target name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `204` | No Content |
+| **`204`** | No Content |
 
 ## PATCH /target/\{target\}/set-default
 
@@ -812,13 +812,13 @@ Set target to default
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `target` | path | true | string | Target name |
+| **`target`** | path | true | string | Target name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace
 
@@ -828,13 +828,13 @@ List workspaces
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `verbose` | query | undefined | boolean | Verbose |
+| **`verbose`** | query | undefined | boolean | Verbose |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace
 
@@ -844,13 +844,13 @@ Create a workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspace` | body | true | undefined | Create workspace |
+| **`workspace`** | body | true | undefined | Create workspace |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace/\{workspaceId\}
 
@@ -860,14 +860,14 @@ Get workspace info
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `verbose` | query | undefined | boolean | Verbose |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`verbose`** | query | undefined | boolean | Verbose |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## DELETE /workspace/\{workspaceId\}
 
@@ -877,14 +877,14 @@ Remove workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID |
-| `force` | query | undefined | boolean | Force |
+| **`workspaceId`** | path | true | string | Workspace ID |
+| **`force`** | query | undefined | boolean | Force |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/start
 
@@ -894,13 +894,13 @@ Start workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/stop
 
@@ -910,13 +910,13 @@ Stop workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/start
 
@@ -926,14 +926,14 @@ Start project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/state
 
@@ -943,15 +943,15 @@ Set project state
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `setState` | body | true | undefined | Set State |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`setState`** | body | true | undefined | Set State |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/stop
 
@@ -961,14 +961,14 @@ Stop project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files
 
@@ -978,15 +978,15 @@ List files inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | undefined | string | Path |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | undefined | string | Path |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## DELETE /workspace/\{workspaceId\}/\{projectId\}/toolbox/files
 
@@ -996,15 +996,15 @@ Delete file inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `204` | No Content |
+| **`204`** | No Content |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/download
 
@@ -1014,15 +1014,15 @@ Download file from workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | response contains the file |
+| **`200`** | response contains the file |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/find
 
@@ -1032,16 +1032,16 @@ Search for text/pattern inside workspace project files
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path |
-| `pattern` | query | true | string | Pattern |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path |
+| **`pattern`** | query | true | string | Pattern |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/folder
 
@@ -1051,16 +1051,16 @@ Create folder inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path |
-| `mode` | query | true | string | Mode |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path |
+| **`mode`** | query | true | string | Mode |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `201` | Created |
+| **`201`** | Created |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/info
 
@@ -1070,15 +1070,15 @@ Get file info inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/move
 
@@ -1088,16 +1088,16 @@ Create folder inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `source` | query | true | string | Source path |
-| `destination` | query | true | string | Destination path |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`source`** | query | true | string | Source path |
+| **`destination`** | query | true | string | Destination path |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/permissions
 
@@ -1107,18 +1107,18 @@ Set file owner/group/permissions inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path |
-| `owner` | query | undefined | string | Owner |
-| `group` | query | undefined | string | Group |
-| `mode` | query | undefined | string | Mode |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path |
+| **`owner`** | query | undefined | string | Owner |
+| **`group`** | query | undefined | string | Group |
+| **`mode`** | query | undefined | string | Mode |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/replace
 
@@ -1128,15 +1128,15 @@ Repleace text/pattern in mutilple files inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `replace` | body | true | undefined | ReplaceParams |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`replace`** | body | true | undefined | ReplaceParams |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/search
 
@@ -1146,16 +1146,16 @@ Search for files inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path |
-| `pattern` | query | true | string | Pattern |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path |
+| **`pattern`** | query | true | string | Pattern |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/upload
 
@@ -1165,16 +1165,16 @@ Upload file inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path |
-| `file` | formData | true | file | File |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path |
+| **`file`** | formData | true | file | File |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/add
 
@@ -1184,15 +1184,15 @@ Add files to git commit
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | GitAddRequest |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | GitAddRequest |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/branches
 
@@ -1202,15 +1202,15 @@ Get branch list from git repository inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path to git repository |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path to git repository |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/branches
 
@@ -1220,15 +1220,15 @@ Create branch on git repository inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | GitBranchRequest |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | GitBranchRequest |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `201` | Created |
+| **`201`** | Created |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/clone
 
@@ -1238,15 +1238,15 @@ Clone git repository inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | GitCloneRequest |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | GitCloneRequest |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/commit
 
@@ -1256,15 +1256,15 @@ Commit changes to git repository inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | GitCommitRequest |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | GitCommitRequest |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/history
 
@@ -1274,15 +1274,15 @@ Get commit history from git repository inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path to git repository |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path to git repository |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/pull
 
@@ -1292,15 +1292,15 @@ Pull changes from remote to git repository inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | Git pull request |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | Git pull request |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/push
 
@@ -1310,15 +1310,15 @@ Push changes to remote from git repository inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | Git push request |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | Git push request |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/status
 
@@ -1328,15 +1328,15 @@ Get status from git repository inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `path` | query | true | string | Path to git repository |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`path`** | query | true | string | Path to git repository |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/completions
 
@@ -1346,15 +1346,15 @@ The Completion request is sent from the client to the server to compute completi
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | LspCompletionParams |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | LspCompletionParams |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/did-close
 
@@ -1364,15 +1364,15 @@ The document close notification is sent from the client to the server when the d
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | LspDocumentRequest |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | LspDocumentRequest |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/did-open
 
@@ -1382,15 +1382,15 @@ The document open notification is sent from the client to the server to signal n
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | LspDocumentRequest |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | LspDocumentRequest |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/document-symbols
 
@@ -1400,17 +1400,17 @@ The document symbol request is sent from the client to the server.
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `languageId` | query | true | string | Language ID |
-| `pathToProject` | query | true | string | Path to project |
-| `uri` | query | true | string | Document Uri |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`languageId`** | query | true | string | Language ID |
+| **`pathToProject`** | query | true | string | Path to project |
+| **`uri`** | query | true | string | Document Uri |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/start
 
@@ -1420,15 +1420,15 @@ Start Lsp server process inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | LspServerRequest |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | LspServerRequest |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/stop
 
@@ -1438,15 +1438,15 @@ Stop Lsp server process inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | LspServerRequest |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | LspServerRequest |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/workspace-symbols
 
@@ -1456,17 +1456,17 @@ The workspace symbol request is sent from the client to the server to list proje
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `languageId` | query | true | string | Language ID |
-| `pathToProject` | query | true | string | Path to project |
-| `query` | query | true | string | Symbol Query |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`languageId`** | query | true | string | Language ID |
+| **`pathToProject`** | query | true | string | Path to project |
+| **`query`** | query | true | string | Symbol Query |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/process/execute
 
@@ -1476,15 +1476,15 @@ Execute command synchronously inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
-| `params` | body | true | undefined | Execute command request |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
+| **`params`** | body | true | undefined | Execute command request |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |
 
 ## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/project-dir
 
@@ -1494,11 +1494,11 @@ Get project directory
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| `workspaceId` | path | true | string | Workspace ID or Name |
-| `projectId` | path | true | string | Project ID |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`projectId`** | path | true | string | Project ID |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| `200` | OK |
+| **`200`** | OK |

@@ -53,6 +53,13 @@ export default defineConfig({
               },
             },
             {
+              label: 'Architecture',
+              link: '/about/architecture',
+              attrs: {
+                icon: 'architecture.svg',
+              },
+            },
+            {
               label: 'Getting Started',
               link: '/about/getting-started',
               attrs: {
@@ -148,6 +155,20 @@ export default defineConfig({
               link: '/usage/targets',
               attrs: {
                 icon: 'tag.svg',
+              },
+            },
+            {
+              label: 'Agent Toolbox',
+              link: '/usage/agent-toolbox',
+              attrs: {
+                icon: 'agent-toolbox.svg',
+              },
+            },
+            {
+              label: 'Projects',
+              link: '/usage/projects',
+              attrs: {
+                icon: 'folder.svg',
               },
             },
             {
