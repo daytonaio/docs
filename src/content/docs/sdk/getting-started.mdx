@@ -3,6 +3,7 @@ title: Getting Started
 ---
 
 import Label from '@components/Label.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Label>
   Distribution: **Open Source**
@@ -10,164 +11,152 @@ import Label from '@components/Label.astro'
 
 The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
 
-## Prerequisites
+View the Daytona SDK repository on [GitHub](https://github.com/daytonaio/sdk).
 
-To use the Daytona SDK, ensure you have the following:
+Follow the step by step guide to create and run your first Daytona Workspace for an AI Agent.
 
-- Python 3.7+ or Node.js 14+ installed
-- A Daytona server instance
-- API key for authentication (if required)
+## Install Daytona
 
-## Installation
+Install Daytona by following the [installation instructions](https://www.daytona.io/docs/installation/installation/). If you have Beta access to the Daytona platform, create an account and log in.
 
-Daytona provides two methods for installing the SDK: `pip` for Python and `npm`, `yarn`, or `pnpm` for TypeScript/JavaScript. Choose the appropriate method based on your preferred language.
+## Set Up Your Environment Variables
 
-### Python Installation
+To authenticate with Daytona, you need an API key. You can obtain an API key from the Daytona platform or generate one using the Daytona CLI.
 
-To install the Daytona SDK for Python, run the following command:
+<Tabs>
+<TabItem label="Cloud">
 
+1. Navigate to the Daytona platform.
+2. Go to API Keys.
+3. Click the **`Create Key`** button.
+4. Paste the API key in your **`.env`** file.
+
+</TabItem>
+<TabItem label="OSS">
+1. Type the following command:
+
+```bash
+daytona api-key generate
+```
+
+2. Paste the API key in your **`.env`** file.
+</TabItem>
+
+</Tabs>
+
+## Install the Daytona SDK
+
+Daytona provides official Python and TypeScript SDKs for interacting with the Daytona platform. Install the SDK using your preferred method.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
 ```bash
 pip install daytona-sdk
 ```
-
-### TypeScript/JavaScript Installation
-
-To install the Daytona SDK for TypeScript or JavaScript, run the following command:
-
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
 ```bash
 # Using npm
 npm install @daytona/sdk
 
 # Using yarn
+
 yarn add @daytona/sdk
 
 # Using pnpm
+
 pnpm add @daytona/sdk
+
 ```
+</TabItem>
+</Tabs>
 
-## Quick Start
+## Write Code to Create a Workspace
 
-Daytona SDK provides a simple and intuitive interface for interacting with Daytona. Here are a quick examples to get you started:
+Create and run your code within Daytona Workspace using the SDK. Daytona provides a simple and intuitive interface for interacting with Daytona.
 
-- [Python Example](#python-example)
-- [TypeScript Example](#typescript-example)
+Use the Daytona SDK [Python examples](https://github.com/daytonaio/sdk/tree/main/examples/python) or [TypeScript/JavaScript examples](https://github.com/daytonaio/sdk/tree/main/examples/typescript) to create a Workspace and run your code.
 
-### Python Example
+### Execute Commands
 
-Python example using the Daytona SDK, showing how to create a workspace, run some code, and clean up afterwards:
+Run the following code to create a Daytona Workspace and execute commands:
 
+<Tabs>
+<TabItem label="Python" icon="seti:python">
 ```python
-from daytona_sdk import Daytona, DaytonaConfig
+from daytona_sdk import Daytona, CreateWorkspaceParams
 
-# Initialize with default configuration
 daytona = Daytona()
 
-# Or with custom configuration
-config = DaytonaConfig(
-    api_key="your-api-key",
-    server_url="https://your-server-url",
-    target="local"
-)
-daytona = Daytona(config)
-
-# Create a workspace
+params = CreateWorkspaceParams(language="python")
 workspace = daytona.create()
 
-try:
-    # Run some code
-    response = workspace.process.code_run('''
-        print("Hello from Daytona!")
-    ''')
+response = workspace.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
+if response.code != 0:
+    print(f"Error: {response.code} {response.result}")
+else:
     print(response.result)
-finally:
-    # Clean up
-    daytona.remove(workspace)
+
+daytona.remove(workspace)
+
 ```
 
-### TypeScript Example
-
-TypeScript example using the Daytona SDK, showing how to create a workspace, run some code, and clean up afterwards:
-
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { Daytona, DaytonaConfig } from '@daytona/sdk';
-
-// Initialize with default configuration
-const daytona = new Daytona();
-
-// Or with custom configuration
-const config: DaytonaConfig = {
-    apiKey: "your-api-key",
-    serverUrl: "https://your-server-url",
-    target: "local"
-};
-const daytona = new Daytona(config);
+import { Daytona } from '@daytona/sdk'
 
 async function main() {
-    // Create a workspace
-    const workspace = await daytona.create({
-        language: 'typescript'
-    });
+  const daytona = new Daytona()
 
-    try {
-        // Run some code
-        const response = await workspace.process.codeRun(`
-            console.log("Hello from Daytona!");
-        `);
-        console.log(response.result);
-    } finally {
-        // Clean up
-        await daytona.remove(workspace);
+  //  first, create a workspace
+  const workspace = await daytona.create({
+    language: 'python',
+  })
+
+  try {
+    //  now, run some code
+    const result = await workspace.process.codeRun(
+      'print("Hello World! " + str(3 + 4))',
+    )
+    if (result.code !== 0) {
+      console.error('Error running code:', result.code)
+    } else {
+      console.log(result.result)
     }
+  } catch (error) {
+    console.error('Error creating workspace:', error)
+  } finally {
+    //  cleanup
+    await daytona.remove(workspace)
+  }
 }
 
-main().catch(console.error);
+main()
+
 ```
+</TabItem>
+</Tabs>
 
-## Environment Variables
+## Start your Workspace
 
-The SDK looks for these environment variables:
+Daytona provides two methods for starting your Workspace:
 
-- `DAYTONA_API_KEY` - Your Daytona API key.
-- `DAYTONA_SERVER_URL` - URL of your Daytona server.
-- `DAYTONA_TARGET` - Target environment. Defaults to `local`.
+- Using Python
+- Using TypeScript/JavaScript
 
-You can set these in a `.env` file:
+Choose the appropriate method based on your preferred language.
 
+<Tabs>
+<TabItem label="Python" icon="seti:python">
 ```bash
-DAYTONA_API_KEY=your-api-key
-DAYTONA_SERVER_URL=https://your-server-url
-DAYTONA_TARGET=local
+python main.py
 ```
 
-## Core Features
-
-The SDK provides several key features:
-
-- 🚀 **Workspace Management**
-
-    Create, manage, and remove development environments.
-
-- 📂 **File System Operations**
-
-    Full file system access and management.
-
-- 🔄 **Git Integration**
-
-    Built-in Git operations support.
-
-- ⚡ **Process Execution**
-
-    Run commands and code in isolated development environments.
-
-- 🔧 **LSP Support**
-
-    Language Server Protocol integration.
-
-## Next Steps
-
-- Learn about [Configuration](/docs/sdk/configuration) options.
-- Explore [Workspace Management](/docs/sdk/workspace-management).
-- See [File System Operations](/docs/sdk/file-system-operations).
-- Check out [Git Operations](/docs/sdk/git-operations).
-- Understand [Process & Code Execution](/docs/sdk/process-code-execution).
-- Learn about [LSP Support](/docs/sdk/language-server-protocol).
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```bash
+npx tsx ./index.ts
+```
+</TabItem>
+</Tabs>

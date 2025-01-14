@@ -3,6 +3,7 @@ title: Configuration
 ---
 
 import Label from '@components/Label.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Label>
   Distribution: **Open Source**
@@ -12,28 +13,26 @@ The Daytona SDK provides flexible configuration options to customize its behavio
 
 ## Configuration Options
 
-### Python Configuration
-
-Daytona SDK provides an option to configure settings using the `DaytonaConfig` class. The `DaytonaConfig` class accepts the following parameters:
-
-```python
-from daytona_sdk import DaytonaConfig
-
-config = DaytonaConfig(
-    api_key="your-api-key",          
-    server_url="your-server-url",     
-    target="local"                
-)
-```
+Daytona SDK provides an option to configure settings using the `DaytonaConfig` class in Python and TypeScript. The `DaytonaConfig` class accepts the following parameters:
 
 - `api_key`: Your Daytona API key
 - `server_url`: URL of your Daytona server
 - `target`: Daytona Target to create the Workspaces on.
 
-### TypeScript Configuration
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+from daytona_sdk import DaytonaConfig
 
-Daytona SDK provides an option to configure settings using the `DaytonaConfig` interface. The `DaytonaConfig` interface includes these properties:
+config = DaytonaConfig(
+    api_key="your-api-key",
+    server_url="your-server-url",
+    target="local"
+)
 
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { DaytonaConfig } from '@daytona/sdk';
 
@@ -44,11 +43,8 @@ const config: DaytonaConfig = {
 };
 ```
 
-- `apiKey`: Your Daytona API key.
-- `serverUrl`: URL of your Daytona server.
-- `target`: Daytona Target to create the Workspaces on.
-- `timeout`: Request timeout in milliseconds.
-- `verifySsl`: Enable SSL verification.
+</TabItem>
+</Tabs>
 
 ## Environment Variables
 
@@ -85,15 +81,20 @@ DAYTONA_TARGET=local
 
 Set environment variables in your shell:
 
+<Tabs>
+<TabItem label="Bash/Zsh" icon="seti:shell">
 ```bash
-# Bash/Zsh
 export DAYTONA_API_KEY=your-api-key
 export DAYTONA_SERVER_URL=https://your-server-url
-
-# Windows PowerShell
+```
+</TabItem>
+<TabItem label="Windows PowerShell" icon="seti:powershell">
+```bash
 $env:DAYTONA_API_KEY="your-api-key"
 $env:DAYTONA_SERVER_URL="https://your-server-url"
 ```
+</TabItem>
+</Tabs>
 
 ## Configuration Precedence
 
