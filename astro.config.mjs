@@ -132,6 +132,7 @@ export default defineConfig({
                 icon: 'server.svg',
               },
             },
+            {
               label: 'API Keys',
               link: '/configuration/api-keys',
               attrs: {
