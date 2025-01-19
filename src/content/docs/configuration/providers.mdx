@@ -21,7 +21,7 @@ Daytona's architecture decentralizes the role of a Provider into a separate serv
 
 ## Install a Provider
 
-Daytona allows you to install a Provider to interface with the Daytona Server. Once a new Provider is installed, it manages Workspace deployment and lifecycle management.
+Daytona provides an option to install a Provider to interface with the Daytona Server. Once a new Provider is installed, it manages the Workspace deployment and its lifecycle management.
 
 1. Run the following command to install a Provider:
 
@@ -29,19 +29,31 @@ Daytona allows you to install a Provider to interface with the Daytona Server. O
 daytona provider install
 ```
 
+:::note
+Daytona will prompt you select a [Runner](/docs/usage/Runners) to manage the Provider. Upon selecting, Daytona will install the Runner on the target system and connect it to the Daytona Server.
+:::
+
+<br />
+
 2. Select the Provider you want to install from the list or select a specific version.
 
 ```text
-Choose a provider to install
-5 items
+Choose a Provider to Install
+7 items
 ===
-fly-provider
+Docker
 v0.0.0
-aws-provider
+DigitalOcean
 v0.0.0
-docker-provider
+AWS
 v0.0.0
-digitalocean-provider
+Azure
+v0.0.0
+GCP
+v0.0.0
+Hetzner
+v0.0.0
+Fly
 v0.0.0
 
 Select a specific version
@@ -50,7 +62,7 @@ Select a specific version
 Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](/docs/configuration/targets) to use with the created Provider.
 
 ```text
-Provider docker-provider has been successfully installed
+Provider <provider> has been successfully installed
 ```
 
 ## List Providers
@@ -66,9 +78,9 @@ daytona provider list
 Upon running this command, Daytona will display a list of your installed Providers and their respective versions.
 
 ```text
-Name                                Version               
-───────────────────────────────────────────
-docker-provider                     v.0.0.0
+Name         Runner         Name               Version               
+──────────────────────────────────────────────────────
+Docker       local          docker-provider    v0.0.0
 ```
 
 ## Update a Provider
@@ -81,13 +93,23 @@ Daytona allows you to update an existing Provider, enabling you to apply the lat
 daytona provider update
 ```
 
-2. Select the Provider you want to update from the list.
+2. Select a Runner to manage the Provider.
+
+```text
+Choose a Runner To Manage Providers
+1 item
+===
+local
+local
+```
+
+3. Select the Provider you want to update from the list.
 
 ```text
 Choose a provider to update
 1 item
 ===
-docker-provider
+Docker (Runner <runner>)
 v0.0.0
 ```
 
@@ -105,13 +127,23 @@ Daytona allows you to uninstall an existing Provider, helping you manage your Pr
 daytona provider uninstall
 ```
 
-2. Select the Provider you want to uninstall from the list.
+2. Select a Runner to manage the Provider.
+
+```text
+Choose a Runner To Manage Providers
+1 item
+===
+local
+local
+```
+
+3. Select the Provider you want to uninstall from the list.
 
 ```text
 Choose a provider to uninstall
 1 item
 ===
-docker-provider
+Docker (Runner <runner>)
 v0.0.0
 ```
 
@@ -129,12 +161,22 @@ The Docker Provider allows Daytona to create Workspace projects as Docker contai
 daytona provider install
 ```
 
-2. Select **`docker-provider`** to install Docker as your Provider.
+2. Select a Runner to manage the Docker Provider.
+
+```text
+Choose a Runner To Manage Providers
+1 item
+===
+local
+local
+```
+
+3. Select **`Docker`** to install Docker as your Provider.
 
 ```text
 Choose a provider to install
 ===
-> docker-provider
+> Docker
   v0.0.0
 ```
 
@@ -167,12 +209,22 @@ The DigitalOcean Provider allows Daytona to create Workspace projects on Digital
 daytona provider install
 ```
 
-2. Select **`digitalocean-provider`** to install DigitalOcean as your Provider.
+2. Select a Runner to manage the DigitalOcean Provider.
+
+```text
+Choose a Runner To Manage Providers
+1 item
+===
+local
+local
+```
+
+3. Select **`DigitalOcean`** to install DigitalOcean as your Provider.
 
 ```text
 Choose a provider to install
 ===
-> digitalocean-provider
+> DigitalOcean
   v0.0.0
 ```
 
@@ -207,12 +259,22 @@ To use the AWS Provider, ensure that your AWS programmatic access user has the `
 daytona provider install
 ```
 
-2. Select **`aws-provider`** to install AWS as your Provider.
+2. Select a Runner to manage the AWS Provider.
+
+```text
+Choose a Runner To Manage Providers
+1 item
+===
+local
+local
+```
+
+3. Select **`AWS`** to install AWS as your Provider.
 
 ```text
 Choose a provider to install
 ===
-> aws-provider
+> AWS
   v0.0.0
 ```
 
@@ -245,12 +307,22 @@ The Azure Provider allows Daytona to create Workspace projects on Azure compute 
 daytona provider install
 ```
 
-2. Select **`azure-provider`** to install Azure as your Provider.
+2. Select a Runner to manage the Azure Provider.
+
+```text
+Choose a Runner To Manage Providers
+1 item
+===
+local
+local
+```
+
+3. Select **`Azure`** to install Azure as your Provider.
 
 ```text
 Choose a provider to install
 ===
-> azure-provider
+> Azure
   v0.0.0
 ```
 
@@ -303,12 +375,22 @@ Before using the GCP Provider, ensure to create a GCP service account with the `
 daytona provider install
 ```
 
-2. Select **`gcp-provider`** to install GCP as your Provider.
+2. Select a Runner to manage the GCP Provider.
+
+```text
+Choose a Runner To Manage Providers
+1 item
+===
+local
+local
+```
+
+3. Select **`GCP`** to install GCP as your Provider.
 
 ```text
 Choose a provider to install
 ===
-> gcp-provider
+> GCP
   v0.0.0
 ```
 
@@ -343,12 +425,22 @@ The Hetzner Provider allows Daytona to create Workspace projects on Hetzner Clou
 daytona provider install
 ```
 
-2. Select **`hetzner-provider`** to install Hetzner as your Provider.
+2. Select a Runner to manage the Hetzner Provider.
+
+```text
+Choose a Runner To Manage Providers
+1 item
+===
+local
+local
+```
+
+3. Select **`Hetzner`** to install Hetzner as your Provider.
 
 ```text
 Choose a provider to install
 ===
-> hetzner-provider
+> Hetzner
   v0.0.0
 ```
 
@@ -381,12 +473,22 @@ The Fly Provider allows Daytona to create Workspace projects on Fly VMs, known a
 daytona provider install
 ```
 
-2. Select **`fly-provider`** to install Fly as your Provider.
+2. Select a Runner to manage the Fly Provider.
+
+```text
+Choose a Runner To Manage Providers
+1 item
+===
+local
+local
+```
+
+3. Select **`Fly`** to install Fly as your Provider.
 
 ```text
 Choose a provider to install
 ===
-> fly-provider
+> Fly
   v0.0.0
 ```
 
