@@ -39,24 +39,41 @@ A Workspace Template encapsulates all the essential elements for setting up a Wo
 
 With the `daytona workspace-template` command, you can add, view, update, list, set as default, or delete Workspace Templates, giving you full control over the Template and reuse of your Workspace setups across different Workspaces.
 
-## Add a Workspace Template
+## Create a Workspace Template
 
-Daytona allows you to add a new Workspace Template, enabling you to store and reuse Workspace properties across multiple Workspaces.
+Daytona provides an option to add a Workspace Template, enabling you to store and reuse Workspace properties across multiple Workspaces.
 
-1. Run the following command to add a new Workspace Template:
+1. Run the following command to add a Workspace Template:
 
 ```shell
 daytona workspace-template add
 ```
 
-2. Enter the repository URL of the Workspace you want to configure.
+2. Select one of the two provided options available for creating a Workspace Template:
+
+- **Enter a custom repository URL**
+
+   An option to enter a custom repository URL manually if the repository is not listed under your Git Provider account or is from an external source.
+
+- **Create from Sample**
+
+   If you do not have a Git repository ready, you can create a Workspace Template from a Sample project provided by Daytona.
+
+3. Enter the repository URL of the Workspace you want to configure, or select to create a Workspace Template from a sample project.
 
 ```text
 Git repository
 >
 ```
 
-3. Select the build configuration for the Workspace.
+4. Enter a name for the Workspace Template.
+
+```text
+Name
+>
+```
+
+5. Select the build configuration for the Workspace.
 
 ```text
 Choose a build configuration
@@ -66,7 +83,7 @@ Custom image
 None
 ```
 
-4. Enter the environment variables for the Workspace in the `KEY=VALUE` format.
+6. Enter the environment variables for the Workspace in the **`KEY=VALUE`** format.
 
 ```text
 Environment Variables
@@ -74,14 +91,88 @@ Enter environment variables in the format KEY=VALUE
 To pass machine env variables at runtime, use $VALUE
 ```
 
-5. Enter a name for the Workspace Template.
+Upon completion, Daytona will output a summary of the Workspace Template, enabling you to review the properties before saving it.
 
 ```text
-Workspace Template name
->
+SUMMARY - Workspace Template
+
+Workspace - MyWorkspace
+Repository  https://github.com/daytonaio/docs
+Branch      main 
+Build       Automatic
+Image       daytonaio/workspace-project:latest
+User        daytona
 ```
 
-   Upon completion, Daytona will save the Workspace Template, allowing you to reuse it across multiple Workspaces.
+7. Click **`Create`** to save the Workspace Template, or **`Configure`** to make changes to the Workspace Template.
+
+```text
+Workspace template <workspace_template> added successfully
+```
+
+## List Workspace Templates
+
+Daytona allows you to list all Workspace Templates, providing you with an overview of the properties stored within each Template.
+
+1. Run the following command to list all Workspace Templates:
+
+```shell
+daytona workspace-template list
+```
+
+Upon running this command, Daytona will display a list of your Workspace Templates. You will be able to view the Workspace Template name, the repository URL it is connected to, the build configuration, and if it is set as a default Template.
+
+```text
+Name                 Repository           Build            Default
+────────────────────────────────────────────────────────────────────
+MyWorkspaceConfig    daytonaio/daytona    Devcontainer     Yes
+```
+
+## Update Workspace Template
+
+Daytona allows you to update an existing Workspace Template, enabling you to modify the properties stored within it.
+
+1. Run the following command to update a Workspace Template:
+
+```shell
+daytona workspace-template update
+```
+
+2. Select the Workspace Template you want to update.
+
+```text
+Select a Workspace Template To Update
+1 item
+MyWorkspaceTemplate
+https://github.com/username/MyWorkspace
+```
+
+```text
+Workspace Template updated successfully
+```
+
+## Delete Workspace Template
+
+Daytona allows you to delete an existing Workspace Template, enabling you to remove properties that are no longer needed.
+
+1. Run the following command to delete a Workspace Template:
+
+```shell
+daytona workspace-template delete
+```
+
+2. Select the Workspace Template you want to delete.
+
+```text
+Select a Workspace Template To Delete
+1 item
+MyWorkspaceTemplate
+https://github.com/username/repository
+```
+
+```text
+Workspace Template deleted successfully
+```
 
 ## Workspace Template Information
 
@@ -100,8 +191,8 @@ Upon running this command, Daytona will display a list of your Workspace Templat
 ```text
 Select a Workspace Config To View
 1 item
-┃  MyWorkspaceConfig
-┃  https://github.com/username/MyWorkspace
+MyWorkspaceConfig
+https://github.com/username/MyWorkspace
 ```
 
    Upon selecting the Workspace Template, Daytona will display the details of the selected Template. You will be able to view the Workspace Template name, the repository URL it is linked to, the build configuration, and the Devcontainer path.
@@ -112,24 +203,6 @@ Name                    MyWorkspaceConfig
 Repository              https://github.com/username/MyWorkspace
 Build                   Devcontainer
 Devcontainer path       .devcontainer/devcontainer.json
-```
-
-## List Workspace Templates
-
-Daytona allows you to list all Workspace Templates, providing you with an overview of the properties stored within each Template.
-
-1. Run the following command to list all Workspace Templates:
-
-```shell
-daytona workspace-template list
-```
-
-Upon running this command, Daytona will display a list of your Workspace Templates. You will be able to view the Workspace Template name, the repository URL it is connected to, the build configuration, and if it is set as a default Template.
-
-```text
-Name                  Repository            Build            Default
-────────────────────────────────────────────────────────────────────
-MyWorkspaceConfig     daytonaio/daytona     Devcontainer     Yes
 ```
 
 ## Set Default Workspace Template
@@ -147,33 +220,14 @@ daytona workspace-template set-default
 ```text
 Select a Workspace Template To Set As Default
 1 item
-┃  MyWorkspaceTemplate
-┃  https://github.com/username/MyWorkspace
+MyWorkspaceTemplate
+https://github.com/username/MyWorkspace
 ```
 
-   Upon selecting the default Workspace Template, Daytona will set it as the default Template for new Workspaces.
+Upon selecting the default Workspace Template, Daytona will set it as the default Template for new Workspaces.
 
 ```text
 Workspace Template 'MyWorkspaceTemplate' set as default
-```
-
-## Update Workspace Template
-
-Daytona allows you to update an existing Workspace Template, enabling you to modify the properties stored within it.
-
-1. Run the following command to update a Workspace Template:
-
-```shell
-daytona workspace-template update
-```
-
-2. Select the Workspace Template you want to update.
-
-```text
-Select a Workspace Template To Update
-1 item
-┃  MyWorkspaceTemplate
-┃  https://github.com/username/MyWorkspace
 ```
 
 3. Update the properties of the Workspace Template.
@@ -198,25 +252,72 @@ Upon completion, Daytona will save the updated Workspace Template, allowing you 
 Workspace Template updated successfully
 ```
 
-## Delete Workspace Template
+## Import Workspace Template
 
-Daytona allows you to delete an existing Workspace Template, enabling you to remove properties that are no longer needed.
+Daytona provides an option to import a Workspace Template, enabling you to reuse existing Workspace properties across multiple Workspaces.
 
-1. Run the following command to delete a Workspace Template:
+1. Run the following command to import a Workspace Template:
 
 ```shell
-daytona workspace-template delete
+daytona workspace-template import
 ```
 
-2. Select the Workspace Template you want to delete.
+2. Enter the Workspace Template as a JSON object or an array of JSON objects.
 
 ```text
-Select a Workspace Template To Delete
+Import Workspace Template
+Enter Workspace Template as a JSON object or an array of JSON objects
+```
+
+- An empty example of the JSON object properties format:
+
+```json
+[
+  {
+    "buildConfig": {},
+    "default": true,
+    "envVars": {},
+    "image": "",
+    "labels": null,
+    "name": "",
+    "repositoryUrl": "",
+    "user": ""
+  }
+]
+```
+
+## Export Workspace Template
+
+Daytona provides an option to export a Workspace Template, enabling you to save the properties of a Workspace Template as a JSON object.
+
+1. Run the following command to export a Workspace Template:
+
+```shell
+daytona workspace-template export
+```
+
+2. Select the Workspace Template you want to export.
+
+```text
+Select a Workspace Template To Export
 1 item
-┃  MyWorkspaceTemplate
-┃  https://github.com/username/MyWorkspace
+MyWorkspaceTemplate
+https://github.com/username/repository
 ```
 
-```text
-Workspace Template deleted successfully
+Upon selecting the Workspace Template you want to export, Daytona will output the properties of the selected Template as a JSON object.
+
+```json
+[
+  {
+    "buildConfig": {},
+    "default": true,
+    "envVars": {},
+    "image": "daytonaio/workspace-project:latest",
+    "labels": null,
+    "name": "MyWorkspaceTemplate",
+    "repositoryUrl": "https://github.com/username/repository",
+    "user": "daytona"
+  }
+]
 ```
