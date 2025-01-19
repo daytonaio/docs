@@ -109,16 +109,16 @@ daytona target-config list
 Upon running this command, Daytona will display a list of your Target Configurations with their details. You will be able to see the Target Configuration name, the Provider it is connected to, and its configured Runner.
 
 ```text
-Target      Provider            Runner
-───────────────────────────────────────────────────────────────────────
-local       docker-provider     local
+Target            Provider                Runner
+────────────────────────────────────────────────
+local             docker-provider         local
 ```
 
 ## Delete a Target Configuration
 
 Daytona provides an option to delete Target Configurations, helping you manage and remove those that are no longer needed. Once a Target Configuration is deleted, you will not be able to manage or deploy Workspaces on that Target Configuration.
 
-1. Run the following command:
+1. Run the following command to delete a Target Configuration:
 
 ```shell
 daytona target-config delete
@@ -136,7 +136,7 @@ MyTarget
 docker-provider
 ```
 
-3. Confirm the action.
+3. Click **`Yes`** to confirm deleting the Target Configuration.
 
 ```text
 Delete all workspaces within MyTarget?
