@@ -112,13 +112,6 @@ export default defineConfig({
               },
             },
             {
-              label: 'Targets',
-              link: '/configuration/targets',
-              attrs: {
-                icon: 'tag.svg',
-              },
-            },
-            {
               label: 'Workspace Templates',
               link: '/configuration/workspace-templates',
               attrs: {
