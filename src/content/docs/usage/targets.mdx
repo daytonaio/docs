@@ -67,31 +67,8 @@ Target Config Name
 4. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows adding a local Docker Target Configuration.
 
 ```text
-Remote Hostname
->
-
-Remote Password
->
-
-Remote Port
->
-
-Remote User
-Note: non-root user required
->
-
 Sock Path
 > /var/run/docker.sock
-
-Workspace Data Dir       
-The directory on the remote host where the workspace data will be stored
-> /tmp/daytona-data
-
-Remote Private Key Path
-daytona_config
-known_hosts
-Custom path
-None
 ```
 
 5. Enter a name for your Target.
@@ -160,7 +137,8 @@ Upon running the command, Daytona will display a list of all Targets along with 
 
 ```text
 Target          Config Name     # Workspaces    Default     Status
-local (Docker)  local           0               Yes         Running
+local (Docker)  local           0               Yes         /
+AWS             aws             0               No          Started
 ```
 
 ## Restart a Target
