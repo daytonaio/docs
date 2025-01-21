@@ -3,6 +3,8 @@ title: Runners
 description: Learn how to use and manage Runners in Daytona.
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 A Runner is a standalone service that can be deployed anywhere. The user can deploy a Runner on a target system by executing a set of instructions and commands generated upon Runner registration.
 
 Once deployed, the Runner starts up and connects to the [Daytona Server](/docs/usage/server), at which point its status is marked as `Running`.
@@ -11,29 +13,36 @@ The Runner sends all requests, while the Server only responds. The Runner sends 
 
 A single Runner can use multiple [Providers](/docs/configuration/providers), configured during deployment or later via jobs, enabling flexibility for various environments.
 
-## Register a Runner
+## Create a Runner
 
-Daytona provides an option to register a new Runner, allowing you to deploy it on a target system and connect it to the Daytona Server.
+Daytona provides an option to create a new Runner, enabling you to deploy it on a target system and connect it to the Daytona Server.
 
-1. Run the following command to register a new Runner:
+1. Run the following command to create a new Runner:
 
 ```shell
-daytona server runner register
+daytona server runner create
 ```
 
 Upon running the command, Daytona will generate a code snippet containing the server API URL and API key required to deploy the Runner on the target system.
 
 2. Paste the code snippet into the target system's terminal and execute it to configure the Runner.
 
-## Start a Runner
+## Start / Serve a Runner
 
-Daytona provides an option to start a Runner, enabling you to deploy it on the target system and connect it to the Daytona Server.
+Daytona provides options to serve a Runner in the foreground or start a Runner as a daemon/background process. Use the method that best suits your requirements.
 
-1. Run the following command to start a Runner:
-
+<Tabs>
+<TabItem label="Foreground">
+```shell
+daytona runner serve
+```
+</TabItem>
+<TabItem label="Daemon/Background">
 ```shell
 daytona runner start
 ```
+</TabItem>
+</Tabs>
 
 The Runner will connect to the Daytona Server and its status will be marked as `Running`.
 
@@ -153,18 +162,6 @@ daytona runner restart
 ```
 
 Upon running this command, Daytona will restart the Runner on the target system.
-
-## Serve a Runner
-
-Daytona provides an option to serve a Runner, enabling you to start the Runner on the target system.
-
-1. Run the following command to serve a Runner:
-
-```shell
-daytona runner serve
-```
-
-Upon running this command, Daytona will start the Runner on the target system.
 
 ## Stop a Runner
 
