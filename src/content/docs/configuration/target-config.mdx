@@ -47,12 +47,6 @@ Fly
 v0.0.0
 ```
 
-:::note
-If you have not previously installed a Runner, Daytona will prompt you select a Runner to manage the Provider. Upon selecting, Daytona will install the Runner on the target system and connect it to the Daytona Server.
-:::
-
-<br />
-
 3. Enter a name for your Target Configuration.
 
 ```text
@@ -60,7 +54,7 @@ Target Config Name
 >
 ```
 
-4. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows adding a [local Docker Target Configuration](#docker-local).
+4. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows adding a [remote Docker Target Configuration](#docker-remote).
 
 ```text
 Remote Hostname
@@ -175,13 +169,11 @@ Docker
 v0.0.0
 ```
 
-:::note
-If you have not previously installed a Runner, Daytona will prompt you select a Runner to manage the Provider. Upon selecting, Daytona will install the Runner on the target system and connect it to the Daytona Server.
-:::
-
-<br />
-
 3. Enter a name for your Target Configuration.
+
+:::note
+The Target Configuration needs to be named `local` to be recognized as the local Docker Target Configuration.
+:::
 
 ```text
 Target Config Name
@@ -191,39 +183,8 @@ Target Config Name
 4. Enter the appropriate configuration options when prompted.
 
 ```text
-Remote Hostname
->
-
-Remote Password
->
-
-Remote Port
->
-
-Remote User
-Note: non-root user required
->
-
 Sock Path
 > /var/run/docker.sock
-
-Target Data Dir
-The directory on the remote host where the target data will be stored
-> /tmp/daytona-data
-
-Remote Private Key Path
-Showing files in: /home/user/.ssh
-You can select a file, choose None or enter a Custom path
-> config
-> config.save
-> id_rsa
-> id_rsa.pub
-> id_rsa_gitlab
-> id_rsa_gitlab.pub
-> known_hosts
-> known_hosts.old
-> Custom path
-> None
 ```
 
 5. Click **`Enter`** to confirm setting the Target Configuration.
@@ -257,12 +218,6 @@ Choose a Provider
 Docker
 v0.0.0
 ```
-
-:::note
-If you have not previously installed a Runner, Daytona will prompt you select a Runner to manage the Provider. Upon selecting, Daytona will install the Runner on the target system and connect it to the Daytona Server.
-:::
-
-<br />
 
 3. Enter a name for your Target Configuration.
 
