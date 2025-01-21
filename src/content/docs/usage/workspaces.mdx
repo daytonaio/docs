@@ -116,30 +116,7 @@ daytona create <REPO_URL>
 daytona create https://github.com/daytonaio/daytona.git
 ```
 
-2. Select a Target to deploy your Workspace to. Selecting a Target will prompt you to input the [Target configuration](/docs/configuration/targets). The configurations vary based on the selected Target.
-
-```text
-Choose a Target
-6 items
-===
-local
-docker-provider
-
-Add a Fly.io Provider Target
-fly-provider (needs installing)
-
-Add a Docker Provider Target
-docker-provider (needs installing)
-
-Add a Digital Ocean Provider Target
-digitalocean-provider (needs installing)
-
-Add an AWS Provider Target
-aws-provider (needs installing)
-
-Add an Azure Provider Target
-azure-provider (needs installing)
-```
+2. Select a Target to deploy your Workspace to. Selecting a Target will prompt you to input the [Target configuration](/docs/configuration/target-config). The configurations vary based on the selected Target.
 
 Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Workspace based on its contents. You will see progress information in the terminal, indicating the process of creating a Workspace.
 
