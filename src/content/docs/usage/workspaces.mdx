@@ -90,14 +90,17 @@ Workspace name
 Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Workspace based on its contents. You will see progress information in the terminal, indicating the process of creating a Workspace.
 
 ```text
-WORKSPACE | ✓ Request submitted
-WORKSPACE | ✓ Creating workspace daytona
-daytona   | Pulling image...
-daytona   | Pulling from daytonaio/workspace-project
-...
-daytona   | Workspace daytona created
-daytona   | Starting workspace daytona
-daytona   | Workspace daytona started
+<Target>    | ✓ Request submitted
+<Workspace> | Creating workspace <workspace> (<workspace_id>)
+<Workspace> | Pulling image...
+<Workspace> | Pulling from daytonaio/workspace-project
+<Workspace> | Digest: sha256:<sha256>
+<Workspace> | Status: Image is up to date for daytonaio/workspace-project:latest
+<Workspace> | ✓ Image pulled successfully
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | Cloning into '/workdir/<workspace>'...
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | ✓ Workspace <workspace> created
 ```
 
 ### From an Arbitrary Git URL
@@ -123,14 +126,17 @@ Upon Target selection and configuration, Daytona will clone the specified Git re
 Once complete, the Workspace will be ready for use with the specified repository and configuration.
 
 ```text
-WORKSPACE | ✓ Request submitted
-WORKSPACE | ✓ Creating workspace daytona
-daytona   | Pulling image...
-daytona   | Pulling from daytonaio/workspace-project
-...
-daytona   | Workspace daytona created
-daytona   | Starting workspace daytona
-daytona   | Workspace daytona started
+<Target>    | ✓ Request submitted
+<Workspace> | Creating workspace <workspace> (<workspace_id>)
+<Workspace> | Pulling image...
+<Workspace> | Pulling from daytonaio/workspace-project
+<Workspace> | Digest: sha256:<sha256>
+<Workspace> | Status: Image is up to date for daytonaio/workspace-project:latest
+<Workspace> | ✓ Image pulled successfully
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | Cloning into '/workdir/<workspace>'...
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | ✓ Workspace <workspace> created
 ```
 
 <Aside type="tip">
@@ -151,9 +157,9 @@ daytona list
 Upon running this command, Daytona will display a list of your Workspaces with their details. You will be able to see the Workspace name, the repository it is connected to, the target of the Workspace, and its status.
 
 ```text
-Workspace        Repository          Target     Status
-─────────────────────────────────────────────────────────────────────
-MyWorkspace      username/MyProject  local      RUNNING (30 minutes)
+Workspace    Repository       Target  Status               Branch
+─────────────────────────────────────────────────────────────────
+MyWorkspace  user/repository  local   STARTED (30 minutes) master
 ```
 
 ## Open An Existing Workspace
@@ -172,9 +178,9 @@ Upon running this command, Daytona will display a list of your Workspaces with t
 Select a Workspace To Open
 1 item
 
-┃  MyProject
-┃  abcdefg12hi3 (local)
-┃  github.com/username/MyProject.git
+MyProject
+abcdefg12hi3 (local)
+github.com/username/MyProject.git
 ```
 
 2. Select the Workspace you want to open.
@@ -200,9 +206,9 @@ Upon running this command, Daytona will display a list of your Workspaces with t
 Select Workspaces To Delete
 1 item
 
-┃ MyWorkspace
-┃ abcdefg12hi3 (local)
-┃ github.com/username/MyProject.git
+MyWorkspace
+abcdefg12hi3 (local)
+github.com/username/MyProject.git
 ```
 
 2. Mark Workspaces for deletion by highlighting them and pressing `x`.
@@ -212,8 +218,8 @@ Select Workspaces To Delete
 ```text
 Delete: MyWorkspace
 
-┃  abcdefg12hi3 (local)
-┃  github.com/username/MyProject.git
+abcdefg12hi3 (local)
+github.com/username/MyProject.git
 ```
 
 4. Confirm the action.
