@@ -23,55 +23,25 @@ Daytona provides an option to create a Target. Creating a Target requires creati
 daytona target create
 ```
 
-:::note
-If you have not previously installed a Provider, registered a Runner, or created a Target Configuration, Dayona will prompt you to complete these steps before creating a Target.
-:::
+2. Select the [Target Configuration](/docs/configuration/target-config) to use for the Target.
 
-<br />
+3. Select the [Provider](/docs/configuration/providers) for the environment you want to deploy to.
 
-2. Select the appropriate Provider for the environment you want to deploy to.
+4. Enter a name for your Target.
 
 ```text
-Choose a provider
-4 items
-===
-Docker
-v0.0.0
-DigitalOcean
-v0.0.0
-AWS
-v0.0.0
-Azure
-v0.0.0
-GCP
-v0.0.0
-Hetzner
-v0.0.0
-Fly
-v0.0.0
-```
-
-:::note
-If you have not previously installed a [Runner](/docs/usage/runners), Daytona will prompt you select a Runner to manage the Provider. Upon selecting, Daytona will install the Runner on the target system and connect it to the Daytona Server.
-:::
-
-<br />
-
-3. Enter a name for your Target Configuration.
-
-```text
-Target Config Name
+Target Name
 >
 ```
 
-4. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows adding a local Docker Target Configuration.
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider. The following example shows adding a [local Docker Target Configuration](/docs/configuration/target-config#docker-local).
 
 ```text
 Sock Path
 > /var/run/docker.sock
 ```
 
-5. Enter a name for your Target.
+6. Enter a name for your Target.
 
 ```text
 Target Name
