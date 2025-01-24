@@ -52,17 +52,31 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona api-key generate
+## daytona api-key create
 
-Generate a new API key
+Create a new API key
 
 ```shell
-daytona api-key generate [NAME] [flags]
+daytona api-key create [NAME] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona api-key delete
+
+Delete an API key
+
+```shell
+daytona api-key delete [NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--yes` | `-y` | Skip confirmation prompt |
 | `--help` |  | help for daytona |
 
 ## daytona api-key list
@@ -77,20 +91,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
-| `--help` |  | help for daytona |
-
-## daytona api-key revoke
-
-Revoke an API key
-
-```shell
-daytona api-key revoke [NAME] [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--yes` | `-y` | Skip confirmation prompt |
 | `--help` |  | help for daytona |
 
 ## daytona autocomplete
@@ -185,7 +185,7 @@ __Flags__
 
 ## daytona build run
 
-Run a build from a project config
+Run a build from a workspace template
 
 ```shell
 daytona build run [flags]
@@ -201,13 +201,13 @@ __Flags__
 Open a workspace in your preferred IDE
 
 ```shell
-daytona code [WORKSPACE] [PROJECT] [flags]
+daytona code [WORKSPACE] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--ide` | `-i` | Specify the IDE (vscode, code-insiders, browser, cursor, codium, ssh, jupyter, fleet, zed, windsurf, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
+| `--ide` | `-i` | Specify the IDE (vscode, code-insiders, browser, cursor, codium, codium-insiders, ssh, jupyter, fleet, positron, zed, windsurf, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
@@ -226,86 +226,30 @@ __Flags__
 | `--show-api-keys` | `-k` | Show API keys |
 | `--help` |  | help for daytona |
 
-## daytona container-registry
-
-Manage container registries
-
-```shell
-daytona container-registry [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-
-## daytona container-registry delete
-
-Delete a container registry
-
-```shell
-daytona container-registry delete [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-
-## daytona container-registry list
-
-Lists container registries
-
-```shell
-daytona container-registry list [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--format` | `-f` | Output format. Must be one of (yaml, json) |
-| `--help` |  | help for daytona |
-
-## daytona container-registry set
-
-Set container registry
-
-```shell
-daytona container-registry set [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--password` | `-p` | Password |
-| `--server` | `-s` | Server |
-| `--username` | `-u` | Username |
-| `--help` |  | help for daytona |
-
 ## daytona create
 
 Create a workspace
 
 ```shell
-daytona create [REPOSITORY_URL | PROJECT_CONFIG_NAME]... [flags]
+daytona create [REPOSITORY_URL | WORKSPACE_CONFIG_NAME]... [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--blank` |  | Create a blank project without using existing configurations |
-| `--branch` |  | Specify the Git branches to use in the projects |
+| `--blank` |  | Create a blank workspace without using existing templates |
+| `--branch` |  | Specify the Git branches to use in the workspaces |
 | `--builder` |  | Specify the builder (currently auto/devcontainer/none) |
-| `--custom-image` |  | Create the project with the custom image passed as the flag value; Requires setting --custom-image-user flag as well |
-| `--custom-image-user` |  | Create the project with the custom image user passed as the flag value; Requires setting --custom-image flag as well |
+| `--custom-image` |  | Create the workspace with the custom image passed as the flag value; Requires setting --custom-image-user flag as well |
+| `--custom-image-user` |  | Create the workspace with the custom image user passed as the flag value; Requires setting --custom-image flag as well |
 | `--devcontainer-path` |  | Automatically assign the devcontainer builder with the path passed as the flag value |
 | `--env` |  | Specify environment variables (e.g. --env 'KEY1=VALUE1' --env 'KEY2=VALUE2' ...') |
 | `--git-provider-config` |  | Specify the Git provider configuration ID or alias |
-| `--ide` | `-i` | Specify the IDE (vscode, code-insiders, browser, cursor, codium, ssh, jupyter, fleet, zed, windsurf, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
+| `--ide` | `-i` | Specify the IDE (vscode, code-insiders, browser, cursor, codium, codium-insiders, ssh, jupyter, fleet, positron, zed, windsurf, clion, goland, intellij, phpstorm, pycharm, rider, rubymine, webstorm) |
+| `--label` |  | Specify labels (e.g. --label 'label.key1=VALUE1' --label 'label.key2=VALUE2' ...) |
 | `--manual` |  | Manually enter the Git repository |
-| `--multi-project` |  | Workspace with multiple projects/repos |
-| `--name` |  | Specify the workspace name |
-| `--no-ide` | `-n` | Do not open the workspace in the IDE after workspace creation |
+| `--multi-workspace` |  | Target with multiple workspaces/repos |
+| `--no-ide` | `-n` | Do not open the target in the IDE after target creation |
 | `--target` | `-t` | Specify the target (e.g. 'local') |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
@@ -315,7 +259,7 @@ __Flags__
 Delete a workspace
 
 ```shell
-daytona delete [WORKSPACE] [flags]
+daytona delete [WORKSPACE]... [flags]
 ```
 
 __Flags__
@@ -341,7 +285,7 @@ __Flags__
 
 ## daytona env
 
-Manage profile environment variables that are added to all workspaces
+Manage server environment variables that are added to all targets and workspaces
 
 ```shell
 daytona env [flags]
@@ -352,9 +296,22 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
+## daytona env delete
+
+Delete server environment variables
+
+```shell
+daytona env delete [KEY]... [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
 ## daytona env list
 
-List profile environment variables
+List server environment variables
 
 ```shell
 daytona env list [flags]
@@ -364,11 +321,12 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--show-values` | `-v` | Show environment variable values |
 | `--help` |  | help for daytona |
 
 ## daytona env set
 
-Set profile environment variables
+Set server environment variables
 
 ```shell
 daytona env set [KEY=VALUE]... [flags]
@@ -381,10 +339,10 @@ __Flags__
 
 ## daytona forward
 
-Forward a port from a project to your local machine
+Forward a port from a workspace to your local machine
 
 ```shell
-daytona forward [PORT] [WORKSPACE] [PROJECT] [flags]
+daytona forward [PORT] [WORKSPACE] [flags]
 ```
 
 __Flags__
@@ -393,12 +351,12 @@ __Flags__
 | `--public` |  | Should be port be available publicly via an URL |
 | `--help` |  | help for daytona |
 
-## daytona git-providers
+## daytona git-provider
 
-Manage Git providers
+Manage Git provider configs
 
 ```shell
-daytona git-providers [flags]
+daytona git-provider [flags]
 ```
 
 __Flags__
@@ -406,12 +364,12 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona git-providers add
+## daytona git-provider create
 
-Register a Git provider
+Create a Git provider config
 
 ```shell
-daytona git-providers add [GIT_PROVIDER_ID] [flags]
+daytona git-provider create [GIT_PROVIDER_ID] [flags]
 ```
 
 __Flags__
@@ -425,27 +383,27 @@ __Flags__
 | `--username` | `-u` | Username |
 | `--help` |  | help for daytona |
 
-## daytona git-providers delete
+## daytona git-provider delete
 
-Unregister a Git provider
+Delete a Git provider config
 
 ```shell
-daytona git-providers delete [flags]
+daytona git-provider delete [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--all` | `-a` | Remove all Git providers |
+| `--all` | `-a` | Delete all Git providers |
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
-## daytona git-providers list
+## daytona git-provider list
 
-Lists your registered Git providers
+Lists your registered Git provider configs
 
 ```shell
-daytona git-providers list [flags]
+daytona git-provider list [flags]
 ```
 
 __Flags__
@@ -454,12 +412,12 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona git-providers update
+## daytona git-provider update
 
 Update a Git provider
 
 ```shell
-daytona git-providers update [flags]
+daytona git-provider update [flags]
 ```
 
 __Flags__
@@ -506,22 +464,21 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
-| `--verbose` | `-v` | Show verbose output |
+| `--label` | `-l` | Filter by label |
 | `--help` |  | help for daytona |
 
 ## daytona logs
 
-View logs for a workspace/project
+View the logs of a workspace
 
 ```shell
-daytona logs [WORKSPACE] [PROJECT_NAME] [flags]
+daytona logs [WORKSPACE] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--follow` | `-f` | Follow logs |
-| `--workspace` | `-w` | View workspace logs |
 | `--help` |  | help for daytona |
 
 ## daytona prebuild
@@ -537,12 +494,12 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona prebuild add
+## daytona prebuild create
 
-Add a prebuild configuration
+Create a prebuild configuration
 
 ```shell
-daytona prebuild add [PROJECT_CONFIG] [flags]
+daytona prebuild create [WORKSPACE_CONFIG] [flags]
 ```
 
 __Flags__
@@ -560,7 +517,7 @@ __Flags__
 Delete a prebuild configuration
 
 ```shell
-daytona prebuild delete [PROJECT_CONFIG] [PREBUILD] [flags]
+daytona prebuild delete [WORKSPACE_CONFIG] [PREBUILD] [flags]
 ```
 
 __Flags__
@@ -602,7 +559,7 @@ __Flags__
 Update a prebuild configuration
 
 ```shell
-daytona prebuild update [PROJECT_CONFIG] [PREBUILD_ID] [flags]
+daytona prebuild update [WORKSPACE_CONFIG] [PREBUILD_ID] [flags]
 ```
 
 __Flags__
@@ -628,12 +585,12 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona profile add
+## daytona profile create
 
-Add profile
+Create a profile
 
 ```shell
-daytona profile add [flags]
+daytona profile create [flags]
 ```
 
 __Flags__
@@ -646,31 +603,15 @@ __Flags__
 
 ## daytona profile delete
 
-Delete profile [PROFILE_NAME]
+Delete a profile
 
 ```shell
-daytona profile delete [flags]
+daytona profile delete [PROFILE_NAME] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-
-## daytona profile edit
-
-Edit profile [PROFILE_NAME]
-
-```shell
-daytona profile edit [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--api-key` | `-k` | API Key |
-| `--api-url` | `-a` | API URL |
-| `--name` | `-n` | Profile name |
 | `--help` |  | help for daytona |
 
 ## daytona profile list
@@ -687,137 +628,20 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona project-config
+## daytona profile update
 
-Manage project configs
+Update profile [PROFILE_NAME]
 
 ```shell
-daytona project-config [flags]
+daytona profile update [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-
-## daytona project-config add
-
-Add a project config
-
-```shell
-daytona project-config add [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--builder` |  | Specify the builder (currently auto/devcontainer/none) |
-| `--custom-image` |  | Create the project with the custom image passed as the flag value; Requires setting --custom-image-user flag as well |
-| `--custom-image-user` |  | Create the project with the custom image user passed as the flag value; Requires setting --custom-image flag as well |
-| `--devcontainer-path` |  | Automatically assign the devcontainer builder with the path passed as the flag value |
-| `--env` |  | Specify environment variables (e.g. --env 'KEY1=VALUE1' --env 'KEY2=VALUE2' ...') |
-| `--git-provider-config` |  | Specify the Git provider configuration ID or alias |
-| `--manual` |  | Manually enter the Git repository |
-| `--name` |  | Specify the project config name |
-| `--help` |  | help for daytona |
-
-## daytona project-config delete
-
-Delete a project config
-
-```shell
-daytona project-config delete [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--all` | `-a` | Delete all project configs |
-| `--force` | `-f` | Force delete prebuild |
-| `--yes` | `-y` | Confirm deletion without prompt |
-| `--help` |  | help for daytona |
-
-## daytona project-config export
-
-Export a project config
-
-```shell
-daytona project-config export [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--all` | `-a` | Export all project configs |
-| `--format` | `-f` | Output format. Must be one of (yaml, json) |
-| `--help` |  | help for daytona |
-
-## daytona project-config import
-
-Import project config from JSON
-
-```shell
-daytona project-config import [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--file` | `-f` | Import project config from a JSON file. Use '-' to read from stdin. |
-| `--help` |  | help for daytona |
-
-## daytona project-config info
-
-Show project config info
-
-```shell
-daytona project-config info [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--format` | `-f` | Output format. Must be one of (yaml, json) |
-| `--help` |  | help for daytona |
-
-## daytona project-config list
-
-Lists project configs
-
-```shell
-daytona project-config list [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--format` | `-f` | Output format. Must be one of (yaml, json) |
-| `--help` |  | help for daytona |
-
-## daytona project-config set-default
-
-Set project config info
-
-```shell
-daytona project-config set-default [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-
-## daytona project-config update
-
-Update a project config
-
-```shell
-daytona project-config update [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
+| `--api-key` | `-k` | API Key |
+| `--api-url` | `-a` | API URL |
+| `--name` | `-n` | Profile name |
 | `--help` |  | help for daytona |
 
 ## daytona provider
@@ -899,8 +723,8 @@ daytona purge [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--force` | `-f` | Delete all workspaces by force |
-| `--yes` | `-y` | Execute purge without prompt |
+| `--force` | `-f` | Delete all targets by force |
+| `--yes` | `-y` | Execute purge without a prompt |
 | `--help` |  | help for daytona |
 
 ## daytona restart
@@ -908,13 +732,139 @@ __Flags__
 Restart a workspace
 
 ```shell
-daytona restart [WORKSPACE] [flags]
+daytona restart [WORKSPACE]... [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--project` | `-p` | Restart a single project in the workspace (project name) |
+| `--help` |  | help for daytona |
+
+## daytona runner
+
+Manage the runner
+
+```shell
+daytona runner [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona runner config
+
+Outputs Daytona Runner config
+
+```shell
+daytona runner config [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--key` | `-k` | Show API Key |
+| `--help` |  | help for daytona |
+
+## daytona runner configure
+
+Configure Daytona Runner
+
+```shell
+daytona runner configure [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--api-key` |  | Runner API Key |
+| `--api-url` |  | Daytona Server API URL |
+| `--client-id` |  | Client ID |
+| `--disable-telemetry` |  | Disable telemetry |
+| `--id` |  | Runner ID |
+| `--name` |  | Runner Name |
+| `--help` |  | help for daytona |
+
+## daytona runner logs
+
+View runner logs
+
+```shell
+daytona runner logs [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--follow` | `-f` | Follow logs |
+| `--help` |  | help for daytona |
+
+## daytona runner purge
+
+Purges the Daytona Runner
+
+```shell
+daytona runner purge [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--yes` | `-y` | Execute Daytona Runner purge without a prompt |
+| `--help` |  | help for daytona |
+
+## daytona runner restart
+
+Restarts the runner
+
+```shell
+daytona runner restart [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona runner serve
+
+Starts the runner in the foreground
+
+```shell
+daytona runner serve [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona runner start
+
+Starts the runner
+
+```shell
+daytona runner start [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona runner stop
+
+Stops the runner
+
+```shell
+daytona runner stop [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
 ## daytona serve
@@ -1013,6 +963,75 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
+## daytona server runner
+
+Manage runners
+
+```shell
+daytona server runner [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona server runner create
+
+Create a runner
+
+```shell
+daytona server runner create [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--name` | `-n` | Runner name |
+| `--help` |  | help for daytona |
+
+## daytona server runner delete
+
+Delete a runner
+
+```shell
+daytona server runner delete [RUNNER] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--yes` | `-y` | Confirm deletion without prompt |
+| `--help` |  | help for daytona |
+
+## daytona server runner list
+
+List runners
+
+```shell
+daytona server runner list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+## daytona server runner logs
+
+View runner logs
+
+```shell
+daytona server runner logs [RUNNER_ID] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--follow` | `-f` | Follow logs |
+| `--help` |  | help for daytona |
+
 ## daytona server start
 
 Start the Daytona Server daemon
@@ -1041,16 +1060,16 @@ __Flags__
 
 ## daytona ssh
 
-SSH into a project using the terminal
+SSH into a workspace using the terminal
 
 ```shell
-daytona ssh [WORKSPACE] [PROJECT] [CMD...] [flags]
+daytona ssh [WORKSPACE] [CMD...] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--edit` | `-e` | Edit the project's SSH config |
+| `--edit` | `-e` | Edit the workspace's SSH config |
 | `--option` | `-o` | Specify SSH options in KEY=VALUE format. |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
@@ -1060,15 +1079,14 @@ __Flags__
 Start a workspace
 
 ```shell
-daytona start [WORKSPACE] [flags]
+daytona start [WORKSPACE]... [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--all` | `-a` | Start all workspaces |
-| `--code` | `-c` | Open the workspace in the IDE after workspace start |
-| `--project` | `-p` | Start a single project in the workspace (project name) |
+| `--all` | `-a` | Start all targets |
+| `--code` | `-c` | Open the target in the IDE after target start |
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
@@ -1077,19 +1095,75 @@ __Flags__
 Stop a workspace
 
 ```shell
-daytona stop [WORKSPACE] [flags]
+daytona stop [WORKSPACE]... [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--all` | `-a` | Stop all workspaces |
-| `--project` | `-p` | Stop a single project in the workspace (project name) |
+| `--all` | `-a` | Stop all targets |
+| `--yes` | `-y` | Automatically confirm any prompts |
+| `--help` |  | help for daytona |
+
+## daytona target-config
+
+Manage target configs
+
+```shell
+daytona target-config [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona target-config create
+
+Create target config
+
+```shell
+daytona target-config create [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--file` | `-f` | Path to JSON file for target configuration, use '-' to read from stdin |
+| `--help` |  | help for daytona |
+
+## daytona target-config delete
+
+Deletes a target config
+
+```shell
+daytona target-config delete [TARGET_CONFIG] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--yes` | `-y` | Confirm deletion of all targets without prompt |
+| `--help` |  | help for daytona |
+
+## daytona target-config list
+
+List target configs
+
+```shell
+daytona target-config list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--show-options` | `-v` | Show target options |
 | `--help` |  | help for daytona |
 
 ## daytona target
 
-Manage provider targets
+Manage targets
 
 ```shell
 daytona target [flags]
@@ -1098,6 +1172,50 @@ daytona target [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona target create
+
+Create a target
+
+```shell
+daytona target create [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona target delete
+
+Delete a target
+
+```shell
+daytona target delete [TARGET]... [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Delete all targets |
+| `--force` | `-f` | Delete a target by force |
+| `--yes` | `-y` | Confirm deletion without prompt |
+| `--help` |  | help for daytona |
+
+## daytona target info
+
+Show target info
+
+```shell
+daytona target info [TARGET] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--show-options` | `-v` | Show target options |
 | `--help` |  | help for daytona |
 
 ## daytona target list
@@ -1112,28 +1230,42 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--show-options` | `-v` | Show target options |
 | `--help` |  | help for daytona |
 
-## daytona target remove
+## daytona target logs
 
-Remove target
+View the logs of a target
 
 ```shell
-daytona target remove [TARGET_NAME] [flags]
+daytona target logs [TARGET] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--yes` | `-y` | Confirm deletion of all workspaces without prompt |
+| `--follow` | `-f` | Follow logs |
+| `--help` |  | help for daytona |
+
+## daytona target restart
+
+Restart a target
+
+```shell
+daytona target restart [TARGET] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
 ## daytona target set-default
 
-Set target to be used by default
+Set default target
 
 ```shell
-daytona target set-default [TARGET_NAME] [flags]
+daytona target set-default [TARGET] [flags]
 ```
 
 __Flags__
@@ -1141,18 +1273,48 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona target set
+## daytona target ssh
 
-Set provider target
+SSH into a target using the terminal
 
 ```shell
-daytona target set [flags]
+daytona target ssh [TARGET] [CMD...] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--file` | `-f` | Path to JSON file for target configuration, use '-' to read from stdin |
+| `--option` | `-o` | Specify SSH options in KEY=VALUE format. |
+| `--yes` | `-y` | Automatically confirm any prompts |
+| `--help` |  | help for daytona |
+
+## daytona target start
+
+Start a target
+
+```shell
+daytona target start [TARGET] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Start all targets |
+| `--yes` | `-y` | Automatically confirm any prompts |
+| `--help` |  | help for daytona |
+
+## daytona target stop
+
+Stop a target
+
+```shell
+daytona target stop [TARGET] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Stop all targets |
 | `--help` |  | help for daytona |
 
 ## daytona telemetry
@@ -1187,6 +1349,140 @@ Enable telemetry collection
 
 ```shell
 daytona telemetry enable [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona template
+
+Manage workspace templates
+
+```shell
+daytona template [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona template create
+
+Create a workspace template
+
+```shell
+daytona template create [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--builder` |  | Specify the builder (currently auto/devcontainer/none) |
+| `--custom-image` |  | Create the workspace with the custom image passed as the flag value; Requires setting --custom-image-user flag as well |
+| `--custom-image-user` |  | Create the workspace with the custom image user passed as the flag value; Requires setting --custom-image flag as well |
+| `--devcontainer-path` |  | Automatically assign the devcontainer builder with the path passed as the flag value |
+| `--env` |  | Specify environment variables (e.g. --env 'KEY1=VALUE1' --env 'KEY2=VALUE2' ...') |
+| `--git-provider-config` |  | Specify the Git provider configuration ID or alias |
+| `--label` |  | Specify labels (e.g. --label 'label.key1=VALUE1' --label 'label.key2=VALUE2' ...) |
+| `--manual` |  | Manually enter the Git repository |
+| `--name` |  | Specify the workspace template name |
+| `--help` |  | help for daytona |
+
+## daytona template delete
+
+Delete a workspace template
+
+```shell
+daytona template delete [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Delete all workspace templates |
+| `--force` | `-f` | Force delete prebuild |
+| `--yes` | `-y` | Confirm deletion without prompt |
+| `--help` |  | help for daytona |
+
+## daytona template export
+
+Export a workspace template
+
+```shell
+daytona template export [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Export all workspace templates |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+## daytona template import
+
+Import a workspace template from a JSON object
+
+```shell
+daytona template import [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--file` | `-f` | Import workspace template from a JSON file. Use '-' to read from stdin. |
+| `--help` |  | help for daytona |
+
+## daytona template info
+
+Show workspace template info
+
+```shell
+daytona template info [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+## daytona template list
+
+Lists workspace templates
+
+```shell
+daytona template list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+## daytona template set-default
+
+Set workspace template info
+
+```shell
+daytona template set-default [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona template update
+
+Update a workspace template
+
+```shell
+daytona template update [flags]
 ```
 
 __Flags__

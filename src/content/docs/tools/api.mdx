@@ -21,7 +21,7 @@ List API keys
 
 ## POST /apikey/\{apiKeyName\}
 
-Generate an API key
+Create an API key
 
 ### Parameters
 
@@ -37,7 +37,7 @@ Generate an API key
 
 ## DELETE /apikey/\{apiKeyName\}
 
-Revoke API key
+Delete API key
 
 ### Parameters
 
@@ -110,9 +110,25 @@ Delete builds
 | :-------- | :---------- |
 | **`204`** | No Content |
 
+## GET /build/successful/\{repoUrl\}
+
+List successful builds for Git repository
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`repoUrl`** | path | true | string | Repository URL |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
 ## GET /build/\{buildId\}
 
-Get build data
+Find build
 
 ### Parameters
 
@@ -143,25 +159,16 @@ Delete build
 | :-------- | :---------- |
 | **`204`** | No Content |
 
-## GET /container-registry
-
-List container registries
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
 ## GET /container-registry/\{server\}
 
-Get container registry credentials
+Find container registry
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`server`** | path | true | string | Container Registry server name |
+| **`server`** | path | true | string | Container registry server |
+| **`workspaceId`** | query | undefined | string | Workspace ID or Name |
 
 ### Responses
 
@@ -169,16 +176,25 @@ Get container registry credentials
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## PUT /container-registry/\{server\}
+## GET /env
 
-Set container registry credentials
+List environment variables
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## PUT /env
+
+Save environment variable
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`server`** | path | true | string | Container Registry server name |
-| **`containerRegistry`** | body | true | undefined | Container Registry credentials to set |
+| **`environmentVariable`** | body | true | undefined | Environment Variable |
 
 ### Responses
 
@@ -186,15 +202,15 @@ Set container registry credentials
 | :-------- | :---------- |
 | **`201`** | Created |
 
-## DELETE /container-registry/\{server\}
+## DELETE /env/\{key\}
 
-Remove a container registry credentials
+Delete environment variable
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`server`** | path | true | string | Container Registry server name |
+| **`key`** | path | true | string | Environment Variable Key |
 
 ### Responses
 
@@ -214,7 +230,7 @@ List Git providers
 
 ## PUT /gitprovider
 
-Set Git provider
+Save Git provider
 
 ### Parameters
 
@@ -278,7 +294,7 @@ List Git providers for url
 
 ## GET /gitprovider/id-for-url/\{url\}
 
-Get Git provider ID
+Find Git provider ID
 
 ### Parameters
 
@@ -294,7 +310,7 @@ Get Git provider ID
 
 ## GET /gitprovider/\{gitProviderId\}
 
-Get Git provider
+Find Git provider
 
 ### Parameters
 
@@ -310,7 +326,7 @@ Get Git provider
 
 ## DELETE /gitprovider/\{gitProviderId\}
 
-Remove Git provider
+Delete Git provider
 
 ### Parameters
 
@@ -427,9 +443,18 @@ Health check
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /profile
+## GET /job
 
-Get profile data
+List jobs
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`states`** | query | undefined | array | Job States |
+| **`actions`** | query | undefined | array | Job Actions |
+| **`resourceId`** | query | undefined | string | Resource ID |
+| **`resourceType`** | query | undefined | string | Resource Type |
 
 ### Responses
 
@@ -437,35 +462,9 @@ Get profile data
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## PUT /profile
+## GET /runner
 
-Set profile data
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`profileData`** | body | true | undefined | Profile data |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`201`** | Created |
-
-## DELETE /profile
-
-Delete profile data
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`204`** | No Content |
-
-## GET /project-config
-
-List project configs
+List runners
 
 ### Responses
 
@@ -473,31 +472,15 @@ List project configs
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## PUT /project-config
+## POST /runner
 
-Set project config data
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`projectConfig`** | body | true | undefined | Project config |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`201`** | Created |
-
-## GET /project-config/default/\{gitUrl\}
-
-Get project configs by git url
+Create a runner
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`gitUrl`** | path | true | string | Git URL |
+| **`runner`** | body | true | undefined | Runner |
 
 ### Responses
 
@@ -505,168 +488,15 @@ Get project configs by git url
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /project-config/prebuild
-
-List prebuilds
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## POST /project-config/prebuild/process-git-event
-
-ProcessGitEvent
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`workspace`** | body | true | undefined | Webhook event |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## GET /project-config/\{configName\}
-
-Get project config data
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`configName`** | path | true | string | Config name |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## DELETE /project-config/\{configName\}
-
-Delete project config data
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`configName`** | path | true | string | Config name |
-| **`force`** | query | undefined | boolean | Force |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`204`** | No Content |
-
-## GET /project-config/\{configName\}/prebuild
-
-List prebuilds for project config
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`configName`** | path | true | string | Config name |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## PUT /project-config/\{configName\}/prebuild
-
-Set prebuild
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`configName`** | path | true | string | Config name |
-| **`prebuild`** | body | true | undefined | Prebuild |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`201`** | Created |
-
-## GET /project-config/\{configName\}/prebuild/\{prebuildId\}
-
-Get prebuild
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`configName`** | path | true | string | Project config name |
-| **`prebuildId`** | path | true | string | Prebuild ID |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## DELETE /project-config/\{configName\}/prebuild/\{prebuildId\}
-
-Delete prebuild
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`configName`** | path | true | string | Project config name |
-| **`prebuildId`** | path | true | string | Prebuild ID |
-| **`force`** | query | undefined | boolean | Force |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`204`** | No Content |
-
-## PATCH /project-config/\{configName\}/set-default
-
-Set project config to default
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`configName`** | path | true | string | Config name |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## GET /provider
+## GET /runner/provider
 
 List providers
 
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## POST /provider/install
-
-Install a provider
-
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`provider`** | body | true | undefined | Provider to install |
+| **`runnerId`** | query | undefined | string | Runner ID |
 
 ### Responses
 
@@ -674,15 +504,9 @@ Install a provider
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /provider/\{provider\}/target-manifest
+## GET /runner/provider/for-install
 
-Get provider target manifest
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`provider`** | path | true | string | Provider name |
+List providers available for installation
 
 ### Responses
 
@@ -690,15 +514,151 @@ Get provider target manifest
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /provider/\{provider\}/uninstall
+## GET /runner/\{runnerId\}
 
-Uninstall a provider
+Find a runner
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`provider`** | path | true | string | Provider to uninstall |
+| **`runnerId`** | path | true | string | Runner ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## DELETE /runner/\{runnerId\}
+
+Delete runner
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`runnerId`** | path | true | string | Runner ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## GET /runner/\{runnerId\}/jobs
+
+List runner jobs
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`runnerId`** | path | true | string | Runner ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /runner/\{runnerId\}/jobs/\{jobId\}/state
+
+Update job state
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`runnerId`** | path | true | string | Runner ID |
+| **`jobId`** | path | true | string | Job ID |
+| **`updateJobState`** | body | true | undefined | Update job state |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /runner/\{runnerId\}/metadata
+
+Update runner metadata
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`runnerId`** | path | true | string | Runner ID |
+| **`runnerMetadata`** | body | true | undefined | Runner Metadata |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## GET /runner/\{runnerId\}/provider
+
+Get runner providers
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`runnerId`** | path | true | string | Runner ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /runner/\{runnerId\}/provider/\{providerName\}/install
+
+Install provider
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`runnerId`** | path | true | string | Runner ID |
+| **`providerName`** | path | true | string | Provider name |
+| **`providerVersion`** | query | undefined | string | Provider version - defaults to 'latest' |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /runner/\{runnerId\}/provider/\{providerName\}/uninstall
+
+Uninstall provider
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`runnerId`** | path | true | string | Runner ID |
+| **`providerName`** | path | true | string | Provider name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /runner/\{runnerId\}/provider/\{providerName\}/update
+
+Update provider
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`runnerId`** | path | true | string | Runner ID |
+| **`providerName`** | path | true | string | Provider name |
+| **`providerVersion`** | query | undefined | string | Provider version - defaults to 'latest' |
 
 ### Responses
 
@@ -726,9 +686,9 @@ Get the server configuration
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /server/config
+## PUT /server/config
 
-Set the server configuration
+Save the server configuration
 
 ### Parameters
 
@@ -744,7 +704,7 @@ Set the server configuration
 
 ## GET /server/logs
 
-List server log files
+Get server log files
 
 ### Responses
 
@@ -754,7 +714,7 @@ List server log files
 
 ## POST /server/network-key
 
-Generate a new authentication key
+Create a new authentication key
 
 ### Responses
 
@@ -766,37 +726,76 @@ Generate a new authentication key
 
 List targets
 
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`showOptions`** | query | undefined | boolean | Show target config options |
+
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## PUT /target
+## POST /target
 
-Set a target
+Create a target
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`target`** | body | true | undefined | Target to set |
+| **`target`** | body | true | undefined | Create target |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| **`201`** | Created |
+| **`200`** | OK |
 
-## DELETE /target/\{target\}
+## GET /target-config
 
-Remove a target
+List target configs
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`target`** | path | true | string | Target name |
+| **`showOptions`** | query | undefined | boolean | Show target config options |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /target-config
+
+Create a target config
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetConfig`** | body | true | undefined | Target config to create |
+| **`showOptions`** | query | undefined | boolean | Show target config options |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## DELETE /target-config/\{configId\}
+
+Delete a target config
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`configId`** | path | true | string | Target Config Id |
 
 ### Responses
 
@@ -804,15 +803,163 @@ Remove a target
 | :-------- | :---------- |
 | **`204`** | No Content |
 
-## PATCH /target/\{target\}/set-default
+## GET /target/\{targetId\}
 
-Set target to default
+Find target
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`target`** | path | true | string | Target name |
+| **`targetId`** | path | true | string | Target ID or Name |
+| **`showOptions`** | query | undefined | boolean | Show target config options |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## DELETE /target/\{targetId\}
+
+Delete target
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetId`** | path | true | string | Target ID |
+| **`force`** | query | undefined | boolean | Force |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /target/\{targetId\}/handle-successful-creation
+
+Handles successful creation of the target
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetId`** | path | true | string | Target ID or name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /target/\{targetId\}/metadata
+
+Update target metadata
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetId`** | path | true | string | Target ID |
+| **`targetMetadata`** | body | true | undefined | Target Metadata |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /target/\{targetId\}/provider-metadata
+
+Update target provider metadata
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetId`** | path | true | string | Target ID |
+| **`metadata`** | body | true | undefined | Provider metadata |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /target/\{targetId\}/restart
+
+Restart target
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetId`** | path | true | string | Target ID or Name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## PATCH /target/\{targetId\}/set-default
+
+Set target to be used by default
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetId`** | path | true | string | Target ID or name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /target/\{targetId\}/start
+
+Start target
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetId`** | path | true | string | Target ID or Name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## GET /target/\{targetId\}/state
+
+Get target state
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetId`** | path | true | string | Target ID or Name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /target/\{targetId\}/stop
+
+Stop target
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`targetId`** | path | true | string | Target ID or Name |
 
 ### Responses
 
@@ -828,7 +975,7 @@ List workspaces
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`verbose`** | query | undefined | boolean | Verbose |
+| **`labels`** | query | undefined | string | JSON encoded labels |
 
 ### Responses
 
@@ -852,16 +999,200 @@ Create a workspace
 | :-------- | :---------- |
 | **`200`** | OK |
 
+## GET /workspace-template
+
+List workspace templates
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## PUT /workspace-template
+
+Set workspace template data
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceTemplate`** | body | true | undefined | Workspace template |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`201`** | Created |
+
+## GET /workspace-template/default/\{gitUrl\}
+
+Get default workspace templates by git url
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`gitUrl`** | path | true | string | Git URL |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## GET /workspace-template/prebuild
+
+List prebuilds
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /workspace-template/prebuild/process-git-event
+
+ProcessGitEvent
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`body`** | body | true | undefined | Webhook event |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## GET /workspace-template/\{templateName\}
+
+Find a workspace template
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`templateName`** | path | true | string | Template name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## DELETE /workspace-template/\{templateName\}
+
+Delete workspace template data
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`templateName`** | path | true | string | Template name |
+| **`force`** | query | undefined | boolean | Force |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`204`** | No Content |
+
+## GET /workspace-template/\{templateName\}/prebuild
+
+List prebuilds for workspace template
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`templateName`** | path | true | string | Template name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## PUT /workspace-template/\{templateName\}/prebuild
+
+Save prebuild
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`templateName`** | path | true | string | Template name |
+| **`prebuild`** | body | true | undefined | Prebuild |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`201`** | Created |
+
+## GET /workspace-template/\{templateName\}/prebuild/\{prebuildId\}
+
+Find prebuild
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`templateName`** | path | true | string | Workspace template name |
+| **`prebuildId`** | path | true | string | Prebuild ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## DELETE /workspace-template/\{templateName\}/prebuild/\{prebuildId\}
+
+Delete prebuild
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`templateName`** | path | true | string | Workspace template name |
+| **`prebuildId`** | path | true | string | Prebuild ID |
+| **`force`** | query | undefined | boolean | Force |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`204`** | No Content |
+
+## PATCH /workspace-template/\{templateName\}/set-default
+
+Set workspace template to default
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`templateName`** | path | true | string | Template name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
 ## GET /workspace/\{workspaceId\}
 
-Get workspace info
+Find workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`verbose`** | query | undefined | boolean | Verbose |
 
 ### Responses
 
@@ -871,7 +1202,7 @@ Get workspace info
 
 ## DELETE /workspace/\{workspaceId\}
 
-Remove workspace
+Delete workspace
 
 ### Parameters
 
@@ -886,9 +1217,92 @@ Remove workspace
 | :-------- | :---------- |
 | **`200`** | OK |
 
+## POST /workspace/\{workspaceId\}/labels
+
+Update workspace labels
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`labels`** | body | true | undefined | Labels |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /workspace/\{workspaceId\}/metadata
+
+Update workspace metadata
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID |
+| **`workspaceMetadata`** | body | true | undefined | Workspace Metadata |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /workspace/\{workspaceId\}/provider-metadata
+
+Update workspace provider metadata
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID |
+| **`metadata`** | body | true | undefined | Provider metadata |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /workspace/\{workspaceId\}/restart
+
+Restart workspace
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
 ## POST /workspace/\{workspaceId\}/start
 
 Start workspace
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## GET /workspace/\{workspaceId\}/state
+
+Get workspace state
 
 ### Parameters
 
@@ -918,68 +1332,15 @@ Stop workspace
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/start
+## GET /workspace/\{workspaceId\}/toolbox/files
 
-Start project
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## POST /workspace/\{workspaceId\}/\{projectId\}/state
-
-Set project state
+List files inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
-| **`setState`** | body | true | undefined | Set State |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## POST /workspace/\{workspaceId\}/\{projectId\}/stop
-
-Stop project
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | OK |
-
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files
-
-List files inside workspace project
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | undefined | string | Path |
 
 ### Responses
@@ -988,16 +1349,15 @@ List files inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## DELETE /workspace/\{workspaceId\}/\{projectId\}/toolbox/files
+## DELETE /workspace/\{workspaceId\}/toolbox/files
 
-Delete file inside workspace project
+Delete file inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path |
 
 ### Responses
@@ -1006,16 +1366,15 @@ Delete file inside workspace project
 | :-------- | :---------- |
 | **`204`** | No Content |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/download
+## GET /workspace/\{workspaceId\}/toolbox/files/download
 
-Download file from workspace project
+Download file from a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path |
 
 ### Responses
@@ -1024,16 +1383,15 @@ Download file from workspace project
 | :-------- | :---------- |
 | **`200`** | response contains the file |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/find
+## GET /workspace/\{workspaceId\}/toolbox/files/find
 
-Search for text/pattern inside workspace project files
+Search for text/pattern inside a workspace files
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path |
 | **`pattern`** | query | true | string | Pattern |
 
@@ -1043,16 +1401,15 @@ Search for text/pattern inside workspace project files
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/folder
+## POST /workspace/\{workspaceId\}/toolbox/files/folder
 
-Create folder inside workspace project
+Create folder inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path |
 | **`mode`** | query | true | string | Mode |
 
@@ -1062,16 +1419,15 @@ Create folder inside workspace project
 | :-------- | :---------- |
 | **`201`** | Created |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/info
+## GET /workspace/\{workspaceId\}/toolbox/files/info
 
-Get file info inside workspace project
+Get file info inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path |
 
 ### Responses
@@ -1080,16 +1436,15 @@ Get file info inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/move
+## POST /workspace/\{workspaceId\}/toolbox/files/move
 
-Create folder inside workspace project
+Create folder inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`source`** | query | true | string | Source path |
 | **`destination`** | query | true | string | Destination path |
 
@@ -1099,16 +1454,15 @@ Create folder inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/permissions
+## POST /workspace/\{workspaceId\}/toolbox/files/permissions
 
-Set file owner/group/permissions inside workspace project
+Set file owner/group/permissions inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path |
 | **`owner`** | query | undefined | string | Owner |
 | **`group`** | query | undefined | string | Group |
@@ -1120,16 +1474,15 @@ Set file owner/group/permissions inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/replace
+## POST /workspace/\{workspaceId\}/toolbox/files/replace
 
-Repleace text/pattern in mutilple files inside workspace project
+Repleace text/pattern in mutilple files inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`replace`** | body | true | undefined | ReplaceParams |
 
 ### Responses
@@ -1138,16 +1491,15 @@ Repleace text/pattern in mutilple files inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/search
+## GET /workspace/\{workspaceId\}/toolbox/files/search
 
-Search for files inside workspace project
+Search for files inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path |
 | **`pattern`** | query | true | string | Pattern |
 
@@ -1157,16 +1509,15 @@ Search for files inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/files/upload
+## POST /workspace/\{workspaceId\}/toolbox/files/upload
 
-Upload file inside workspace project
+Upload file inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path |
 | **`file`** | formData | true | file | File |
 
@@ -1176,7 +1527,7 @@ Upload file inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/add
+## POST /workspace/\{workspaceId\}/toolbox/git/add
 
 Add files to git commit
 
@@ -1185,7 +1536,6 @@ Add files to git commit
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | GitAddRequest |
 
 ### Responses
@@ -1194,16 +1544,15 @@ Add files to git commit
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/branches
+## GET /workspace/\{workspaceId\}/toolbox/git/branches
 
-Get branch list from git repository inside workspace project
+Get branch list from git repository inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path to git repository |
 
 ### Responses
@@ -1212,16 +1561,15 @@ Get branch list from git repository inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/branches
+## POST /workspace/\{workspaceId\}/toolbox/git/branches
 
-Create branch on git repository inside workspace project
+Create branch on git repository inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | GitBranchRequest |
 
 ### Responses
@@ -1230,16 +1578,15 @@ Create branch on git repository inside workspace project
 | :-------- | :---------- |
 | **`201`** | Created |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/clone
+## POST /workspace/\{workspaceId\}/toolbox/git/clone
 
-Clone git repository inside workspace project
+Clone git repository inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | GitCloneRequest |
 
 ### Responses
@@ -1248,16 +1595,15 @@ Clone git repository inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/commit
+## POST /workspace/\{workspaceId\}/toolbox/git/commit
 
-Commit changes to git repository inside workspace project
+Commit changes to git repository inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | GitCommitRequest |
 
 ### Responses
@@ -1266,16 +1612,15 @@ Commit changes to git repository inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/history
+## GET /workspace/\{workspaceId\}/toolbox/git/history
 
-Get commit history from git repository inside workspace project
+Get commit history from git repository inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path to git repository |
 
 ### Responses
@@ -1284,16 +1629,15 @@ Get commit history from git repository inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/pull
+## POST /workspace/\{workspaceId\}/toolbox/git/pull
 
-Pull changes from remote to git repository inside workspace project
+Pull changes from remote to git repository inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | Git pull request |
 
 ### Responses
@@ -1302,16 +1646,15 @@ Pull changes from remote to git repository inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/push
+## POST /workspace/\{workspaceId\}/toolbox/git/push
 
-Push changes to remote from git repository inside workspace project
+Push changes to remote from git repository inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | Git push request |
 
 ### Responses
@@ -1320,16 +1663,15 @@ Push changes to remote from git repository inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/git/status
+## GET /workspace/\{workspaceId\}/toolbox/git/status
 
-Get status from git repository inside workspace project
+Get status from git repository inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`path`** | query | true | string | Path to git repository |
 
 ### Responses
@@ -1338,7 +1680,7 @@ Get status from git repository inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/completions
+## POST /workspace/\{workspaceId\}/toolbox/lsp/completions
 
 The Completion request is sent from the client to the server to compute completion items at a given cursor position.
 
@@ -1347,7 +1689,6 @@ The Completion request is sent from the client to the server to compute completi
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | LspCompletionParams |
 
 ### Responses
@@ -1356,7 +1697,7 @@ The Completion request is sent from the client to the server to compute completi
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/did-close
+## POST /workspace/\{workspaceId\}/toolbox/lsp/did-close
 
 The document close notification is sent from the client to the server when the document got closed in the client.
 
@@ -1365,7 +1706,6 @@ The document close notification is sent from the client to the server when the d
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | LspDocumentRequest |
 
 ### Responses
@@ -1374,7 +1714,7 @@ The document close notification is sent from the client to the server when the d
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/did-open
+## POST /workspace/\{workspaceId\}/toolbox/lsp/did-open
 
 The document open notification is sent from the client to the server to signal newly opened text documents.
 
@@ -1383,7 +1723,6 @@ The document open notification is sent from the client to the server to signal n
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | LspDocumentRequest |
 
 ### Responses
@@ -1392,7 +1731,7 @@ The document open notification is sent from the client to the server to signal n
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/document-symbols
+## GET /workspace/\{workspaceId\}/toolbox/lsp/document-symbols
 
 The document symbol request is sent from the client to the server.
 
@@ -1401,7 +1740,6 @@ The document symbol request is sent from the client to the server.
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`languageId`** | query | true | string | Language ID |
 | **`pathToProject`** | query | true | string | Path to project |
 | **`uri`** | query | true | string | Document Uri |
@@ -1412,16 +1750,15 @@ The document symbol request is sent from the client to the server.
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/start
+## POST /workspace/\{workspaceId\}/toolbox/lsp/start
 
-Start Lsp server process inside workspace project
+Start Lsp server process inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | LspServerRequest |
 
 ### Responses
@@ -1430,16 +1767,15 @@ Start Lsp server process inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/stop
+## POST /workspace/\{workspaceId\}/toolbox/lsp/stop
 
-Stop Lsp server process inside workspace project
+Stop Lsp server process inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | LspServerRequest |
 
 ### Responses
@@ -1448,7 +1784,7 @@ Stop Lsp server process inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/lsp/workspace-symbols
+## GET /workspace/\{workspaceId\}/toolbox/lsp/workspace-symbols
 
 The workspace symbol request is sent from the client to the server to list project-wide symbols matching the query string.
 
@@ -1457,7 +1793,6 @@ The workspace symbol request is sent from the client to the server to list proje
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`languageId`** | query | true | string | Language ID |
 | **`pathToProject`** | query | true | string | Path to project |
 | **`query`** | query | true | string | Symbol Query |
@@ -1468,16 +1803,15 @@ The workspace symbol request is sent from the client to the server to list proje
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## POST /workspace/\{workspaceId\}/\{projectId\}/toolbox/process/execute
+## POST /workspace/\{workspaceId\}/toolbox/process/execute
 
-Execute command synchronously inside workspace project
+Execute command synchronously inside a workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
 | **`params`** | body | true | undefined | Execute command request |
 
 ### Responses
@@ -1486,16 +1820,102 @@ Execute command synchronously inside workspace project
 | :-------- | :---------- |
 | **`200`** | OK |
 
-## GET /workspace/\{workspaceId\}/\{projectId\}/toolbox/project-dir
+## GET /workspace/\{workspaceId\}/toolbox/process/session
 
-Get project directory
+List sessions inside workspace project
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
 | **`workspaceId`** | path | true | string | Workspace ID or Name |
-| **`projectId`** | path | true | string | Project ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## POST /workspace/\{workspaceId\}/toolbox/process/session
+
+Create exec session inside workspace project
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`params`** | body | true | undefined | Create session request |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`201`** | Created |
+
+## DELETE /workspace/\{workspaceId\}/toolbox/process/session/\{sessionId\}
+
+Delete a session inside workspace project
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`sessionId`** | path | true | string | Session ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`204`** | No Content |
+
+## GET /workspace/\{workspaceId\}/toolbox/process/session/\{sessionId\}/command/\{commandId\}/logs
+
+Get logs of a command inside a session inside workspace project
+Connect with websocket to get a stream of the logs
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`sessionId`** | path | true | string | Session ID |
+| **`commandId`** | path | true | string | Command ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | command logs |
+
+## POST /workspace/\{workspaceId\}/toolbox/process/session/\{sessionId\}/exec
+
+Execute command inside a session inside workspace project
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
+| **`sessionId`** | path | true | string | Session ID |
+| **`params`** | body | true | undefined | Execute command request |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | OK |
+
+## GET /workspace/\{workspaceId\}/toolbox/workspace-dir
+
+Get workspace directory
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | string | Workspace ID or Name |
 
 ### Responses
 
