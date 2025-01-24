@@ -98,6 +98,13 @@ export default defineConfig({
               },
             },
             {
+              label: 'Target Configs',
+              link: '/configuration/target-config',
+              attrs: {
+                icon: 'tag.svg',
+              },
+            },
+            {
               label: 'Container Registries',
               link: '/configuration/container-registries',
               attrs: {
@@ -105,10 +112,17 @@ export default defineConfig({
               },
             },
             {
-              label: 'Targets',
-              link: '/configuration/targets',
+              label: 'Workspace Templates',
+              link: '/configuration/workspace-templates',
               attrs: {
-                icon: 'tag.svg',
+                icon: 'computer.svg',
+              },
+            },
+            {
+              label: 'Server',
+              link: '/configuration/server',
+              attrs: {
+                icon: 'server.svg',
               },
             },
             {
@@ -131,17 +145,17 @@ export default defineConfig({
               },
             },
             {
+              label: 'Targets',
+              link: '/usage/targets',
+              attrs: {
+                icon: 'tag.svg',
+              },
+            },
+            {
               label: 'Agent Toolbox',
               link: '/usage/agent-toolbox',
               attrs: {
                 icon: 'agent-toolbox.svg',
-              },
-            },
-            {
-              label: 'Projects',
-              link: '/usage/projects',
-              attrs: {
-                icon: 'folder.svg',
               },
             },
             {
@@ -173,10 +187,10 @@ export default defineConfig({
               },
             },
             {
-              label: 'Server',
-              link: '/usage/server',
+              label: 'Runners',
+              link: '/usage/runners',
               attrs: {
-                icon: 'server.svg',
+                icon: 'cluster.svg',
               },
             },
           ],
