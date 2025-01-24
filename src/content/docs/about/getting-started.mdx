@@ -172,36 +172,154 @@ You can install additional [Providers](/docs/configuration/providers) to extend 
   />
 </DocumentList>
 
-## Setting a Target
+## Creating a Target Configuration
 
-A [Target](/docs/configuration/targets) refers to the specific destination or environment where your development setups, facilitated by various Providers, are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
+A [Target Configuration](/docs/configuration/target-config) refers to the specific destination or environment where your development setup, facilitated by various [Providers](/docs/configuration/providers), is deployed and managed. Providers define the method and technology used to create your environments, while Targets Configurations specify the precise location or platform where these environments will reside.
 
-A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
+A Target Configuration can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Target Configurations offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
-Daytona supports a variety of Targets, including [Docker (Local)](/docs/configuration/targets#docker), [Docker (Remote)](/docs/configuration/targets#docker), [DigitalOcean](/docs/configuration/targets#digitalocean), [AWS](/docs/configuration/targets#aws), [Azure](/docs/configuration/targets#azure), [GCP](/docs/configuration/targets#gcp), [Hetzner](/docs/configuration/targets#hetzner), and [Fly](/docs/configuration/targets#fly).
+Daytona provides an option to create a Target Configuration to use when managing Workspaces.
 
-Once you set your Target, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Targets or delete those you no longer need.
-
-1. Run the following command to set a Target:
+1. Run the following command to create a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config create
 ```
 
 2. Select the appropriate Provider for the environment you want to deploy to.
-3. Select **`New Target`**.
-4. Enter a name for your Target.
-5. Enter the Target appropriate configuration options when prompted.
 
-    The configuration options vary based on the selected Provider.
+3. Enter a name for your Target Configuration.
 
-6. Click <Keyboard shortcuts={["Enter"]} slot="html"/> to confirm setting the Target.
+4. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider.
+
+5. Click **`Enter`** to confirm adding the Target Configuration.
 
 ```text
-Target set successfully
+Target Config <target_config> created successfully
 ```
 
-You can set additional [Targets](/docs/configuration/targets) for different development environments, allowing you to manage and switch between them as needed.
+<DocumentList>
+<DocumentListItem
+    title="Create a Target Configuration"
+    subtitle="Learn how to create a Target Configuration to define where your development environments are deployed."
+    href="/docs/configuration/target-config"
+    expanded
+  />
+</DocumentList>
+
+## Setting a Container Registry
+
+[Container registries](/docs/configuration/container-registries) store credentials used to pull container images from specified registry servers. Adding container registry credentials is useful for users who want to create Workspaces from private images and those hosted on private registries.
+
+1. Run the following command to set a container registry environment variable:
+
+```shell
+daytona env set
+```
+
+2. Set the server environment variable key for the container registry.
+
+3. Set the server environment variable value for the container registry.
+
+4. Select whether to add another environment variable.
+
+Upon selecting, Daytona will set the container registry environment variables for your Workspace.
+
+```text
+Server environment variables have been set successfully
+```
+
+<DocumentList>
+<DocumentListItem
+    title="Set a Container Registry"
+    subtitle="Learn how to set a container registry through environment variables for your Workspace."
+    href="/docs/configuration/container-registries"
+    expanded
+  />
+</DocumentList>
+
+## Creating a Workspace Template
+
+A [Workspace Template](/docs/configuration/workspace-templates) is designed to simplify the management of development environments, allowing you to predefine settings that can be easily applied to any new Workspace.
+
+A Workspace Template contains all necessary properties to define and manage Workspaces within a Workspace. It stores information such as the repository URL, build configuration, and environment variables. This allows for easy reuse of previously set templates, ensuring a consistent and reproducible setup across multiple Workspaces.
+
+1. Run the following command to add a Workspace Template:
+
+```shell
+daytona workspace-template add
+```
+
+2. Select one of the two provided options available for creating a Workspace Template:
+
+- **Enter a custom repository URL**
+
+   An option to enter a custom repository URL manually if the repository is not listed under your Git Provider account or is from an external source.
+
+- **Create from Sample**
+
+   If you do not have a Git repository ready, you can create a Workspace Template from a Sample project provided by Daytona.
+
+3. Enter the repository URL of the Workspace you want to configure, or select to create a Workspace Template from a sample project.
+
+4. Enter a name for the Workspace Template.
+
+5. Select the build configuration for the Workspace.
+
+6. Enter the environment variables for the Workspace in the **`KEY=VALUE`** format.
+
+Upon completion, Daytona will output a summary of the Workspace Template, enabling you to review the properties before saving it.
+
+```text
+SUMMARY - Workspace Template
+
+Workspace - MyWorkspace
+Repository  https://github.com/daytonaio/docs
+Branch      main 
+Build       Automatic
+Image       daytonaio/workspace-project:latest
+User        daytona
+```
+
+7. Click **`Create`** to save the Workspace Template, or **`Configure`** to make changes to the Workspace Template.
+
+```text
+Workspace template <workspace_template> added successfully
+```
+
+<DocumentList>
+<DocumentListItem
+    title="Create a Workspace Template"
+    subtitle="Learn how to create a Workspace Template to manage your development environments effectively."
+    href="/docs/configuration/workspace-templates"
+    expanded
+  />
+</DocumentList>
+
+## Setting a Target
+
+A [Target](/docs/usage/targets) is an isolated processing unit where Workspaces are executed. It can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure.
+
+1. Run the following command to create a Target:
+
+```shell
+daytona target create
+```
+
+2. Select the [Target Configuration](/docs/configuration/target-config) to use for the Target.
+
+3. Select the [Provider](/docs/configuration/providers) for the environment you want to deploy to.
+
+4. Enter a name for your Target.
+
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider.
+
+```text
+✓ Request submitted
+Creating target <target_name>
+```
+
+You can set additional [Targets](/docs/usage/targets) for different development environments, allowing you to manage and switch between them as needed.
 
 Use the `daytona target --help` command to view available configuration options for setting a Target.
 
@@ -209,7 +327,7 @@ Use the `daytona target --help` command to view available configuration options 
 <DocumentListItem
     title="Set a Target"
     subtitle="Learn how to set a Target to define how Daytona manages your development environment."
-    href="/docs/configuration/targets"
+    href="/docs/usage/targets"
     expanded
   />
 </DocumentList>
