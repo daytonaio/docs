@@ -332,6 +332,29 @@ Use the `daytona target --help` command to view available configuration options 
   />
 </DocumentList>
 
+## Creating a Runner
+
+A Runner is a standalone service that can be deployed anywhere. The user can deploy a Runner on a target system by executing a set of instructions and commands generated upon Runner registration.
+
+1. Run the following command to create a new Runner:
+
+```shell
+daytona server runner create
+```
+
+Upon running the command, Daytona will generate a code snippet containing the server API URL and API key required to deploy the Runner on the target system.
+
+2. Paste the code snippet into the target system's terminal and execute it to configure the Runner.
+
+<DocumentList>
+<DocumentListItem
+    title="Create a Runner"
+    subtitle="Learn how to create a new Runner and deploy it on a target system."
+    href="/docs/usage/runners"
+    expanded
+  />
+</DocumentList>
+
 ## Choosing the Default IDE
 
 Connect to your development environment using a variety of [IDEs](/docs/usage/ide), including popular options like [Visual Studio Code (VSCode)](/docs/usage/ide#vs-code), [Visual Studio Code Insiders](/docs/usage/ide#vs-code-insider), [VSCodium](/docs/usage/ide#vscodium), JetBrains IDEs, [Jupyter](/docs/usage/ide#jupyter), [Zed](/docs/usage/ide#zed), [Cursor](/docs/usage/ide#cursor), [Windsurf](/docs/usage/ide#windsurf), and [Terminal SSH](/docs/usage/ide#terminal-ssh).
@@ -401,18 +424,22 @@ daytona create
 
 4. Enter a name for your Workspace.
 
-5. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
+5. Select a [Target](/docs/usage/targets) to deploy your Workspace to. Selecting a Target will prompt you to input the [Target Configuration](/docs/configuration/target-config). The configurations vary based on the selected Target.
+
+Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Workspace based on its contents. You will see progress information in the terminal, indicating the process of creating a Workspace.
 
 ```text
-WORKSPACE | ✓ Request submitted
-WORKSPACE | ✓ Creating workspace daytona
-daytona   | Creating project daytona
-daytona   | Pulling image...
-daytona   | Pulling from daytonaio/workspace-project
-...
-daytona   | Project daytona created
-daytona   | Starting project daytona
-daytona   | Project daytona started
+<Target>    | ✓ Request submitted
+<Workspace> | Creating workspace <workspace> (<workspace_id>)
+<Workspace> | Pulling image...
+<Workspace> | Pulling from daytonaio/workspace-project
+<Workspace> | Digest: sha256:<sha256>
+<Workspace> | Status: Image is up to date for daytonaio/workspace-project:latest
+<Workspace> | ✓ Image pulled successfully
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | Cloning into '/workdir/<workspace>'...
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | ✓ Workspace <workspace> created
 ```
 
 Use the `daytona create --help` command to view available configuration options for creating a Workspace.
@@ -422,6 +449,21 @@ Use the `daytona create --help` command to view available configuration options 
     title="Create a Workspace"
     subtitle="Learn how to create your Workspace using Daytona."
     href="/docs/usage/workspaces#create-a-workspace"
+    expanded
+  />
+</DocumentList>
+
+## Interact with your Workspace
+
+The [Agent Toolbox](/docs/usage/agent-toolbox) enables you to interact with the Workspace programmatically by providing a Workspace Toolbox API to perform various operations within the Workspace environment.
+
+The Workspace Toolbox API provides file system, Git, and process operations, allowing you to manage files, execute Git commands, and run processes within the Workspace.
+
+<DocumentList>
+<DocumentListItem
+    title="Interact with your Workspace"
+    subtitle="Learn how to interact with the Workspace programmatically using the Workspace Toolbox API."
+    href="/docs/usage/agent-toolbox"
     expanded
   />
 </DocumentList>
