@@ -106,11 +106,9 @@ Use the `daytona --help` command to list all commands, offering a convenient way
 
 ## Adding a Git Provider
 
-Integrate Daytona with a [Git Provider](/docs/configuration/git-providers) to manage version control operations and interact with your Git repositories.
+Daytona provides an option to integrate your preferred [Git Provider](/docs/configuration/git-providers), enhancing your development workflow. This integration enables you to access and manage your repositories directly within Daytona, simplifying workspace creation from existing projects.
 
 Daytona supports a variety of Git Providers, including [GitHub](/docs/configuration/git-providers#github), [GitLab](/docs/configuration/git-providers#gitlab), [Bitbucket](/docs/configuration/git-providers#bitbucket), [GitHub Enterprise Server](/docs/configuration/git-providers#github-enterprise-server), [GitLab Self-Managed](/docs/configuration/git-providers#gitlab-self-managed), [Bitbucket Server](/docs/configuration/git-providers#bitbucket-server), [Codeberg](/docs/configuration/git-providers#codeberg), [Gitea](/docs/configuration/git-providers#gitea), [Gitness](/docs/configuration/git-providers#gitness), [Azure DevOps](/docs/configuration/git-providers#azure-devops), [AWS CodeCommit](/docs/configuration/git-providers#aws-codecommit), [Gogs](/docs/configuration/git-providers#gogs) and [Gitee](/docs/configuration/git-providers#gitee).
-
-The integration supports and enables interacting with your codebase, cloning repositories, and pushing changes directly from Daytona.
 
 1. Run the following command to add a Git Provider:
 
@@ -198,6 +196,8 @@ daytona target-config create
 Target Config <target_config> created successfully
 ```
 
+Use the `daytona target-config --help` command to view available configuration options for setting a Target Configuration.
+
 <DocumentList>
 <DocumentListItem
     title="Create a Target Configuration"
@@ -228,6 +228,8 @@ Upon selecting, Daytona will set the container registry environment variables fo
 ```text
 Server environment variables have been set successfully
 ```
+
+Use the `daytona env --help` command to view available configuration options for setting environment variables.
 
 <DocumentList>
 <DocumentListItem
@@ -286,6 +288,8 @@ User        daytona
 ```text
 Workspace template <workspace_template> added successfully
 ```
+
+Use the `daytona workspace-template --help` command to view available configuration options for creating a Workspace Template.
 
 <DocumentList>
 <DocumentListItem
