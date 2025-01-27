@@ -53,10 +53,15 @@ import DocumentListItem from "@components/DocumentListItem.astro";
     subtitle="Install a new Provider to interface with the Daytona Server and manage your Workspaces."
     href="configuration/providers#managing-providers"
   />
-    <DocumentListItem
+  <DocumentListItem
     title="Set a Target Configuration"
     subtitle="Set a Target configuration that governs how Daytona manages and deploys Workspaces."
     href="configuration/target-config"
+  />
+  <DocumentListItem
+    title="Set a Container Registry"
+    subtitle="Set a Container Registry to store credentials used to pull container images from specified registry servers."
+    href="configuration/container-registries"
   />
   <DocumentListItem
     title="Create Workspace Templates"
@@ -82,14 +87,24 @@ import DocumentListItem from "@components/DocumentListItem.astro";
     href="usage/targets"
   />
   <DocumentListItem
+    title="Interact with Agent Toolbox"
+    subtitle="Learn how to use the Agent Toolbox to manage and interact with your Workspaces."
+    href="usage/agent-toolbox"
+  />
+  <DocumentListItem
     title="Pre-build your Workspace"
     subtitle="Learn how to manage and reuse Prebuilds across Workspaces."
     href="usage/prebuilds"
   />
   <DocumentListItem
     title="Set Default IDE"
-    subtitle="Automatically open your Workspace in Visual Studio Code and a selection of JetBrains IDEs."
+    subtitle="Automatically open your Workspace in your preferred IDE."
     href="usage/ide#set-the-default-ide"
+  />
+  <DocumentListItem
+    title="Add Custom Samples"
+    subtitle="Use quick-start repositories with predefined development configurations and environments to create Workspaces."
+    href="usage/samples"
   />
   <DocumentListItem
     title="Build a Container Image"
@@ -113,5 +128,10 @@ import DocumentListItem from "@components/DocumentListItem.astro";
     title="API Reference"
     subtitle="Explore the Daytona API and learn how to interact with Daytona programmatically."
     href="tools/api"
+  />
+  <DocumentListItem
+    title="Docker Extension"
+    subtitle="Use an embedded version of the Daytona client and server tools directly within Docker Desktop."
+    href="tools/docker-extension"
   />
 </DocumentList>
