@@ -106,11 +106,9 @@ Use the `daytona --help` command to list all commands, offering a convenient way
 
 ## Adding a Git Provider
 
-Integrate Daytona with a [Git Provider](/docs/configuration/git-providers) to manage version control operations and interact with your Git repositories.
+Daytona provides an option to integrate your preferred [Git Provider](/docs/configuration/git-providers), enhancing your development workflow. This integration enables you to access and manage your repositories directly within Daytona, simplifying workspace creation from existing projects.
 
 Daytona supports a variety of Git Providers, including [GitHub](/docs/configuration/git-providers#github), [GitLab](/docs/configuration/git-providers#gitlab), [Bitbucket](/docs/configuration/git-providers#bitbucket), [GitHub Enterprise Server](/docs/configuration/git-providers#github-enterprise-server), [GitLab Self-Managed](/docs/configuration/git-providers#gitlab-self-managed), [Bitbucket Server](/docs/configuration/git-providers#bitbucket-server), [Codeberg](/docs/configuration/git-providers#codeberg), [Gitea](/docs/configuration/git-providers#gitea), [Gitness](/docs/configuration/git-providers#gitness), [Azure DevOps](/docs/configuration/git-providers#azure-devops), [AWS CodeCommit](/docs/configuration/git-providers#aws-codecommit), [Gogs](/docs/configuration/git-providers#gogs) and [Gitee](/docs/configuration/git-providers#gitee).
-
-The integration supports and enables interacting with your codebase, cloning repositories, and pushing changes directly from Daytona.
 
 1. Run the following command to add a Git Provider:
 
@@ -172,44 +170,191 @@ You can install additional [Providers](/docs/configuration/providers) to extend 
   />
 </DocumentList>
 
-## Setting a Target
+## Creating a Target Configuration
 
-A [Target](/docs/configuration/targets) refers to the specific destination or environment where your development setups, facilitated by various Providers, are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
+A [Target Configuration](/docs/configuration/target-config) refers to the specific destination or environment where your development setup, facilitated by various [Providers](/docs/configuration/providers), is deployed and managed. Providers define the method and technology used to create your environments, while Targets Configurations specify the precise location or platform where these environments will reside.
 
-A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
+A Target Configuration can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Target Configurations offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
-Daytona supports a variety of Targets, including [Docker (Local)](/docs/configuration/targets#docker), [Docker (Remote)](/docs/configuration/targets#docker), [DigitalOcean](/docs/configuration/targets#digitalocean), [AWS](/docs/configuration/targets#aws), [Azure](/docs/configuration/targets#azure), [GCP](/docs/configuration/targets#gcp), [Hetzner](/docs/configuration/targets#hetzner), and [Fly](/docs/configuration/targets#fly).
+Supported Target Configurations include [Docker (Local)](/docs/configuration/target-config#docker-local), [Docker (Remote)](/docs/configuration/target-config#docker-remote), [DigitalOcean](/docs/configuration/target-config#digitalocean), [AWS](/docs/configuration/target-config#aws), [Azure](/docs/configuration/target-config#azure), [GCP](/docs/configuration/target-config#gcp), [Hetzner](/docs/configuration/target-config#hetzner), and [Fly](/docs/configuration/target-config#fly).
 
-Once you set your Target, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Targets or delete those you no longer need.
-
-1. Run the following command to set a Target:
+1. Run the following command to create a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config create
 ```
 
 2. Select the appropriate Provider for the environment you want to deploy to.
-3. Select **`New Target`**.
-4. Enter a name for your Target.
-5. Enter the Target appropriate configuration options when prompted.
 
-    The configuration options vary based on the selected Provider.
+3. Enter a name for your Target Configuration.
 
-6. Click <Keyboard shortcuts={["Enter"]} slot="html"/> to confirm setting the Target.
+4. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider.
+
+5. Click **`Enter`** to confirm adding the Target Configuration.
 
 ```text
-Target set successfully
+Target Config <target_config> created successfully
 ```
 
-You can set additional [Targets](/docs/configuration/targets) for different development environments, allowing you to manage and switch between them as needed.
+Use the `daytona target-config --help` command to view available configuration options for setting a Target Configuration.
+
+<DocumentList>
+<DocumentListItem
+    title="Create a Target Configuration"
+    subtitle="Learn how to create a Target Configuration to define where your development environments are deployed."
+    href="/docs/configuration/target-config"
+    expanded
+  />
+</DocumentList>
+
+## Setting a Container Registry
+
+[Container registries](/docs/configuration/container-registries) store credentials used to pull container images from specified registry servers. Adding container registry credentials is useful for users who want to create Workspaces from private images and those hosted on private registries.
+
+1. Run the following command to set a container registry environment variable:
+
+```shell
+daytona env set
+```
+
+2. Set the server environment variable key for the container registry.
+
+3. Set the server environment variable value for the container registry.
+
+4. Select whether to add another environment variable.
+
+Upon selecting, Daytona will set the container registry environment variables for your Workspace.
+
+```text
+Server environment variables have been set successfully
+```
+
+Use the `daytona env --help` command to view available configuration options for setting environment variables.
+
+<DocumentList>
+<DocumentListItem
+    title="Set a Container Registry"
+    subtitle="Learn how to set a container registry through environment variables for your Workspace."
+    href="/docs/configuration/container-registries"
+    expanded
+  />
+</DocumentList>
+
+## Creating a Workspace Template
+
+A [Workspace Template](/docs/configuration/workspace-templates) is designed to simplify the management of development environments, allowing you to predefine settings that can be easily applied to any new Workspace.
+
+A Workspace Template contains all necessary properties to define and manage Workspaces within a Workspace. It stores information such as the repository URL, build configuration, and environment variables. This allows for easy reuse of previously set templates, ensuring a consistent and reproducible setup across multiple Workspaces.
+
+1. Run the following command to add a Workspace Template:
+
+```shell
+daytona workspace-template add
+```
+
+2. Select one of the two provided options available for creating a Workspace Template:
+
+- **Enter a custom repository URL**
+
+   An option to enter a custom repository URL manually if the repository is not listed under your Git Provider account or is from an external source.
+
+- **Create from Sample**
+
+   If you do not have a Git repository ready, you can create a Workspace Template from a Sample project provided by Daytona.
+
+3. Enter the repository URL of the Workspace you want to configure, or select to create a Workspace Template from a sample project.
+
+4. Enter a name for the Workspace Template.
+
+5. Select the build configuration for the Workspace.
+
+6. Enter the environment variables for the Workspace in the **`KEY=VALUE`** format.
+
+Upon completion, Daytona will output a summary of the Workspace Template, enabling you to review the properties before saving it.
+
+```text
+SUMMARY - Workspace Template
+
+Workspace - MyWorkspace
+Repository  https://github.com/daytonaio/docs
+Branch      main 
+Build       Automatic
+Image       daytonaio/workspace-project:latest
+User        daytona
+```
+
+7. Click **`Create`** to save the Workspace Template, or **`Configure`** to make changes to the Workspace Template.
+
+```text
+Workspace template <workspace_template> added successfully
+```
+
+Use the `daytona workspace-template --help` command to view available configuration options for creating a Workspace Template.
+
+<DocumentList>
+<DocumentListItem
+    title="Create a Workspace Template"
+    subtitle="Learn how to create a Workspace Template to manage your development environments effectively."
+    href="/docs/configuration/workspace-templates"
+    expanded
+  />
+</DocumentList>
+
+## Setting a Target
+
+A [Target](/docs/usage/targets) is an isolated processing unit where Workspaces are executed. It can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure.
+
+1. Run the following command to create a Target:
+
+```shell
+daytona target create
+```
+
+2. Select the [Target Configuration](/docs/configuration/target-config) to use for the Target.
+
+3. Select the [Provider](/docs/configuration/providers) for the environment you want to deploy to.
+
+4. Enter a name for your Target.
+
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider.
+
+```text
+✓ Request submitted
+Creating target <target_name>
+```
+
+You can set additional [Targets](/docs/usage/targets) for different development environments, allowing you to manage and switch between them as needed.
 
 Use the `daytona target --help` command to view available configuration options for setting a Target.
 
 <DocumentList>
 <DocumentListItem
-    title="Set a Target"
-    subtitle="Learn how to set a Target to define how Daytona manages your development environment."
-    href="/docs/configuration/targets"
+    title="Manage a Target"
+    subtitle="Learn how to manage a Target to define where development environments are executed."
+    href="/docs/usage/targets"
+    expanded
+  />
+</DocumentList>
+
+## Creating a Runner
+
+A Runner is a standalone service that can be deployed anywhere. The user can deploy a Runner on a target system by executing a set of instructions and commands generated upon Runner registration.
+
+1. Run the following command to create a new Runner:
+
+```shell
+daytona server runner create
+```
+
+Upon running the command, Daytona will generate a code snippet containing the server API URL and API key required to deploy the Runner on the target system.
+
+2. Paste the code snippet into the target system's terminal and execute it to configure the Runner.
+
+<DocumentList>
+<DocumentListItem
+    title="Create a Runner"
+    subtitle="Learn how to create a new Runner and deploy it on a target system."
+    href="/docs/usage/runners"
     expanded
   />
 </DocumentList>
@@ -283,18 +428,22 @@ daytona create
 
 4. Enter a name for your Workspace.
 
-5. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
+5. Select a [Target](/docs/usage/targets) to deploy your Workspace to. Selecting a Target will prompt you to input the [Target Configuration](/docs/configuration/target-config). The configurations vary based on the selected Target.
+
+Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Workspace based on its contents. You will see progress information in the terminal, indicating the process of creating a Workspace.
 
 ```text
-WORKSPACE | ✓ Request submitted
-WORKSPACE | ✓ Creating workspace daytona
-daytona   | Creating project daytona
-daytona   | Pulling image...
-daytona   | Pulling from daytonaio/workspace-project
-...
-daytona   | Project daytona created
-daytona   | Starting project daytona
-daytona   | Project daytona started
+<Target>    | ✓ Request submitted
+<Workspace> | Creating workspace <workspace> (<workspace_id>)
+<Workspace> | Pulling image...
+<Workspace> | Pulling from daytonaio/workspace-project
+<Workspace> | Digest: sha256:<sha256>
+<Workspace> | Status: Image is up to date for daytonaio/workspace-project:latest
+<Workspace> | ✓ Image pulled successfully
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | Cloning into '/workdir/<workspace>'...
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | ✓ Workspace <workspace> created
 ```
 
 Use the `daytona create --help` command to view available configuration options for creating a Workspace.
@@ -304,6 +453,21 @@ Use the `daytona create --help` command to view available configuration options 
     title="Create a Workspace"
     subtitle="Learn how to create your Workspace using Daytona."
     href="/docs/usage/workspaces#create-a-workspace"
+    expanded
+  />
+</DocumentList>
+
+## Interact with your Workspace
+
+The [Agent Toolbox](/docs/usage/agent-toolbox) enables you to interact with the Workspace programmatically by providing a Workspace Toolbox API to perform various operations within the Workspace environment.
+
+The Workspace Toolbox API provides file system, Git, and process operations, allowing you to manage files, execute Git commands, and run processes within the Workspace.
+
+<DocumentList>
+<DocumentListItem
+    title="Interact with your Workspace"
+    subtitle="Learn how to interact with the Workspace programmatically using the Workspace Toolbox API."
+    href="/docs/usage/agent-toolbox"
     expanded
   />
 </DocumentList>
