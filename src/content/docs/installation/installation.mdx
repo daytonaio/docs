@@ -12,6 +12,7 @@ import Nix from './method/nix.mdx'
 import ScriptPowerShell from './method/script-powershell.mdx'
 import ScriptUnix from './method/script-unix.mdx'
 import Uninstall from './method/uninstall.mdx'
+import UninstallWindows from './method/uninstall-windows.mdx'
 
 Install Daytona on Linux, macOS, and Windows systems.
 Each operating system supports both `x86_64` and `ARM64` architectures.
@@ -104,4 +105,11 @@ If you are using Windows Subsystem for Linux (WSL), you can follow the [instruct
 
 ## Uninstallation
 
+<Tabs>
+<TabItem label="Unix" icon="linux">
 <Uninstall />
+</TabItem>
+<TabItem label="Windows" icon="seti:windows">
+<UninstallWindows />
+</TabItem>
+</Tabs>
