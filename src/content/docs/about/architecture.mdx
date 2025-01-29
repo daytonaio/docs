@@ -5,6 +5,8 @@ description: Learn about the architecture of Daytona and its components.
 
 import Label from '@components/Label.astro'
 import Image from '@components/Image.astro';
+import DocumentList from "@components/DocumentList.astro";
+import DocumentListItem from "@components/DocumentListItem.astro";
 import ArchitectureDiagramLight from '@assets/index/images/architecture-diagram-light.png';
 import ArchitectureDiagramDark from '@assets/index/images/architecture-diagram-dark.png';
 
@@ -32,9 +34,18 @@ Daytona Open Source includes the [Daytona API](/docs/tools/api), which serves as
 
 Daytona Open Source offers a variety of [Interfaces](/docs/usage/ide) to interact with the platform and manage development environments. Interfaces provide different ways to interact with Daytona, enabling developers to choose the most suitable method based on their preferences and workflows.
 
-These include the [Command Line Interface (CLI)](/docs/tools/cli) for direct control, [IDEs](/docs/usage/ide) such as [Visual Studio Code (VSCode)](/docs/usage/ide#vs-code), [Jupyter](/docs/usage/ide#jupyter), [Zed](/docs/usage/ide#zed), [Cursor](/docs/usage/ide#cursor), JetBrains IDEs for integrated development, and [Terminal SSH](/docs/usage/ide#terminal-ssh).
+These include the [Command Line Interface (CLI)](/docs/tools/cli) for direct control, [IDEs](/docs/usage/ide) such as [Visual Studio Code (VSCode)](/docs/usage/ide#vs-code), [Visual Studio Code (VSCode) Browser](/docs/usage/ide#vs-code-browser), [Visual Studio Code Insiders](/docs/usage/ide#vs-code-insiders), [Visual Studio Codium](/docs/usage/ide#vscodium), [Jupyter](/docs/usage/ide#jupyter), [Zed](/docs/usage/ide#zed), [Cursor](/docs/usage/ide#cursor), [Headless](/docs/usage/ide#headless), [Windsurf](/docs/usage/ide#windsurf), JetBrains IDEs for integrated development, and [Terminal SSH](/docs/usage/ide#terminal-ssh).
 
-Additionally, Daytona SDK is provided to enable developers to create custom integrations and extend platform functionality.
+Additionally, [Daytona SDK](/docs/sdk) is provided to enable developers to create custom integrations and extend platform functionality.
+
+<DocumentList>
+<DocumentListItem
+    title="Daytona SDK"
+    subtitle="Learn how to use the Daytona SDK to create custom integrations and extend platform functionality."
+    href="/docs/sdk"
+    expanded
+  />
+</DocumentList>
 
 ### Git Providers
 
@@ -44,21 +55,55 @@ Supported Git Providers include [GitHub](/docs/configuration/git-providers#githu
 
 The Git Providers integration facilitates collaborative development workflows and streamlines the connection between repositories and development environments.
 
+<DocumentList>
+<DocumentListItem
+    title="Add a Git Provider"
+    subtitle="Learn how to add a Git Provider to Daytona and start managing your repositories effectively."
+    href="/docs/configuration/git-providers#add-a-git-provider"
+    expanded
+  />
+</DocumentList>
+
 ### Container Registries
 
-Container registries store credentials used to pull container images from specified registry servers. Adding container registry credentials is useful for users who want to create Workspaces from private images and those hosted on private registries.
+[Container registries](/docs/configuration/container-registries) store credentials used to pull container images from specified registry servers. Adding container registry credentials is useful for users who want to create Workspaces from private images and those hosted on private registries.
+
+<DocumentList>
+<DocumentListItem
+    title="Set a Container Registry"
+    subtitle="Learn how to set a container registry through environment variables for your Workspace."
+    href="/docs/configuration/container-registries"
+    expanded
+  />
+</DocumentList>
 
 ### Providers
 
-Daytona Open Source uses Providers to enable integration with various technologies to create and manage development environments. Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run your environments.
+Daytona Open Source uses [Providers](/docs/configuration/providers) to enable integration with various technologies to create and manage development environments. Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run your environments.
 
 Supported Providers include [Docker](/docs/configuration/providers#docker), [DigitalOcean](/docs/configuration/providers#digitalocean), [AWS](/docs/configuration/providers#aws), [Azure](/docs/configuration/providers#azure), [GCP](/docs/configuration/providers#gcp), [Hetzner](/docs/configuration/providers#hetzner), and [Fly](/docs/configuration/providers#fly).
 
+<DocumentList>
+<DocumentListItem
+    title="Install a Provider"
+    subtitle="Learn how to install a Provider and interface with the Daytona Server."
+    href="/docs/configuration/providers"
+    expanded
+  />
+</DocumentList>
+
 ### Targets
 
-[Targets](/docs/configuration/targets) represent isolated processing units where Workspaces are executed. They can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure.
+[Targets](/docs/usage/targets) represent isolated processing units where Workspaces are executed. They can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure.
 
-Daytona supports a variety of Targets, including [Docker (Local)](/docs/configuration/targets#docker), [Docker (Remote)](/docs/configuration/targets#docker), [DigitalOcean](/docs/configuration/targets#digitalocean), [AWS](/docs/configuration/targets#aws), [Azure](/docs/configuration/targets#azure), [GCP](/docs/configuration/targets#gcp), [Hetzner](/docs/configuration/targets#hetzner), and [Fly](/docs/configuration/targets#fly).
+<DocumentList>
+<DocumentListItem
+    title="Manage a Target"
+    subtitle="Learn how to manage a Target to define where development environments are executed."
+    href="/docs/usage/targets"
+    expanded
+  />
+</DocumentList>
 
 ## Enterprise
 
