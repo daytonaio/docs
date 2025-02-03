@@ -28,9 +28,18 @@ Daytona Open Source includes the [Daytona API](/docs/tools/api), which serves as
 
 Daytona Open Source offers a variety of [Interfaces](/docs/usage/ide) to interact with the platform and manage development environments. Interfaces provide different ways to interact with Daytona, enabling developers to choose the most suitable method based on their preferences and workflows.
 
-These include the [Command Line Interface (CLI)](/docs/tools/cli) for direct control, [IDEs](/docs/usage/ide) such as [Visual Studio Code (VSCode)](/docs/usage/ide#vs-code), [Jupyter](/docs/usage/ide#jupyter), [Zed](/docs/usage/ide#zed), [Cursor](/docs/usage/ide#cursor), JetBrains IDEs for integrated development, and [Terminal SSH](/docs/usage/ide#terminal-ssh).
+These include the [Command Line Interface (CLI)](/docs/tools/cli) for direct control, [IDEs](/docs/usage/ide) such as [Visual Studio Code (VSCode)](/docs/usage/ide#vs-code), [Visual Studio Code (VSCode) Browser](/docs/usage/ide#vs-code-browser), [Visual Studio Code Insiders](/docs/usage/ide#vs-code-insiders), [Visual Studio Codium](/docs/usage/ide#vscodium), [Jupyter](/docs/usage/ide#jupyter), [Zed](/docs/usage/ide#zed), [Cursor](/docs/usage/ide#cursor), [Headless](/docs/usage/ide#headless), [Windsurf](/docs/usage/ide#windsurf), JetBrains IDEs for integrated development, and [Terminal SSH](/docs/usage/ide#terminal-ssh).
 
-Additionally, Daytona SDK is provided to enable developers to create custom integrations and extend platform functionality.
+Additionally, [Daytona SDK](/docs/sdk) is provided to enable developers to create custom integrations and extend platform functionality.
+
+<DocumentList>
+<DocumentListItem
+    title="Daytona SDK"
+    subtitle="Learn how to use the Daytona SDK to create custom integrations and extend platform functionality."
+    href="/docs/sdk"
+    expanded
+  />
+</DocumentList>
 
 ### Git Providers
 
@@ -40,21 +49,55 @@ Supported Git Providers include [GitHub](/docs/configuration/git-providers#githu
 
 The Git Providers integration facilitates collaborative development workflows and streamlines the connection between repositories and development environments.
 
+<DocumentList>
+<DocumentListItem
+    title="Add a Git Provider"
+    subtitle="Learn how to add a Git Provider to Daytona and start managing your repositories effectively."
+    href="/docs/configuration/git-providers#add-a-git-provider"
+    expanded
+  />
+</DocumentList>
+
 ### Container Registries
 
-Container registries store credentials used to pull container images from specified registry servers. Adding container registry credentials is useful for users who want to create Workspaces from private images and those hosted on private registries.
+[Container registries](/docs/configuration/container-registries) store credentials used to pull container images from specified registry servers. Adding container registry credentials is useful for users who want to create Workspaces from private images and those hosted on private registries.
+
+<DocumentList>
+<DocumentListItem
+    title="Set a Container Registry"
+    subtitle="Learn how to set a container registry through environment variables for your Workspace."
+    href="/docs/configuration/container-registries"
+    expanded
+  />
+</DocumentList>
 
 ### Providers
 
-Daytona Open Source uses Providers to enable integration with various technologies to create and manage development environments. Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run your environments.
+Daytona Open Source uses [Providers](/docs/configuration/providers) to enable integration with various technologies to create and manage development environments. Providers abstract complexities of underlying technologies and serve as the foundational engines that Daytona leverages to deploy and run your environments.
 
 Supported Providers include [Docker](/docs/configuration/providers#docker), [DigitalOcean](/docs/configuration/providers#digitalocean), [AWS](/docs/configuration/providers#aws), [Azure](/docs/configuration/providers#azure), [GCP](/docs/configuration/providers#gcp), [Hetzner](/docs/configuration/providers#hetzner), and [Fly](/docs/configuration/providers#fly).
 
+<DocumentList>
+<DocumentListItem
+    title="Install a Provider"
+    subtitle="Learn how to install a Provider and interface with the Daytona Server."
+    href="/docs/configuration/providers"
+    expanded
+  />
+</DocumentList>
+
 ### Targets
 
-[Targets](/docs/configuration/targets) represent isolated processing units where Workspaces are executed. They can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure.
+[Targets](/docs/usage/targets) represent isolated processing units where Workspaces are executed. They can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure.
 
-Daytona supports a variety of Targets, including [Docker (Local)](/docs/configuration/targets#docker), [Docker (Remote)](/docs/configuration/targets#docker), [DigitalOcean](/docs/configuration/targets#digitalocean), [AWS](/docs/configuration/targets#aws), [Azure](/docs/configuration/targets#azure), [GCP](/docs/configuration/targets#gcp), [Hetzner](/docs/configuration/targets#hetzner), and [Fly](/docs/configuration/targets#fly).
+<DocumentList>
+<DocumentListItem
+    title="Manage a Target"
+    subtitle="Learn how to manage a Target to define where development environments are executed."
+    href="/docs/usage/targets"
+    expanded
+  />
+</DocumentList>
 
 ## Enterprise
 
@@ -177,11 +220,9 @@ Use the `daytona --help` command to list all commands, offering a convenient way
 
 ## Adding a Git Provider
 
-Integrate Daytona with a [Git Provider](/docs/configuration/git-providers) to manage version control operations and interact with your Git repositories.
+Daytona provides an option to integrate your preferred [Git Provider](/docs/configuration/git-providers), enhancing your development workflow. This integration enables you to access and manage your repositories directly within Daytona, simplifying workspace creation from existing projects.
 
 Daytona supports a variety of Git Providers, including [GitHub](/docs/configuration/git-providers#github), [GitLab](/docs/configuration/git-providers#gitlab), [Bitbucket](/docs/configuration/git-providers#bitbucket), [GitHub Enterprise Server](/docs/configuration/git-providers#github-enterprise-server), [GitLab Self-Managed](/docs/configuration/git-providers#gitlab-self-managed), [Bitbucket Server](/docs/configuration/git-providers#bitbucket-server), [Codeberg](/docs/configuration/git-providers#codeberg), [Gitea](/docs/configuration/git-providers#gitea), [Gitness](/docs/configuration/git-providers#gitness), [Azure DevOps](/docs/configuration/git-providers#azure-devops), [AWS CodeCommit](/docs/configuration/git-providers#aws-codecommit), [Gogs](/docs/configuration/git-providers#gogs) and [Gitee](/docs/configuration/git-providers#gitee).
-
-The integration supports and enables interacting with your codebase, cloning repositories, and pushing changes directly from Daytona.
 
 1. Run the following command to add a Git Provider:
 
@@ -243,44 +284,191 @@ You can install additional [Providers](/docs/configuration/providers) to extend 
   />
 </DocumentList>
 
-## Setting a Target
+## Creating a Target Configuration
 
-A [Target](/docs/configuration/targets) refers to the specific destination or environment where your development setups, facilitated by various Providers, are deployed and managed. Providers define the method and technology used to create your environments, while Targets specify the precise location or platform where these environments will reside.
+A [Target Configuration](/docs/configuration/target-config) refers to the specific destination or environment where your development setup, facilitated by various [Providers](/docs/configuration/providers), is deployed and managed. Providers define the method and technology used to create your environments, while Targets Configurations specify the precise location or platform where these environments will reside.
 
-A Target can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Targets offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
+A Target Configuration can be a local machine, a remote server, or a cloud instance, and it can vary based on the chosen Provider. Target Configurations offer the flexibility to deploy and manage environments across different platforms and accounts, all within the unified interface provided by Daytona.
 
-Daytona supports a variety of Targets, including [Docker (Local)](/docs/configuration/targets#docker), [Docker (Remote)](/docs/configuration/targets#docker), [DigitalOcean](/docs/configuration/targets#digitalocean), [AWS](/docs/configuration/targets#aws), [Azure](/docs/configuration/targets#azure), [GCP](/docs/configuration/targets#gcp), [Hetzner](/docs/configuration/targets#hetzner), and [Fly](/docs/configuration/targets#fly).
+Supported Target Configurations include [Docker (Local)](/docs/configuration/target-config#docker-local), [Docker (Remote)](/docs/configuration/target-config#docker-remote), [DigitalOcean](/docs/configuration/target-config#digitalocean), [AWS](/docs/configuration/target-config#aws), [Azure](/docs/configuration/target-config#azure), [GCP](/docs/configuration/target-config#gcp), [Hetzner](/docs/configuration/target-config#hetzner), and [Fly](/docs/configuration/target-config#fly).
 
-Once you set your Target, it becomes available for selection whenever you create a new development environment in Daytona. You can manage multiple Targets or delete those you no longer need.
-
-1. Run the following command to set a Target:
+1. Run the following command to create a Target Configuration:
 
 ```shell
-daytona target set
+daytona target-config create
 ```
 
 2. Select the appropriate Provider for the environment you want to deploy to.
-3. Select **`New Target`**.
-4. Enter a name for your Target.
-5. Enter the Target appropriate configuration options when prompted.
 
-    The configuration options vary based on the selected Provider.
+3. Enter a name for your Target Configuration.
 
-6. Click <Keyboard shortcuts={["Enter"]} slot="html"/> to confirm setting the Target.
+4. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider.
+
+5. Click **`Enter`** to confirm adding the Target Configuration.
 
 ```text
-Target set successfully
+Target Config <target_config> created successfully
 ```
 
-You can set additional [Targets](/docs/configuration/targets) for different development environments, allowing you to manage and switch between them as needed.
+Use the `daytona target-config --help` command to view available configuration options for setting a Target Configuration.
+
+<DocumentList>
+<DocumentListItem
+    title="Create a Target Configuration"
+    subtitle="Learn how to create a Target Configuration to define where your development environments are deployed."
+    href="/docs/configuration/target-config"
+    expanded
+  />
+</DocumentList>
+
+## Setting a Container Registry
+
+[Container registries](/docs/configuration/container-registries) store credentials used to pull container images from specified registry servers. Adding container registry credentials is useful for users who want to create Workspaces from private images and those hosted on private registries.
+
+1. Run the following command to set a container registry environment variable:
+
+```shell
+daytona env set
+```
+
+2. Set the server environment variable key for the container registry.
+
+3. Set the server environment variable value for the container registry.
+
+4. Select whether to add another environment variable.
+
+Upon selecting, Daytona will set the container registry environment variables for your Workspace.
+
+```text
+Server environment variables have been set successfully
+```
+
+Use the `daytona env --help` command to view available configuration options for setting environment variables.
+
+<DocumentList>
+<DocumentListItem
+    title="Set a Container Registry"
+    subtitle="Learn how to set a container registry through environment variables for your Workspace."
+    href="/docs/configuration/container-registries"
+    expanded
+  />
+</DocumentList>
+
+## Creating a Workspace Template
+
+A [Workspace Template](/docs/configuration/workspace-templates) is designed to simplify the management of development environments, allowing you to predefine settings that can be easily applied to any new Workspace.
+
+A Workspace Template contains all necessary properties to define and manage Workspaces within a Workspace. It stores information such as the repository URL, build configuration, and environment variables. This allows for easy reuse of previously set templates, ensuring a consistent and reproducible setup across multiple Workspaces.
+
+1. Run the following command to add a Workspace Template:
+
+```shell
+daytona workspace-template add
+```
+
+2. Select one of the two provided options available for creating a Workspace Template:
+
+- **Enter a custom repository URL**
+
+   An option to enter a custom repository URL manually if the repository is not listed under your Git Provider account or is from an external source.
+
+- **Create from Sample**
+
+   If you do not have a Git repository ready, you can create a Workspace Template from a Sample project provided by Daytona.
+
+3. Enter the repository URL of the Workspace you want to configure, or select to create a Workspace Template from a sample project.
+
+4. Enter a name for the Workspace Template.
+
+5. Select the build configuration for the Workspace.
+
+6. Enter the environment variables for the Workspace in the **`KEY=VALUE`** format.
+
+Upon completion, Daytona will output a summary of the Workspace Template, enabling you to review the properties before saving it.
+
+```text
+SUMMARY - Workspace Template
+
+Workspace - MyWorkspace
+Repository  https://github.com/daytonaio/docs
+Branch      main 
+Build       Automatic
+Image       daytonaio/workspace-project:latest
+User        daytona
+```
+
+7. Click **`Create`** to save the Workspace Template, or **`Configure`** to make changes to the Workspace Template.
+
+```text
+Workspace template <workspace_template> added successfully
+```
+
+Use the `daytona workspace-template --help` command to view available configuration options for creating a Workspace Template.
+
+<DocumentList>
+<DocumentListItem
+    title="Create a Workspace Template"
+    subtitle="Learn how to create a Workspace Template to manage your development environments effectively."
+    href="/docs/configuration/workspace-templates"
+    expanded
+  />
+</DocumentList>
+
+## Setting a Target
+
+A [Target](/docs/usage/targets) is an isolated processing unit where Workspaces are executed. It can operate on various infrastructures, including cloud-based and on-premises environments. Targets provide the necessary compute resources and meet security requirements within the defined infrastructure.
+
+1. Run the following command to create a Target:
+
+```shell
+daytona target create
+```
+
+2. Select the [Target Configuration](/docs/configuration/target-config) to use for the Target.
+
+3. Select the [Provider](/docs/configuration/providers) for the environment you want to deploy to.
+
+4. Enter a name for your Target.
+
+5. Enter the appropriate configuration options when prompted. The configuration options vary based on the selected Provider.
+
+```text
+✓ Request submitted
+Creating target <target_name>
+```
+
+You can set additional [Targets](/docs/usage/targets) for different development environments, allowing you to manage and switch between them as needed.
 
 Use the `daytona target --help` command to view available configuration options for setting a Target.
 
 <DocumentList>
 <DocumentListItem
-    title="Set a Target"
-    subtitle="Learn how to set a Target to define how Daytona manages your development environment."
-    href="/docs/configuration/targets"
+    title="Manage a Target"
+    subtitle="Learn how to manage a Target to define where development environments are executed."
+    href="/docs/usage/targets"
+    expanded
+  />
+</DocumentList>
+
+## Creating a Runner
+
+A Runner is a standalone service that can be deployed anywhere. The user can deploy a Runner on a target system by executing a set of instructions and commands generated upon Runner registration.
+
+1. Run the following command to create a new Runner:
+
+```shell
+daytona server runner create
+```
+
+Upon running the command, Daytona will generate a code snippet containing the server API URL and API key required to deploy the Runner on the target system.
+
+2. Paste the code snippet into the target system's terminal and execute it to configure the Runner.
+
+<DocumentList>
+<DocumentListItem
+    title="Create a Runner"
+    subtitle="Learn how to create a new Runner and deploy it on a target system."
+    href="/docs/usage/runners"
     expanded
   />
 </DocumentList>
@@ -354,18 +542,22 @@ daytona create
 
 4. Enter a name for your Workspace.
 
-5. Wait while Daytona sets up your Workspace. It handles all the initialization and configuration of your environment.
+5. Select a [Target](/docs/usage/targets) to deploy your Workspace to. Selecting a Target will prompt you to input the [Target Configuration](/docs/configuration/target-config). The configurations vary based on the selected Target.
+
+Upon Target selection and configuration, Daytona will clone the specified Git repository and set up a new Workspace based on its contents. You will see progress information in the terminal, indicating the process of creating a Workspace.
 
 ```text
-WORKSPACE | ✓ Request submitted
-WORKSPACE | ✓ Creating workspace daytona
-daytona   | Creating project daytona
-daytona   | Pulling image...
-daytona   | Pulling from daytonaio/workspace-project
-...
-daytona   | Project daytona created
-daytona   | Starting project daytona
-daytona   | Project daytona started
+<Target>    | ✓ Request submitted
+<Workspace> | Creating workspace <workspace> (<workspace_id>)
+<Workspace> | Pulling image...
+<Workspace> | Pulling from daytonaio/workspace-project
+<Workspace> | Digest: sha256:<sha256>
+<Workspace> | Status: Image is up to date for daytonaio/workspace-project:latest
+<Workspace> | ✓ Image pulled successfully
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | Cloning into '/workdir/<workspace>'...
+<Workspace> | UIDs and GIDs are the same (1000:1000).
+<Workspace> | ✓ Workspace <workspace> created
 ```
 
 Use the `daytona create --help` command to view available configuration options for creating a Workspace.
@@ -375,6 +567,21 @@ Use the `daytona create --help` command to view available configuration options 
     title="Create a Workspace"
     subtitle="Learn how to create your Workspace using Daytona."
     href="/docs/usage/workspaces#create-a-workspace"
+    expanded
+  />
+</DocumentList>
+
+## Interact with your Workspace
+
+The [Agent Toolbox](/docs/usage/agent-toolbox) enables you to interact with the Workspace programmatically by providing a Workspace Toolbox API to perform various operations within the Workspace environment.
+
+The Workspace Toolbox API provides file system, Git, and process operations, allowing you to manage files, execute Git commands, and run processes within the Workspace.
+
+<DocumentList>
+<DocumentListItem
+    title="Interact with your Workspace"
+    subtitle="Learn how to interact with the Workspace programmatically using the Workspace Toolbox API."
+    href="/docs/usage/agent-toolbox"
     expanded
   />
 </DocumentList>
@@ -488,6 +695,8 @@ default                             client
 
 :::tip
 Daytona provides an option to view the existing Daytona Server API URL.
+
+<br />
 
 ```bash
 daytona server config
@@ -1443,11 +1652,11 @@ After selecting Gogs as your Git Provider, you will be prompted to enter a Self-
 To create a Personal Access Token follow these steps:
 
 1. Log into Gogs, and click your profile avatar to open the user menu.
-2. Click `Your Settings` in the user menu. Make sure you have admin access to the repository.
-3. Navigate to `Applications` in the sidebar.
-4. In the Manage personal access tokens section, click Generate New Token.
-5. Type a name for your token and click Generate Token.
-6. Copy and save the token securely (it won't be shown again).
+2. Click __`Your Settings`__ in the user menu. Make sure you have admin access to the repository.
+3. Navigate to __`Applications`__ in the sidebar.
+4. In the Manage personal access tokens section, click __`Generate New Token`__.
+5. Type a name for your token and click __`Generate Token`__.
+6. Copy and save the token securely.
 
 <Aside type="note">
 Gogs does not support fine-grained tokens. Each Personal Access Token will have full access to your account
@@ -1509,17 +1718,17 @@ Choose a Git provider
 To create a Personal Access Token follow these steps:
 
 1. Log into Gitee, and click your profile avatar to open the user menu.
-2. Click `Settings` in the user menu. Make sure you have admin access to the repository.
-3. Navigate to `Personal access tokens` in the sidebar.
+2. Click __`Settings`__ in the user menu. Make sure you have admin access to the repository.
+3. Navigate to __`Personal access tokens`__ in the sidebar.
 4. In the Manage personal access tokens section, click Generate New Token.
 5. Enter a description for your token, and select following scopes:
-    - `user_info`
-    - `projects`
-    - `pull_requests`
-    - `groups`
-    - `emails`
-6. Click Commit to generate the token. You'll prompted to enter your password for verification.
-7. Copy and save the token securely (it won't be shown again).
+    - __`user_info`__
+    - __`projects`__
+    - __`pull_requests`__
+    - __`groups`__
+    - __`emails`__
+6. Click __`Commit`__ to generate the token. You will be prompted to enter your password for verification.
+7. Copy and save the token securely.
 
 ```text
 Personal access token
@@ -1578,7 +1787,7 @@ daytona provider install
 ```
 
 :::note
-Daytona will prompt you select a [Runner](/docs/usage/Runners) to manage the Provider.
+Daytona will prompt you select a [Runner](/docs/usage/runners) to manage the Provider.
 :::
 
 <br />
@@ -1607,7 +1816,7 @@ v0.0.0
 Select a specific version
 ```
 
-Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](/docs/configuration/targets) to use with the created Provider.
+Upon selecting the Provider, Daytona will install and configure the chosen Provider, making it available for managing and deploying Workspaces. You can now create a [Target](/docs/usage/targets) to use with the created Provider.
 
 ```text
 Provider <provider> has been successfully installed
@@ -1701,7 +1910,7 @@ Provider docker-provider has been successfully uninstalled
 
 ## Docker
 
-The Docker Provider allows Daytona to create Workspace projects as Docker containers. Daytona installs a Provider for Docker (`docker-provider`) by default and adds a default [Target](/docs/configuration/targets#docker) using the Docker Provider, allowing the creation of Workspaces on your local machine.
+The Docker Provider allows Daytona to create Workspace projects as Docker containers. Daytona installs a Provider for Docker (`docker-provider`) by default and adds a default [Target](/docs/usage/targets) using the Docker Provider, allowing the creation of Workspaces on your local machine.
 
 1. Run the following command to install a Docker Provider:
 
@@ -1861,6 +2070,7 @@ Provider azure-provider has been successfully installed
 Ensure the Azure Provider is linked to a service principal with the `Contributor` role for the appropriate Azure subscription.
 <br />
 To create a service principal with the `Contributor` role, use the following Azure CLI command:
+<br />
 
 ```shell
 az ad sp create-for-rbac --role Contributor --scopes /subscriptions/<subscription-id>
@@ -2378,7 +2588,7 @@ None
 5. Click **`Enter`** to confirm adding the Target Configuration.
 
 ```text
-Target added successfully
+Target Config <target_config> created successfully
 ```
 
 ## List Target Configurations
@@ -2465,6 +2675,8 @@ v0.0.0
 :::note
 The Target Configuration needs to be named `local` to be recognized as the local Docker Target Configuration.
 :::
+
+<br />
 
 ```text
 Target Config Name
@@ -2735,6 +2947,8 @@ v0.0.0
 :::note
 If you have not previously installed a [Runner](/docs/usage/runners), Daytona will prompt you select a Runner to manage the Provider. Upon selecting, Daytona will install the Runner on the target system and connect it to the Daytona Server.
 :::
+
+<br />
 
 3. Enter a name for your Target Configuration.
 
@@ -3409,10 +3623,15 @@ tableOfContents: false
     subtitle="Install a new Provider to interface with the Daytona Server and manage your Workspaces."
     href="configuration/providers#managing-providers"
   />
-    <DocumentListItem
+  <DocumentListItem
     title="Set a Target Configuration"
     subtitle="Set a Target configuration that governs how Daytona manages and deploys Workspaces."
     href="configuration/target-config"
+  />
+  <DocumentListItem
+    title="Set a Container Registry"
+    subtitle="Set a Container Registry to store credentials used to pull container images from specified registry servers."
+    href="configuration/container-registries"
   />
   <DocumentListItem
     title="Create Workspace Templates"
@@ -3438,14 +3657,24 @@ tableOfContents: false
     href="usage/targets"
   />
   <DocumentListItem
+    title="Interact with Agent Toolbox"
+    subtitle="Learn how to use the Agent Toolbox to manage and interact with your Workspaces."
+    href="usage/agent-toolbox"
+  />
+  <DocumentListItem
     title="Pre-build your Workspace"
     subtitle="Learn how to manage and reuse Prebuilds across Workspaces."
     href="usage/prebuilds"
   />
   <DocumentListItem
     title="Set Default IDE"
-    subtitle="Automatically open your Workspace in Visual Studio Code and a selection of JetBrains IDEs."
+    subtitle="Automatically open your Workspace in your preferred IDE."
     href="usage/ide#set-the-default-ide"
+  />
+  <DocumentListItem
+    title="Add Custom Samples"
+    subtitle="Use quick-start repositories with predefined development configurations and environments to create Workspaces."
+    href="usage/samples"
   />
   <DocumentListItem
     title="Build a Container Image"
@@ -3469,6 +3698,11 @@ tableOfContents: false
     title="API Reference"
     subtitle="Explore the Daytona API and learn how to interact with Daytona programmatically."
     href="tools/api"
+  />
+  <DocumentListItem
+    title="Docker Extension"
+    subtitle="Use an embedded version of the Daytona client and server tools directly within Docker Desktop."
+    href="tools/docker-extension"
   />
 </DocumentList>
 
@@ -3736,6 +3970,1244 @@ ln -s /mnt/c/Users/<USERNAME>/.ssh/config config
 This ensures the SSH configuration is consistent between environments.
 
 ---
+title: Configuration
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides flexible configuration options to customize its behavior and connection settings.
+
+## Configuration Options
+
+Daytona SDK provides an option to configure settings using the `DaytonaConfig` class in Python and TypeScript. The `DaytonaConfig` class accepts the following parameters:
+
+- `api_key`: Your Daytona API key
+- `server_url`: URL of your Daytona server
+- `target`: Daytona Target to create the Workspaces on.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+from daytona_sdk import DaytonaConfig
+
+config = DaytonaConfig(
+    api_key="your-api-key",
+    server_url="your-server-url",
+    target="local"
+)
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+import { DaytonaConfig } from '@daytona/sdk';
+
+const config: DaytonaConfig = {
+    apiKey: "your-api-key",          
+    serverUrl: "your-server-url",     
+    target: "local"                  
+};
+```
+
+</TabItem>
+</Tabs>
+
+## Environment Variables
+
+Daytona SDK supports environment variables for configuration. The SDK automatically looks for these environment variables:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| **`DAYTONA_API_KEY`** | Your Daytona API key. | None |
+| **`DAYTONA_SERVER_URL`** | URL of your Daytona server. | None |
+| **`DAYTONA_TARGET`** | Daytona Target to create the Workspaces on. | "local" |
+
+### Setting Environment Variables
+
+Daytona SDK can read configuration from environment variables. You can set these environment variables using the following methods:
+
+- [Using a **`.env`** file](#using-a-env-file)
+- [Using Shell Environment](#using-shell-environment)
+
+#### Using a **`.env`** File
+
+Create a `.env` file in your project root directory:
+
+```bash
+DAYTONA_API_KEY=your-api-key
+DAYTONA_SERVER_URL=https://your-server-url
+DAYTONA_TARGET=local
+```
+
+- `DAYTONA_API_KEY`: Your Daytona API key.
+- `DAYTONA_SERVER_URL`: URL of your Daytona server.
+- `DAYTONA_TARGET`: Daytona Target to create the Workspaces on.
+
+#### Using Shell Environment
+
+Set environment variables in your shell:
+
+<Tabs>
+<TabItem label="Bash/Zsh" icon="seti:shell">
+```bash
+export DAYTONA_API_KEY=your-api-key
+export DAYTONA_SERVER_URL=https://your-server-url
+```
+</TabItem>
+<TabItem label="Windows PowerShell" icon="seti:powershell">
+```bash
+$env:DAYTONA_API_KEY="your-api-key"
+$env:DAYTONA_SERVER_URL="https://your-server-url"
+```
+</TabItem>
+</Tabs>
+
+## Configuration Precedence
+
+The SDK uses the following precedence order for configuration (highest to lowest):
+
+1. Explicitly passed configuration in code.
+2. Environment variables.
+3. Configuration file.
+4. Default values.
+
+---
+title: File System Operations
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides comprehensive file system operations through the `fs` module in workspaces. This guide covers all available file system operations and best practices.
+
+## Basic Operations
+
+Daytona SDK provides an option to interact with the file system in Workspaces. You can perform various operations like listing files, creating directories, reading and writing files, and more.
+
+### Listing Files and Directories
+
+Daytona SDK provides an option to list files and directories in a Workspace using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# List files in a directory
+files = workspace.fs.list_files("/workspace")
+for file in files:
+    print(f"Name: {file.name}")
+    print(f"Type: {file.type}")
+    print(f"Size: {file.size}")
+    print(f"Modified: {file.modified}")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// List files in a directory
+const files = await workspace.fs.listFiles("/workspace");
+
+files.forEach(file => {
+    console.log(`Name: ${file.name}`);
+    console.log(`Type: ${file.type}`);
+    console.log(`Size: ${file.size}`);
+    console.log(`Modified: ${file.modified}`);
+});
+```
+
+</TabItem>
+</Tabs>
+
+### Creating Directories
+
+Daytona SDK provides an option to create directories with specific permissions using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Create a directory
+workspace.fs.create_folder("/workspace/new-dir")
+
+# Create with specific permissions
+
+workspace.fs.create_folder("/workspace/new-dir", "755")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Create a directory
+await workspace.fs.createFolder("/workspace/new-dir");
+
+// Create with specific permissions
+await workspace.fs.createFolder("/workspace/new-dir", "755");
+```
+
+</TabItem>
+</Tabs>
+
+### File Operations
+
+Daytona SDK provides options to read, write, upload, download, and delete files in Workspaces using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Upload a file
+with open("local_file.txt", "rb") as f:
+    content = f.read()
+workspace.fs.upload_file("/workspace/remote_file.txt", content)
+
+# Download a file
+
+content = workspace.fs.download_file("/workspace/remote_file.txt")
+with open("local_file.txt", "wb") as f:
+    f.write(content)
+
+# Delete a file
+
+workspace.fs.delete_file("/workspace/file.txt")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Read file content
+const content = await workspace.fs.readFile("/workspace/file.txt");
+
+// Write file content
+await workspace.fs.writeFile("/workspace/file.txt", "Hello, World!");
+
+// Upload a file
+const content = new Blob(["Hello, World!"], { type: "text/plain" });
+await workspace.fs.uploadFile("/workspace/remote_file.txt", content);
+
+// Download a file
+const content = await workspace.fs.downloadFile("/workspace/remote_file.txt");
+// Save content using browser's download API or File System API
+
+// Delete a file
+await workspace.fs.deleteFile("/workspace/file.txt");
+```
+
+</TabItem>
+</Tabs>
+
+## Advanced Operations
+
+Daytona SDK provides advanced file system operations like file permissions, search and replace, and more.
+
+### File Permissions
+
+Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Set file permissions
+workspace.fs.set_file_permissions("/workspace/file.txt", "644")
+
+# Set directory permissions recursively
+
+workspace.fs.set_file_permissions("/workspace/dir", "755", recursive=True)
+
+# Get file permissions
+
+perms = workspace.fs.get_file_permissions("/workspace/file.txt")
+print(f"Permissions: {perms.mode}")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Set file permissions
+await workspace.fs.setFilePermissions("/workspace/file.txt", "644");
+
+// Set directory permissions recursively
+await workspace.fs.setFilePermissions("/workspace/dir", "755", { recursive: true });
+
+// Get file permissions
+const perms = await workspace.fs.getFilePermissions("/workspace/file.txt");
+console.log(`Permissions: ${perms.mode}`);
+```
+
+</TabItem>
+</Tabs>
+
+### File Search and Replace
+
+Daytona SDK provides an option to search for text in files and replace text in files using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Search for text in files
+results = workspace.fs.search_files(
+    pattern="TODO:",
+    path="/workspace/src",
+    pattern="*.py"
+)
+
+# Replace text in files
+
+workspace.fs.replace_in_files(
+    files=["/workspace/file1.txt", "/workspace/file2.txt"],
+    pattern="old_text",
+    new_value="new_text"
+)
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Search for text in files
+const results = await workspace.fs.searchInFiles({
+    pattern: "TODO:",
+    path="/workspace/src",
+    pattern: "*.ts"
+});
+
+// Replace text in files
+await workspace.fs.replaceInFiles(
+    ["/workspace/file1.txt", "/workspace/file2.txt"],
+    "old_text",
+    "new_text"
+);
+```
+
+</TabItem>
+</Tabs>
+
+---
+title: Getting Started
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
+
+View the Daytona SDK repository on [GitHub](https://github.com/daytonaio/sdk).
+
+Follow the step by step guide to create and run your first Daytona Workspace for an AI Agent.
+
+## Install Daytona
+
+Install Daytona by following the [installation instructions](https://www.daytona.io/docs/installation/installation/). If you have Beta access to the Daytona platform, create an account and log in.
+
+## Set Up Your Environment Variables
+
+To authenticate with Daytona, you need an API key. You can obtain an API key from the Daytona platform or generate one using the Daytona CLI.
+
+<Tabs>
+<TabItem label="Cloud">
+
+1. Navigate to the Daytona platform.
+2. Go to API Keys.
+3. Click the **`Create Key`** button.
+4. Paste the API key in your **`.env`** file.
+
+</TabItem>
+<TabItem label="OSS">
+1. Type the following command:
+
+```bash
+daytona api-key generate
+```
+
+2. Paste the API key in your **`.env`** file.
+</TabItem>
+
+</Tabs>
+
+## Install the Daytona SDK
+
+Daytona provides official Python and TypeScript SDKs for interacting with the Daytona platform. Install the SDK using your preferred method.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```bash
+pip install daytona-sdk
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```bash
+# Using npm
+npm install @daytona/sdk
+
+# Using yarn
+
+yarn add @daytona/sdk
+
+# Using pnpm
+
+pnpm add @daytona/sdk
+
+```
+</TabItem>
+</Tabs>
+
+## Write Code to Create a Workspace
+
+Create and run your code within Daytona Workspace using the SDK. Daytona provides a simple and intuitive interface for interacting with Daytona.
+
+Use the Daytona SDK [Python examples](https://github.com/daytonaio/sdk/tree/main/examples/python) or [TypeScript/JavaScript examples](https://github.com/daytonaio/sdk/tree/main/examples/typescript) to create a Workspace and run your code.
+
+### Execute Commands
+
+Run the following code to create a Daytona Workspace and execute commands:
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+from daytona_sdk import Daytona, CreateWorkspaceParams
+
+daytona = Daytona()
+
+params = CreateWorkspaceParams(language="python")
+workspace = daytona.create()
+
+response = workspace.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
+if response.code != 0:
+    print(f"Error: {response.code} {response.result}")
+else:
+    print(response.result)
+
+daytona.remove(workspace)
+
+```
+
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+import { Daytona } from '@daytona/sdk'
+
+async function main() {
+  const daytona = new Daytona()
+
+  //  first, create a workspace
+  const workspace = await daytona.create({
+    language: 'python',
+  })
+
+  try {
+    //  now, run some code
+    const result = await workspace.process.codeRun(
+      'print("Hello World! " + str(3 + 4))',
+    )
+    if (result.code !== 0) {
+      console.error('Error running code:', result.code)
+    } else {
+      console.log(result.result)
+    }
+  } catch (error) {
+    console.error('Error creating workspace:', error)
+  } finally {
+    //  cleanup
+    await daytona.remove(workspace)
+  }
+}
+
+main()
+
+```
+</TabItem>
+</Tabs>
+
+## Start your Workspace
+
+Daytona provides two methods for starting your Workspace:
+
+- Using Python
+- Using TypeScript/JavaScript
+
+Choose the appropriate method based on your preferred language.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```bash
+python main.py
+```
+
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```bash
+npx tsx ./index.ts
+```
+</TabItem>
+</Tabs>
+
+---
+title: Git Operations
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides built-in Git support through the `git` module in Workspaces. This guide covers all available Git operations and best practices.
+
+## Basic Operations
+
+Daytona SDK provides an option to clone, check status, and manage Git repositories in Workspaces. You can interact with Git repositories using the `git` module.
+
+### Cloning Repositories
+
+Daytona SDK provides an option to clone Git repositories into Workspaces using Python and TypeScript. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Basic clone
+workspace.git.clone(
+    url="https://github.com/user/repo.git",
+    path="/workspace/repo"
+)
+
+# Clone with authentication
+
+workspace.git.clone(
+    url="<https://github.com/user/repo.git>",
+    path="/workspace/repo",
+    username="git",
+    password="personal_access_token"
+)
+
+# Clone specific branch
+
+workspace.git.clone(
+    url="<https://github.com/user/repo.git>",
+    path="/workspace/repo",
+    branch="develop"
+)
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Basic clone
+await workspace.git.clone(
+    "https://github.com/user/repo.git",
+    "/workspace/repo"
+);
+
+// Clone with authentication
+await workspace.git.clone(
+    "https://github.com/user/repo.git",
+    "/workspace/repo",
+    undefined,
+    undefined,
+    "git",
+    "personal_access_token"
+);
+
+// Clone specific branch
+await workspace.git.clone(
+    "https://github.com/user/repo.git",
+    "/workspace/repo",
+    "develop"
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Repository Status
+
+Daytona SDK provides an option to check the status of Git repositories in Workspaces. You can get the current branch, modified files, staged files, and untracked files using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Get repository status
+status = workspace.git.status("/workspace/repo")
+print(f"Current branch: {status.current_branch}")
+print(f"Modified files: {status.modified}")
+print(f"Staged files: {status.staged}")
+print(f"Untracked files: {status.untracked}")
+
+# Get current branch
+
+branch = workspace.git.current_branch("/workspace/repo")
+print(f"Current branch: {branch}")
+
+# List branches
+
+branches = workspace.git.list_branches("/workspace/repo")
+for branch in branches:
+    print(f"Branch: {branch.name} {'(current)' if branch.current else ''}")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Get repository status
+const status = await workspace.git.status("/workspace/repo");
+console.log(`Current branch: ${status.currentBranch}`);
+console.log(`Modified files: ${status.modified}`);
+console.log(`Staged files: ${status.staged}`);
+console.log(`Untracked files: ${status.untracked}`);
+
+// Get current branch
+const branch = await workspace.git.currentBranch("/workspace/repo");
+console.log(`Current branch: ${branch}`);
+
+// List branches
+const branches = await workspace.git.listBranches("/workspace/repo");
+branches.forEach(branch => {
+    console.log(`Branch: ${branch.name} ${branch.current ? '(current)' : ''}`);
+});
+```
+
+</TabItem>
+</Tabs>
+
+## Branch Operations
+
+Daytona SDK provides an option to manage branches in Git repositories. You can create, switch, and delete branches.
+
+### Managing Branches
+
+Daytona SDK provides an option to create, switch, and delete branches in Git repositories using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Create new branch
+workspace.git.create_branch("/workspace/repo", "feature/new-feature")
+
+# Switch branch
+
+workspace.git.checkout("/workspace/repo", "feature/new-feature")
+
+# Delete branch
+
+workspace.git.delete_branch("/workspace/repo", "feature/old-feature")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Create new branch
+await workspace.git.createBranch("/workspace/repo", "feature/new-feature");
+
+// Switch branch
+await workspace.git.checkout("/workspace/repo", "feature/new-feature");
+
+// Delete branch
+await workspace.git.deleteBranch("/workspace/repo", "feature/old-feature");
+```
+
+</TabItem>
+</Tabs>
+
+## Staging and Committing
+
+Daytona SDK provides an option to stage and commit changes in Git repositories. You can stage specific files, all changes, and commit with a message using Python and TypeScript.
+
+### Working with Changes
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Stage specific files
+workspace.git.add("/workspace/repo", ["file1.txt", "file2.txt"])
+
+# Stage all changes
+
+workspace.git.add("/workspace/repo", ["."])
+
+# Commit changes
+
+workspace.git.commit("/workspace/repo", "feat: add new feature")
+
+# Get commit history
+
+commits = workspace.git.log("/workspace/repo")
+for commit in commits:
+    print(f"Commit: {commit.hash}")
+    print(f"Author: {commit.author}")
+    print(f"Message: {commit.message}")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Stage specific files
+await workspace.git.add("/workspace/repo", ["file1.txt", "file2.txt"]);
+
+// Stage all changes
+await workspace.git.add("/workspace/repo", ["."]);
+
+// Commit changes
+await workspace.git.commit("/workspace/repo", "feat: add new feature");
+
+// Get commit history
+const commits = await workspace.git.log("/workspace/repo");
+commits.forEach(commit => {
+    console.log(`Commit: ${commit.hash}`);
+    console.log(`Author: ${commit.author}`);
+    console.log(`Message: ${commit.message}`);
+});
+```
+
+</TabItem>
+</Tabs>
+
+## Remote Operations
+
+Daytona SDK provides an option to work with remote repositories in Git. You can push changes, pull changes, and list remotes.
+
+### Working with Remotes
+
+Daytona SDK provides an option to push, pull, and list remotes in Git repositories using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Push changes
+workspace.git.push("/workspace/repo")
+
+# Pull changes
+
+workspace.git.pull("/workspace/repo")
+
+# List remotes
+
+remotes = workspace.git.list_remotes("/workspace/repo")
+for remote in remotes:
+    print(f"Remote: {remote.name} URL: {remote.url}")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Push changes
+await workspace.git.push("/workspace/repo");
+
+// Push to specific remote and branch
+await workspace.git.push("/workspace/repo", "origin", "feature/new-feature");
+
+// Pull changes
+await workspace.git.pull("/workspace/repo");
+
+// Pull from specific remote and branch
+await workspace.git.pull("/workspace/repo", "origin", "main");
+```
+
+</TabItem>
+</Tabs>
+
+---
+title: SDK Documentation
+description: Start managing your Workspaces with Daytona.
+template: doc
+tableOfContents: false
+---
+
+
+<DocumentList title="About">
+  <DocumentListItem
+    title="Getting Started"
+    subtitle="Learn about Daytona SDK and how it can help you manage your development environments."
+    href="/docs/sdk/getting-started"
+  />
+  <DocumentListItem
+    title="Configuration"
+    subtitle="Get started with Daytona SDK and learn how to use and configure your development environments."
+    href="/docs/sdk/configuration"
+  />
+</DocumentList>
+
+<DocumentList title="Workspaces">
+  <DocumentListItem
+    title="Management"
+    subtitle="Learn how to create, manage, and remove workspaces using the Daytona SDK."
+    href="/docs/sdk/workspace-management"
+  />
+</DocumentList>
+
+<DocumentList title="Agent Toolbox">
+  <DocumentListItem
+    title="File System Operations"
+    subtitle="Learn how to manage files and directories in your Workspaces using the Daytona SDK."
+    href="/docs/sdk/file-system-operations"
+  />
+  <DocumentListItem
+    title="Git Operations"
+    subtitle="Learn how to manage Git repositories in your Workspaces using the Daytona SDK."
+    href="/docs/sdk/git-operations"
+  />
+  <DocumentListItem
+    title="Process & Code Execution"
+    subtitle="Learn about running commands and code in isolated environments using the Daytona SDK."
+    href="/docs/sdk/process-code-execution"
+  />
+  <DocumentListItem
+    title="Language Server Protocol"
+    subtitle="Learn how to use Language Server Protocol (LSP) support in your Workspaces using the Daytona SDK."
+    href="/docs/sdk/language-server-protocol"
+  />
+</DocumentList>
+
+---
+title: Language Server Protocol
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides Language Server Protocol (LSP) support through workspace instances. This enables advanced language features like code completion, diagnostics, and more.
+
+## Creating LSP Servers
+
+Daytona SDK provides an option to create LSP servers using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+from daytona_sdk import Daytona, LspLanguageId
+
+# Create workspace
+
+daytona = Daytona()
+workspace = daytona.create()
+
+# Create LSP server for Python
+
+lsp_server = workspace.create_lsp_server(
+    language_id=LspLanguageId.PYTHON,
+    path_to_project="/workspace/project"
+)
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+import { Daytona, LspLanguageId } from '@daytona/sdk'
+
+// Create workspace
+const daytona = new Daytona()
+const workspace = await daytona.create({
+    language: 'typescript'
+})
+
+// Create LSP server for TypeScript
+const lspServer = workspace.createLspServer(
+    LspLanguageId.TYPESCRIPT,
+    "/workspace/project"
+)
+```
+
+</TabItem>
+</Tabs>
+
+## Supported Languages
+
+Daytona SDK provides an option to create LSP servers for various languages through the `LspLanguageId` enum in Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+from daytona_sdk import LspLanguageId
+
+# Available language IDs
+
+LspLanguageId.PYTHON
+LspLanguageId.TYPESCRIPT
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+import { LspLanguageId } from '@daytona/sdk'
+
+// Available language IDs
+LspLanguageId.PYTHON      
+LspLanguageId.TYPESCRIPT    
+```
+
+</TabItem>
+</Tabs>
+
+- `LspLanguageId.PYTHON`: Python language server.
+- `LspLanguageId.TYPESCRIPT`: TypeScript/JavaScript language server.
+
+## LSP Features
+
+Daytona SDK provides various LSP features for code analysis and editing.
+
+### Code Completion
+
+Daytona SDK provides an option to get code completions for a specific position in a file using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+completions = lsp_server.completions(
+    path="/workspace/project/main.py",
+    position={"line": 10, "character": 15}
+)
+for completion in completions:
+    print(f"Label: {completion.label}")
+    print(f"Kind: {completion.kind}")
+    print(f"Detail: {completion.detail}")
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+const completions = await lspServer.getCompletions({
+    path: "/workspace/project/main.ts",
+    position: { line: 10, character: 15 }
+})
+completions.forEach(completion => {
+    console.log(`Label: ${completion.label}`)
+    console.log(`Kind: ${completion.kind}`)
+    console.log(`Detail: ${completion.detail}`)
+})
+```
+</TabItem>
+</Tabs>
+
+---
+title: Process and Code Execution
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides powerful process and code execution capabilities through the `process` module in workspaces. This guide covers all available process operations and best practices.
+
+## Code Execution
+
+Daytona SDK provides an option to execute code in Python and TypeScript.
+
+### Running Code
+
+Daytona SDK provides an option to run code snippets in Python and TypeScript. You can execute code with input, timeout, and environment variables.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Run Python code
+response = workspace.process.code_run('''
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("Daytona"))
+''')
+
+print(response.result)
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Run TypeScript code
+const response = await workspace.process.codeRun(`
+function greet(name: string): string {
+    return \`Hello, \${name}!\`;
+}
+
+console.log(greet("Daytona"));
+`);
+console.log(response.result);
+
+// Run code with input
+const response = await workspace.process.codeRun(
+    'const name = prompt("Enter name: ");\nconsole.log(`Hello, ${name}!`);',
+    { input: "Daytona" }
+);
+console.log(response.result);
+
+// Run code with timeout
+const response = await workspace.process.codeRun(
+    'setTimeout(() => console.log("Done"), 2000);',
+    { timeout: 5000 }
+);
+console.log(response.result);
+```
+
+</TabItem>
+</Tabs>
+
+## Process Execution
+
+Daytona SDK provides an option to execute shell commands and manage background processes in Workspaces.
+
+### Running Commands
+
+Daytona SDK provides an option to execute shell commands in Python and TypeScript. You can run commands with input, timeout, and environment variables.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Execute shell command
+response = workspace.process.process_execute_command("ls -la")
+print(response.output)
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Execute shell command
+const response = await workspace.process.processExecuteCommand("ls -la");
+console.log(response.output);
+```
+</TabItem>
+</Tabs>
+
+## Background Processes
+
+Daytona SDK provides an option to start, stop, and manage background processes in Workspaces. You can run long-running commands, monitor process status, and list all running processes.
+
+### Managing Long-Running Processes
+
+Daytona SDK provides an option to start and stop background processes in Python and TypeScript. You can run long-running commands and monitor process status.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Check process status
+status = workspace.process.get_process_status(process_id)
+print(f"Process {process_id} status: {status}")
+
+# List all running processes
+
+processes = workspace.process.list_processes()
+for process in processes:
+    print(f"PID: {process.id}, Command: {process.command}")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Check process status
+const status = await workspace.process.getProcessStatus(processId);
+console.log(`Process ${processId} status: ${status}`);
+
+// List all running processes
+const processes = await workspace.process.listProcesses();
+processes.forEach(process => {
+    console.log(`PID: ${process.id}, Command: ${process.command}`);
+});
+```
+
+</TabItem>
+</Tabs>
+
+## Best Practices
+
+Daytona SDK provides best practices for process and code execution in Workspaces.
+
+1. **Resource Management**
+
+- Use background processes for long-running operations
+- Clean up processes after execution
+- Handle process exceptions properly
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+   ```python
+   # Python - Clean up processes
+   try:
+       process_id = workspace.process.start_background_process("long-running-cmd")
+       # Do work...
+   finally:
+       workspace.process.stop_process(process_id)
+   ```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+   ```typescript
+   // TypeScript - Clean up processes
+   try {
+       const processId = await workspace.process.startBackgroundProcess("long-running-cmd");
+       // Do work...
+   } finally {
+       await workspace.process.stopProcess(processId);
+   }
+   ```
+</TabItem>
+</Tabs>
+
+2. **Error Handling**
+
+- Handle process exceptions properly
+- Log error details for debugging
+- Use try-catch blocks for error handling
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+try:
+    response = workspace.process.code_run("invalid python code")
+except ProcessExecutionError as e:
+    print(f"Execution failed: {e}")
+    print(f"Exit code: {e.exit_code}")
+    print(f"Error output: {e.stderr}")
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+try {
+    const response = await workspace.process.codeRun("invalid typescript code");
+} catch (e) {
+    if (e instanceof ProcessExecutionError) {
+        console.error("Execution failed:", e);
+        console.error("Exit code:", e.exitCode);
+        console.error("Error output:", e.stderr);
+    }
+}
+```
+</TabItem>
+</Tabs>
+
+## Common Issues
+
+Daytona SDK provides an option to troubleshoot common issues related to process execution and code execution.
+
+### Process Execution Failed
+
+- Check command syntax
+- Verify required dependencies
+- Ensure sufficient permissions
+
+### Process Timeout
+
+- Adjust timeout settings
+- Optimize long-running operations
+- Consider using background processes
+
+### Resource Limits
+
+- Monitor process memory usage
+- Handle process cleanup properly
+- Use appropriate resource constraints
+
+---
+title: Workspace Management
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+Workspaces are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove workspaces using the SDK.
+
+## Creating Workspaces
+
+Daytona SDK provides an option to create workspaces with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the workspace.
+
+### Basic Workspace Creation
+
+Daytona SDK provides methods to create Workspaces with default configurations, specific languages, or custom IDs using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+from daytona_sdk import Daytona
+
+daytona = Daytona()
+
+# Create a basic workspace
+
+workspace = daytona.create()
+
+# Create a workspace with specific language
+
+workspace = daytona.create(language="python")
+
+# Create a workspace with custom ID
+
+workspace = daytona.create(id="my-workspace")
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+import { Daytona } from '@daytona/sdk';
+
+const daytona = new Daytona();
+
+// Create a basic workspace
+const workspace = await daytona.create();
+
+// Create a workspace with specific language
+const workspace = await daytona.create({ language: 'typescript' });
+
+// Create a workspace with custom ID
+const workspace = await daytona.create({ id: 'my-workspace' });
+```
+
+</TabItem>
+</Tabs>
+
+## Workspace Information
+
+Daytona SDK provides methods to get information about a workspace, such as ID, root directory, and status using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Get workspace ID
+workspace_id = workspace.id
+
+# Get workspace root directory
+
+root_dir = workspace.get_workspace_root_dir()
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Get workspace ID
+const workspaceId = workspace.id;
+
+// Get workspace root directory
+const rootDir = await workspace.getWorkspaceRootDir();
+```
+
+</TabItem>
+</Tabs>
+
+## Remove Workspace
+
+Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces using Python and TypeScript.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Remove workspace
+daytona.remove(workspace)
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:python">
+```typescript
+// Remove workspace
+await daytona.remove(workspace);
+```
+</TabItem>
+</Tabs>
+
+---
 title: CLI
 description: A reference of supported operations using the Daytona CLI.
 sidebar:
@@ -3749,9 +5221,9 @@ sidebar:
 The `daytona` command-line tool provides access to Daytona's core features.
 You can use the `daytona` tool for the following operations:
 
-*   Managing the lifecycle of the Daytona Server.
-*   Managing [Workspaces](../usage/workspaces), [Git Providers](../configuration/git-providers), [Providers](../configuration/providers), and other Daytona components.
-*   Configuring the [Daytona Server](../configuration/server) interactively.
+* Managing the lifecycle of the Daytona Server.
+* Managing [Workspaces](../usage/workspaces), [Git Providers](../configuration/git-providers), [Providers](../configuration/providers), and other Daytona components.
+* Configuring the [Daytona Server](../configuration/server) interactively.
 
 This reference lists all commands supported by the `daytona` command-line tool complete with a description of their behaviour, and any supported flags.
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
@@ -3761,6 +5233,7 @@ This reference does not apply to the `daytona` command when run inside of a Work
 </Aside>
 
 ## daytona
+
 Daytona is a Dev Environment Manager
 
 ```shell
@@ -3773,8 +5246,8 @@ __Flags__
 | `--help` |  | help for daytona |
 | `--version` | `-v` | Display the version of Daytona |
 
-
 ## daytona api-key
+
 Api Key commands
 
 ```shell
@@ -3786,8 +5259,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona api-key create
+
 Create a new API key
 
 ```shell
@@ -3799,8 +5272,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona api-key delete
+
 Delete an API key
 
 ```shell
@@ -3813,8 +5286,8 @@ __Flags__
 | `--yes` | `-y` | Skip confirmation prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona api-key list
+
 List API keys
 
 ```shell
@@ -3827,8 +5300,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona autocomplete
+
 Adds a completion script for your shell environment
 
 ```shell
@@ -3847,6 +5320,7 @@ macOS Installation: ```brew install bash-completion```
 </Aside>
 
 ## daytona build
+
 Manage builds
 
 ```shell
@@ -3858,8 +5332,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona build delete
+
 Delete a build
 
 ```shell
@@ -3874,8 +5348,8 @@ __Flags__
 | `--prebuild-id` |  | Delete ALL builds from prebuild |
 | `--help` |  | help for daytona |
 
-
 ## daytona build info
+
 Show build info
 
 ```shell
@@ -3888,8 +5362,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona build list
+
 List all builds
 
 ```shell
@@ -3902,8 +5376,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona build logs
+
 View logs for build
 
 ```shell
@@ -3916,8 +5390,8 @@ __Flags__
 | `--follow` | `-f` | Follow logs |
 | `--help` |  | help for daytona |
 
-
 ## daytona build run
+
 Run a build from a workspace template
 
 ```shell
@@ -3929,8 +5403,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona code
+
 Open a workspace in your preferred IDE
 
 ```shell
@@ -3944,8 +5418,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-
 ## daytona config
+
 Output Daytona configuration
 
 ```shell
@@ -3959,8 +5433,8 @@ __Flags__
 | `--show-api-keys` | `-k` | Show API keys |
 | `--help` |  | help for daytona |
 
-
 ## daytona create
+
 Create a workspace
 
 ```shell
@@ -3987,8 +5461,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-
 ## daytona delete
+
 Delete a workspace
 
 ```shell
@@ -4003,8 +5477,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona docs
+
 Opens the Daytona documentation in your default browser.
 
 ```shell
@@ -4016,10 +5490,9 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona env
-Manage server environment variables that are added to all targets and workspaces
 
+Manage server environment variables that are added to all targets and workspaces
 
 ```shell
 daytona env [flags]
@@ -4030,8 +5503,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona env delete
+
 Delete server environment variables
 
 ```shell
@@ -4043,8 +5516,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona env list
+
 List server environment variables
 
 ```shell
@@ -4058,8 +5531,8 @@ __Flags__
 | `--show-values` | `-v` | Show environment variable values |
 | `--help` |  | help for daytona |
 
-
 ## daytona env set
+
 Set server environment variables
 
 ```shell
@@ -4071,8 +5544,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona forward
+
 Forward a port from a workspace to your local machine
 
 ```shell
@@ -4085,8 +5558,8 @@ __Flags__
 | `--public` |  | Should be port be available publicly via an URL |
 | `--help` |  | help for daytona |
 
-
 ## daytona git-provider
+
 Manage Git provider configs
 
 ```shell
@@ -4098,8 +5571,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona git-provider create
+
 Create a Git provider config
 
 ```shell
@@ -4117,8 +5590,8 @@ __Flags__
 | `--username` | `-u` | Username |
 | `--help` |  | help for daytona |
 
-
 ## daytona git-provider delete
+
 Delete a Git provider config
 
 ```shell
@@ -4132,8 +5605,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona git-provider list
+
 Lists your registered Git provider configs
 
 ```shell
@@ -4146,8 +5619,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona git-provider update
+
 Update a Git provider
 
 ```shell
@@ -4159,8 +5632,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona ide
+
 Choose the default IDE
 
 ```shell
@@ -4172,8 +5645,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona info
+
 Show workspace info
 
 ```shell
@@ -4186,8 +5659,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona list
+
 List workspaces
 
 ```shell
@@ -4201,8 +5674,8 @@ __Flags__
 | `--label` | `-l` | Filter by label |
 | `--help` |  | help for daytona |
 
-
 ## daytona logs
+
 View the logs of a workspace
 
 ```shell
@@ -4215,8 +5688,8 @@ __Flags__
 | `--follow` | `-f` | Follow logs |
 | `--help` |  | help for daytona |
 
-
 ## daytona prebuild
+
 Manage prebuilds
 
 ```shell
@@ -4228,8 +5701,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona prebuild create
+
 Create a prebuild configuration
 
 ```shell
@@ -4246,8 +5719,8 @@ __Flags__
 | `--trigger-files` | `-t` | Full paths of files whose changes should explicitly trigger a  prebuild |
 | `--help` |  | help for daytona |
 
-
 ## daytona prebuild delete
+
 Delete a prebuild configuration
 
 ```shell
@@ -4260,8 +5733,8 @@ __Flags__
 | `--force` | `-f` | Force delete prebuild |
 | `--help` |  | help for daytona |
 
-
 ## daytona prebuild info
+
 Show prebuild configuration info
 
 ```shell
@@ -4274,8 +5747,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona prebuild list
+
 List prebuild configurations
 
 ```shell
@@ -4288,8 +5761,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona prebuild update
+
 Update a prebuild configuration
 
 ```shell
@@ -4306,8 +5779,8 @@ __Flags__
 | `--trigger-files` | `-t` | Full paths of files whose changes should explicitly trigger a  prebuild |
 | `--help` |  | help for daytona |
 
-
 ## daytona profile
+
 Manage profiles
 
 ```shell
@@ -4319,8 +5792,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona profile create
+
 Create a profile
 
 ```shell
@@ -4335,8 +5808,8 @@ __Flags__
 | `--name` | `-n` | Profile name |
 | `--help` |  | help for daytona |
 
-
 ## daytona profile delete
+
 Delete a profile
 
 ```shell
@@ -4348,8 +5821,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona profile list
+
 List profiles
 
 ```shell
@@ -4362,8 +5835,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona profile update
+
 Update profile [PROFILE_NAME]
 
 ```shell
@@ -4378,8 +5851,8 @@ __Flags__
 | `--name` | `-n` | Profile name |
 | `--help` |  | help for daytona |
 
-
 ## daytona provider
+
 Manage providers
 
 ```shell
@@ -4391,8 +5864,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona provider install
+
 Install provider
 
 ```shell
@@ -4405,8 +5878,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-
 ## daytona provider list
+
 List installed providers
 
 ```shell
@@ -4419,8 +5892,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona provider uninstall
+
 Uninstall provider
 
 ```shell
@@ -4432,8 +5905,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona provider update
+
 Update provider
 
 ```shell
@@ -4446,8 +5919,8 @@ __Flags__
 | `--all` | `-a` | Update all providers |
 | `--help` |  | help for daytona |
 
-
 ## daytona purge
+
 Purges all Daytona data from the current device
 
 ```shell
@@ -4461,8 +5934,8 @@ __Flags__
 | `--yes` | `-y` | Execute purge without a prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona restart
+
 Restart a workspace
 
 ```shell
@@ -4474,8 +5947,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona runner
+
 Manage the runner
 
 ```shell
@@ -4487,8 +5960,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona runner config
+
 Outputs Daytona Runner config
 
 ```shell
@@ -4502,8 +5975,8 @@ __Flags__
 | `--key` | `-k` | Show API Key |
 | `--help` |  | help for daytona |
 
-
 ## daytona runner configure
+
 Configure Daytona Runner
 
 ```shell
@@ -4521,8 +5994,8 @@ __Flags__
 | `--name` |  | Runner Name |
 | `--help` |  | help for daytona |
 
-
 ## daytona runner logs
+
 View runner logs
 
 ```shell
@@ -4535,8 +6008,8 @@ __Flags__
 | `--follow` | `-f` | Follow logs |
 | `--help` |  | help for daytona |
 
-
 ## daytona runner purge
+
 Purges the Daytona Runner
 
 ```shell
@@ -4549,8 +6022,8 @@ __Flags__
 | `--yes` | `-y` | Execute Daytona Runner purge without a prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona runner restart
+
 Restarts the runner
 
 ```shell
@@ -4562,8 +6035,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona runner serve
+
 Starts the runner in the foreground
 
 ```shell
@@ -4575,8 +6048,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona runner start
+
 Starts the runner
 
 ```shell
@@ -4588,8 +6061,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona runner stop
+
 Stops the runner
 
 ```shell
@@ -4601,8 +6074,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona serve
+
 Run the server process in the current terminal session
 
 ```shell
@@ -4614,8 +6087,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona server
+
 Start the server process in daemon mode
 
 ```shell
@@ -4628,8 +6101,8 @@ __Flags__
 | `--yes` | `-y` | Skip the confirmation prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona server config
+
 Output local Daytona Server config
 
 ```shell
@@ -4642,8 +6115,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona server configure
+
 Configure Daytona Server
 
 ```shell
@@ -4655,8 +6128,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona server logs
+
 Output Daytona Server logs
 
 ```shell
@@ -4671,8 +6144,8 @@ __Flags__
 | `--local` | `-l` | Read local server log files |
 | `--help` |  | help for daytona |
 
-
 ## daytona server logs list
+
 Lists Daytona Server Log Files
 
 ```shell
@@ -4684,8 +6157,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona server restart
+
 Restarts the Daytona Server daemon
 
 ```shell
@@ -4697,8 +6170,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona server runner
+
 Manage runners
 
 ```shell
@@ -4710,8 +6183,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona server runner create
+
 Create a runner
 
 ```shell
@@ -4724,8 +6197,8 @@ __Flags__
 | `--name` | `-n` | Runner name |
 | `--help` |  | help for daytona |
 
-
 ## daytona server runner delete
+
 Delete a runner
 
 ```shell
@@ -4738,8 +6211,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona server runner list
+
 List runners
 
 ```shell
@@ -4752,8 +6225,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona server runner logs
+
 View runner logs
 
 ```shell
@@ -4766,8 +6239,8 @@ __Flags__
 | `--follow` | `-f` | Follow logs |
 | `--help` |  | help for daytona |
 
-
 ## daytona server start
+
 Start the Daytona Server daemon
 
 ```shell
@@ -4779,8 +6252,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona server stop
+
 Stops the Daytona Server daemon
 
 ```shell
@@ -4792,8 +6265,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona ssh
+
 SSH into a workspace using the terminal
 
 ```shell
@@ -4808,8 +6281,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-
 ## daytona start
+
 Start a workspace
 
 ```shell
@@ -4824,8 +6297,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-
 ## daytona stop
+
 Stop a workspace
 
 ```shell
@@ -4839,8 +6312,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-
 ## daytona target-config
+
 Manage target configs
 
 ```shell
@@ -4852,8 +6325,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona target-config create
+
 Create target config
 
 ```shell
@@ -4866,8 +6339,8 @@ __Flags__
 | `--file` | `-f` | Path to JSON file for target configuration, use '-' to read from stdin |
 | `--help` |  | help for daytona |
 
-
 ## daytona target-config delete
+
 Deletes a target config
 
 ```shell
@@ -4880,8 +6353,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion of all targets without prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona target-config list
+
 List target configs
 
 ```shell
@@ -4895,8 +6368,8 @@ __Flags__
 | `--show-options` | `-v` | Show target options |
 | `--help` |  | help for daytona |
 
-
 ## daytona target
+
 Manage targets
 
 ```shell
@@ -4908,8 +6381,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona target create
+
 Create a target
 
 ```shell
@@ -4921,8 +6394,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona target delete
+
 Delete a target
 
 ```shell
@@ -4937,8 +6410,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona target info
+
 Show target info
 
 ```shell
@@ -4952,8 +6425,8 @@ __Flags__
 | `--show-options` | `-v` | Show target options |
 | `--help` |  | help for daytona |
 
-
 ## daytona target list
+
 List targets
 
 ```shell
@@ -4967,8 +6440,8 @@ __Flags__
 | `--show-options` | `-v` | Show target options |
 | `--help` |  | help for daytona |
 
-
 ## daytona target logs
+
 View the logs of a target
 
 ```shell
@@ -4981,8 +6454,8 @@ __Flags__
 | `--follow` | `-f` | Follow logs |
 | `--help` |  | help for daytona |
 
-
 ## daytona target restart
+
 Restart a target
 
 ```shell
@@ -4994,8 +6467,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona target set-default
+
 Set default target
 
 ```shell
@@ -5007,8 +6480,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona target ssh
+
 SSH into a target using the terminal
 
 ```shell
@@ -5022,8 +6495,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-
 ## daytona target start
+
 Start a target
 
 ```shell
@@ -5037,8 +6510,8 @@ __Flags__
 | `--yes` | `-y` | Automatically confirm any prompts |
 | `--help` |  | help for daytona |
 
-
 ## daytona target stop
+
 Stop a target
 
 ```shell
@@ -5051,8 +6524,8 @@ __Flags__
 | `--all` | `-a` | Stop all targets |
 | `--help` |  | help for daytona |
 
-
 ## daytona telemetry
+
 Manage telemetry collection
 
 ```shell
@@ -5064,8 +6537,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona telemetry disable
+
 Disable telemetry collection
 
 ```shell
@@ -5077,8 +6550,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona telemetry enable
+
 Enable telemetry collection
 
 ```shell
@@ -5090,8 +6563,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona template
+
 Manage workspace templates
 
 ```shell
@@ -5103,8 +6576,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona template create
+
 Create a workspace template
 
 ```shell
@@ -5125,8 +6598,8 @@ __Flags__
 | `--name` |  | Specify the workspace template name |
 | `--help` |  | help for daytona |
 
-
 ## daytona template delete
+
 Delete a workspace template
 
 ```shell
@@ -5141,8 +6614,8 @@ __Flags__
 | `--yes` | `-y` | Confirm deletion without prompt |
 | `--help` |  | help for daytona |
 
-
 ## daytona template export
+
 Export a workspace template
 
 ```shell
@@ -5156,8 +6629,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona template import
+
 Import a workspace template from a JSON object
 
 ```shell
@@ -5170,8 +6643,8 @@ __Flags__
 | `--file` | `-f` | Import workspace template from a JSON file. Use '-' to read from stdin. |
 | `--help` |  | help for daytona |
 
-
 ## daytona template info
+
 Show workspace template info
 
 ```shell
@@ -5184,8 +6657,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona template list
+
 Lists workspace templates
 
 ```shell
@@ -5198,8 +6671,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona template set-default
+
 Set workspace template info
 
 ```shell
@@ -5211,8 +6684,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona template update
+
 Update a workspace template
 
 ```shell
@@ -5224,8 +6697,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona update
+
 Update Daytona CLI
 
 ```shell
@@ -5238,8 +6711,8 @@ __Flags__
 | `--version` | `-v` | Version to update to |
 | `--help` |  | help for daytona |
 
-
 ## daytona use
+
 Use profile [PROFILE_NAME]
 
 ```shell
@@ -5251,8 +6724,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona version
+
 Print the version number
 
 ```shell
@@ -5264,8 +6737,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona whoami
+
 Display information about the active user
 
 ```shell
@@ -5928,6 +7401,8 @@ You can now use the `daytona code` command to automatically open the VS Code Ins
 
 :::note
 Ensure you have [VS Code Insiders]( https://code.visualstudio.com/insiders/) installed on your local machine. If you have already installed the VS Code Insiders IDE, please ensure it is added to your PATH environment variable. You can verify this by running the following command in your terminal:
+
+<br />
 
 ```shell
 code-insiders
@@ -7446,6 +8921,8 @@ This URL can be shared with others to provide real-time access to the service ru
 
 <Aside type="tip">
 Alternatively, generate a public URL by executing the following command in a Workspace's shell:
+
+<br />
 
 ```shell
 daytona forward <PORT>

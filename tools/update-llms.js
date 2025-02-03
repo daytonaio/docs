@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const DOCS_PATH = path.join(__dirname, '../src/content/docs');
-const SUBFOLDERS = new Set(['about', 'configuration', 'installation', 'misc', 'usage', 'tools']);
+const SUBFOLDERS = new Set(['about', 'configuration', 'installation', 'misc', 'usage', 'tools', 'sdk']);
 const EXCLUDE_FILES = new Set(['404.md', 'api.mdx']);
 
 const processContent = content =>
