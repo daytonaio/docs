@@ -1,6 +1,7 @@
 ---
 import type { Props } from '@astrojs/starlight/props'
 import Default from '@astrojs/starlight/components/Head.astro'
+import PostHog from '@components/PostHog.astro'
 
 const image = '/docs/daytona.png'
 ---
@@ -13,3 +14,4 @@ const image = '/docs/daytona.png'
 <meta property="og:image:height" content="628" />
 <meta property="og:image:alt" content="Daytona" />
 <meta name="algolia-site-verification" content="2988B4D95ECF88B6" />
+{import.meta.env.PROD && <PostHog />}
