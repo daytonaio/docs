@@ -57,15 +57,15 @@ pip install daytona-sdk
 <TabItem label="TypeScript" icon="seti:typescript">
 ```bash
 # Using npm
-npm install @daytona/sdk
+npm install @daytonaio/sdk
 
 # Using yarn
 
-yarn add @daytona/sdk
+yarn add @daytonaio/sdk
 
 # Using pnpm
 
-pnpm add @daytona/sdk
+pnpm add @daytonaio/sdk
 
 ```
 </TabItem>
@@ -86,17 +86,21 @@ Run the following code to create a Daytona Workspace and execute commands:
 ```python
 from daytona_sdk import Daytona, CreateWorkspaceParams
 
+# Initialize the Daytona client
 daytona = Daytona()
 
+# Create the workspace instance
 params = CreateWorkspaceParams(language="python")
-workspace = daytona.create()
+workspace = daytona.create(params)
 
+# Run the code securely inside the workspace
 response = workspace.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
-if response.code != 0:
-    print(f"Error: {response.code} {response.result}")
+if response.exit_code != 0:
+    print(f"Error running code: {response.exit_code} {response.result}")
 else:
     print(response.result)
 
+# Clean up the workspace
 daytona.remove(workspace)
 
 ```
@@ -104,30 +108,30 @@ daytona.remove(workspace)
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { Daytona } from '@daytona/sdk'
+import { Daytona } from '@daytonaio/sdk'
 
 async function main() {
+  // Initialize the Daytona client
   const daytona = new Daytona()
 
-  //  first, create a workspace
-  const workspace = await daytona.create({
-    language: 'python',
-  })
-
   try {
-    //  now, run some code
-    const result = await workspace.process.codeRun(
-      'print("Hello World! " + str(3 + 4))',
+    // Create the workspace instance
+    const workspace = await daytona.create({
+      language: 'python',
+    })
+    // Run the code securely inside the workspace
+    const response = await workspace.process.codeRun(
+      'print("Sum of 3 and 4 is " + str(3 + 4))',
     )
-    if (result.code !== 0) {
-      console.error('Error running code:', result.code)
+    if (response.exitCode !== 0) {
+      console.error('Error running code:', response.exitCode, response.result)
     } else {
-      console.log(result.result)
+      console.log(response.result)
     }
   } catch (error) {
-    console.error('Error creating workspace:', error)
+    console.error('Workspace flow error:', error)
   } finally {
-    //  cleanup
+    // Clean up the workspace
     await daytona.remove(workspace)
   }
 }

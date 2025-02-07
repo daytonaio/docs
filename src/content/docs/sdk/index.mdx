@@ -7,6 +7,80 @@ tableOfContents: false
 
 import DocumentList from "@components/DocumentList.astro";
 import DocumentListItem from "@components/DocumentListItem.astro";
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import Label from '@components/Label.astro';
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
+
+### Quick Start
+
+<Tabs>
+  <TabItem label="Python" icon="seti:python">
+
+  ```bash
+  pip install daytona_sdk
+  ```
+
+  ```python
+  from daytona_sdk import Daytona, DaytonaConfig
+
+  # Define the configuration
+  config = DaytonaConfig(
+    api_key="your-api-key",
+    server_url="your-server-url",
+    target="us"
+  )
+
+  # Initialize the Daytona client
+  daytona = Daytona(config)
+
+  # Create the workspace instance
+  workspace = daytona.create()
+
+  # Run the code securely inside the workspace
+  response = workspace.process.code_run('print("Hello World from code!")')
+  if response.exit_code != 0:
+    print(f"Error: {response.exit_code} {response.result}")
+  else:
+      print(response.result)
+  
+  daytona.remove(workspace)
+  ```
+
+  </TabItem>
+
+  <TabItem label="TypeScript" icon="seti:typescript">
+
+  ```bash
+  npm install @daytonaio/sdk
+  ```
+
+  ```typescript
+  import { Daytona } from '@daytonaio/sdk';
+
+  // Initialize the Daytona client
+  const daytona = new Daytona({
+    apiKey: 'your-api-key',
+    serverUrl: 'your-server-url',
+    target: 'us'
+  });
+
+  // Create the workspace instance
+  const workspace = await daytona.create({
+    language: 'typescript',
+  });
+
+  // Run the code securely inside the workspace
+  const response = await workspace.process.codeRun('console.log("Hello World from code!")')
+  console.log(response.result);
+  ```
+
+  </TabItem>
+</Tabs>
 
 <DocumentList title="About">
   <DocumentListItem
