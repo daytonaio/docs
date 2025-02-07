@@ -32,17 +32,19 @@ workspace = daytona.create()
 
 # Create a workspace with specific language
 
-workspace = daytona.create(language="python")
+params = CreateWorkspaceParams(language="python")
+workspace = daytona.create(params)
 
 # Create a workspace with custom ID
 
-workspace = daytona.create(id="my-workspace")
+params = CreateWorkspaceParams(id="my-workspace")
+workspace = daytona.create(params)
 
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { Daytona } from '@daytona/sdk';
+import { Daytona } from '@daytonaio/sdk';
 
 const daytona = new Daytona();
 
@@ -98,7 +100,7 @@ Daytona SDK provides methods to perform operations on Workspaces, such as removi
 daytona.remove(workspace)
 ```
 </TabItem>
-<TabItem label="TypeScript" icon="seti:python">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Remove workspace
 await daytona.remove(workspace);

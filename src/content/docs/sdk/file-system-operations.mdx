@@ -26,9 +26,9 @@ Daytona SDK provides an option to list files and directories in a Workspace usin
 files = workspace.fs.list_files("/workspace")
 for file in files:
     print(f"Name: {file.name}")
-    print(f"Type: {file.type}")
+    print(f"Is directory: {file.is_dir}")
     print(f"Size: {file.size}")
-    print(f"Modified: {file.modified}")
+    print(f"Modified: {file.mod_time}")
 
 ```
 </TabItem>
@@ -39,9 +39,9 @@ const files = await workspace.fs.listFiles("/workspace");
 
 files.forEach(file => {
     console.log(`Name: ${file.name}`);
-    console.log(`Type: ${file.type}`);
+    console.log(`Is directory: ${file.isDir}`);
     console.log(`Size: ${file.size}`);
-    console.log(`Modified: ${file.modified}`);
+    console.log(`Modified: ${file.modTime}`);
 });
 ```
 
@@ -102,19 +102,17 @@ workspace.fs.delete_file("/workspace/file.txt")
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Read file content
-const content = await workspace.fs.readFile("/workspace/file.txt");
-
-// Write file content
-await workspace.fs.writeFile("/workspace/file.txt", "Hello, World!");
-
 // Upload a file
-const content = new Blob(["Hello, World!"], { type: "text/plain" });
-await workspace.fs.uploadFile("/workspace/remote_file.txt", content);
+const fileContent = new File(
+    [Buffer.from('Hello, World!')],
+    'data.txt',
+    { type: 'text/plain' }
+);
+await workspace.fs.uploadFile("/workspace/remote_file.txt", fileContent);
 
 // Download a file
-const content = await workspace.fs.downloadFile("/workspace/remote_file.txt");
-// Save content using browser's download API or File System API
+const downloadedFile = await workspace.fs.downloadFile("/workspace/remote_file.txt");
+console.log('File content:', downloadedFile.toString())
 
 // Delete a file
 await workspace.fs.deleteFile("/workspace/file.txt");
@@ -137,28 +135,21 @@ Daytona SDK provides an option to set file permissions, get file permissions, an
 # Set file permissions
 workspace.fs.set_file_permissions("/workspace/file.txt", "644")
 
-# Set directory permissions recursively
-
-workspace.fs.set_file_permissions("/workspace/dir", "755", recursive=True)
-
 # Get file permissions
 
-perms = workspace.fs.get_file_permissions("/workspace/file.txt")
-print(f"Permissions: {perms.mode}")
+file_info = workspace.fs.get_file_info("/workspace/file.txt")
+print(f"Permissions: {file_info.permissions}")
 
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Set file permissions
-await workspace.fs.setFilePermissions("/workspace/file.txt", "644");
-
-// Set directory permissions recursively
-await workspace.fs.setFilePermissions("/workspace/dir", "755", { recursive: true });
+await workspace.fs.setFilePermissions("/workspace/file.txt", { mode: "644" });
 
 // Get file permissions
-const perms = await workspace.fs.getFilePermissions("/workspace/file.txt");
-console.log(`Permissions: ${perms.mode}`);
+const fileInfo = await workspace.fs.getFileDetails("/workspace/file.txt");
+console.log(`Permissions: ${fileInfo.permissions}`);
 ```
 
 </TabItem>
@@ -171,12 +162,16 @@ Daytona SDK provides an option to search for text in files and replace text in f
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Search for text in files
-results = workspace.fs.search_files(
-    pattern="TODO:",
+# Search for text in files; if a folder is specified, the search is recursive
+results = workspace.fs.find_files(
     path="/workspace/src",
-    pattern="*.py"
+    pattern="text-of-interest"
 )
+for match in results:
+    print(f"Absolute file path: {match.file}")
+    print(f"Line number: {match.line}")
+    print(f"Line content: {match.content}")
+    print("\n")
 
 # Replace text in files
 
@@ -190,11 +185,15 @@ workspace.fs.replace_in_files(
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Search for text in files
-const results = await workspace.fs.searchInFiles({
-    pattern: "TODO:",
+// Search for text in files; if a folder is specified, the search is recursive
+const results = await workspace.fs.findFiles({
     path="/workspace/src",
-    pattern: "*.ts"
+    pattern: "text-of-interest"
+});
+results.forEach(match => {
+    console.log('Absolute file path:', match.file)
+    console.log('Line number:', match.line)
+    console.log('Line content:', match.content)
 });
 
 // Replace text in files

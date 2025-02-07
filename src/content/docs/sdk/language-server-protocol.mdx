@@ -36,7 +36,7 @@ lsp_server = workspace.create_lsp_server(
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { Daytona, LspLanguageId } from '@daytona/sdk'
+import { Daytona, LspLanguageId } from '@daytonaio/sdk'
 
 // Create workspace
 const daytona = new Daytona()
@@ -72,7 +72,7 @@ LspLanguageId.TYPESCRIPT
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { LspLanguageId } from '@daytona/sdk'
+import { LspLanguageId } from '@daytonaio/sdk'
 
 // Available language IDs
 LspLanguageId.PYTHON      
@@ -100,10 +100,7 @@ completions = lsp_server.completions(
     path="/workspace/project/main.py",
     position={"line": 10, "character": 15}
 )
-for completion in completions:
-    print(f"Label: {completion.label}")
-    print(f"Kind: {completion.kind}")
-    print(f"Detail: {completion.detail}")
+print(f"Completions: {completions}")
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
@@ -112,11 +109,7 @@ const completions = await lspServer.getCompletions({
     path: "/workspace/project/main.ts",
     position: { line: 10, character: 15 }
 })
-completions.forEach(completion => {
-    console.log(`Label: ${completion.label}`)
-    console.log(`Kind: ${completion.kind}`)
-    console.log(`Detail: ${completion.detail}`)
-})
+console.log('Completions:', completions)
 ```
 </TabItem>
 </Tabs>

@@ -78,7 +78,7 @@ await workspace.git.clone(
 
 ### Repository Status
 
-Daytona SDK provides an option to check the status of Git repositories in Workspaces. You can get the current branch, modified files, staged files, and untracked files using Python and TypeScript.
+Daytona SDK provides an option to check the status of Git repositories in Workspaces. You can get the current branch, modified files, number of commits ahead and behind main branch using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -86,20 +86,16 @@ Daytona SDK provides an option to check the status of Git repositories in Worksp
 # Get repository status
 status = workspace.git.status("/workspace/repo")
 print(f"Current branch: {status.current_branch}")
-print(f"Modified files: {status.modified}")
-print(f"Staged files: {status.staged}")
-print(f"Untracked files: {status.untracked}")
-
-# Get current branch
-
-branch = workspace.git.current_branch("/workspace/repo")
-print(f"Current branch: {branch}")
+print(f"Commits ahead: {status.ahead}")
+print(f"Commits behind: {status.behind}")
+for file in status.file_status:
+    print(f"File: {file.name}")
 
 # List branches
 
-branches = workspace.git.list_branches("/workspace/repo")
-for branch in branches:
-    print(f"Branch: {branch.name} {'(current)' if branch.current else ''}")
+response = workspace.git.branches("/workspace/repo")
+for branch in response.branches:
+    print(f"Branch: {branch}")
 
 ```
 </TabItem>
@@ -108,18 +104,16 @@ for branch in branches:
 // Get repository status
 const status = await workspace.git.status("/workspace/repo");
 console.log(`Current branch: ${status.currentBranch}`);
-console.log(`Modified files: ${status.modified}`);
-console.log(`Staged files: ${status.staged}`);
-console.log(`Untracked files: ${status.untracked}`);
-
-// Get current branch
-const branch = await workspace.git.currentBranch("/workspace/repo");
-console.log(`Current branch: ${branch}`);
+console.log(`Commits ahead: ${status.ahead}`);
+console.log(`Commits behind: ${status.behind}`);
+status['FileStatus[]'].forEach(file => {
+    console.log(`File: ${file.name}`);
+});
 
 // List branches
-const branches = await workspace.git.listBranches("/workspace/repo");
-branches.forEach(branch => {
-    console.log(`Branch: ${branch.name} ${branch.current ? '(current)' : ''}`);
+const response = await workspace.git.branches("/workspace/repo");
+response.branches.forEach(branch => {
+    console.log(`Branch: ${branch}`);
 });
 ```
 

@@ -76,53 +76,59 @@ Daytona SDK provides an option to execute shell commands in Python and TypeScrip
 <TabItem label="Python" icon="seti:python">
 ```python
 # Execute shell command
-response = workspace.process.process_execute_command("ls -la")
+response = workspace.process.exec("ls -la")
 print(response.output)
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Execute shell command
-const response = await workspace.process.processExecuteCommand("ls -la");
+const response = await workspace.process.executeCommand("ls -la");
 console.log(response.output);
 ```
 </TabItem>
 </Tabs>
 
-## Background Processes
+## Sessions (Background Processes)
 
-Daytona SDK provides an option to start, stop, and manage background processes in Workspaces. You can run long-running commands, monitor process status, and list all running processes.
+Daytona SDK provides an option to start, stop, and manage background process sessions in Workspaces. You can run long-running commands, monitor process status, and list all running processes.
 
 ### Managing Long-Running Processes
 
-Daytona SDK provides an option to start and stop background processes in Python and TypeScript. You can run long-running commands and monitor process status.
+Daytona SDK provides an option to start and stop background processes. You can run long-running commands and monitor process status.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Check process status
-status = workspace.process.get_process_status(process_id)
-print(f"Process {process_id} status: {status}")
+# Check session's executed commands
+session = workspace.process.get_session(session_id)
+print(f"Session {process_id}:")
+for command in session.commands:
+    print(f"Command: {command.command}, Exit Code: {command.exit_code}")
 
-# List all running processes
+# List all running sessions
 
-processes = workspace.process.list_processes()
-for process in processes:
-    print(f"PID: {process.id}, Command: {process.command}")
+sessions = workspace.process.list_sessions()
+for session in sessions:
+    print(f"PID: {session.id}, Commands: {session.commands}")
 
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Check process status
-const status = await workspace.process.getProcessStatus(processId);
-console.log(`Process ${processId} status: ${status}`);
+// Check session's executed commands
+const session = await workspace.process.getSession(sessionId);
+console.log(`Session ${sessionId}:`);
+for (const command of session.commands) {
+    console.log(`Command: ${command.command}, Exit Code: ${command.exitCode}`);
+}
 
-// List all running processes
-const processes = await workspace.process.listProcesses();
-processes.forEach(process => {
-    console.log(`PID: ${process.id}, Command: ${process.command}`);
-});
+// List all running sessions
+const sessions = await workspace.process.listSessions();
+for (const session of sessions) {
+    console.log(`PID: ${session.id}, Commands: ${session.commands}`);
+}
+
 ```
 
 </TabItem>
@@ -134,29 +140,29 @@ Daytona SDK provides best practices for process and code execution in Workspaces
 
 1. **Resource Management**
 
-- Use background processes for long-running operations
-- Clean up processes after execution
-- Handle process exceptions properly
+- Use sessions for long-running operations
+- Clean up sessions after execution
+- Handle session exceptions properly
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
    ```python
-   # Python - Clean up processes
+   # Python - Clean up session
    try:
-       process_id = workspace.process.start_background_process("long-running-cmd")
+       session_id = workspace.process.create_session("long-running-cmd")
        # Do work...
    finally:
-       workspace.process.stop_process(process_id)
+       workspace.process.delete_session(session_id)
    ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
    ```typescript
    // TypeScript - Clean up processes
    try {
-       const processId = await workspace.process.startBackgroundProcess("long-running-cmd");
+       const sessionId = await workspace.process.createSession("long-running-cmd");
        // Do work...
    } finally {
-       await workspace.process.stopProcess(processId);
+       await workspace.process.deleteSession(processId);
    }
    ```
 </TabItem>

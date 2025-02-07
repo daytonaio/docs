@@ -4004,7 +4004,7 @@ config = DaytonaConfig(
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { DaytonaConfig } from '@daytona/sdk';
+import { DaytonaConfig } from '@daytonaio/sdk';
 
 const config: DaytonaConfig = {
     apiKey: "your-api-key",          
@@ -4342,15 +4342,15 @@ pip install daytona-sdk
 <TabItem label="TypeScript" icon="seti:typescript">
 ```bash
 # Using npm
-npm install @daytona/sdk
+npm install @daytonaio/sdk
 
 # Using yarn
 
-yarn add @daytona/sdk
+yarn add @daytonaio/sdk
 
 # Using pnpm
 
-pnpm add @daytona/sdk
+pnpm add @daytonaio/sdk
 
 ```
 </TabItem>
@@ -4389,7 +4389,7 @@ daytona.remove(workspace)
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { Daytona } from '@daytona/sdk'
+import { Daytona } from '@daytonaio/sdk'
 
 async function main() {
   const daytona = new Daytona()
@@ -4798,7 +4798,7 @@ lsp_server = workspace.create_lsp_server(
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { Daytona, LspLanguageId } from '@daytona/sdk'
+import { Daytona, LspLanguageId } from '@daytonaio/sdk'
 
 // Create workspace
 const daytona = new Daytona()
@@ -4834,7 +4834,7 @@ LspLanguageId.TYPESCRIPT
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { LspLanguageId } from '@daytona/sdk'
+import { LspLanguageId } from '@daytonaio/sdk'
 
 // Available language IDs
 LspLanguageId.PYTHON      
@@ -5143,7 +5143,7 @@ workspace = daytona.create(id="my-workspace")
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-import { Daytona } from '@daytona/sdk';
+import { Daytona } from '@daytonaio/sdk';
 
 const daytona = new Daytona();
 
@@ -5199,7 +5199,7 @@ Daytona SDK provides methods to perform operations on Workspaces, such as removi
 daytona.remove(workspace)
 ```
 </TabItem>
-<TabItem label="TypeScript" icon="seti:python">
+<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Remove workspace
 await daytona.remove(workspace);
