@@ -33,7 +33,7 @@
   },
   {
     "title": "Container Registries",
-    "description": "Container registries store credentials used to pull container images from specified registry servers.",
+    "description": "Container registries",
     "tag": "Documentation",
     "url": "/docs/about/architecture#container-registries",
     "slug": "/about/architecture#container-registries",
@@ -1128,20 +1128,12 @@
     "objectID": 141
   },
   {
-    "title": "Set directory permissions recursively",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#set-directory-permissions-recursively",
-    "slug": "/sdk/file-system-operations#set-directory-permissions-recursively",
-    "objectID": 142
-  },
-  {
     "title": "Get file permissions",
     "description": "",
     "tag": "Documentation",
     "url": "/docs/sdk/file-system-operations#get-file-permissions",
     "slug": "/sdk/file-system-operations#get-file-permissions",
-    "objectID": 143
+    "objectID": 142
   },
   {
     "title": "File Search and Replace",
@@ -1149,15 +1141,15 @@
     "tag": "Documentation",
     "url": "/docs/sdk/file-system-operations#file-search-and-replace",
     "slug": "/sdk/file-system-operations#file-search-and-replace",
-    "objectID": 144
+    "objectID": 143
   },
   {
-    "title": "Search for text in files",
+    "title": "Search for text in files; if a folder is specified, the search is recursive",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#search-for-text-in-files",
-    "slug": "/sdk/file-system-operations#search-for-text-in-files",
-    "objectID": 145
+    "url": "/docs/sdk/file-system-operations#search-for-text-in-files-if-a-folder-is-specified-the-search-is-recursive",
+    "slug": "/sdk/file-system-operations#search-for-text-in-files-if-a-folder-is-specified-the-search-is-recursive",
+    "objectID": 144
   },
   {
     "title": "Replace text in files",
@@ -1165,7 +1157,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/file-system-operations#replace-text-in-files",
     "slug": "/sdk/file-system-operations#replace-text-in-files",
-    "objectID": 146
+    "objectID": 145
   },
   {
     "title": "Getting Started",
@@ -1173,7 +1165,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started",
     "slug": "/sdk/getting-started",
-    "objectID": 147
+    "objectID": 146
   },
   {
     "title": "Install Daytona",
@@ -1181,7 +1173,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started#install-daytona",
     "slug": "/sdk/getting-started#install-daytona",
-    "objectID": 148
+    "objectID": 147
   },
   {
     "title": "Set Up Your Environment Variables",
@@ -1189,7 +1181,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started#set-up-your-environment-variables",
     "slug": "/sdk/getting-started#set-up-your-environment-variables",
-    "objectID": 149
+    "objectID": 148
   },
   {
     "title": "Install the Daytona SDK",
@@ -1197,7 +1189,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started#install-the-daytona-sdk",
     "slug": "/sdk/getting-started#install-the-daytona-sdk",
-    "objectID": 150
+    "objectID": 149
   },
   {
     "title": "Using npm",
@@ -1205,7 +1197,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started#using-npm",
     "slug": "/sdk/getting-started#using-npm",
-    "objectID": 151
+    "objectID": 150
   },
   {
     "title": "Using yarn",
@@ -1213,7 +1205,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started#using-yarn",
     "slug": "/sdk/getting-started#using-yarn",
-    "objectID": 152
+    "objectID": 151
   },
   {
     "title": "Using pnpm",
@@ -1221,7 +1213,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started#using-pnpm",
     "slug": "/sdk/getting-started#using-pnpm",
-    "objectID": 153
+    "objectID": 152
   },
   {
     "title": "Write Code to Create a Workspace",
@@ -1229,7 +1221,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started#write-code-to-create-a-workspace",
     "slug": "/sdk/getting-started#write-code-to-create-a-workspace",
-    "objectID": 154
+    "objectID": 153
   },
   {
     "title": "Execute Commands",
@@ -1237,7 +1229,39 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started#execute-commands",
     "slug": "/sdk/getting-started#execute-commands",
+    "objectID": 154
+  },
+  {
+    "title": "Initialize the Daytona client",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/sdk/getting-started#initialize-the-daytona-client",
+    "slug": "/sdk/getting-started#initialize-the-daytona-client",
     "objectID": 155
+  },
+  {
+    "title": "Create the workspace instance",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/sdk/getting-started#create-the-workspace-instance",
+    "slug": "/sdk/getting-started#create-the-workspace-instance",
+    "objectID": 156
+  },
+  {
+    "title": "Run the code securely inside the workspace",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/sdk/getting-started#run-the-code-securely-inside-the-workspace",
+    "slug": "/sdk/getting-started#run-the-code-securely-inside-the-workspace",
+    "objectID": 157
+  },
+  {
+    "title": "Clean up the workspace",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/sdk/getting-started#clean-up-the-workspace",
+    "slug": "/sdk/getting-started#clean-up-the-workspace",
+    "objectID": 158
   },
   {
     "title": "Start your Workspace",
@@ -1245,7 +1269,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/getting-started#start-your-workspace",
     "slug": "/sdk/getting-started#start-your-workspace",
-    "objectID": 156
+    "objectID": 159
   },
   {
     "title": "Git Operations",
@@ -1253,7 +1277,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations",
     "slug": "/sdk/git-operations",
-    "objectID": 157
+    "objectID": 160
   },
   {
     "title": "Basic Operations",
@@ -1261,7 +1285,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#basic-operations",
     "slug": "/sdk/git-operations#basic-operations",
-    "objectID": 158
+    "objectID": 161
   },
   {
     "title": "Cloning Repositories",
@@ -1269,7 +1293,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#cloning-repositories",
     "slug": "/sdk/git-operations#cloning-repositories",
-    "objectID": 159
+    "objectID": 162
   },
   {
     "title": "Basic clone",
@@ -1277,7 +1301,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#basic-clone",
     "slug": "/sdk/git-operations#basic-clone",
-    "objectID": 160
+    "objectID": 163
   },
   {
     "title": "Clone with authentication",
@@ -1285,7 +1309,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#clone-with-authentication",
     "slug": "/sdk/git-operations#clone-with-authentication",
-    "objectID": 161
+    "objectID": 164
   },
   {
     "title": "Clone specific branch",
@@ -1293,7 +1317,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#clone-specific-branch",
     "slug": "/sdk/git-operations#clone-specific-branch",
-    "objectID": 162
+    "objectID": 165
   },
   {
     "title": "Repository Status",
@@ -1301,7 +1325,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#repository-status",
     "slug": "/sdk/git-operations#repository-status",
-    "objectID": 163
+    "objectID": 166
   },
   {
     "title": "Get repository status",
@@ -1309,15 +1333,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#get-repository-status",
     "slug": "/sdk/git-operations#get-repository-status",
-    "objectID": 164
-  },
-  {
-    "title": "Get current branch",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#get-current-branch",
-    "slug": "/sdk/git-operations#get-current-branch",
-    "objectID": 165
+    "objectID": 167
   },
   {
     "title": "List branches",
@@ -1325,7 +1341,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#list-branches",
     "slug": "/sdk/git-operations#list-branches",
-    "objectID": 166
+    "objectID": 168
   },
   {
     "title": "Branch Operations",
@@ -1333,7 +1349,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#branch-operations",
     "slug": "/sdk/git-operations#branch-operations",
-    "objectID": 167
+    "objectID": 169
   },
   {
     "title": "Managing Branches",
@@ -1341,7 +1357,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#managing-branches",
     "slug": "/sdk/git-operations#managing-branches",
-    "objectID": 168
+    "objectID": 170
   },
   {
     "title": "Create new branch",
@@ -1349,7 +1365,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#create-new-branch",
     "slug": "/sdk/git-operations#create-new-branch",
-    "objectID": 169
+    "objectID": 171
   },
   {
     "title": "Switch branch",
@@ -1357,7 +1373,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#switch-branch",
     "slug": "/sdk/git-operations#switch-branch",
-    "objectID": 170
+    "objectID": 172
   },
   {
     "title": "Delete branch",
@@ -1365,7 +1381,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#delete-branch",
     "slug": "/sdk/git-operations#delete-branch",
-    "objectID": 171
+    "objectID": 173
   },
   {
     "title": "Staging and Committing",
@@ -1373,7 +1389,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#staging-and-committing",
     "slug": "/sdk/git-operations#staging-and-committing",
-    "objectID": 172
+    "objectID": 174
   },
   {
     "title": "Working with Changes",
@@ -1381,7 +1397,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#working-with-changes",
     "slug": "/sdk/git-operations#working-with-changes",
-    "objectID": 173
+    "objectID": 175
   },
   {
     "title": "Stage specific files",
@@ -1389,7 +1405,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#stage-specific-files",
     "slug": "/sdk/git-operations#stage-specific-files",
-    "objectID": 174
+    "objectID": 176
   },
   {
     "title": "Stage all changes",
@@ -1397,7 +1413,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#stage-all-changes",
     "slug": "/sdk/git-operations#stage-all-changes",
-    "objectID": 175
+    "objectID": 177
   },
   {
     "title": "Commit changes",
@@ -1405,7 +1421,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#commit-changes",
     "slug": "/sdk/git-operations#commit-changes",
-    "objectID": 176
+    "objectID": 178
   },
   {
     "title": "Get commit history",
@@ -1413,7 +1429,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#get-commit-history",
     "slug": "/sdk/git-operations#get-commit-history",
-    "objectID": 177
+    "objectID": 179
   },
   {
     "title": "Remote Operations",
@@ -1421,7 +1437,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#remote-operations",
     "slug": "/sdk/git-operations#remote-operations",
-    "objectID": 178
+    "objectID": 180
   },
   {
     "title": "Working with Remotes",
@@ -1429,7 +1445,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#working-with-remotes",
     "slug": "/sdk/git-operations#working-with-remotes",
-    "objectID": 179
+    "objectID": 181
   },
   {
     "title": "Push changes",
@@ -1437,7 +1453,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#push-changes",
     "slug": "/sdk/git-operations#push-changes",
-    "objectID": 180
+    "objectID": 182
   },
   {
     "title": "Pull changes",
@@ -1445,7 +1461,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#pull-changes",
     "slug": "/sdk/git-operations#pull-changes",
-    "objectID": 181
+    "objectID": 183
   },
   {
     "title": "List remotes",
@@ -1453,7 +1469,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/git-operations#list-remotes",
     "slug": "/sdk/git-operations#list-remotes",
-    "objectID": 182
+    "objectID": 184
   },
   {
     "title": "Language Server Protocol",
@@ -1461,7 +1477,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/language-server-protocol",
     "slug": "/sdk/language-server-protocol",
-    "objectID": 183
+    "objectID": 185
   },
   {
     "title": "Creating LSP Servers",
@@ -1469,7 +1485,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/language-server-protocol#creating-lsp-servers",
     "slug": "/sdk/language-server-protocol#creating-lsp-servers",
-    "objectID": 184
+    "objectID": 186
   },
   {
     "title": "Create workspace",
@@ -1477,7 +1493,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/language-server-protocol#create-workspace",
     "slug": "/sdk/language-server-protocol#create-workspace",
-    "objectID": 185
+    "objectID": 187
   },
   {
     "title": "Create LSP server for Python",
@@ -1485,7 +1501,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/language-server-protocol#create-lsp-server-for-python",
     "slug": "/sdk/language-server-protocol#create-lsp-server-for-python",
-    "objectID": 186
+    "objectID": 188
   },
   {
     "title": "Supported Languages",
@@ -1493,7 +1509,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/language-server-protocol#supported-languages",
     "slug": "/sdk/language-server-protocol#supported-languages",
-    "objectID": 187
+    "objectID": 189
   },
   {
     "title": "Available language IDs",
@@ -1501,7 +1517,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/language-server-protocol#available-language-ids",
     "slug": "/sdk/language-server-protocol#available-language-ids",
-    "objectID": 188
+    "objectID": 190
   },
   {
     "title": "LSP Features",
@@ -1509,7 +1525,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/language-server-protocol#lsp-features",
     "slug": "/sdk/language-server-protocol#lsp-features",
-    "objectID": 189
+    "objectID": 191
   },
   {
     "title": "Code Completion",
@@ -1517,7 +1533,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/language-server-protocol#code-completion",
     "slug": "/sdk/language-server-protocol#code-completion",
-    "objectID": 190
+    "objectID": 192
   },
   {
     "title": "Process and Code Execution",
@@ -1525,7 +1541,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution",
     "slug": "/sdk/process-code-execution",
-    "objectID": 191
+    "objectID": 193
   },
   {
     "title": "Code Execution",
@@ -1533,7 +1549,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#code-execution",
     "slug": "/sdk/process-code-execution#code-execution",
-    "objectID": 192
+    "objectID": 194
   },
   {
     "title": "Running Code",
@@ -1541,7 +1557,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#running-code",
     "slug": "/sdk/process-code-execution#running-code",
-    "objectID": 193
+    "objectID": 195
   },
   {
     "title": "Run Python code",
@@ -1549,7 +1565,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#run-python-code",
     "slug": "/sdk/process-code-execution#run-python-code",
-    "objectID": 194
+    "objectID": 196
   },
   {
     "title": "Process Execution",
@@ -1557,7 +1573,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#process-execution",
     "slug": "/sdk/process-code-execution#process-execution",
-    "objectID": 195
+    "objectID": 197
   },
   {
     "title": "Running Commands",
@@ -1565,7 +1581,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#running-commands",
     "slug": "/sdk/process-code-execution#running-commands",
-    "objectID": 196
+    "objectID": 198
   },
   {
     "title": "Execute shell command",
@@ -1573,39 +1589,39 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#execute-shell-command",
     "slug": "/sdk/process-code-execution#execute-shell-command",
-    "objectID": 197
-  },
-  {
-    "title": "Background Processes",
-    "description": "Daytona SDK provides an option to start, stop, and manage background processes in Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#background-processes",
-    "slug": "/sdk/process-code-execution#background-processes",
-    "objectID": 198
-  },
-  {
-    "title": "Managing Long-Running Processes",
-    "description": "Daytona SDK provides an option to start and stop background processes in Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#managing-long-running-processes",
-    "slug": "/sdk/process-code-execution#managing-long-running-processes",
     "objectID": 199
   },
   {
-    "title": "Check process status",
-    "description": "",
+    "title": "Sessions (Background Processes)",
+    "description": "Daytona SDK provides an option to start, stop, and manage background process sessions in Workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#check-process-status",
-    "slug": "/sdk/process-code-execution#check-process-status",
+    "url": "/docs/sdk/process-code-execution#sessions-background-processes",
+    "slug": "/sdk/process-code-execution#sessions-background-processes",
     "objectID": 200
   },
   {
-    "title": "List all running processes",
+    "title": "Managing Long-Running Processes",
+    "description": "Daytona SDK provides an option to start and stop background processes.",
+    "tag": "Documentation",
+    "url": "/docs/sdk/process-code-execution#managing-long-running-processes",
+    "slug": "/sdk/process-code-execution#managing-long-running-processes",
+    "objectID": 201
+  },
+  {
+    "title": "Check session's executed commands",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#list-all-running-processes",
-    "slug": "/sdk/process-code-execution#list-all-running-processes",
-    "objectID": 201
+    "url": "/docs/sdk/process-code-execution#check-sessions-executed-commands",
+    "slug": "/sdk/process-code-execution#check-sessions-executed-commands",
+    "objectID": 202
+  },
+  {
+    "title": "List all running sessions",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/sdk/process-code-execution#list-all-running-sessions",
+    "slug": "/sdk/process-code-execution#list-all-running-sessions",
+    "objectID": 203
   },
   {
     "title": "Best Practices",
@@ -1613,7 +1629,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#best-practices",
     "slug": "/sdk/process-code-execution#best-practices",
-    "objectID": 202
+    "objectID": 204
   },
   {
     "title": "Common Issues",
@@ -1621,7 +1637,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#common-issues",
     "slug": "/sdk/process-code-execution#common-issues",
-    "objectID": 203
+    "objectID": 205
   },
   {
     "title": "Process Execution Failed",
@@ -1629,7 +1645,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#process-execution-failed",
     "slug": "/sdk/process-code-execution#process-execution-failed",
-    "objectID": 204
+    "objectID": 206
   },
   {
     "title": "Process Timeout",
@@ -1637,7 +1653,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#process-timeout",
     "slug": "/sdk/process-code-execution#process-timeout",
-    "objectID": 205
+    "objectID": 207
   },
   {
     "title": "Resource Limits",
@@ -1645,7 +1661,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/process-code-execution#resource-limits",
     "slug": "/sdk/process-code-execution#resource-limits",
-    "objectID": 206
+    "objectID": 208
   },
   {
     "title": "Workspace Management",
@@ -1653,7 +1669,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management",
     "slug": "/sdk/workspace-management",
-    "objectID": 207
+    "objectID": 209
   },
   {
     "title": "Creating Workspaces",
@@ -1661,7 +1677,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#creating-workspaces",
     "slug": "/sdk/workspace-management#creating-workspaces",
-    "objectID": 208
+    "objectID": 210
   },
   {
     "title": "Basic Workspace Creation",
@@ -1669,7 +1685,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#basic-workspace-creation",
     "slug": "/sdk/workspace-management#basic-workspace-creation",
-    "objectID": 209
+    "objectID": 211
   },
   {
     "title": "Create a basic workspace",
@@ -1677,7 +1693,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#create-a-basic-workspace",
     "slug": "/sdk/workspace-management#create-a-basic-workspace",
-    "objectID": 210
+    "objectID": 212
   },
   {
     "title": "Create a workspace with specific language",
@@ -1685,7 +1701,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#create-a-workspace-with-specific-language",
     "slug": "/sdk/workspace-management#create-a-workspace-with-specific-language",
-    "objectID": 211
+    "objectID": 213
   },
   {
     "title": "Create a workspace with custom ID",
@@ -1693,7 +1709,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#create-a-workspace-with-custom-id",
     "slug": "/sdk/workspace-management#create-a-workspace-with-custom-id",
-    "objectID": 212
+    "objectID": 214
   },
   {
     "title": "Workspace Information",
@@ -1701,7 +1717,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#workspace-information",
     "slug": "/sdk/workspace-management#workspace-information",
-    "objectID": 213
+    "objectID": 215
   },
   {
     "title": "Get workspace ID",
@@ -1709,7 +1725,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#get-workspace-id",
     "slug": "/sdk/workspace-management#get-workspace-id",
-    "objectID": 214
+    "objectID": 216
   },
   {
     "title": "Get workspace root directory",
@@ -1717,7 +1733,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#get-workspace-root-directory",
     "slug": "/sdk/workspace-management#get-workspace-root-directory",
-    "objectID": 215
+    "objectID": 217
   },
   {
     "title": "Remove Workspace",
@@ -1725,7 +1741,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#remove-workspace",
     "slug": "/sdk/workspace-management#remove-workspace",
-    "objectID": 216
+    "objectID": 218
   },
   {
     "title": "Remove workspace",
@@ -1733,7 +1749,7 @@
     "tag": "Documentation",
     "url": "/docs/sdk/workspace-management#remove-workspace",
     "slug": "/sdk/workspace-management#remove-workspace",
-    "objectID": 217
+    "objectID": 219
   },
   {
     "title": "CLI",
@@ -1741,7 +1757,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli",
     "slug": "/tools/cli",
-    "objectID": 218
+    "objectID": 220
   },
   {
     "title": "daytona",
@@ -1749,7 +1765,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona",
     "slug": "/tools/cli#daytona",
-    "objectID": 219
+    "objectID": 221
   },
   {
     "title": "daytona api-key",
@@ -1757,7 +1773,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-api-key",
     "slug": "/tools/cli#daytona-api-key",
-    "objectID": 220
+    "objectID": 222
   },
   {
     "title": "daytona api-key create",
@@ -1765,7 +1781,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-api-key-create",
     "slug": "/tools/cli#daytona-api-key-create",
-    "objectID": 221
+    "objectID": 223
   },
   {
     "title": "daytona api-key delete",
@@ -1773,7 +1789,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-api-key-delete",
     "slug": "/tools/cli#daytona-api-key-delete",
-    "objectID": 222
+    "objectID": 224
   },
   {
     "title": "daytona api-key list",
@@ -1781,7 +1797,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-api-key-list",
     "slug": "/tools/cli#daytona-api-key-list",
-    "objectID": 223
+    "objectID": 225
   },
   {
     "title": "daytona autocomplete",
@@ -1789,7 +1805,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-autocomplete",
     "slug": "/tools/cli#daytona-autocomplete",
-    "objectID": 224
+    "objectID": 226
   },
   {
     "title": "daytona build",
@@ -1797,7 +1813,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-build",
     "slug": "/tools/cli#daytona-build",
-    "objectID": 225
+    "objectID": 227
   },
   {
     "title": "daytona build delete",
@@ -1805,7 +1821,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-build-delete",
     "slug": "/tools/cli#daytona-build-delete",
-    "objectID": 226
+    "objectID": 228
   },
   {
     "title": "daytona build info",
@@ -1813,7 +1829,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-build-info",
     "slug": "/tools/cli#daytona-build-info",
-    "objectID": 227
+    "objectID": 229
   },
   {
     "title": "daytona build list",
@@ -1821,7 +1837,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-build-list",
     "slug": "/tools/cli#daytona-build-list",
-    "objectID": 228
+    "objectID": 230
   },
   {
     "title": "daytona build logs",
@@ -1829,7 +1845,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-build-logs",
     "slug": "/tools/cli#daytona-build-logs",
-    "objectID": 229
+    "objectID": 231
   },
   {
     "title": "daytona build run",
@@ -1837,7 +1853,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-build-run",
     "slug": "/tools/cli#daytona-build-run",
-    "objectID": 230
+    "objectID": 232
   },
   {
     "title": "daytona code",
@@ -1845,7 +1861,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-code",
     "slug": "/tools/cli#daytona-code",
-    "objectID": 231
+    "objectID": 233
   },
   {
     "title": "daytona config",
@@ -1853,7 +1869,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-config",
     "slug": "/tools/cli#daytona-config",
-    "objectID": 232
+    "objectID": 234
   },
   {
     "title": "daytona create",
@@ -1861,7 +1877,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-create",
     "slug": "/tools/cli#daytona-create",
-    "objectID": 233
+    "objectID": 235
   },
   {
     "title": "daytona delete",
@@ -1869,7 +1885,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-delete",
     "slug": "/tools/cli#daytona-delete",
-    "objectID": 234
+    "objectID": 236
   },
   {
     "title": "daytona docs",
@@ -1877,7 +1893,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-docs",
     "slug": "/tools/cli#daytona-docs",
-    "objectID": 235
+    "objectID": 237
   },
   {
     "title": "daytona env",
@@ -1885,7 +1901,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-env",
     "slug": "/tools/cli#daytona-env",
-    "objectID": 236
+    "objectID": 238
   },
   {
     "title": "daytona env delete",
@@ -1893,7 +1909,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-env-delete",
     "slug": "/tools/cli#daytona-env-delete",
-    "objectID": 237
+    "objectID": 239
   },
   {
     "title": "daytona env list",
@@ -1901,7 +1917,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-env-list",
     "slug": "/tools/cli#daytona-env-list",
-    "objectID": 238
+    "objectID": 240
   },
   {
     "title": "daytona env set",
@@ -1909,7 +1925,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-env-set",
     "slug": "/tools/cli#daytona-env-set",
-    "objectID": 239
+    "objectID": 241
   },
   {
     "title": "daytona forward",
@@ -1917,7 +1933,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-forward",
     "slug": "/tools/cli#daytona-forward",
-    "objectID": 240
+    "objectID": 242
   },
   {
     "title": "daytona git-provider",
@@ -1925,7 +1941,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-git-provider",
     "slug": "/tools/cli#daytona-git-provider",
-    "objectID": 241
+    "objectID": 243
   },
   {
     "title": "daytona git-provider create",
@@ -1933,7 +1949,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-git-provider-create",
     "slug": "/tools/cli#daytona-git-provider-create",
-    "objectID": 242
+    "objectID": 244
   },
   {
     "title": "daytona git-provider delete",
@@ -1941,7 +1957,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-git-provider-delete",
     "slug": "/tools/cli#daytona-git-provider-delete",
-    "objectID": 243
+    "objectID": 245
   },
   {
     "title": "daytona git-provider list",
@@ -1949,7 +1965,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-git-provider-list",
     "slug": "/tools/cli#daytona-git-provider-list",
-    "objectID": 244
+    "objectID": 246
   },
   {
     "title": "daytona git-provider update",
@@ -1957,7 +1973,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-git-provider-update",
     "slug": "/tools/cli#daytona-git-provider-update",
-    "objectID": 245
+    "objectID": 247
   },
   {
     "title": "daytona ide",
@@ -1965,7 +1981,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-ide",
     "slug": "/tools/cli#daytona-ide",
-    "objectID": 246
+    "objectID": 248
   },
   {
     "title": "daytona info",
@@ -1973,7 +1989,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-info",
     "slug": "/tools/cli#daytona-info",
-    "objectID": 247
+    "objectID": 249
   },
   {
     "title": "daytona list",
@@ -1981,7 +1997,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-list",
     "slug": "/tools/cli#daytona-list",
-    "objectID": 248
+    "objectID": 250
   },
   {
     "title": "daytona logs",
@@ -1989,7 +2005,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-logs",
     "slug": "/tools/cli#daytona-logs",
-    "objectID": 249
+    "objectID": 251
   },
   {
     "title": "daytona prebuild",
@@ -1997,7 +2013,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-prebuild",
     "slug": "/tools/cli#daytona-prebuild",
-    "objectID": 250
+    "objectID": 252
   },
   {
     "title": "daytona prebuild create",
@@ -2005,7 +2021,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-prebuild-create",
     "slug": "/tools/cli#daytona-prebuild-create",
-    "objectID": 251
+    "objectID": 253
   },
   {
     "title": "daytona prebuild delete",
@@ -2013,7 +2029,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-prebuild-delete",
     "slug": "/tools/cli#daytona-prebuild-delete",
-    "objectID": 252
+    "objectID": 254
   },
   {
     "title": "daytona prebuild info",
@@ -2021,7 +2037,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-prebuild-info",
     "slug": "/tools/cli#daytona-prebuild-info",
-    "objectID": 253
+    "objectID": 255
   },
   {
     "title": "daytona prebuild list",
@@ -2029,7 +2045,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-prebuild-list",
     "slug": "/tools/cli#daytona-prebuild-list",
-    "objectID": 254
+    "objectID": 256
   },
   {
     "title": "daytona prebuild update",
@@ -2037,7 +2053,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-prebuild-update",
     "slug": "/tools/cli#daytona-prebuild-update",
-    "objectID": 255
+    "objectID": 257
   },
   {
     "title": "daytona profile",
@@ -2045,7 +2061,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-profile",
     "slug": "/tools/cli#daytona-profile",
-    "objectID": 256
+    "objectID": 258
   },
   {
     "title": "daytona profile create",
@@ -2053,7 +2069,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-profile-create",
     "slug": "/tools/cli#daytona-profile-create",
-    "objectID": 257
+    "objectID": 259
   },
   {
     "title": "daytona profile delete",
@@ -2061,7 +2077,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-profile-delete",
     "slug": "/tools/cli#daytona-profile-delete",
-    "objectID": 258
+    "objectID": 260
   },
   {
     "title": "daytona profile list",
@@ -2069,7 +2085,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-profile-list",
     "slug": "/tools/cli#daytona-profile-list",
-    "objectID": 259
+    "objectID": 261
   },
   {
     "title": "daytona profile update",
@@ -2077,7 +2093,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-profile-update",
     "slug": "/tools/cli#daytona-profile-update",
-    "objectID": 260
+    "objectID": 262
   },
   {
     "title": "daytona provider",
@@ -2085,7 +2101,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-provider",
     "slug": "/tools/cli#daytona-provider",
-    "objectID": 261
+    "objectID": 263
   },
   {
     "title": "daytona provider install",
@@ -2093,7 +2109,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-provider-install",
     "slug": "/tools/cli#daytona-provider-install",
-    "objectID": 262
+    "objectID": 264
   },
   {
     "title": "daytona provider list",
@@ -2101,7 +2117,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-provider-list",
     "slug": "/tools/cli#daytona-provider-list",
-    "objectID": 263
+    "objectID": 265
   },
   {
     "title": "daytona provider uninstall",
@@ -2109,7 +2125,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-provider-uninstall",
     "slug": "/tools/cli#daytona-provider-uninstall",
-    "objectID": 264
+    "objectID": 266
   },
   {
     "title": "daytona provider update",
@@ -2117,7 +2133,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-provider-update",
     "slug": "/tools/cli#daytona-provider-update",
-    "objectID": 265
+    "objectID": 267
   },
   {
     "title": "daytona purge",
@@ -2125,7 +2141,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-purge",
     "slug": "/tools/cli#daytona-purge",
-    "objectID": 266
+    "objectID": 268
   },
   {
     "title": "daytona restart",
@@ -2133,7 +2149,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-restart",
     "slug": "/tools/cli#daytona-restart",
-    "objectID": 267
+    "objectID": 269
   },
   {
     "title": "daytona runner",
@@ -2141,7 +2157,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-runner",
     "slug": "/tools/cli#daytona-runner",
-    "objectID": 268
+    "objectID": 270
   },
   {
     "title": "daytona runner config",
@@ -2149,7 +2165,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-runner-config",
     "slug": "/tools/cli#daytona-runner-config",
-    "objectID": 269
+    "objectID": 271
   },
   {
     "title": "daytona runner configure",
@@ -2157,7 +2173,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-runner-configure",
     "slug": "/tools/cli#daytona-runner-configure",
-    "objectID": 270
+    "objectID": 272
   },
   {
     "title": "daytona runner logs",
@@ -2165,7 +2181,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-runner-logs",
     "slug": "/tools/cli#daytona-runner-logs",
-    "objectID": 271
+    "objectID": 273
   },
   {
     "title": "daytona runner purge",
@@ -2173,7 +2189,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-runner-purge",
     "slug": "/tools/cli#daytona-runner-purge",
-    "objectID": 272
+    "objectID": 274
   },
   {
     "title": "daytona runner restart",
@@ -2181,7 +2197,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-runner-restart",
     "slug": "/tools/cli#daytona-runner-restart",
-    "objectID": 273
+    "objectID": 275
   },
   {
     "title": "daytona runner serve",
@@ -2189,7 +2205,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-runner-serve",
     "slug": "/tools/cli#daytona-runner-serve",
-    "objectID": 274
+    "objectID": 276
   },
   {
     "title": "daytona runner start",
@@ -2197,7 +2213,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-runner-start",
     "slug": "/tools/cli#daytona-runner-start",
-    "objectID": 275
+    "objectID": 277
   },
   {
     "title": "daytona runner stop",
@@ -2205,7 +2221,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-runner-stop",
     "slug": "/tools/cli#daytona-runner-stop",
-    "objectID": 276
+    "objectID": 278
   },
   {
     "title": "daytona serve",
@@ -2213,7 +2229,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-serve",
     "slug": "/tools/cli#daytona-serve",
-    "objectID": 277
+    "objectID": 279
   },
   {
     "title": "daytona server",
@@ -2221,7 +2237,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server",
     "slug": "/tools/cli#daytona-server",
-    "objectID": 278
+    "objectID": 280
   },
   {
     "title": "daytona server config",
@@ -2229,7 +2245,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-config",
     "slug": "/tools/cli#daytona-server-config",
-    "objectID": 279
+    "objectID": 281
   },
   {
     "title": "daytona server configure",
@@ -2237,7 +2253,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-configure",
     "slug": "/tools/cli#daytona-server-configure",
-    "objectID": 280
+    "objectID": 282
   },
   {
     "title": "daytona server logs",
@@ -2245,7 +2261,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-logs",
     "slug": "/tools/cli#daytona-server-logs",
-    "objectID": 281
+    "objectID": 283
   },
   {
     "title": "daytona server logs list",
@@ -2253,7 +2269,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-logs-list",
     "slug": "/tools/cli#daytona-server-logs-list",
-    "objectID": 282
+    "objectID": 284
   },
   {
     "title": "daytona server restart",
@@ -2261,7 +2277,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-restart",
     "slug": "/tools/cli#daytona-server-restart",
-    "objectID": 283
+    "objectID": 285
   },
   {
     "title": "daytona server runner",
@@ -2269,7 +2285,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-runner",
     "slug": "/tools/cli#daytona-server-runner",
-    "objectID": 284
+    "objectID": 286
   },
   {
     "title": "daytona server runner create",
@@ -2277,7 +2293,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-runner-create",
     "slug": "/tools/cli#daytona-server-runner-create",
-    "objectID": 285
+    "objectID": 287
   },
   {
     "title": "daytona server runner delete",
@@ -2285,7 +2301,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-runner-delete",
     "slug": "/tools/cli#daytona-server-runner-delete",
-    "objectID": 286
+    "objectID": 288
   },
   {
     "title": "daytona server runner list",
@@ -2293,7 +2309,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-runner-list",
     "slug": "/tools/cli#daytona-server-runner-list",
-    "objectID": 287
+    "objectID": 289
   },
   {
     "title": "daytona server runner logs",
@@ -2301,7 +2317,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-runner-logs",
     "slug": "/tools/cli#daytona-server-runner-logs",
-    "objectID": 288
+    "objectID": 290
   },
   {
     "title": "daytona server start",
@@ -2309,7 +2325,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-start",
     "slug": "/tools/cli#daytona-server-start",
-    "objectID": 289
+    "objectID": 291
   },
   {
     "title": "daytona server stop",
@@ -2317,7 +2333,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-server-stop",
     "slug": "/tools/cli#daytona-server-stop",
-    "objectID": 290
+    "objectID": 292
   },
   {
     "title": "daytona ssh",
@@ -2325,7 +2341,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-ssh",
     "slug": "/tools/cli#daytona-ssh",
-    "objectID": 291
+    "objectID": 293
   },
   {
     "title": "daytona start",
@@ -2333,7 +2349,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-start",
     "slug": "/tools/cli#daytona-start",
-    "objectID": 292
+    "objectID": 294
   },
   {
     "title": "daytona stop",
@@ -2341,7 +2357,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-stop",
     "slug": "/tools/cli#daytona-stop",
-    "objectID": 293
+    "objectID": 295
   },
   {
     "title": "daytona target-config",
@@ -2349,7 +2365,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-config",
     "slug": "/tools/cli#daytona-target-config",
-    "objectID": 294
+    "objectID": 296
   },
   {
     "title": "daytona target-config create",
@@ -2357,7 +2373,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-config-create",
     "slug": "/tools/cli#daytona-target-config-create",
-    "objectID": 295
+    "objectID": 297
   },
   {
     "title": "daytona target-config delete",
@@ -2365,7 +2381,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-config-delete",
     "slug": "/tools/cli#daytona-target-config-delete",
-    "objectID": 296
+    "objectID": 298
   },
   {
     "title": "daytona target-config list",
@@ -2373,7 +2389,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-config-list",
     "slug": "/tools/cli#daytona-target-config-list",
-    "objectID": 297
+    "objectID": 299
   },
   {
     "title": "daytona target",
@@ -2381,7 +2397,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target",
     "slug": "/tools/cli#daytona-target",
-    "objectID": 298
+    "objectID": 300
   },
   {
     "title": "daytona target create",
@@ -2389,7 +2405,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-create",
     "slug": "/tools/cli#daytona-target-create",
-    "objectID": 299
+    "objectID": 301
   },
   {
     "title": "daytona target delete",
@@ -2397,7 +2413,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-delete",
     "slug": "/tools/cli#daytona-target-delete",
-    "objectID": 300
+    "objectID": 302
   },
   {
     "title": "daytona target info",
@@ -2405,7 +2421,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-info",
     "slug": "/tools/cli#daytona-target-info",
-    "objectID": 301
+    "objectID": 303
   },
   {
     "title": "daytona target list",
@@ -2413,7 +2429,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-list",
     "slug": "/tools/cli#daytona-target-list",
-    "objectID": 302
+    "objectID": 304
   },
   {
     "title": "daytona target logs",
@@ -2421,7 +2437,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-logs",
     "slug": "/tools/cli#daytona-target-logs",
-    "objectID": 303
+    "objectID": 305
   },
   {
     "title": "daytona target restart",
@@ -2429,7 +2445,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-restart",
     "slug": "/tools/cli#daytona-target-restart",
-    "objectID": 304
+    "objectID": 306
   },
   {
     "title": "daytona target set-default",
@@ -2437,7 +2453,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-set-default",
     "slug": "/tools/cli#daytona-target-set-default",
-    "objectID": 305
+    "objectID": 307
   },
   {
     "title": "daytona target ssh",
@@ -2445,7 +2461,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-ssh",
     "slug": "/tools/cli#daytona-target-ssh",
-    "objectID": 306
+    "objectID": 308
   },
   {
     "title": "daytona target start",
@@ -2453,7 +2469,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-start",
     "slug": "/tools/cli#daytona-target-start",
-    "objectID": 307
+    "objectID": 309
   },
   {
     "title": "daytona target stop",
@@ -2461,7 +2477,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-target-stop",
     "slug": "/tools/cli#daytona-target-stop",
-    "objectID": 308
+    "objectID": 310
   },
   {
     "title": "daytona telemetry",
@@ -2469,7 +2485,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-telemetry",
     "slug": "/tools/cli#daytona-telemetry",
-    "objectID": 309
+    "objectID": 311
   },
   {
     "title": "daytona telemetry disable",
@@ -2477,7 +2493,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-telemetry-disable",
     "slug": "/tools/cli#daytona-telemetry-disable",
-    "objectID": 310
+    "objectID": 312
   },
   {
     "title": "daytona telemetry enable",
@@ -2485,7 +2501,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-telemetry-enable",
     "slug": "/tools/cli#daytona-telemetry-enable",
-    "objectID": 311
+    "objectID": 313
   },
   {
     "title": "daytona template",
@@ -2493,7 +2509,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-template",
     "slug": "/tools/cli#daytona-template",
-    "objectID": 312
+    "objectID": 314
   },
   {
     "title": "daytona template create",
@@ -2501,7 +2517,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-template-create",
     "slug": "/tools/cli#daytona-template-create",
-    "objectID": 313
+    "objectID": 315
   },
   {
     "title": "daytona template delete",
@@ -2509,7 +2525,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-template-delete",
     "slug": "/tools/cli#daytona-template-delete",
-    "objectID": 314
+    "objectID": 316
   },
   {
     "title": "daytona template export",
@@ -2517,7 +2533,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-template-export",
     "slug": "/tools/cli#daytona-template-export",
-    "objectID": 315
+    "objectID": 317
   },
   {
     "title": "daytona template import",
@@ -2525,7 +2541,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-template-import",
     "slug": "/tools/cli#daytona-template-import",
-    "objectID": 316
+    "objectID": 318
   },
   {
     "title": "daytona template info",
@@ -2533,7 +2549,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-template-info",
     "slug": "/tools/cli#daytona-template-info",
-    "objectID": 317
+    "objectID": 319
   },
   {
     "title": "daytona template list",
@@ -2541,7 +2557,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-template-list",
     "slug": "/tools/cli#daytona-template-list",
-    "objectID": 318
+    "objectID": 320
   },
   {
     "title": "daytona template set-default",
@@ -2549,7 +2565,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-template-set-default",
     "slug": "/tools/cli#daytona-template-set-default",
-    "objectID": 319
+    "objectID": 321
   },
   {
     "title": "daytona template update",
@@ -2557,7 +2573,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-template-update",
     "slug": "/tools/cli#daytona-template-update",
-    "objectID": 320
+    "objectID": 322
   },
   {
     "title": "daytona update",
@@ -2565,7 +2581,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-update",
     "slug": "/tools/cli#daytona-update",
-    "objectID": 321
+    "objectID": 323
   },
   {
     "title": "daytona use",
@@ -2573,7 +2589,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-use",
     "slug": "/tools/cli#daytona-use",
-    "objectID": 322
+    "objectID": 324
   },
   {
     "title": "daytona version",
@@ -2581,7 +2597,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-version",
     "slug": "/tools/cli#daytona-version",
-    "objectID": 323
+    "objectID": 325
   },
   {
     "title": "daytona whoami",
@@ -2589,7 +2605,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-whoami",
     "slug": "/tools/cli#daytona-whoami",
-    "objectID": 324
+    "objectID": 326
   },
   {
     "title": "Docker Extension",
@@ -2597,7 +2613,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/docker-extension",
     "slug": "/tools/docker-extension",
-    "objectID": 325
+    "objectID": 327
   },
   {
     "title": "Prerequisites",
@@ -2605,7 +2621,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/docker-extension#prerequisites",
     "slug": "/tools/docker-extension#prerequisites",
-    "objectID": 326
+    "objectID": 328
   },
   {
     "title": "Installation",
@@ -2613,7 +2629,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/docker-extension#installation",
     "slug": "/tools/docker-extension#installation",
-    "objectID": 327
+    "objectID": 329
   },
   {
     "title": "Manual */}",
@@ -2621,7 +2637,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/docker-extension#manual-",
     "slug": "/tools/docker-extension#manual-",
-    "objectID": 328
+    "objectID": 330
   },
   {
     "title": "Create a Workspace",
@@ -2629,7 +2645,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/docker-extension#create-a-workspace",
     "slug": "/tools/docker-extension#create-a-workspace",
-    "objectID": 329
+    "objectID": 331
   },
   {
     "title": "Open an Existing Workspace",
@@ -2637,7 +2653,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/docker-extension#open-an-existing-workspace",
     "slug": "/tools/docker-extension#open-an-existing-workspace",
-    "objectID": 330
+    "objectID": 332
   },
   {
     "title": "Manage a Workspace",
@@ -2645,7 +2661,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/docker-extension#manage-a-workspace",
     "slug": "/tools/docker-extension#manage-a-workspace",
-    "objectID": 331
+    "objectID": 333
   },
   {
     "title": "Delete a Workspace",
@@ -2653,7 +2669,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/docker-extension#delete-a-workspace",
     "slug": "/tools/docker-extension#delete-a-workspace",
-    "objectID": 332
+    "objectID": 334
   },
   {
     "title": "Agent Toolbox",
@@ -2661,7 +2677,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox",
     "slug": "/usage/agent-toolbox",
-    "objectID": 333
+    "objectID": 335
   },
   {
     "title": "File System Operations",
@@ -2669,7 +2685,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#file-system-operations",
     "slug": "/usage/agent-toolbox#file-system-operations",
-    "objectID": 334
+    "objectID": 336
   },
   {
     "title": "List Files",
@@ -2677,7 +2693,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#list-files",
     "slug": "/usage/agent-toolbox#list-files",
-    "objectID": 335
+    "objectID": 337
   },
   {
     "title": "Delete Files",
@@ -2685,7 +2701,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#delete-files",
     "slug": "/usage/agent-toolbox#delete-files",
-    "objectID": 336
+    "objectID": 338
   },
   {
     "title": "Create Folder",
@@ -2693,7 +2709,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#create-folder",
     "slug": "/usage/agent-toolbox#create-folder",
-    "objectID": 337
+    "objectID": 339
   },
   {
     "title": "Download Files",
@@ -2701,7 +2717,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#download-files",
     "slug": "/usage/agent-toolbox#download-files",
-    "objectID": 338
+    "objectID": 340
   },
   {
     "title": "Find Files",
@@ -2709,7 +2725,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#find-files",
     "slug": "/usage/agent-toolbox#find-files",
-    "objectID": 339
+    "objectID": 341
   },
   {
     "title": "Files Information",
@@ -2717,7 +2733,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#files-information",
     "slug": "/usage/agent-toolbox#files-information",
-    "objectID": 340
+    "objectID": 342
   },
   {
     "title": "Move Files",
@@ -2725,7 +2741,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#move-files",
     "slug": "/usage/agent-toolbox#move-files",
-    "objectID": 341
+    "objectID": 343
   },
   {
     "title": "File Permissions",
@@ -2733,7 +2749,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#file-permissions",
     "slug": "/usage/agent-toolbox#file-permissions",
-    "objectID": 342
+    "objectID": 344
   },
   {
     "title": "Replace Files",
@@ -2741,7 +2757,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#replace-files",
     "slug": "/usage/agent-toolbox#replace-files",
-    "objectID": 343
+    "objectID": 345
   },
   {
     "title": "Search Files",
@@ -2749,7 +2765,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#search-files",
     "slug": "/usage/agent-toolbox#search-files",
-    "objectID": 344
+    "objectID": 346
   },
   {
     "title": "Upload Files",
@@ -2757,7 +2773,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#upload-files",
     "slug": "/usage/agent-toolbox#upload-files",
-    "objectID": 345
+    "objectID": 347
   },
   {
     "title": "Git Operations",
@@ -2765,7 +2781,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#git-operations",
     "slug": "/usage/agent-toolbox#git-operations",
-    "objectID": 346
+    "objectID": 348
   },
   {
     "title": "Add Files",
@@ -2773,7 +2789,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#add-files",
     "slug": "/usage/agent-toolbox#add-files",
-    "objectID": 347
+    "objectID": 349
   },
   {
     "title": "List Branches",
@@ -2781,7 +2797,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#list-branches",
     "slug": "/usage/agent-toolbox#list-branches",
-    "objectID": 348
+    "objectID": 350
   },
   {
     "title": "Create Branch",
@@ -2789,7 +2805,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#create-branch",
     "slug": "/usage/agent-toolbox#create-branch",
-    "objectID": 349
+    "objectID": 351
   },
   {
     "title": "Clone Repository",
@@ -2797,7 +2813,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#clone-repository",
     "slug": "/usage/agent-toolbox#clone-repository",
-    "objectID": 350
+    "objectID": 352
   },
   {
     "title": "Commit Changes",
@@ -2805,7 +2821,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#commit-changes",
     "slug": "/usage/agent-toolbox#commit-changes",
-    "objectID": 351
+    "objectID": 353
   },
   {
     "title": "Commit History",
@@ -2813,7 +2829,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#commit-history",
     "slug": "/usage/agent-toolbox#commit-history",
-    "objectID": 352
+    "objectID": 354
   },
   {
     "title": "Pull Changes",
@@ -2821,7 +2837,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#pull-changes",
     "slug": "/usage/agent-toolbox#pull-changes",
-    "objectID": 353
+    "objectID": 355
   },
   {
     "title": "Push Changes",
@@ -2829,7 +2845,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#push-changes",
     "slug": "/usage/agent-toolbox#push-changes",
-    "objectID": 354
+    "objectID": 356
   },
   {
     "title": "Git Status",
@@ -2837,7 +2853,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#git-status",
     "slug": "/usage/agent-toolbox#git-status",
-    "objectID": 355
+    "objectID": 357
   },
   {
     "title": "Language Server Protocol (LSP)",
@@ -2845,7 +2861,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#language-server-protocol-lsp",
     "slug": "/usage/agent-toolbox#language-server-protocol-lsp",
-    "objectID": 356
+    "objectID": 358
   },
   {
     "title": "LSP Completions",
@@ -2853,7 +2869,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#lsp-completions",
     "slug": "/usage/agent-toolbox#lsp-completions",
-    "objectID": 357
+    "objectID": 359
   },
   {
     "title": "LSP DidClose",
@@ -2861,7 +2877,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#lsp-didclose",
     "slug": "/usage/agent-toolbox#lsp-didclose",
-    "objectID": 358
+    "objectID": 360
   },
   {
     "title": "LSP DidOpen",
@@ -2869,7 +2885,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#lsp-didopen",
     "slug": "/usage/agent-toolbox#lsp-didopen",
-    "objectID": 359
+    "objectID": 361
   },
   {
     "title": "LSP Document Symbols",
@@ -2877,7 +2893,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#lsp-document-symbols",
     "slug": "/usage/agent-toolbox#lsp-document-symbols",
-    "objectID": 360
+    "objectID": 362
   },
   {
     "title": "Start LSP Server",
@@ -2885,7 +2901,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#start-lsp-server",
     "slug": "/usage/agent-toolbox#start-lsp-server",
-    "objectID": 361
+    "objectID": 363
   },
   {
     "title": "Stop LSP Server",
@@ -2893,7 +2909,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#stop-lsp-server",
     "slug": "/usage/agent-toolbox#stop-lsp-server",
-    "objectID": 362
+    "objectID": 364
   },
   {
     "title": "Workspace Symbols",
@@ -2901,7 +2917,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#workspace-symbols",
     "slug": "/usage/agent-toolbox#workspace-symbols",
-    "objectID": 363
+    "objectID": 365
   },
   {
     "title": "Process Operations",
@@ -2909,7 +2925,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#process-operations",
     "slug": "/usage/agent-toolbox#process-operations",
-    "objectID": 364
+    "objectID": 366
   },
   {
     "title": "Execute Command",
@@ -2917,7 +2933,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#execute-command",
     "slug": "/usage/agent-toolbox#execute-command",
-    "objectID": 365
+    "objectID": 367
   },
   {
     "title": "Project Directory",
@@ -2925,7 +2941,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#project-directory",
     "slug": "/usage/agent-toolbox#project-directory",
-    "objectID": 366
+    "objectID": 368
   },
   {
     "title": "Get Project Directory",
@@ -2933,7 +2949,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/agent-toolbox#get-project-directory",
     "slug": "/usage/agent-toolbox#get-project-directory",
-    "objectID": 367
+    "objectID": 369
   },
   {
     "title": "Builders",
@@ -2941,7 +2957,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/builders",
     "slug": "/usage/builders",
-    "objectID": 368
+    "objectID": 370
   },
   {
     "title": "Automatic",
@@ -2949,7 +2965,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/builders#automatic",
     "slug": "/usage/builders#automatic",
-    "objectID": 369
+    "objectID": 371
   },
   {
     "title": "Dev Container",
@@ -2957,7 +2973,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/builders#dev-container",
     "slug": "/usage/builders#dev-container",
-    "objectID": 370
+    "objectID": 372
   },
   {
     "title": "Custom Image",
@@ -2965,7 +2981,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/builders#custom-image",
     "slug": "/usage/builders#custom-image",
-    "objectID": 371
+    "objectID": 373
   },
   {
     "title": "None",
@@ -2973,7 +2989,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/builders#none",
     "slug": "/usage/builders#none",
-    "objectID": 372
+    "objectID": 374
   },
   {
     "title": "Custom Build Registry",
@@ -2981,7 +2997,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/builders#custom-build-registry",
     "slug": "/usage/builders#custom-build-registry",
-    "objectID": 373
+    "objectID": 375
   },
   {
     "title": "IDEs",
@@ -2989,7 +3005,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide",
     "slug": "/usage/ide",
-    "objectID": 374
+    "objectID": 376
   },
   {
     "title": "Set the Default IDE",
@@ -2997,7 +3013,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#set-the-default-ide",
     "slug": "/usage/ide#set-the-default-ide",
-    "objectID": 375
+    "objectID": 377
   },
   {
     "title": "VS Code",
@@ -3005,7 +3021,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#vs-code",
     "slug": "/usage/ide#vs-code",
-    "objectID": 376
+    "objectID": 378
   },
   {
     "title": "VS Code Browser",
@@ -3013,7 +3029,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#vs-code-browser",
     "slug": "/usage/ide#vs-code-browser",
-    "objectID": 377
+    "objectID": 379
   },
   {
     "title": "VS Code Insiders",
@@ -3021,7 +3037,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#vs-code-insiders",
     "slug": "/usage/ide#vs-code-insiders",
-    "objectID": 378
+    "objectID": 380
   },
   {
     "title": "VSCodium",
@@ -3029,7 +3045,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#vscodium",
     "slug": "/usage/ide#vscodium",
-    "objectID": 379
+    "objectID": 381
   },
   {
     "title": "JetBrains CLion",
@@ -3037,7 +3053,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jetbrains-clion",
     "slug": "/usage/ide#jetbrains-clion",
-    "objectID": 380
+    "objectID": 382
   },
   {
     "title": "JetBrains GoLand",
@@ -3045,7 +3061,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jetbrains-goland",
     "slug": "/usage/ide#jetbrains-goland",
-    "objectID": 381
+    "objectID": 383
   },
   {
     "title": "JetBrains IntelliJ IDEA Ultimate",
@@ -3053,7 +3069,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jetbrains-intellij-idea-ultimate",
     "slug": "/usage/ide#jetbrains-intellij-idea-ultimate",
-    "objectID": 382
+    "objectID": 384
   },
   {
     "title": "JetBrains PhpStorm",
@@ -3061,7 +3077,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jetbrains-phpstorm",
     "slug": "/usage/ide#jetbrains-phpstorm",
-    "objectID": 383
+    "objectID": 385
   },
   {
     "title": "JetBrains PyCharm Professional",
@@ -3069,7 +3085,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jetbrains-pycharm-professional",
     "slug": "/usage/ide#jetbrains-pycharm-professional",
-    "objectID": 384
+    "objectID": 386
   },
   {
     "title": "JetBrains Rider",
@@ -3077,7 +3093,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jetbrains-rider",
     "slug": "/usage/ide#jetbrains-rider",
-    "objectID": 385
+    "objectID": 387
   },
   {
     "title": "JetBrains RubyMine",
@@ -3085,7 +3101,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jetbrains-rubymine",
     "slug": "/usage/ide#jetbrains-rubymine",
-    "objectID": 386
+    "objectID": 388
   },
   {
     "title": "JetBrains WebStorm",
@@ -3093,7 +3109,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jetbrains-webstorm",
     "slug": "/usage/ide#jetbrains-webstorm",
-    "objectID": 387
+    "objectID": 389
   },
   {
     "title": "JetBrains Fleet",
@@ -3101,7 +3117,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jetbrains-fleet",
     "slug": "/usage/ide#jetbrains-fleet",
-    "objectID": 388
+    "objectID": 390
   },
   {
     "title": "Jupyter",
@@ -3109,7 +3125,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#jupyter",
     "slug": "/usage/ide#jupyter",
-    "objectID": 389
+    "objectID": 391
   },
   {
     "title": "Zed",
@@ -3117,7 +3133,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#zed",
     "slug": "/usage/ide#zed",
-    "objectID": 390
+    "objectID": 392
   },
   {
     "title": "Cursor",
@@ -3125,7 +3141,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#cursor",
     "slug": "/usage/ide#cursor",
-    "objectID": 391
+    "objectID": 393
   },
   {
     "title": "Headless",
@@ -3133,7 +3149,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#headless",
     "slug": "/usage/ide#headless",
-    "objectID": 392
+    "objectID": 394
   },
   {
     "title": "Windsurf",
@@ -3141,7 +3157,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#windsurf",
     "slug": "/usage/ide#windsurf",
-    "objectID": 393
+    "objectID": 395
   },
   {
     "title": "Terminal SSH",
@@ -3149,7 +3165,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/ide#terminal-ssh",
     "slug": "/usage/ide#terminal-ssh",
-    "objectID": 394
+    "objectID": 396
   },
   {
     "title": "Prebuilds",
@@ -3157,7 +3173,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/prebuilds",
     "slug": "/usage/prebuilds",
-    "objectID": 395
+    "objectID": 397
   },
   {
     "title": "Add a Prebuild",
@@ -3165,7 +3181,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/prebuilds#add-a-prebuild",
     "slug": "/usage/prebuilds#add-a-prebuild",
-    "objectID": 396
+    "objectID": 398
   },
   {
     "title": "Use a Prebuild",
@@ -3173,7 +3189,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/prebuilds#use-a-prebuild",
     "slug": "/usage/prebuilds#use-a-prebuild",
-    "objectID": 397
+    "objectID": 399
   },
   {
     "title": "List Prebuilds",
@@ -3181,7 +3197,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/prebuilds#list-prebuilds",
     "slug": "/usage/prebuilds#list-prebuilds",
-    "objectID": 398
+    "objectID": 400
   },
   {
     "title": "Prebuilds Information",
@@ -3189,7 +3205,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/prebuilds#prebuilds-information",
     "slug": "/usage/prebuilds#prebuilds-information",
-    "objectID": 399
+    "objectID": 401
   },
   {
     "title": "Update Prebuilds",
@@ -3197,7 +3213,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/prebuilds#update-prebuilds",
     "slug": "/usage/prebuilds#update-prebuilds",
-    "objectID": 400
+    "objectID": 402
   },
   {
     "title": "Delete Prebuilds",
@@ -3205,7 +3221,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/prebuilds#delete-prebuilds",
     "slug": "/usage/prebuilds#delete-prebuilds",
-    "objectID": 401
+    "objectID": 403
   },
   {
     "title": "Runners",
@@ -3213,7 +3229,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/runners",
     "slug": "/usage/runners",
-    "objectID": 402
+    "objectID": 404
   },
   {
     "title": "Create a Runner",
@@ -3221,7 +3237,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/runners#create-a-runner",
     "slug": "/usage/runners#create-a-runner",
-    "objectID": 403
+    "objectID": 405
   },
   {
     "title": "Start / Serve a Runner",
@@ -3229,7 +3245,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/runners#start--serve-a-runner",
     "slug": "/usage/runners#start--serve-a-runner",
-    "objectID": 404
+    "objectID": 406
   },
   {
     "title": "Configure a Runner",
@@ -3237,7 +3253,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/runners#configure-a-runner",
     "slug": "/usage/runners#configure-a-runner",
-    "objectID": 405
+    "objectID": 407
   },
   {
     "title": "Purge a Runner",
@@ -3245,7 +3261,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/runners#purge-a-runner",
     "slug": "/usage/runners#purge-a-runner",
-    "objectID": 406
+    "objectID": 408
   },
   {
     "title": "Restart a Runner",
@@ -3253,7 +3269,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/runners#restart-a-runner",
     "slug": "/usage/runners#restart-a-runner",
-    "objectID": 407
+    "objectID": 409
   },
   {
     "title": "Stop a Runner",
@@ -3261,7 +3277,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/runners#stop-a-runner",
     "slug": "/usage/runners#stop-a-runner",
-    "objectID": 408
+    "objectID": 410
   },
   {
     "title": "Runner Logs",
@@ -3269,7 +3285,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/runners#runner-logs",
     "slug": "/usage/runners#runner-logs",
-    "objectID": 409
+    "objectID": 411
   },
   {
     "title": "Samples",
@@ -3277,7 +3293,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/samples",
     "slug": "/usage/samples",
-    "objectID": 410
+    "objectID": 412
   },
   {
     "title": "Custom Samples",
@@ -3285,7 +3301,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/samples#custom-samples",
     "slug": "/usage/samples#custom-samples",
-    "objectID": 411
+    "objectID": 413
   },
   {
     "title": "Sample Repository",
@@ -3293,7 +3309,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/samples#sample-repository",
     "slug": "/usage/samples#sample-repository",
-    "objectID": 412
+    "objectID": 414
   },
   {
     "title": "Samples Index",
@@ -3301,7 +3317,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/samples#samples-index",
     "slug": "/usage/samples#samples-index",
-    "objectID": 413
+    "objectID": 415
   },
   {
     "title": "Daytona Samples",
@@ -3309,7 +3325,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/samples#daytona-samples",
     "slug": "/usage/samples#daytona-samples",
-    "objectID": 414
+    "objectID": 416
   },
   {
     "title": "Targets",
@@ -3317,7 +3333,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets",
     "slug": "/usage/targets",
-    "objectID": 415
+    "objectID": 417
   },
   {
     "title": "Create a Target",
@@ -3325,7 +3341,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#create-a-target",
     "slug": "/usage/targets#create-a-target",
-    "objectID": 416
+    "objectID": 418
   },
   {
     "title": "Start a Target",
@@ -3333,7 +3349,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#start-a-target",
     "slug": "/usage/targets#start-a-target",
-    "objectID": 417
+    "objectID": 419
   },
   {
     "title": "Stop a Target",
@@ -3341,7 +3357,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#stop-a-target",
     "slug": "/usage/targets#stop-a-target",
-    "objectID": 418
+    "objectID": 420
   },
   {
     "title": "List Targets",
@@ -3349,7 +3365,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#list-targets",
     "slug": "/usage/targets#list-targets",
-    "objectID": 419
+    "objectID": 421
   },
   {
     "title": "Restart a Target",
@@ -3357,7 +3373,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#restart-a-target",
     "slug": "/usage/targets#restart-a-target",
-    "objectID": 420
+    "objectID": 422
   },
   {
     "title": "Delete a Target",
@@ -3365,7 +3381,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#delete-a-target",
     "slug": "/usage/targets#delete-a-target",
-    "objectID": 421
+    "objectID": 423
   },
   {
     "title": "Targets Information",
@@ -3373,7 +3389,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#targets-information",
     "slug": "/usage/targets#targets-information",
-    "objectID": 422
+    "objectID": 424
   },
   {
     "title": "Workspaces:     1",
@@ -3381,7 +3397,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#workspaces-1",
     "slug": "/usage/targets#workspaces-1",
-    "objectID": 423
+    "objectID": 425
   },
   {
     "title": "Set Default Target",
@@ -3389,7 +3405,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#set-default-target",
     "slug": "/usage/targets#set-default-target",
-    "objectID": 424
+    "objectID": 426
   },
   {
     "title": "SSH into a Target",
@@ -3397,7 +3413,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#ssh-into-a-target",
     "slug": "/usage/targets#ssh-into-a-target",
-    "objectID": 425
+    "objectID": 427
   },
   {
     "title": "Target Logs",
@@ -3405,7 +3421,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/targets#target-logs",
     "slug": "/usage/targets#target-logs",
-    "objectID": 426
+    "objectID": 428
   },
   {
     "title": "Workspaces",
@@ -3413,7 +3429,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces",
     "slug": "/usage/workspaces",
-    "objectID": 427
+    "objectID": 429
   },
   {
     "title": "Create a Workspace",
@@ -3421,7 +3437,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#create-a-workspace",
     "slug": "/usage/workspaces#create-a-workspace",
-    "objectID": 428
+    "objectID": 430
   },
   {
     "title": "From a Git Repository",
@@ -3429,7 +3445,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#from-a-git-repository",
     "slug": "/usage/workspaces#from-a-git-repository",
-    "objectID": 429
+    "objectID": 431
   },
   {
     "title": "From an Arbitrary Git URL",
@@ -3437,7 +3453,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#from-an-arbitrary-git-url",
     "slug": "/usage/workspaces#from-an-arbitrary-git-url",
-    "objectID": 430
+    "objectID": 432
   },
   {
     "title": "List Workspaces",
@@ -3445,7 +3461,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#list-workspaces",
     "slug": "/usage/workspaces#list-workspaces",
-    "objectID": 431
+    "objectID": 433
   },
   {
     "title": "Open An Existing Workspace",
@@ -3453,7 +3469,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#open-an-existing-workspace",
     "slug": "/usage/workspaces#open-an-existing-workspace",
-    "objectID": 432
+    "objectID": 434
   },
   {
     "title": "Delete Workspaces",
@@ -3461,7 +3477,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#delete-workspaces",
     "slug": "/usage/workspaces#delete-workspaces",
-    "objectID": 433
+    "objectID": 435
   },
   {
     "title": "Non-Interactively",
@@ -3469,7 +3485,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#non-interactively",
     "slug": "/usage/workspaces#non-interactively",
-    "objectID": 434
+    "objectID": 436
   },
   {
     "title": "Forward Ports from a Workspace",
@@ -3477,7 +3493,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#forward-ports-from-a-workspace",
     "slug": "/usage/workspaces#forward-ports-from-a-workspace",
-    "objectID": 435
+    "objectID": 437
   },
   {
     "title": "Access a Port Locally",
@@ -3485,7 +3501,7 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#access-a-port-locally",
     "slug": "/usage/workspaces#access-a-port-locally",
-    "objectID": 436
+    "objectID": 438
   },
   {
     "title": "Access a Port via Public URL",
@@ -3493,6 +3509,6 @@
     "tag": "Documentation",
     "url": "/docs/usage/workspaces#access-a-port-via-public-url",
     "slug": "/usage/workspaces#access-a-port-via-public-url",
-    "objectID": 437
+    "objectID": 439
   }
 ]

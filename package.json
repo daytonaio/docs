@@ -2,7 +2,7 @@
   "name": "docs",
   "license": "Apache-2.0",
   "type": "module",
-  "version": "0.52.3",
+  "version": "0.52.4",
   "scripts": {
     "postinstall": "is-ci || husky",
     "dev": "astro dev --host",

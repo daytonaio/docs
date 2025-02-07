@@ -3719,6 +3719,7 @@ import Nix from './method/nix.mdx'
 import ScriptPowerShell from './method/script-powershell.mdx'
 import ScriptUnix from './method/script-unix.mdx'
 import Uninstall from './method/uninstall.mdx'
+import UninstallWindows from './method/uninstall-windows.mdx'
 
 Install Daytona on Linux, macOS, and Windows systems.
 Each operating system supports both `x86_64` and `ARM64` architectures.
@@ -3811,7 +3812,14 @@ If you are using Windows Subsystem for Linux (WSL), you can follow the [instruct
 
 ## Uninstallation
 
+<Tabs>
+<TabItem label="Unix" icon="linux">
 <Uninstall />
+</TabItem>
+<TabItem label="Windows" icon="seti:windows">
+<UninstallWindows />
+</TabItem>
+</Tabs>
 
 ---
 title: Telemetry
@@ -4102,9 +4110,9 @@ Daytona SDK provides an option to list files and directories in a Workspace usin
 files = workspace.fs.list_files("/workspace")
 for file in files:
     print(f"Name: {file.name}")
-    print(f"Type: {file.type}")
+    print(f"Is directory: {file.is_dir}")
     print(f"Size: {file.size}")
-    print(f"Modified: {file.modified}")
+    print(f"Modified: {file.mod_time}")
 
 ```
 </TabItem>
@@ -4115,9 +4123,9 @@ const files = await workspace.fs.listFiles("/workspace");
 
 files.forEach(file => {
     console.log(`Name: ${file.name}`);
-    console.log(`Type: ${file.type}`);
+    console.log(`Is directory: ${file.isDir}`);
     console.log(`Size: ${file.size}`);
-    console.log(`Modified: ${file.modified}`);
+    console.log(`Modified: ${file.modTime}`);
 });
 ```
 
@@ -4178,19 +4186,17 @@ workspace.fs.delete_file("/workspace/file.txt")
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Read file content
-const content = await workspace.fs.readFile("/workspace/file.txt");
-
-// Write file content
-await workspace.fs.writeFile("/workspace/file.txt", "Hello, World!");
-
 // Upload a file
-const content = new Blob(["Hello, World!"], { type: "text/plain" });
-await workspace.fs.uploadFile("/workspace/remote_file.txt", content);
+const fileContent = new File(
+    [Buffer.from('Hello, World!')],
+    'data.txt',
+    { type: 'text/plain' }
+);
+await workspace.fs.uploadFile("/workspace/remote_file.txt", fileContent);
 
 // Download a file
-const content = await workspace.fs.downloadFile("/workspace/remote_file.txt");
-// Save content using browser's download API or File System API
+const downloadedFile = await workspace.fs.downloadFile("/workspace/remote_file.txt");
+console.log('File content:', downloadedFile.toString())
 
 // Delete a file
 await workspace.fs.deleteFile("/workspace/file.txt");
@@ -4213,28 +4219,21 @@ Daytona SDK provides an option to set file permissions, get file permissions, an
 # Set file permissions
 workspace.fs.set_file_permissions("/workspace/file.txt", "644")
 
-# Set directory permissions recursively
-
-workspace.fs.set_file_permissions("/workspace/dir", "755", recursive=True)
-
 # Get file permissions
 
-perms = workspace.fs.get_file_permissions("/workspace/file.txt")
-print(f"Permissions: {perms.mode}")
+file_info = workspace.fs.get_file_info("/workspace/file.txt")
+print(f"Permissions: {file_info.permissions}")
 
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Set file permissions
-await workspace.fs.setFilePermissions("/workspace/file.txt", "644");
-
-// Set directory permissions recursively
-await workspace.fs.setFilePermissions("/workspace/dir", "755", { recursive: true });
+await workspace.fs.setFilePermissions("/workspace/file.txt", { mode: "644" });
 
 // Get file permissions
-const perms = await workspace.fs.getFilePermissions("/workspace/file.txt");
-console.log(`Permissions: ${perms.mode}`);
+const fileInfo = await workspace.fs.getFileDetails("/workspace/file.txt");
+console.log(`Permissions: ${fileInfo.permissions}`);
 ```
 
 </TabItem>
@@ -4247,12 +4246,16 @@ Daytona SDK provides an option to search for text in files and replace text in f
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Search for text in files
-results = workspace.fs.search_files(
-    pattern="TODO:",
+# Search for text in files; if a folder is specified, the search is recursive
+results = workspace.fs.find_files(
     path="/workspace/src",
-    pattern="*.py"
+    pattern="text-of-interest"
 )
+for match in results:
+    print(f"Absolute file path: {match.file}")
+    print(f"Line number: {match.line}")
+    print(f"Line content: {match.content}")
+    print("\n")
 
 # Replace text in files
 
@@ -4266,11 +4269,15 @@ workspace.fs.replace_in_files(
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Search for text in files
-const results = await workspace.fs.searchInFiles({
-    pattern: "TODO:",
+// Search for text in files; if a folder is specified, the search is recursive
+const results = await workspace.fs.findFiles({
     path="/workspace/src",
-    pattern: "*.ts"
+    pattern: "text-of-interest"
+});
+results.forEach(match => {
+    console.log('Absolute file path:', match.file)
+    console.log('Line number:', match.line)
+    console.log('Line content:', match.content)
 });
 
 // Replace text in files
@@ -4371,17 +4378,21 @@ Run the following code to create a Daytona Workspace and execute commands:
 ```python
 from daytona_sdk import Daytona, CreateWorkspaceParams
 
+# Initialize the Daytona client
 daytona = Daytona()
 
+# Create the workspace instance
 params = CreateWorkspaceParams(language="python")
-workspace = daytona.create()
+workspace = daytona.create(params)
 
+# Run the code securely inside the workspace
 response = workspace.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
-if response.code != 0:
-    print(f"Error: {response.code} {response.result}")
+if response.exit_code != 0:
+    print(f"Error running code: {response.exit_code} {response.result}")
 else:
     print(response.result)
 
+# Clean up the workspace
 daytona.remove(workspace)
 
 ```
@@ -4392,27 +4403,27 @@ daytona.remove(workspace)
 import { Daytona } from '@daytonaio/sdk'
 
 async function main() {
+  // Initialize the Daytona client
   const daytona = new Daytona()
 
-  //  first, create a workspace
-  const workspace = await daytona.create({
-    language: 'python',
-  })
-
   try {
-    //  now, run some code
-    const result = await workspace.process.codeRun(
-      'print("Hello World! " + str(3 + 4))',
+    // Create the workspace instance
+    const workspace = await daytona.create({
+      language: 'python',
+    })
+    // Run the code securely inside the workspace
+    const response = await workspace.process.codeRun(
+      'print("Sum of 3 and 4 is " + str(3 + 4))',
     )
-    if (result.code !== 0) {
-      console.error('Error running code:', result.code)
+    if (response.exitCode !== 0) {
+      console.error('Error running code:', response.exitCode, response.result)
     } else {
-      console.log(result.result)
+      console.log(response.result)
     }
   } catch (error) {
-    console.error('Error creating workspace:', error)
+    console.error('Workspace flow error:', error)
   } finally {
-    //  cleanup
+    // Clean up the workspace
     await daytona.remove(workspace)
   }
 }
@@ -4525,7 +4536,7 @@ await workspace.git.clone(
 
 ### Repository Status
 
-Daytona SDK provides an option to check the status of Git repositories in Workspaces. You can get the current branch, modified files, staged files, and untracked files using Python and TypeScript.
+Daytona SDK provides an option to check the status of Git repositories in Workspaces. You can get the current branch, modified files, number of commits ahead and behind main branch using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -4533,20 +4544,16 @@ Daytona SDK provides an option to check the status of Git repositories in Worksp
 # Get repository status
 status = workspace.git.status("/workspace/repo")
 print(f"Current branch: {status.current_branch}")
-print(f"Modified files: {status.modified}")
-print(f"Staged files: {status.staged}")
-print(f"Untracked files: {status.untracked}")
-
-# Get current branch
-
-branch = workspace.git.current_branch("/workspace/repo")
-print(f"Current branch: {branch}")
+print(f"Commits ahead: {status.ahead}")
+print(f"Commits behind: {status.behind}")
+for file in status.file_status:
+    print(f"File: {file.name}")
 
 # List branches
 
-branches = workspace.git.list_branches("/workspace/repo")
-for branch in branches:
-    print(f"Branch: {branch.name} {'(current)' if branch.current else ''}")
+response = workspace.git.branches("/workspace/repo")
+for branch in response.branches:
+    print(f"Branch: {branch}")
 
 ```
 </TabItem>
@@ -4555,18 +4562,16 @@ for branch in branches:
 // Get repository status
 const status = await workspace.git.status("/workspace/repo");
 console.log(`Current branch: ${status.currentBranch}`);
-console.log(`Modified files: ${status.modified}`);
-console.log(`Staged files: ${status.staged}`);
-console.log(`Untracked files: ${status.untracked}`);
-
-// Get current branch
-const branch = await workspace.git.currentBranch("/workspace/repo");
-console.log(`Current branch: ${branch}`);
+console.log(`Commits ahead: ${status.ahead}`);
+console.log(`Commits behind: ${status.behind}`);
+status['FileStatus[]'].forEach(file => {
+    console.log(`File: ${file.name}`);
+});
 
 // List branches
-const branches = await workspace.git.listBranches("/workspace/repo");
-branches.forEach(branch => {
-    console.log(`Branch: ${branch.name} ${branch.current ? '(current)' : ''}`);
+const response = await workspace.git.branches("/workspace/repo");
+response.branches.forEach(branch => {
+    console.log(`Branch: ${branch}`);
 });
 ```
 
@@ -4716,6 +4721,79 @@ template: doc
 tableOfContents: false
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
+
+### Quick Start
+
+<Tabs>
+  <TabItem label="Python" icon="seti:python">
+
+  ```bash
+  pip install daytona_sdk
+  ```
+
+  ```python
+  from daytona_sdk import Daytona, DaytonaConfig
+
+  # Define the configuration
+  config = DaytonaConfig(
+    api_key="your-api-key",
+    server_url="your-server-url",
+    target="us"
+  )
+
+  # Initialize the Daytona client
+  daytona = Daytona(config)
+
+  # Create the workspace instance
+  workspace = daytona.create()
+
+  # Run the code securely inside the workspace
+  response = workspace.process.code_run('print("Hello World from code!")')
+  if response.exit_code != 0:
+    print(f"Error: {response.exit_code} {response.result}")
+  else:
+      print(response.result)
+  
+  daytona.remove(workspace)
+  ```
+
+  </TabItem>
+
+  <TabItem label="TypeScript" icon="seti:typescript">
+
+  ```bash
+  npm install @daytonaio/sdk
+  ```
+
+  ```typescript
+  import { Daytona } from '@daytonaio/sdk';
+
+  // Initialize the Daytona client
+  const daytona = new Daytona({
+    apiKey: 'your-api-key',
+    serverUrl: 'your-server-url',
+    target: 'us'
+  });
+
+  // Create the workspace instance
+  const workspace = await daytona.create({
+    language: 'typescript',
+  });
+
+  // Run the code securely inside the workspace
+  const response = await workspace.process.codeRun('console.log("Hello World from code!")')
+  console.log(response.result);
+  ```
+
+  </TabItem>
+</Tabs>
 
 <DocumentList title="About">
   <DocumentListItem
@@ -4862,10 +4940,7 @@ completions = lsp_server.completions(
     path="/workspace/project/main.py",
     position={"line": 10, "character": 15}
 )
-for completion in completions:
-    print(f"Label: {completion.label}")
-    print(f"Kind: {completion.kind}")
-    print(f"Detail: {completion.detail}")
+print(f"Completions: {completions}")
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
@@ -4874,11 +4949,7 @@ const completions = await lspServer.getCompletions({
     path: "/workspace/project/main.ts",
     position: { line: 10, character: 15 }
 })
-completions.forEach(completion => {
-    console.log(`Label: ${completion.label}`)
-    console.log(`Kind: ${completion.kind}`)
-    console.log(`Detail: ${completion.detail}`)
-})
+console.log('Completions:', completions)
 ```
 </TabItem>
 </Tabs>
@@ -4960,53 +5031,59 @@ Daytona SDK provides an option to execute shell commands in Python and TypeScrip
 <TabItem label="Python" icon="seti:python">
 ```python
 # Execute shell command
-response = workspace.process.process_execute_command("ls -la")
+response = workspace.process.exec("ls -la")
 print(response.output)
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Execute shell command
-const response = await workspace.process.processExecuteCommand("ls -la");
+const response = await workspace.process.executeCommand("ls -la");
 console.log(response.output);
 ```
 </TabItem>
 </Tabs>
 
-## Background Processes
+## Sessions (Background Processes)
 
-Daytona SDK provides an option to start, stop, and manage background processes in Workspaces. You can run long-running commands, monitor process status, and list all running processes.
+Daytona SDK provides an option to start, stop, and manage background process sessions in Workspaces. You can run long-running commands, monitor process status, and list all running processes.
 
 ### Managing Long-Running Processes
 
-Daytona SDK provides an option to start and stop background processes in Python and TypeScript. You can run long-running commands and monitor process status.
+Daytona SDK provides an option to start and stop background processes. You can run long-running commands and monitor process status.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Check process status
-status = workspace.process.get_process_status(process_id)
-print(f"Process {process_id} status: {status}")
+# Check session's executed commands
+session = workspace.process.get_session(session_id)
+print(f"Session {process_id}:")
+for command in session.commands:
+    print(f"Command: {command.command}, Exit Code: {command.exit_code}")
 
-# List all running processes
+# List all running sessions
 
-processes = workspace.process.list_processes()
-for process in processes:
-    print(f"PID: {process.id}, Command: {process.command}")
+sessions = workspace.process.list_sessions()
+for session in sessions:
+    print(f"PID: {session.id}, Commands: {session.commands}")
 
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Check process status
-const status = await workspace.process.getProcessStatus(processId);
-console.log(`Process ${processId} status: ${status}`);
+// Check session's executed commands
+const session = await workspace.process.getSession(sessionId);
+console.log(`Session ${sessionId}:`);
+for (const command of session.commands) {
+    console.log(`Command: ${command.command}, Exit Code: ${command.exitCode}`);
+}
 
-// List all running processes
-const processes = await workspace.process.listProcesses();
-processes.forEach(process => {
-    console.log(`PID: ${process.id}, Command: ${process.command}`);
-});
+// List all running sessions
+const sessions = await workspace.process.listSessions();
+for (const session of sessions) {
+    console.log(`PID: ${session.id}, Commands: ${session.commands}`);
+}
+
 ```
 
 </TabItem>
@@ -5018,29 +5095,29 @@ Daytona SDK provides best practices for process and code execution in Workspaces
 
 1. **Resource Management**
 
-- Use background processes for long-running operations
-- Clean up processes after execution
-- Handle process exceptions properly
+- Use sessions for long-running operations
+- Clean up sessions after execution
+- Handle session exceptions properly
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
    ```python
-   # Python - Clean up processes
+   # Python - Clean up session
    try:
-       process_id = workspace.process.start_background_process("long-running-cmd")
+       session_id = workspace.process.create_session("long-running-cmd")
        # Do work...
    finally:
-       workspace.process.stop_process(process_id)
+       workspace.process.delete_session(session_id)
    ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
    ```typescript
    // TypeScript - Clean up processes
    try {
-       const processId = await workspace.process.startBackgroundProcess("long-running-cmd");
+       const sessionId = await workspace.process.createSession("long-running-cmd");
        // Do work...
    } finally {
-       await workspace.process.stopProcess(processId);
+       await workspace.process.deleteSession(processId);
    }
    ```
 </TabItem>
@@ -5133,11 +5210,13 @@ workspace = daytona.create()
 
 # Create a workspace with specific language
 
-workspace = daytona.create(language="python")
+params = CreateWorkspaceParams(language="python")
+workspace = daytona.create(params)
 
 # Create a workspace with custom ID
 
-workspace = daytona.create(id="my-workspace")
+params = CreateWorkspaceParams(id="my-workspace")
+workspace = daytona.create(params)
 
 ```
 </TabItem>
