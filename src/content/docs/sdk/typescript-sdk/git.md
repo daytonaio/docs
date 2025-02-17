@@ -3,306 +3,221 @@ title: Git
 description: Git
 ---
 
-# Class: Git
+## Git
 
-Defined in: [Git.ts:13](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L13)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L13)
 
 Provides Git operations within a workspace
  Git
 
-## Constructors
+### Constructors
 
-### new Git()
+#### new Git()
 
 ```ts
 new Git(
-   workspace, 
-   toolboxApi, 
-   instance): Git
+   workspace: Workspace, 
+   toolboxApi: ToolboxApi, 
+   instance: Workspace): Git
 ```
 
-Defined in: [Git.ts:14](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L14)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L14)
 
-#### Parameters
+##### Parameters
 
-##### workspace
+| Parameter | Type |
+| ------ | ------ |
+| `workspace` | `Workspace` |
+| `toolboxApi` | `ToolboxApi` |
+| `instance` | `Workspace` |
 
-[`Workspace`](Class.Workspace.md)
+##### Returns
 
-##### toolboxApi
+[`Git`](#git)
 
-`ToolboxApi`
+### Methods
 
-##### instance
-
-`Workspace`
-
-#### Returns
-
-[`Git`](Class.Git.md)
-
-## Methods
-
-### add()
+#### add()
 
 ```ts
-add(path, files): Promise<void>
+add(path: string, files: string[]): Promise<void>
 ```
 
-Defined in: [Git.ts:26](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L26)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L26)
 
 Stages files for commit
 
-#### Parameters
+##### Parameters
 
-##### path
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Repository path |
+| `files` | `string`[] | Array of file paths to stage |
 
-`string`
+##### Returns
 
-Repository path
-
-##### files
-
-`string`[]
-
-Array of file paths to stage
-
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### branches()
+#### branches()
 
 ```ts
-branches(path): Promise<ListBranchResponse>
+branches(path: string): Promise<ListBranchResponse>
 ```
 
-Defined in: [Git.ts:38](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L38)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L38)
 
 Lists branches in the repository
 
-#### Parameters
+##### Parameters
 
-##### path
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Repository path |
 
-`string`
+##### Returns
 
-Repository path
-
-#### Returns
-
-`Promise`\<`ListBranchResponse`\>
+`Promise<ListBranchResponse>`
 
 List of branches
 
 ***
 
-### clone()
+#### clone()
 
 ```ts
 clone(
-   url, 
-   path, 
-   branch?, 
-   commitId?, 
-   username?, 
-password?): Promise<void>
+   url: string, 
+   path: string, 
+   branch?: string, 
+   commitId?: string, 
+   username?: string, 
+password?: string): Promise<void>
 ```
 
-Defined in: [Git.ts:53](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L53)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L53)
 
 Clones a Git repository
 
-#### Parameters
+##### Parameters
 
-##### url
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `url` | `string` | Repository URL |
+| `path` | `string` | Destination path |
+| `branch?` | `string` | Branch to clone |
+| `commitId?` | `string` | Specific commit to clone |
+| `username?` | `string` | Git username for authentication |
+| `password?` | `string` | Git password/token for authentication |
 
-`string`
+##### Returns
 
-Repository URL
-
-##### path
-
-`string`
-
-Destination path
-
-##### branch?
-
-`string`
-
-Branch to clone
-
-##### commitId?
-
-`string`
-
-Specific commit to clone
-
-##### username?
-
-`string`
-
-Git username for authentication
-
-##### password?
-
-`string`
-
-Git password/token for authentication
-
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### commit()
+#### commit()
 
 ```ts
 commit(
-   path, 
-   message, 
-   author, 
-email): Promise<void>
+   path: string, 
+   message: string, 
+   author: string, 
+email: string): Promise<void>
 ```
 
-Defined in: [Git.ts:80](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L80)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L80)
 
 Creates a new commit with staged changes
 
-#### Parameters
+##### Parameters
 
-##### path
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Repository path |
+| `message` | `string` | Commit message |
+| `author` | `string` | Author name |
+| `email` | `string` | Author email |
 
-`string`
+##### Returns
 
-Repository path
-
-##### message
-
-`string`
-
-Commit message
-
-##### author
-
-`string`
-
-Author name
-
-##### email
-
-`string`
-
-Author email
-
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### pull()
+#### pull()
 
 ```ts
 pull(
-   path, 
-   username?, 
-password?): Promise<void>
+   path: string, 
+   username?: string, 
+password?: string): Promise<void>
 ```
 
-Defined in: [Git.ts:120](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L120)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L120)
 
 Pulls changes from remote repository
 
-#### Parameters
+##### Parameters
 
-##### path
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Repository path |
+| `username?` | `string` | Git username for authentication |
+| `password?` | `string` | Git password/token for authentication |
 
-`string`
+##### Returns
 
-Repository path
-
-##### username?
-
-`string`
-
-Git username for authentication
-
-##### password?
-
-`string`
-
-Git password/token for authentication
-
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### push()
+#### push()
 
 ```ts
 push(
-   path, 
-   username?, 
-password?): Promise<void>
+   path: string, 
+   username?: string, 
+password?: string): Promise<void>
 ```
 
-Defined in: [Git.ts:101](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L101)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L101)
 
 Pushes local commits to remote repository
 
-#### Parameters
+##### Parameters
 
-##### path
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Repository path |
+| `username?` | `string` | Git username for authentication |
+| `password?` | `string` | Git password/token for authentication |
 
-`string`
+##### Returns
 
-Repository path
-
-##### username?
-
-`string`
-
-Git username for authentication
-
-##### password?
-
-`string`
-
-Git password/token for authentication
-
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### status()
+#### status()
 
 ```ts
-status(path): Promise<GitStatus>
+status(path: string): Promise<GitStatus>
 ```
 
-Defined in: [Git.ts:137](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L137)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Git.ts#L137)
 
 Gets the current Git repository status
 
-#### Parameters
+##### Parameters
 
-##### path
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Repository path |
 
-`string`
+##### Returns
 
-Repository path
-
-#### Returns
-
-`Promise`\<`GitStatus`\>
+`Promise<GitStatus>`
 
 Repository status information

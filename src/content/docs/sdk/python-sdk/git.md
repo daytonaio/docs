@@ -20,7 +20,7 @@ committing changes, pushing/pulling, and checking repository status.
 class Git()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/git.py#L24)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/git.py#L24)
 
 Provides Git operations within a workspace.
 
@@ -38,7 +38,7 @@ Provides Git operations within a workspace.
 def add(path: str, files: List[str]) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/git.py#L43)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/git.py#L43)
 
 Stages files for commit.
 
@@ -55,7 +55,7 @@ Stages files for commit.
 def branches(path: str) -> ListBranchResponse
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/git.py#L58)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/git.py#L58)
 
 Lists branches in the repository.
 
@@ -81,7 +81,7 @@ def clone(url: str,
           password: Optional[str] = None) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/git.py#L72)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/git.py#L72)
 
 Clones a Git repository.
 
@@ -102,7 +102,7 @@ Clones a Git repository.
 def commit(path: str, message: str, author: str, email: str) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/git.py#L103)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/git.py#L103)
 
 Commits staged changes.
 
@@ -123,7 +123,7 @@ def push(path: str,
          password: Optional[str] = None) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/git.py#L122)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/git.py#L122)
 
 Pushes local commits to the remote repository.
 
@@ -143,7 +143,7 @@ def pull(path: str,
          password: Optional[str] = None) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/git.py#L141)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/git.py#L141)
 
 Pulls changes from the remote repository.
 
@@ -161,7 +161,7 @@ Pulls changes from the remote repository.
 def status(path: str) -> GitStatus
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/git.py#L160)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/git.py#L160)
 
 Gets the current Git repository status.
 

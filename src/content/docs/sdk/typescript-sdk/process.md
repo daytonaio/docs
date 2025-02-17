@@ -3,293 +3,250 @@ title: Process
 description: Process
 ---
 
-# Class: Process
+## Process
 
-Defined in: [Process.ts:16](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L16)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L16)
 
 Handles process and code execution within a workspace
  Process
 
-## Constructors
+### Constructors
 
-### new Process()
+#### new Process()
 
 ```ts
 new Process(
-   codeToolbox, 
-   toolboxApi, 
-   instance): Process
+   codeToolbox: WorkspaceCodeToolbox, 
+   toolboxApi: ToolboxApi, 
+   instance: Workspace): Process
 ```
 
-Defined in: [Process.ts:17](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L17)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L17)
 
-#### Parameters
+##### Parameters
 
-##### codeToolbox
+| Parameter | Type |
+| ------ | ------ |
+| `codeToolbox` | `WorkspaceCodeToolbox` |
+| `toolboxApi` | `ToolboxApi` |
+| `instance` | `Workspace` |
 
-[`WorkspaceCodeToolbox`](README.md#workspacecodetoolbox)
+##### Returns
 
-##### toolboxApi
+[`Process`](#process)
 
-`ToolboxApi`
+### Methods
 
-##### instance
-
-`Workspace`
-
-#### Returns
-
-[`Process`](Class.Process.md)
-
-## Methods
-
-### codeRun()
+#### codeRun()
 
 ```ts
-codeRun(code): Promise<ExecuteResponse>
+codeRun(code: string): Promise<ExecuteResponse>
 ```
 
-Defined in: [Process.ts:47](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L47)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L47)
 
 Executes code in the workspace using the appropriate language runtime
 
-#### Parameters
+##### Parameters
 
-##### code
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `code` | `string` | Code to execute |
 
-`string`
+##### Returns
 
-Code to execute
-
-#### Returns
-
-`Promise`\<`ExecuteResponse`\>
+`Promise<ExecuteResponse>`
 
 Code execution results
 
 ***
 
-### createSession()
+#### createSession()
 
 ```ts
-createSession(sessionId): Promise<void>
+createSession(sessionId: string): Promise<void>
 ```
 
-Defined in: [Process.ts:62](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L62)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L62)
 
 Creates a new exec session in the workspace
 
-#### Parameters
+##### Parameters
 
-##### sessionId
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | `string` | Unique identifier for the session |
 
-`string`
+##### Returns
 
-Unique identifier for the session
-
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 Code execution results
 
 ***
 
-### deleteSession()
+#### deleteSession()
 
 ```ts
-deleteSession(sessionId): Promise<void>
+deleteSession(sessionId: string): Promise<void>
 ```
 
-Defined in: [Process.ts:124](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L124)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L124)
 
 Deletes a session in the workspace
 
-#### Parameters
+##### Parameters
 
-##### sessionId
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | `string` | Unique identifier for the session |
 
-`string`
+##### Returns
 
-Unique identifier for the session
-
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### executeCommand()
+#### executeCommand()
 
 ```ts
 executeCommand(
-   command, 
-   cwd?, 
-timeout?): Promise<ExecuteResponse>
+   command: string, 
+   cwd?: string, 
+timeout?: number): Promise<ExecuteResponse>
 ```
 
-Defined in: [Process.ts:28](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L28)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L28)
 
 Executes a shell command in the workspace
 
-#### Parameters
+##### Parameters
 
-##### command
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `command` | `string` | Command to execute |
+| `cwd?` | `string` | - |
+| `timeout?` | `number` | - |
 
-`string`
+##### Returns
 
-Command to execute
-
-##### cwd?
-
-`string`
-
-##### timeout?
-
-`number`
-
-#### Returns
-
-`Promise`\<`ExecuteResponse`\>
+`Promise<ExecuteResponse>`
 
 Command execution results
 
 ***
 
-### executeSessionCommand()
+#### executeSessionCommand()
 
 ```ts
-executeSessionCommand(sessionId, req): Promise<SessionExecuteResponse>
+executeSessionCommand(sessionId: string, req: SessionExecuteRequest): Promise<SessionExecuteResponse>
 ```
 
-Defined in: [Process.ts:74](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L74)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L74)
 
 Executes a command in the session
 
-#### Parameters
+##### Parameters
 
-##### sessionId
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | `string` | Unique identifier for the session |
+| `req` | `SessionExecuteRequest` | Command to execute and async flag |
 
-`string`
+##### Returns
 
-Unique identifier for the session
-
-##### req
-
-`SessionExecuteRequest`
-
-Command to execute and async flag
-
-#### Returns
-
-`Promise`\<`SessionExecuteResponse`\>
+`Promise<SessionExecuteResponse>`
 
 Command execution results
 
 ***
 
-### getSession()
+#### getSession()
 
 ```ts
-getSession(sessionId): Promise<Session>
+getSession(sessionId: string): Promise<Session>
 ```
 
-Defined in: [Process.ts:95](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L95)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L95)
 
 Gets the session
 
-#### Parameters
+##### Parameters
 
-##### sessionId
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | `string` | Unique identifier for the session |
 
-`string`
+##### Returns
 
-Unique identifier for the session
-
-#### Returns
-
-`Promise`\<`Session`\>
+`Promise<Session>`
 
 Session
 
 ***
 
-### getSessionCommand()
+#### getSessionCommand()
 
 ```ts
-getSessionCommand(sessionId, commandId): Promise<Command>
+getSessionCommand(sessionId: string, commandId: string): Promise<Command>
 ```
 
-Defined in: [Process.ts:106](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L106)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L106)
 
 Gets the session command
 
-#### Parameters
+##### Parameters
 
-##### sessionId
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | `string` | Unique identifier for the session |
+| `commandId` | `string` | Unique identifier for the command |
 
-`string`
+##### Returns
 
-Unique identifier for the session
-
-##### commandId
-
-`string`
-
-Unique identifier for the command
-
-#### Returns
-
-`Promise`\<`Command`\>
+`Promise<Command>`
 
 Session command
 
 ***
 
-### getSessionCommandLogs()
+#### getSessionCommandLogs()
 
 ```ts
-getSessionCommandLogs(sessionId, commandId): Promise<string>
+getSessionCommandLogs(sessionId: string, commandId: string): Promise<string>
 ```
 
-Defined in: [Process.ts:85](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L85)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L85)
 
 Gets the logs for a command in the session
 
-#### Parameters
+##### Parameters
 
-##### sessionId
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | `string` | Unique identifier for the session |
+| `commandId` | `string` | Unique identifier for the command |
 
-`string`
+##### Returns
 
-Unique identifier for the session
-
-##### commandId
-
-`string`
-
-Unique identifier for the command
-
-#### Returns
-
-`Promise`\<`string`\>
+`Promise<string>`
 
 Command logs
 
 ***
 
-### listSessions()
+#### listSessions()
 
 ```ts
 listSessions(): Promise<Session[]>
 ```
 
-Defined in: [Process.ts:115](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L115)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Process.ts#L115)
 
 Lists all sessions in the workspace
 
-#### Returns
+##### Returns
 
-`Promise`\<`Session`[]\>
+`Promise<Session[]>`
 
 List of sessions

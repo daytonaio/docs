@@ -21,7 +21,7 @@ Git, process execution, and LSP functionality.
 class WorkspaceResources()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L21)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L21)
 
 Resources allocated to a workspace.
 
@@ -34,7 +34,7 @@ Resources allocated to a workspace.
 class WorkspaceInfo()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L29)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L29)
 
 Structured information about a workspace.
 
@@ -46,7 +46,7 @@ Structured information about a workspace.
 class Workspace()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L45)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L45)
 
 Represents a Daytona workspace instance.
 
@@ -76,7 +76,7 @@ and LSP functionality.
 def info() -> WorkspaceInfo
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L83)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L83)
 
 Get structured information about the workspace.
 
@@ -92,7 +92,7 @@ Get structured information about the workspace.
 def get_workspace_root_dir() -> str
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L127)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L127)
 
 Gets the root directory path of the workspace.
 
@@ -109,7 +109,7 @@ def create_lsp_server(language_id: LspLanguageId,
                       path_to_project: str) -> LspServer
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L138)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L138)
 
 Creates a new Language Server Protocol (LSP) server instance.
 
@@ -131,7 +131,7 @@ Creates a new Language Server Protocol (LSP) server instance.
 def set_labels(labels: Dict[str, str]) -> Dict[str, str]
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L152)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L152)
 
 Sets labels for the workspace.
 
@@ -158,7 +158,7 @@ Sets labels for the workspace.
 def start(timeout: Optional[float] = None)
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L170)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L170)
 
 Starts the workspace.
 
@@ -180,7 +180,7 @@ Starts the workspace.
 def stop()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L184)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L184)
 
 Stops the workspace.
 
@@ -192,7 +192,7 @@ Stops the workspace.
 def wait_for_workspace_start(timeout: float = 60) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L189)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L189)
 
 Wait for workspace to reach 'started' state.
 
@@ -214,7 +214,7 @@ Wait for workspace to reach 'started' state.
 def wait_for_workspace_stop() -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L223)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L223)
 
 Wait for workspace to reach 'stopped' state.
 
@@ -230,7 +230,7 @@ Wait for workspace to reach 'stopped' state.
 def set_autostop_interval(interval: int) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/workspace.py#L254)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/workspace.py#L254)
 
 Sets the auto-stop interval for the workspace.
 

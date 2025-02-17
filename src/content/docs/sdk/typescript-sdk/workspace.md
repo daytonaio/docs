@@ -3,177 +3,76 @@ title: Workspace
 description: Workspace
 ---
 
-# Class: Workspace
+## Workspace
 
-Defined in: [Workspace.ts:70](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L70)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L70)
 
 Represents a Daytona workspace instance with file system, git, and process management capabilities
  Workspace
 
-## Constructors
+### Constructors
 
-### new Workspace()
+#### new Workspace()
 
 ```ts
 new Workspace(
-   id, 
-   instance, 
-   workspaceApi, 
-   toolboxApi, 
-   codeToolbox): Workspace
+   id: string, 
+   instance: Workspace, 
+   workspaceApi: WorkspaceApi, 
+   toolboxApi: ToolboxApi, 
+   codeToolbox: WorkspaceCodeToolbox): Workspace
 ```
 
-Defined in: [Workspace.ts:87](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L87)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L87)
 
 Creates a new workspace instance
 
-#### Parameters
+##### Parameters
 
-##### id
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | Unique identifier for the workspace |
+| `instance` | `Workspace` | The underlying workspace instance |
+| `workspaceApi` | `WorkspaceApi` | API client for workspace operations |
+| `toolboxApi` | `ToolboxApi` | API client for toolbox operations |
+| `codeToolbox` | [`WorkspaceCodeToolbox`](#workspacecodetoolbox) | Language-specific toolbox implementation |
 
-`string`
+##### Returns
 
-Unique identifier for the workspace
+[`Workspace`](#workspace)
 
-##### instance
+### Properties
 
-`Workspace`
+| Property | Modifier | Type | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="fs-1"></a> `fs` | `readonly` | `FileSystem` | File system operations for the workspace |
+| <a id="git-1"></a> `git` | `readonly` | `Git` | Git operations for the workspace |
+| <a id="id-3"></a> `id` | `readonly` | `string` | Unique identifier for the workspace |
+| <a id="instance-3"></a> `instance` | `readonly` | `Workspace` | The underlying workspace instance |
+| <a id="process-1"></a> `process` | `readonly` | `Process` | Process and code execution operations |
+| <a id="toolboxapi-3"></a> `toolboxApi` | `readonly` | `ToolboxApi` | API client for toolbox operations |
+| <a id="workspaceapi-3"></a> `workspaceApi` | `readonly` | `WorkspaceApi` | API client for workspace operations |
 
-The underlying workspace instance
+### Methods
 
-##### workspaceApi
-
-`WorkspaceApi`
-
-API client for workspace operations
-
-##### toolboxApi
-
-`ToolboxApi`
-
-API client for toolbox operations
-
-##### codeToolbox
-
-[`WorkspaceCodeToolbox`](README.md#workspacecodetoolbox)
-
-Language-specific toolbox implementation
-
-#### Returns
-
-[`Workspace`](Class.Workspace.md)
-
-## Properties
-
-### fs
+#### createLspServer()
 
 ```ts
-readonly fs: FileSystem;
+createLspServer(languageId: "typescript", pathToProject: string): LspServer
 ```
 
-Defined in: [Workspace.ts:72](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L72)
-
-File system operations for the workspace
-
-***
-
-### git
-
-```ts
-readonly git: Git;
-```
-
-Defined in: [Workspace.ts:74](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L74)
-
-Git operations for the workspace
-
-***
-
-### id
-
-```ts
-readonly id: string;
-```
-
-Defined in: [Workspace.ts:88](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L88)
-
-Unique identifier for the workspace
-
-***
-
-### instance
-
-```ts
-readonly instance: Workspace;
-```
-
-Defined in: [Workspace.ts:89](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L89)
-
-The underlying workspace instance
-
-***
-
-### process
-
-```ts
-readonly process: Process;
-```
-
-Defined in: [Workspace.ts:76](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L76)
-
-Process and code execution operations
-
-***
-
-### toolboxApi
-
-```ts
-readonly toolboxApi: ToolboxApi;
-```
-
-Defined in: [Workspace.ts:91](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L91)
-
-API client for toolbox operations
-
-***
-
-### workspaceApi
-
-```ts
-readonly workspaceApi: WorkspaceApi;
-```
-
-Defined in: [Workspace.ts:90](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L90)
-
-API client for workspace operations
-
-## Methods
-
-### createLspServer()
-
-```ts
-createLspServer(languageId, pathToProject): LspServer
-```
-
-Defined in: [Workspace.ts:116](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L116)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L116)
 
 Creates a new Language Server Protocol (LSP) server instance
 
-#### Parameters
+##### Parameters
 
-##### languageId
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `languageId` | `"typescript"` | The language server type |
+| `pathToProject` | `string` | Path to the project root |
 
-`"typescript"`
-
-The language server type
-
-##### pathToProject
-
-`string`
-
-Path to the project root
-
-#### Returns
+##### Returns
 
 `LspServer`
 
@@ -181,176 +80,248 @@ A new LSP server instance
 
 ***
 
-### delete()
+#### delete()
 
 ```ts
 delete(): Promise<void>
 ```
 
-Defined in: [Workspace.ts:161](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L161)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L161)
 
 Deletes the workspace
 
-#### Returns
+##### Returns
 
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### getWorkspaceRootDir()
+#### getWorkspaceRootDir()
 
 ```ts
 getWorkspaceRootDir(): Promise<undefined | string>
 ```
 
-Defined in: [Workspace.ts:103](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L103)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L103)
 
 Gets the root directory path of the workspace
 
-#### Returns
+##### Returns
 
-`Promise`\<`undefined` \| `string`\>
+`Promise<undefined | string>`
 
 The absolute path to the workspace root
 
 ***
 
-### info()
+#### info()
 
 ```ts
 info(): Promise<WorkspaceInfo>
 ```
 
-Defined in: [Workspace.ts:218](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L218)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L218)
 
 Get structured information about the workspace
 
-#### Returns
+##### Returns
 
-`Promise`\<`WorkspaceInfo`\>
+`Promise<[WorkspaceInfo](#workspaceinfo)>`
 
 Structured workspace information
 
 ***
 
-### setAutostopInterval()
+#### setAutostopInterval()
 
 ```ts
-setAutostopInterval(interval): Promise<void>
+setAutostopInterval(interval: number): Promise<void>
 ```
 
-Defined in: [Workspace.ts:256](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L256)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L256)
 
 Sets the auto-stop interval for the workspace
 
-#### Parameters
+##### Parameters
 
-##### interval
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `interval` | `number` | Number of minutes after which the workspace will automatically stop (must be an integer). Set to 0 to disable auto-stop. |
 
-`number`
+##### Returns
 
-Number of minutes after which the workspace will automatically stop (must be an integer). Set to 0 to disable auto-stop.
+`Promise<void>`
 
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Throws
+##### Throws
 
 If interval is negative
 
 ***
 
-### setLabels()
+#### setLabels()
 
 ```ts
-setLabels(labels): Promise<void>
+setLabels(labels: Record<string, string>): Promise<void>
 ```
 
-Defined in: [Workspace.ts:132](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L132)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L132)
 
 Sets labels for the workspace
 
-#### Parameters
+##### Parameters
 
-##### labels
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `labels` | `Record`\<`string`, `string`\> | The labels to set |
 
-`Record`\<`string`, `string`\>
+##### Returns
 
-The labels to set
-
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### start()
+#### start()
 
 ```ts
-start(timeout?): Promise<void>
+start(timeout?: number): Promise<void>
 ```
 
-Defined in: [Workspace.ts:140](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L140)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L140)
 
 Starts the workspace
 
-#### Parameters
+##### Parameters
 
-##### timeout?
+| Parameter | Type |
+| ------ | ------ |
+| `timeout?` | `number` |
 
-`number`
+##### Returns
 
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### stop()
+#### stop()
 
 ```ts
 stop(): Promise<void>
 ```
 
-Defined in: [Workspace.ts:152](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L152)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L152)
 
 Stops the workspace
 
-#### Returns
+##### Returns
 
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### waitUntilStarted()
+#### waitUntilStarted()
 
 ```ts
-waitUntilStarted(timeout): Promise<void>
+waitUntilStarted(timeout: number): Promise<void>
 ```
 
-Defined in: [Workspace.ts:165](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L165)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L165)
 
-#### Parameters
+##### Parameters
 
-##### timeout
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `timeout` | `number` | `60` |
 
-`number` = `60`
+##### Returns
 
-#### Returns
-
-`Promise`\<`void`\>
+`Promise<void>`
 
 ***
 
-### waitUntilStopped()
+#### waitUntilStopped()
 
 ```ts
 waitUntilStopped(): Promise<void>
 ```
 
-Defined in: [Workspace.ts:191](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L191)
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L191)
 
-#### Returns
+##### Returns
 
-`Promise`\<`void`\>
+`Promise<void>`
+
+***
+
+## WorkspaceCodeToolbox
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L61)
+
+Interface defining methods that a code toolbox must implement
+ WorkspaceCodeToolbox
+
+### Methods
+
+#### getRunCommand()
+
+```ts
+getRunCommand(code: string): string
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L63)
+
+Generates a command to run the provided code
+
+##### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `code` | `string` |
+
+##### Returns
+
+`string`
+
+***
+
+## WorkspaceInfo
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L28)
+
+Structured information about a workspace
+ WorkspaceInfo
+
+### Properties
+
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="env-1"></a> `env` | `Record`\<`string`, `string`\> | Environment variables |
+| <a id="errorreason-1"></a> `errorReason` | `null` \| `string` | Error reason if any |
+| <a id="id-5"></a> `id` | `string` | Unique identifier |
+| <a id="image-1"></a> `image` | `string` | Docker image |
+| <a id="labels-3"></a> `labels` | `Record`\<`string`, `string`\> | Workspace labels |
+| <a id="name-1"></a> `name` | `string` | Workspace name |
+| <a id="public-1"></a> `public` | `boolean` | Public access flag |
+| <a id="resources-1"></a> `resources` | [`WorkspaceResources`](#workspaceresources) | Resource allocations |
+| <a id="snapshotstate-1"></a> `snapshotState` | `null` \| `string` | Snapshot state |
+| <a id="snapshotstatecreatedat-1"></a> `snapshotStateCreatedAt` | `null` \| `Date` | Snapshot state creation timestamp |
+| <a id="state-1"></a> `state` | `string` | Current state |
+| <a id="target-1"></a> `target` | `string` | Target location |
+| <a id="user-1"></a> `user` | `string` | OS user |
+
+***
+
+## WorkspaceResources
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/typescript/src/Workspace.ts#L13)
+
+Resources allocated to a workspace
+ WorkspaceResources
+
+### Properties
+
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="cpu-1"></a> `cpu` | `string` | CPU allocation |
+| <a id="disk-1"></a> `disk` | `string` | Disk allocation |
+| <a id="gpu-1"></a> `gpu` | `null` \| `string` | GPU allocation |
+| <a id="memory-1"></a> `memory` | `string` | Memory allocation |

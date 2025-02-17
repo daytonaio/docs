@@ -20,7 +20,7 @@ completions, symbols, and diagnostics.
 class Position()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/lsp_server.py#L22)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/lsp_server.py#L22)
 
 Represents a position in a text document.
 
@@ -37,7 +37,7 @@ Represents a position in a text document.
 class LspServer()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/lsp_server.py#L34)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/lsp_server.py#L34)
 
 Provides Language Server Protocol functionality.
 
@@ -56,7 +56,7 @@ Provides Language Server Protocol functionality.
 def start() -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/lsp_server.py#L56)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/lsp_server.py#L56)
 
 Starts the language server.
 
@@ -68,7 +68,7 @@ Starts the language server.
 def stop() -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/lsp_server.py#L66)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/lsp_server.py#L66)
 
 Stops the language server.
 
@@ -82,7 +82,7 @@ Should be called when the LSP server is no longer needed to free up resources.
 def did_open(path: str) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/lsp_server.py#L79)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/lsp_server.py#L79)
 
 Notifies the language server that a file has been opened.
 
@@ -101,7 +101,7 @@ Notifies the language server that a file has been opened.
 def did_close(path: str) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/lsp_server.py#L97)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/lsp_server.py#L97)
 
 Notifies the language server that a file has been closed.
 
@@ -120,7 +120,7 @@ Notifies the language server that a file has been closed.
 def document_symbols(path: str) -> List[LspSymbol]
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/lsp_server.py#L115)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/lsp_server.py#L115)
 
 Gets symbol information from a document.
 
@@ -141,7 +141,7 @@ Gets symbol information from a document.
 def workspace_symbols(query: str) -> List[LspSymbol]
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/lsp_server.py#L131)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/lsp_server.py#L131)
 
 Searches for symbols across the workspace.
 
@@ -162,7 +162,7 @@ Searches for symbols across the workspace.
 def completions(path: str, position: Position) -> CompletionList
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/31cb5075e4893dc9df74a5a3874922d510ba9594/packages/python/src/daytona_sdk/lsp_server.py#L147)
+[[view_source]](https://github.com/daytonaio/sdk/blob/978fab9bfe9d661d8e554dbccb350747c2bb4782/packages/python/src/daytona_sdk/lsp_server.py#L147)
 
 Gets completion suggestions at a position in a file.
 
