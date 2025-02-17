@@ -41,6 +41,7 @@
   "forwardPorts": [
     4321
   ],
+  "appPort": ["4321:4321"],
   "workspaceFolder": "/workspaces/docs",
   "onCreateCommand": "sudo cp ${containerWorkspaceFolder}/.devcontainer/welcome-message.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
   "postCreateCommand": "yarn install",
