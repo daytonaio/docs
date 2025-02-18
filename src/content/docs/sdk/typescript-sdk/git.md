@@ -33,7 +33,7 @@ new Git(
 
 ##### Returns
 
-[`Git`](#git)
+`Git`
 
 ### Methods
 
@@ -52,7 +52,7 @@ Stages files for commit
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | Repository path |
-| `files` | `string`[] | Array of file paths to stage |
+| `files` | `string[]` | Array of file paths to stage |
 
 ##### Returns
 

@@ -33,7 +33,7 @@ new Process(
 
 ##### Returns
 
-[`Process`](#process)
+`Process`
 
 ### Methods
 

@@ -35,7 +35,7 @@ new LspServer(
 
 ##### Returns
 
-[`LspServer`](#lspserver)
+`LspServer`
 
 ### Methods
 
@@ -54,7 +54,7 @@ Gets code completion suggestions
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | Path to the file |
-| `position` | [`Position`](#position-2) | Cursor position |
+| `position` | `Position` | Cursor position |
 
 ##### Returns
 
@@ -199,8 +199,8 @@ Position in a text document
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
-| <a id="character-1"></a> `character` | `number` | Zero-based character offset |
-| <a id="line-1"></a> `line` | `number` | Zero-based line number |
+| `character` | `number` | Zero-based character offset |
+| `line` | `number` | Zero-based line number |
 
 ***
 

@@ -29,7 +29,7 @@ new FileSystem(instance: Workspace, toolboxApi: ToolboxApi): FileSystem
 
 ##### Returns
 
-[`FileSystem`](#filesystem)
+`FileSystem`
 
 ### Methods
 
@@ -215,7 +215,7 @@ Replaces text in multiple files
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `files` | `string`[] | Array of file paths |
+| `files` | `string[]` | Array of file paths |
 | `pattern` | `string` | Pattern to replace |
 | `newValue` | `string` | Replacement value |
 

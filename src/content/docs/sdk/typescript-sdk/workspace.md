@@ -35,23 +35,23 @@ Creates a new workspace instance
 | `instance` | `Workspace` | The underlying workspace instance |
 | `workspaceApi` | `WorkspaceApi` | API client for workspace operations |
 | `toolboxApi` | `ToolboxApi` | API client for toolbox operations |
-| `codeToolbox` | [`WorkspaceCodeToolbox`](#workspacecodetoolbox) | Language-specific toolbox implementation |
+| `codeToolbox` | `WorkspaceCodeToolbox` | Language-specific toolbox implementation |
 
 ##### Returns
 
-[`Workspace`](#workspace)
+`Workspace`
 
 ### Properties
 
 | Property | Modifier | Type | Description |
 | ------ | ------ | ------ | ------ |
-| <a id="fs-1"></a> `fs` | `readonly` | `FileSystem` | File system operations for the workspace |
-| <a id="git-1"></a> `git` | `readonly` | `Git` | Git operations for the workspace |
-| <a id="id-3"></a> `id` | `readonly` | `string` | Unique identifier for the workspace |
-| <a id="instance-3"></a> `instance` | `readonly` | `Workspace` | The underlying workspace instance |
-| <a id="process-1"></a> `process` | `readonly` | `Process` | Process and code execution operations |
-| <a id="toolboxapi-3"></a> `toolboxApi` | `readonly` | `ToolboxApi` | API client for toolbox operations |
-| <a id="workspaceapi-3"></a> `workspaceApi` | `readonly` | `WorkspaceApi` | API client for workspace operations |
+| `fs` | `readonly` | `FileSystem` | File system operations for the workspace |
+| `git` | `readonly` | `Git` | Git operations for the workspace |
+| `id` | `readonly` | `string` | Unique identifier for the workspace |
+| `instance` | `readonly` | `Workspace` | The underlying workspace instance |
+| `process` | `readonly` | `Process` | Process and code execution operations |
+| `toolboxApi` | `readonly` | `ToolboxApi` | API client for toolbox operations |
+| `workspaceApi` | `readonly` | `WorkspaceApi` | API client for workspace operations |
 
 ### Methods
 
@@ -126,7 +126,7 @@ Get structured information about the workspace
 
 ##### Returns
 
-`Promise<[WorkspaceInfo](#workspaceinfo)>`
+`Promise<WorkspaceInfo>`
 
 Structured workspace information
 
@@ -172,7 +172,7 @@ Sets labels for the workspace
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `labels` | `Record`\<`string`, `string`\> | The labels to set |
+| `labels` | `Record<string, string>` | The labels to set |
 
 ##### Returns
 
@@ -294,19 +294,19 @@ Structured information about a workspace
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
-| <a id="env-1"></a> `env` | `Record`\<`string`, `string`\> | Environment variables |
-| <a id="errorreason-1"></a> `errorReason` | `null` \| `string` | Error reason if any |
-| <a id="id-5"></a> `id` | `string` | Unique identifier |
-| <a id="image-1"></a> `image` | `string` | Docker image |
-| <a id="labels-3"></a> `labels` | `Record`\<`string`, `string`\> | Workspace labels |
-| <a id="name-1"></a> `name` | `string` | Workspace name |
-| <a id="public-1"></a> `public` | `boolean` | Public access flag |
-| <a id="resources-1"></a> `resources` | [`WorkspaceResources`](#workspaceresources) | Resource allocations |
-| <a id="snapshotstate-1"></a> `snapshotState` | `null` \| `string` | Snapshot state |
-| <a id="snapshotstatecreatedat-1"></a> `snapshotStateCreatedAt` | `null` \| `Date` | Snapshot state creation timestamp |
-| <a id="state-1"></a> `state` | `string` | Current state |
-| <a id="target-1"></a> `target` | `string` | Target location |
-| <a id="user-1"></a> `user` | `string` | OS user |
+| `env` | `Record<string, string>` | Environment variables |
+| `errorReason` | `null \| string` | Error reason if any |
+| `id` | `string` | Unique identifier |
+| `image` | `string` | Docker image |
+| `labels` | `Record<string, string>` | Workspace labels |
+| `name` | `string` | Workspace name |
+| `public` | `boolean` | Public access flag |
+| `resources` | `WorkspaceResources` | Resource allocations |
+| `snapshotState` | `null \| string` | Snapshot state |
+| `snapshotStateCreatedAt` | `null \| Date` | Snapshot state creation timestamp |
+| `state` | `string` | Current state |
+| `target` | `string` | Target location |
+| `user` | `string` | OS user |
 
 ***
 
@@ -321,7 +321,7 @@ Resources allocated to a workspace
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
-| <a id="cpu-1"></a> `cpu` | `string` | CPU allocation |
-| <a id="disk-1"></a> `disk` | `string` | Disk allocation |
-| <a id="gpu-1"></a> `gpu` | `null` \| `string` | GPU allocation |
-| <a id="memory-1"></a> `memory` | `string` | Memory allocation |
+| `cpu` | `string` | CPU allocation |
+| `disk` | `string` | Disk allocation |
+| `gpu` | `null \| string` | GPU allocation |
+| `memory` | `string` | Memory a

@@ -26,11 +26,11 @@ Creates a new Daytona client instance
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `config?` | [`DaytonaConfig`](#daytonaconfig) | Configuration options |
+| `config?` | `DaytonaConfig` | Configuration options |
 
 ##### Returns
 
-[`Daytona`](#daytona)
+`Daytona`
 
 ##### Throws
 
@@ -52,7 +52,7 @@ Creates a new workspace
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `params?` | [`CreateWorkspaceParams`](#createworkspaceparams) | Parameters for workspace creation |
+| `params?` | `CreateWorkspaceParams` | Parameters for workspace creation |
 
 ##### Returns
 
@@ -206,18 +206,18 @@ Parameters for creating a new workspace
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
-| <a id="async-1"></a> `async?` | `boolean` | If true, will not wait for the workspace to be ready before returning |
-| <a id="autostopinterval-1"></a> `autoStopInterval?` | `number` | Auto-stop interval in minutes (0 means disabled) (must be a non-negative integer) |
-| <a id="envvars-1"></a> `envVars?` | `Record`\<`string`, `string`\> | Optional environment variables to set in the workspace |
-| <a id="id-1"></a> `id?` | `string` | Optional workspace ID. If not provided, a random ID will be generated |
-| <a id="image-1"></a> `image?` | `string` | Optional Docker image to use for the workspace |
-| <a id="labels-1"></a> `labels?` | `Record`\<`string`, `string`\> | Workspace labels |
-| <a id="language-1"></a> `language?` | [`CodeLanguage`](#codelanguage) | Programming language for direct code execution |
-| <a id="public-1"></a> `public?` | `boolean` | Is the workspace port preview public |
-| <a id="resources-1"></a> `resources?` | [`WorkspaceResources`](#workspaceresources) | Resource allocation for the workspace |
-| <a id="target-1"></a> `target?` | `string` | Target location for the workspace |
-| <a id="timeout-3"></a> `timeout?` | `number` | Timeout in seconds, for the workspace to be ready (0 means no timeout) |
-| <a id="user-1"></a> `user?` | `string` | Optional os user to use for the workspace |
+| `async?` | `boolean` | If true, will not wait for the workspace to be ready before returning |
+| `autoStopInterval?` | `number` | Auto-stop interval in minutes (0 means disabled) (must be a non-negative integer) |
+| `envVars?` | `Record<string, string>` | Optional environment variables to set in the workspace |
+| `id?` | `string` | Optional workspace ID. If not provided, a random ID will be generated |
+| `image?` | `string` | Optional Docker image to use for the workspace |
+| `labels?` | `Record<string, string>` | Workspace labels |
+| `language?` | `CodeLanguage` | Programming language for direct code execution |
+| `public?` | `boolean` | Is the workspace port preview public |
+| `resources?` | `WorkspaceResources` | Resource allocation for the workspace |
+| `target?` | `string` | Target location for the workspace |
+| `timeout?` | `number` | Timeout in seconds, for the workspace to be ready (0 means no timeout) |
+| `user?` | `string` | Optional os user to use for the workspace |
 
 ***
 
@@ -232,9 +232,9 @@ Configuration options for initializing the Daytona client
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
-| <a id="apikey-1"></a> `apiKey` | `string` | API key for authentication with Daytona server |
-| <a id="serverurl-1"></a> `serverUrl` | `string` | URL of the Daytona server |
-| <a id="target-3"></a> `target` | `CreateWorkspaceTargetEnum` | Target environment for workspaces |
+| `apiKey` | `string` | API key for authentication with Daytona server |
+| `serverUrl` | `string` | URL of the Daytona server |
+| `target` | `CreateWorkspaceTargetEnum` | Target environment for workspaces |
 
 ***
 
@@ -249,10 +249,10 @@ Resource allocation for a workspace
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
-| <a id="cpu-1"></a> `cpu?` | `number` | CPU allocation for the workspace |
-| <a id="disk-1"></a> `disk?` | `number` | Disk space allocation for the workspace in MB |
-| <a id="gpu-1"></a> `gpu?` | `number` | GPU allocation for the workspace |
-| <a id="memory-1"></a> `memory?` | `number` | Memory allocation for the workspace in MB |
+| `cpu?` | `number` | CPU allocation for the workspace |
+| `disk?` | `number` | Disk space allocation for the workspace in MB |
+| `gpu?` | `number` | GPU allocation for the workspace |
+| `memory?` | `number` | Memory allocation for the workspace in MB |
 
 ***
 
