@@ -455,9 +455,9 @@ main()
 </TabItem>
 </Tabs>
 
-## Start your Workspace
+## Start your Sandbox
 
-Daytona provides two methods for starting your Workspace:
+Daytona provides two methods for starting your Sandbox:
 
 - Using Python
 - Using TypeScript/JavaScript
@@ -1078,7 +1078,7 @@ console.log(response.output);
 
 ## Sessions (Background Processes)
 
-Daytona SDK provides an option to start, stop, and manage background process sessions in Workspaces. You can run long-running commands, monitor process status, and list all running processes.
+Daytona SDK provides an option to start, stop, and manage background process sessions in Sandboxes. You can run long-running commands, monitor process status, and list all running processes.
 
 ### Managing Long-Running Processes
 
@@ -1299,7 +1299,7 @@ const rootDir = await workspace.getWorkspaceRootDir();
 </TabItem>
 </Tabs>
 
-## Remove Workspace
+## Remove Sandbox
 
 Daytona SDK provides methods to perform operations on Sandboxes, such as removing Sandboxes using Python and TypeScript.
 

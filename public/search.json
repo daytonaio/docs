@@ -304,11 +304,11 @@
     "objectID": 38
   },
   {
-    "title": "Start your Workspace",
-    "description": "Daytona provides two methods for starting your Workspace:",
+    "title": "Start your Sandbox",
+    "description": "Daytona provides two methods for starting your Sandbox:",
     "tag": "Documentation",
-    "url": "/docs/getting-started#start-your-workspace",
-    "slug": "/getting-started#start-your-workspace",
+    "url": "/docs/getting-started#start-your-sandbox",
+    "slug": "/getting-started#start-your-sandbox",
     "objectID": 39
   },
   {
@@ -633,7 +633,7 @@
   },
   {
     "title": "Sessions (Background Processes)",
-    "description": "Daytona SDK provides an option to start, stop, and manage background process sessions in Workspaces.",
+    "description": "Daytona SDK provides an option to start, stop, and manage background process sessions in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/process-code-execution#sessions-background-processes",
     "slug": "/process-code-execution#sessions-background-processes",
@@ -776,11 +776,11 @@
     "objectID": 97
   },
   {
-    "title": "Remove Workspace",
+    "title": "Remove Sandbox",
     "description": "Daytona SDK provides methods to perform operations on Sandboxes, such as removing Sandboxes using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#remove-workspace",
-    "slug": "/sandbox-management#remove-workspace",
+    "url": "/docs/sandbox-management#remove-sandbox",
+    "slug": "/sandbox-management#remove-sandbox",
     "objectID": 98
   },
   {
