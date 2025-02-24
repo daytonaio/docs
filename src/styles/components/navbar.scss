@@ -20,7 +20,8 @@
   .logo-divider {
     display: flex;
     &:after {
-      content: '/';
+      /* Change to "/" when needed */
+      content: '';
       font-family: 'Berkeley Mono', monospace;
       font-size: 0.875rem;
       line-height: 1.38;

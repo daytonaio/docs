@@ -40,7 +40,7 @@ export const SideNavLinks = () => {
       </div>
       <div className="nav-item github">
         <a
-          href="https://github.com/daytonaio/daytona"
+          href="https://github.com/daytonaio"
           target="_blank"
           className="nav__link"
           rel="noreferrer"
