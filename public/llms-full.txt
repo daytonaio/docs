@@ -402,18 +402,18 @@ from daytona_sdk import Daytona, CreateWorkspaceParams
 # Initialize the Daytona client
 daytona = Daytona()
 
-# Create the workspace instance
+# Create the Sandbox instance
 params = CreateWorkspaceParams(language="python")
 workspace = daytona.create(params)
 
-# Run the code securely inside the workspace
+# Run the code securely inside the Sandbox
 response = workspace.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
 if response.exit_code != 0:
     print(f"Error running code: {response.exit_code} {response.result}")
 else:
     print(response.result)
 
-# Clean up the workspace
+# Clean up the Sandbox
 daytona.remove(workspace)
 
 ```
@@ -783,10 +783,10 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
   # Initialize the Daytona client
   daytona = Daytona(config)
 
-  # Create the workspace instance
+  # Create the Sandbox instance
   workspace = daytona.create()
 
-  # Run the code securely inside the workspace
+  # Run the code securely inside the Sandbox
   response = workspace.process.code_run('print("Hello World from code!")')
   if response.exit_code != 0:
     print(f"Error: {response.exit_code} {response.result}")
@@ -814,12 +814,12 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
     target: 'us'
   });
 
-  // Create the workspace instance
+  // Create the Sandbox instance
   const workspace = await daytona.create({
     language: 'typescript',
   });
 
-  // Run the code securely inside the workspace
+  // Run the code securely inside the Sandbox
   const response = await workspace.process.codeRun('console.log("Hello World from code!")')
   console.log(response.result);
   ```
@@ -892,7 +892,7 @@ Daytona SDK provides an option to create LSP servers using Python and TypeScript
 ```python
 from daytona_sdk import Daytona, LspLanguageId
 
-# Create workspace
+# Create Sandbox
 
 daytona = Daytona()
 workspace = daytona.create()
@@ -1236,16 +1236,16 @@ from daytona_sdk import Daytona
 
 daytona = Daytona()
 
-# Create a basic workspace
+# Create a basic Sandbox
 
 workspace = daytona.create()
 
-# Create a workspace with specific language
+# Create a Sandbox with specific language
 
 params = CreateWorkspaceParams(language="python")
 workspace = daytona.create(params)
 
-# Create a workspace with custom ID
+# Create a Sandbox with custom ID
 
 params = CreateWorkspaceParams(id="my-workspace")
 workspace = daytona.create(params)
@@ -1278,10 +1278,10 @@ Daytona SDK provides methods to get information about a Sandbox, such as ID, roo
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Get workspace ID
+# Get Sandbox ID
 workspace_id = workspace.id
 
-# Get workspace root directory
+# Get Sandbox root directory
 
 root_dir = workspace.get_workspace_root_dir()
 
@@ -1306,7 +1306,7 @@ Daytona SDK provides methods to perform operations on Sandboxes, such as removin
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Remove workspace
+# Remove Sandbox
 daytona.remove(workspace)
 ```
 </TabItem>

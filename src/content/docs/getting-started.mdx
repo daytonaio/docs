@@ -89,18 +89,18 @@ from daytona_sdk import Daytona, CreateWorkspaceParams
 # Initialize the Daytona client
 daytona = Daytona()
 
-# Create the workspace instance
+# Create the Sandbox instance
 params = CreateWorkspaceParams(language="python")
 workspace = daytona.create(params)
 
-# Run the code securely inside the workspace
+# Run the code securely inside the Sandbox
 response = workspace.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
 if response.exit_code != 0:
     print(f"Error running code: {response.exit_code} {response.result}")
 else:
     print(response.result)
 
-# Clean up the workspace
+# Clean up the Sandbox
 daytona.remove(workspace)
 
 ```

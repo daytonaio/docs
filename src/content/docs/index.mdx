@@ -49,10 +49,10 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
   # Initialize the Daytona client
   daytona = Daytona(config)
 
-  # Create the workspace instance
+  # Create the Sandbox instance
   workspace = daytona.create()
 
-  # Run the code securely inside the workspace
+  # Run the code securely inside the Sandbox
   response = workspace.process.code_run('print("Hello World from code!")')
   if response.exit_code != 0:
     print(f"Error: {response.exit_code} {response.result}")
@@ -80,12 +80,12 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
     target: 'us'
   });
 
-  // Create the workspace instance
+  // Create the Sandbox instance
   const workspace = await daytona.create({
     language: 'typescript',
   });
 
-  // Run the code securely inside the workspace
+  // Run the code securely inside the Sandbox
   const response = await workspace.process.codeRun('console.log("Hello World from code!")')
   console.log(response.result);
   ```

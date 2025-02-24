@@ -280,27 +280,27 @@
     "objectID": 35
   },
   {
-    "title": "Create the workspace instance",
+    "title": "Create the Sandbox instance",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/getting-started#create-the-workspace-instance",
-    "slug": "/getting-started#create-the-workspace-instance",
+    "url": "/docs/getting-started#create-the-sandbox-instance",
+    "slug": "/getting-started#create-the-sandbox-instance",
     "objectID": 36
   },
   {
-    "title": "Run the code securely inside the workspace",
+    "title": "Run the code securely inside the Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/getting-started#run-the-code-securely-inside-the-workspace",
-    "slug": "/getting-started#run-the-code-securely-inside-the-workspace",
+    "url": "/docs/getting-started#run-the-code-securely-inside-the-sandbox",
+    "slug": "/getting-started#run-the-code-securely-inside-the-sandbox",
     "objectID": 37
   },
   {
-    "title": "Clean up the workspace",
+    "title": "Clean up the Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/getting-started#clean-up-the-workspace",
-    "slug": "/getting-started#clean-up-the-workspace",
+    "url": "/docs/getting-started#clean-up-the-sandbox",
+    "slug": "/getting-started#clean-up-the-sandbox",
     "objectID": 38
   },
   {
@@ -528,11 +528,11 @@
     "objectID": 66
   },
   {
-    "title": "Create workspace",
+    "title": "Create Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/language-server-protocol#create-workspace",
-    "slug": "/language-server-protocol#create-workspace",
+    "url": "/docs/language-server-protocol#create-sandbox",
+    "slug": "/language-server-protocol#create-sandbox",
     "objectID": 67
   },
   {
@@ -728,27 +728,27 @@
     "objectID": 91
   },
   {
-    "title": "Create a basic workspace",
+    "title": "Create a basic Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#create-a-basic-workspace",
-    "slug": "/sandbox-management#create-a-basic-workspace",
+    "url": "/docs/sandbox-management#create-a-basic-sandbox",
+    "slug": "/sandbox-management#create-a-basic-sandbox",
     "objectID": 92
   },
   {
-    "title": "Create a workspace with specific language",
+    "title": "Create a Sandbox with specific language",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#create-a-workspace-with-specific-language",
-    "slug": "/sandbox-management#create-a-workspace-with-specific-language",
+    "url": "/docs/sandbox-management#create-a-sandbox-with-specific-language",
+    "slug": "/sandbox-management#create-a-sandbox-with-specific-language",
     "objectID": 93
   },
   {
-    "title": "Create a workspace with custom ID",
+    "title": "Create a Sandbox with custom ID",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#create-a-workspace-with-custom-id",
-    "slug": "/sandbox-management#create-a-workspace-with-custom-id",
+    "url": "/docs/sandbox-management#create-a-sandbox-with-custom-id",
+    "slug": "/sandbox-management#create-a-sandbox-with-custom-id",
     "objectID": 94
   },
   {
@@ -760,19 +760,19 @@
     "objectID": 95
   },
   {
-    "title": "Get workspace ID",
+    "title": "Get Sandbox ID",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#get-workspace-id",
-    "slug": "/sandbox-management#get-workspace-id",
+    "url": "/docs/sandbox-management#get-sandbox-id",
+    "slug": "/sandbox-management#get-sandbox-id",
     "objectID": 96
   },
   {
-    "title": "Get workspace root directory",
+    "title": "Get Sandbox root directory",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#get-workspace-root-directory",
-    "slug": "/sandbox-management#get-workspace-root-directory",
+    "url": "/docs/sandbox-management#get-sandbox-root-directory",
+    "slug": "/sandbox-management#get-sandbox-root-directory",
     "objectID": 97
   },
   {
@@ -784,11 +784,11 @@
     "objectID": 98
   },
   {
-    "title": "Remove workspace",
+    "title": "Remove Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#remove-workspace",
-    "slug": "/sandbox-management#remove-workspace",
+    "url": "/docs/sandbox-management#remove-sandbox",
+    "slug": "/sandbox-management#remove-sandbox",
     "objectID": 99
   }
 ]

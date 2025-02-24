@@ -26,16 +26,16 @@ from daytona_sdk import Daytona
 
 daytona = Daytona()
 
-# Create a basic workspace
+# Create a basic Sandbox
 
 workspace = daytona.create()
 
-# Create a workspace with specific language
+# Create a Sandbox with specific language
 
 params = CreateWorkspaceParams(language="python")
 workspace = daytona.create(params)
 
-# Create a workspace with custom ID
+# Create a Sandbox with custom ID
 
 params = CreateWorkspaceParams(id="my-workspace")
 workspace = daytona.create(params)
@@ -68,10 +68,10 @@ Daytona SDK provides methods to get information about a Sandbox, such as ID, roo
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Get workspace ID
+# Get Sandbox ID
 workspace_id = workspace.id
 
-# Get workspace root directory
+# Get Sandbox root directory
 
 root_dir = workspace.get_workspace_root_dir()
 
@@ -96,7 +96,7 @@ Daytona SDK provides methods to perform operations on Sandboxes, such as removin
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Remove workspace
+# Remove Sandbox
 daytona.remove(workspace)
 ```
 </TabItem>
