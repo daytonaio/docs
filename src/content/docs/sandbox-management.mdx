@@ -1,5 +1,5 @@
 ---
-title: Workspace Management
+title: Sandbox Management
 ---
 
 import Label from '@components/Label.astro'
@@ -9,15 +9,15 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   Distribution: **Open Source**
 </Label>
 
-Workspaces are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove workspaces using the SDK.
+Sandboxes are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove Sandboxes using the SDK.
 
-## Creating Workspaces
+## Creating Sandboxes
 
-Daytona SDK provides an option to create workspaces with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the workspace.
+Daytona SDK provides an option to create Sandboxes with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the Sandbox.
 
-### Basic Workspace Creation
+### Basic Sandbox Creation
 
-Daytona SDK provides methods to create Workspaces with default configurations, specific languages, or custom IDs using Python and TypeScript.
+Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom IDs using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -61,9 +61,9 @@ const workspace = await daytona.create({ id: 'my-workspace' });
 </TabItem>
 </Tabs>
 
-## Workspace Information
+## Sandbox Information
 
-Daytona SDK provides methods to get information about a workspace, such as ID, root directory, and status using Python and TypeScript.
+Daytona SDK provides methods to get information about a Sandbox, such as ID, root directory, and status using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -91,7 +91,7 @@ const rootDir = await workspace.getWorkspaceRootDir();
 
 ## Remove Workspace
 
-Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces using Python and TypeScript.
+Daytona SDK provides methods to perform operations on Sandboxes, such as removing Sandboxes using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">

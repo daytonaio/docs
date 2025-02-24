@@ -34,18 +34,7 @@ Its core architecture leverages React, while documentation content is authored u
 
 ## Getting Started
 
-### Using Daytona (Recommended)
-
-The most efficient way to begin working on the documentation is by utilizing a development environment manager (DEM) like Daytona.
-To set up a Workspace with the necessary dependencies and configurations for local preview, run the following command:
-
-```shell
-daytona create https://github.com/daytonaio/docs.git
-```
-
-### Manual
-
-Alternatively, if Node.js or Yarn are installed and set up on your local machine, you can clone this repository and install the required dependencies and configurations:
+If Node.js or Yarn are installed and set up on your local machine, you can clone this repository and install the required dependencies and configurations:
 
 ```shell
 git clone https://github.com/daytonaio/docs.git
@@ -89,7 +78,7 @@ Daytona documentation is divided into the following key sections:
 
 - **`Management`**
 
-  Practical instructions for managing Daytona workspaces.
+  Practical instructions for managing Daytona sandboxes.
 
 - **`Agent Toolbox`**
 

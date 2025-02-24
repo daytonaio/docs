@@ -16,7 +16,7 @@ Daytona SDK provides an option to configure settings using the `DaytonaConfig` c
 
 - `api_key`: Your Daytona API key
 - `server_url`: URL of your Daytona server
-- `target`: Daytona Target to create the Workspaces on.
+- `target`: Daytona Target to create the Sandboxes on.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -53,7 +53,7 @@ Daytona SDK supports environment variables for configuration. The SDK automatica
 |----------|-------------|---------|
 | **`DAYTONA_API_KEY`** | Your Daytona API key. | None |
 | **`DAYTONA_SERVER_URL`** | URL of your Daytona server. | None |
-| **`DAYTONA_TARGET`** | Daytona Target to create the Workspaces on. | "local" |
+| **`DAYTONA_TARGET`** | Daytona Target to create the Sandboxes on. | "local" |
 
 ### Setting Environment Variables
 
@@ -74,7 +74,7 @@ DAYTONA_TARGET=local
 
 - `DAYTONA_API_KEY`: Your Daytona API key.
 - `DAYTONA_SERVER_URL`: URL of your Daytona server.
-- `DAYTONA_TARGET`: Daytona Target to create the Workspaces on.
+- `DAYTONA_TARGET`: Daytona Target to create the Sandboxes on.
 
 #### Using Shell Environment
 
@@ -114,15 +114,15 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   Distribution: **Open Source**
 </Label>
 
-The Daytona SDK provides comprehensive file system operations through the `fs` module in workspaces. This guide covers all available file system operations and best practices.
+The Daytona SDK provides comprehensive file system operations through the `fs` module in Sandboxes. This guide covers all available file system operations and best practices.
 
 ## Basic Operations
 
-Daytona SDK provides an option to interact with the file system in Workspaces. You can perform various operations like listing files, creating directories, reading and writing files, and more.
+Daytona SDK provides an option to interact with the file system in Sandboxes. You can perform various operations like listing files, creating directories, reading and writing files, and more.
 
 ### Listing Files and Directories
 
-Daytona SDK provides an option to list files and directories in a Workspace using Python and TypeScript.
+Daytona SDK provides an option to list files and directories in a Sandbox using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -183,7 +183,7 @@ await workspace.fs.createFolder("/workspace/new-dir", "755");
 
 ### File Operations
 
-Daytona SDK provides options to read, write, upload, download, and delete files in Workspaces using Python and TypeScript.
+Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -326,7 +326,7 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
 
 View the Daytona SDK repository on [GitHub](https://github.com/daytonaio/sdk).
 
-Follow the step by step guide to create and run your first Daytona Workspace for an AI Agent.
+Follow the step by step guide to create and run your first Daytona Sandbox for an AI Agent.
 
 ## Install Daytona
 
@@ -384,15 +384,15 @@ pnpm add @daytonaio/sdk
 </TabItem>
 </Tabs>
 
-## Write Code to Create a Workspace
+## Write Code to Create a Sandbox
 
-Create and run your code within Daytona Workspace using the SDK. Daytona provides a simple and intuitive interface for interacting with Daytona.
+Create and run your code within Daytona Sandboxes using the SDK. Daytona provides a simple and intuitive interface for interacting with Daytona.
 
-Use the Daytona SDK [Python examples](https://github.com/daytonaio/sdk/tree/main/examples/python) or [TypeScript/JavaScript examples](https://github.com/daytonaio/sdk/tree/main/examples/typescript) to create a Workspace and run your code.
+Use the Daytona SDK [Python examples](https://github.com/daytonaio/sdk/tree/main/examples/python) or [TypeScript/JavaScript examples](https://github.com/daytonaio/sdk/tree/main/examples/typescript) to create a Sandbox and run your code.
 
 ### Execute Commands
 
-Run the following code to create a Daytona Workspace and execute commands:
+Run the following code to create a Daytona Sandbox and execute commands:
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -488,15 +488,15 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   Distribution: **Open Source**
 </Label>
 
-The Daytona SDK provides built-in Git support through the `git` module in Workspaces. This guide covers all available Git operations and best practices.
+The Daytona SDK provides built-in Git support through the `git` module in Sandboxes. This guide covers all available Git operations and best practices.
 
 ## Basic Operations
 
-Daytona SDK provides an option to clone, check status, and manage Git repositories in Workspaces. You can interact with Git repositories using the `git` module.
+Daytona SDK provides an option to clone, check status, and manage Git repositories in Sandboxes. You can interact with Git repositories using the `git` module.
 
 ### Cloning Repositories
 
-Daytona SDK provides an option to clone Git repositories into Workspaces using Python and TypeScript. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
+Daytona SDK provides an option to clone Git repositories into Sandboxes using Python and TypeScript. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -557,7 +557,7 @@ await workspace.git.clone(
 
 ### Repository Status
 
-Daytona SDK provides an option to check the status of Git repositories in Workspaces. You can get the current branch, modified files, number of commits ahead and behind main branch using Python and TypeScript.
+Daytona SDK provides an option to check the status of Git repositories in Sandboxes. You can get the current branch, modified files, number of commits ahead and behind main branch using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -737,7 +737,7 @@ await workspace.git.pull("/workspace/repo", "origin", "main");
 
 ---
 title: Daytona Documentation
-description: Start managing your Workspaces with Daytona.
+description: Start managing your Sandboxes with Daytona.
 template: doc
 head:
   - tag: title
@@ -840,23 +840,23 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
   />
 </DocumentList>
 
-<DocumentList title="Workspaces">
+<DocumentList title="Sandboxes">
   <DocumentListItem
     title="Management"
-    subtitle="Learn how to create, manage, and remove workspaces using the Daytona SDK."
-    href="/docs/workspace-management"
+    subtitle="Learn how to create, manage, and remove Sandboxes using the Daytona SDK."
+    href="/docs/sandbox-management"
   />
 </DocumentList>
 
 <DocumentList title="Agent Toolbox">
   <DocumentListItem
     title="File System Operations"
-    subtitle="Learn how to manage files and directories in your Workspaces using the Daytona SDK."
+    subtitle="Learn how to manage files and directories in your Sandboxes using the Daytona SDK."
     href="/docs/k/file-system-operations"
   />
   <DocumentListItem
     title="Git Operations"
-    subtitle="Learn how to manage Git repositories in your Workspaces using the Daytona SDK."
+    subtitle="Learn how to manage Git repositories in your Sandboxes using the Daytona SDK."
     href="/docs/git-operations"
   />
   <DocumentListItem
@@ -866,7 +866,7 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
   />
   <DocumentListItem
     title="Language Server Protocol"
-    subtitle="Learn how to use Language Server Protocol (LSP) support in your Workspaces using the Daytona SDK."
+    subtitle="Learn how to use Language Server Protocol (LSP) support in your Sandboxes using the Daytona SDK."
     href="/docs/language-server-protocol"
   />
 </DocumentList>
@@ -881,7 +881,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   Distribution: **Open Source**
 </Label>
 
-The Daytona SDK provides Language Server Protocol (LSP) support through workspace instances. This enables advanced language features like code completion, diagnostics, and more.
+The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances. This enables advanced language features like code completion, diagnostics, and more.
 
 ## Creating LSP Servers
 
@@ -996,7 +996,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   Distribution: **Open Source**
 </Label>
 
-The Daytona SDK provides powerful process and code execution capabilities through the `process` module in workspaces. This guide covers all available process operations and best practices.
+The Daytona SDK provides powerful process and code execution capabilities through the `process` module in Sandboxes. This guide covers all available process operations and best practices.
 
 ## Code Execution
 
@@ -1053,7 +1053,7 @@ console.log(response.result);
 
 ## Process Execution
 
-Daytona SDK provides an option to execute shell commands and manage background processes in Workspaces.
+Daytona SDK provides an option to execute shell commands and manage background processes in Sandboxes.
 
 ### Running Commands
 
@@ -1123,7 +1123,7 @@ for (const session of sessions) {
 
 ## Best Practices
 
-Daytona SDK provides best practices for process and code execution in Workspaces.
+Daytona SDK provides best practices for process and code execution in Sandboxes.
 
 1. **Resource Management**
 
@@ -1210,7 +1210,7 @@ Daytona SDK provides an option to troubleshoot common issues related to process 
 - Use appropriate resource constraints
 
 ---
-title: Workspace Management
+title: Sandbox Management
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -1219,15 +1219,15 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   Distribution: **Open Source**
 </Label>
 
-Workspaces are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove workspaces using the SDK.
+Sandboxes are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove Sandboxes using the SDK.
 
-## Creating Workspaces
+## Creating Sandboxes
 
-Daytona SDK provides an option to create workspaces with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the workspace.
+Daytona SDK provides an option to create Sandboxes with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the Sandbox.
 
-### Basic Workspace Creation
+### Basic Sandbox Creation
 
-Daytona SDK provides methods to create Workspaces with default configurations, specific languages, or custom IDs using Python and TypeScript.
+Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom IDs using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -1271,9 +1271,9 @@ const workspace = await daytona.create({ id: 'my-workspace' });
 </TabItem>
 </Tabs>
 
-## Workspace Information
+## Sandbox Information
 
-Daytona SDK provides methods to get information about a workspace, such as ID, root directory, and status using Python and TypeScript.
+Daytona SDK provides methods to get information about a Sandbox, such as ID, root directory, and status using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -1301,7 +1301,7 @@ const rootDir = await workspace.getWorkspaceRootDir();
 
 ## Remove Workspace
 
-Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces using Python and TypeScript.
+Daytona SDK provides methods to perform operations on Sandboxes, such as removing Sandboxes using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">

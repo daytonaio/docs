@@ -53,11 +53,11 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Workspaces',
+          label: 'Sandboxes',
           items: [
             {
               label: 'Management',
-              link: '/workspace-management',
+              link: '/sandbox-management',
             },
           ],
         },
