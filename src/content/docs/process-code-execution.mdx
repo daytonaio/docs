@@ -148,21 +148,25 @@ Daytona SDK provides best practices for process and code execution in Workspaces
 <TabItem label="Python" icon="seti:python">
    ```python
    # Python - Clean up session
+   session_id = "long-running-cmd"
    try:
-       session_id = workspace.process.create_session("long-running-cmd")
+       workspace.process.create_session(session_id)
+       session = workspace.process.get_session(session_id)
        # Do work...
    finally:
-       workspace.process.delete_session(session_id)
+       workspace.process.delete_session(session.session_id)
    ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
    ```typescript
-   // TypeScript - Clean up processes
+   // TypeScript - Clean up session
+   const sessionId = "long-running-cmd";
    try {
-       const sessionId = await workspace.process.createSession("long-running-cmd");
+       await workspace.process.createSession(sessionId);
+       const session = await workspace.process.getSession(sessionId);
        // Do work...
    } finally {
-       await workspace.process.deleteSession(processId);
+       await workspace.process.deleteSession(session.sessionId);
    }
    ```
 </TabItem>
