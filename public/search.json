@@ -1,3514 +1,794 @@
 [
   {
-    "title": "Architecture",
-    "description": "Daytona architecture diagram represents the Daytona platform, featuring components and services available in its Open Source and Enterprise distributions.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture",
-    "slug": "/about/architecture",
-    "objectID": 1
-  },
-  {
-    "title": "Open Source",
-    "description": "Daytona Open Source includes the Daytona API, which serves as the central interface for programmatically interacting with Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#open-source",
-    "slug": "/about/architecture#open-source",
-    "objectID": 2
-  },
-  {
-    "title": "Interfaces",
-    "description": "Daytona Open Source offers a variety of Interfaces to interact with the platform and manage development environments.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#interfaces",
-    "slug": "/about/architecture#interfaces",
-    "objectID": 3
-  },
-  {
-    "title": "Git Providers",
-    "description": "Daytona Open Source integrates Git Providers to manage version control operations and interact with Git repositories.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#git-providers",
-    "slug": "/about/architecture#git-providers",
-    "objectID": 4
-  },
-  {
-    "title": "Container Registries",
-    "description": "Container registries",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#container-registries",
-    "slug": "/about/architecture#container-registries",
-    "objectID": 5
-  },
-  {
-    "title": "Providers",
-    "description": "Daytona Open Source uses Providers to enable integration with various technologies to create and manage development environments.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#providers",
-    "slug": "/about/architecture#providers",
-    "objectID": 6
-  },
-  {
-    "title": "Targets",
-    "description": "Targets",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#targets",
-    "slug": "/about/architecture#targets",
-    "objectID": 7
-  },
-  {
-    "title": "Enterprise",
-    "description": "The Enterprise edition of Daytona extends the capabilities of the Open Source version with additional features and services tailored for enterprise-grade development environments.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#enterprise",
-    "slug": "/about/architecture#enterprise",
-    "objectID": 8
-  },
-  {
-    "title": "Dashboard",
-    "description": "The Enterprise version introduces a Dashboard, which provides a centralized interface for managing and monitoring the platform, improving visibility and control over development environments.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#dashboard",
-    "slug": "/about/architecture#dashboard",
-    "objectID": 9
-  },
-  {
-    "title": "Authentication",
-    "description": "Authentication features support Single Sign-On (SSO) and standards such as Security Assertion Markup Language (SAML) and\nSystem for Cross-domain Identity Management (SCIM), ensuring secure access to the platform.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#authentication",
-    "slug": "/about/architecture#authentication",
-    "objectID": 10
-  },
-  {
-    "title": "Authorization",
-    "description": "Authorization capabilities allow for granular control of access and permissions across users, teams, organizations, and projects.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#authorization",
-    "slug": "/about/architecture#authorization",
-    "objectID": 11
-  },
-  {
-    "title": "Observability",
-    "description": "Observability tools offer enhanced monitoring, logging, and tracing capabilities for Workspaces and development activities.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#observability",
-    "slug": "/about/architecture#observability",
-    "objectID": 12
-  },
-  {
-    "title": "Resource Management",
-    "description": "Resource Management is expanded with enterprise features, enhancing workspace classes and quota management to meet large-scale, organization-wide requirements.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#resource-management",
-    "slug": "/about/architecture#resource-management",
-    "objectID": 13
-  },
-  {
-    "title": "Identity Providers",
-    "description": "The Enterprise version integrates with Identity Providers (IDP) to enhance authentication and identity management.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#identity-providers",
-    "slug": "/about/architecture#identity-providers",
-    "objectID": 14
-  },
-  {
-    "title": "Security",
-    "description": "Daytona Enterprise enhances security by integrating with advanced security tools and services.",
-    "tag": "Documentation",
-    "url": "/docs/about/architecture#security",
-    "slug": "/about/architecture#security",
-    "objectID": 15
-  },
-  {
-    "title": "Getting Started",
-    "description": "Welcome to Daytona!",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started",
-    "slug": "/about/getting-started",
-    "objectID": 16
-  },
-  {
-    "title": "Understanding Daytona",
-    "description": "Daytona is an open-source Development Environment Manager (DEM) licensed under the Apache License 2.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#understanding-daytona",
-    "slug": "/about/getting-started#understanding-daytona",
-    "objectID": 17
-  },
-  {
-    "title": "Before You Begin",
-    "description": "Before installing and using Daytona, ensure that your operating system meets the necessary requirements, dependencies and tools.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#before-you-begin",
-    "slug": "/about/getting-started#before-you-begin",
-    "objectID": 18
-  },
-  {
-    "title": "System requirements",
-    "description": "Daytona supports multiple operating systems and architectures.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#system-requirements",
-    "slug": "/about/getting-started#system-requirements",
-    "objectID": 19
-  },
-  {
-    "title": "Dependencies",
-    "description": "Daytona requires specific dependencies to be installed on your system to support the operation and management of development environments.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#dependencies",
-    "slug": "/about/getting-started#dependencies",
-    "objectID": 20
-  },
-  {
-    "title": "Tools",
-    "description": "Daytona requires certain tools to be installed on your system to optimize the setup and management of development environments.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#tools",
-    "slug": "/about/getting-started#tools",
-    "objectID": 21
-  },
-  {
-    "title": "Installing Daytona",
-    "description": "Follow the instructions provided in the installation guide to install Daytona on your operating system.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#installing-daytona",
-    "slug": "/about/getting-started#installing-daytona",
-    "objectID": 22
-  },
-  {
-    "title": "Using the CLI",
-    "description": "The Daytona Command-Line Interface (CLI) is the primary method of interacting with the Daytona platform.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#using-the-cli",
-    "slug": "/about/getting-started#using-the-cli",
-    "objectID": 23
-  },
-  {
-    "title": "Adding a Git Provider",
-    "description": "Daytona provides an option to integrate your preferred Git Provider, enhancing your development workflow.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#adding-a-git-provider",
-    "slug": "/about/getting-started#adding-a-git-provider",
-    "objectID": 24
-  },
-  {
-    "title": "Installing a Provider",
-    "description": "Providers",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#installing-a-provider",
-    "slug": "/about/getting-started#installing-a-provider",
-    "objectID": 25
-  },
-  {
-    "title": "Creating a Target Configuration",
-    "description": "A Target Configuration refers to the specific destination or environment where your development setup, facilitated by various Providers, is deployed and managed.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#creating-a-target-configuration",
-    "slug": "/about/getting-started#creating-a-target-configuration",
-    "objectID": 26
-  },
-  {
-    "title": "Setting a Container Registry",
-    "description": "Container registries",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#setting-a-container-registry",
-    "slug": "/about/getting-started#setting-a-container-registry",
-    "objectID": 27
-  },
-  {
-    "title": "Creating a Workspace Template",
-    "description": "A Workspace Template is designed to simplify the management of development environments, allowing you to predefine settings that can be easily applied to any new Workspace.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#creating-a-workspace-template",
-    "slug": "/about/getting-started#creating-a-workspace-template",
-    "objectID": 28
-  },
-  {
-    "title": "Setting a Target",
-    "description": "A Target is an isolated processing unit where Workspaces are executed.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#setting-a-target",
-    "slug": "/about/getting-started#setting-a-target",
-    "objectID": 29
-  },
-  {
-    "title": "Creating a Runner",
-    "description": "A Runner is a standalone service that can be deployed anywhere.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#creating-a-runner",
-    "slug": "/about/getting-started#creating-a-runner",
-    "objectID": 30
-  },
-  {
-    "title": "Choosing the Default IDE",
-    "description": "Connect to your development environment using a variety of IDEs, including popular options like [Visual Studio Code (VSCode)](/docs/usage/ide",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#choosing-the-default-ide",
-    "slug": "/about/getting-started#choosing-the-default-ide",
-    "objectID": 31
-  },
-  {
-    "title": "Creating your Workspace",
-    "description": "[Create a Workspace](/docs/usage/workspaces",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#creating-your-workspace",
-    "slug": "/about/getting-started#creating-your-workspace",
-    "objectID": 32
-  },
-  {
-    "title": "Interact with your Workspace",
-    "description": "The Agent Toolbox enables you to interact with the Workspace programmatically by providing a Workspace Toolbox API to perform various operations within the Workspace environment.",
-    "tag": "Documentation",
-    "url": "/docs/about/getting-started#interact-with-your-workspace",
-    "slug": "/about/getting-started#interact-with-your-workspace",
-    "objectID": 33
-  },
-  {
-    "title": "What is Daytona?",
-    "description": "Daytona is an open-source Development Environment Manager (DEM) licensed under the Apache License 2.",
-    "tag": "Documentation",
-    "url": "/docs/about/what-is-daytona",
-    "slug": "/about/what-is-daytona",
-    "objectID": 34
-  },
-  {
-    "title": "Features",
-    "description": "Daytona creates a secure VPN connection between the client machine and the remote machine.",
-    "tag": "Documentation",
-    "url": "/docs/about/what-is-daytona#features",
-    "slug": "/about/what-is-daytona#features",
-    "objectID": 35
-  },
-  {
-    "title": "API Keys",
-    "description": "Daytona API keys are used to authenticate requests to the Daytona API.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/api-keys",
-    "slug": "/configuration/api-keys",
-    "objectID": 36
-  },
-  {
-    "title": "Generate an API Key",
-    "description": "Daytona provides an option to generate API keys.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/api-keys#generate-an-api-key",
-    "slug": "/configuration/api-keys#generate-an-api-key",
-    "objectID": 37
-  },
-  {
-    "title": "List API Keys",
-    "description": "Daytona provides an option to list all generated API keys.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/api-keys#list-api-keys",
-    "slug": "/configuration/api-keys#list-api-keys",
-    "objectID": 38
-  },
-  {
-    "title": "Revoke an API Key",
-    "description": "Daytona provides an option to revoke API keys.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/api-keys#revoke-an-api-key",
-    "slug": "/configuration/api-keys#revoke-an-api-key",
-    "objectID": 39
-  },
-  {
-    "title": "Container Registries",
-    "description": "Container registries store credentials used to pull container images from specified registry servers.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/container-registries",
-    "slug": "/configuration/container-registries",
-    "objectID": 40
-  },
-  {
-    "title": "Set a Container Registry",
-    "description": "Daytona provides an option to set a container registry through environment variables for your Workspace.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/container-registries#set-a-container-registry",
-    "slug": "/configuration/container-registries#set-a-container-registry",
-    "objectID": 41
-  },
-  {
-    "title": "List Container Registries",
-    "description": "Daytona provides an option to list the container registries configured for your Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/container-registries#list-container-registries",
-    "slug": "/configuration/container-registries#list-container-registries",
-    "objectID": 42
-  },
-  {
-    "title": "Delete a Container Registry",
-    "description": "Daytona provides an option to delete a container registry from your Workspace.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/container-registries#delete-a-container-registry",
-    "slug": "/configuration/container-registries#delete-a-container-registry",
-    "objectID": 43
-  },
-  {
-    "title": "Git Providers",
-    "description": "Git Providers — sometimes known as software forges or Source Code Managers (SCMs) — provide a set of tools to host and collaborate on codebases using Git.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers",
-    "slug": "/configuration/git-providers",
-    "objectID": 44
-  },
-  {
-    "title": "Add a Git Provider",
-    "description": "Daytona provides an option to add a Git Provider, enabling you to connect your preferred Git Provider and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#add-a-git-provider",
-    "slug": "/configuration/git-providers#add-a-git-provider",
-    "objectID": 45
-  },
-  {
-    "title": "List Connected Git Providers",
-    "description": "Daytona provides an option to keep track of your Git Providers by listing all previously created Git Providers.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#list-connected-git-providers",
-    "slug": "/configuration/git-providers#list-connected-git-providers",
-    "objectID": 46
-  },
-  {
-    "title": "Update a Git Provider",
-    "description": "Daytona provides an option to update an existing Git Provider, enabling you to apply the latest enhancements and bug fixes.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#update-a-git-provider",
-    "slug": "/configuration/git-providers#update-a-git-provider",
-    "objectID": 47
-  },
-  {
-    "title": "Delete a Git Provider",
-    "description": "Daytona provides an option to delete Git Providers, helping you manage and delete those that are no longer needed.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#delete-a-git-provider",
-    "slug": "/configuration/git-providers#delete-a-git-provider",
-    "objectID": 48
-  },
-  {
-    "title": "GitHub",
-    "description": "Daytona provides an option to connect your GitHub account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#github",
-    "slug": "/configuration/git-providers#github",
-    "objectID": 49
-  },
-  {
-    "title": "GitLab",
-    "description": "Daytona provides an option to connect your GitLab account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#gitlab",
-    "slug": "/configuration/git-providers#gitlab",
-    "objectID": 50
-  },
-  {
-    "title": "Bitbucket",
-    "description": "Daytona provides an option to connect your Bitbucket account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#bitbucket",
-    "slug": "/configuration/git-providers#bitbucket",
-    "objectID": 51
-  },
-  {
-    "title": "GitHub Enterprise Server",
-    "description": "Daytona provides an option to connect your GitHub Enterprise Server account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#github-enterprise-server",
-    "slug": "/configuration/git-providers#github-enterprise-server",
-    "objectID": 52
-  },
-  {
-    "title": "GitLab Self-Managed",
-    "description": "Daytona provides an option to connect your GitLab Self-Managed account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#gitlab-self-managed",
-    "slug": "/configuration/git-providers#gitlab-self-managed",
-    "objectID": 53
-  },
-  {
-    "title": "Bitbucket Server",
-    "description": "Daytona provides an option to connect your Bitbucket Server account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#bitbucket-server",
-    "slug": "/configuration/git-providers#bitbucket-server",
-    "objectID": 54
-  },
-  {
-    "title": "Codeberg",
-    "description": "Daytona provides an option to connect your Codeberg account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#codeberg",
-    "slug": "/configuration/git-providers#codeberg",
-    "objectID": 55
-  },
-  {
-    "title": "Gitea",
-    "description": "Daytona provides an option to connect your Gitea account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#gitea",
-    "slug": "/configuration/git-providers#gitea",
-    "objectID": 56
-  },
-  {
-    "title": "Gitness",
-    "description": "Daytona provides an option to connect your Gitness account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#gitness",
-    "slug": "/configuration/git-providers#gitness",
-    "objectID": 57
-  },
-  {
-    "title": "Azure DevOps",
-    "description": "Daytona provides an option to connect your Azure DevOps account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#azure-devops",
-    "slug": "/configuration/git-providers#azure-devops",
-    "objectID": 58
-  },
-  {
-    "title": "AWS CodeCommit",
-    "description": "Daytona provides an option to connect your AWS CodeCommit account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#aws-codecommit",
-    "slug": "/configuration/git-providers#aws-codecommit",
-    "objectID": 59
-  },
-  {
-    "title": "Gogs",
-    "description": "Daytona provides an option to connect your Gogs account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#gogs",
-    "slug": "/configuration/git-providers#gogs",
-    "objectID": 60
-  },
-  {
-    "title": "Gitee",
-    "description": "Daytona provides an option to connect your Gitee account and access your repositories directly from Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/git-providers#gitee",
-    "slug": "/configuration/git-providers#gitee",
-    "objectID": 61
-  },
-  {
-    "title": "Providers",
-    "description": "Providers are plugins through which Daytona integrates with various technologies to create and manage development environments.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers",
-    "slug": "/configuration/providers",
-    "objectID": 62
-  },
-  {
-    "title": "Install a Provider",
-    "description": "Daytona provides an option to install a Provider to interface with the Daytona Server.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#install-a-provider",
-    "slug": "/configuration/providers#install-a-provider",
-    "objectID": 63
-  },
-  {
-    "title": "List Providers",
-    "description": "Daytona provides an option to list all installed Providers, providing you with an overview of the Providers available for managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#list-providers",
-    "slug": "/configuration/providers#list-providers",
-    "objectID": 64
-  },
-  {
-    "title": "Update a Provider",
-    "description": "Daytona provides an option to update an existing Provider, enabling you to apply the latest enhancements and bug fixes.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#update-a-provider",
-    "slug": "/configuration/providers#update-a-provider",
-    "objectID": 65
-  },
-  {
-    "title": "Uninstall a Provider",
-    "description": "Daytona provides an option to uninstall an existing Provider, helping you manage your Providers by removing those that are no longer needed.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#uninstall-a-provider",
-    "slug": "/configuration/providers#uninstall-a-provider",
-    "objectID": 66
-  },
-  {
-    "title": "Docker",
-    "description": "The Docker Provider allows Daytona to create Workspace projects as Docker containers.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#docker",
-    "slug": "/configuration/providers#docker",
-    "objectID": 67
-  },
-  {
-    "title": "DigitalOcean",
-    "description": "The DigitalOcean Provider allows Daytona to create Workspace projects on DigitalOcean VMs, known as Droplets.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#digitalocean",
-    "slug": "/configuration/providers#digitalocean",
-    "objectID": 68
-  },
-  {
-    "title": "AWS",
-    "description": "The AWS Provider allows Daytona to create and manage Workspace projects on Amazon EC2 instances.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#aws",
-    "slug": "/configuration/providers#aws",
-    "objectID": 69
-  },
-  {
-    "title": "Azure",
-    "description": "The Azure Provider allows Daytona to create Workspace projects on Azure compute instances.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#azure",
-    "slug": "/configuration/providers#azure",
-    "objectID": 70
-  },
-  {
-    "title": "GCP",
-    "description": "The GCP Provider allows Daytona to create Workspace projects on Google Cloud Platform (GCP) compute instances.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#gcp",
-    "slug": "/configuration/providers#gcp",
-    "objectID": 71
-  },
-  {
-    "title": "Hetzner",
-    "description": "The Hetzner Provider allows Daytona to create Workspace projects on Hetzner Cloud VMs.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#hetzner",
-    "slug": "/configuration/providers#hetzner",
-    "objectID": 72
-  },
-  {
-    "title": "Fly",
-    "description": "The Fly Provider allows Daytona to create Workspace projects on Fly VMs, known as Fly Machines.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/providers#fly",
-    "slug": "/configuration/providers#fly",
-    "objectID": 73
-  },
-  {
-    "title": "Server",
-    "description": "The Daytona Server is a daemon that runs on your machine and handles Workspaces related actions.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/server",
-    "slug": "/configuration/server",
-    "objectID": 74
-  },
-  {
-    "title": "Start the Server",
-    "description": "Run the following command to start the Daytona Server:",
-    "tag": "Documentation",
-    "url": "/docs/configuration/server#start-the-server",
-    "slug": "/configuration/server#start-the-server",
-    "objectID": 75
-  },
-  {
-    "title": "Configure the Server",
-    "description": "The Daytona Server configuration is located in different directories depending on your operating system.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/server#configure-the-server",
-    "slug": "/configuration/server#configure-the-server",
-    "objectID": 76
-  },
-  {
-    "title": "Restart the Server",
-    "description": "Run the following command to restart the Daytona Server:",
-    "tag": "Documentation",
-    "url": "/docs/configuration/server#restart-the-server",
-    "slug": "/configuration/server#restart-the-server",
-    "objectID": 77
-  },
-  {
-    "title": "Stop the Server",
-    "description": "Run the following command to stop the Daytona Server:",
-    "tag": "Documentation",
-    "url": "/docs/configuration/server#stop-the-server",
-    "slug": "/configuration/server#stop-the-server",
-    "objectID": 78
-  },
-  {
-    "title": "Target Configurations",
-    "description": "A Target Configuration refers to the specific destination or environment where your development setup, facilitated by various Providers, is deployed and managed.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config",
-    "slug": "/configuration/target-config",
-    "objectID": 79
-  },
-  {
-    "title": "Create a Target Configuration",
-    "description": "Daytona provides an option to create a Target Configuration to use when managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#create-a-target-configuration",
-    "slug": "/configuration/target-config#create-a-target-configuration",
-    "objectID": 80
-  },
-  {
-    "title": "List Target Configurations",
-    "description": "Daytona provides an option to keep track of your Target Configurations by listing all previously created Target Configurations with their details.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#list-target-configurations",
-    "slug": "/configuration/target-config#list-target-configurations",
-    "objectID": 81
-  },
-  {
-    "title": "Delete a Target Configuration",
-    "description": "Daytona provides an option to delete Target Configurations, helping you manage and remove those that are no longer needed.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#delete-a-target-configuration",
-    "slug": "/configuration/target-config#delete-a-target-configuration",
-    "objectID": 82
-  },
-  {
-    "title": "Docker (Local)",
-    "description": "Daytona provides an option to create a local Docker Target Configuration to use for deploying and managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#docker-local",
-    "slug": "/configuration/target-config#docker-local",
-    "objectID": 83
-  },
-  {
-    "title": "Docker (Remote)",
-    "description": "Daytona provides an option to create a remote Docker Target Configuration to use for deploying and managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#docker-remote",
-    "slug": "/configuration/target-config#docker-remote",
-    "objectID": 84
-  },
-  {
-    "title": "DigitalOcean",
-    "description": "Daytona provides an option to create a DigitalOcean Target Configuration to use for deploying and managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#digitalocean",
-    "slug": "/configuration/target-config#digitalocean",
-    "objectID": 85
-  },
-  {
-    "title": "AWS",
-    "description": "Daytona provides an option to create an AWS Target Configuration to use for deploying and managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#aws",
-    "slug": "/configuration/target-config#aws",
-    "objectID": 86
-  },
-  {
-    "title": "Azure",
-    "description": "Daytona provides an option to set an Azure Target Configuration to use for deploying and managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#azure",
-    "slug": "/configuration/target-config#azure",
-    "objectID": 87
-  },
-  {
-    "title": "GCP",
-    "description": "Daytona provides an option to create a Google Cloud Platform (GCP) Target Configuration to use for deploying and managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#gcp",
-    "slug": "/configuration/target-config#gcp",
-    "objectID": 88
-  },
-  {
-    "title": "Hetzner",
-    "description": "Daytona provides an option to create a Hetzner Target Configuration to use for deploying and managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#hetzner",
-    "slug": "/configuration/target-config#hetzner",
-    "objectID": 89
-  },
-  {
-    "title": "Fly",
-    "description": "Daytona provides an option to create a Fly Target Configuration to use for deploying and managing Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/target-config#fly",
-    "slug": "/configuration/target-config#fly",
-    "objectID": 90
-  },
-  {
-    "title": "Workspace Templates",
-    "description": "A Workspace Template is designed to simplify the management of development environments, allowing you to predefine settings that can be easily applied to any new Workspace.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/workspace-templates",
-    "slug": "/configuration/workspace-templates",
-    "objectID": 91
-  },
-  {
-    "title": "Create a Workspace Template",
-    "description": "Daytona provides an option to add a Workspace Template, enabling you to store and reuse Workspace properties across multiple Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/workspace-templates#create-a-workspace-template",
-    "slug": "/configuration/workspace-templates#create-a-workspace-template",
-    "objectID": 92
-  },
-  {
-    "title": "List Workspace Templates",
-    "description": "Daytona provides an option to list all Workspace Templates, providing you with an overview of the properties stored within each Template.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/workspace-templates#list-workspace-templates",
-    "slug": "/configuration/workspace-templates#list-workspace-templates",
-    "objectID": 93
-  },
-  {
-    "title": "Update Workspace Template",
-    "description": "Daytona provides an option to update an existing Workspace Template, enabling you to modify the properties stored within it.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/workspace-templates#update-workspace-template",
-    "slug": "/configuration/workspace-templates#update-workspace-template",
-    "objectID": 94
-  },
-  {
-    "title": "Delete Workspace Template",
-    "description": "Daytona provides an option to delete an existing Workspace Template, enabling you to remove properties that are no longer needed.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/workspace-templates#delete-workspace-template",
-    "slug": "/configuration/workspace-templates#delete-workspace-template",
-    "objectID": 95
-  },
-  {
-    "title": "Workspace Template Information",
-    "description": "Daytona provides an option to view detailed information of a Workspace Template, providing you with an overview of the properties stored within it.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/workspace-templates#workspace-template-information",
-    "slug": "/configuration/workspace-templates#workspace-template-information",
-    "objectID": 96
-  },
-  {
-    "title": "Set Default Workspace Template",
-    "description": "Daytona provides an option to set a default Workspace Template, enabling you to define a Template that will be used by default when creating new Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/workspace-templates#set-default-workspace-template",
-    "slug": "/configuration/workspace-templates#set-default-workspace-template",
-    "objectID": 97
-  },
-  {
-    "title": "Import Workspace Template",
-    "description": "Daytona provides an option to import a Workspace Template, enabling you to reuse existing Workspace properties across multiple Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/workspace-templates#import-workspace-template",
-    "slug": "/configuration/workspace-templates#import-workspace-template",
-    "objectID": 98
-  },
-  {
-    "title": "Export Workspace Template",
-    "description": "Daytona provides an option to export a Workspace Template, enabling you to save the properties of a Workspace Template as a JSON object.",
-    "tag": "Documentation",
-    "url": "/docs/configuration/workspace-templates#export-workspace-template",
-    "slug": "/configuration/workspace-templates#export-workspace-template",
-    "objectID": 99
-  },
-  {
-    "title": "Installation",
-    "description": "Install Daytona on Linux, macOS, and Windows systems.",
-    "tag": "Documentation",
-    "url": "/docs/installation/installation",
-    "slug": "/installation/installation",
-    "objectID": 100
-  },
-  {
-    "title": "Installation",
-    "description": "Install Daytona on Linux using the following installation script:",
-    "tag": "Documentation",
-    "url": "/docs/installation/installation#installation",
-    "slug": "/installation/installation#installation",
-    "objectID": 101
-  },
-  {
-    "title": "x86-64",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/installation/installation#x86-64",
-    "slug": "/installation/installation#x86-64",
-    "objectID": 102
-  },
-  {
-    "title": "ARM64",
-    "description": "Install Daytona on macOS using the following installation script:",
-    "tag": "Documentation",
-    "url": "/docs/installation/installation#arm64",
-    "slug": "/installation/installation#arm64",
-    "objectID": 103
-  },
-  {
-    "title": "x86-64/Intel-based",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/installation/installation#x86-64intel-based",
-    "slug": "/installation/installation#x86-64intel-based",
-    "objectID": 104
-  },
-  {
-    "title": "ARM64/Apple Silicon",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/installation/installation#arm64apple-silicon",
-    "slug": "/installation/installation#arm64apple-silicon",
-    "objectID": 105
-  },
-  {
-    "title": "x86-64",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/installation/installation#x86-64",
-    "slug": "/installation/installation#x86-64",
-    "objectID": 106
-  },
-  {
-    "title": "AArch64",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/installation/installation#aarch64",
-    "slug": "/installation/installation#aarch64",
-    "objectID": 107
-  },
-  {
-    "title": "Uninstallation",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/installation/installation#uninstallation",
-    "slug": "/installation/installation#uninstallation",
-    "objectID": 108
-  },
-  {
-    "title": "Telemetry",
-    "description": "All telemetry data is **completely anonymous** and **does not** include any personally identifiable information (PII) or user secrets.",
-    "tag": "Documentation",
-    "url": "/docs/misc/telemetry",
-    "slug": "/misc/telemetry",
-    "objectID": 109
-  },
-  {
-    "title": "The Goal",
-    "description": "The goal of gathering telemetry data in the CLI is exclusively for the purpose of improving the Daytona ecosystem.",
-    "tag": "Documentation",
-    "url": "/docs/misc/telemetry#the-goal",
-    "slug": "/misc/telemetry#the-goal",
-    "objectID": 110
-  },
-  {
-    "title": "Gathering Policy",
-    "description": "Telemetry gathering in the CLI is **opt-out**.",
-    "tag": "Documentation",
-    "url": "/docs/misc/telemetry#gathering-policy",
-    "slug": "/misc/telemetry#gathering-policy",
-    "objectID": 111
-  },
-  {
-    "title": "CLI Identifier",
-    "description": "All telemetry events contain a unique identifier.",
-    "tag": "Documentation",
-    "url": "/docs/misc/telemetry#cli-identifier",
-    "slug": "/misc/telemetry#cli-identifier",
-    "objectID": 112
-  },
-  {
-    "title": "Data Protection",
-    "description": "We use <a href=\"https://posthog.",
-    "tag": "Documentation",
-    "url": "/docs/misc/telemetry#data-protection",
-    "slug": "/misc/telemetry#data-protection",
-    "objectID": 113
-  },
-  {
-    "title": "Debugging",
-    "description": "Telemetry events can be debugged by setting `LOG_LEVEL=trace` which will output information about the telemetry event queue.",
-    "tag": "Documentation",
-    "url": "/docs/misc/telemetry#debugging",
-    "slug": "/misc/telemetry#debugging",
-    "objectID": 114
-  },
-  {
-    "title": "Troubleshooting",
-    "description": "You can use the following troubleshooting tips to resolve common issues with Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/misc/troubleshooting",
-    "slug": "/misc/troubleshooting",
-    "objectID": 115
-  },
-  {
-    "title": "Connectivity Issues",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/misc/troubleshooting#connectivity-issues",
-    "slug": "/misc/troubleshooting#connectivity-issues",
-    "objectID": 116
-  },
-  {
-    "title": "VPNs and Firewalls",
-    "description": "If your VPN is configured to handle all IP traffic or if your Firewall is configured to block certain IP addresses, they may prevent Daytona from successfully connecting to the reverse proxy service.",
-    "tag": "Documentation",
-    "url": "/docs/misc/troubleshooting#vpns-and-firewalls",
-    "slug": "/misc/troubleshooting#vpns-and-firewalls",
-    "objectID": 117
-  },
-  {
-    "title": "WSL2 with Visual Studio Code",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/misc/troubleshooting#wsl2-with-visual-studio-code",
-    "slug": "/misc/troubleshooting#wsl2-with-visual-studio-code",
-    "objectID": 118
-  },
-  {
-    "title": "Description",
-    "description": "Running Daytona on WSL2 does not work seamlessly with the Visual Studio Code IDE.",
-    "tag": "Documentation",
-    "url": "/docs/misc/troubleshooting#description",
-    "slug": "/misc/troubleshooting#description",
-    "objectID": 119
-  },
-  {
-    "title": "Solution",
-    "description": "While awaiting official support for a \"remote SSH path\" flag in the Visual Studio Code plugin, the following workaround can address the issue.",
-    "tag": "Documentation",
-    "url": "/docs/misc/troubleshooting#solution",
-    "slug": "/misc/troubleshooting#solution",
-    "objectID": 120
-  },
-  {
     "title": "Configuration",
     "description": "The Daytona SDK provides flexible configuration options to customize its behavior and connection settings.",
     "tag": "Documentation",
-    "url": "/docs/sdk/configuration",
-    "slug": "/sdk/configuration",
-    "objectID": 121
+    "url": "/docs/configuration",
+    "slug": "/configuration",
+    "objectID": 1
   },
   {
     "title": "Configuration Options",
     "description": "Daytona SDK provides an option to configure settings using the `DaytonaConfig` class in Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/configuration#configuration-options",
-    "slug": "/sdk/configuration#configuration-options",
-    "objectID": 122
+    "url": "/docs/configuration#configuration-options",
+    "slug": "/configuration#configuration-options",
+    "objectID": 2
   },
   {
     "title": "Environment Variables",
     "description": "Daytona SDK supports environment variables for configuration.",
     "tag": "Documentation",
-    "url": "/docs/sdk/configuration#environment-variables",
-    "slug": "/sdk/configuration#environment-variables",
-    "objectID": 123
+    "url": "/docs/configuration#environment-variables",
+    "slug": "/configuration#environment-variables",
+    "objectID": 3
   },
   {
     "title": "Setting Environment Variables",
     "description": "Daytona SDK can read configuration from environment variables.",
     "tag": "Documentation",
-    "url": "/docs/sdk/configuration#setting-environment-variables",
-    "slug": "/sdk/configuration#setting-environment-variables",
-    "objectID": 124
+    "url": "/docs/configuration#setting-environment-variables",
+    "slug": "/configuration#setting-environment-variables",
+    "objectID": 4
   },
   {
     "title": "Using a **`.env`** File",
     "description": "Create a `.",
     "tag": "Documentation",
-    "url": "/docs/sdk/configuration#using-a-env-file",
-    "slug": "/sdk/configuration#using-a-env-file",
-    "objectID": 125
+    "url": "/docs/configuration#using-a-env-file",
+    "slug": "/configuration#using-a-env-file",
+    "objectID": 5
   },
   {
     "title": "Using Shell Environment",
     "description": "Set environment variables in your shell:",
     "tag": "Documentation",
-    "url": "/docs/sdk/configuration#using-shell-environment",
-    "slug": "/sdk/configuration#using-shell-environment",
-    "objectID": 126
+    "url": "/docs/configuration#using-shell-environment",
+    "slug": "/configuration#using-shell-environment",
+    "objectID": 6
   },
   {
     "title": "Configuration Precedence",
     "description": "The SDK uses the following precedence order for configuration (highest to lowest):",
     "tag": "Documentation",
-    "url": "/docs/sdk/configuration#configuration-precedence",
-    "slug": "/sdk/configuration#configuration-precedence",
-    "objectID": 127
+    "url": "/docs/configuration#configuration-precedence",
+    "slug": "/configuration#configuration-precedence",
+    "objectID": 7
   },
   {
     "title": "File System Operations",
     "description": "The Daytona SDK provides comprehensive file system operations through the `fs` module in workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations",
-    "slug": "/sdk/file-system-operations",
-    "objectID": 128
+    "url": "/docs/file-system-operations",
+    "slug": "/file-system-operations",
+    "objectID": 8
   },
   {
     "title": "Basic Operations",
     "description": "Daytona SDK provides an option to interact with the file system in Workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#basic-operations",
-    "slug": "/sdk/file-system-operations#basic-operations",
-    "objectID": 129
+    "url": "/docs/file-system-operations#basic-operations",
+    "slug": "/file-system-operations#basic-operations",
+    "objectID": 9
   },
   {
     "title": "Listing Files and Directories",
     "description": "Daytona SDK provides an option to list files and directories in a Workspace using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#listing-files-and-directories",
-    "slug": "/sdk/file-system-operations#listing-files-and-directories",
-    "objectID": 130
+    "url": "/docs/file-system-operations#listing-files-and-directories",
+    "slug": "/file-system-operations#listing-files-and-directories",
+    "objectID": 10
   },
   {
     "title": "List files in a directory",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#list-files-in-a-directory",
-    "slug": "/sdk/file-system-operations#list-files-in-a-directory",
-    "objectID": 131
+    "url": "/docs/file-system-operations#list-files-in-a-directory",
+    "slug": "/file-system-operations#list-files-in-a-directory",
+    "objectID": 11
   },
   {
     "title": "Creating Directories",
     "description": "Daytona SDK provides an option to create directories with specific permissions using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#creating-directories",
-    "slug": "/sdk/file-system-operations#creating-directories",
-    "objectID": 132
+    "url": "/docs/file-system-operations#creating-directories",
+    "slug": "/file-system-operations#creating-directories",
+    "objectID": 12
   },
   {
     "title": "Create a directory",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#create-a-directory",
-    "slug": "/sdk/file-system-operations#create-a-directory",
-    "objectID": 133
+    "url": "/docs/file-system-operations#create-a-directory",
+    "slug": "/file-system-operations#create-a-directory",
+    "objectID": 13
   },
   {
     "title": "Create with specific permissions",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#create-with-specific-permissions",
-    "slug": "/sdk/file-system-operations#create-with-specific-permissions",
-    "objectID": 134
+    "url": "/docs/file-system-operations#create-with-specific-permissions",
+    "slug": "/file-system-operations#create-with-specific-permissions",
+    "objectID": 14
   },
   {
     "title": "File Operations",
     "description": "Daytona SDK provides options to read, write, upload, download, and delete files in Workspaces using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#file-operations",
-    "slug": "/sdk/file-system-operations#file-operations",
-    "objectID": 135
+    "url": "/docs/file-system-operations#file-operations",
+    "slug": "/file-system-operations#file-operations",
+    "objectID": 15
   },
   {
     "title": "Upload a file",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#upload-a-file",
-    "slug": "/sdk/file-system-operations#upload-a-file",
-    "objectID": 136
+    "url": "/docs/file-system-operations#upload-a-file",
+    "slug": "/file-system-operations#upload-a-file",
+    "objectID": 16
   },
   {
     "title": "Download a file",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#download-a-file",
-    "slug": "/sdk/file-system-operations#download-a-file",
-    "objectID": 137
+    "url": "/docs/file-system-operations#download-a-file",
+    "slug": "/file-system-operations#download-a-file",
+    "objectID": 17
   },
   {
     "title": "Delete a file",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#delete-a-file",
-    "slug": "/sdk/file-system-operations#delete-a-file",
-    "objectID": 138
+    "url": "/docs/file-system-operations#delete-a-file",
+    "slug": "/file-system-operations#delete-a-file",
+    "objectID": 18
   },
   {
     "title": "Advanced Operations",
     "description": "Daytona SDK provides advanced file system operations like file permissions, search and replace, and more.",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#advanced-operations",
-    "slug": "/sdk/file-system-operations#advanced-operations",
-    "objectID": 139
+    "url": "/docs/file-system-operations#advanced-operations",
+    "slug": "/file-system-operations#advanced-operations",
+    "objectID": 19
   },
   {
     "title": "File Permissions",
     "description": "Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#file-permissions",
-    "slug": "/sdk/file-system-operations#file-permissions",
-    "objectID": 140
+    "url": "/docs/file-system-operations#file-permissions",
+    "slug": "/file-system-operations#file-permissions",
+    "objectID": 20
   },
   {
     "title": "Set file permissions",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#set-file-permissions",
-    "slug": "/sdk/file-system-operations#set-file-permissions",
-    "objectID": 141
+    "url": "/docs/file-system-operations#set-file-permissions",
+    "slug": "/file-system-operations#set-file-permissions",
+    "objectID": 21
   },
   {
     "title": "Get file permissions",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#get-file-permissions",
-    "slug": "/sdk/file-system-operations#get-file-permissions",
-    "objectID": 142
+    "url": "/docs/file-system-operations#get-file-permissions",
+    "slug": "/file-system-operations#get-file-permissions",
+    "objectID": 22
   },
   {
     "title": "File Search and Replace",
     "description": "Daytona SDK provides an option to search for text in files and replace text in files using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#file-search-and-replace",
-    "slug": "/sdk/file-system-operations#file-search-and-replace",
-    "objectID": 143
+    "url": "/docs/file-system-operations#file-search-and-replace",
+    "slug": "/file-system-operations#file-search-and-replace",
+    "objectID": 23
   },
   {
     "title": "Search for text in files; if a folder is specified, the search is recursive",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#search-for-text-in-files-if-a-folder-is-specified-the-search-is-recursive",
-    "slug": "/sdk/file-system-operations#search-for-text-in-files-if-a-folder-is-specified-the-search-is-recursive",
-    "objectID": 144
+    "url": "/docs/file-system-operations#search-for-text-in-files-if-a-folder-is-specified-the-search-is-recursive",
+    "slug": "/file-system-operations#search-for-text-in-files-if-a-folder-is-specified-the-search-is-recursive",
+    "objectID": 24
   },
   {
     "title": "Replace text in files",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/file-system-operations#replace-text-in-files",
-    "slug": "/sdk/file-system-operations#replace-text-in-files",
-    "objectID": 145
+    "url": "/docs/file-system-operations#replace-text-in-files",
+    "slug": "/file-system-operations#replace-text-in-files",
+    "objectID": 25
   },
   {
     "title": "Getting Started",
     "description": "The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started",
-    "slug": "/sdk/getting-started",
-    "objectID": 146
+    "url": "/docs/getting-started",
+    "slug": "/getting-started",
+    "objectID": 26
   },
   {
     "title": "Install Daytona",
     "description": "Install Daytona by following the [installation instructions](https://www.",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#install-daytona",
-    "slug": "/sdk/getting-started#install-daytona",
-    "objectID": 147
+    "url": "/docs/getting-started#install-daytona",
+    "slug": "/getting-started#install-daytona",
+    "objectID": 27
   },
   {
     "title": "Set Up Your Environment Variables",
     "description": "To authenticate with Daytona, you need an API key.",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#set-up-your-environment-variables",
-    "slug": "/sdk/getting-started#set-up-your-environment-variables",
-    "objectID": 148
+    "url": "/docs/getting-started#set-up-your-environment-variables",
+    "slug": "/getting-started#set-up-your-environment-variables",
+    "objectID": 28
   },
   {
     "title": "Install the Daytona SDK",
     "description": "Daytona provides official Python and TypeScript SDKs for interacting with the Daytona platform.",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#install-the-daytona-sdk",
-    "slug": "/sdk/getting-started#install-the-daytona-sdk",
-    "objectID": 149
+    "url": "/docs/getting-started#install-the-daytona-sdk",
+    "slug": "/getting-started#install-the-daytona-sdk",
+    "objectID": 29
   },
   {
     "title": "Using npm",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#using-npm",
-    "slug": "/sdk/getting-started#using-npm",
-    "objectID": 150
+    "url": "/docs/getting-started#using-npm",
+    "slug": "/getting-started#using-npm",
+    "objectID": 30
   },
   {
     "title": "Using yarn",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#using-yarn",
-    "slug": "/sdk/getting-started#using-yarn",
-    "objectID": 151
+    "url": "/docs/getting-started#using-yarn",
+    "slug": "/getting-started#using-yarn",
+    "objectID": 31
   },
   {
     "title": "Using pnpm",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#using-pnpm",
-    "slug": "/sdk/getting-started#using-pnpm",
-    "objectID": 152
+    "url": "/docs/getting-started#using-pnpm",
+    "slug": "/getting-started#using-pnpm",
+    "objectID": 32
   },
   {
     "title": "Write Code to Create a Workspace",
     "description": "Create and run your code within Daytona Workspace using the SDK.",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#write-code-to-create-a-workspace",
-    "slug": "/sdk/getting-started#write-code-to-create-a-workspace",
-    "objectID": 153
+    "url": "/docs/getting-started#write-code-to-create-a-workspace",
+    "slug": "/getting-started#write-code-to-create-a-workspace",
+    "objectID": 33
   },
   {
     "title": "Execute Commands",
     "description": "Run the following code to create a Daytona Workspace and execute commands:",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#execute-commands",
-    "slug": "/sdk/getting-started#execute-commands",
-    "objectID": 154
+    "url": "/docs/getting-started#execute-commands",
+    "slug": "/getting-started#execute-commands",
+    "objectID": 34
   },
   {
     "title": "Initialize the Daytona client",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#initialize-the-daytona-client",
-    "slug": "/sdk/getting-started#initialize-the-daytona-client",
-    "objectID": 155
+    "url": "/docs/getting-started#initialize-the-daytona-client",
+    "slug": "/getting-started#initialize-the-daytona-client",
+    "objectID": 35
   },
   {
     "title": "Create the workspace instance",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#create-the-workspace-instance",
-    "slug": "/sdk/getting-started#create-the-workspace-instance",
-    "objectID": 156
+    "url": "/docs/getting-started#create-the-workspace-instance",
+    "slug": "/getting-started#create-the-workspace-instance",
+    "objectID": 36
   },
   {
     "title": "Run the code securely inside the workspace",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#run-the-code-securely-inside-the-workspace",
-    "slug": "/sdk/getting-started#run-the-code-securely-inside-the-workspace",
-    "objectID": 157
+    "url": "/docs/getting-started#run-the-code-securely-inside-the-workspace",
+    "slug": "/getting-started#run-the-code-securely-inside-the-workspace",
+    "objectID": 37
   },
   {
     "title": "Clean up the workspace",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#clean-up-the-workspace",
-    "slug": "/sdk/getting-started#clean-up-the-workspace",
-    "objectID": 158
+    "url": "/docs/getting-started#clean-up-the-workspace",
+    "slug": "/getting-started#clean-up-the-workspace",
+    "objectID": 38
   },
   {
     "title": "Start your Workspace",
     "description": "Daytona provides two methods for starting your Workspace:",
     "tag": "Documentation",
-    "url": "/docs/sdk/getting-started#start-your-workspace",
-    "slug": "/sdk/getting-started#start-your-workspace",
-    "objectID": 159
+    "url": "/docs/getting-started#start-your-workspace",
+    "slug": "/getting-started#start-your-workspace",
+    "objectID": 39
   },
   {
     "title": "Git Operations",
     "description": "The Daytona SDK provides built-in Git support through the `git` module in Workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations",
-    "slug": "/sdk/git-operations",
-    "objectID": 160
+    "url": "/docs/git-operations",
+    "slug": "/git-operations",
+    "objectID": 40
   },
   {
     "title": "Basic Operations",
     "description": "Daytona SDK provides an option to clone, check status, and manage Git repositories in Workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#basic-operations",
-    "slug": "/sdk/git-operations#basic-operations",
-    "objectID": 161
+    "url": "/docs/git-operations#basic-operations",
+    "slug": "/git-operations#basic-operations",
+    "objectID": 41
   },
   {
     "title": "Cloning Repositories",
     "description": "Daytona SDK provides an option to clone Git repositories into Workspaces using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#cloning-repositories",
-    "slug": "/sdk/git-operations#cloning-repositories",
-    "objectID": 162
+    "url": "/docs/git-operations#cloning-repositories",
+    "slug": "/git-operations#cloning-repositories",
+    "objectID": 42
   },
   {
     "title": "Basic clone",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#basic-clone",
-    "slug": "/sdk/git-operations#basic-clone",
-    "objectID": 163
+    "url": "/docs/git-operations#basic-clone",
+    "slug": "/git-operations#basic-clone",
+    "objectID": 43
   },
   {
     "title": "Clone with authentication",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#clone-with-authentication",
-    "slug": "/sdk/git-operations#clone-with-authentication",
-    "objectID": 164
+    "url": "/docs/git-operations#clone-with-authentication",
+    "slug": "/git-operations#clone-with-authentication",
+    "objectID": 44
   },
   {
     "title": "Clone specific branch",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#clone-specific-branch",
-    "slug": "/sdk/git-operations#clone-specific-branch",
-    "objectID": 165
+    "url": "/docs/git-operations#clone-specific-branch",
+    "slug": "/git-operations#clone-specific-branch",
+    "objectID": 45
   },
   {
     "title": "Repository Status",
     "description": "Daytona SDK provides an option to check the status of Git repositories in Workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#repository-status",
-    "slug": "/sdk/git-operations#repository-status",
-    "objectID": 166
+    "url": "/docs/git-operations#repository-status",
+    "slug": "/git-operations#repository-status",
+    "objectID": 46
   },
   {
     "title": "Get repository status",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#get-repository-status",
-    "slug": "/sdk/git-operations#get-repository-status",
-    "objectID": 167
+    "url": "/docs/git-operations#get-repository-status",
+    "slug": "/git-operations#get-repository-status",
+    "objectID": 47
   },
   {
     "title": "List branches",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#list-branches",
-    "slug": "/sdk/git-operations#list-branches",
-    "objectID": 168
+    "url": "/docs/git-operations#list-branches",
+    "slug": "/git-operations#list-branches",
+    "objectID": 48
   },
   {
     "title": "Branch Operations",
     "description": "Daytona SDK provides an option to manage branches in Git repositories.",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#branch-operations",
-    "slug": "/sdk/git-operations#branch-operations",
-    "objectID": 169
+    "url": "/docs/git-operations#branch-operations",
+    "slug": "/git-operations#branch-operations",
+    "objectID": 49
   },
   {
     "title": "Managing Branches",
     "description": "Daytona SDK provides an option to create, switch, and delete branches in Git repositories using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#managing-branches",
-    "slug": "/sdk/git-operations#managing-branches",
-    "objectID": 170
+    "url": "/docs/git-operations#managing-branches",
+    "slug": "/git-operations#managing-branches",
+    "objectID": 50
   },
   {
     "title": "Create new branch",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#create-new-branch",
-    "slug": "/sdk/git-operations#create-new-branch",
-    "objectID": 171
+    "url": "/docs/git-operations#create-new-branch",
+    "slug": "/git-operations#create-new-branch",
+    "objectID": 51
   },
   {
     "title": "Switch branch",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#switch-branch",
-    "slug": "/sdk/git-operations#switch-branch",
-    "objectID": 172
+    "url": "/docs/git-operations#switch-branch",
+    "slug": "/git-operations#switch-branch",
+    "objectID": 52
   },
   {
     "title": "Delete branch",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#delete-branch",
-    "slug": "/sdk/git-operations#delete-branch",
-    "objectID": 173
+    "url": "/docs/git-operations#delete-branch",
+    "slug": "/git-operations#delete-branch",
+    "objectID": 53
   },
   {
     "title": "Staging and Committing",
     "description": "Daytona SDK provides an option to stage and commit changes in Git repositories.",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#staging-and-committing",
-    "slug": "/sdk/git-operations#staging-and-committing",
-    "objectID": 174
+    "url": "/docs/git-operations#staging-and-committing",
+    "slug": "/git-operations#staging-and-committing",
+    "objectID": 54
   },
   {
     "title": "Working with Changes",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#working-with-changes",
-    "slug": "/sdk/git-operations#working-with-changes",
-    "objectID": 175
+    "url": "/docs/git-operations#working-with-changes",
+    "slug": "/git-operations#working-with-changes",
+    "objectID": 55
   },
   {
     "title": "Stage specific files",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#stage-specific-files",
-    "slug": "/sdk/git-operations#stage-specific-files",
-    "objectID": 176
+    "url": "/docs/git-operations#stage-specific-files",
+    "slug": "/git-operations#stage-specific-files",
+    "objectID": 56
   },
   {
     "title": "Stage all changes",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#stage-all-changes",
-    "slug": "/sdk/git-operations#stage-all-changes",
-    "objectID": 177
+    "url": "/docs/git-operations#stage-all-changes",
+    "slug": "/git-operations#stage-all-changes",
+    "objectID": 57
   },
   {
     "title": "Commit changes",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#commit-changes",
-    "slug": "/sdk/git-operations#commit-changes",
-    "objectID": 178
+    "url": "/docs/git-operations#commit-changes",
+    "slug": "/git-operations#commit-changes",
+    "objectID": 58
   },
   {
     "title": "Get commit history",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#get-commit-history",
-    "slug": "/sdk/git-operations#get-commit-history",
-    "objectID": 179
+    "url": "/docs/git-operations#get-commit-history",
+    "slug": "/git-operations#get-commit-history",
+    "objectID": 59
   },
   {
     "title": "Remote Operations",
     "description": "Daytona SDK provides an option to work with remote repositories in Git.",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#remote-operations",
-    "slug": "/sdk/git-operations#remote-operations",
-    "objectID": 180
+    "url": "/docs/git-operations#remote-operations",
+    "slug": "/git-operations#remote-operations",
+    "objectID": 60
   },
   {
     "title": "Working with Remotes",
     "description": "Daytona SDK provides an option to push, pull, and list remotes in Git repositories using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#working-with-remotes",
-    "slug": "/sdk/git-operations#working-with-remotes",
-    "objectID": 181
+    "url": "/docs/git-operations#working-with-remotes",
+    "slug": "/git-operations#working-with-remotes",
+    "objectID": 61
   },
   {
     "title": "Push changes",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#push-changes",
-    "slug": "/sdk/git-operations#push-changes",
-    "objectID": 182
+    "url": "/docs/git-operations#push-changes",
+    "slug": "/git-operations#push-changes",
+    "objectID": 62
   },
   {
     "title": "Pull changes",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#pull-changes",
-    "slug": "/sdk/git-operations#pull-changes",
-    "objectID": 183
+    "url": "/docs/git-operations#pull-changes",
+    "slug": "/git-operations#pull-changes",
+    "objectID": 63
   },
   {
     "title": "List remotes",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/git-operations#list-remotes",
-    "slug": "/sdk/git-operations#list-remotes",
-    "objectID": 184
+    "url": "/docs/git-operations#list-remotes",
+    "slug": "/git-operations#list-remotes",
+    "objectID": 64
   },
   {
     "title": "Language Server Protocol",
     "description": "The Daytona SDK provides Language Server Protocol (LSP) support through workspace instances.",
     "tag": "Documentation",
-    "url": "/docs/sdk/language-server-protocol",
-    "slug": "/sdk/language-server-protocol",
-    "objectID": 185
+    "url": "/docs/language-server-protocol",
+    "slug": "/language-server-protocol",
+    "objectID": 65
   },
   {
     "title": "Creating LSP Servers",
     "description": "Daytona SDK provides an option to create LSP servers using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/language-server-protocol#creating-lsp-servers",
-    "slug": "/sdk/language-server-protocol#creating-lsp-servers",
-    "objectID": 186
+    "url": "/docs/language-server-protocol#creating-lsp-servers",
+    "slug": "/language-server-protocol#creating-lsp-servers",
+    "objectID": 66
   },
   {
     "title": "Create workspace",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/language-server-protocol#create-workspace",
-    "slug": "/sdk/language-server-protocol#create-workspace",
-    "objectID": 187
+    "url": "/docs/language-server-protocol#create-workspace",
+    "slug": "/language-server-protocol#create-workspace",
+    "objectID": 67
   },
   {
     "title": "Create LSP server for Python",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/language-server-protocol#create-lsp-server-for-python",
-    "slug": "/sdk/language-server-protocol#create-lsp-server-for-python",
-    "objectID": 188
+    "url": "/docs/language-server-protocol#create-lsp-server-for-python",
+    "slug": "/language-server-protocol#create-lsp-server-for-python",
+    "objectID": 68
   },
   {
     "title": "Supported Languages",
     "description": "Daytona SDK provides an option to create LSP servers for various languages through the `LspLanguageId` enum in Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/language-server-protocol#supported-languages",
-    "slug": "/sdk/language-server-protocol#supported-languages",
-    "objectID": 189
+    "url": "/docs/language-server-protocol#supported-languages",
+    "slug": "/language-server-protocol#supported-languages",
+    "objectID": 69
   },
   {
     "title": "Available language IDs",
     "description": "LspLanguageId.",
     "tag": "Documentation",
-    "url": "/docs/sdk/language-server-protocol#available-language-ids",
-    "slug": "/sdk/language-server-protocol#available-language-ids",
-    "objectID": 190
+    "url": "/docs/language-server-protocol#available-language-ids",
+    "slug": "/language-server-protocol#available-language-ids",
+    "objectID": 70
   },
   {
     "title": "LSP Features",
     "description": "Daytona SDK provides various LSP features for code analysis and editing.",
     "tag": "Documentation",
-    "url": "/docs/sdk/language-server-protocol#lsp-features",
-    "slug": "/sdk/language-server-protocol#lsp-features",
-    "objectID": 191
+    "url": "/docs/language-server-protocol#lsp-features",
+    "slug": "/language-server-protocol#lsp-features",
+    "objectID": 71
   },
   {
     "title": "Code Completion",
     "description": "Daytona SDK provides an option to get code completions for a specific position in a file using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/language-server-protocol#code-completion",
-    "slug": "/sdk/language-server-protocol#code-completion",
-    "objectID": 192
+    "url": "/docs/language-server-protocol#code-completion",
+    "slug": "/language-server-protocol#code-completion",
+    "objectID": 72
   },
   {
     "title": "Process and Code Execution",
     "description": "The Daytona SDK provides powerful process and code execution capabilities through the `process` module in workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution",
-    "slug": "/sdk/process-code-execution",
-    "objectID": 193
+    "url": "/docs/process-code-execution",
+    "slug": "/process-code-execution",
+    "objectID": 73
   },
   {
     "title": "Code Execution",
     "description": "Daytona SDK provides an option to execute code in Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#code-execution",
-    "slug": "/sdk/process-code-execution#code-execution",
-    "objectID": 194
+    "url": "/docs/process-code-execution#code-execution",
+    "slug": "/process-code-execution#code-execution",
+    "objectID": 74
   },
   {
     "title": "Running Code",
     "description": "Daytona SDK provides an option to run code snippets in Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#running-code",
-    "slug": "/sdk/process-code-execution#running-code",
-    "objectID": 195
+    "url": "/docs/process-code-execution#running-code",
+    "slug": "/process-code-execution#running-code",
+    "objectID": 75
   },
   {
     "title": "Run Python code",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#run-python-code",
-    "slug": "/sdk/process-code-execution#run-python-code",
-    "objectID": 196
+    "url": "/docs/process-code-execution#run-python-code",
+    "slug": "/process-code-execution#run-python-code",
+    "objectID": 76
   },
   {
     "title": "Process Execution",
     "description": "Daytona SDK provides an option to execute shell commands and manage background processes in Workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#process-execution",
-    "slug": "/sdk/process-code-execution#process-execution",
-    "objectID": 197
+    "url": "/docs/process-code-execution#process-execution",
+    "slug": "/process-code-execution#process-execution",
+    "objectID": 77
   },
   {
     "title": "Running Commands",
     "description": "Daytona SDK provides an option to execute shell commands in Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#running-commands",
-    "slug": "/sdk/process-code-execution#running-commands",
-    "objectID": 198
+    "url": "/docs/process-code-execution#running-commands",
+    "slug": "/process-code-execution#running-commands",
+    "objectID": 78
   },
   {
     "title": "Execute shell command",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#execute-shell-command",
-    "slug": "/sdk/process-code-execution#execute-shell-command",
-    "objectID": 199
+    "url": "/docs/process-code-execution#execute-shell-command",
+    "slug": "/process-code-execution#execute-shell-command",
+    "objectID": 79
   },
   {
     "title": "Sessions (Background Processes)",
     "description": "Daytona SDK provides an option to start, stop, and manage background process sessions in Workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#sessions-background-processes",
-    "slug": "/sdk/process-code-execution#sessions-background-processes",
-    "objectID": 200
+    "url": "/docs/process-code-execution#sessions-background-processes",
+    "slug": "/process-code-execution#sessions-background-processes",
+    "objectID": 80
   },
   {
     "title": "Managing Long-Running Processes",
     "description": "Daytona SDK provides an option to start and stop background processes.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#managing-long-running-processes",
-    "slug": "/sdk/process-code-execution#managing-long-running-processes",
-    "objectID": 201
+    "url": "/docs/process-code-execution#managing-long-running-processes",
+    "slug": "/process-code-execution#managing-long-running-processes",
+    "objectID": 81
   },
   {
     "title": "Check session's executed commands",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#check-sessions-executed-commands",
-    "slug": "/sdk/process-code-execution#check-sessions-executed-commands",
-    "objectID": 202
+    "url": "/docs/process-code-execution#check-sessions-executed-commands",
+    "slug": "/process-code-execution#check-sessions-executed-commands",
+    "objectID": 82
   },
   {
     "title": "List all running sessions",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#list-all-running-sessions",
-    "slug": "/sdk/process-code-execution#list-all-running-sessions",
-    "objectID": 203
+    "url": "/docs/process-code-execution#list-all-running-sessions",
+    "slug": "/process-code-execution#list-all-running-sessions",
+    "objectID": 83
   },
   {
     "title": "Best Practices",
     "description": "Daytona SDK provides best practices for process and code execution in Workspaces.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#best-practices",
-    "slug": "/sdk/process-code-execution#best-practices",
-    "objectID": 204
+    "url": "/docs/process-code-execution#best-practices",
+    "slug": "/process-code-execution#best-practices",
+    "objectID": 84
   },
   {
     "title": "Common Issues",
     "description": "Daytona SDK provides an option to troubleshoot common issues related to process execution and code execution.",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#common-issues",
-    "slug": "/sdk/process-code-execution#common-issues",
-    "objectID": 205
+    "url": "/docs/process-code-execution#common-issues",
+    "slug": "/process-code-execution#common-issues",
+    "objectID": 85
   },
   {
     "title": "Process Execution Failed",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#process-execution-failed",
-    "slug": "/sdk/process-code-execution#process-execution-failed",
-    "objectID": 206
+    "url": "/docs/process-code-execution#process-execution-failed",
+    "slug": "/process-code-execution#process-execution-failed",
+    "objectID": 86
   },
   {
     "title": "Process Timeout",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#process-timeout",
-    "slug": "/sdk/process-code-execution#process-timeout",
-    "objectID": 207
+    "url": "/docs/process-code-execution#process-timeout",
+    "slug": "/process-code-execution#process-timeout",
+    "objectID": 87
   },
   {
     "title": "Resource Limits",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/process-code-execution#resource-limits",
-    "slug": "/sdk/process-code-execution#resource-limits",
-    "objectID": 208
+    "url": "/docs/process-code-execution#resource-limits",
+    "slug": "/process-code-execution#resource-limits",
+    "objectID": 88
   },
   {
     "title": "Workspace Management",
     "description": "Workspaces are isolated development environments managed by Daytona.",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management",
-    "slug": "/sdk/workspace-management",
-    "objectID": 209
+    "url": "/docs/workspace-management",
+    "slug": "/workspace-management",
+    "objectID": 89
   },
   {
     "title": "Creating Workspaces",
     "description": "Daytona SDK provides an option to create workspaces with default or custom configurations.",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#creating-workspaces",
-    "slug": "/sdk/workspace-management#creating-workspaces",
-    "objectID": 210
+    "url": "/docs/workspace-management#creating-workspaces",
+    "slug": "/workspace-management#creating-workspaces",
+    "objectID": 90
   },
   {
     "title": "Basic Workspace Creation",
     "description": "Daytona SDK provides methods to create Workspaces with default configurations, specific languages, or custom IDs using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#basic-workspace-creation",
-    "slug": "/sdk/workspace-management#basic-workspace-creation",
-    "objectID": 211
+    "url": "/docs/workspace-management#basic-workspace-creation",
+    "slug": "/workspace-management#basic-workspace-creation",
+    "objectID": 91
   },
   {
     "title": "Create a basic workspace",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#create-a-basic-workspace",
-    "slug": "/sdk/workspace-management#create-a-basic-workspace",
-    "objectID": 212
+    "url": "/docs/workspace-management#create-a-basic-workspace",
+    "slug": "/workspace-management#create-a-basic-workspace",
+    "objectID": 92
   },
   {
     "title": "Create a workspace with specific language",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#create-a-workspace-with-specific-language",
-    "slug": "/sdk/workspace-management#create-a-workspace-with-specific-language",
-    "objectID": 213
+    "url": "/docs/workspace-management#create-a-workspace-with-specific-language",
+    "slug": "/workspace-management#create-a-workspace-with-specific-language",
+    "objectID": 93
   },
   {
     "title": "Create a workspace with custom ID",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#create-a-workspace-with-custom-id",
-    "slug": "/sdk/workspace-management#create-a-workspace-with-custom-id",
-    "objectID": 214
+    "url": "/docs/workspace-management#create-a-workspace-with-custom-id",
+    "slug": "/workspace-management#create-a-workspace-with-custom-id",
+    "objectID": 94
   },
   {
     "title": "Workspace Information",
     "description": "Daytona SDK provides methods to get information about a workspace, such as ID, root directory, and status using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#workspace-information",
-    "slug": "/sdk/workspace-management#workspace-information",
-    "objectID": 215
+    "url": "/docs/workspace-management#workspace-information",
+    "slug": "/workspace-management#workspace-information",
+    "objectID": 95
   },
   {
     "title": "Get workspace ID",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#get-workspace-id",
-    "slug": "/sdk/workspace-management#get-workspace-id",
-    "objectID": 216
+    "url": "/docs/workspace-management#get-workspace-id",
+    "slug": "/workspace-management#get-workspace-id",
+    "objectID": 96
   },
   {
     "title": "Get workspace root directory",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#get-workspace-root-directory",
-    "slug": "/sdk/workspace-management#get-workspace-root-directory",
-    "objectID": 217
+    "url": "/docs/workspace-management#get-workspace-root-directory",
+    "slug": "/workspace-management#get-workspace-root-directory",
+    "objectID": 97
   },
   {
     "title": "Remove Workspace",
     "description": "Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#remove-workspace",
-    "slug": "/sdk/workspace-management#remove-workspace",
-    "objectID": 218
+    "url": "/docs/workspace-management#remove-workspace",
+    "slug": "/workspace-management#remove-workspace",
+    "objectID": 98
   },
   {
     "title": "Remove workspace",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sdk/workspace-management#remove-workspace",
-    "slug": "/sdk/workspace-management#remove-workspace",
-    "objectID": 219
-  },
-  {
-    "title": "CLI",
-    "description": "The `daytona` command-line tool provides access to Daytona's core features.",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli",
-    "slug": "/tools/cli",
-    "objectID": 220
-  },
-  {
-    "title": "daytona",
-    "description": "Daytona is a Dev Environment Manager",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona",
-    "slug": "/tools/cli#daytona",
-    "objectID": 221
-  },
-  {
-    "title": "daytona api-key",
-    "description": "Api Key commands",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-api-key",
-    "slug": "/tools/cli#daytona-api-key",
-    "objectID": 222
-  },
-  {
-    "title": "daytona api-key create",
-    "description": "Create a new API key",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-api-key-create",
-    "slug": "/tools/cli#daytona-api-key-create",
-    "objectID": 223
-  },
-  {
-    "title": "daytona api-key delete",
-    "description": "Delete an API key",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-api-key-delete",
-    "slug": "/tools/cli#daytona-api-key-delete",
-    "objectID": 224
-  },
-  {
-    "title": "daytona api-key list",
-    "description": "List API keys",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-api-key-list",
-    "slug": "/tools/cli#daytona-api-key-list",
-    "objectID": 225
-  },
-  {
-    "title": "daytona autocomplete",
-    "description": "Adds a completion script for your shell environment",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-autocomplete",
-    "slug": "/tools/cli#daytona-autocomplete",
-    "objectID": 226
-  },
-  {
-    "title": "daytona build",
-    "description": "Manage builds",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-build",
-    "slug": "/tools/cli#daytona-build",
-    "objectID": 227
-  },
-  {
-    "title": "daytona build delete",
-    "description": "Delete a build",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-build-delete",
-    "slug": "/tools/cli#daytona-build-delete",
-    "objectID": 228
-  },
-  {
-    "title": "daytona build info",
-    "description": "Show build info",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-build-info",
-    "slug": "/tools/cli#daytona-build-info",
-    "objectID": 229
-  },
-  {
-    "title": "daytona build list",
-    "description": "List all builds",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-build-list",
-    "slug": "/tools/cli#daytona-build-list",
-    "objectID": 230
-  },
-  {
-    "title": "daytona build logs",
-    "description": "View logs for build",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-build-logs",
-    "slug": "/tools/cli#daytona-build-logs",
-    "objectID": 231
-  },
-  {
-    "title": "daytona build run",
-    "description": "Run a build from a workspace template",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-build-run",
-    "slug": "/tools/cli#daytona-build-run",
-    "objectID": 232
-  },
-  {
-    "title": "daytona code",
-    "description": "Open a workspace in your preferred IDE",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-code",
-    "slug": "/tools/cli#daytona-code",
-    "objectID": 233
-  },
-  {
-    "title": "daytona config",
-    "description": "Output Daytona configuration",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-config",
-    "slug": "/tools/cli#daytona-config",
-    "objectID": 234
-  },
-  {
-    "title": "daytona create",
-    "description": "Create a workspace",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-create",
-    "slug": "/tools/cli#daytona-create",
-    "objectID": 235
-  },
-  {
-    "title": "daytona delete",
-    "description": "Delete a workspace",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-delete",
-    "slug": "/tools/cli#daytona-delete",
-    "objectID": 236
-  },
-  {
-    "title": "daytona docs",
-    "description": "Opens the Daytona documentation in your default browser.",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-docs",
-    "slug": "/tools/cli#daytona-docs",
-    "objectID": 237
-  },
-  {
-    "title": "daytona env",
-    "description": "Manage server environment variables that are added to all targets and workspaces",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-env",
-    "slug": "/tools/cli#daytona-env",
-    "objectID": 238
-  },
-  {
-    "title": "daytona env delete",
-    "description": "Delete server environment variables",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-env-delete",
-    "slug": "/tools/cli#daytona-env-delete",
-    "objectID": 239
-  },
-  {
-    "title": "daytona env list",
-    "description": "List server environment variables",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-env-list",
-    "slug": "/tools/cli#daytona-env-list",
-    "objectID": 240
-  },
-  {
-    "title": "daytona env set",
-    "description": "Set server environment variables",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-env-set",
-    "slug": "/tools/cli#daytona-env-set",
-    "objectID": 241
-  },
-  {
-    "title": "daytona forward",
-    "description": "Forward a port from a workspace to your local machine",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-forward",
-    "slug": "/tools/cli#daytona-forward",
-    "objectID": 242
-  },
-  {
-    "title": "daytona git-provider",
-    "description": "Manage Git provider configs",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-git-provider",
-    "slug": "/tools/cli#daytona-git-provider",
-    "objectID": 243
-  },
-  {
-    "title": "daytona git-provider create",
-    "description": "Create a Git provider config",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-git-provider-create",
-    "slug": "/tools/cli#daytona-git-provider-create",
-    "objectID": 244
-  },
-  {
-    "title": "daytona git-provider delete",
-    "description": "Delete a Git provider config",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-git-provider-delete",
-    "slug": "/tools/cli#daytona-git-provider-delete",
-    "objectID": 245
-  },
-  {
-    "title": "daytona git-provider list",
-    "description": "Lists your registered Git provider configs",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-git-provider-list",
-    "slug": "/tools/cli#daytona-git-provider-list",
-    "objectID": 246
-  },
-  {
-    "title": "daytona git-provider update",
-    "description": "Update a Git provider",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-git-provider-update",
-    "slug": "/tools/cli#daytona-git-provider-update",
-    "objectID": 247
-  },
-  {
-    "title": "daytona ide",
-    "description": "Choose the default IDE",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-ide",
-    "slug": "/tools/cli#daytona-ide",
-    "objectID": 248
-  },
-  {
-    "title": "daytona info",
-    "description": "Show workspace info",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-info",
-    "slug": "/tools/cli#daytona-info",
-    "objectID": 249
-  },
-  {
-    "title": "daytona list",
-    "description": "List workspaces",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-list",
-    "slug": "/tools/cli#daytona-list",
-    "objectID": 250
-  },
-  {
-    "title": "daytona logs",
-    "description": "View the logs of a workspace",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-logs",
-    "slug": "/tools/cli#daytona-logs",
-    "objectID": 251
-  },
-  {
-    "title": "daytona prebuild",
-    "description": "Manage prebuilds",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-prebuild",
-    "slug": "/tools/cli#daytona-prebuild",
-    "objectID": 252
-  },
-  {
-    "title": "daytona prebuild create",
-    "description": "Create a prebuild configuration",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-prebuild-create",
-    "slug": "/tools/cli#daytona-prebuild-create",
-    "objectID": 253
-  },
-  {
-    "title": "daytona prebuild delete",
-    "description": "Delete a prebuild configuration",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-prebuild-delete",
-    "slug": "/tools/cli#daytona-prebuild-delete",
-    "objectID": 254
-  },
-  {
-    "title": "daytona prebuild info",
-    "description": "Show prebuild configuration info",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-prebuild-info",
-    "slug": "/tools/cli#daytona-prebuild-info",
-    "objectID": 255
-  },
-  {
-    "title": "daytona prebuild list",
-    "description": "List prebuild configurations",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-prebuild-list",
-    "slug": "/tools/cli#daytona-prebuild-list",
-    "objectID": 256
-  },
-  {
-    "title": "daytona prebuild update",
-    "description": "Update a prebuild configuration",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-prebuild-update",
-    "slug": "/tools/cli#daytona-prebuild-update",
-    "objectID": 257
-  },
-  {
-    "title": "daytona profile",
-    "description": "Manage profiles",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-profile",
-    "slug": "/tools/cli#daytona-profile",
-    "objectID": 258
-  },
-  {
-    "title": "daytona profile create",
-    "description": "Create a profile",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-profile-create",
-    "slug": "/tools/cli#daytona-profile-create",
-    "objectID": 259
-  },
-  {
-    "title": "daytona profile delete",
-    "description": "Delete a profile",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-profile-delete",
-    "slug": "/tools/cli#daytona-profile-delete",
-    "objectID": 260
-  },
-  {
-    "title": "daytona profile list",
-    "description": "List profiles",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-profile-list",
-    "slug": "/tools/cli#daytona-profile-list",
-    "objectID": 261
-  },
-  {
-    "title": "daytona profile update",
-    "description": "Update profile [PROFILE_NAME]",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-profile-update",
-    "slug": "/tools/cli#daytona-profile-update",
-    "objectID": 262
-  },
-  {
-    "title": "daytona provider",
-    "description": "Manage providers",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-provider",
-    "slug": "/tools/cli#daytona-provider",
-    "objectID": 263
-  },
-  {
-    "title": "daytona provider install",
-    "description": "Install provider",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-provider-install",
-    "slug": "/tools/cli#daytona-provider-install",
-    "objectID": 264
-  },
-  {
-    "title": "daytona provider list",
-    "description": "List installed providers",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-provider-list",
-    "slug": "/tools/cli#daytona-provider-list",
-    "objectID": 265
-  },
-  {
-    "title": "daytona provider uninstall",
-    "description": "Uninstall provider",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-provider-uninstall",
-    "slug": "/tools/cli#daytona-provider-uninstall",
-    "objectID": 266
-  },
-  {
-    "title": "daytona provider update",
-    "description": "Update provider",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-provider-update",
-    "slug": "/tools/cli#daytona-provider-update",
-    "objectID": 267
-  },
-  {
-    "title": "daytona purge",
-    "description": "Purges all Daytona data from the current device",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-purge",
-    "slug": "/tools/cli#daytona-purge",
-    "objectID": 268
-  },
-  {
-    "title": "daytona restart",
-    "description": "Restart a workspace",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-restart",
-    "slug": "/tools/cli#daytona-restart",
-    "objectID": 269
-  },
-  {
-    "title": "daytona runner",
-    "description": "Manage the runner",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-runner",
-    "slug": "/tools/cli#daytona-runner",
-    "objectID": 270
-  },
-  {
-    "title": "daytona runner config",
-    "description": "Outputs Daytona Runner config",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-runner-config",
-    "slug": "/tools/cli#daytona-runner-config",
-    "objectID": 271
-  },
-  {
-    "title": "daytona runner configure",
-    "description": "Configure Daytona Runner",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-runner-configure",
-    "slug": "/tools/cli#daytona-runner-configure",
-    "objectID": 272
-  },
-  {
-    "title": "daytona runner logs",
-    "description": "View runner logs",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-runner-logs",
-    "slug": "/tools/cli#daytona-runner-logs",
-    "objectID": 273
-  },
-  {
-    "title": "daytona runner purge",
-    "description": "Purges the Daytona Runner",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-runner-purge",
-    "slug": "/tools/cli#daytona-runner-purge",
-    "objectID": 274
-  },
-  {
-    "title": "daytona runner restart",
-    "description": "Restarts the runner",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-runner-restart",
-    "slug": "/tools/cli#daytona-runner-restart",
-    "objectID": 275
-  },
-  {
-    "title": "daytona runner serve",
-    "description": "Starts the runner in the foreground",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-runner-serve",
-    "slug": "/tools/cli#daytona-runner-serve",
-    "objectID": 276
-  },
-  {
-    "title": "daytona runner start",
-    "description": "Starts the runner",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-runner-start",
-    "slug": "/tools/cli#daytona-runner-start",
-    "objectID": 277
-  },
-  {
-    "title": "daytona runner stop",
-    "description": "Stops the runner",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-runner-stop",
-    "slug": "/tools/cli#daytona-runner-stop",
-    "objectID": 278
-  },
-  {
-    "title": "daytona serve",
-    "description": "Run the server process in the current terminal session",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-serve",
-    "slug": "/tools/cli#daytona-serve",
-    "objectID": 279
-  },
-  {
-    "title": "daytona server",
-    "description": "Start the server process in daemon mode",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server",
-    "slug": "/tools/cli#daytona-server",
-    "objectID": 280
-  },
-  {
-    "title": "daytona server config",
-    "description": "Output local Daytona Server config",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-config",
-    "slug": "/tools/cli#daytona-server-config",
-    "objectID": 281
-  },
-  {
-    "title": "daytona server configure",
-    "description": "Configure Daytona Server",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-configure",
-    "slug": "/tools/cli#daytona-server-configure",
-    "objectID": 282
-  },
-  {
-    "title": "daytona server logs",
-    "description": "Output Daytona Server logs",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-logs",
-    "slug": "/tools/cli#daytona-server-logs",
-    "objectID": 283
-  },
-  {
-    "title": "daytona server logs list",
-    "description": "Lists Daytona Server Log Files",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-logs-list",
-    "slug": "/tools/cli#daytona-server-logs-list",
-    "objectID": 284
-  },
-  {
-    "title": "daytona server restart",
-    "description": "Restarts the Daytona Server daemon",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-restart",
-    "slug": "/tools/cli#daytona-server-restart",
-    "objectID": 285
-  },
-  {
-    "title": "daytona server runner",
-    "description": "Manage runners",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-runner",
-    "slug": "/tools/cli#daytona-server-runner",
-    "objectID": 286
-  },
-  {
-    "title": "daytona server runner create",
-    "description": "Create a runner",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-runner-create",
-    "slug": "/tools/cli#daytona-server-runner-create",
-    "objectID": 287
-  },
-  {
-    "title": "daytona server runner delete",
-    "description": "Delete a runner",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-runner-delete",
-    "slug": "/tools/cli#daytona-server-runner-delete",
-    "objectID": 288
-  },
-  {
-    "title": "daytona server runner list",
-    "description": "List runners",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-runner-list",
-    "slug": "/tools/cli#daytona-server-runner-list",
-    "objectID": 289
-  },
-  {
-    "title": "daytona server runner logs",
-    "description": "View runner logs",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-runner-logs",
-    "slug": "/tools/cli#daytona-server-runner-logs",
-    "objectID": 290
-  },
-  {
-    "title": "daytona server start",
-    "description": "Start the Daytona Server daemon",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-start",
-    "slug": "/tools/cli#daytona-server-start",
-    "objectID": 291
-  },
-  {
-    "title": "daytona server stop",
-    "description": "Stops the Daytona Server daemon",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-server-stop",
-    "slug": "/tools/cli#daytona-server-stop",
-    "objectID": 292
-  },
-  {
-    "title": "daytona ssh",
-    "description": "SSH into a workspace using the terminal",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-ssh",
-    "slug": "/tools/cli#daytona-ssh",
-    "objectID": 293
-  },
-  {
-    "title": "daytona start",
-    "description": "Start a workspace",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-start",
-    "slug": "/tools/cli#daytona-start",
-    "objectID": 294
-  },
-  {
-    "title": "daytona stop",
-    "description": "Stop a workspace",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-stop",
-    "slug": "/tools/cli#daytona-stop",
-    "objectID": 295
-  },
-  {
-    "title": "daytona target-config",
-    "description": "Manage target configs",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-config",
-    "slug": "/tools/cli#daytona-target-config",
-    "objectID": 296
-  },
-  {
-    "title": "daytona target-config create",
-    "description": "Create target config",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-config-create",
-    "slug": "/tools/cli#daytona-target-config-create",
-    "objectID": 297
-  },
-  {
-    "title": "daytona target-config delete",
-    "description": "Deletes a target config",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-config-delete",
-    "slug": "/tools/cli#daytona-target-config-delete",
-    "objectID": 298
-  },
-  {
-    "title": "daytona target-config list",
-    "description": "List target configs",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-config-list",
-    "slug": "/tools/cli#daytona-target-config-list",
-    "objectID": 299
-  },
-  {
-    "title": "daytona target",
-    "description": "Manage targets",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target",
-    "slug": "/tools/cli#daytona-target",
-    "objectID": 300
-  },
-  {
-    "title": "daytona target create",
-    "description": "Create a target",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-create",
-    "slug": "/tools/cli#daytona-target-create",
-    "objectID": 301
-  },
-  {
-    "title": "daytona target delete",
-    "description": "Delete a target",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-delete",
-    "slug": "/tools/cli#daytona-target-delete",
-    "objectID": 302
-  },
-  {
-    "title": "daytona target info",
-    "description": "Show target info",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-info",
-    "slug": "/tools/cli#daytona-target-info",
-    "objectID": 303
-  },
-  {
-    "title": "daytona target list",
-    "description": "List targets",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-list",
-    "slug": "/tools/cli#daytona-target-list",
-    "objectID": 304
-  },
-  {
-    "title": "daytona target logs",
-    "description": "View the logs of a target",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-logs",
-    "slug": "/tools/cli#daytona-target-logs",
-    "objectID": 305
-  },
-  {
-    "title": "daytona target restart",
-    "description": "Restart a target",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-restart",
-    "slug": "/tools/cli#daytona-target-restart",
-    "objectID": 306
-  },
-  {
-    "title": "daytona target set-default",
-    "description": "Set default target",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-set-default",
-    "slug": "/tools/cli#daytona-target-set-default",
-    "objectID": 307
-  },
-  {
-    "title": "daytona target ssh",
-    "description": "SSH into a target using the terminal",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-ssh",
-    "slug": "/tools/cli#daytona-target-ssh",
-    "objectID": 308
-  },
-  {
-    "title": "daytona target start",
-    "description": "Start a target",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-start",
-    "slug": "/tools/cli#daytona-target-start",
-    "objectID": 309
-  },
-  {
-    "title": "daytona target stop",
-    "description": "Stop a target",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-target-stop",
-    "slug": "/tools/cli#daytona-target-stop",
-    "objectID": 310
-  },
-  {
-    "title": "daytona telemetry",
-    "description": "Manage telemetry collection",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-telemetry",
-    "slug": "/tools/cli#daytona-telemetry",
-    "objectID": 311
-  },
-  {
-    "title": "daytona telemetry disable",
-    "description": "Disable telemetry collection",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-telemetry-disable",
-    "slug": "/tools/cli#daytona-telemetry-disable",
-    "objectID": 312
-  },
-  {
-    "title": "daytona telemetry enable",
-    "description": "Enable telemetry collection",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-telemetry-enable",
-    "slug": "/tools/cli#daytona-telemetry-enable",
-    "objectID": 313
-  },
-  {
-    "title": "daytona template",
-    "description": "Manage workspace templates",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-template",
-    "slug": "/tools/cli#daytona-template",
-    "objectID": 314
-  },
-  {
-    "title": "daytona template create",
-    "description": "Create a workspace template",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-template-create",
-    "slug": "/tools/cli#daytona-template-create",
-    "objectID": 315
-  },
-  {
-    "title": "daytona template delete",
-    "description": "Delete a workspace template",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-template-delete",
-    "slug": "/tools/cli#daytona-template-delete",
-    "objectID": 316
-  },
-  {
-    "title": "daytona template export",
-    "description": "Export a workspace template",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-template-export",
-    "slug": "/tools/cli#daytona-template-export",
-    "objectID": 317
-  },
-  {
-    "title": "daytona template import",
-    "description": "Import a workspace template from a JSON object",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-template-import",
-    "slug": "/tools/cli#daytona-template-import",
-    "objectID": 318
-  },
-  {
-    "title": "daytona template info",
-    "description": "Show workspace template info",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-template-info",
-    "slug": "/tools/cli#daytona-template-info",
-    "objectID": 319
-  },
-  {
-    "title": "daytona template list",
-    "description": "Lists workspace templates",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-template-list",
-    "slug": "/tools/cli#daytona-template-list",
-    "objectID": 320
-  },
-  {
-    "title": "daytona template set-default",
-    "description": "Set workspace template info",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-template-set-default",
-    "slug": "/tools/cli#daytona-template-set-default",
-    "objectID": 321
-  },
-  {
-    "title": "daytona template update",
-    "description": "Update a workspace template",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-template-update",
-    "slug": "/tools/cli#daytona-template-update",
-    "objectID": 322
-  },
-  {
-    "title": "daytona update",
-    "description": "Update Daytona CLI",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-update",
-    "slug": "/tools/cli#daytona-update",
-    "objectID": 323
-  },
-  {
-    "title": "daytona use",
-    "description": "Use profile [PROFILE_NAME]",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-use",
-    "slug": "/tools/cli#daytona-use",
-    "objectID": 324
-  },
-  {
-    "title": "daytona version",
-    "description": "Print the version number",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-version",
-    "slug": "/tools/cli#daytona-version",
-    "objectID": 325
-  },
-  {
-    "title": "daytona whoami",
-    "description": "Display information about the active user",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-whoami",
-    "slug": "/tools/cli#daytona-whoami",
-    "objectID": 326
-  },
-  {
-    "title": "Docker Extension",
-    "description": "Daytona provides a Docker Extension for using an embedded version of the Daytona client and server tools directly within Docker Desktop.",
-    "tag": "Documentation",
-    "url": "/docs/tools/docker-extension",
-    "slug": "/tools/docker-extension",
-    "objectID": 327
-  },
-  {
-    "title": "Prerequisites",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/tools/docker-extension#prerequisites",
-    "slug": "/tools/docker-extension#prerequisites",
-    "objectID": 328
-  },
-  {
-    "title": "Installation",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/tools/docker-extension#installation",
-    "slug": "/tools/docker-extension#installation",
-    "objectID": 329
-  },
-  {
-    "title": "Manual */}",
-    "description": "1.",
-    "tag": "Documentation",
-    "url": "/docs/tools/docker-extension#manual-",
-    "slug": "/tools/docker-extension#manual-",
-    "objectID": 330
-  },
-  {
-    "title": "Create a Workspace",
-    "description": "Create a new Workspace using the Daytona Docker Extension within the Docker Desktop.",
-    "tag": "Documentation",
-    "url": "/docs/tools/docker-extension#create-a-workspace",
-    "slug": "/tools/docker-extension#create-a-workspace",
-    "objectID": 331
-  },
-  {
-    "title": "Open an Existing Workspace",
-    "description": "Daytona Docker Extension provides an option to open an existing Workspace in your IDE.",
-    "tag": "Documentation",
-    "url": "/docs/tools/docker-extension#open-an-existing-workspace",
-    "slug": "/tools/docker-extension#open-an-existing-workspace",
-    "objectID": 332
-  },
-  {
-    "title": "Manage a Workspace",
-    "description": "Daytona Docker Extension provides an option to access and manage your Workspace, providing a detailed overview of the Workspace configuration.",
-    "tag": "Documentation",
-    "url": "/docs/tools/docker-extension#manage-a-workspace",
-    "slug": "/tools/docker-extension#manage-a-workspace",
-    "objectID": 333
-  },
-  {
-    "title": "Delete a Workspace",
-    "description": "Daytona Docker Extension provides an option to delete one or more Workspaces, helping you manage your development environments by removing those that are no longer needed.",
-    "tag": "Documentation",
-    "url": "/docs/tools/docker-extension#delete-a-workspace",
-    "slug": "/tools/docker-extension#delete-a-workspace",
-    "objectID": 334
-  },
-  {
-    "title": "Agent Toolbox",
-    "description": "The Agent Toolbox enables you to interact with the Workspace programmatically by providing a Workspace Toolbox API to perform various operations within the Workspace environment.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox",
-    "slug": "/usage/agent-toolbox",
-    "objectID": 335
-  },
-  {
-    "title": "File System Operations",
-    "description": "Daytona provides an option to interact with the Workspace file system programmatically using the Workspace Toolbox API.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#file-system-operations",
-    "slug": "/usage/agent-toolbox#file-system-operations",
-    "objectID": 336
-  },
-  {
-    "title": "List Files",
-    "description": "Daytona provides an option to list files in the Workspace using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/files` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#list-files",
-    "slug": "/usage/agent-toolbox#list-files",
-    "objectID": 337
-  },
-  {
-    "title": "Delete Files",
-    "description": "Daytona provides an option to delete files in the Workspace using the `DELETE` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/files` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#delete-files",
-    "slug": "/usage/agent-toolbox#delete-files",
-    "objectID": 338
-  },
-  {
-    "title": "Create Folder",
-    "description": "Daytona provides an option to create a new folder in the Workspace using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/createfolder` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#create-folder",
-    "slug": "/usage/agent-toolbox#create-folder",
-    "objectID": 339
-  },
-  {
-    "title": "Download Files",
-    "description": "Daytona provides an option to download files from the Workspace using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/download` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#download-files",
-    "slug": "/usage/agent-toolbox#download-files",
-    "objectID": 340
-  },
-  {
-    "title": "Find Files",
-    "description": "Daytona provides an option to find files in the Workspace using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/find` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#find-files",
-    "slug": "/usage/agent-toolbox#find-files",
-    "objectID": 341
-  },
-  {
-    "title": "Files Information",
-    "description": "Daytona provides an option to get information about files in the Workspace using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/info` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#files-information",
-    "slug": "/usage/agent-toolbox#files-information",
-    "objectID": 342
-  },
-  {
-    "title": "Move Files",
-    "description": "Daytona provides an option to move files in the Workspace using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/move` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#move-files",
-    "slug": "/usage/agent-toolbox#move-files",
-    "objectID": 343
-  },
-  {
-    "title": "File Permissions",
-    "description": "Daytona provides an option to set file permissions in the Workspace using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/permissions` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#file-permissions",
-    "slug": "/usage/agent-toolbox#file-permissions",
-    "objectID": 344
-  },
-  {
-    "title": "Replace Files",
-    "description": "Daytona provides an option to replace files in the Workspace using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/replace` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#replace-files",
-    "slug": "/usage/agent-toolbox#replace-files",
-    "objectID": 345
-  },
-  {
-    "title": "Search Files",
-    "description": "Daytona provides an option to search for files in the Workspace using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/search` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#search-files",
-    "slug": "/usage/agent-toolbox#search-files",
-    "objectID": 346
-  },
-  {
-    "title": "Upload Files",
-    "description": "Daytona provides an option to upload files to the Workspace using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/upload` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#upload-files",
-    "slug": "/usage/agent-toolbox#upload-files",
-    "objectID": 347
-  },
-  {
-    "title": "Git Operations",
-    "description": "Daytona provides an option to interact with the Workspace Git repository programmatically using the Workspace Toolbox API.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#git-operations",
-    "slug": "/usage/agent-toolbox#git-operations",
-    "objectID": 348
-  },
-  {
-    "title": "Add Files",
-    "description": "Daytona provides an option to add files to the Workspace Git repository using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/git/add` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#add-files",
-    "slug": "/usage/agent-toolbox#add-files",
-    "objectID": 349
-  },
-  {
-    "title": "List Branches",
-    "description": "Daytona provides an option to list branches in the Workspace Git repository using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/git/branches` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#list-branches",
-    "slug": "/usage/agent-toolbox#list-branches",
-    "objectID": 350
-  },
-  {
-    "title": "Create Branch",
-    "description": "Daytona provides an option to create a new branch in the Workspace Git repository using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/git/createbranch` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#create-branch",
-    "slug": "/usage/agent-toolbox#create-branch",
-    "objectID": 351
-  },
-  {
-    "title": "Clone Repository",
-    "description": "Daytona provides an option to clone a Git repository into the Workspace using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/git/clone` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#clone-repository",
-    "slug": "/usage/agent-toolbox#clone-repository",
-    "objectID": 352
-  },
-  {
-    "title": "Commit Changes",
-    "description": "Daytona provides an option to commit changes to the Workspace Git repository using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/git/commit` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#commit-changes",
-    "slug": "/usage/agent-toolbox#commit-changes",
-    "objectID": 353
-  },
-  {
-    "title": "Commit History",
-    "description": "Daytona provides an option to get the commit history of the Workspace Git repository using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/git/history` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#commit-history",
-    "slug": "/usage/agent-toolbox#commit-history",
-    "objectID": 354
-  },
-  {
-    "title": "Pull Changes",
-    "description": "Daytona provides an option to pull changes from the remote Git repository into the Workspace using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/git/pull` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#pull-changes",
-    "slug": "/usage/agent-toolbox#pull-changes",
-    "objectID": 355
-  },
-  {
-    "title": "Push Changes",
-    "description": "Daytona provides an option to push changes from the Workspace Git repository to the remote repository using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/git/push` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#push-changes",
-    "slug": "/usage/agent-toolbox#push-changes",
-    "objectID": 356
-  },
-  {
-    "title": "Git Status",
-    "description": "Daytona provides an option to get the status of the Workspace Git repository using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/git/status` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#git-status",
-    "slug": "/usage/agent-toolbox#git-status",
-    "objectID": 357
-  },
-  {
-    "title": "Language Server Protocol (LSP)",
-    "description": "Daytona provides an option to interact with the Language Server Protocol (LSP) programmatically using the Workspace Toolbox API.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#language-server-protocol-lsp",
-    "slug": "/usage/agent-toolbox#language-server-protocol-lsp",
-    "objectID": 358
-  },
-  {
-    "title": "LSP Completions",
-    "description": "Daytona provides an option to get completions for the specified text using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/lsp/completions` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#lsp-completions",
-    "slug": "/usage/agent-toolbox#lsp-completions",
-    "objectID": 359
-  },
-  {
-    "title": "LSP DidClose",
-    "description": "Daytona provides an option to notify the Language Server that a file has been closed using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/lsp/didclose` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#lsp-didclose",
-    "slug": "/usage/agent-toolbox#lsp-didclose",
-    "objectID": 360
-  },
-  {
-    "title": "LSP DidOpen",
-    "description": "Dayjsona provides an option to notify the Language Server that a file has been opened using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/lsp/didopen` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#lsp-didopen",
-    "slug": "/usage/agent-toolbox#lsp-didopen",
-    "objectID": 361
-  },
-  {
-    "title": "LSP Document Symbols",
-    "description": "Daytona provides an option to get document symbols for the specified text using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/lsp/documentsymbols` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#lsp-document-symbols",
-    "slug": "/usage/agent-toolbox#lsp-document-symbols",
-    "objectID": 362
-  },
-  {
-    "title": "Start LSP Server",
-    "description": "Daytona provides an option to start the Language Server using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/lsp/start` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#start-lsp-server",
-    "slug": "/usage/agent-toolbox#start-lsp-server",
-    "objectID": 363
-  },
-  {
-    "title": "Stop LSP Server",
-    "description": "Daytona provides an option to stop the Language Server using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/lsp/stop` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#stop-lsp-server",
-    "slug": "/usage/agent-toolbox#stop-lsp-server",
-    "objectID": 364
-  },
-  {
-    "title": "Workspace Symbols",
-    "description": "Daytona provides an option to get Workspace symbols for the specified text using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/lsp/workspacesymbols` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#workspace-symbols",
-    "slug": "/usage/agent-toolbox#workspace-symbols",
-    "objectID": 365
-  },
-  {
-    "title": "Process Operations",
-    "description": "Daytona provides an option to interact with the Workspace processes programmatically using the Workspace Toolbox API.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#process-operations",
-    "slug": "/usage/agent-toolbox#process-operations",
-    "objectID": 366
-  },
-  {
-    "title": "Execute Command",
-    "description": "Daytona provides an option to execute a command in the Workspace using the `POST` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/execute` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#execute-command",
-    "slug": "/usage/agent-toolbox#execute-command",
-    "objectID": 367
-  },
-  {
-    "title": "Project Directory",
-    "description": "Daytona provides an option to interact with the Project directory programmatically using the Workspace Toolbox API.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#project-directory",
-    "slug": "/usage/agent-toolbox#project-directory",
-    "objectID": 368
-  },
-  {
-    "title": "Get Project Directory",
-    "description": "Daytona provides an option to get the Project directory path using the `GET` HTTP method on the `/workspace/{workspaceId}/{projectId}/toolbox/projectdir` endpoint.",
-    "tag": "Documentation",
-    "url": "/docs/usage/agent-toolbox#get-project-directory",
-    "slug": "/usage/agent-toolbox#get-project-directory",
-    "objectID": 369
-  },
-  {
-    "title": "Builders",
-    "description": "Builders are responsible for creating a container image with the necessary tools and configurations for your Project.",
-    "tag": "Documentation",
-    "url": "/docs/usage/builders",
-    "slug": "/usage/builders",
-    "objectID": 370
-  },
-  {
-    "title": "Automatic",
-    "description": "Daytona can auto-detect the most appropriate Builder for your Project.",
-    "tag": "Documentation",
-    "url": "/docs/usage/builders#automatic",
-    "slug": "/usage/builders#automatic",
-    "objectID": 371
-  },
-  {
-    "title": "Dev Container",
-    "description": "Development Containers (Dev Containers) provide a consistent and fully featured development environments for your Projects.",
-    "tag": "Documentation",
-    "url": "/docs/usage/builders#dev-container",
-    "slug": "/usage/builders#dev-container",
-    "objectID": 372
-  },
-  {
-    "title": "Custom Image",
-    "description": "You can build the Project image by specifying a custom base container.",
-    "tag": "Documentation",
-    "url": "/docs/usage/builders#custom-image",
-    "slug": "/usage/builders#custom-image",
-    "objectID": 373
-  },
-  {
-    "title": "None",
-    "description": "Daytona can build a Project using the default base image.",
-    "tag": "Documentation",
-    "url": "/docs/usage/builders#none",
-    "slug": "/usage/builders#none",
-    "objectID": 374
-  },
-  {
-    "title": "Custom Build Registry",
-    "description": "You can set a custom build registry for images built by a Daytona Builder.",
-    "tag": "Documentation",
-    "url": "/docs/usage/builders#custom-build-registry",
-    "slug": "/usage/builders#custom-build-registry",
-    "objectID": 375
-  },
-  {
-    "title": "IDEs",
-    "description": "Daytona provides an option to connect to your Workspace using your default IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide",
-    "slug": "/usage/ide",
-    "objectID": 376
-  },
-  {
-    "title": "Set the Default IDE",
-    "description": "You can set the default IDE used by Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#set-the-default-ide",
-    "slug": "/usage/ide#set-the-default-ide",
-    "objectID": 377
-  },
-  {
-    "title": "VS Code",
-    "description": "Daytona provides an option to connect to your Workspace using Visual Studio Code (VSCode) IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#vs-code",
-    "slug": "/usage/ide#vs-code",
-    "objectID": 378
-  },
-  {
-    "title": "VS Code Browser",
-    "description": "Daytona provides an option to connect to your Workspace using Visual Studio Code (VSCode) Browser IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#vs-code-browser",
-    "slug": "/usage/ide#vs-code-browser",
-    "objectID": 379
-  },
-  {
-    "title": "VS Code Insiders",
-    "description": "Daytona provides an option to connect to your Workspace using Visual Studio Code Insiders IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#vs-code-insiders",
-    "slug": "/usage/ide#vs-code-insiders",
-    "objectID": 380
-  },
-  {
-    "title": "VSCodium",
-    "description": "Daytona provides an option to connect to your Workspace using VSCodium IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#vscodium",
-    "slug": "/usage/ide#vscodium",
-    "objectID": 381
-  },
-  {
-    "title": "JetBrains CLion",
-    "description": "Daytona provides an option to connect to your Workspace using JetBrains CLion IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jetbrains-clion",
-    "slug": "/usage/ide#jetbrains-clion",
-    "objectID": 382
-  },
-  {
-    "title": "JetBrains GoLand",
-    "description": "Daytona provides an option to connect to your Workspace using JetBrains GoLand IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jetbrains-goland",
-    "slug": "/usage/ide#jetbrains-goland",
-    "objectID": 383
-  },
-  {
-    "title": "JetBrains IntelliJ IDEA Ultimate",
-    "description": "Daytona provides an option to connect to your Workspace using JetBrains IntelliJ IDEA Ultimate IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jetbrains-intellij-idea-ultimate",
-    "slug": "/usage/ide#jetbrains-intellij-idea-ultimate",
-    "objectID": 384
-  },
-  {
-    "title": "JetBrains PhpStorm",
-    "description": "Daytona provides an option to connect to your Workspace using JetBrains PhpStorm IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jetbrains-phpstorm",
-    "slug": "/usage/ide#jetbrains-phpstorm",
-    "objectID": 385
-  },
-  {
-    "title": "JetBrains PyCharm Professional",
-    "description": "Daytona provides an option to connect to your Workspace using JetBrains PyCharm Professional IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jetbrains-pycharm-professional",
-    "slug": "/usage/ide#jetbrains-pycharm-professional",
-    "objectID": 386
-  },
-  {
-    "title": "JetBrains Rider",
-    "description": "Daytona provides an option to connect to your Workspace using JetBrains Rider IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jetbrains-rider",
-    "slug": "/usage/ide#jetbrains-rider",
-    "objectID": 387
-  },
-  {
-    "title": "JetBrains RubyMine",
-    "description": "Daytona provides an option to connect to your Workspace using JetBrains RubyMine IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jetbrains-rubymine",
-    "slug": "/usage/ide#jetbrains-rubymine",
-    "objectID": 388
-  },
-  {
-    "title": "JetBrains WebStorm",
-    "description": "Daytona provides an option to connect to your Workspace using JetBrains WebStorm IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jetbrains-webstorm",
-    "slug": "/usage/ide#jetbrains-webstorm",
-    "objectID": 389
-  },
-  {
-    "title": "JetBrains Fleet",
-    "description": "Daytona provides an option to connect to your Workspace using JetBrains Fleet IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jetbrains-fleet",
-    "slug": "/usage/ide#jetbrains-fleet",
-    "objectID": 390
-  },
-  {
-    "title": "Jupyter",
-    "description": "Daytona provides an option to connect to your Workspace using Jupyter IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#jupyter",
-    "slug": "/usage/ide#jupyter",
-    "objectID": 391
-  },
-  {
-    "title": "Zed",
-    "description": "Daytona provides an option to connect to your Workspace using Zed IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#zed",
-    "slug": "/usage/ide#zed",
-    "objectID": 392
-  },
-  {
-    "title": "Cursor",
-    "description": "Daytona provides an option to connect to your Workspace using Cursor IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#cursor",
-    "slug": "/usage/ide#cursor",
-    "objectID": 393
-  },
-  {
-    "title": "Headless",
-    "description": "Daytona provides an option to connect to your [Workspace Toolbox](/docs/usage/workspaces",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#headless",
-    "slug": "/usage/ide#headless",
-    "objectID": 394
-  },
-  {
-    "title": "Windsurf",
-    "description": "Daytona provides an option to connect to your Workspace using Windsurf IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#windsurf",
-    "slug": "/usage/ide#windsurf",
-    "objectID": 395
-  },
-  {
-    "title": "Terminal SSH",
-    "description": "Daytona provides an option to connect to your Workspace through Terminal SSH.",
-    "tag": "Documentation",
-    "url": "/docs/usage/ide#terminal-ssh",
-    "slug": "/usage/ide#terminal-ssh",
-    "objectID": 396
-  },
-  {
-    "title": "Prebuilds",
-    "description": "Prebuilds are designed to accelerate development by pre-building your Workspace.",
-    "tag": "Documentation",
-    "url": "/docs/usage/prebuilds",
-    "slug": "/usage/prebuilds",
-    "objectID": 397
-  },
-  {
-    "title": "Add a Prebuild",
-    "description": "1.",
-    "tag": "Documentation",
-    "url": "/docs/usage/prebuilds#add-a-prebuild",
-    "slug": "/usage/prebuilds#add-a-prebuild",
-    "objectID": 398
-  },
-  {
-    "title": "Use a Prebuild",
-    "description": "Once you added a Prebuild, it becomes active immediately based on the [project configuration](/docs/usage/projects",
-    "tag": "Documentation",
-    "url": "/docs/usage/prebuilds#use-a-prebuild",
-    "slug": "/usage/prebuilds#use-a-prebuild",
-    "objectID": 399
-  },
-  {
-    "title": "List Prebuilds",
-    "description": "Daytona provides an option to list all Prebuilds, providing you with an overview of the properties stored within each Prebuild configuration.",
-    "tag": "Documentation",
-    "url": "/docs/usage/prebuilds#list-prebuilds",
-    "slug": "/usage/prebuilds#list-prebuilds",
-    "objectID": 400
-  },
-  {
-    "title": "Prebuilds Information",
-    "description": "Daytona provides an option to view detailed information of a Prebuild, providing you with an overview of the properties stored within it.",
-    "tag": "Documentation",
-    "url": "/docs/usage/prebuilds#prebuilds-information",
-    "slug": "/usage/prebuilds#prebuilds-information",
-    "objectID": 401
-  },
-  {
-    "title": "Update Prebuilds",
-    "description": "Daytona provides an option to update a Prebuild, helping you manage and modify the Prebuild configuration.",
-    "tag": "Documentation",
-    "url": "/docs/usage/prebuilds#update-prebuilds",
-    "slug": "/usage/prebuilds#update-prebuilds",
-    "objectID": 402
-  },
-  {
-    "title": "Delete Prebuilds",
-    "description": "Daytona provides an option to delete Prebuilds, helping you manage and remove those that are no longer needed.",
-    "tag": "Documentation",
-    "url": "/docs/usage/prebuilds#delete-prebuilds",
-    "slug": "/usage/prebuilds#delete-prebuilds",
-    "objectID": 403
-  },
-  {
-    "title": "Runners",
-    "description": "A Runner is a standalone service that can be deployed anywhere.",
-    "tag": "Documentation",
-    "url": "/docs/usage/runners",
-    "slug": "/usage/runners",
-    "objectID": 404
-  },
-  {
-    "title": "Create a Runner",
-    "description": "Daytona provides an option to create a new Runner, enabling you to deploy it on a target system and connect it to the Daytona Server.",
-    "tag": "Documentation",
-    "url": "/docs/usage/runners#create-a-runner",
-    "slug": "/usage/runners#create-a-runner",
-    "objectID": 405
-  },
-  {
-    "title": "Start / Serve a Runner",
-    "description": "Daytona provides options to serve a Runner in the foreground or start a Runner as a daemon/background process.",
-    "tag": "Documentation",
-    "url": "/docs/usage/runners#start--serve-a-runner",
-    "slug": "/usage/runners#start--serve-a-runner",
-    "objectID": 406
-  },
-  {
-    "title": "Configure a Runner",
-    "description": "Daytona provides an option to configure a Runner, enabling you to update its configuration settings.",
-    "tag": "Documentation",
-    "url": "/docs/usage/runners#configure-a-runner",
-    "slug": "/usage/runners#configure-a-runner",
-    "objectID": 407
-  },
-  {
-    "title": "Purge a Runner",
-    "description": "Daytona provides an option to purge a Runner, enabling you to remove it from the Daytona Server.",
-    "tag": "Documentation",
-    "url": "/docs/usage/runners#purge-a-runner",
-    "slug": "/usage/runners#purge-a-runner",
-    "objectID": 408
-  },
-  {
-    "title": "Restart a Runner",
-    "description": "Daytona provides an option to restart a Runner, enabling you to restart it on the target system.",
-    "tag": "Documentation",
-    "url": "/docs/usage/runners#restart-a-runner",
-    "slug": "/usage/runners#restart-a-runner",
-    "objectID": 409
-  },
-  {
-    "title": "Stop a Runner",
-    "description": "Daytona provides an option to stop a Runner, enabling you to stop it on the target system.",
-    "tag": "Documentation",
-    "url": "/docs/usage/runners#stop-a-runner",
-    "slug": "/usage/runners#stop-a-runner",
-    "objectID": 410
-  },
-  {
-    "title": "Runner Logs",
-    "description": "Daytona provides an option to view the logs of a Runner, enabling you to monitor its activities.",
-    "tag": "Documentation",
-    "url": "/docs/usage/runners#runner-logs",
-    "slug": "/usage/runners#runner-logs",
-    "objectID": 411
-  },
-  {
-    "title": "Samples",
-    "description": "Samples are quick-start repositories with predefined development configurations, environments, and dependencies used to create Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/usage/samples",
-    "slug": "/usage/samples",
-    "objectID": 412
-  },
-  {
-    "title": "Custom Samples",
-    "description": "Daytona provides an option to use custom Samples to create Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/usage/samples#custom-samples",
-    "slug": "/usage/samples#custom-samples",
-    "objectID": 413
-  },
-  {
-    "title": "Sample Repository",
-    "description": "Custom Sample repository is a Git repository that contains the Sample code and a `devcontainer.",
-    "tag": "Documentation",
-    "url": "/docs/usage/samples#sample-repository",
-    "slug": "/usage/samples#sample-repository",
-    "objectID": 414
-  },
-  {
-    "title": "Samples Index",
-    "description": "Samples require a Sample Index (`index.",
-    "tag": "Documentation",
-    "url": "/docs/usage/samples#samples-index",
-    "slug": "/usage/samples#samples-index",
-    "objectID": 415
-  },
-  {
-    "title": "Daytona Samples",
-    "description": "Daytona provides a collection of default Samples with predefined development configurations, environments, and dependencies.",
-    "tag": "Documentation",
-    "url": "/docs/usage/samples#daytona-samples",
-    "slug": "/usage/samples#daytona-samples",
-    "objectID": 416
-  },
-  {
-    "title": "Targets",
-    "description": "A Target is an isolated processing unit where Workspaces are executed.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets",
-    "slug": "/usage/targets",
-    "objectID": 417
-  },
-  {
-    "title": "Create a Target",
-    "description": "Daytona provides an option to create a Target.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#create-a-target",
-    "slug": "/usage/targets#create-a-target",
-    "objectID": 418
-  },
-  {
-    "title": "Start a Target",
-    "description": "Daytona provides an option to start a Target.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#start-a-target",
-    "slug": "/usage/targets#start-a-target",
-    "objectID": 419
-  },
-  {
-    "title": "Stop a Target",
-    "description": "Daytona provides an option to stop a Target.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#stop-a-target",
-    "slug": "/usage/targets#stop-a-target",
-    "objectID": 420
-  },
-  {
-    "title": "List Targets",
-    "description": "Daytona provides an option to list all Targets.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#list-targets",
-    "slug": "/usage/targets#list-targets",
-    "objectID": 421
-  },
-  {
-    "title": "Restart a Target",
-    "description": "Daytona provides an option to restart a Target.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#restart-a-target",
-    "slug": "/usage/targets#restart-a-target",
-    "objectID": 422
-  },
-  {
-    "title": "Delete a Target",
-    "description": "Daytona provides an option to remove a Target.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#delete-a-target",
-    "slug": "/usage/targets#delete-a-target",
-    "objectID": 423
-  },
-  {
-    "title": "Targets Information",
-    "description": "Daytona provides an option to view detailed information about a Target.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#targets-information",
-    "slug": "/usage/targets#targets-information",
-    "objectID": 424
-  },
-  {
-    "title": "Workspaces:     1",
-    "description": "2.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#workspaces-1",
-    "slug": "/usage/targets#workspaces-1",
-    "objectID": 425
-  },
-  {
-    "title": "Set Default Target",
-    "description": "Daytona provides an option to set a Target as the default Target.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#set-default-target",
-    "slug": "/usage/targets#set-default-target",
-    "objectID": 426
-  },
-  {
-    "title": "SSH into a Target",
-    "description": "Daytona provides an option to SSH into a Target.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#ssh-into-a-target",
-    "slug": "/usage/targets#ssh-into-a-target",
-    "objectID": 427
-  },
-  {
-    "title": "Target Logs",
-    "description": "Daytona provides an option to view logs for a Target.",
-    "tag": "Documentation",
-    "url": "/docs/usage/targets#target-logs",
-    "slug": "/usage/targets#target-logs",
-    "objectID": 428
-  },
-  {
-    "title": "Workspaces",
-    "description": "Workspaces are isolated development environments containing your project’s codebase, dependencies, packages, and configuration, providing a consistent and reproducible setup for development, testing, and deployment.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces",
-    "slug": "/usage/workspaces",
-    "objectID": 429
-  },
-  {
-    "title": "Create a Workspace",
-    "description": "Creating a Workspace in Daytona is a straightforward process that ensures you have a dedicated development environment for your projects.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#create-a-workspace",
-    "slug": "/usage/workspaces#create-a-workspace",
-    "objectID": 430
-  },
-  {
-    "title": "From a Git Repository",
-    "description": "Creating a Workspace from a Git repository sets up a new development environment using a connected Git Provider or a custom Git repository URL.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#from-a-git-repository",
-    "slug": "/usage/workspaces#from-a-git-repository",
-    "objectID": 431
-  },
-  {
-    "title": "From an Arbitrary Git URL",
-    "description": "Creating a Workspace from an arbitrary Git URL sets up a new development environment by directly specifying the URL of the remote repository.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#from-an-arbitrary-git-url",
-    "slug": "/usage/workspaces#from-an-arbitrary-git-url",
-    "objectID": 432
-  },
-  {
-    "title": "List Workspaces",
-    "description": "Daytona provides an option to keep track of your development environments by listing all previously created Workspaces.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#list-workspaces",
-    "slug": "/usage/workspaces#list-workspaces",
-    "objectID": 433
-  },
-  {
-    "title": "Open An Existing Workspace",
-    "description": "Daytona provides an option to open an existing Workspace in your IDE.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#open-an-existing-workspace",
-    "slug": "/usage/workspaces#open-an-existing-workspace",
-    "objectID": 434
-  },
-  {
-    "title": "Delete Workspaces",
-    "description": "Daytona provides an option to delete one or more Workspaces, helping you manage your development environments by removing those that are no longer needed.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#delete-workspaces",
-    "slug": "/usage/workspaces#delete-workspaces",
-    "objectID": 435
-  },
-  {
-    "title": "Non-Interactively",
-    "description": "Daytona provides an option to delete one or more existing Workspaces non-interactively, allowing for quick and automated cleanup of your development environments without manual selection.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#non-interactively",
-    "slug": "/usage/workspaces#non-interactively",
-    "objectID": 436
-  },
-  {
-    "title": "Forward Ports from a Workspace",
-    "description": "Daytona supports flexible port forwarding, allowing you to access services running in a Workspace locally or via a shareable public URL.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#forward-ports-from-a-workspace",
-    "slug": "/usage/workspaces#forward-ports-from-a-workspace",
-    "objectID": 437
-  },
-  {
-    "title": "Access a Port Locally",
-    "description": "You can access services running in a Workspace on your local machine.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#access-a-port-locally",
-    "slug": "/usage/workspaces#access-a-port-locally",
-    "objectID": 438
-  },
-  {
-    "title": "Access a Port via Public URL",
-    "description": "You can access services running in a Workspace via a generated public URL.",
-    "tag": "Documentation",
-    "url": "/docs/usage/workspaces#access-a-port-via-public-url",
-    "slug": "/usage/workspaces#access-a-port-via-public-url",
-    "objectID": 439
+    "url": "/docs/workspace-management#remove-workspace",
+    "slug": "/workspace-management#remove-workspace",
+    "objectID": 99
   }
 ]

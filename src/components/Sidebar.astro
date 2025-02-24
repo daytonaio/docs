@@ -8,8 +8,8 @@ const sdkSidebar = [
     entries: [
       {
         type: 'link',
-        href: '/docs/sdk',
-        label: 'SDK Home',
+        href: '/docs',
+        label: 'Documentation',
         attrs: {
           icon: 'home.svg',
         },
@@ -22,7 +22,7 @@ const sdkSidebar = [
     entries: [
       {
         type: 'link',
-        href: '/docs/sdk/getting-started',
+        href: '/docs/getting-started',
         label: 'Getting Started',
         attrs: {
           icon: 'bookmark.svg',
@@ -30,7 +30,7 @@ const sdkSidebar = [
       },
       {
         type: 'link',
-        href: '/docs/sdk/configuration',
+        href: '/docs/configuration',
         label: 'Configuration',
         attrs: {
           icon: 'git-commit.svg',
@@ -44,7 +44,7 @@ const sdkSidebar = [
     entries: [
       {
         type: 'link',
-        href: '/docs/sdk/workspace-management',
+        href: '/docs/workspace-management',
         label: 'Management',
         attrs: {
           icon: 'computer.svg',
@@ -58,7 +58,7 @@ const sdkSidebar = [
     entries: [
       {
         type: 'link',
-        href: '/docs/sdk/file-system-operations',
+        href: '/docs/file-system-operations',
         label: 'File System',
         attrs: {
           icon: 'folder.svg',
@@ -66,7 +66,7 @@ const sdkSidebar = [
       },
       {
         type: 'link',
-        href: '/docs/sdk/git-operations',
+        href: '/docs/git-operations',
         label: 'Git Operations',
         attrs: {
           icon: 'git-branch.svg',
@@ -74,7 +74,7 @@ const sdkSidebar = [
       },
       {
         type: 'link',
-        href: '/docs/sdk/language-server-protocol',
+        href: '/docs/language-server-protocol',
         label: 'Language Server Protocol',
         attrs: {
           icon: 'pulse.svg',
@@ -82,7 +82,7 @@ const sdkSidebar = [
       },
       {
         type: 'link',
-        href: '/docs/sdk/process-code-execution',
+        href: '/docs/process-code-execution',
         label: 'Process & Code Execution',
         attrs: {
           icon: 'terminal.svg',
@@ -95,11 +95,9 @@ const sdkSidebar = [
 const { sidebar } = Astro.props
 
 const currentPath = Astro.url.pathname
-
-const sidebarToUse = currentPath.startsWith('/docs/sdk') ? sdkSidebar : sidebar
 ---
 
-<SidebarSublist sublist={sidebarToUse} />
+<SidebarSublist sublist={sdkSidebar} />
 <div class="mobile-nav-btn nav__items_side_menu">
   <SideNavLinks client:load />
 </div>

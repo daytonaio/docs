@@ -75,33 +75,25 @@ This repository utilizes `Yarn` to manage project dependencies and custom script
 The documentation is organized as `.mdx` files within the `/src/content/docs` directory.
 Daytona documentation is divided into the following key sections:
 
-- **`About`**  
+- **`Home`**
 
-  Overview of Daytona's background and the concept of development environment manager (DEM).
+  Overview of Daytona's SDK interfaces and quick start instructions.
 
-- **`Installation`**  
+- **`Getting Started`**
 
   Instructions for installing Daytona across various environments.
 
 - **`Configuration`**
 
-  Guides to configuring Daytona's core components.
+  Guides to configuring Daytona's core options.
 
-- **`Usage`**
+- **`Management`**
 
-  Practical instructions for using Daytona.
+  Practical instructions for managing Daytona workspaces.
 
-- **`Reference`**
+- **`Agent Toolbox`**
 
-  Detailed technical and architectural documentation for Daytona.
-
-- **`SDK`**
-
-  Details on extending and integrating Daytona's functionalities.
-
-- **`Miscellaneous`**
-
-  Additional information and resources related to Daytona.
+  Information about the File System actions, Git Operations, the Language Server Protocol and Process & Code Execution.
 
 ## Contributing
 
