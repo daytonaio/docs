@@ -13,7 +13,7 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
 
 View the Daytona SDK repository on [GitHub](https://github.com/daytonaio/sdk).
 
-Follow the step by step guide to create and run your first Daytona Workspace for an AI Agent.
+Follow the step by step guide to create and run your first Daytona Sandbox for an AI Agent.
 
 ## Install Daytona
 
@@ -71,15 +71,15 @@ pnpm add @daytonaio/sdk
 </TabItem>
 </Tabs>
 
-## Write Code to Create a Workspace
+## Write Code to Create a Sandbox
 
-Create and run your code within Daytona Workspace using the SDK. Daytona provides a simple and intuitive interface for interacting with Daytona.
+Create and run your code within Daytona Sandboxes using the SDK. Daytona provides a simple and intuitive interface for interacting with Daytona.
 
-Use the Daytona SDK [Python examples](https://github.com/daytonaio/sdk/tree/main/examples/python) or [TypeScript/JavaScript examples](https://github.com/daytonaio/sdk/tree/main/examples/typescript) to create a Workspace and run your code.
+Use the Daytona SDK [Python examples](https://github.com/daytonaio/sdk/tree/main/examples/python) or [TypeScript/JavaScript examples](https://github.com/daytonaio/sdk/tree/main/examples/typescript) to create a Sandbox and run your code.
 
 ### Execute Commands
 
-Run the following code to create a Daytona Workspace and execute commands:
+Run the following code to create a Daytona Sandbox and execute commands:
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -89,18 +89,18 @@ from daytona_sdk import Daytona, CreateWorkspaceParams
 # Initialize the Daytona client
 daytona = Daytona()
 
-# Create the workspace instance
+# Create the Sandbox instance
 params = CreateWorkspaceParams(language="python")
 workspace = daytona.create(params)
 
-# Run the code securely inside the workspace
+# Run the code securely inside the Sandbox
 response = workspace.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
 if response.exit_code != 0:
     print(f"Error running code: {response.exit_code} {response.result}")
 else:
     print(response.result)
 
-# Clean up the workspace
+# Clean up the Sandbox
 daytona.remove(workspace)
 
 ```
@@ -142,9 +142,9 @@ main()
 </TabItem>
 </Tabs>
 
-## Start your Workspace
+## Start your Sandbox
 
-Daytona provides two methods for starting your Workspace:
+Daytona provides two methods for starting your Sandbox:
 
 - Using Python
 - Using TypeScript/JavaScript

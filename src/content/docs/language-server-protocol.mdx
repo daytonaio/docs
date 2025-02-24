@@ -9,7 +9,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   Distribution: **Open Source**
 </Label>
 
-The Daytona SDK provides Language Server Protocol (LSP) support through workspace instances. This enables advanced language features like code completion, diagnostics, and more.
+The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances. This enables advanced language features like code completion, diagnostics, and more.
 
 ## Creating LSP Servers
 
@@ -20,7 +20,7 @@ Daytona SDK provides an option to create LSP servers using Python and TypeScript
 ```python
 from daytona_sdk import Daytona, LspLanguageId
 
-# Create workspace
+# Create Sandbox
 
 daytona = Daytona()
 workspace = daytona.create()

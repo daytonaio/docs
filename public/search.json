@@ -57,7 +57,7 @@
   },
   {
     "title": "File System Operations",
-    "description": "The Daytona SDK provides comprehensive file system operations through the `fs` module in workspaces.",
+    "description": "The Daytona SDK provides comprehensive file system operations through the `fs` module in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/file-system-operations",
     "slug": "/file-system-operations",
@@ -65,7 +65,7 @@
   },
   {
     "title": "Basic Operations",
-    "description": "Daytona SDK provides an option to interact with the file system in Workspaces.",
+    "description": "Daytona SDK provides an option to interact with the file system in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/file-system-operations#basic-operations",
     "slug": "/file-system-operations#basic-operations",
@@ -73,7 +73,7 @@
   },
   {
     "title": "Listing Files and Directories",
-    "description": "Daytona SDK provides an option to list files and directories in a Workspace using Python and TypeScript.",
+    "description": "Daytona SDK provides an option to list files and directories in a Sandbox using Python and TypeScript.",
     "tag": "Documentation",
     "url": "/docs/file-system-operations#listing-files-and-directories",
     "slug": "/file-system-operations#listing-files-and-directories",
@@ -113,7 +113,7 @@
   },
   {
     "title": "File Operations",
-    "description": "Daytona SDK provides options to read, write, upload, download, and delete files in Workspaces using Python and TypeScript.",
+    "description": "Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python and TypeScript.",
     "tag": "Documentation",
     "url": "/docs/file-system-operations#file-operations",
     "slug": "/file-system-operations#file-operations",
@@ -256,16 +256,16 @@
     "objectID": 32
   },
   {
-    "title": "Write Code to Create a Workspace",
-    "description": "Create and run your code within Daytona Workspace using the SDK.",
+    "title": "Write Code to Create a Sandbox",
+    "description": "Create and run your code within Daytona Sandboxes using the SDK.",
     "tag": "Documentation",
-    "url": "/docs/getting-started#write-code-to-create-a-workspace",
-    "slug": "/getting-started#write-code-to-create-a-workspace",
+    "url": "/docs/getting-started#write-code-to-create-a-sandbox",
+    "slug": "/getting-started#write-code-to-create-a-sandbox",
     "objectID": 33
   },
   {
     "title": "Execute Commands",
-    "description": "Run the following code to create a Daytona Workspace and execute commands:",
+    "description": "Run the following code to create a Daytona Sandbox and execute commands:",
     "tag": "Documentation",
     "url": "/docs/getting-started#execute-commands",
     "slug": "/getting-started#execute-commands",
@@ -280,40 +280,40 @@
     "objectID": 35
   },
   {
-    "title": "Create the workspace instance",
+    "title": "Create the Sandbox instance",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/getting-started#create-the-workspace-instance",
-    "slug": "/getting-started#create-the-workspace-instance",
+    "url": "/docs/getting-started#create-the-sandbox-instance",
+    "slug": "/getting-started#create-the-sandbox-instance",
     "objectID": 36
   },
   {
-    "title": "Run the code securely inside the workspace",
+    "title": "Run the code securely inside the Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/getting-started#run-the-code-securely-inside-the-workspace",
-    "slug": "/getting-started#run-the-code-securely-inside-the-workspace",
+    "url": "/docs/getting-started#run-the-code-securely-inside-the-sandbox",
+    "slug": "/getting-started#run-the-code-securely-inside-the-sandbox",
     "objectID": 37
   },
   {
-    "title": "Clean up the workspace",
+    "title": "Clean up the Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/getting-started#clean-up-the-workspace",
-    "slug": "/getting-started#clean-up-the-workspace",
+    "url": "/docs/getting-started#clean-up-the-sandbox",
+    "slug": "/getting-started#clean-up-the-sandbox",
     "objectID": 38
   },
   {
-    "title": "Start your Workspace",
-    "description": "Daytona provides two methods for starting your Workspace:",
+    "title": "Start your Sandbox",
+    "description": "Daytona provides two methods for starting your Sandbox:",
     "tag": "Documentation",
-    "url": "/docs/getting-started#start-your-workspace",
-    "slug": "/getting-started#start-your-workspace",
+    "url": "/docs/getting-started#start-your-sandbox",
+    "slug": "/getting-started#start-your-sandbox",
     "objectID": 39
   },
   {
     "title": "Git Operations",
-    "description": "The Daytona SDK provides built-in Git support through the `git` module in Workspaces.",
+    "description": "The Daytona SDK provides built-in Git support through the `git` module in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/git-operations",
     "slug": "/git-operations",
@@ -321,7 +321,7 @@
   },
   {
     "title": "Basic Operations",
-    "description": "Daytona SDK provides an option to clone, check status, and manage Git repositories in Workspaces.",
+    "description": "Daytona SDK provides an option to clone, check status, and manage Git repositories in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/git-operations#basic-operations",
     "slug": "/git-operations#basic-operations",
@@ -329,7 +329,7 @@
   },
   {
     "title": "Cloning Repositories",
-    "description": "Daytona SDK provides an option to clone Git repositories into Workspaces using Python and TypeScript.",
+    "description": "Daytona SDK provides an option to clone Git repositories into Sandboxes using Python and TypeScript.",
     "tag": "Documentation",
     "url": "/docs/git-operations#cloning-repositories",
     "slug": "/git-operations#cloning-repositories",
@@ -361,7 +361,7 @@
   },
   {
     "title": "Repository Status",
-    "description": "Daytona SDK provides an option to check the status of Git repositories in Workspaces.",
+    "description": "Daytona SDK provides an option to check the status of Git repositories in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/git-operations#repository-status",
     "slug": "/git-operations#repository-status",
@@ -513,7 +513,7 @@
   },
   {
     "title": "Language Server Protocol",
-    "description": "The Daytona SDK provides Language Server Protocol (LSP) support through workspace instances.",
+    "description": "The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances.",
     "tag": "Documentation",
     "url": "/docs/language-server-protocol",
     "slug": "/language-server-protocol",
@@ -528,11 +528,11 @@
     "objectID": 66
   },
   {
-    "title": "Create workspace",
+    "title": "Create Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/language-server-protocol#create-workspace",
-    "slug": "/language-server-protocol#create-workspace",
+    "url": "/docs/language-server-protocol#create-sandbox",
+    "slug": "/language-server-protocol#create-sandbox",
     "objectID": 67
   },
   {
@@ -577,7 +577,7 @@
   },
   {
     "title": "Process and Code Execution",
-    "description": "The Daytona SDK provides powerful process and code execution capabilities through the `process` module in workspaces.",
+    "description": "The Daytona SDK provides powerful process and code execution capabilities through the `process` module in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/process-code-execution",
     "slug": "/process-code-execution",
@@ -609,7 +609,7 @@
   },
   {
     "title": "Process Execution",
-    "description": "Daytona SDK provides an option to execute shell commands and manage background processes in Workspaces.",
+    "description": "Daytona SDK provides an option to execute shell commands and manage background processes in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/process-code-execution#process-execution",
     "slug": "/process-code-execution#process-execution",
@@ -633,7 +633,7 @@
   },
   {
     "title": "Sessions (Background Processes)",
-    "description": "Daytona SDK provides an option to start, stop, and manage background process sessions in Workspaces.",
+    "description": "Daytona SDK provides an option to start, stop, and manage background process sessions in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/process-code-execution#sessions-background-processes",
     "slug": "/process-code-execution#sessions-background-processes",
@@ -665,7 +665,7 @@
   },
   {
     "title": "Best Practices",
-    "description": "Daytona SDK provides best practices for process and code execution in Workspaces.",
+    "description": "Daytona SDK provides best practices for process and code execution in Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/process-code-execution#best-practices",
     "slug": "/process-code-execution#best-practices",
@@ -704,91 +704,91 @@
     "objectID": 88
   },
   {
-    "title": "Workspace Management",
-    "description": "Workspaces are isolated development environments managed by Daytona.",
+    "title": "Sandbox Management",
+    "description": "Sandboxes are isolated development environments managed by Daytona.",
     "tag": "Documentation",
-    "url": "/docs/workspace-management",
-    "slug": "/workspace-management",
+    "url": "/docs/sandbox-management",
+    "slug": "/sandbox-management",
     "objectID": 89
   },
   {
-    "title": "Creating Workspaces",
-    "description": "Daytona SDK provides an option to create workspaces with default or custom configurations.",
+    "title": "Creating Sandboxes",
+    "description": "Daytona SDK provides an option to create Sandboxes with default or custom configurations.",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#creating-workspaces",
-    "slug": "/workspace-management#creating-workspaces",
+    "url": "/docs/sandbox-management#creating-sandboxes",
+    "slug": "/sandbox-management#creating-sandboxes",
     "objectID": 90
   },
   {
-    "title": "Basic Workspace Creation",
-    "description": "Daytona SDK provides methods to create Workspaces with default configurations, specific languages, or custom IDs using Python and TypeScript.",
+    "title": "Basic Sandbox Creation",
+    "description": "Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom IDs using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#basic-workspace-creation",
-    "slug": "/workspace-management#basic-workspace-creation",
+    "url": "/docs/sandbox-management#basic-sandbox-creation",
+    "slug": "/sandbox-management#basic-sandbox-creation",
     "objectID": 91
   },
   {
-    "title": "Create a basic workspace",
+    "title": "Create a basic Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#create-a-basic-workspace",
-    "slug": "/workspace-management#create-a-basic-workspace",
+    "url": "/docs/sandbox-management#create-a-basic-sandbox",
+    "slug": "/sandbox-management#create-a-basic-sandbox",
     "objectID": 92
   },
   {
-    "title": "Create a workspace with specific language",
+    "title": "Create a Sandbox with specific language",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#create-a-workspace-with-specific-language",
-    "slug": "/workspace-management#create-a-workspace-with-specific-language",
+    "url": "/docs/sandbox-management#create-a-sandbox-with-specific-language",
+    "slug": "/sandbox-management#create-a-sandbox-with-specific-language",
     "objectID": 93
   },
   {
-    "title": "Create a workspace with custom ID",
+    "title": "Create a Sandbox with custom ID",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#create-a-workspace-with-custom-id",
-    "slug": "/workspace-management#create-a-workspace-with-custom-id",
+    "url": "/docs/sandbox-management#create-a-sandbox-with-custom-id",
+    "slug": "/sandbox-management#create-a-sandbox-with-custom-id",
     "objectID": 94
   },
   {
-    "title": "Workspace Information",
-    "description": "Daytona SDK provides methods to get information about a workspace, such as ID, root directory, and status using Python and TypeScript.",
+    "title": "Sandbox Information",
+    "description": "Daytona SDK provides methods to get information about a Sandbox, such as ID, root directory, and status using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#workspace-information",
-    "slug": "/workspace-management#workspace-information",
+    "url": "/docs/sandbox-management#sandbox-information",
+    "slug": "/sandbox-management#sandbox-information",
     "objectID": 95
   },
   {
-    "title": "Get workspace ID",
+    "title": "Get Sandbox ID",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#get-workspace-id",
-    "slug": "/workspace-management#get-workspace-id",
+    "url": "/docs/sandbox-management#get-sandbox-id",
+    "slug": "/sandbox-management#get-sandbox-id",
     "objectID": 96
   },
   {
-    "title": "Get workspace root directory",
+    "title": "Get Sandbox root directory",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#get-workspace-root-directory",
-    "slug": "/workspace-management#get-workspace-root-directory",
+    "url": "/docs/sandbox-management#get-sandbox-root-directory",
+    "slug": "/sandbox-management#get-sandbox-root-directory",
     "objectID": 97
   },
   {
-    "title": "Remove Workspace",
-    "description": "Daytona SDK provides methods to perform operations on Workspaces, such as removing Workspaces using Python and TypeScript.",
+    "title": "Remove Sandbox",
+    "description": "Daytona SDK provides methods to perform operations on Sandboxes, such as removing Sandboxes using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#remove-workspace",
-    "slug": "/workspace-management#remove-workspace",
+    "url": "/docs/sandbox-management#remove-sandbox",
+    "slug": "/sandbox-management#remove-sandbox",
     "objectID": 98
   },
   {
-    "title": "Remove workspace",
+    "title": "Remove Sandbox",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/workspace-management#remove-workspace",
-    "slug": "/workspace-management#remove-workspace",
+    "url": "/docs/sandbox-management#remove-sandbox",
+    "slug": "/sandbox-management#remove-sandbox",
     "objectID": 99
   }
 ]
