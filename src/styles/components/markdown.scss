@@ -216,6 +216,7 @@
         padding: 0.5rem;
         text-align: left;
         word-break: break-word;
+        max-width: 10vw;
       }
 
       td {
@@ -225,7 +226,6 @@
         line-height: 1.6;
         letter-spacing: -0.01rem;
         border-bottom: 1px solid var(--border-extra);
-
       }
 
       th {
