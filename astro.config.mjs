@@ -50,35 +50,67 @@ export default defineConfig({
               label: 'Configuration',
               link: '/configuration',
             },
+            {
+              label: 'Sandbox Persistence',
+              link: '/sandbox-persistence',
+            },
           ],
         },
         {
-          label: 'Sandboxes',
+          label: 'Python SDK',
           items: [
             {
               label: 'Management',
-              link: '/sandbox-management',
+              link: '/python-sdk/daytona',
+            },
+            {
+              label: 'File System',
+              link: '/python-sdk/file-system',
+            },
+            {
+              label: 'Git Operations',
+              link: '/python-sdk/git',
+            },
+            {
+              label: 'Language Server Protocol',
+              link: '/python-sdk/lsp-server',
+            },
+            {
+              label: 'Process & Code Execution',
+              link: '/python-sdk/process',
+            },
+            {
+              label: 'Sandbox',
+              link: '/python-sdk/sandbox',
             },
           ],
         },
         {
-          label: 'Agent Toolbox',
+          label: 'TypeScript SDK',
           items: [
             {
-              label: 'File System Operations',
-              link: '/file-system-operations',
+              label: 'Management',
+              link: '/typescript-sdk/daytona',
+            },
+            {
+              label: 'File System',
+              link: '/typescript-sdk/file-system',
             },
             {
               label: 'Git Operations',
-              link: '/git-operations',
+              link: '/typescript-sdk/git',
             },
             {
               label: 'Language Server Protocol',
-              link: '/language-server-protocol',
+              link: '/typescript-sdk/lsp-server',
             },
             {
               label: 'Process & Code Execution',
-              link: '/process-code-execution',
+              link: '/typescript-sdk/process',
+            },
+            {
+              label: 'Sandbox',
+              link: '/typescript-sdk/sandbox',
             },
           ],
         },

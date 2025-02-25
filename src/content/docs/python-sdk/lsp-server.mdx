@@ -1,0 +1,329 @@
+---
+title: Language Server Protocol
+---
+
+The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances.
+This enables advanced language features like code completion, diagnostics, and more.
+
+**Example**:
+
+  Basic LSP server usage:
+
+```python
+workspace = daytona.create()
+
+# Create and start LSP server
+lsp = workspace.create_lsp_server("typescript", "/workspace/project")
+lsp.start()
+
+# Open a file for editing
+lsp.did_open("/workspace/project/src/index.ts")
+
+# Get completions at a position
+pos = Position(line=10, character=15)
+completions = lsp.completions("/workspace/project/src/index.ts", pos)
+print(f"Completions: {completions}")
+
+# Get document symbols
+symbols = lsp.document_symbols("/workspace/project/src/index.ts")
+for symbol in symbols:
+    print(f"{symbol.name}: {symbol.kind}")
+
+# Clean up
+lsp.did_close("/workspace/project/src/index.ts")
+lsp.stop()
+```
+  
+**Notes**:
+
+  The LSP server must be started with start() before using any other methods,
+  and should be stopped with stop() when no longer needed to free resources.
+
+## LspServer
+
+```python
+class LspServer()
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L73)
+
+Provides Language Server Protocol functionality for code intelligence.
+
+This class implements a subset of the Language Server Protocol (LSP) to provide
+IDE-like features such as code completion, symbol search, and more.
+
+**Attributes**:
+
+- `language_id` _LspLanguageId_ - The language server type (e.g., "python", "typescript").
+- `path_to_project` _str_ - Absolute path to the project root directory.
+- `instance` _WorkspaceInstance_ - The Sandbox instance this server belongs to.
+
+<a id="daytona_sdk.lsp_server.LspServer.__init__"></a>
+
+#### LspServer.\_\_init\_\_
+
+```python
+def __init__(language_id: LspLanguageId, path_to_project: str,
+             toolbox_api: ToolboxApi, instance: WorkspaceInstance)
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L85)
+
+Initializes a new LSP server instance.
+
+**Arguments**:
+
+- `language_id` _LspLanguageId_ - The language server type (e.g., "typescript").
+- `path_to_project` _str_ - Absolute path to the project root directory.
+- `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
+- `instance` _WorkspaceInstance_ - The Sandbox instance this server belongs to.
+
+<a id="daytona_sdk.lsp_server.LspServer.start"></a>
+
+#### LspServer.start
+
+```python
+def start() -> None
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L105)
+
+Starts the language server.
+
+This method must be called before using any other LSP functionality.
+It initializes the language server for the specified language and project.
+
+**Example**:
+
+```python
+lsp = workspace.create_lsp_server("typescript", "/workspace/project")
+lsp.start()  # Initialize the server
+# Now ready for LSP operations
+```
+
+<a id="daytona_sdk.lsp_server.LspServer.stop"></a>
+
+#### LspServer.stop
+
+```python
+def stop() -> None
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L126)
+
+Stops the language server.
+
+This method should be called when the LSP server is no longer needed to
+free up system resources.
+
+**Example**:
+
+```python
+# When done with LSP features
+lsp.stop()  # Clean up resources
+```
+
+<a id="daytona_sdk.lsp_server.LspServer.did_open"></a>
+
+#### LspServer.did\_open
+
+```python
+def did_open(path: str) -> None
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L146)
+
+Notifies the language server that a file has been opened.
+
+This method should be called when a file is opened in the editor to enable
+language features like diagnostics and completions for that file. The server
+will begin tracking the file's contents and providing language features.
+
+**Arguments**:
+
+- `path` _str_ - Absolute path to the opened file.
+  
+**Example**:
+
+```python
+# When opening a file for editing
+lsp.did_open("/workspace/project/src/index.ts")
+# Now can get completions, symbols, etc. for this file
+```
+
+<a id="daytona_sdk.lsp_server.LspServer.did_close"></a>
+
+#### LspServer.did\_close
+
+```python
+def did_close(path: str) -> None
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L172)
+
+Notify the language server that a file has been closed.
+
+This method should be called when a file is closed in the editor to allow
+the language server to clean up any resources associated with that file.
+
+**Arguments**:
+
+- `path` _str_ - Absolute path to the closed file.
+  
+**Example**:
+
+```python
+# When done editing a file
+lsp.did_close("/workspace/project/src/index.ts")
+```
+
+<a id="daytona_sdk.lsp_server.LspServer.document_symbols"></a>
+
+#### LspServer.document\_symbols
+
+```python
+def document_symbols(path: str) -> List[LspSymbol]
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L195)
+
+Gets symbol information from a document.
+
+This method returns information about all symbols (functions, classes,
+variables, etc.) defined in the specified document.
+
+**Arguments**:
+
+- `path` _str_ - Absolute path to the file to get symbols from.
+  
+**Returns**:
+
+- `List[LspSymbol]` - List of symbols in the document. Each symbol includes:
+  - name: The symbol's name
+  - kind: The symbol's kind (function, class, variable, etc.)
+  - location: The location of the symbol in the file
+  
+**Example**:
+
+```python
+# Get all symbols in a file
+symbols = lsp.document_symbols("/workspace/project/src/index.ts")
+for symbol in symbols:
+    print(f"{symbol.kind} {symbol.name}: {symbol.location}")
+```
+
+<a id="daytona_sdk.lsp_server.LspServer.workspace_symbols"></a>
+
+#### LspServer.workspace\_symbols
+
+```python
+def workspace_symbols(query: str) -> List[LspSymbol]
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L225)
+
+Searches for symbols across the entire Sandbox.
+
+This method searches for symbols matching the query string across all files
+in the Sandbox. It's useful for finding declarations and definitions
+without knowing which file they're in.
+
+**Arguments**:
+
+- `query` _str_ - Search query to match against symbol names.
+  
+**Returns**:
+
+- `List[LspSymbol]` - List of matching symbols from all files. Each symbol
+  includes:
+  - name: The symbol's name
+  - kind: The symbol's kind (function, class, variable, etc.)
+  - location: The location of the symbol in the file
+  
+**Example**:
+
+```python
+# Search for all symbols containing "User"
+symbols = lsp.workspace_symbols("User")
+for symbol in symbols:
+    print(f"{symbol.name} in {symbol.location}")
+```
+
+<a id="daytona_sdk.lsp_server.LspServer.completions"></a>
+
+#### LspServer.completions
+
+```python
+def completions(path: str, position: Position) -> CompletionList
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L257)
+
+Gets completion suggestions at a position in a file.
+
+**Arguments**:
+
+- `path` _str_ - Absolute path to the file.
+- `position` _Position_ - Cursor position to get completions for.
+  
+**Returns**:
+
+- `CompletionList` - List of completion suggestions. The list includes:
+  - isIncomplete: Whether more items might be available
+  - items: List of completion items, each containing:
+  - label: The text to insert
+  - kind: The kind of completion
+  - detail: Additional details about the item
+  - documentation: Documentation for the item
+  - sortText: Text used to sort the item in the list
+  - filterText: Text used to filter the item
+  - insertText: The actual text to insert (if different from label)
+  
+**Example**:
+
+```python
+# Get completions at a specific position
+pos = Position(line=10, character=15)
+completions = lsp.completions("/workspace/project/src/index.ts", pos)
+for item in completions.items:
+    print(f"{item.label} ({item.kind}): {item.detail}")
+```
+
+<a id="daytona_sdk.lsp_server.Position"></a>
+
+## Position
+
+```python
+class Position()
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L51)
+
+Represents a position in a text document.
+
+This class represents a zero-based position within a text document,
+specified by line number and character offset.
+
+**Attributes**:
+
+- `line` _int_ - Zero-based line number in the document.
+- `character` _int_ - Zero-based character offset on the line.
+
+<a id="daytona_sdk.lsp_server.Position.__init__"></a>
+
+#### Position.\_\_init\_\_
+
+```python
+def __init__(line: int, character: int)
+```
+
+[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L62)
+
+Initialize a new Position instance.
+
+**Arguments**:
+
+- `line` _int_ - Zero-based line number in the document.
+- `character` _int_ - Zero-based character offset on the line.
+
+<a id="daytona_sdk.lsp_server.LspServer"></a>

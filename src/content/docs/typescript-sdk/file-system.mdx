@@ -1,0 +1,487 @@
+---
+title: File  System  Operations
+---
+
+The Daytona SDK provides comprehensive file system operations through the `fs` module in Sandboxes.
+You can perform various operations like listing files, creating directories, reading and writing files, and more.
+This guide covers all available file system operations and best practices.
+
+### Examples
+
+```ts
+// Basic file operations
+// Create a workspace
+const workspace = await daytona.create();
+
+// Create a directory
+await workspace.fs.createFolder('/workspace/data', '755');
+
+// Upload a file
+const fileContent = new File(['content'], 'local_file.txt');
+await workspace.fs.uploadFile('/workspace/data/file.txt', fileContent);
+
+// List directory contents
+const files = await workspace.fs.listFiles('/workspace');
+files.forEach(file => {
+  console.log(`Name: ${file.name}`);
+  console.log(`Is directory: ${file.isDir}`);
+  console.log(`Size: ${file.size}`);
+  console.log(`Modified: ${file.modTime}`);
+});
+
+// Search file contents
+const matches = await workspace.fs.findFiles(
+  '/workspace/src',
+  'text-of-interest'
+);
+matches.forEach(match => {
+  console.log(`Absolute file path: ${match.file}`);
+  console.log(`Line number: ${match.line}`);
+  console.log(`Line content: ${match.content}\n`);
+});
+```
+
+```ts
+// File manipulation
+// Move files
+await workspace.fs.moveFiles(
+  '/workspace/data/old.txt',
+  '/workspace/data/new.txt'
+);
+
+// Replace text in files
+const results = await workspace.fs.replaceInFiles(
+  ['/workspace/data/new.txt'],
+  'old_version',
+  'new_version'
+);
+
+// Set permissions
+await workspace.fs.setFilePermissions(
+  '/workspace/data/script.sh',
+  {
+    mode: '755',
+    owner: 'daytona'
+  }
+);
+```
+
+## FileSystem
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L107)
+
+Provides file system operations within a Sandbox.
+
+This class implements a high-level interface to file system operations that can
+be performed within a Daytona Sandbox. It supports common operations like
+creating, deleting, and moving files, as well as searching file contents and
+managing permissions.
+
+### Constructors
+
+#### new FileSystem()
+
+```ts
+new FileSystem(instance: Workspace, toolboxApi: ToolboxApi): FileSystem
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L108)
+
+##### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `instance` | `Workspace` |
+| `toolboxApi` | `ToolboxApi` |
+
+##### Returns
+
+`FileSystem`
+
+### Methods
+
+#### createFolder()
+
+```ts
+createFolder(path: string, mode: string): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L124)
+
+Create a new directory in the Sandbox with specified permissions.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Path where the directory should be created |
+| `mode` | `string` | Directory permissions in octal format (e.g. "755") |
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// Create a directory with standard permissions
+await fs.createFolder('/app/data', '755');
+```
+
+***
+
+#### deleteFile()
+
+```ts
+deleteFile(path: string): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L139)
+
+Deletes a file or directory from the Sandbox.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Path to the file or directory to delete |
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// Delete a file
+await fs.deleteFile('/app/temp.log');
+```
+
+***
+
+#### downloadFile()
+
+```ts
+downloadFile(path: string): Promise<Blob>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L155)
+
+Downloads a file from the Sandbox.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Path to the file to download |
+
+##### Returns
+
+`Promise<Blob>`
+
+The file contents as a Blob
+
+##### Example
+
+```ts
+// Download and process a file
+const fileBlob = await fs.downloadFile('/app/data.json');
+console.log('File content:', fileBlob.toString());
+```
+
+***
+
+#### findFiles()
+
+```ts
+findFiles(path: string, pattern: string): Promise<Match[]>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L174)
+
+Searches for text patterns within files in the Sandbox.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Directory to search in |
+| `pattern` | `string` | Search pattern |
+
+##### Returns
+
+`Promise<Match[]>`
+
+Array of matches with file and line information
+
+##### Example
+
+```ts
+// Find all TODO comments in TypeScript files
+const matches = await fs.findFiles('/app/src', 'TODO:');
+matches.forEach(match => {
+  console.log(`${match.file}:${match.line}: ${match.content}`);
+});
+```
+
+***
+
+#### getFileDetails()
+
+```ts
+getFileDetails(path: string): Promise<FileInfo>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L190)
+
+Retrieves detailed information about a file or directory.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Path to the file or directory |
+
+##### Returns
+
+`Promise<FileInfo>`
+
+Detailed file information including size, permissions, modification time
+
+##### Example
+
+```ts
+// Get file details
+const info = await fs.getFileDetails('/app/config.json');
+console.log(`Size: ${info.size}, Modified: ${info.modTime}`);
+```
+
+***
+
+#### listFiles()
+
+```ts
+listFiles(path: string): Promise<FileInfo[]>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L208)
+
+Lists contents of a directory in the Sandbox.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Directory path to list |
+
+##### Returns
+
+`Promise<FileInfo[]>`
+
+Array of file and directory information
+
+##### Example
+
+```ts
+// List directory contents
+const files = await fs.listFiles('/app/src');
+files.forEach(file => {
+  console.log(`${file.name} (${file.size} bytes)`);
+});
+```
+
+***
+
+#### moveFiles()
+
+```ts
+moveFiles(source: string, destination: string): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L224)
+
+Moves or renames a file or directory.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `source` | `string` | Source path |
+| `destination` | `string` | Destination path |
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// Move a file to a new location
+await fs.moveFiles('/app/temp/data.json', '/app/data/data.json');
+```
+
+***
+
+#### replaceInFiles()
+
+```ts
+replaceInFiles(
+   files: string[], 
+   pattern: string, 
+newValue: string): Promise<ReplaceResult[]>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L245)
+
+Replaces text content in multiple files.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `files` | `string[]` | Array of file paths to process |
+| `pattern` | `string` | Pattern to replace |
+| `newValue` | `string` | Replacement text |
+
+##### Returns
+
+`Promise<ReplaceResult[]>`
+
+Results of the replace operation for each file
+
+##### Example
+
+```ts
+// Update version number across multiple files
+const results = await fs.replaceInFiles(
+  ['/app/package.json', '/app/version.ts'],
+  '"version": "1.0.0"',
+  '"version": "1.1.0"'
+);
+```
+
+***
+
+#### searchFiles()
+
+```ts
+searchFiles(path: string, pattern: string): Promise<SearchFilesResponse>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L272)
+
+Searches for files and directories by name pattern in the Sandbox.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Directory to search in |
+| `pattern` | `string` | File name pattern (supports globs) |
+
+##### Returns
+
+`Promise<SearchFilesResponse>`
+
+Search results with matching files
+
+##### Example
+
+```ts
+// Find all TypeScript files
+const result = await fs.searchFiles('/app', '*.ts');
+result.files.forEach(file => console.log(file));
+```
+
+***
+
+#### setFilePermissions()
+
+```ts
+setFilePermissions(path: string, permissions: FilePermissionsParams): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L295)
+
+Sets permissions and ownership for a file or directory.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Path to the file or directory |
+| `permissions` | `FilePermissionsParams` | Permission settings |
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// Set file permissions and ownership
+await fs.setFilePermissions('/app/script.sh', {
+  owner: 'daytona',
+  group: 'users',
+  mode: '755'  // Execute permission for shell script
+});
+```
+
+***
+
+#### uploadFile()
+
+```ts
+uploadFile(path: string, file: File): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L315)
+
+Uploads a file to the Sandbox.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Destination path in the Sandbox |
+| `file` | `File` | File to upload |
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// Upload a configuration file
+const configFile = new File(['{"setting": "value"}'], 'config.json');
+await fs.uploadFile('/app/config.json', configFile);
+```
+
+***
+
+## FilePermissionsParams
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L90)
+
+Parameters for setting file permissions in the Sandbox.
+
+ FilePermissionsParams
+
+### Example
+
+```ts
+const permissions: FilePermissionsParams = {
+  mode: '644',
+  owner: 'daytona',
+  group: 'users'
+};
+```
+
+### Properties
+
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| `group?` | `string` | Group owner of the file |
+| `mode?` | `string` | File mode/permissions in octal format (e.g. "644") |
+| `owner?` | `string` | User owner of the file |

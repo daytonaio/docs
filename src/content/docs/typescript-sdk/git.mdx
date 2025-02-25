@@ -1,0 +1,389 @@
+---
+title: Git  Operations
+---
+
+The Daytona SDK provides built-in Git support. This guide covers all available Git
+operations and best practices. Daytona SDK provides an option to clone, check status,
+and manage Git repositories in Sandboxes. You can interact with Git repositories using
+the `git` module.
+
+### Example
+
+```ts
+// Basic Git workflow
+// Create and initialize workspace
+const workspace = await daytona.create();
+
+// Clone a repository
+await workspace.git.clone(
+  'https://github.com/user/repo.git',
+  '/workspace/repo'
+);
+
+// Make some changes
+await workspace.fs.uploadFile(
+  '/workspace/repo/test.txt',
+  new File([Buffer.from('Hello, World!')], 'test.txt')
+);
+
+// Stage and commit changes
+await workspace.git.add('/workspace/repo', ['test.txt']);
+await workspace.git.commit(
+  '/workspace/repo',
+  'Add test file',
+  'John Doe',
+  'john@example.com'
+);
+
+// Push changes (with authentication)
+await workspace.git.push(
+  '/workspace/repo',
+  'user',
+  'token'
+);
+```
+
+## Git
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/Git.ts#L52)
+
+### Constructors
+
+#### new Git()
+
+```ts
+new Git(
+   workspace: Workspace, 
+   toolboxApi: ToolboxApi, 
+   instance: Workspace): Git
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/Git.ts#L53)
+
+##### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `workspace` | `Workspace` |
+| `toolboxApi` | `ToolboxApi` |
+| `instance` | `Workspace` |
+
+##### Returns
+
+`Git`
+
+### Methods
+
+#### add()
+
+```ts
+add(path: string, files: string[]): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/Git.ts#L77)
+
+Stages files for commit.
+
+This method stages the specified files for the next commit, similar to
+running 'git add' on the command line.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the Git repository root |
+| `files` | `string[]` | List of file paths or directories to stage, relative to the repository root |
+
+##### Returns
+
+`Promise<void>`
+
+##### Examples
+
+```ts
+// Stage a single file
+await git.add('/workspace/repo', ['file.txt']);
+```
+
+```ts
+// Stage whole repository
+await git.add('/workspace/repo', ['.']);
+```
+
+***
+
+#### branches()
+
+```ts
+branches(path: string): Promise<ListBranchResponse>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/Git.ts#L96)
+
+List branches in the repository.
+
+This method returns information about all branches in the repository.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the Git repository root |
+
+##### Returns
+
+`Promise<ListBranchResponse>`
+
+List of branches in the repository
+
+##### Example
+
+```ts
+const response = await git.branches('/workspace/repo');
+console.log(`Branches: ${response.branches}`);
+```
+
+***
+
+#### clone()
+
+```ts
+clone(
+   url: string, 
+   path: string, 
+   branch?: string, 
+   commitId?: string, 
+   username?: string, 
+password?: string): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/Git.ts#L141)
+
+Clones a Git repository.
+
+This method clones a Git repository into the specified path. It supports
+cloning specific branches or commits, and can authenticate with the remote
+repository if credentials are provided.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `url` | `string` | Repository URL to clone from |
+| `path` | `string` | Absolute path where the repository should be cloned |
+| `branch?` | `string` | Specific branch to clone. If not specified, clones the default branch |
+| `commitId?` | `string` | Specific commit to clone. If specified, the repository will be left in a detached HEAD state at this commit |
+| `username?` | `string` | Git username for authentication |
+| `password?` | `string` | Git password or token for authentication |
+
+##### Returns
+
+`Promise<void>`
+
+##### Examples
+
+```ts
+// Clone the default branch
+await git.clone(
+  'https://github.com/user/repo.git',
+  '/workspace/repo'
+);
+```
+
+```ts
+// Clone a specific branch with authentication
+await git.clone(
+  'https://github.com/user/private-repo.git',
+  '/workspace/private',
+  branch='develop',
+  username='user',
+  password='token'
+);
+```
+
+```ts
+// Clone a specific commit
+await git.clone(
+  'https://github.com/user/repo.git',
+  '/workspace/repo-old',
+  commitId='abc123'
+);
+```
+
+***
+
+#### commit()
+
+```ts
+commit(
+   path: string, 
+   message: string, 
+   author: string, 
+email: string): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/Git.ts#L182)
+
+Commits staged changes.
+
+This method creates a new commit with the staged changes. Make sure to stage
+changes using the add() method before committing.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the Git repository root |
+| `message` | `string` | Commit message describing the changes |
+| `author` | `string` | Name of the commit author |
+| `email` | `string` | Email address of the commit author |
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// Stage and commit changes
+await git.add('/workspace/repo', ['README.md']);
+await git.commit(
+  '/workspace/repo',
+  'Update documentation',
+  'John Doe',
+  'john@example.com'
+);
+```
+
+***
+
+#### pull()
+
+```ts
+pull(
+   path: string, 
+   username?: string, 
+password?: string): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/Git.ts#L254)
+
+Pulls changes from the remote repository.
+
+This method fetches and merges changes from the remote repository. If the remote
+requires authentication, username and password/token must be provided.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the Git repository root |
+| `username?` | `string` | Git username for authentication |
+| `password?` | `string` | Git password or token for authentication |
+
+##### Returns
+
+`Promise<void>`
+
+##### Examples
+
+```ts
+// Pull from a public repository
+await git.pull('/workspace/repo');
+```
+
+```ts
+// Pull from a private repository
+await git.pull(
+  '/workspace/repo',
+  'user',
+  'token'
+);
+```
+
+***
+
+#### push()
+
+```ts
+push(
+   path: string, 
+   username?: string, 
+password?: string): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/Git.ts#L219)
+
+Push local changes to the remote repository.
+
+This method pushes committed changes to the remote repository. If the remote
+requires authentication, username and password/token must be provided.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the Git repository root |
+| `username?` | `string` | Git username for authentication |
+| `password?` | `string` | Git password or token for authentication |
+
+##### Returns
+
+`Promise<void>`
+
+##### Examples
+
+```ts
+// Push to a public repository
+await git.push('/workspace/repo');
+```
+
+```ts
+// Push to a private repository
+await git.push(
+  '/workspace/repo',
+  'user',
+  'token'
+);
+```
+
+***
+
+#### status()
+
+```ts
+status(path: string): Promise<GitStatus>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/Git.ts#L286)
+
+Gets the current status of the Git repository.
+
+This method returns information about the current state of the repository,
+including staged and unstaged changes, current branch, and untracked files.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the Git repository root |
+
+##### Returns
+
+`Promise<GitStatus>`
+
+Current repository status including:
+                              - currentBranch: Name of the current branch
+                              - ahead: Number of commits ahead of the remote branch
+                              - behind: Number of commits behind the remote branch
+                              - branchPublished: Whether the branch has been published to the remote repository
+                              - fileStatus: List of file statuses
+
+##### Example
+
+```ts
+const status = await workspace.git.status('/workspace/repo');
+console.log(`Current branch: ${status.currentBranch}`);
+console.log(`Commits ahead: ${status.ahead}`);
+console.log(`Commits behind: ${status.behind}`);
+```

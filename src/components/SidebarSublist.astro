@@ -1,4 +1,11 @@
 ---
+// Add TypeScript interface declaration for Window
+declare global {
+  interface Window {
+    sidebarStates: { [key: string]: boolean }
+  }
+}
+
 function getSVG(name: string) {
   const filepath = `/src/assets/sidebar/${name}`
   const files = import.meta.glob<string>('/src/assets/sidebar/*.svg', {
@@ -16,10 +23,28 @@ function getSVG(name: string) {
 interface Props {
   sublist: any[]
   nested?: boolean
+  collapse?: boolean
 }
 
-const { sublist = [], nested } = Astro.props
+const { sublist = [], nested, collapse = false } = Astro.props
 ---
+
+<!-- Pre-render script to set initial states -->
+<script is:inline define:vars={{ sublist }}>
+  // Create a global object to store initial states
+  window.sidebarStates = window.sidebarStates || {}
+  try {
+    // Get all sidebar states from localStorage
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith('sidebar-')) {
+        const groupId = key.replace('sidebar-', '')
+        window.sidebarStates[groupId] = localStorage.getItem(key) === 'true'
+      }
+    })
+  } catch (e) {
+    console.error('Failed to access localStorage:', e)
+  }
+</script>
 
 <ul class:list={{ 'top-level': !nested }}>
   {
@@ -37,17 +62,79 @@ const { sublist = [], nested } = Astro.props
             <span>{entry.label}</span>
           </a>
         ) : entry.type === 'group' ? (
-          <div>
-            <div class="group-label">
-              <span class="large">{entry.label}</span>
+          entry.collapse || (collapse && entry.label?.includes('SDK')) ? (
+            <details
+              class="sidebar-group is-collapsible"
+              data-group-id={entry.label}
+              set:html={`<script>
+                if (window.sidebarStates && window.sidebarStates['${entry.label}']) {
+                  document.currentScript.parentElement.setAttribute('open', '');
+                }
+              </script>`}
+            >
+              <summary class="group-label">
+                <span class="large">{entry.label}</span>
+                <svg
+                  class="caret"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 18L15 12L9 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </summary>
+              <div class="group-content">
+                <Astro.self
+                  sublist={entry.entries}
+                  nested
+                  collapse={collapse}
+                />
+              </div>
+            </details>
+          ) : (
+            <div>
+              <div class="group-label">
+                <span class="large">{entry.label}</span>
+              </div>
+              <Astro.self sublist={entry.entries} nested collapse={collapse} />
             </div>
-            <Astro.self sublist={entry.entries} nested />
-          </div>
+          )
         ) : null}
       </li>
     ))
   }
 </ul>
+
+<script>
+  // Handle state persistence for collapsible sections
+  const initializeDetails = () => {
+    document
+      .querySelectorAll<HTMLDetailsElement>('details.is-collapsible')
+      .forEach(details => {
+        const groupId = details.getAttribute('data-group-id')
+        if (!groupId) return
+
+        // Store state changes
+        details.addEventListener('toggle', () => {
+          localStorage.setItem(`sidebar-${groupId}`, details.open.toString())
+          window.sidebarStates[groupId] = details.open
+        })
+      })
+  }
+
+  // Run on page transitions
+  document.addEventListener('astro:page-load', initializeDetails)
+  // Run on initial load
+  initializeDetails()
+</script>
 
 <style>
   ul {
@@ -70,28 +157,44 @@ const { sublist = [], nested } = Astro.props
     color: var(--secondary-text-color);
   }
 
-  summary {
+  .sidebar-group {
+    margin: 8px 0;
+  }
+
+  .sidebar-group.is-collapsible {
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .group-label {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 24px 0 8px 0;
-    line-height: 1;
-    user-select: none;
   }
-  summary::marker,
-  summary::-webkit-details-marker {
-    display: none;
+
+  /* Collapsible specific styles */
+  .is-collapsible .group-label {
+    cursor: pointer;
+  }
+
+  .is-collapsible .group-content {
+    padding: 0 8px 8px 8px;
   }
 
   .caret {
-    transition: transform 0.2s ease-in-out;
-    flex-shrink: 0;
+    transition: transform 0.2s ease;
   }
-  :global([dir='rtl']) .caret {
-    transform: rotateZ(180deg);
+
+  details[open] .caret {
+    transform: rotate(90deg);
   }
-  [open] > summary .caret {
-    transform: rotateZ(90deg);
+
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
   }
 
   li > a {
@@ -119,6 +222,7 @@ const { sublist = [], nested } = Astro.props
       }
     }
   }
+
   a:focus,
   a:hover {
     color: var(--hover-color);

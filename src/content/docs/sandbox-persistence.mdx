@@ -1,0 +1,34 @@
+---
+title: Sandbox Persistence
+---
+
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+Daytona keeps the filesystem in its entirety during the sandbox lifecycle. The persistence functionality is built into the system, and nothing needs to be explicitly done from the user side.
+
+## Understanding Sandbox States
+
+It is important to understand the sandbox states to maintain cost-effectiveness. A sandbox can have three states during its lifecycle:
+
+### Running
+
+Running sandboxes utilize CPU, memory, and disk storage. Every resource is charged per second of usage. When sandboxes are not actively used, it is recommended that they be stopped. This can be done:
+
+- Manually using the stop command
+- Automatically by setting the autoStop interval
+
+### Stopped
+
+Stopped sandboxes only utilize disk storage. They can be instantly started when needed. The stopped state should be used when the sandbox is expected to be started again soon. Otherwise, it is recommended to archive the sandbox to eliminate disk usage costs.
+
+### Archived
+
+When sandboxes are archived, the entire filesystem state is moved to very cost-effective object storage, making it possible to keep sandboxes available for an extended period.
+
+## Performance Considerations
+
+The tradeoff between archived and stopped states is that starting an archived sandbox takes more time, depending on its size.

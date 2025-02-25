@@ -1,0 +1,368 @@
+---
+title: Language  Server  Protocol
+---
+
+The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances.
+This enables advanced language features like code completion, diagnostics, and more.
+
+The LSP server must be started with start() before using any other methods,
+and should be stopped with stop() when no longer needed to free resources.
+
+### Example
+
+```ts
+// Basic LSP server usage
+// Create and initialize workspace
+const workspace = await daytona.create();
+
+// Create and start LSP server
+const lsp = workspace.createLspServer('typescript', '/workspace/project');
+await lsp.start();
+
+// Open a file for editing
+await lsp.didOpen('/workspace/project/src/index.ts');
+
+// Get completions at a position
+const completions = await lsp.completions(
+  '/workspace/project/src/index.ts',
+  { line: 10, character: 15 }
+);
+console.log('Completions:', completions);
+
+// Get document symbols
+const symbols = await lsp.documentSymbols('/workspace/project/src/index.ts');
+symbols.forEach(symbol => {
+  console.log(`${symbol.name}: ${symbol.kind}`);
+});
+
+// Clean up
+await lsp.didClose('/workspace/project/src/index.ts');
+await lsp.stop();
+```
+
+## LspServer
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L92)
+
+Provides Language Server Protocol functionality for code intelligence.
+
+This class implements a subset of the Language Server Protocol (LSP) to provide
+IDE-like features such as code completion, symbol search, and more.
+
+ LspServer
+
+### Constructors
+
+#### new LspServer()
+
+```ts
+new LspServer(
+   languageId: LspLanguageId, 
+   pathToProject: string, 
+   toolboxApi: ToolboxApi, 
+   instance: Workspace): LspServer
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L93)
+
+##### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `languageId` | `LspLanguageId` |
+| `pathToProject` | `string` |
+| `toolboxApi` | `ToolboxApi` |
+| `instance` | `Workspace` |
+
+##### Returns
+
+`LspServer`
+
+### Methods
+
+#### completions()
+
+```ts
+completions(path: string, position: Position): Promise<CompletionList>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L279)
+
+Gets completion suggestions at a position in a file.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the file |
+| `position` | `Position` | The position in the file where completion was requested |
+
+##### Returns
+
+`Promise<CompletionList>`
+
+List of completion suggestions. The list includes:
+                                   - isIncomplete: Whether more items might be available
+                                   - items: List of completion items, each containing:
+                                     - label: The text to insert
+                                     - kind: The kind of completion
+                                     - detail: Additional details about the item
+                                     - documentation: Documentation for the item
+                                     - sortText: Text used to sort the item in the list
+                                     - filterText: Text used to filter the item
+                                     - insertText: The actual text to insert (if different from label)
+
+##### Example
+
+```ts
+// Get completions at a specific position
+const completions = await lsp.completions('/workspace/project/src/index.ts', {
+  line: 10,
+  character: 15
+});
+completions.items.forEach(item => {
+  console.log(`${item.label} (${item.kind}): ${item.detail}`);
+});
+```
+
+***
+
+#### didClose()
+
+```ts
+didClose(path: string): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L183)
+
+Notifies the language server that a file has been closed.
+
+This method should be called when a file is closed in the editor to allow
+the language server to clean up any resources associated with that file.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the closed file |
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// When done editing a file
+await lsp.didClose('/workspace/project/src/index.ts');
+```
+
+***
+
+#### didOpen()
+
+```ts
+didOpen(path: string): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L159)
+
+Notifies the language server that a file has been opened.
+
+This method should be called when a file is opened in the editor to enable
+language features like diagnostics and completions for that file. The server
+will begin tracking the file's contents and providing language features.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the opened file |
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// When opening a file for editing
+await lsp.didOpen('/workspace/project/src/index.ts');
+// Now can get completions, symbols, etc. for this file
+```
+
+***
+
+#### documentSymbols()
+
+```ts
+documentSymbols(path: string): Promise<LspSymbol[]>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L213)
+
+Get symbol information from a document.
+
+This method returns information about all symbols (functions, classes,
+variables, etc.) defined in the specified document.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | Absolute path to the file to get symbols from |
+
+##### Returns
+
+`Promise<LspSymbol[]>`
+
+List of symbols in the document. Each symbol includes:
+                                - name: The symbol's name
+                                - kind: The symbol's kind (function, class, variable, etc.)
+                                - location: The location of the symbol in the file
+
+##### Example
+
+```ts
+// Get all symbols in a file
+const symbols = await lsp.documentSymbols('/workspace/project/src/index.ts');
+symbols.forEach(symbol => {
+  console.log(`${symbol.kind} ${symbol.name}: ${symbol.location}`);
+});
+```
+
+***
+
+#### start()
+
+```ts
+start(): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L113)
+
+Starts the language server.
+
+This method must be called before using any other LSP functionality.
+It initializes the language server for the specified language and project.
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+const lsp = workspace.createLspServer('typescript', '/workspace/project');
+await lsp.start();  // Initialize the server
+// Now ready for LSP operations
+```
+
+***
+
+#### stop()
+
+```ts
+stop(): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L134)
+
+Stops the language server.
+
+This method should be called when the LSP server is no longer needed to
+free up system resources.
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// When done with LSP features
+await lsp.stop();  // Clean up resources
+```
+
+***
+
+#### workspaceSymbols()
+
+```ts
+workspaceSymbols(query: string): Promise<LspSymbol[]>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L243)
+
+Searches for symbols across the entire Sandbox.
+
+This method searches for symbols matching the query string across all files
+in the Sandbox. It's useful for finding declarations and definitions
+without knowing which file they're in.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `query` | `string` | Search query to match against symbol names |
+
+##### Returns
+
+`Promise<LspSymbol[]>`
+
+List of matching symbols from all files. Each symbol includes:
+                                - name: The symbol's name
+                                - kind: The symbol's kind (function, class, variable, etc.)
+                                - location: The location of the symbol in the file
+
+##### Example
+
+```ts
+// Search for all symbols containing "User"
+const symbols = await lsp.workspaceSymbols('User');
+symbols.forEach(symbol => {
+  console.log(`${symbol.name} (${symbol.kind}) in ${symbol.location}`);
+});
+```
+
+***
+
+## Position
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L72)
+
+Represents a position in a text document.
+
+This interface represents a zero-based position within a text document,
+specified by line number and character offset.
+
+ Position
+
+### Example
+
+```ts
+const position: Position = {
+  line: 10,     // Line 11 (zero-based)
+  character: 15  // Character 16 on the line (zero-based)
+};
+```
+
+### Properties
+
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| `character` | `number` | Zero-based character offset on the line |
+| `line` | `number` | Zero-based line number in the document |
+
+***
+
+## LspLanguageId
+
+```ts
+type LspLanguageId = "python" | "typescript" | "javascript";
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L54)
+
+Supported language server types.
+Currently 'python', 'typescript' and 'javascript' are supported.

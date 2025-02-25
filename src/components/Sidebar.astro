@@ -36,29 +36,32 @@ const sdkSidebar = [
           icon: 'git-commit.svg',
         },
       },
-    ],
-  },
-  {
-    type: 'group',
-    label: 'Sandboxes',
-    entries: [
       {
         type: 'link',
-        href: '/docs/sandbox-management',
-        label: 'Management',
+        href: '/docs/sandbox-persistence',
+        label: 'Sandbox Persistence',
         attrs: {
-          icon: 'computer.svg',
+          icon: 'samples.svg',
         },
       },
     ],
   },
   {
     type: 'group',
-    label: 'Agent Toolbox',
+    label: 'Python SDK',
+    collapse: true,
     entries: [
       {
         type: 'link',
-        href: '/docs/file-system-operations',
+        href: '/docs/python-sdk/daytona',
+        label: 'Management',
+        attrs: {
+          icon: 'computer.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/python-sdk/file-system',
         label: 'File System',
         attrs: {
           icon: 'folder.svg',
@@ -66,7 +69,7 @@ const sdkSidebar = [
       },
       {
         type: 'link',
-        href: '/docs/git-operations',
+        href: '/docs/python-sdk/git',
         label: 'Git Operations',
         attrs: {
           icon: 'git-branch.svg',
@@ -74,7 +77,7 @@ const sdkSidebar = [
       },
       {
         type: 'link',
-        href: '/docs/language-server-protocol',
+        href: '/docs/python-sdk/lsp-server',
         label: 'Language Server Protocol',
         attrs: {
           icon: 'pulse.svg',
@@ -82,10 +85,73 @@ const sdkSidebar = [
       },
       {
         type: 'link',
-        href: '/docs/process-code-execution',
+        href: '/docs/python-sdk/process',
         label: 'Process & Code Execution',
         attrs: {
           icon: 'terminal.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/python-sdk/sandbox',
+        label: 'Sandbox',
+        attrs: {
+          icon: 'rectangle.svg',
+        },
+      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'TypeScript SDK',
+    collapse: true,
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/typescript-sdk/daytona',
+        label: 'Management',
+        attrs: {
+          icon: 'computer.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/typescript-sdk/file-system',
+        label: 'File System',
+        attrs: {
+          icon: 'folder.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/typescript-sdk/git',
+        label: 'Git Operations',
+        attrs: {
+          icon: 'git-branch.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/typescript-sdk/lsp-server',
+        label: 'Language Server Protocol',
+        attrs: {
+          icon: 'pulse.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/typescript-sdk/process',
+        label: 'Process & Code Execution',
+        attrs: {
+          icon: 'terminal.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/typescript-sdk/sandbox',
+        label: 'Sandbox',
+        attrs: {
+          icon: 'rectangle.svg',
         },
       },
     ],
