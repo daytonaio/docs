@@ -56,156 +56,12 @@
     "objectID": 7
   },
   {
-    "title": "File System Operations",
-    "description": "The Daytona SDK provides comprehensive file system operations through the `fs` module in Sandboxes.",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations",
-    "slug": "/file-system-operations",
-    "objectID": 8
-  },
-  {
-    "title": "Basic Operations",
-    "description": "Daytona SDK provides an option to interact with the file system in Sandboxes.",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#basic-operations",
-    "slug": "/file-system-operations#basic-operations",
-    "objectID": 9
-  },
-  {
-    "title": "Listing Files and Directories",
-    "description": "Daytona SDK provides an option to list files and directories in a Sandbox using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#listing-files-and-directories",
-    "slug": "/file-system-operations#listing-files-and-directories",
-    "objectID": 10
-  },
-  {
-    "title": "List files in a directory",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#list-files-in-a-directory",
-    "slug": "/file-system-operations#list-files-in-a-directory",
-    "objectID": 11
-  },
-  {
-    "title": "Creating Directories",
-    "description": "Daytona SDK provides an option to create directories with specific permissions using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#creating-directories",
-    "slug": "/file-system-operations#creating-directories",
-    "objectID": 12
-  },
-  {
-    "title": "Create a directory",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#create-a-directory",
-    "slug": "/file-system-operations#create-a-directory",
-    "objectID": 13
-  },
-  {
-    "title": "Create with specific permissions",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#create-with-specific-permissions",
-    "slug": "/file-system-operations#create-with-specific-permissions",
-    "objectID": 14
-  },
-  {
-    "title": "File Operations",
-    "description": "Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#file-operations",
-    "slug": "/file-system-operations#file-operations",
-    "objectID": 15
-  },
-  {
-    "title": "Upload a file",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#upload-a-file",
-    "slug": "/file-system-operations#upload-a-file",
-    "objectID": 16
-  },
-  {
-    "title": "Download a file",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#download-a-file",
-    "slug": "/file-system-operations#download-a-file",
-    "objectID": 17
-  },
-  {
-    "title": "Delete a file",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#delete-a-file",
-    "slug": "/file-system-operations#delete-a-file",
-    "objectID": 18
-  },
-  {
-    "title": "Advanced Operations",
-    "description": "Daytona SDK provides advanced file system operations like file permissions, search and replace, and more.",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#advanced-operations",
-    "slug": "/file-system-operations#advanced-operations",
-    "objectID": 19
-  },
-  {
-    "title": "File Permissions",
-    "description": "Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#file-permissions",
-    "slug": "/file-system-operations#file-permissions",
-    "objectID": 20
-  },
-  {
-    "title": "Set file permissions",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#set-file-permissions",
-    "slug": "/file-system-operations#set-file-permissions",
-    "objectID": 21
-  },
-  {
-    "title": "Get file permissions",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#get-file-permissions",
-    "slug": "/file-system-operations#get-file-permissions",
-    "objectID": 22
-  },
-  {
-    "title": "File Search and Replace",
-    "description": "Daytona SDK provides an option to search for text in files and replace text in files using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#file-search-and-replace",
-    "slug": "/file-system-operations#file-search-and-replace",
-    "objectID": 23
-  },
-  {
-    "title": "Search for text in files; if a folder is specified, the search is recursive",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#search-for-text-in-files-if-a-folder-is-specified-the-search-is-recursive",
-    "slug": "/file-system-operations#search-for-text-in-files-if-a-folder-is-specified-the-search-is-recursive",
-    "objectID": 24
-  },
-  {
-    "title": "Replace text in files",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/file-system-operations#replace-text-in-files",
-    "slug": "/file-system-operations#replace-text-in-files",
-    "objectID": 25
-  },
-  {
     "title": "Getting Started",
     "description": "The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.",
     "tag": "Documentation",
     "url": "/docs/getting-started",
     "slug": "/getting-started",
-    "objectID": 26
+    "objectID": 8
   },
   {
     "title": "Install Daytona",
@@ -213,7 +69,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#install-daytona",
     "slug": "/getting-started#install-daytona",
-    "objectID": 27
+    "objectID": 9
   },
   {
     "title": "Set Up Your Environment Variables",
@@ -221,7 +77,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#set-up-your-environment-variables",
     "slug": "/getting-started#set-up-your-environment-variables",
-    "objectID": 28
+    "objectID": 10
   },
   {
     "title": "Install the Daytona SDK",
@@ -229,7 +85,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#install-the-daytona-sdk",
     "slug": "/getting-started#install-the-daytona-sdk",
-    "objectID": 29
+    "objectID": 11
   },
   {
     "title": "Using npm",
@@ -237,7 +93,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#using-npm",
     "slug": "/getting-started#using-npm",
-    "objectID": 30
+    "objectID": 12
   },
   {
     "title": "Using yarn",
@@ -245,7 +101,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#using-yarn",
     "slug": "/getting-started#using-yarn",
-    "objectID": 31
+    "objectID": 13
   },
   {
     "title": "Using pnpm",
@@ -253,7 +109,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#using-pnpm",
     "slug": "/getting-started#using-pnpm",
-    "objectID": 32
+    "objectID": 14
   },
   {
     "title": "Write Code to Create a Sandbox",
@@ -261,7 +117,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#write-code-to-create-a-sandbox",
     "slug": "/getting-started#write-code-to-create-a-sandbox",
-    "objectID": 33
+    "objectID": 15
   },
   {
     "title": "Execute Commands",
@@ -269,7 +125,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#execute-commands",
     "slug": "/getting-started#execute-commands",
-    "objectID": 34
+    "objectID": 16
   },
   {
     "title": "Initialize the Daytona client",
@@ -277,7 +133,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#initialize-the-daytona-client",
     "slug": "/getting-started#initialize-the-daytona-client",
-    "objectID": 35
+    "objectID": 17
   },
   {
     "title": "Create the Sandbox instance",
@@ -285,7 +141,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#create-the-sandbox-instance",
     "slug": "/getting-started#create-the-sandbox-instance",
-    "objectID": 36
+    "objectID": 18
   },
   {
     "title": "Run the code securely inside the Sandbox",
@@ -293,7 +149,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#run-the-code-securely-inside-the-sandbox",
     "slug": "/getting-started#run-the-code-securely-inside-the-sandbox",
-    "objectID": 37
+    "objectID": 19
   },
   {
     "title": "Clean up the Sandbox",
@@ -301,7 +157,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#clean-up-the-sandbox",
     "slug": "/getting-started#clean-up-the-sandbox",
-    "objectID": 38
+    "objectID": 20
   },
   {
     "title": "Start your Sandbox",
@@ -309,486 +165,54 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#start-your-sandbox",
     "slug": "/getting-started#start-your-sandbox",
-    "objectID": 39
+    "objectID": 21
   },
   {
-    "title": "Git Operations",
-    "description": "The Daytona SDK provides built-in Git support through the `git` module in Sandboxes.",
+    "title": "Sandbox Persistence",
+    "description": "Daytona keeps the filesystem in its entirety during the sandbox lifecycle.",
     "tag": "Documentation",
-    "url": "/docs/git-operations",
-    "slug": "/git-operations",
-    "objectID": 40
+    "url": "/docs/sandbox-persistence",
+    "slug": "/sandbox-persistence",
+    "objectID": 22
   },
   {
-    "title": "Basic Operations",
-    "description": "Daytona SDK provides an option to clone, check status, and manage Git repositories in Sandboxes.",
+    "title": "Understanding Sandbox States",
+    "description": "It is important to understand the sandbox states to maintain cost-effectiveness.",
     "tag": "Documentation",
-    "url": "/docs/git-operations#basic-operations",
-    "slug": "/git-operations#basic-operations",
-    "objectID": 41
+    "url": "/docs/sandbox-persistence#understanding-sandbox-states",
+    "slug": "/sandbox-persistence#understanding-sandbox-states",
+    "objectID": 23
   },
   {
-    "title": "Cloning Repositories",
-    "description": "Daytona SDK provides an option to clone Git repositories into Sandboxes using Python and TypeScript.",
+    "title": "Running",
+    "description": "Running sandboxes utilize CPU, memory, and disk storage.",
     "tag": "Documentation",
-    "url": "/docs/git-operations#cloning-repositories",
-    "slug": "/git-operations#cloning-repositories",
-    "objectID": 42
+    "url": "/docs/sandbox-persistence#running",
+    "slug": "/sandbox-persistence#running",
+    "objectID": 24
   },
   {
-    "title": "Basic clone",
-    "description": "",
+    "title": "Stopped",
+    "description": "Stopped sandboxes only utilize disk storage.",
     "tag": "Documentation",
-    "url": "/docs/git-operations#basic-clone",
-    "slug": "/git-operations#basic-clone",
-    "objectID": 43
+    "url": "/docs/sandbox-persistence#stopped",
+    "slug": "/sandbox-persistence#stopped",
+    "objectID": 25
   },
   {
-    "title": "Clone with authentication",
-    "description": "",
+    "title": "Archived",
+    "description": "When sandboxes are archived, the entire filesystem state is moved to very cost-effective object storage, making it possible to keep sandboxes available for an extended period.",
     "tag": "Documentation",
-    "url": "/docs/git-operations#clone-with-authentication",
-    "slug": "/git-operations#clone-with-authentication",
-    "objectID": 44
+    "url": "/docs/sandbox-persistence#archived",
+    "slug": "/sandbox-persistence#archived",
+    "objectID": 26
   },
   {
-    "title": "Clone specific branch",
-    "description": "",
+    "title": "Performance Considerations",
+    "description": "The tradeoff between archived and stopped states is that starting an archived sandbox takes more time, depending on its size.",
     "tag": "Documentation",
-    "url": "/docs/git-operations#clone-specific-branch",
-    "slug": "/git-operations#clone-specific-branch",
-    "objectID": 45
-  },
-  {
-    "title": "Repository Status",
-    "description": "Daytona SDK provides an option to check the status of Git repositories in Sandboxes.",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#repository-status",
-    "slug": "/git-operations#repository-status",
-    "objectID": 46
-  },
-  {
-    "title": "Get repository status",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#get-repository-status",
-    "slug": "/git-operations#get-repository-status",
-    "objectID": 47
-  },
-  {
-    "title": "List branches",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#list-branches",
-    "slug": "/git-operations#list-branches",
-    "objectID": 48
-  },
-  {
-    "title": "Branch Operations",
-    "description": "Daytona SDK provides an option to manage branches in Git repositories.",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#branch-operations",
-    "slug": "/git-operations#branch-operations",
-    "objectID": 49
-  },
-  {
-    "title": "Managing Branches",
-    "description": "Daytona SDK provides an option to create, switch, and delete branches in Git repositories using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#managing-branches",
-    "slug": "/git-operations#managing-branches",
-    "objectID": 50
-  },
-  {
-    "title": "Create new branch",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#create-new-branch",
-    "slug": "/git-operations#create-new-branch",
-    "objectID": 51
-  },
-  {
-    "title": "Switch branch",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#switch-branch",
-    "slug": "/git-operations#switch-branch",
-    "objectID": 52
-  },
-  {
-    "title": "Delete branch",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#delete-branch",
-    "slug": "/git-operations#delete-branch",
-    "objectID": 53
-  },
-  {
-    "title": "Staging and Committing",
-    "description": "Daytona SDK provides an option to stage and commit changes in Git repositories.",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#staging-and-committing",
-    "slug": "/git-operations#staging-and-committing",
-    "objectID": 54
-  },
-  {
-    "title": "Working with Changes",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#working-with-changes",
-    "slug": "/git-operations#working-with-changes",
-    "objectID": 55
-  },
-  {
-    "title": "Stage specific files",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#stage-specific-files",
-    "slug": "/git-operations#stage-specific-files",
-    "objectID": 56
-  },
-  {
-    "title": "Stage all changes",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#stage-all-changes",
-    "slug": "/git-operations#stage-all-changes",
-    "objectID": 57
-  },
-  {
-    "title": "Commit changes",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#commit-changes",
-    "slug": "/git-operations#commit-changes",
-    "objectID": 58
-  },
-  {
-    "title": "Get commit history",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#get-commit-history",
-    "slug": "/git-operations#get-commit-history",
-    "objectID": 59
-  },
-  {
-    "title": "Remote Operations",
-    "description": "Daytona SDK provides an option to work with remote repositories in Git.",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#remote-operations",
-    "slug": "/git-operations#remote-operations",
-    "objectID": 60
-  },
-  {
-    "title": "Working with Remotes",
-    "description": "Daytona SDK provides an option to push, pull, and list remotes in Git repositories using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#working-with-remotes",
-    "slug": "/git-operations#working-with-remotes",
-    "objectID": 61
-  },
-  {
-    "title": "Push changes",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#push-changes",
-    "slug": "/git-operations#push-changes",
-    "objectID": 62
-  },
-  {
-    "title": "Pull changes",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#pull-changes",
-    "slug": "/git-operations#pull-changes",
-    "objectID": 63
-  },
-  {
-    "title": "List remotes",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/git-operations#list-remotes",
-    "slug": "/git-operations#list-remotes",
-    "objectID": 64
-  },
-  {
-    "title": "Language Server Protocol",
-    "description": "The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances.",
-    "tag": "Documentation",
-    "url": "/docs/language-server-protocol",
-    "slug": "/language-server-protocol",
-    "objectID": 65
-  },
-  {
-    "title": "Creating LSP Servers",
-    "description": "Daytona SDK provides an option to create LSP servers using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/language-server-protocol#creating-lsp-servers",
-    "slug": "/language-server-protocol#creating-lsp-servers",
-    "objectID": 66
-  },
-  {
-    "title": "Create Sandbox",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/language-server-protocol#create-sandbox",
-    "slug": "/language-server-protocol#create-sandbox",
-    "objectID": 67
-  },
-  {
-    "title": "Create LSP server for Python",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/language-server-protocol#create-lsp-server-for-python",
-    "slug": "/language-server-protocol#create-lsp-server-for-python",
-    "objectID": 68
-  },
-  {
-    "title": "Supported Languages",
-    "description": "Daytona SDK provides an option to create LSP servers for various languages through the `LspLanguageId` enum in Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/language-server-protocol#supported-languages",
-    "slug": "/language-server-protocol#supported-languages",
-    "objectID": 69
-  },
-  {
-    "title": "Available language IDs",
-    "description": "LspLanguageId.",
-    "tag": "Documentation",
-    "url": "/docs/language-server-protocol#available-language-ids",
-    "slug": "/language-server-protocol#available-language-ids",
-    "objectID": 70
-  },
-  {
-    "title": "LSP Features",
-    "description": "Daytona SDK provides various LSP features for code analysis and editing.",
-    "tag": "Documentation",
-    "url": "/docs/language-server-protocol#lsp-features",
-    "slug": "/language-server-protocol#lsp-features",
-    "objectID": 71
-  },
-  {
-    "title": "Code Completion",
-    "description": "Daytona SDK provides an option to get code completions for a specific position in a file using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/language-server-protocol#code-completion",
-    "slug": "/language-server-protocol#code-completion",
-    "objectID": 72
-  },
-  {
-    "title": "Process and Code Execution",
-    "description": "The Daytona SDK provides powerful process and code execution capabilities through the `process` module in Sandboxes.",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution",
-    "slug": "/process-code-execution",
-    "objectID": 73
-  },
-  {
-    "title": "Code Execution",
-    "description": "Daytona SDK provides an option to execute code in Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#code-execution",
-    "slug": "/process-code-execution#code-execution",
-    "objectID": 74
-  },
-  {
-    "title": "Running Code",
-    "description": "Daytona SDK provides an option to run code snippets in Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#running-code",
-    "slug": "/process-code-execution#running-code",
-    "objectID": 75
-  },
-  {
-    "title": "Run Python code",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#run-python-code",
-    "slug": "/process-code-execution#run-python-code",
-    "objectID": 76
-  },
-  {
-    "title": "Process Execution",
-    "description": "Daytona SDK provides an option to execute shell commands and manage background processes in Sandboxes.",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#process-execution",
-    "slug": "/process-code-execution#process-execution",
-    "objectID": 77
-  },
-  {
-    "title": "Running Commands",
-    "description": "Daytona SDK provides an option to execute shell commands in Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#running-commands",
-    "slug": "/process-code-execution#running-commands",
-    "objectID": 78
-  },
-  {
-    "title": "Execute shell command",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#execute-shell-command",
-    "slug": "/process-code-execution#execute-shell-command",
-    "objectID": 79
-  },
-  {
-    "title": "Sessions (Background Processes)",
-    "description": "Daytona SDK provides an option to start, stop, and manage background process sessions in Sandboxes.",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#sessions-background-processes",
-    "slug": "/process-code-execution#sessions-background-processes",
-    "objectID": 80
-  },
-  {
-    "title": "Managing Long-Running Processes",
-    "description": "Daytona SDK provides an option to start and stop background processes.",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#managing-long-running-processes",
-    "slug": "/process-code-execution#managing-long-running-processes",
-    "objectID": 81
-  },
-  {
-    "title": "Check session's executed commands",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#check-sessions-executed-commands",
-    "slug": "/process-code-execution#check-sessions-executed-commands",
-    "objectID": 82
-  },
-  {
-    "title": "List all running sessions",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#list-all-running-sessions",
-    "slug": "/process-code-execution#list-all-running-sessions",
-    "objectID": 83
-  },
-  {
-    "title": "Best Practices",
-    "description": "Daytona SDK provides best practices for process and code execution in Sandboxes.",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#best-practices",
-    "slug": "/process-code-execution#best-practices",
-    "objectID": 84
-  },
-  {
-    "title": "Common Issues",
-    "description": "Daytona SDK provides an option to troubleshoot common issues related to process execution and code execution.",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#common-issues",
-    "slug": "/process-code-execution#common-issues",
-    "objectID": 85
-  },
-  {
-    "title": "Process Execution Failed",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#process-execution-failed",
-    "slug": "/process-code-execution#process-execution-failed",
-    "objectID": 86
-  },
-  {
-    "title": "Process Timeout",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#process-timeout",
-    "slug": "/process-code-execution#process-timeout",
-    "objectID": 87
-  },
-  {
-    "title": "Resource Limits",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/process-code-execution#resource-limits",
-    "slug": "/process-code-execution#resource-limits",
-    "objectID": 88
-  },
-  {
-    "title": "Sandbox Management",
-    "description": "Sandboxes are isolated development environments managed by Daytona.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management",
-    "slug": "/sandbox-management",
-    "objectID": 89
-  },
-  {
-    "title": "Creating Sandboxes",
-    "description": "Daytona SDK provides an option to create Sandboxes with default or custom configurations.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#creating-sandboxes",
-    "slug": "/sandbox-management#creating-sandboxes",
-    "objectID": 90
-  },
-  {
-    "title": "Basic Sandbox Creation",
-    "description": "Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom IDs using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#basic-sandbox-creation",
-    "slug": "/sandbox-management#basic-sandbox-creation",
-    "objectID": 91
-  },
-  {
-    "title": "Create a basic Sandbox",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#create-a-basic-sandbox",
-    "slug": "/sandbox-management#create-a-basic-sandbox",
-    "objectID": 92
-  },
-  {
-    "title": "Create a Sandbox with specific language",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#create-a-sandbox-with-specific-language",
-    "slug": "/sandbox-management#create-a-sandbox-with-specific-language",
-    "objectID": 93
-  },
-  {
-    "title": "Create a Sandbox with custom ID",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#create-a-sandbox-with-custom-id",
-    "slug": "/sandbox-management#create-a-sandbox-with-custom-id",
-    "objectID": 94
-  },
-  {
-    "title": "Sandbox Information",
-    "description": "Daytona SDK provides methods to get information about a Sandbox, such as ID, root directory, and status using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#sandbox-information",
-    "slug": "/sandbox-management#sandbox-information",
-    "objectID": 95
-  },
-  {
-    "title": "Get Sandbox ID",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#get-sandbox-id",
-    "slug": "/sandbox-management#get-sandbox-id",
-    "objectID": 96
-  },
-  {
-    "title": "Get Sandbox root directory",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#get-sandbox-root-directory",
-    "slug": "/sandbox-management#get-sandbox-root-directory",
-    "objectID": 97
-  },
-  {
-    "title": "Remove Sandbox",
-    "description": "Daytona SDK provides methods to perform operations on Sandboxes, such as removing Sandboxes using Python and TypeScript.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#remove-sandbox",
-    "slug": "/sandbox-management#remove-sandbox",
-    "objectID": 98
-  },
-  {
-    "title": "Remove Sandbox",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#remove-sandbox",
-    "slug": "/sandbox-management#remove-sandbox",
-    "objectID": 99
+    "url": "/docs/sandbox-persistence#performance-considerations",
+    "slug": "/sandbox-persistence#performance-considerations",
+    "objectID": 27
   }
 ]
