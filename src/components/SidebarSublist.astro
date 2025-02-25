@@ -1,4 +1,11 @@
 ---
+// Add TypeScript interface declaration for Window
+declare global {
+  interface Window {
+    sidebarStates: { [key: string]: boolean }
+  }
+}
+
 function getSVG(name: string) {
   const filepath = `/src/assets/sidebar/${name}`
   const files = import.meta.glob<string>('/src/assets/sidebar/*.svg', {
@@ -22,6 +29,23 @@ interface Props {
 const { sublist = [], nested, collapse = false } = Astro.props
 ---
 
+<!-- Pre-render script to set initial states -->
+<script is:inline define:vars={{ sublist }}>
+  // Create a global object to store initial states
+  window.sidebarStates = window.sidebarStates || {}
+  try {
+    // Get all sidebar states from localStorage
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith('sidebar-')) {
+        const groupId = key.replace('sidebar-', '')
+        window.sidebarStates[groupId] = localStorage.getItem(key) === 'true'
+      }
+    })
+  } catch (e) {
+    console.error('Failed to access localStorage:', e)
+  }
+</script>
+
 <ul class:list={{ 'top-level': !nested }}>
   {
     sublist.map(entry => (
@@ -39,7 +63,15 @@ const { sublist = [], nested, collapse = false } = Astro.props
           </a>
         ) : entry.type === 'group' ? (
           entry.collapse || (collapse && entry.label?.includes('SDK')) ? (
-            <details class="sidebar-group is-collapsible">
+            <details
+              class="sidebar-group is-collapsible"
+              data-group-id={entry.label}
+              set:html={`<script>
+                if (window.sidebarStates && window.sidebarStates['${entry.label}']) {
+                  document.currentScript.parentElement.setAttribute('open', '');
+                }
+              </script>`}
+            >
               <summary class="group-label">
                 <span class="large">{entry.label}</span>
                 <svg
@@ -80,6 +112,29 @@ const { sublist = [], nested, collapse = false } = Astro.props
     ))
   }
 </ul>
+
+<script>
+  // Handle state persistence for collapsible sections
+  const initializeDetails = () => {
+    document
+      .querySelectorAll<HTMLDetailsElement>('details.is-collapsible')
+      .forEach(details => {
+        const groupId = details.getAttribute('data-group-id')
+        if (!groupId) return
+
+        // Store state changes
+        details.addEventListener('toggle', () => {
+          localStorage.setItem(`sidebar-${groupId}`, details.open.toString())
+          window.sidebarStates[groupId] = details.open
+        })
+      })
+  }
+
+  // Run on page transitions
+  document.addEventListener('astro:page-load', initializeDetails)
+  // Run on initial load
+  initializeDetails()
+</script>
 
 <style>
   ul {
