@@ -15,34 +15,15 @@ View the Daytona SDK repository on [GitHub](https://github.com/daytonaio/sdk).
 
 Follow the step by step guide to create and run your first Daytona Sandbox for an AI Agent.
 
-## Install Daytona
-
-Install Daytona by following the [installation instructions](https://www.daytona.io/docs/installation/installation/). If you have Beta access to the Daytona platform, create an account and log in.
-
 ## Set Up Your Environment Variables
 
-To authenticate with Daytona, you need an API key. You can obtain an API key from the Daytona platform or generate one using the Daytona CLI.
-
-<Tabs>
-<TabItem label="Cloud">
+To authenticate with Daytona, you need an API key. You can obtain an API key from the Daytona platform.
 
 1. Navigate to the Daytona platform.
 2. Go to API Keys.
 3. Click the **`Create Key`** button.
-4. Paste the API key in your **`.env`** file.
-
-</TabItem>
-<TabItem label="OSS">
-1. Type the following command:
-
-```bash
-daytona api-key generate
-```
-
-2. Paste the API key in your **`.env`** file.
-</TabItem>
-
-</Tabs>
+4. Add your API key to your **`.env`** file by setting the **`DAYTONA_API_KEY`** environment variable.
+5. Define the Daytona server URL in your **`.env`** file by setting the **`DAYTONA_SERVER_URL`** environment variable.
 
 ## Install the Daytona SDK
 
