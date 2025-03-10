@@ -27,7 +27,7 @@ from daytona_sdk import DaytonaConfig
 config = DaytonaConfig(
     api_key="your-api-key",
     server_url="your-server-url",
-    target="local"
+    target="us"
 )
 
 ```
@@ -39,7 +39,7 @@ import { DaytonaConfig } from '@daytonaio/sdk';
 const config: DaytonaConfig = {
     apiKey: "your-api-key",          
     serverUrl: "your-server-url",     
-    target: "local"                  
+    target: "us"                  
 };
 ```
 
@@ -54,7 +54,7 @@ Daytona SDK supports environment variables for configuration. The SDK automatica
 |----------|-------------|---------|
 | **`DAYTONA_API_KEY`** | Your Daytona API key. | None |
 | **`DAYTONA_SERVER_URL`** | URL of your Daytona server. | None |
-| **`DAYTONA_TARGET`** | Daytona Target to create the Sandboxes on. | "local" |
+| **`DAYTONA_TARGET`** | Daytona Target to create the Sandboxes on. | "us" |
 
 ### Setting Environment Variables
 
@@ -70,7 +70,7 @@ Create a `.env` file in your project root directory:
 ```bash
 DAYTONA_API_KEY=your-api-key
 DAYTONA_SERVER_URL=https://your-server-url
-DAYTONA_TARGET=local
+DAYTONA_TARGET=us
 ```
 
 - `DAYTONA_API_KEY`: Your Daytona API key.
