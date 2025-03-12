@@ -64,20 +64,12 @@
     "objectID": 8
   },
   {
-    "title": "Install Daytona",
-    "description": "Install Daytona by following the [installation instructions](https://www.",
-    "tag": "Documentation",
-    "url": "/docs/getting-started#install-daytona",
-    "slug": "/getting-started#install-daytona",
-    "objectID": 9
-  },
-  {
     "title": "Set Up Your Environment Variables",
     "description": "To authenticate with Daytona, you need an API key.",
     "tag": "Documentation",
     "url": "/docs/getting-started#set-up-your-environment-variables",
     "slug": "/getting-started#set-up-your-environment-variables",
-    "objectID": 10
+    "objectID": 9
   },
   {
     "title": "Install the Daytona SDK",
@@ -85,7 +77,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#install-the-daytona-sdk",
     "slug": "/getting-started#install-the-daytona-sdk",
-    "objectID": 11
+    "objectID": 10
   },
   {
     "title": "Using npm",
@@ -93,7 +85,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#using-npm",
     "slug": "/getting-started#using-npm",
-    "objectID": 12
+    "objectID": 11
   },
   {
     "title": "Using yarn",
@@ -101,7 +93,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#using-yarn",
     "slug": "/getting-started#using-yarn",
-    "objectID": 13
+    "objectID": 12
   },
   {
     "title": "Using pnpm",
@@ -109,7 +101,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#using-pnpm",
     "slug": "/getting-started#using-pnpm",
-    "objectID": 14
+    "objectID": 13
   },
   {
     "title": "Write Code to Create a Sandbox",
@@ -117,7 +109,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#write-code-to-create-a-sandbox",
     "slug": "/getting-started#write-code-to-create-a-sandbox",
-    "objectID": 15
+    "objectID": 14
   },
   {
     "title": "Execute Commands",
@@ -125,7 +117,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#execute-commands",
     "slug": "/getting-started#execute-commands",
-    "objectID": 16
+    "objectID": 15
   },
   {
     "title": "Initialize the Daytona client",
@@ -133,7 +125,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#initialize-the-daytona-client",
     "slug": "/getting-started#initialize-the-daytona-client",
-    "objectID": 17
+    "objectID": 16
   },
   {
     "title": "Create the Sandbox instance",
@@ -141,7 +133,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#create-the-sandbox-instance",
     "slug": "/getting-started#create-the-sandbox-instance",
-    "objectID": 18
+    "objectID": 17
   },
   {
     "title": "Run the code securely inside the Sandbox",
@@ -149,7 +141,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#run-the-code-securely-inside-the-sandbox",
     "slug": "/getting-started#run-the-code-securely-inside-the-sandbox",
-    "objectID": 19
+    "objectID": 18
   },
   {
     "title": "Clean up the Sandbox",
@@ -157,7 +149,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#clean-up-the-sandbox",
     "slug": "/getting-started#clean-up-the-sandbox",
-    "objectID": 20
+    "objectID": 19
   },
   {
     "title": "Start your Sandbox",
@@ -165,7 +157,7 @@
     "tag": "Documentation",
     "url": "/docs/getting-started#start-your-sandbox",
     "slug": "/getting-started#start-your-sandbox",
-    "objectID": 21
+    "objectID": 20
   },
   {
     "title": "Sandbox Persistence",
@@ -173,7 +165,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-persistence",
     "slug": "/sandbox-persistence",
-    "objectID": 22
+    "objectID": 21
   },
   {
     "title": "Understanding Sandbox States",
@@ -181,7 +173,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-persistence#understanding-sandbox-states",
     "slug": "/sandbox-persistence#understanding-sandbox-states",
-    "objectID": 23
+    "objectID": 22
   },
   {
     "title": "Running",
@@ -189,7 +181,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-persistence#running",
     "slug": "/sandbox-persistence#running",
-    "objectID": 24
+    "objectID": 23
   },
   {
     "title": "Stopped",
@@ -197,7 +189,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-persistence#stopped",
     "slug": "/sandbox-persistence#stopped",
-    "objectID": 25
+    "objectID": 24
   },
   {
     "title": "Archived",
@@ -205,7 +197,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-persistence#archived",
     "slug": "/sandbox-persistence#archived",
-    "objectID": 26
+    "objectID": 25
   },
   {
     "title": "Performance Considerations",
@@ -213,6 +205,6 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-persistence#performance-considerations",
     "slug": "/sandbox-persistence#performance-considerations",
-    "objectID": 27
+    "objectID": 26
   }
 ]

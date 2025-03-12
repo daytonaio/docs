@@ -10,7 +10,6 @@
 - [Setting Environment Variables](https://daytona.io/docs/configuration#setting-environment-variables)
 - [Configuration Precedence](https://daytona.io/docs/configuration#configuration-precedence)
 - [Getting Started](https://daytona.io/docs/getting-started)
-- [Install Daytona](https://daytona.io/docs/getting-started#install-daytona)
 - [Set Up Your Environment Variables](https://daytona.io/docs/getting-started#set-up-your-environment-variables)
 - [Install the Daytona SDK](https://daytona.io/docs/getting-started#install-the-daytona-sdk)
 - [Write Code to Create a Sandbox](https://daytona.io/docs/getting-started#write-code-to-create-a-sandbox)

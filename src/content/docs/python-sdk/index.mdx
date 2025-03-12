@@ -1,0 +1,154 @@
+---
+title: Python SDK Reference
+description: Interact with Daytona Sandboxes using the Python SDK
+next: /docs/python-sdk/daytona
+---
+
+import DocumentList from "@components/DocumentList.astro";
+import DocumentListItem from "@components/DocumentListItem.astro";
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona Python SDK provides a robust interface for programmatically interacting with Daytona Sandboxes. This SDK allows you to create, manage, and manipulate development environments from your Python applications.
+
+## Installation
+
+Install the Daytona Python SDK using pip:
+
+```bash
+pip install daytona_sdk
+```
+
+Or using poetry:
+
+```bash
+poetry add daytona_sdk
+```
+
+## Key Features
+
+The Daytona Python SDK offers comprehensive functionality for managing your development environments:
+
+### Sandbox Management
+
+- Create and configure custom sandboxes with specific resource requirements
+- Start, stop, and remove sandboxes
+- Configure environment variables and settings
+
+### File System Operations
+
+- Upload and download files
+- Create, read, update, and delete files and directories
+- Stream file content and monitor file changes
+
+### Git Integration
+
+- Clone repositories
+- Manage branches, commits, and pull requests
+- Perform common Git operations (pull, push, checkout)
+
+### Process Execution
+
+- Run commands in the sandbox environment
+- Execute code snippets directly
+- Stream command output in real-time
+
+### Language Server Protocol (LSP)
+
+- Connect to language servers for code intelligence
+- Get code completions, diagnostics, and other LSP features
+- Enhance development experiences with language-specific tools
+
+## Getting Started
+
+Here's a simple example to help you get started with the Daytona Python SDK:
+
+```python
+from daytona_sdk import Daytona, CreateWorkspaceParams
+
+def main():
+    # Initialize the SDK (uses environment variables by default)
+    daytona = Daytona()
+    
+    # Create a new sandbox
+    workspace = daytona.create(CreateWorkspaceParams(
+        language="python",
+        env_vars={"PYTHON_ENV": "development"}
+    ))
+    
+    # Clone a repository
+    workspace.git.clone("https://github.com/example/repo.git")
+    
+    # Execute a command
+    result = workspace.process.exec("pip install -r requirements.txt")
+    print(result.result)
+    
+    # Upload a file
+    workspace.fs.upload_file("/workspace/config.json", b"Hello, World!")
+    
+    # Read a file
+    content = workspace.fs.download_file("/workspace/requirements.txt")
+    print(content.decode("utf-8"))
+    
+    # Run Python code directly in the sandbox
+    response = workspace.process.code_run('print("Hello from the sandbox!")')
+    print(response.result)
+
+if __name__ == "__main__":
+    main()
+```
+
+## Configuration
+
+The SDK can be configured using environment variables or by passing options to the constructor:
+
+```python
+from daytona_sdk import Daytona, DaytonaConfig
+
+# Using environment variables (DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET)
+daytona = Daytona()
+
+# Using explicit configuration
+config = DaytonaConfig(
+    api_key="your-api-key",
+    server_url="https://your-daytona-server.com/api",
+    target="default"
+)
+daytona = Daytona(config)
+```
+
+<DocumentList title="Python SDK">
+  <DocumentListItem
+    title="Management"
+    subtitle="Learn about the management features of the Daytona SDK."
+    href="/docs/python-sdk/daytona"
+  />
+  <DocumentListItem
+    title="File System"
+    subtitle="Learn about the file system features of the Daytona SDK."
+    href="/docs/python-sdk/file-system"
+  />
+  <DocumentListItem
+    title="Git Operations"
+    subtitle="Learn about the git features of the Daytona SDK."
+    href="/docs/python-sdk/git"
+  />
+  <DocumentListItem
+    title="Language Server Protocol"
+    subtitle="Learn about the language server protocol features of the Daytona SDK."
+    href="/docs/python-sdk/lsp-server"
+  />
+  <DocumentListItem
+    title="Process & Code Execution"
+    subtitle="Learn about the process and code execution features of the Daytona SDK."
+    href="/docs/python-sdk/process"
+  />
+  <DocumentListItem
+    title="Sandbox"
+    subtitle="Learn about the sandbox features of the Daytona SDK."
+    href="/docs/python-sdk/sandbox"
+  />
+</DocumentList>
