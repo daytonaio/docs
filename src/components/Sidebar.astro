@@ -190,6 +190,58 @@ const standardSidebar = [
       },
     ],
   },
+  {
+    type: 'group',
+    label: 'Sandboxes',
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/sandbox-management',
+        label: 'Management',
+        attrs: {
+          icon: 'computer.svg',
+        },
+      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'Agent Toolbox',
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/file-system-operations',
+        label: 'File System',
+        attrs: {
+          icon: 'folder.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/git-operations',
+        label: 'Git Operations',
+        attrs: {
+          icon: 'git-branch.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/language-server-protocol',
+        label: 'Language Server Protocol',
+        attrs: {
+          icon: 'pulse.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/process-code-execution',
+        label: 'Process & Code Execution',
+        attrs: {
+          icon: 'terminal.svg',
+        },
+      },
+    ],
+  },
 ]
 
 let { sidebar } = Astro.props
