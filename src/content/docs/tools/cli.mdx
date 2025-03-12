@@ -1,0 +1,266 @@
+---
+title: CLI
+description: A reference of supported operations using the Daytona CLI.
+sidebar:
+  label: Daytona CLI Reference
+---
+import Aside from "@components/Aside.astro";
+import Label from "@components/Label.astro";
+
+The `daytona` command-line tool provides access to Daytona's core features including managing images and the lifecycle of Daytona Sandboxes.
+
+This reference lists all commands supported by the `daytona` command-line tool complete with a description of their behaviour, and any supported flags.
+You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
+
+## daytona version
+
+Print the version number
+
+```shell
+daytona version [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona sandbox info
+
+Get sandbox info
+
+```shell
+daytona sandbox info [SANDBOX_ID] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--verbose` | `-v` | Include verbose output |
+| `--help` |  | help for daytona |
+
+## daytona sandbox list
+
+List sandboxes
+
+```shell
+daytona sandbox list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--verbose` | `-v` | Include verbose output |
+| `--help` |  | help for daytona |
+
+## daytona sandbox start
+
+Start a sandbox
+
+```shell
+daytona sandbox start [SANDBOX_ID] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Start all sandboxes |
+| `--help` |  | help for daytona |
+
+## daytona sandbox stop
+
+Stop a sandbox
+
+```shell
+daytona sandbox stop [SANDBOX_ID] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Stop all sandboxes |
+| `--help` |  | help for daytona |
+
+## daytona sandbox
+
+Manage Daytona sandboxes
+
+```shell
+daytona sandbox [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona sandbox create
+
+Create a new sandbox
+
+```shell
+daytona sandbox create [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--auto-stop` |  | Auto-stop interval in minutes (0 means disabled) |
+| `--class` |  | Workspace class type (small, medium, large) |
+| `--cpu` |  | CPU cores allocated to the sandbox |
+| `--disk` |  | Disk space allocated to the sandbox in GB |
+| `--env` | `-e` | Environment variables (format: KEY=VALUE) |
+| `--gpu` |  | GPU units allocated to the sandbox |
+| `--image` |  | Image to use for the sandbox |
+| `--label` | `-l` | Labels (format: KEY=VALUE) |
+| `--memory` |  | Memory allocated to the sandbox in MB |
+| `--name` |  | Name of the sandbox |
+| `--public` |  | Make sandbox publicly accessible |
+| `--target` |  | Target region (eu, us, asia) |
+| `--user` |  | User associated with the sandbox |
+| `--help` |  | help for daytona |
+
+## daytona sandbox delete
+
+Delete a sandbox
+
+```shell
+daytona sandbox delete [SANDBOX_ID] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Delete all sandboxes |
+| `--force` | `-f` | Force delete |
+| `--help` |  | help for daytona |
+
+## daytona image push
+
+Push local image
+
+```shell
+daytona image push [IMAGE] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--dockerfile` | `-f` | Path to Dockerfile to build before pushing |
+| `--entrypoint` | `-e` | The entrypoint command for the image |
+| `--help` |  | help for daytona |
+
+## daytona login
+
+Log in to Daytona
+
+```shell
+daytona login [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona logout
+
+Logout from Daytona
+
+```shell
+daytona logout [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona image
+
+Manage Daytona images
+
+```shell
+daytona image [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona image delete
+
+Delete an image
+
+```shell
+daytona image delete [IMAGE_ID] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Delete all images |
+| `--help` |  | help for daytona |
+
+## daytona image list
+
+List all images
+
+```shell
+daytona image list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+## daytona
+
+Daytona CLI
+
+```shell
+daytona [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+| `--version` | `-v` | Display the version of Daytona |
+
+## daytona autocomplete
+
+Adds a completion script for your shell environment
+
+```shell
+daytona autocomplete [bash|zsh|fish|powershell] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+<Aside type="note">
+If using bash shell environment, make sure you have bash-completion installed in order to get full autocompletion functionality.
+Linux Installation: ```sudo apt-get install bash-completion```
+macOS Installation: ```brew install bash-completion```
+</Aside>
+
+## daytona docs
+
+Opens the Daytona documentation in your default browser.
+
+```shell
+daytona docs [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
