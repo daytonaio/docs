@@ -12,7 +12,7 @@ import Label from '@components/Label.astro'
   Distribution: **Open Source**
 </Label>
 
-The Daytona Python SDK provides a robust interface for programmatically interacting with Daytona Sandboxes. This SDK allows you to create, manage, and manipulate development environments from your Python applications.
+The Daytona Python SDK provides a robust interface for programmatically interacting with Daytona Sandboxes.
 
 ## Installation
 
@@ -27,40 +27,6 @@ Or using poetry:
 ```bash
 poetry add daytona_sdk
 ```
-
-## Key Features
-
-The Daytona Python SDK offers comprehensive functionality for managing your development environments:
-
-### Sandbox Management
-
-- Create and configure custom sandboxes with specific resource requirements
-- Start, stop, and remove sandboxes
-- Configure environment variables and settings
-
-### File System Operations
-
-- Upload and download files
-- Create, read, update, and delete files and directories
-- Stream file content and monitor file changes
-
-### Git Integration
-
-- Clone repositories
-- Manage branches, commits, and pull requests
-- Perform common Git operations (pull, push, checkout)
-
-### Process Execution
-
-- Run commands in the sandbox environment
-- Execute code snippets directly
-- Stream command output in real-time
-
-### Language Server Protocol (LSP)
-
-- Connect to language servers for code intelligence
-- Get code completions, diagnostics, and other LSP features
-- Enhance development experiences with language-specific tools
 
 ## Getting Started
 
@@ -79,24 +45,10 @@ def main():
         env_vars={"PYTHON_ENV": "development"}
     ))
     
-    # Clone a repository
-    workspace.git.clone("https://github.com/example/repo.git")
-    
     # Execute a command
-    result = workspace.process.exec("pip install -r requirements.txt")
-    print(result.result)
-    
-    # Upload a file
-    workspace.fs.upload_file("/workspace/config.json", b"Hello, World!")
-    
-    # Read a file
-    content = workspace.fs.download_file("/workspace/requirements.txt")
-    print(content.decode("utf-8"))
-    
-    # Run Python code directly in the sandbox
-    response = workspace.process.code_run('print("Hello from the sandbox!")')
+    response = workspace.process.exec("echo 'Hello, World!'")
     print(response.result)
-
+    
 if __name__ == "__main__":
     main()
 ```

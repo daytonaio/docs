@@ -11,7 +11,7 @@ import Label from '@components/Label.astro'
   Distribution: **Open Source**
 </Label>
 
-The Daytona TypeScript SDK provides a powerful interface for programmatically interacting with Daytona Sandboxes. With this SDK, you can create, manage, and manipulate development environments from your TypeScript or JavaScript applications.
+The Daytona TypeScript SDK provides a powerful interface for programmatically interacting with Daytona Sandboxes.
 
 ## Installation
 
@@ -26,40 +26,6 @@ Or using yarn:
 ```bash
 yarn add @daytonaio/sdk
 ```
-
-## Key Features
-
-The Daytona TypeScript SDK offers comprehensive functionality for managing your development environments:
-
-### Sandbox Management
-
-- Create and configure custom sandboxes with specific resource requirements
-- Start, stop, and remove sandboxes
-- Configure environment variables and settings
-
-### File System Operations
-
-- Upload and download files
-- Create, read, update, and delete files and directories
-- Stream file content and monitor file changes
-
-### Git Integration
-
-- Clone repositories
-- Manage branches, commits, and pull requests
-- Perform common Git operations (pull, push, checkout)
-
-### Process Execution
-
-- Run commands in the sandbox environment
-- Execute code snippets directly
-- Stream command output in real-time
-
-### Language Server Protocol (LSP)
-
-- Connect to language servers for code intelligence
-- Get code completions, diagnostics, and other LSP features
-- Enhance development experiences with language-specific tools
 
 ## Getting Started
 
@@ -78,19 +44,9 @@ async function main() {
     envVars: { NODE_ENV: 'development' }
   });
   
-  // Clone a repository
-  await workspace.git.clone('https://github.com/example/repo.git');
-  
   // Execute a command
-  const response = await workspace.process.executeCommand('npm install');
+  const response = await workspace.process.executeCommand('echo "Hello, World!"');
   console.log(response.result);
-  
-  // Upload a file
-  await workspace.fs.uploadFile('/workspace/config.json', new File(['{"setting": "value"}'], 'config.json'));
-  
-  // Read a file
-  const content = await workspace.fs.downloadFile('/workspace/package.json');
-  console.log(content.toString());
 }
 
 main().catch(console.error);
