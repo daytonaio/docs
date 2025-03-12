@@ -1,0 +1,102 @@
+---
+title: TypeScript SDK Reference
+description: Interact with Daytona Sandboxes using the TypeScript SDK
+next: /docs/typescript-sdk/daytona
+---
+import DocumentList from "@components/DocumentList.astro";
+import DocumentListItem from "@components/DocumentListItem.astro";
+import Label from '@components/Label.astro'
+
+<Label>
+  Distribution: **Open Source**
+</Label>
+
+The Daytona TypeScript SDK provides a powerful interface for programmatically interacting with Daytona Sandboxes.
+
+## Installation
+
+Install the Daytona TypeScript SDK using npm:
+
+```bash
+npm install @daytonaio/sdk
+```
+
+Or using yarn:
+
+```bash
+yarn add @daytonaio/sdk
+```
+
+## Getting Started
+
+Here's a simple example to help you get started with the Daytona TypeScript SDK:
+
+```typescript
+import { Daytona } from '@daytonaio/sdk';
+
+async function main() {
+  // Initialize the SDK (uses environment variables by default)
+  const daytona = new Daytona();
+  
+  // Create a new sandbox
+  const workspace = await daytona.create({
+    language: 'typescript',
+    envVars: { NODE_ENV: 'development' }
+  });
+  
+  // Execute a command
+  const response = await workspace.process.executeCommand('echo "Hello, World!"');
+  console.log(response.result);
+}
+
+main().catch(console.error);
+```
+
+## Configuration
+
+The SDK can be configured using environment variables or by passing options to the constructor:
+
+```typescript
+// Using environment variables (DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET)
+const daytona = new Daytona();
+
+// Using explicit configuration
+const daytona = new Daytona({
+  apiKey: 'your-api-key',
+  serverUrl: 'https://your-daytona-server.com/api',
+  target: 'default'
+});
+```
+
+<DocumentList title="TypeScript SDK">
+  <DocumentListItem
+    title="Management"
+    subtitle="Learn about the management features of the TypeScript Daytona SDK."
+    href="/docs/typescript-sdk/daytona"
+  />
+  <DocumentListItem
+    title="File System"
+    subtitle="Learn about the file system features of the TypeScript Daytona SDK."
+    href="/docs/typescript-sdk/file-system"
+  />
+  <DocumentListItem
+    title="Git Operations"
+    subtitle="Learn about the git features of the TypeScript Daytona SDK."
+    href="/docs/typescript-sdk/git"
+  />
+  <DocumentListItem
+    title="Language Server Protocol"
+    subtitle="Learn about the language server protocol features of the TypeScript Daytona SDK."
+    href="/docs/typescript-sdk/lsp-server"
+  />
+  <DocumentListItem
+    title="Process & Code Execution"
+    subtitle="Learn about the process and code execution features of the TypeScript Daytona SDK."
+    href="/docs/typescript-sdk/process"
+  />
+  <DocumentListItem
+    title="Sandbox"
+    subtitle="Learn about the sandbox features of the TypeScript Daytona SDK."
+    href="/docs/typescript-sdk/sandbox"
+  />
+</DocumentList>
