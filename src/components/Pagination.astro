@@ -1,9 +1,12 @@
 ---
 import arrowRight from '@assets/icons/arrow-right.svg?raw'
 import arrowLeft from '@assets/icons/arrow-left.svg?raw'
-const { dir, labels, pagination } = Astro.props
-const { prev, next } = pagination
+import { getPagination } from '../utils/navigation.js'
+import { sidebarConfig } from '../content/config'
+
+const { dir, labels } = Astro.props
 const isRtl = dir === 'rtl'
+const { prev, next } = getPagination(sidebarConfig, Astro.url.pathname)
 ---
 
 <div class="pagination-links" dir={dir}>

@@ -34,87 +34,6 @@ export default defineConfig({
       editLink: {
         baseUrl: 'https://github.com/daytonaio/docs/blob/main/',
       },
-      sidebar: [
-        {
-          label: 'Home',
-          link: '/',
-        },
-        {
-          label: 'About',
-          items: [
-            {
-              label: 'Getting Started',
-              link: '/getting-started',
-            },
-            {
-              label: 'Configuration',
-              link: '/configuration',
-            },
-            {
-              label: 'Sandbox Persistence',
-              link: '/sandbox-persistence',
-            },
-          ],
-        },
-        {
-          label: 'Python SDK',
-          items: [
-            {
-              label: 'Management',
-              link: '/python-sdk/daytona',
-            },
-            {
-              label: 'File System',
-              link: '/python-sdk/file-system',
-            },
-            {
-              label: 'Git Operations',
-              link: '/python-sdk/git',
-            },
-            {
-              label: 'Language Server Protocol',
-              link: '/python-sdk/lsp-server',
-            },
-            {
-              label: 'Process & Code Execution',
-              link: '/python-sdk/process',
-            },
-            {
-              label: 'Sandbox',
-              link: '/python-sdk/sandbox',
-            },
-          ],
-        },
-        {
-          label: 'TypeScript SDK',
-          items: [
-            {
-              label: 'Management',
-              link: '/typescript-sdk/daytona',
-            },
-            {
-              label: 'File System',
-              link: '/typescript-sdk/file-system',
-            },
-            {
-              label: 'Git Operations',
-              link: '/typescript-sdk/git',
-            },
-            {
-              label: 'Language Server Protocol',
-              link: '/typescript-sdk/lsp-server',
-            },
-            {
-              label: 'Process & Code Execution',
-              link: '/typescript-sdk/process',
-            },
-            {
-              label: 'Sandbox',
-              link: '/typescript-sdk/sandbox',
-            },
-          ],
-        },
-      ],
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 4 },
       customCss: ['./src/fonts/font-face.css', './src/styles/style.scss'],
       components: {
@@ -135,6 +54,7 @@ export default defineConfig({
         ThemeSelect: './src/components/ThemeSelect.astro',
         Head: './src/components/Head.astro',
         EditLink: './src/components/EditLink.astro',
+        ExploreMore: './src/components/ExploreMore.astro',
       },
       expressiveCode: {
         minSyntaxHighlightingColorContrast: 0,
