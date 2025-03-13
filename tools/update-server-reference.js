@@ -12,17 +12,15 @@ description: A reference of supported operations using the Daytona API.
 ---
 
 import Label from '@components/Label.astro'
-
-<Label>
-  Distribution: **Open Source**
-</Label>
 `
 
 // content to appear below the commands outline
 const append = ``
 
 async function fetchSwaggerJSON(ref) {
-  const url = `https://raw.githubusercontent.com/daytonaio/daytona/${ref}/pkg/api/docs/swagger.json`
+  // TODO: switch back to GitHub API once the Daytona API is OSS
+  const url = "https://download.daytona.io/docs/api/openapi.json"
+  // const url = `https://raw.githubusercontent.com/daytonaio/daytona/${ref}/pkg/api/docs/swagger.json`
   const request = await fetch(url)
   const response = await request.json()
 
@@ -47,7 +45,9 @@ function swaggerToMarkdown(swaggerJSON) {
       parameters = parameters ? parameters : {}
 
       output += `## ${method.toUpperCase()} ${escape(path)}\n`
-      output += `${description}\n`
+      if (description) {
+        output += `${description}\n`
+      }
       output += '\n'
 
       if (Object.keys(parameters).length > 0) {
@@ -109,7 +109,7 @@ async function process(args) {
 const commandOpts = {
   ref: {
     type: 'string',
-    default: `v0.53.0`,
+    default: `v0.10.1`,
   },
   output: {
     type: 'string',

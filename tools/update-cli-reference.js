@@ -17,23 +17,10 @@ sidebar:
 import Aside from "@components/Aside.astro";
 import Label from "@components/Label.astro";
 
-<Label>
-  Distribution: **Open Source**, **Cloud**, **Self-Managed**
-</Label>
-
-The \`daytona\` command-line tool provides access to Daytona's core features.
-You can use the \`daytona\` tool for the following operations:
-
-*   Managing the lifecycle of the Daytona Server.
-*   Managing [Workspaces](../usage/workspaces), [Git Providers](../configuration/git-providers), [Providers](../configuration/providers), and other Daytona components.
-*   Configuring the [Daytona Server](../configuration/server) interactively.
+The \`daytona\` command-line tool provides access to Daytona's core features including managing images and the lifecycle of Daytona Sandboxes.
 
 This reference lists all commands supported by the \`daytona\` command-line tool complete with a description of their behaviour, and any supported flags.
 You can access this documentation on a per-command basis by appending the \`--help\`/\`-h\` flag when invoking \`daytona\`.
-
-<Aside type="note">
-This reference does not apply to the \`daytona\` command when run inside of a Workspace.
-</Aside>
 `
 
 // content to appear below the commands outline
@@ -48,8 +35,10 @@ macOS Installation: \`\`\`brew install bash-completion\`\`\`
 }
 
 async function fetchRawDocs(ref) {
+  // TODO: switch back to GitHub API once the CLI is OSS
   const url =
-    'https://api.github.com/repos/daytonaio/daytona/contents/hack/docs'
+    'https://download.daytona.io/docs/cli/cli-ref.txt'
+    // 'https://api.github.com/repos/daytonaio/daytona/contents/hack/docs'
   const request = await fetch(`${url}?ref=${ref}`)
   const response = await request.json()
 
@@ -143,7 +132,7 @@ async function process(args) {
 const commandOpts = {
   ref: {
     type: 'string',
-    default: `v0.53.0`,
+    default: `v0.10.1`,
   },
   output: {
     type: 'string',

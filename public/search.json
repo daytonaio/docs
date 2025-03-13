@@ -830,5 +830,149 @@
     "url": "/docs/sandbox-persistence#performance-considerations",
     "slug": "/sandbox-persistence#performance-considerations",
     "objectID": 104
+  },
+  {
+    "title": "CLI",
+    "description": "The `daytona` command-line tool provides access to Daytona's core features including managing images and the lifecycle of Daytona Sandboxes.",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli",
+    "slug": "/tools/cli",
+    "objectID": 105
+  },
+  {
+    "title": "daytona version",
+    "description": "Print the version number",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-version",
+    "slug": "/tools/cli#daytona-version",
+    "objectID": 106
+  },
+  {
+    "title": "daytona sandbox info",
+    "description": "Get sandbox info",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-info",
+    "slug": "/tools/cli#daytona-sandbox-info",
+    "objectID": 107
+  },
+  {
+    "title": "daytona sandbox list",
+    "description": "List sandboxes",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-list",
+    "slug": "/tools/cli#daytona-sandbox-list",
+    "objectID": 108
+  },
+  {
+    "title": "daytona sandbox start",
+    "description": "Start a sandbox",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-start",
+    "slug": "/tools/cli#daytona-sandbox-start",
+    "objectID": 109
+  },
+  {
+    "title": "daytona sandbox stop",
+    "description": "Stop a sandbox",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-stop",
+    "slug": "/tools/cli#daytona-sandbox-stop",
+    "objectID": 110
+  },
+  {
+    "title": "daytona sandbox",
+    "description": "Manage Daytona sandboxes",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox",
+    "slug": "/tools/cli#daytona-sandbox",
+    "objectID": 111
+  },
+  {
+    "title": "daytona sandbox create",
+    "description": "Create a new sandbox",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-create",
+    "slug": "/tools/cli#daytona-sandbox-create",
+    "objectID": 112
+  },
+  {
+    "title": "daytona sandbox delete",
+    "description": "Delete a sandbox",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-delete",
+    "slug": "/tools/cli#daytona-sandbox-delete",
+    "objectID": 113
+  },
+  {
+    "title": "daytona image push",
+    "description": "Push local image",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-image-push",
+    "slug": "/tools/cli#daytona-image-push",
+    "objectID": 114
+  },
+  {
+    "title": "daytona login",
+    "description": "Log in to Daytona",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-login",
+    "slug": "/tools/cli#daytona-login",
+    "objectID": 115
+  },
+  {
+    "title": "daytona logout",
+    "description": "Logout from Daytona",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-logout",
+    "slug": "/tools/cli#daytona-logout",
+    "objectID": 116
+  },
+  {
+    "title": "daytona image",
+    "description": "Manage Daytona images",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-image",
+    "slug": "/tools/cli#daytona-image",
+    "objectID": 117
+  },
+  {
+    "title": "daytona image delete",
+    "description": "Delete an image",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-image-delete",
+    "slug": "/tools/cli#daytona-image-delete",
+    "objectID": 118
+  },
+  {
+    "title": "daytona image list",
+    "description": "List all images",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-image-list",
+    "slug": "/tools/cli#daytona-image-list",
+    "objectID": 119
+  },
+  {
+    "title": "daytona",
+    "description": "Daytona CLI",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona",
+    "slug": "/tools/cli#daytona",
+    "objectID": 120
+  },
+  {
+    "title": "daytona autocomplete",
+    "description": "Adds a completion script for your shell environment",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-autocomplete",
+    "slug": "/tools/cli#daytona-autocomplete",
+    "objectID": 121
+  },
+  {
+    "title": "daytona docs",
+    "description": "Opens the Daytona documentation in your default browser.",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-docs",
+    "slug": "/tools/cli#daytona-docs",
+    "objectID": 122
   }
 ]
