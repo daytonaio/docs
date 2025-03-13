@@ -788,23 +788,7 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
   </TabItem>
 </Tabs>
 
-<DocumentList title="About">
-  <DocumentListItem
-    title="Getting Started"
-    subtitle="Learn about Daytona SDK and how it can help you manage your development environments."
-    href="/docs/getting-started"
-  />
-  <DocumentListItem
-    title="Configuration"
-    subtitle="Get started with Daytona SDK and learn how to use and configure your development environments."
-    href="/docs/configuration"
-  />
-  <DocumentListItem
-    title="Sandbox Persistence"
-    subtitle="Learn about sandbox persistence and how it can help you manage your development environments."
-    href="/docs/sandbox-persistence"
-  />
-</DocumentList>
+<ExploreMore />
 
 ---
 title: Language Server Protocol
