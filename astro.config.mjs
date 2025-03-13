@@ -115,7 +115,7 @@ export default defineConfig({
           ],
         },
       ],
-      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
+      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 4 },
       customCss: ['./src/fonts/font-face.css', './src/styles/style.scss'],
       components: {
         Footer: './src/components/Footer.astro',
