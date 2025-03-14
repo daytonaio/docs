@@ -4,10 +4,6 @@ title: Configuration
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Label>
-  Distribution: **Open Source**
-</Label>
-
 The Daytona SDK provides flexible configuration options to customize its behavior and connection settings.
 
 ## Configuration Options
@@ -109,10 +105,6 @@ title: File System Operations
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
-
-<Label>
-  Distribution: **Open Source**
-</Label>
 
 The Daytona SDK provides comprehensive file system operations through the `fs` module in Sandboxes. This guide covers all available file system operations and best practices.
 
@@ -318,10 +310,6 @@ title: Getting Started
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Label>
-  Distribution: **Open Source**
-</Label>
-
 The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
 
 View the Daytona SDK repository on [GitHub](https://github.com/daytonaio/sdk).
@@ -464,10 +452,6 @@ title: Git Operations
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
-
-<Label>
-  Distribution: **Open Source**
-</Label>
 
 The Daytona SDK provides built-in Git support through the `git` module in Sandboxes. This guide covers all available Git operations and best practices.
 
@@ -736,10 +720,6 @@ tableOfContents: false
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Label>
-  Distribution: **Open Source**
-</Label>
-
 The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
 
 ### Quick Start
@@ -831,10 +811,6 @@ title: Language Server Protocol
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
-
-<Label>
-  Distribution: **Open Source**
-</Label>
 
 The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances. This enables advanced language features like code completion, diagnostics, and more.
 
@@ -946,10 +922,6 @@ title: Process and Code Execution
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
-
-<Label>
-  Distribution: **Open Source**
-</Label>
 
 The Daytona SDK provides powerful process and code execution capabilities through the `process` module in Sandboxes. This guide covers all available process operations and best practices.
 
@@ -1174,10 +1146,6 @@ title: Sandbox Management
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Label>
-  Distribution: **Open Source**
-</Label>
-
 Sandboxes are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove Sandboxes using the SDK.
 
 ## Creating Sandboxes
@@ -1281,11 +1249,6 @@ await daytona.remove(workspace);
 title: Sandbox Persistence
 ---
 
-
-<Label>
-  Distribution: **Open Source**
-</Label>
-
 Daytona keeps the filesystem in its entirety during the sandbox lifecycle. The persistence functionality is built into the system, and nothing needs to be explicitly done from the user side.
 
 ## Understanding Sandbox States
@@ -1324,6 +1287,7 @@ This reference lists all commands supported by the `daytona` command-line tool c
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
 
 ## daytona version
+
 Print the version number
 
 ```shell
@@ -1335,8 +1299,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox info
+
 Get sandbox info
 
 ```shell
@@ -1350,8 +1314,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox list
+
 List sandboxes
 
 ```shell
@@ -1365,8 +1329,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox start
+
 Start a sandbox
 
 ```shell
@@ -1379,8 +1343,8 @@ __Flags__
 | `--all` | `-a` | Start all sandboxes |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox stop
+
 Stop a sandbox
 
 ```shell
@@ -1393,8 +1357,8 @@ __Flags__
 | `--all` | `-a` | Stop all sandboxes |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox
+
 Manage Daytona sandboxes
 
 ```shell
@@ -1406,8 +1370,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox create
+
 Create a new sandbox
 
 ```shell
@@ -1432,8 +1396,8 @@ __Flags__
 | `--user` |  | User associated with the sandbox |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox delete
+
 Delete a sandbox
 
 ```shell
@@ -1447,8 +1411,8 @@ __Flags__
 | `--force` | `-f` | Force delete |
 | `--help` |  | help for daytona |
 
-
 ## daytona image push
+
 Push local image
 
 ```shell
@@ -1462,8 +1426,8 @@ __Flags__
 | `--entrypoint` | `-e` | The entrypoint command for the image |
 | `--help` |  | help for daytona |
 
-
 ## daytona login
+
 Log in to Daytona
 
 ```shell
@@ -1475,8 +1439,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona logout
+
 Logout from Daytona
 
 ```shell
@@ -1488,8 +1452,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona image
+
 Manage Daytona images
 
 ```shell
@@ -1501,8 +1465,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona image delete
+
 Delete an image
 
 ```shell
@@ -1515,8 +1479,8 @@ __Flags__
 | `--all` | `-a` | Delete all images |
 | `--help` |  | help for daytona |
 
-
 ## daytona image list
+
 List all images
 
 ```shell
@@ -1529,8 +1493,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona
+
 Daytona CLI
 
 ```shell
@@ -1543,8 +1507,8 @@ __Flags__
 | `--help` |  | help for daytona |
 | `--version` | `-v` | Display the version of Daytona |
 
-
 ## daytona autocomplete
+
 Adds a completion script for your shell environment
 
 ```shell
@@ -1563,6 +1527,7 @@ macOS Installation: ```brew install bash-completion```
 </Aside>
 
 ## daytona docs
+
 Opens the Daytona documentation in your default browser.
 
 ```shell

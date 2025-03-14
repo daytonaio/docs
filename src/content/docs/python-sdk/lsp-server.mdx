@@ -45,8 +45,6 @@ lsp.stop()
 class LspServer()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L73)
-
 Provides Language Server Protocol functionality for code intelligence.
 
 This class implements a subset of the Language Server Protocol (LSP) to provide
@@ -67,8 +65,6 @@ def __init__(language_id: LspLanguageId, path_to_project: str,
              toolbox_api: ToolboxApi, instance: WorkspaceInstance)
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L85)
-
 Initializes a new LSP server instance.
 
 **Arguments**:
@@ -85,8 +81,6 @@ Initializes a new LSP server instance.
 ```python
 def start() -> None
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L105)
 
 Starts the language server.
 
@@ -109,8 +103,6 @@ lsp.start()  # Initialize the server
 def stop() -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L126)
-
 Stops the language server.
 
 This method should be called when the LSP server is no longer needed to
@@ -130,8 +122,6 @@ lsp.stop()  # Clean up resources
 ```python
 def did_open(path: str) -> None
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L146)
 
 Notifies the language server that a file has been opened.
 
@@ -159,8 +149,6 @@ lsp.did_open("/workspace/project/src/index.ts")
 def did_close(path: str) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L172)
-
 Notify the language server that a file has been closed.
 
 This method should be called when a file is closed in the editor to allow
@@ -184,8 +172,6 @@ lsp.did_close("/workspace/project/src/index.ts")
 ```python
 def document_symbols(path: str) -> List[LspSymbol]
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L195)
 
 Gets symbol information from a document.
 
@@ -219,8 +205,6 @@ for symbol in symbols:
 ```python
 def workspace_symbols(query: str) -> List[LspSymbol]
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L225)
 
 Searches for symbols across the entire Sandbox.
 
@@ -256,8 +240,6 @@ for symbol in symbols:
 ```python
 def completions(path: str, position: Position) -> CompletionList
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L257)
 
 Gets completion suggestions at a position in a file.
 
@@ -297,8 +279,6 @@ for item in completions.items:
 class Position()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L51)
-
 Represents a position in a text document.
 
 This class represents a zero-based position within a text document,
@@ -316,8 +296,6 @@ specified by line number and character offset.
 ```python
 def __init__(line: int, character: int)
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/lsp_server.py#L62)
 
 Initialize a new Position instance.
 
