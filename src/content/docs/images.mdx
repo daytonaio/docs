@@ -1,14 +1,143 @@
 ---
-title: Getting Started
+title: Images
 ---
 
+import Label from '@components/Label.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
+By default, Daytona uses a simple image with some useful utilities pre-installed, such as `python`, `node`, `pip` and common pip packages.
 
-View the Daytona SDK repository on [GitHub](https://github.com/daytonaio/sdk).
+It is possible to use custom images by visiting the Dashboard, clicking on Images and on `Create Image`. If your image hasn't got a long-running process or entrypoint, make sure to set the Entrypoint value to e.g. `sleep infinity` to make sure the container doesn't exit immediately.
 
-Follow the step by step guide to create and run your first Daytona Sandbox for an AI Agent.
+Since images tagged `latest` get frequent updates, to reduce confusion please use specific tags (e.g. `0.1.0`). Same idea applies for tags such as `lts` or `stable`.
+
+Once the image is pulled, validated and has an `Active` state, it is ready to be used.
+
+Use the CreateWorkspaceParam parameter to specify the image to use, so instead of running
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```bash
+const sandbox = await daytona.create({
+  language: 'python',
+  image: 'alpine/3.21',
+})
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```bash
+sandbox = daytona.create()
+```
+</TabItem>
+</Tabs>
+
+```bash
+sandbox = daytona.create()
+```
+
+run
+
+```bash
+params = CreateWorkspaceParams(image="alpine/3.21", language="python")
+sandbox = daytona.create(params)
+```
+
+Full example:
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+from daytona_sdk import Daytona, CreateSandboxParams
+
+# Initialize the Daytona client
+
+daytona = Daytona()
+
+# Create the Sandbox instance
+
+params = CreateSandboxParams(image="alpine/3.21", language="python")
+sandbox = daytona.create(params)
+
+# Run the code securely inside the Sandbox
+
+response = sandbox.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
+if response.exit_code != 0:
+    print(f"Error running code: {response.exit_code} {response.result}")
+else:
+    print(response.result)
+
+# Clean up the Sandbox
+
+daytona.remove(sandbox)
+
+```
+
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+import { Daytona } from '@daytonaio/sdk'
+
+async function main() {
+  // Initialize the Daytona client
+  const daytona = new Daytona()
+
+  try {
+    // Create the sandbox instance
+    const sandbox = await daytona.create({
+      language: 'python',
+      image: 'alpine/3.21',
+    })
+    // Run the code securely inside the sandbox
+    const response = await sandbox.process.codeRun(
+      'print("Sum of 3 and 4 is " + str(3 + 4))',
+    )
+    if (response.exitCode !== 0) {
+      console.error('Error running code:', response.exitCode, response.result)
+    } else {
+      console.log(response.result)
+    }
+  } catch (error) {
+    console.error('Sandbox flow error:', error)
+  } finally {
+    // Clean up the sandbox
+    await daytona.remove(sandbox)
+  }
+}
+
+main()
+
+```
+
+</TabItem>
+</Tabs>
+
+////
+
+## Custom Container Registries
+
+If you want to use a private image, go to Dashboard -> Registries -> Add Registry
+
+## Using a local image
+
+To use an image from your local device or from a local Dockerfile, you can use the Daytona CLI.
+
+### Install the CLI
+
+<Tabs>
+<TabItem label="Mac/Linux">
+```bash
+brew install daytonaio/cli/daytona
+```
+
+</TabItem>
+<TabItem label="Windows">
+```bash
+windows
+```
+</TabItem>
+</Tabs>
+
+### Run 'daytona image push'
 
 ## Set Up Your Environment Variables
 
@@ -140,21 +269,3 @@ npx tsx ./index.ts
 ```
 </TabItem>
 </Tabs>
-
-:::tip
-If you want to use images from your local device, or simply prefer managing your Sandboxes using the CLI, install it by running:
-
-<Tabs>
-<TabItem label="Mac/Linux">
-```bash
-brew install daytonaio/cli/daytona
-```
-
-</TabItem>
-<TabItem label="Windows">
-```bash
-windows
-```
-</TabItem>
-</Tabs>
-:::

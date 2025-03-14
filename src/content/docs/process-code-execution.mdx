@@ -18,7 +18,7 @@ Daytona SDK provides an option to run code snippets in Python and TypeScript. Yo
 <TabItem label="Python" icon="seti:python">
 ```python
 # Run Python code
-response = workspace.process.code_run('''
+response = sandbox.process.code_run('''
 def greet(name):
     return f"Hello, {name}!"
 
@@ -32,7 +32,7 @@ print(response.result)
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Run TypeScript code
-const response = await workspace.process.codeRun(`
+const response = await sandbox.process.codeRun(`
 function greet(name: string): string {
     return \`Hello, \${name}!\`;
 }
@@ -42,14 +42,14 @@ console.log(greet("Daytona"));
 console.log(response.result);
 
 // Run code with input
-const response = await workspace.process.codeRun(
+const response = await sandbox.process.codeRun(
     'const name = prompt("Enter name: ");\nconsole.log(`Hello, ${name}!`);',
     { input: "Daytona" }
 );
 console.log(response.result);
 
 // Run code with timeout
-const response = await workspace.process.codeRun(
+const response = await sandbox.process.codeRun(
     'setTimeout(() => console.log("Done"), 2000);',
     { timeout: 5000 }
 );
@@ -71,14 +71,14 @@ Daytona SDK provides an option to execute shell commands in Python and TypeScrip
 <TabItem label="Python" icon="seti:python">
 ```python
 # Execute shell command
-response = workspace.process.exec("ls -la")
+response = sandbox.process.exec("ls -la")
 print(response.output)
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Execute shell command
-const response = await workspace.process.executeCommand("ls -la");
+const response = await sandbox.process.executeCommand("ls -la");
 console.log(response.output);
 ```
 </TabItem>
@@ -96,14 +96,14 @@ Daytona SDK provides an option to start and stop background processes. You can r
 <TabItem label="Python" icon="seti:python">
 ```python
 # Check session's executed commands
-session = workspace.process.get_session(session_id)
+session = sandbox.process.get_session(session_id)
 print(f"Session {process_id}:")
 for command in session.commands:
     print(f"Command: {command.command}, Exit Code: {command.exit_code}")
 
 # List all running sessions
 
-sessions = workspace.process.list_sessions()
+sessions = sandbox.process.list_sessions()
 for session in sessions:
     print(f"PID: {session.id}, Commands: {session.commands}")
 
@@ -112,14 +112,14 @@ for session in sessions:
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Check session's executed commands
-const session = await workspace.process.getSession(sessionId);
+const session = await sandbox.process.getSession(sessionId);
 console.log(`Session ${sessionId}:`);
 for (const command of session.commands) {
     console.log(`Command: ${command.command}, Exit Code: ${command.exitCode}`);
 }
 
 // List all running sessions
-const sessions = await workspace.process.listSessions();
+const sessions = await sandbox.process.listSessions();
 for (const session of sessions) {
     console.log(`PID: ${session.id}, Commands: ${session.commands}`);
 }
@@ -145,11 +145,11 @@ Daytona SDK provides best practices for process and code execution in Sandboxes.
    # Python - Clean up session
    session_id = "long-running-cmd"
    try:
-       workspace.process.create_session(session_id)
-       session = workspace.process.get_session(session_id)
+       sandbox.process.create_session(session_id)
+       session = sandbox.process.get_session(session_id)
        # Do work...
    finally:
-       workspace.process.delete_session(session.session_id)
+       sandbox.process.delete_session(session.session_id)
    ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
@@ -157,11 +157,11 @@ Daytona SDK provides best practices for process and code execution in Sandboxes.
    // TypeScript - Clean up session
    const sessionId = "long-running-cmd";
    try {
-       await workspace.process.createSession(sessionId);
-       const session = await workspace.process.getSession(sessionId);
+       await sandbox.process.createSession(sessionId);
+       const session = await sandbox.process.getSession(sessionId);
        // Do work...
    } finally {
-       await workspace.process.deleteSession(session.sessionId);
+       await sandbox.process.deleteSession(session.sessionId);
    }
    ```
 </TabItem>
@@ -177,7 +177,7 @@ Daytona SDK provides best practices for process and code execution in Sandboxes.
 <TabItem label="Python" icon="seti:python">
 ```python
 try:
-    response = workspace.process.code_run("invalid python code")
+    response = sandbox.process.code_run("invalid python code")
 except ProcessExecutionError as e:
     print(f"Execution failed: {e}")
     print(f"Exit code: {e.exit_code}")
@@ -187,7 +187,7 @@ except ProcessExecutionError as e:
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 try {
-    const response = await workspace.process.codeRun("invalid typescript code");
+    const response = await sandbox.process.codeRun("invalid typescript code");
 } catch (e) {
     if (e instanceof ProcessExecutionError) {
         console.error("Execution failed:", e);
