@@ -42,8 +42,6 @@ await lsp.stop();
 
 ## LspServer
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L92)
-
 Provides Language Server Protocol functionality for code intelligence.
 
 This class implements a subset of the Language Server Protocol (LSP) to provide
@@ -62,8 +60,6 @@ new LspServer(
    toolboxApi: ToolboxApi, 
    instance: Workspace): LspServer
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L93)
 
 ##### Parameters
 
@@ -85,8 +81,6 @@ new LspServer(
 ```ts
 completions(path: string, position: Position): Promise<CompletionList>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L279)
 
 Gets completion suggestions at a position in a file.
 
@@ -133,8 +127,6 @@ completions.items.forEach(item => {
 didClose(path: string): Promise<void>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L183)
-
 Notifies the language server that a file has been closed.
 
 This method should be called when a file is closed in the editor to allow
@@ -164,8 +156,6 @@ await lsp.didClose('/workspace/project/src/index.ts');
 ```ts
 didOpen(path: string): Promise<void>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L159)
 
 Notifies the language server that a file has been opened.
 
@@ -198,8 +188,6 @@ await lsp.didOpen('/workspace/project/src/index.ts');
 ```ts
 documentSymbols(path: string): Promise<LspSymbol[]>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L213)
 
 Get symbol information from a document.
 
@@ -239,8 +227,6 @@ symbols.forEach(symbol => {
 start(): Promise<void>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L113)
-
 Starts the language server.
 
 This method must be called before using any other LSP functionality.
@@ -266,8 +252,6 @@ await lsp.start();  // Initialize the server
 stop(): Promise<void>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L134)
-
 Stops the language server.
 
 This method should be called when the LSP server is no longer needed to
@@ -291,8 +275,6 @@ await lsp.stop();  // Clean up resources
 ```ts
 workspaceSymbols(query: string): Promise<LspSymbol[]>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L243)
 
 Searches for symbols across the entire Sandbox.
 
@@ -329,8 +311,6 @@ symbols.forEach(symbol => {
 
 ## Position
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L72)
-
 Represents a position in a text document.
 
 This interface represents a zero-based position within a text document,
@@ -361,8 +341,6 @@ const position: Position = {
 ```ts
 type LspLanguageId = "python" | "typescript" | "javascript";
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/LspServer.ts#L54)
 
 Supported language server types.
 Currently 'python', 'typescript' and 'javascript' are supported.

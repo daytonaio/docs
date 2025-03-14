@@ -69,8 +69,6 @@ workspace.process.execute_command("python -m pytest")
 class Daytona()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L185)
-
 Main class for interacting with Daytona Server API.
 
 This class provides methods to create, manage, and interact with Daytona Sandboxes.
@@ -108,8 +106,6 @@ daytona = Daytona(config)
 ```python
 def __init__(config: Optional[DaytonaConfig] = None)
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L213)
 
 Initializes Daytona instance with optional configuration.
 
@@ -150,8 +146,6 @@ daytona2 = Daytona(config)
 ```python
 def create(params: Optional[CreateWorkspaceParams] = None) -> Workspace
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L272)
 
 Creates Sandboxes with default or custom configurations. You can specify various parameters,
 including language, image, resources, environment variables, and volumes for the Sandbox.
@@ -201,8 +195,6 @@ workspace = daytona.create(params)
 def remove(workspace: Workspace) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L390)
-
 Removes a Sandbox.
 
 **Arguments**:
@@ -224,8 +216,6 @@ daytona.remove(workspace)  # Clean up when done
 ```python
 def get_current_workspace(workspace_id: str) -> Workspace
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L405)
 
 Get a Sandbox by its ID.
 
@@ -256,8 +246,6 @@ print(workspace.status)
 def list() -> List[Workspace]
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L440)
-
 Lists all Sandboxes.
 
 **Returns**:
@@ -279,8 +267,6 @@ for workspace in workspaces:
 ```python
 def start(workspace: Workspace, timeout: Optional[float] = None) -> None
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L490)
 
 Starts a Sandbox and waits for it to be ready.
 
@@ -304,8 +290,6 @@ daytona.start(workspace, timeout=40)  # Wait up to 40 seconds
 def stop(workspace: Workspace) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L506)
-
 Stops a Sandbox and waits for it to be stopped.
 
 **Arguments**:
@@ -327,8 +311,6 @@ daytona.stop(workspace)
 @dataclass
 class DaytonaConfig()
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L87)
 
 Configuration options for initializing the Daytona client.
 
@@ -357,8 +339,6 @@ daytona = Daytona(config)
 @dataclass
 class WorkspaceResources()
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L111)
 
 Resources configuration for Sandbox.
 
@@ -392,8 +372,6 @@ params = CreateWorkspaceParams(
 @dataclass
 class CreateWorkspaceParams()
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/daytona.py#L141)
 
 Parameters for creating a new Sandbox.
 

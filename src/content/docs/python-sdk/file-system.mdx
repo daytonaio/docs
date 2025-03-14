@@ -79,8 +79,6 @@ workspace.fs.set_file_permissions(
 class FileSystem()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L79)
-
 Provides file system operations within a Sandbox.
 
 This class implements a high-level interface to file system operations that can
@@ -100,8 +98,6 @@ managing permissions.
 def __init__(instance: WorkspaceInstance, toolbox_api: ToolboxApi)
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L91)
-
 Initializes a new FileSystem instance.
 
 **Arguments**:
@@ -116,8 +112,6 @@ Initializes a new FileSystem instance.
 ```python
 def create_folder(path: str, mode: str) -> None
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L101)
 
 Creates a new directory in the Sandbox.
 
@@ -147,8 +141,6 @@ workspace.fs.create_folder("/workspace/secrets", "700")
 def delete_file(path: str) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L124)
-
 Deletes a file from the Sandbox.
 
 This method permanently deletes a file from the Sandbox.
@@ -171,8 +163,6 @@ workspace.fs.delete_file("/workspace/data/old_file.txt")
 ```python
 def download_file(path: str) -> bytes
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L142)
 
 Downloads a file from the Sandbox.
 
@@ -207,8 +197,6 @@ config = json.loads(content.decode('utf-8'))
 def find_files(path: str, pattern: str) -> List[Match]
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L169)
-
 Searches for files containing a pattern.
 
 This method searches file contents for a specified pattern, similar to
@@ -242,8 +230,6 @@ for match in matches:
 ```python
 def get_file_info(path: str) -> FileInfo
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L197)
 
 Gets detailed information about a file.
 
@@ -289,8 +275,6 @@ if info.is_dir:
 def list_files(path: str) -> List[FileInfo]
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L235)
-
 Lists files and directories in a given path.
 
 This method returns information about all files and directories in the
@@ -328,8 +312,6 @@ print("Subdirectories:", ", ".join(d.name for d in dirs))
 ```python
 def move_files(source: str, destination: str) -> None
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L267)
 
 Moves files from one location to another.
 
@@ -371,8 +353,6 @@ workspace.fs.move_files(
 def replace_in_files(files: List[str], pattern: str,
                      new_value: str) -> List[ReplaceResult]
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L304)
 
 Replaces text in multiple files.
 
@@ -418,8 +398,6 @@ for result in results:
 def search_files(path: str, pattern: str) -> SearchFilesResponse
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L348)
-
 Searches for files and directories matching a pattern in their names.
 
 This method searches for files and directories whose names match the
@@ -460,8 +438,6 @@ def set_file_permissions(path: str,
                          group: str = None) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L379)
-
 Sets permissions and ownership for a file or directory.
 
 This method allows changing the permissions and ownership of a file or
@@ -500,8 +476,6 @@ workspace.fs.set_file_permissions(
 ```python
 def upload_file(path: str, file: bytes) -> None
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/python/src/daytona_sdk/filesystem.py#L419)
 
 Uploads a file to the Sandbox.
 

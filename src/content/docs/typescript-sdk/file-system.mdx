@@ -68,8 +68,6 @@ await workspace.fs.setFilePermissions(
 
 ## FileSystem
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L107)
-
 Provides file system operations within a Sandbox.
 
 This class implements a high-level interface to file system operations that can
@@ -84,8 +82,6 @@ managing permissions.
 ```ts
 new FileSystem(instance: Workspace, toolboxApi: ToolboxApi): FileSystem
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L108)
 
 ##### Parameters
 
@@ -105,8 +101,6 @@ new FileSystem(instance: Workspace, toolboxApi: ToolboxApi): FileSystem
 ```ts
 createFolder(path: string, mode: string): Promise<void>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L124)
 
 Create a new directory in the Sandbox with specified permissions.
 
@@ -136,8 +130,6 @@ await fs.createFolder('/app/data', '755');
 deleteFile(path: string): Promise<void>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L139)
-
 Deletes a file or directory from the Sandbox.
 
 ##### Parameters
@@ -164,8 +156,6 @@ await fs.deleteFile('/app/temp.log');
 ```ts
 downloadFile(path: string): Promise<Blob>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L155)
 
 Downloads a file from the Sandbox.
 
@@ -196,8 +186,6 @@ console.log('File content:', fileBlob.toString());
 ```ts
 findFiles(path: string, pattern: string): Promise<Match[]>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L174)
 
 Searches for text patterns within files in the Sandbox.
 
@@ -232,8 +220,6 @@ matches.forEach(match => {
 getFileDetails(path: string): Promise<FileInfo>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L190)
-
 Retrieves detailed information about a file or directory.
 
 ##### Parameters
@@ -263,8 +249,6 @@ console.log(`Size: ${info.size}, Modified: ${info.modTime}`);
 ```ts
 listFiles(path: string): Promise<FileInfo[]>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L208)
 
 Lists contents of a directory in the Sandbox.
 
@@ -298,8 +282,6 @@ files.forEach(file => {
 moveFiles(source: string, destination: string): Promise<void>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L224)
-
 Moves or renames a file or directory.
 
 ##### Parameters
@@ -330,8 +312,6 @@ replaceInFiles(
    pattern: string, 
 newValue: string): Promise<ReplaceResult[]>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L245)
 
 Replaces text content in multiple files.
 
@@ -368,8 +348,6 @@ const results = await fs.replaceInFiles(
 searchFiles(path: string, pattern: string): Promise<SearchFilesResponse>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L272)
-
 Searches for files and directories by name pattern in the Sandbox.
 
 ##### Parameters
@@ -400,8 +378,6 @@ result.files.forEach(file => console.log(file));
 ```ts
 setFilePermissions(path: string, permissions: FilePermissionsParams): Promise<void>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L295)
 
 Sets permissions and ownership for a file or directory.
 
@@ -435,8 +411,6 @@ await fs.setFilePermissions('/app/script.sh', {
 uploadFile(path: string, file: File): Promise<void>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L315)
-
 Uploads a file to the Sandbox.
 
 ##### Parameters
@@ -461,8 +435,6 @@ await fs.uploadFile('/app/config.json', configFile);
 ***
 
 ## FilePermissionsParams
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/1bf7e6102792baef2ef717000a1bb95e187794e2/packages/typescript/src/FileSystem.ts#L90)
 
 Parameters for setting file permissions in the Sandbox.
 
