@@ -1,4 +1,6 @@
 ---
+import { comparePaths } from '../utils/navigation'
+
 // Add TypeScript interface declaration for Window
 declare global {
   interface Window {
@@ -54,7 +56,11 @@ const { sublist = [], nested, collapse = false } = Astro.props
           <a
             href={entry.href}
             aria-current={entry.isCurrent ? 'page' : undefined}
-            class:list={[entry.attrs?.class]}
+            class:list={[
+              entry.attrs?.class,
+              { context: entry.context },
+              { active: comparePaths(entry.href, Astro.url.pathname) },
+            ]}
           >
             {entry.attrs?.icon && (
               <Fragment set:html={getSVG(entry.attrs.icon)} />
@@ -223,6 +229,16 @@ const { sublist = [], nested, collapse = false } = Astro.props
     }
   }
 
+  .context {
+    color: var(--secondary-hover-color);
+    > svg {
+      path {
+        fill: var(--secondary-hover-color);
+      }
+    }
+  }
+
+  .active,
   a:focus,
   a:hover {
     color: var(--hover-color);

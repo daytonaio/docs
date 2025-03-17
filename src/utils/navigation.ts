@@ -29,7 +29,9 @@ export interface NavigationGroup extends NavigationItem {
   // The category of the group, all links with that category will be shown in the sidebar when
   // the link with that category or the main link that is related to the category is active
   category: NavigationCategory
-  // The href of the link that will be used as previous link for the pagination component (if the current link is the first in the list)
+  // Used to indicate the context of the current page.
+  // If the current page is the first item in the list, it is also used as the previous link in the pagination component.
+  // The referenced page should be a `MainNavigationLink`. It is ignored for `NavigationCategory.MAIN` groups.
   homePageHref?: string
   entries: (NavigationLink | MainNavigationLink)[]
 }
@@ -38,10 +40,6 @@ export interface NavigationGroup extends NavigationItem {
 
 function normalizePath(path: string): string {
   return path.replace(/\/$/, '')
-}
-
-function comparePaths(path1: string, path2: string): boolean {
-  return normalizePath(path1) === normalizePath(path2)
 }
 
 function getMainNavGroup(sidebarConfig: NavigationGroup[]): NavigationGroup {
@@ -160,6 +158,9 @@ export function getSidebar(
 
   if (!currentGroup) return [mainGroup]
 
+  let contextHref: string | null = null
+  let relatedGroups: NavigationGroup[] = []
+
   if (currentGroup.category === NavigationCategory.MAIN) {
     const currentLink = getNavLinkByHref(
       sidebarConfig,
@@ -169,15 +170,24 @@ export function getSidebar(
 
     if (!currentLink) return [mainGroup]
 
-    const relatedGroups = getNavGroupsByCategory(
+    contextHref = currentPath
+    relatedGroups = getNavGroupsByCategory(
       sidebarConfig,
       currentLink.relatedGroupCategory
     )
-    return [mainGroup, ...relatedGroups]
   } else {
-    const groups = getNavGroupsByCategory(sidebarConfig, currentGroup.category)
-    return [mainGroup, ...groups]
+    relatedGroups = getNavGroupsByCategory(sidebarConfig, currentGroup.category)
+    contextHref = currentGroup.homePageHref || null
   }
+
+  if (contextHref) {
+    mainGroup.entries = mainGroup.entries.map(entry => ({
+      ...entry,
+      context: comparePaths(entry.href, contextHref as string),
+    }))
+  }
+
+  return [mainGroup, ...relatedGroups]
 }
 
 export function getExploreMoreData(
@@ -212,4 +222,8 @@ export function getExploreMoreData(
       items,
     }
   })
+}
+
+export function comparePaths(path1: string, path2: string): boolean {
+  return normalizePath(path1) === normalizePath(path2)
 }
