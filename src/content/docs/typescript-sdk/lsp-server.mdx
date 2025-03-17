@@ -12,11 +12,11 @@ and should be stopped with stop() when no longer needed to free resources.
 
 ```ts
 // Basic LSP server usage
-// Create and initialize workspace
-const workspace = await daytona.create();
+// Create and initialize sandbox
+const sandbox = await daytona.create();
 
 // Create and start LSP server
-const lsp = workspace.createLspServer('typescript', '/workspace/project');
+const lsp = sandbox.createLspServer('typescript', '/workspace/project');
 await lsp.start();
 
 // Open a file for editing
@@ -40,7 +40,25 @@ await lsp.didClose('/workspace/project/src/index.ts');
 await lsp.stop();
 ```
 
+## LspLanguageId
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L51)
+
+Supported language server types.
+
+### Enumeration Members
+
+| Enumeration Member | Value |
+| ------ | ------ |
+| `JAVASCRIPT` | `"javascript"` |
+| `PYTHON` | `"python"` |
+| `TYPESCRIPT` | `"typescript"` |
+
+***
+
 ## LspServer
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L93)
 
 Provides Language Server Protocol functionality for code intelligence.
 
@@ -58,8 +76,10 @@ new LspServer(
    languageId: LspLanguageId, 
    pathToProject: string, 
    toolboxApi: ToolboxApi, 
-   instance: Workspace): LspServer
+   instance: SandboxInstance): LspServer
 ```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L94)
 
 ##### Parameters
 
@@ -68,7 +88,7 @@ new LspServer(
 | `languageId` | `LspLanguageId` |
 | `pathToProject` | `string` |
 | `toolboxApi` | `ToolboxApi` |
-| `instance` | `Workspace` |
+| `instance` | `SandboxInstance` |
 
 ##### Returns
 
@@ -81,6 +101,8 @@ new LspServer(
 ```ts
 completions(path: string, position: Position): Promise<CompletionList>
 ```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L303)
 
 Gets completion suggestions at a position in a file.
 
@@ -127,6 +149,8 @@ completions.items.forEach(item => {
 didClose(path: string): Promise<void>
 ```
 
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L188)
+
 Notifies the language server that a file has been closed.
 
 This method should be called when a file is closed in the editor to allow
@@ -156,6 +180,8 @@ await lsp.didClose('/workspace/project/src/index.ts');
 ```ts
 didOpen(path: string): Promise<void>
 ```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L164)
 
 Notifies the language server that a file has been opened.
 
@@ -189,6 +215,8 @@ await lsp.didOpen('/workspace/project/src/index.ts');
 documentSymbols(path: string): Promise<LspSymbol[]>
 ```
 
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L218)
+
 Get symbol information from a document.
 
 This method returns information about all symbols (functions, classes,
@@ -221,60 +249,13 @@ symbols.forEach(symbol => {
 
 ***
 
-#### start()
+#### sandboxSymbols()
 
 ```ts
-start(): Promise<void>
+sandboxSymbols(query: string): Promise<LspSymbol[]>
 ```
 
-Starts the language server.
-
-This method must be called before using any other LSP functionality.
-It initializes the language server for the specified language and project.
-
-##### Returns
-
-`Promise<void>`
-
-##### Example
-
-```ts
-const lsp = workspace.createLspServer('typescript', '/workspace/project');
-await lsp.start();  // Initialize the server
-// Now ready for LSP operations
-```
-
-***
-
-#### stop()
-
-```ts
-stop(): Promise<void>
-```
-
-Stops the language server.
-
-This method should be called when the LSP server is no longer needed to
-free up system resources.
-
-##### Returns
-
-`Promise<void>`
-
-##### Example
-
-```ts
-// When done with LSP features
-await lsp.stop();  // Clean up resources
-```
-
-***
-
-#### workspaceSymbols()
-
-```ts
-workspaceSymbols(query: string): Promise<LspSymbol[]>
-```
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L267)
 
 Searches for symbols across the entire Sandbox.
 
@@ -301,7 +282,7 @@ List of matching symbols from all files. Each symbol includes:
 
 ```ts
 // Search for all symbols containing "User"
-const symbols = await lsp.workspaceSymbols('User');
+const symbols = await lsp.sandboxSymbols('User');
 symbols.forEach(symbol => {
   console.log(`${symbol.name} (${symbol.kind}) in ${symbol.location}`);
 });
@@ -309,7 +290,97 @@ symbols.forEach(symbol => {
 
 ***
 
+#### start()
+
+```ts
+start(): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L118)
+
+Starts the language server.
+
+This method must be called before using any other LSP functionality.
+It initializes the language server for the specified language and project.
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+const lsp = sandbox.createLspServer('typescript', '/workspace/project');
+await lsp.start();  // Initialize the server
+// Now ready for LSP operations
+```
+
+***
+
+#### stop()
+
+```ts
+stop(): Promise<void>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L139)
+
+Stops the language server.
+
+This method should be called when the LSP server is no longer needed to
+free up system resources.
+
+##### Returns
+
+`Promise<void>`
+
+##### Example
+
+```ts
+// When done with LSP features
+await lsp.stop();  // Clean up resources
+```
+
+***
+
+#### ~~workspaceSymbols()~~
+
+```ts
+workspaceSymbols(query: string): Promise<LspSymbol[]>
+```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L243)
+
+Searches for symbols across the entire Sandbox.
+
+This method searches for symbols matching the query string across all files
+in the Sandbox. It's useful for finding declarations and definitions
+without knowing which file they're in.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `query` | `string` | Search query to match against symbol names |
+
+##### Returns
+
+`Promise<LspSymbol[]>`
+
+List of matching symbols from all files. Each symbol includes:
+                                - name: The symbol's name
+                                - kind: The symbol's kind (function, class, variable, etc.)
+                                - location: The location of the symbol in the file
+
+##### Deprecated
+
+Use `sandboxSymbols` instead. This method will be removed in a future version.
+
+***
+
 ## Position
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/LspServer.ts#L73)
 
 Represents a position in a text document.
 
@@ -333,14 +404,3 @@ const position: Position = {
 | ------ | ------ | ------ |
 | `character` | `number` | Zero-based character offset on the line |
 | `line` | `number` | Zero-based line number in the document |
-
-***
-
-## LspLanguageId
-
-```ts
-type LspLanguageId = "python" | "typescript" | "javascript";
-```
-
-Supported language server types.
-Currently 'python', 'typescript' and 'javascript' are supported.

@@ -32,13 +32,13 @@ async function main() {
   const daytona = new Daytona();
   
   // Create a new sandbox
-  const workspace = await daytona.create({
+  const sandbox = await daytona.create({
     language: 'typescript',
     envVars: { NODE_ENV: 'development' }
   });
   
   // Execute a command
-  const response = await workspace.process.executeCommand('echo "Hello, World!"');
+  const response = await sandbox.process.executeCommand('echo "Hello, World!"');
   console.log(response.result);
 }
 
@@ -50,13 +50,15 @@ main().catch(console.error);
 The SDK can be configured using environment variables or by passing options to the constructor:
 
 ```typescript
+import { Daytona, SandboxTargetRegion } from '@daytonaio/sdk';
+
 // Using environment variables (DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET)
 const daytona = new Daytona();
 
 // Using explicit configuration
 const daytona = new Daytona({
   apiKey: 'your-api-key',
-  serverUrl: 'https://your-daytona-server.com/api',
-  target: 'default'
+  serverUrl: 'https://app.daytona.io/api',
+  target: SandboxTargetRegion.US
 });
 ```

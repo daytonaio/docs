@@ -11,24 +11,24 @@ the `git` module.
 
 ```ts
 // Basic Git workflow
-// Create and initialize workspace
-const workspace = await daytona.create();
+// Create and initialize sandbox
+const sandbox = await daytona.create();
 
 // Clone a repository
-await workspace.git.clone(
+await sandbox.git.clone(
   'https://github.com/user/repo.git',
   '/workspace/repo'
 );
 
 // Make some changes
-await workspace.fs.uploadFile(
+await sandbox.fs.uploadFile(
   '/workspace/repo/test.txt',
   new File([Buffer.from('Hello, World!')], 'test.txt')
 );
 
 // Stage and commit changes
-await workspace.git.add('/workspace/repo', ['test.txt']);
-await workspace.git.commit(
+await sandbox.git.add('/workspace/repo', ['test.txt']);
+await sandbox.git.commit(
   '/workspace/repo',
   'Add test file',
   'John Doe',
@@ -36,7 +36,7 @@ await workspace.git.commit(
 );
 
 // Push changes (with authentication)
-await workspace.git.push(
+await sandbox.git.push(
   '/workspace/repo',
   'user',
   'token'
@@ -45,24 +45,28 @@ await workspace.git.push(
 
 ## Git
 
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L51)
+
 ### Constructors
 
 #### new Git()
 
 ```ts
 new Git(
-   workspace: Workspace, 
+   sandbox: Sandbox, 
    toolboxApi: ToolboxApi, 
-   instance: Workspace): Git
+   instance: SandboxInstance): Git
 ```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L52)
 
 ##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `workspace` | `Workspace` |
+| `sandbox` | `Sandbox` |
 | `toolboxApi` | `ToolboxApi` |
-| `instance` | `Workspace` |
+| `instance` | `SandboxInstance` |
 
 ##### Returns
 
@@ -75,6 +79,8 @@ new Git(
 ```ts
 add(path: string, files: string[]): Promise<void>
 ```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L76)
 
 Stages files for commit.
 
@@ -112,6 +118,8 @@ await git.add('/workspace/repo', ['.']);
 branches(path: string): Promise<ListBranchResponse>
 ```
 
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L95)
+
 List branches in the repository.
 
 This method returns information about all branches in the repository.
@@ -148,6 +156,8 @@ clone(
    username?: string, 
 password?: string): Promise<void>
 ```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L140)
 
 Clones a Git repository.
 
@@ -212,6 +222,8 @@ commit(
 email: string): Promise<void>
 ```
 
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L181)
+
 Commits staged changes.
 
 This method creates a new commit with the staged changes. Make sure to stage
@@ -253,6 +265,8 @@ pull(
    username?: string, 
 password?: string): Promise<void>
 ```
+
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L253)
 
 Pulls changes from the remote repository.
 
@@ -298,6 +312,8 @@ push(
 password?: string): Promise<void>
 ```
 
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L218)
+
 Push local changes to the remote repository.
 
 This method pushes committed changes to the remote repository. If the remote
@@ -339,6 +355,8 @@ await git.push(
 status(path: string): Promise<GitStatus>
 ```
 
+[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L285)
+
 Gets the current status of the Git repository.
 
 This method returns information about the current state of the repository,
@@ -364,7 +382,7 @@ Current repository status including:
 ##### Example
 
 ```ts
-const status = await workspace.git.status('/workspace/repo');
+const status = await sandbox.git.status('/workspace/repo');
 console.log(`Current branch: ${status.currentBranch}`);
 console.log(`Commits ahead: ${status.ahead}`);
 console.log(`Commits behind: ${status.behind}`);
