@@ -49,8 +49,6 @@ print(completions)
 class Sandbox()
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L165)
-
 Represents a Daytona Sandbox.
 
 A Sandbox provides file system operations, Git operations, process execution,
@@ -73,8 +71,6 @@ def __init__(id: str, instance: SandboxInstance, sandbox_api: SandboxApi,
              toolbox_api: ToolboxApi, code_toolbox: SandboxCodeToolbox)
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L181)
-
 Initialize a new Sandbox instance.
 
 **Arguments**:
@@ -90,8 +86,6 @@ Initialize a new Sandbox instance.
 ```python
 def info() -> SandboxInfo
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L208)
 
 Gets structured information about the Sandbox.
 
@@ -116,8 +110,6 @@ print(f"Resources: {info.resources.cpu} CPU, {info.resources.memory} RAM")
 def get_user_root_dir() -> str
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L227)
-
 Gets the root directory path for the logged in user inside the Sandbox.
 
 **Returns**:
@@ -137,8 +129,6 @@ print(f"Sandbox root: {root_dir}")
 def create_lsp_server(language_id: LspLanguageId,
                       path_to_project: str) -> LspServer
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L246)
 
 Creates a new Language Server Protocol (LSP) server instance.
 
@@ -166,8 +156,6 @@ lsp = sandbox.create_lsp_server("python", "/workspace/project")
 @intercept_errors(message_prefix="Failed to set labels: ")
 def set_labels(labels: Dict[str, str]) -> Dict[str, str]
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L269)
 
 Sets labels for the Sandbox.
 
@@ -203,8 +191,6 @@ print(f"Updated labels: {new_labels}")
 def start(timeout: Optional[float] = 60)
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L298)
-
 Starts the Sandbox.
 
 This method starts the Sandbox and waits for it to be ready.
@@ -236,8 +222,6 @@ print("Sandbox started successfully")
 def stop(timeout: Optional[float] = 60)
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L322)
-
 Stops the Sandbox.
 
 This method stops the Sandbox and waits for it to be fully stopped.
@@ -268,8 +252,6 @@ print("Sandbox stopped successfully")
 def wait_for_workspace_start(timeout: Optional[float] = 60) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L345)
-
 Waits for the Sandbox to reach the 'started' state.
 
 This method polls the Sandbox status until it reaches the 'started' state
@@ -295,8 +277,6 @@ or encounters an error.
 def wait_for_sandbox_start(timeout: Optional[float] = 60) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L361)
-
 Waits for the Sandbox to reach the 'started' state.
 
 This method polls the Sandbox status until it reaches the 'started' state
@@ -319,8 +299,6 @@ or encounters an error.
 )
 def wait_for_workspace_stop(timeout: Optional[float] = 60) -> None
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L386)
 
 Waits for the Sandbox to reach the 'stopped' state.
 
@@ -347,8 +325,6 @@ or encounters an error. It will wait up to 60 seconds for the Sandbox to stop.
 def wait_for_sandbox_stop(timeout: Optional[float] = 60) -> None
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L402)
-
 Waits for the Sandbox to reach the 'stopped' state.
 
 This method polls the Sandbox status until it reaches the 'stopped' state
@@ -368,8 +344,6 @@ or encounters an error. It will wait up to 60 seconds for the Sandbox to stop.
 @intercept_errors(message_prefix="Failed to set auto-stop interval: ")
 def set_autostop_interval(interval: int) -> None
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L433)
 
 Sets the auto-stop interval for the Sandbox.
 
@@ -402,8 +376,6 @@ sandbox.set_autostop_interval(0)
 def get_preview_link(port: int) -> str
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L463)
-
 Gets the preview link for the sandbox at a specific port. If the port is not open, it will open it and return the link.
 
 **Arguments**:
@@ -420,8 +392,6 @@ Gets the preview link for the sandbox at a specific port. If the port is not ope
 @intercept_errors(message_prefix="Failed to archive sandbox: ")
 def archive() -> None
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L481)
 
 Archives the sandbox, making it inactive and preserving its state. When sandboxes are archived, the entire filesystem
 state is moved to cost-effective object storage, making it possible to keep sandboxes available for an extended period.
@@ -476,8 +446,6 @@ print(completions)
 class SandboxTargetRegion(Enum)
 ```
 
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L67)
-
 Target regions for Sandboxes
 
 <a id="daytona_sdk.sandbox.SandboxResources"></a>
@@ -488,8 +456,6 @@ Target regions for Sandboxes
 @dataclass
 class SandboxResources()
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L83)
 
 Resources allocated to a Sandbox.
 
@@ -518,8 +484,6 @@ resources = SandboxResources(
 ```python
 class SandboxInfo(ApiSandboxInfo)
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L108)
 
 Structured information about a Sandbox.
 
@@ -558,7 +522,5 @@ print(f"Resources: {info.resources.cpu} CPU, {info.resources.memory} RAM")
 ```python
 class SandboxInstance(ApiSandbox)
 ```
-
-[[view_source]](https://github.com/daytonaio/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/python/src/daytona_sdk/sandbox.py#L160)
 
 Represents a Daytona Sandbox instance.

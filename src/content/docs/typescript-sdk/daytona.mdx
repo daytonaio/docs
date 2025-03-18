@@ -52,8 +52,6 @@ await sandbox.process.executeCommand('npm test');
 
 ## CodeLanguage
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L89)
-
 Supported programming languages for code execution
 
 ### Enumeration Members
@@ -67,8 +65,6 @@ Supported programming languages for code execution
 ***
 
 ## Daytona
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L205)
 
 Main class for interacting with Daytona Server API.
 
@@ -104,8 +100,6 @@ const daytona = new Daytona(config);
 new Daytona(config?: DaytonaConfig): Daytona
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L218)
-
 Creates a new Daytona client instance.
 
 ##### Parameters
@@ -129,8 +123,6 @@ Creates a new Daytona client instance.
 ```ts
 create(params?: CreateSandboxParams, timeout?: number): Promise<Sandbox>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L295)
 
 Creates Sandboxes with default or custom configurations. You can specify various parameters,
 including language, image, resources, environment variables, and volumes for the Sandbox.
@@ -181,8 +173,6 @@ const sandbox = await daytona.create(params, 40);
 get(sandboxId: string): Promise<Sandbox>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L376)
-
 Gets a Sandbox by its ID.
 
 ##### Parameters
@@ -211,8 +201,6 @@ console.log(`Sandbox state: ${sandbox.instance.state}`);
 ```ts
 getCurrentSandbox(sandboxId: string): Promise<Sandbox>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L482)
 
 Gets the Sandbox by ID.
 
@@ -243,8 +231,6 @@ console.log(`Current sandbox state: ${sandbox.instance.state}`);
 getCurrentWorkspace(workspaceId: string): Promise<Sandbox>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L468)
-
 Gets the Sandbox by ID.
 
 ##### Parameters
@@ -271,8 +257,6 @@ Use `getCurrentSandbox` instead. This method will be removed in a future version
 list(): Promise<Sandbox[]>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L398)
-
 Lists all Sandboxes.
 
 ##### Returns
@@ -297,8 +281,6 @@ for (const sandbox of sandboxes) {
 ```ts
 remove(sandbox: Sandbox, timeout: number): Promise<void>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L456)
 
 Removes a Sandbox.
 
@@ -327,8 +309,6 @@ await daytona.remove(sandbox);
 ```ts
 start(sandbox: Sandbox, timeout?: number): Promise<void>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L427)
 
 Starts a Sandbox and waits for it to be ready.
 
@@ -359,8 +339,6 @@ await daytona.start(sandbox, 60);
 stop(sandbox: Sandbox): Promise<void>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L441)
-
 Stops a Sandbox.
 
 ##### Parameters
@@ -383,8 +361,6 @@ await daytona.stop(sandbox);
 ***
 
 ## CreateSandboxParams
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L151)
 
 Parameters for creating a new Sandbox.
 
@@ -424,8 +400,6 @@ const sandbox = await daytona.create(params, 50);
 
 ## DaytonaConfig
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L77)
-
 Configuration options for initializing the Daytona client.
 
 ### Example
@@ -450,8 +424,6 @@ const daytona = new Daytona(config);
 ***
 
 ## SandboxResources
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Daytona.ts#L111)
 
 Resource allocation for a Sandbox.
 

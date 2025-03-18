@@ -45,8 +45,6 @@ await sandbox.git.push(
 
 ## Git
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L51)
-
 ### Constructors
 
 #### new Git()
@@ -57,8 +55,6 @@ new Git(
    toolboxApi: ToolboxApi, 
    instance: SandboxInstance): Git
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L52)
 
 ##### Parameters
 
@@ -79,8 +75,6 @@ new Git(
 ```ts
 add(path: string, files: string[]): Promise<void>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L76)
 
 Stages files for commit.
 
@@ -118,8 +112,6 @@ await git.add('/workspace/repo', ['.']);
 branches(path: string): Promise<ListBranchResponse>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L95)
-
 List branches in the repository.
 
 This method returns information about all branches in the repository.
@@ -156,8 +148,6 @@ clone(
    username?: string, 
 password?: string): Promise<void>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L140)
 
 Clones a Git repository.
 
@@ -222,8 +212,6 @@ commit(
 email: string): Promise<void>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L181)
-
 Commits staged changes.
 
 This method creates a new commit with the staged changes. Make sure to stage
@@ -265,8 +253,6 @@ pull(
    username?: string, 
 password?: string): Promise<void>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L253)
 
 Pulls changes from the remote repository.
 
@@ -312,8 +298,6 @@ push(
 password?: string): Promise<void>
 ```
 
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L218)
-
 Push local changes to the remote repository.
 
 This method pushes committed changes to the remote repository. If the remote
@@ -354,8 +338,6 @@ await git.push(
 ```ts
 status(path: string): Promise<GitStatus>
 ```
-
-[[view_source]](https://github.com/MDzaja/sdk/blob/af2b9e25ff21e6781db2e5c3cf86cec4171673f8/packages/typescript/src/Git.ts#L285)
 
 Gets the current status of the Git repository.
 
