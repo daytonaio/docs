@@ -20,14 +20,14 @@ Daytona SDK provides an option to clone Git repositories into Sandboxes using Py
 # Basic clone
 sandbox.git.clone(
     url="https://github.com/user/repo.git",
-    path="/sandbox/repo"
+    path="/workspace/repo"
 )
 
 # Clone with authentication
 
 sandbox.git.clone(
     url="<https://github.com/user/repo.git>",
-    path="/sandbox/repo",
+    path="/workspace/repo",
     username="git",
     password="personal_access_token"
 )
@@ -36,7 +36,7 @@ sandbox.git.clone(
 
 sandbox.git.clone(
     url="<https://github.com/user/repo.git>",
-    path="/sandbox/repo",
+    path="/workspace/repo",
     branch="develop"
 )
 
@@ -47,13 +47,13 @@ sandbox.git.clone(
 // Basic clone
 await sandbox.git.clone(
     "https://github.com/user/repo.git",
-    "/sandbox/repo"
+    "/workspace/repo"
 );
 
 // Clone with authentication
 await sandbox.git.clone(
     "https://github.com/user/repo.git",
-    "/sandbox/repo",
+    "/workspace/repo",
     undefined,
     undefined,
     "git",
@@ -63,7 +63,7 @@ await sandbox.git.clone(
 // Clone specific branch
 await sandbox.git.clone(
     "https://github.com/user/repo.git",
-    "/sandbox/repo",
+    "/workspace/repo",
     "develop"
 );
 ```
@@ -79,7 +79,7 @@ Daytona SDK provides an option to check the status of Git repositories in Sandbo
 <TabItem label="Python" icon="seti:python">
 ```python
 # Get repository status
-status = sandbox.git.status("/sandbox/repo")
+status = sandbox.git.status("/workspace/repo")
 print(f"Current branch: {status.current_branch}")
 print(f"Commits ahead: {status.ahead}")
 print(f"Commits behind: {status.behind}")
@@ -88,7 +88,7 @@ for file in status.file_status:
 
 # List branches
 
-response = sandbox.git.branches("/sandbox/repo")
+response = sandbox.git.branches("/workspace/repo")
 for branch in response.branches:
     print(f"Branch: {branch}")
 
@@ -97,7 +97,7 @@ for branch in response.branches:
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Get repository status
-const status = await sandbox.git.status("/sandbox/repo");
+const status = await sandbox.git.status("/workspace/repo");
 console.log(`Current branch: ${status.currentBranch}`);
 console.log(`Commits ahead: ${status.ahead}`);
 console.log(`Commits behind: ${status.behind}`);
@@ -106,7 +106,7 @@ status['FileStatus[]'].forEach(file => {
 });
 
 // List branches
-const response = await sandbox.git.branches("/sandbox/repo");
+const response = await sandbox.git.branches("/workspace/repo");
 response.branches.forEach(branch => {
     console.log(`Branch: ${branch}`);
 });
@@ -127,28 +127,28 @@ Daytona SDK provides an option to create, switch, and delete branches in Git rep
 <TabItem label="Python" icon="seti:python">
 ```python
 # Create new branch
-sandbox.git.create_branch("/sandbox/repo", "feature/new-feature")
+sandbox.git.create_branch("/workspace/repo", "feature/new-feature")
 
 # Switch branch
 
-sandbox.git.checkout("/sandbox/repo", "feature/new-feature")
+sandbox.git.checkout("/workspace/repo", "feature/new-feature")
 
 # Delete branch
 
-sandbox.git.delete_branch("/sandbox/repo", "feature/old-feature")
+sandbox.git.delete_branch("/workspace/repo", "feature/old-feature")
 
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Create new branch
-await sandbox.git.createBranch("/sandbox/repo", "feature/new-feature");
+await sandbox.git.createBranch("/workspace/repo", "feature/new-feature");
 
 // Switch branch
-await sandbox.git.checkout("/sandbox/repo", "feature/new-feature");
+await sandbox.git.checkout("/workspace/repo", "feature/new-feature");
 
 // Delete branch
-await sandbox.git.deleteBranch("/sandbox/repo", "feature/old-feature");
+await sandbox.git.deleteBranch("/workspace/repo", "feature/old-feature");
 ```
 
 </TabItem>
@@ -164,19 +164,19 @@ Daytona SDK provides an option to stage and commit changes in Git repositories. 
 <TabItem label="Python" icon="seti:python">
 ```python
 # Stage specific files
-sandbox.git.add("/sandbox/repo", ["file1.txt", "file2.txt"])
+sandbox.git.add("/workspace/repo", ["file1.txt", "file2.txt"])
 
 # Stage all changes
 
-sandbox.git.add("/sandbox/repo", ["."])
+sandbox.git.add("/workspace/repo", ["."])
 
 # Commit changes
 
-sandbox.git.commit("/sandbox/repo", "feat: add new feature")
+sandbox.git.commit("/workspace/repo", "feat: add new feature")
 
 # Get commit history
 
-commits = sandbox.git.log("/sandbox/repo")
+commits = sandbox.git.log("/workspace/repo")
 for commit in commits:
     print(f"Commit: {commit.hash}")
     print(f"Author: {commit.author}")
@@ -187,16 +187,16 @@ for commit in commits:
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Stage specific files
-await sandbox.git.add("/sandbox/repo", ["file1.txt", "file2.txt"]);
+await sandbox.git.add("/workspace/repo", ["file1.txt", "file2.txt"]);
 
 // Stage all changes
-await sandbox.git.add("/sandbox/repo", ["."]);
+await sandbox.git.add("/workspace/repo", ["."]);
 
 // Commit changes
-await sandbox.git.commit("/sandbox/repo", "feat: add new feature");
+await sandbox.git.commit("/workspace/repo", "feat: add new feature");
 
 // Get commit history
-const commits = await sandbox.git.log("/sandbox/repo");
+const commits = await sandbox.git.log("/workspace/repo");
 commits.forEach(commit => {
     console.log(`Commit: ${commit.hash}`);
     console.log(`Author: ${commit.author}`);
@@ -219,15 +219,15 @@ Daytona SDK provides an option to push, pull, and list remotes in Git repositori
 <TabItem label="Python" icon="seti:python">
 ```python
 # Push changes
-sandbox.git.push("/sandbox/repo")
+sandbox.git.push("/workspace/repo")
 
 # Pull changes
 
-sandbox.git.pull("/sandbox/repo")
+sandbox.git.pull("/workspace/repo")
 
 # List remotes
 
-remotes = sandbox.git.list_remotes("/sandbox/repo")
+remotes = sandbox.git.list_remotes("/workspace/repo")
 for remote in remotes:
     print(f"Remote: {remote.name} URL: {remote.url}")
 
@@ -236,16 +236,16 @@ for remote in remotes:
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Push changes
-await sandbox.git.push("/sandbox/repo");
+await sandbox.git.push("/workspace/repo");
 
 // Push to specific remote and branch
-await sandbox.git.push("/sandbox/repo", "origin", "feature/new-feature");
+await sandbox.git.push("/workspace/repo", "origin", "feature/new-feature");
 
 // Pull changes
-await sandbox.git.pull("/sandbox/repo");
+await sandbox.git.pull("/workspace/repo");
 
 // Pull from specific remote and branch
-await sandbox.git.pull("/sandbox/repo", "origin", "main");
+await sandbox.git.pull("/workspace/repo", "origin", "main");
 ```
 
 </TabItem>
