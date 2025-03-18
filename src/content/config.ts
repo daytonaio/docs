@@ -124,7 +124,7 @@ export const sidebarConfig: NavigationGroup[] = [
         label: 'Images',
         description: 'Learn how to create, manage, and remove custom Images.',
         attrs: {
-          icon: 'computer.svg',
+          icon: 'layers.svg',
         },
       },
     ],
