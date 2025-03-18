@@ -4,45 +4,49 @@ title: Sandbox
 
 The Daytona SDK core Sandbox functionality.
 
-Provides the main Workspace class representing a Daytona Sandbox that coordinates file system,
+Provides the main Sandbox class representing a Daytona Sandbox that coordinates file system,
 Git, process execution, and LSP functionality. It serves as the central point
-for interacting with Daytona Sandboxes.
+for interacting with Daytona sandboxes.
 
-**Example**:
+**Examples**:
 
-  Basic Sandbox operations:
+  Basic usage:
 
 ```python
-from daytona_sdk import Daytona
+# Create and initialize sandbox
 daytona = Daytona()
-workspace = daytona.create()
+sandbox = daytona.create()
 
 # File operations
-workspace.fs.upload_file("/workspace/test.txt", b"Hello, World!")
-content = workspace.fs.download_file("/workspace/test.txt")
+sandbox.fs.upload_file(
+    '/app/config.json',
+    b'{"setting": "value"}'
+)
+content = sandbox.fs.download_file('/app/config.json')
 
 # Git operations
-workspace.git.clone("https://github.com/user/repo.git")
+sandbox.git.clone('https://github.com/user/repo.git')
 
 # Process execution
-response = workspace.process.exec("ls -la")
+response = sandbox.process.execute_command('ls -la')
 print(response.result)
 
 # LSP functionality
-lsp = workspace.create_lsp_server("python", "/workspace/project")
-lsp.did_open("/workspace/project/src/index.ts")
-completions = lsp.completions("/workspace/project/src/index.ts", Position(line=10, character=15))
+lsp = sandbox.create_lsp_server('python', '/workspace/project')
+lsp.did_open('/workspace/project/src/main.py')
+completions = lsp.completions('/workspace/project/src/main.py', {
+    'line': 10,
+    'character': 15
+})
 print(completions)
 ```
-  
-**Notes**:
 
-  The Sandbox must be in a 'started' state before performing operations.
+<a id="daytona_sdk.sandbox.Sandbox"></a>
 
-## Workspace
+## Sandbox
 
 ```python
-class Workspace()
+class Sandbox()
 ```
 
 Represents a Daytona Sandbox.
@@ -54,81 +58,72 @@ a Daytona Sandbox.
 **Attributes**:
 
 - `id` _str_ - Unique identifier for the Sandbox.
-- `instance` _WorkspaceInstance_ - The underlying Sandbox instance.
-- `workspace_api` _WorkspaceApi_ - API client for Sandbox operations.
-- `toolbox_api` _ToolboxApi_ - API client for toolbox operations.
-- `code_toolbox` _WorkspaceCodeToolbox_ - Language-specific toolbox implementation.
+- `instance` _SandboxInstance_ - The underlying Sandbox instance.
+- `code_toolbox` _SandboxCodeToolbox_ - Language-specific toolbox implementation.
 - `fs` _FileSystem_ - File system operations interface.
 - `git` _Git_ - Git operations interface.
 - `process` _Process_ - Process execution interface.
 
-<a id="daytona_sdk.workspace.Workspace.__init__"></a>
-
-#### Workspace.\_\_init\_\_
+#### Sandbox.\_\_init\_\_
 
 ```python
-def __init__(id: str, instance: WorkspaceInstance, workspace_api: WorkspaceApi,
-             toolbox_api: ToolboxApi, code_toolbox: WorkspaceCodeToolbox)
+def __init__(id: str, instance: SandboxInstance, sandbox_api: SandboxApi,
+             toolbox_api: ToolboxApi, code_toolbox: SandboxCodeToolbox)
 ```
 
-Initialize a new Workspace instance.
+Initialize a new Sandbox instance.
 
 **Arguments**:
 
 - `id` _str_ - Unique identifier for the Sandbox.
-- `instance` _WorkspaceInstance_ - The underlying Sandbox instance.
-- `workspace_api` _WorkspaceApi_ - API client for Sandbox operations.
+- `instance` _SandboxInstance_ - The underlying Sandbox instance.
+- `sandbox_api` _SandboxApi_ - API client for Sandbox operations.
 - `toolbox_api` _ToolboxApi_ - API client for toolbox operations.
-- `code_toolbox` _WorkspaceCodeToolbox_ - Language-specific toolbox implementation.
+- `code_toolbox` _SandboxCodeToolbox_ - Language-specific toolbox implementation.
 
-<a id="daytona_sdk.workspace.Workspace.info"></a>
-
-#### Workspace.info
+#### Sandbox.info
 
 ```python
-def info() -> WorkspaceInfo
+def info() -> SandboxInfo
 ```
 
 Gets structured information about the Sandbox.
 
 **Returns**:
 
-- `WorkspaceInfo` - Detailed information about the Sandbox including its
+- `SandboxInfo` - Detailed information about the Sandbox including its
   configuration, resources, and current state.
   
 **Example**:
 
 ```python
-info = workspace.info()
-print(f"Workspace {info.name}:")
+info = sandbox.info()
+print(f"Sandbox {info.name}:")
 print(f"State: {info.state}")
 print(f"Resources: {info.resources.cpu} CPU, {info.resources.memory} RAM")
 ```
 
-<a id="daytona_sdk.workspace.Workspace.get_workspace_root_dir"></a>
-
-#### Workspace.get\_workspace\_root\_dir
+#### Sandbox.get\_user\_root\_dir
 
 ```python
-def get_workspace_root_dir() -> str
+@intercept_errors(message_prefix="Failed to get sandbox root directory: ")
+def get_user_root_dir() -> str
 ```
 
-Gets the root directory path of the Sandbox.
+Gets the root directory path for the logged in user inside the Sandbox.
 
 **Returns**:
 
-- `str` - The absolute path to the Sandbox root directory.
+- `str` - The absolute path to the Sandbox root directory for the logged in user.
   
 **Example**:
 
 ```python
-root_dir = workspace.get_workspace_root_dir()
-print(f"Workspace root: {root_dir}")
+root_dir = sandbox.get_user_root_dir()
+print(f"Sandbox root: {root_dir}")
 ```
 
-<a id="daytona_sdk.workspace.Workspace.create_lsp_server"></a>
-
-#### Workspace.create\_lsp\_server
+#### Sandbox.create\_lsp\_server
 
 ```python
 def create_lsp_server(language_id: LspLanguageId,
@@ -142,7 +137,7 @@ diagnostics, and more.
 
 **Arguments**:
 
-- `language_id` _LspLanguageId_ - The language server type (e.g., "python", "typescript").
+- `language_id` _LspLanguageId_ - The language server type (e.g., LspLanguageId.PYTHON).
 - `path_to_project` _str_ - Absolute path to the project root directory.
   
 **Returns**:
@@ -152,14 +147,13 @@ diagnostics, and more.
 **Example**:
 
 ```python
-lsp = workspace.create_lsp_server("python", "/workspace/project")
+lsp = sandbox.create_lsp_server("python", "/workspace/project")
 ```
 
-<a id="daytona_sdk.workspace.Workspace.set_labels"></a>
-
-#### Workspace.set\_labels
+#### Sandbox.set\_labels
 
 ```python
+@intercept_errors(message_prefix="Failed to set labels: ")
 def set_labels(labels: Dict[str, str]) -> Dict[str, str]
 ```
 
@@ -178,7 +172,7 @@ Labels are key-value pairs that can be used to organize and identify Sandboxes.
 **Example**:
 
 ```python
-new_labels = workspace.set_labels({
+new_labels = sandbox.set_labels({
     "project": "my-project",
     "environment": "development",
     "team": "backend"
@@ -186,12 +180,15 @@ new_labels = workspace.set_labels({
 print(f"Updated labels: {new_labels}")
 ```
 
-<a id="daytona_sdk.workspace.Workspace.start"></a>
-
-#### Workspace.start
+#### Sandbox.start
 
 ```python
-def start(timeout: Optional[float] = None)
+@intercept_errors(message_prefix="Failed to start sandbox: ")
+@with_timeout(
+    error_message=lambda self, timeout:
+    f"Sandbox {self.id} failed to start within the {timeout} seconds timeout period"
+)
+def start(timeout: Optional[float] = 60)
 ```
 
 Starts the Sandbox.
@@ -200,48 +197,59 @@ This method starts the Sandbox and waits for it to be ready.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout.
-  Defaults to 60-second timeout.
+- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 **Raises**:
 
-- `ValueError` - If timeout is negative.
-- `Exception` - If Sandbox fails to start or times out.
+- `DaytonaError` - If timeout is negative. If sandbox fails to start or times out.
   
 **Example**:
 
 ```python
-workspace = daytona.get_current_workspace("my-workspace")
-workspace.start(timeout=40)  # Wait up to 40 seconds
-print("Workspace started successfully")
+sandbox = daytona.get_current_sandbox("my-sandbox")
+sandbox.start(timeout=40)  # Wait up to 40 seconds
+print("Sandbox started successfully")
 ```
 
-<a id="daytona_sdk.workspace.Workspace.stop"></a>
-
-#### Workspace.stop
+#### Sandbox.stop
 
 ```python
-def stop()
+@intercept_errors(message_prefix="Failed to stop sandbox: ")
+@with_timeout(
+    error_message=lambda self, timeout:
+    f"Sandbox {self.id} failed to stop within the {timeout} seconds timeout period"
+)
+def stop(timeout: Optional[float] = 60)
 ```
 
 Stops the Sandbox.
 
 This method stops the Sandbox and waits for it to be fully stopped.
 
+**Arguments**:
+
+- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
+**Raises**:
+
+- `DaytonaError` - If timeout is negative; If sandbox fails to stop or times out
+  
 **Example**:
 
 ```python
-workspace = daytona.get_current_workspace("my-workspace")
-workspace.stop()
-print("Workspace stopped successfully")
+sandbox = daytona.get_current_sandbox("my-sandbox")
+sandbox.stop()
+print("Sandbox stopped successfully")
 ```
 
-<a id="daytona_sdk.workspace.Workspace.wait_for_workspace_start"></a>
-
-#### Workspace.wait\_for\_workspace\_start
+#### Sandbox.wait\_for\_workspace\_start
 
 ```python
-def wait_for_workspace_start(timeout: float = 60) -> None
+@deprecated(
+    reason=
+    "Method is deprecated. Use `wait_for_sandbox_start` instead. This method will be removed in a future version."
+)
+def wait_for_workspace_start(timeout: Optional[float] = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'started' state.
@@ -251,20 +259,45 @@ or encounters an error.
 
 **Arguments**:
 
-- `timeout` _float_ - Maximum time to wait in seconds. 0 means no timeout.
-  Defaults to 60 seconds.
+- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 **Raises**:
 
-- `ValueError` - If timeout is negative.
-- `Exception` - If Sandbox fails to start or times out.
+- `DaytonaError` - If timeout is negative; If Sandbox fails to start or times out
 
-<a id="daytona_sdk.workspace.Workspace.wait_for_workspace_stop"></a>
-
-#### Workspace.wait\_for\_workspace\_stop
+#### Sandbox.wait\_for\_sandbox\_start
 
 ```python
-def wait_for_workspace_stop() -> None
+@intercept_errors(
+    message_prefix="Failure during waiting for sandbox to start: ")
+@with_timeout(
+    error_message=lambda self, timeout:
+    f"Sandbox {self.id} failed to become ready within the {timeout} seconds timeout period"
+)
+def wait_for_sandbox_start(timeout: Optional[float] = 60) -> None
+```
+
+Waits for the Sandbox to reach the 'started' state.
+
+This method polls the Sandbox status until it reaches the 'started' state
+or encounters an error.
+
+**Arguments**:
+
+- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
+**Raises**:
+
+- `DaytonaError` - If timeout is negative; If Sandbox fails to start or times out
+
+#### Sandbox.wait\_for\_workspace\_stop
+
+```python
+@deprecated(
+    reason=
+    "Method is deprecated. Use `wait_for_sandbox_stop` instead. This method will be removed in a future version."
+)
+def wait_for_workspace_stop(timeout: Optional[float] = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'stopped' state.
@@ -272,15 +305,43 @@ Waits for the Sandbox to reach the 'stopped' state.
 This method polls the Sandbox status until it reaches the 'stopped' state
 or encounters an error. It will wait up to 60 seconds for the Sandbox to stop.
 
+**Arguments**:
+
+- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
 **Raises**:
 
-- `Exception` - If Sandbox fails to stop or times out.
+- `DaytonaError` - If timeout is negative. If Sandbox fails to stop or times out.
 
-<a id="daytona_sdk.workspace.Workspace.set_autostop_interval"></a>
-
-#### Workspace.set\_autostop\_interval
+#### Sandbox.wait\_for\_sandbox\_stop
 
 ```python
+@intercept_errors(
+    message_prefix="Failure during waiting for sandbox to stop: ")
+@with_timeout(
+    error_message=lambda self, timeout:
+    f"Sandbox {self.id} failed to become stopped within the {timeout} seconds timeout period"
+)
+def wait_for_sandbox_stop(timeout: Optional[float] = 60) -> None
+```
+
+Waits for the Sandbox to reach the 'stopped' state.
+
+This method polls the Sandbox status until it reaches the 'stopped' state
+or encounters an error. It will wait up to 60 seconds for the Sandbox to stop.
+
+**Arguments**:
+
+- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
+**Raises**:
+
+- `DaytonaError` - If timeout is negative. If Sandbox fails to stop or times out.
+
+#### Sandbox.set\_autostop\_interval
+
+```python
+@intercept_errors(message_prefix="Failed to set auto-stop interval: ")
 def set_autostop_interval(interval: int) -> None
 ```
 
@@ -295,37 +356,120 @@ Interactions using Sandbox Previews are not included.
 - `interval` _int_ - Number of minutes of inactivity before auto-stopping.
   Set to 0 to disable auto-stop. Defaults to 15.
   
+**Raises**:
+
+- `DaytonaError` - If interval is negative
+  
 **Example**:
 
 ```python
 # Auto-stop after 1 hour
-workspace.set_autostop_interval(60)
+sandbox.set_autostop_interval(60)
 # Or disable auto-stop
-workspace.set_autostop_interval(0)
+sandbox.set_autostop_interval(0)
 ```
 
-<a id="daytona_sdk.workspace.WorkspaceResources"></a>
+#### Sandbox.get\_preview\_link
 
-## WorkspaceResources
+```python
+@intercept_errors(message_prefix="Failed to get preview link: ")
+def get_preview_link(port: int) -> str
+```
+
+Gets the preview link for the sandbox at a specific port. If the port is not open, it will open it and return the link.
+
+**Arguments**:
+
+- `port` _int_ - The port to open the preview link on
+  
+**Returns**:
+
+  The preview link for the sandbox at the specified port
+
+#### Sandbox.archive
+
+```python
+@intercept_errors(message_prefix="Failed to archive sandbox: ")
+def archive() -> None
+```
+
+Archives the sandbox, making it inactive and preserving its state. When sandboxes are archived, the entire filesystem
+state is moved to cost-effective object storage, making it possible to keep sandboxes available for an extended period.
+The tradeoff between archived and stopped states is that starting an archived sandbox takes more time, depending on its size.
+Sandbox must be stopped before archiving.
+
+The Daytona SDK core Sandbox functionality.
+
+Provides the main Sandbox class representing a Daytona Sandbox that coordinates file system,
+Git, process execution, and LSP functionality. It serves as the central point
+for interacting with Daytona sandboxes.
+
+**Examples**:
+
+  Basic usage:
+
+```python
+# Create and initialize sandbox
+daytona = Daytona()
+sandbox = daytona.create()
+
+# File operations
+sandbox.fs.upload_file(
+    '/app/config.json',
+    b'{"setting": "value"}'
+)
+content = sandbox.fs.download_file('/app/config.json')
+
+# Git operations
+sandbox.git.clone('https://github.com/user/repo.git')
+
+# Process execution
+response = sandbox.process.execute_command('ls -la')
+print(response.result)
+
+# LSP functionality
+lsp = sandbox.create_lsp_server('python', '/workspace/project')
+lsp.did_open('/workspace/project/src/main.py')
+completions = lsp.completions('/workspace/project/src/main.py', {
+    'line': 10,
+    'character': 15
+})
+print(completions)
+```
+
+<a id="daytona_sdk.sandbox.SandboxTargetRegion"></a>
+
+## SandboxTargetRegion
 
 ```python
 @dataclass
-class WorkspaceResources()
+class SandboxTargetRegion(Enum)
+```
+
+Target regions for Sandboxes
+
+<a id="daytona_sdk.sandbox.SandboxResources"></a>
+
+## SandboxResources
+
+```python
+@dataclass
+class SandboxResources()
 ```
 
 Resources allocated to a Sandbox.
 
 **Attributes**:
 
-- `cpu` _str_ - Number of CPU cores allocated (e.g., "1", "2").
-- `gpu` _Optional[str]_ - Number of GPUs allocated (e.g., "1") or None if no GPU.
+- `cpu` _str_ - Nu, "1", "2").
+- `gpu` _Optional[str]_ - Number of GPUs allocated mber of CPU cores allocated (e.g.(e.g., "1") or None if no GPU.
 - `memory` _str_ - Amount of memory allocated with unit (e.g., "2Gi", "4Gi").
 - `disk` _str_ - Amount of disk space allocated with unit (e.g., "10Gi", "20Gi").
   
 **Example**:
 
 ```python
-resources = WorkspaceResources(
+resources = SandboxResources(
     cpu="2",
     gpu="1",
     memory="4Gi",
@@ -333,13 +477,12 @@ resources = WorkspaceResources(
 )
 ```
 
-<a id="daytona_sdk.workspace.WorkspaceInfo"></a>
+<a id="daytona_sdk.sandbox.SandboxInfo"></a>
 
-## WorkspaceInfo
+## SandboxInfo
 
 ```python
-@dataclass
-class WorkspaceInfo()
+class SandboxInfo(ApiSandboxInfo)
 ```
 
 Structured information about a Sandbox.
@@ -357,7 +500,7 @@ resources, and current state.
 - `labels` _Dict[str, str]_ - Custom labels attached to the Sandbox.
 - `public` _bool_ - Whether the Sandbox is publicly accessible.
 - `target` _str_ - Target environment where the Sandbox runs.
-- `resources` _WorkspaceResources_ - Resource allocations for the Sandbox.
+- `resources` _SandboxResources_ - Resource allocations for the Sandbox.
 - `state` _str_ - Current state of the Sandbox (e.g., "started", "stopped").
 - `error_reason` _Optional[str]_ - Error message if Sandbox is in error state.
 - `snapshot_state` _Optional[str]_ - Current state of Sandbox snapshot.
@@ -366,10 +509,18 @@ resources, and current state.
 **Example**:
 
 ```python
-workspace = daytona.create()
-info = workspace.info()
-print(f"Workspace {info.name} is {info.state}")
+sandbox = daytona.create()
+info = sandbox.info()
+print(f"Sandbox {info.name} is {info.state}")
 print(f"Resources: {info.resources.cpu} CPU, {info.resources.memory} RAM")
 ```
 
-<a id="daytona_sdk.workspace.Workspace"></a>
+<a id="daytona_sdk.sandbox.SandboxInstance"></a>
+
+## SandboxInstance
+
+```python
+class SandboxInstance(ApiSandbox)
+```
+
+Represents a Daytona Sandbox instance.

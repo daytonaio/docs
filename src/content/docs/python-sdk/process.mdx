@@ -2,45 +2,6 @@
 title: Process and Code Execution
 ---
 
-The Daytona SDK provides powerful process and code execution capabilities through
-the `process` module in Sandboxes. This guide covers all available process operations
-and best practices.
-
-**Example**:
-
-  Basic command execution:
-
-```python
-workspace = daytona.create()
-
-# Execute a shell command
-response = workspace.process.exec("ls -la")
-print(response.result)
-
-# Run Python code
-response = workspace.process.code_run("print('Hello, World!')")
-print(response.result)
-```
-  
-  Using interactive sessions:
-
-```python
-# Create a new session
-session_id = "my-session"
-workspace.process.create_session(session_id)
-
-# Execute commands in the session
-req = SessionExecuteRequest(command="cd /workspace", var_async=False)
-workspace.process.execute_session_command(session_id, req)
-
-req = SessionExecuteRequest(command="pwd", var_async=False)
-response = workspace.process.execute_session_command(session_id, req)
-print(response.result)  # Should print "/workspace"
-
-# Clean up
-workspace.process.delete_session(session_id)
-```
-
 <a id="daytona_sdk.process.Process"></a>
 
 ## Process
@@ -56,32 +17,29 @@ the Sandbox environment.
 
 **Attributes**:
 
-- `code_toolbox` _WorkspacePythonCodeToolbox_ - Language-specific code execution toolbox.
+- `code_toolbox` _SandboxPythonCodeToolbox_ - Language-specific code execution toolbox.
 - `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
-- `instance` _WorkspaceInstance_ - The Sandbox instance this process belongs to.
-
-<a id="daytona_sdk.process.Process.__init__"></a>
+- `instance` _SandboxInstance_ - The Sandbox instance this process belongs to.
 
 #### Process.\_\_init\_\_
 
 ```python
-def __init__(code_toolbox: WorkspacePythonCodeToolbox, toolbox_api: ToolboxApi,
-             instance: WorkspaceInstance)
+def __init__(code_toolbox: SandboxPythonCodeToolbox, toolbox_api: ToolboxApi,
+             instance: SandboxInstance)
 ```
 
 Initialize a new Process instance.
 
 **Arguments**:
 
-- `code_toolbox` _WorkspacePythonCodeToolbox_ - Language-specific code execution toolbox.
+- `code_toolbox` _SandboxPythonCodeToolbox_ - Language-specific code execution toolbox.
 - `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
-- `instance` _WorkspaceInstance_ - The Sandbox instance this process belongs to.
-
-<a id="daytona_sdk.process.Process.exec"></a>
+- `instance` _SandboxInstance_ - The Sandbox instance this process belongs to.
 
 #### Process.exec
 
 ```python
+@intercept_errors(message_prefix="Failed to execute command: ")
 def exec(command: str,
          cwd: Optional[str] = None,
          timeout: Optional[int] = None) -> ExecuteResponse
@@ -107,22 +65,22 @@ Execute a shell command in the Sandbox.
 
 ```python
 # Simple command
-response = workspace.process.exec("echo 'Hello'")
+response = sandbox.process.exec("echo 'Hello'")
 print(response.result)  # Prints: Hello
 
 # Command with working directory
-result = workspace.process.exec("ls", cwd="/workspace/src")
+result = sandbox.process.exec("ls", cwd="/workspace/src")
 
 # Command with timeout
-result = workspace.process.exec("sleep 10", timeout=5)
+result = sandbox.process.exec("sleep 10", timeout=5)
 ```
-
-<a id="daytona_sdk.process.Process.code_run"></a>
 
 #### Process.code\_run
 
 ```python
-def code_run(code: str) -> ExecuteResponse
+def code_run(code: str,
+             params: Optional[CodeRunParams] = None,
+             timeout: Optional[int] = None) -> ExecuteResponse
 ```
 
 Executes code in the Sandbox using the appropriate language runtime.
@@ -130,10 +88,13 @@ Executes code in the Sandbox using the appropriate language runtime.
 **Arguments**:
 
 - `code` _str_ - Code to execute.
+- `params` _Optional[CodeRunParams]_ - Parameters for code execution.
+- `timeout` _Optional[int]_ - Maximum time in seconds to wait for the code
+  to complete. 0 means wait indefinitely.
   
 **Returns**:
 
-- `ExecuteResponse` - Code execution results containing:
+- `ExecuteResponse` - Code execution result containing:
   - exit_code: The execution's exit status
   - result: Standard output from the code
   
@@ -141,7 +102,7 @@ Executes code in the Sandbox using the appropriate language runtime.
 
 ```python
 # Run Python code
-response = workspace.process.code_run('''
+response = sandbox.process.code_run('''
     x = 10
     y = 20
     print(f"Sum: {x + y}")
@@ -149,11 +110,10 @@ response = workspace.process.code_run('''
 print(response.result)  # Prints: Sum: 30
 ```
 
-<a id="daytona_sdk.process.Process.create_session"></a>
-
 #### Process.create\_session
 
 ```python
+@intercept_errors(message_prefix="Failed to create session: ")
 def create_session(session_id: str) -> None
 ```
 
@@ -172,17 +132,16 @@ long-running commands and monitor process status.
 ```python
 # Create a new session
 session_id = "my-session"
-workspace.process.create_session(session_id)
-session = workspace.process.get_session(session_id)
+sandbox.process.create_session(session_id)
+session = sandbox.process.get_session(session_id)
 # Do work...
-workspace.process.delete_session(session_id)
+sandbox.process.delete_session(session_id)
 ```
-
-<a id="daytona_sdk.process.Process.get_session"></a>
 
 #### Process.get\_session
 
 ```python
+@intercept_errors(message_prefix="Failed to get session: ")
 def get_session(session_id: str) -> Session
 ```
 
@@ -201,16 +160,15 @@ Get a session in the Sandbox.
 **Example**:
 
 ```python
-session = workspace.process.get_session("my-session")
+session = sandbox.process.get_session("my-session")
 for cmd in session.commands:
     print(f"Command: {cmd.command}")
 ```
 
-<a id="daytona_sdk.process.Process.get_session_command"></a>
-
 #### Process.get\_session\_command
 
 ```python
+@intercept_errors(message_prefix="Failed to get session command: ")
 def get_session_command(session_id: str, command_id: str) -> Command
 ```
 
@@ -231,18 +189,19 @@ Get information about a specific command executed in a session.
 **Example**:
 
 ```python
-cmd = workspace.process.get_session_command("my-session", "cmd-123")
+cmd = sandbox.process.get_session_command("my-session", "cmd-123")
 if cmd.exit_code == 0:
     print(f"Command {cmd.command} completed successfully")
 ```
 
-<a id="daytona_sdk.process.Process.execute_session_command"></a>
-
 #### Process.execute\_session\_command
 
 ```python
+@intercept_errors(message_prefix="Failed to execute session command: ")
 def execute_session_command(
-        session_id: str, req: SessionExecuteRequest) -> SessionExecuteResponse
+        session_id: str,
+        req: SessionExecuteRequest,
+        timeout: Optional[int] = None) -> SessionExecuteResponse
 ```
 
 Executes a command in the session.
@@ -269,23 +228,22 @@ session_id = "my-session"
 
 # Change directory
 req = SessionExecuteRequest(command="cd /workspace")
-workspace.process.execute_session_command(session_id, req)
+sandbox.process.execute_session_command(session_id, req)
 
 # Create a file
 req = SessionExecuteRequest(command="echo 'Hello' > test.txt")
-workspace.process.execute_session_command(session_id, req)
+sandbox.process.execute_session_command(session_id, req)
 
 # Read the file
 req = SessionExecuteRequest(command="cat test.txt")
-result = workspace.process.execute_session_command(session_id, req)
+result = sandbox.process.execute_session_command(session_id, req)
 print(result.output)  # Prints: Hello
 ```
-
-<a id="daytona_sdk.process.Process.get_session_command_logs"></a>
 
 #### Process.get\_session\_command\_logs
 
 ```python
+@intercept_errors(message_prefix="Failed to get session command logs: ")
 def get_session_command_logs(session_id: str, command_id: str) -> str
 ```
 
@@ -312,23 +270,22 @@ req = SessionExecuteRequest(
     command="sleep 5; echo 'Done'",
     var_async=True
 )
-response = workspace.process.execute_session_command("my-session", req)
+response = sandbox.process.execute_session_command("my-session", req)
 
 # Wait a bit, then get the logs
 import time
 time.sleep(6)
-logs = workspace.process.get_session_command_logs(
+logs = sandbox.process.get_session_command_logs(
     "my-session",
     response.command_id
 )
 print(logs)  # Prints: Done
 ```
 
-<a id="daytona_sdk.process.Process.list_sessions"></a>
-
 #### Process.list\_sessions
 
 ```python
+@intercept_errors(message_prefix="Failed to list sessions: ")
 def list_sessions() -> List[Session]
 ```
 
@@ -341,17 +298,16 @@ List all sessions in the Sandbox.
 **Example**:
 
 ```python
-sessions = workspace.process.list_sessions()
+sessions = sandbox.process.list_sessions()
 for session in sessions:
     print(f"Session {session.session_id}:")
     print(f"  Commands: {len(session.commands)}")
 ```
 
-<a id="daytona_sdk.process.Process.delete_session"></a>
-
 #### Process.delete\_session
 
 ```python
+@intercept_errors(message_prefix="Failed to delete session: ")
 def delete_session(session_id: str) -> None
 ```
 
@@ -368,9 +324,59 @@ associated with it.
 
 ```python
 # Create and use a session
-workspace.process.create_session("temp-session")
+sandbox.process.create_session("temp-session")
 # ... use the session ...
 
 # Clean up when done
-workspace.process.delete_session("temp-session")
+sandbox.process.delete_session("temp-session")
+```
+
+<a id="daytona_sdk.common.code_run_params.CodeRunParams"></a>
+
+## CodeRunParams
+
+```python
+@dataclass
+class CodeRunParams()
+```
+
+Parameters for code execution.
+
+The Daytona SDK provides powerful process and code execution capabilities through
+the `process` module in Sandboxes. This guide covers all available process operations
+and best practices.
+
+**Example**:
+
+  Basic command execution:
+
+```python
+sandbox = daytona.create()
+
+# Execute a shell command
+response = sandbox.process.exec("ls -la")
+print(response.result)
+
+# Run Python code
+response = sandbox.process.code_run("print('Hello, World!')")
+print(response.result)
+```
+  
+  Using interactive sessions:
+
+```python
+# Create a new session
+session_id = "my-session"
+sandbox.process.create_session(session_id)
+
+# Execute commands in the session
+req = SessionExecuteRequest(command="cd /workspace", var_async=False)
+sandbox.process.execute_session_command(session_id, req)
+
+req = SessionExecuteRequest(command="pwd", var_async=False)
+response = sandbox.process.execute_session_command(session_id, req)
+print(response.result)  # Should print "/workspace"
+
+# Clean up
+sandbox.process.delete_session(session_id)
 ```

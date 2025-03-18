@@ -11,18 +11,18 @@ This guide covers how to create, manage, and remove Sandboxes using the SDK.
 // Initialize using environment variables (DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET)
 const daytona = new Daytona();
 
-// Create and use a workspace
-const workspace = await daytona.create({
+// Create and use a sandbox
+const sandbox = await daytona.create({
     language: 'typescript',
     envVars: { NODE_ENV: 'development' }
 });
 
-// Execute commands in the workspace
-const response = await workspace.process.executeCommand('echo "Hello, World!"');
+// Execute commands in the sandbox
+const response = await sandbox.process.executeCommand('echo "Hello, World!"');
 console.log(response.result);
 
-// Execute code in the workspace
-const response = await workspace.process.codeRun('console.log("Hello, World!")');
+// Execute code in the sandbox
+const response = await sandbox.process.codeRun('console.log("Hello, World!")');
 console.log(response.result);
 ```
 
@@ -34,8 +34,8 @@ const daytona = new Daytona({
     target: 'us'
 });
 
-// Create a custom workspace
-const workspace = await daytona.create({
+// Create a custom sandbox
+const sandbox = await daytona.create({
     language: 'typescript',
     image: 'node:18',
     resources: {
@@ -45,10 +45,24 @@ const workspace = await daytona.create({
     autoStopInterval: 60 // Auto-stop after 1 hour of inactivity
 });
 
-// Use workspace features
-await workspace.git.clone('https://github.com/user/repo.git');
-await workspace.process.executeCommand('npm test');
+// Use sandbox features
+await sandbox.git.clone('https://github.com/user/repo.git');
+await sandbox.process.executeCommand('npm test');
 ```
+
+## CodeLanguage
+
+Supported programming languages for code execution
+
+### Enumeration Members
+
+| Enumeration Member | Value |
+| ------ | ------ |
+| `JAVASCRIPT` | `"javascript"` |
+| `PYTHON` | `"python"` |
+| `TYPESCRIPT` | `"typescript"` |
+
+***
 
 ## Daytona
 
@@ -63,7 +77,7 @@ Can be initialized either with explicit configuration or using environment varia
 // Using environment variables
 // Uses DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET
 const daytona = new Daytona();
-const workspace = await daytona.create();
+const sandbox = await daytona.create();
 ```
 
 ```ts
@@ -100,14 +114,14 @@ Creates a new Daytona client instance.
 
 ##### Throws
 
-- `Error` - When API key or server URL is missing
+- `DaytonaError` - When API key or server URL is missing
 
 ### Methods
 
 #### create()
 
 ```ts
-create(params?: CreateWorkspaceParams): Promise<Workspace>
+create(params?: CreateSandboxParams, timeout?: number): Promise<Sandbox>
 ```
 
 Creates Sandboxes with default or custom configurations. You can specify various parameters,
@@ -115,26 +129,27 @@ including language, image, resources, environment variables, and volumes for the
 
 ##### Parameters
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `params?` | `CreateWorkspaceParams` | Parameters for Sandbox creation |
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `params?` | `CreateSandboxParams` | `undefined` | Parameters for Sandbox creation |
+| `timeout?` | `number` | `60` | Timeout in seconds (0 means no timeout, default is 60) |
 
 ##### Returns
 
-`Promise<Workspace>`
+`Promise<Sandbox>`
 
 The created Sandbox instance
 
 ##### Examples
 
 ```ts
-// Create a default workspace
-const workspace = await daytona.create();
+// Create a default sandbox
+const sandbox = await daytona.create();
 ```
 
 ```ts
-// Create a custom workspace
-const params: CreateWorkspaceParams = {
+// Create a custom sandbox
+const params: CreateSandboxParams = {
     language: 'typescript',
     image: 'node:18',
     envVars: { 
@@ -145,10 +160,9 @@ const params: CreateWorkspaceParams = {
         cpu: 2,
         memory: 4 // 4GB RAM
     },
-    timeout: 300,
     autoStopInterval: 60
 };
-const workspace = await daytona.create(params);
+const sandbox = await daytona.create(params, 40);
 ```
 
 ***
@@ -156,7 +170,7 @@ const workspace = await daytona.create(params);
 #### get()
 
 ```ts
-get(workspaceId: string): Promise<Workspace>
+get(sandboxId: string): Promise<Sandbox>
 ```
 
 Gets a Sandbox by its ID.
@@ -165,27 +179,56 @@ Gets a Sandbox by its ID.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workspaceId` | `string` | The ID of the Sandbox to retrieve |
+| `sandboxId` | `string` | The ID of the Sandbox to retrieve |
 
 ##### Returns
 
-`Promise<Workspace>`
+`Promise<Sandbox>`
 
 The Sandbox
 
 ##### Example
 
 ```ts
-const workspace = await daytona.get('my-workspace-id');
-console.log(`Workspace state: ${workspace.instance.state}`);
+const sandbox = await daytona.get('my-sandbox-id');
+console.log(`Sandbox state: ${sandbox.instance.state}`);
 ```
 
 ***
 
-#### getCurrentWorkspace()
+#### getCurrentSandbox()
 
 ```ts
-getCurrentWorkspace(workspaceId: string): Promise<Workspace>
+getCurrentSandbox(sandboxId: string): Promise<Sandbox>
+```
+
+Gets the Sandbox by ID.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sandboxId` | `string` | The ID of the Sandbox to retrieve |
+
+##### Returns
+
+`Promise<Sandbox>`
+
+The Sandbox
+
+##### Example
+
+```ts
+const sandbox = await daytona.getCurrentSandbox('my-sandbox-id');
+console.log(`Current sandbox state: ${sandbox.instance.state}`);
+```
+
+***
+
+#### ~~getCurrentWorkspace()~~
+
+```ts
+getCurrentWorkspace(workspaceId: string): Promise<Sandbox>
 ```
 
 Gets the Sandbox by ID.
@@ -198,39 +241,36 @@ Gets the Sandbox by ID.
 
 ##### Returns
 
-`Promise<Workspace>`
+`Promise<Sandbox>`
 
 The Sandbox
 
-##### Example
+##### Deprecated
 
-```ts
-const workspace = await daytona.getCurrentWorkspace('my-workspace-id');
-console.log(`Current workspace state: ${workspace.instance.state}`);
-```
+Use `getCurrentSandbox` instead. This method will be removed in a future version.
 
 ***
 
 #### list()
 
 ```ts
-list(): Promise<Workspace[]>
+list(): Promise<Sandbox[]>
 ```
 
 Lists all Sandboxes.
 
 ##### Returns
 
-`Promise<Workspace[]>`
+`Promise<Sandbox[]>`
 
 Array of Sandboxes
 
 ##### Example
 
 ```ts
-const workspaces = await daytona.list();
-for (const workspace of workspaces) {
-    console.log(`${workspace.id}: ${workspace.instance.state}`);
+const sandboxes = await daytona.list();
+for (const sandbox of sandboxes) {
+    console.log(`${sandbox.id}: ${sandbox.instance.state}`);
 }
 ```
 
@@ -239,16 +279,17 @@ for (const workspace of workspaces) {
 #### remove()
 
 ```ts
-remove(workspace: Workspace): Promise<void>
+remove(sandbox: Sandbox, timeout: number): Promise<void>
 ```
 
 Removes a Sandbox.
 
 ##### Parameters
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `workspace` | `Workspace` | The Sandbox to remove |
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `sandbox` | `Sandbox` | `undefined` | The Sandbox to remove |
+| `timeout` | `number` | `60` | Timeout in seconds (0 means no timeout, default is 60) |
 
 ##### Returns
 
@@ -257,8 +298,8 @@ Removes a Sandbox.
 ##### Example
 
 ```ts
-const workspace = await daytona.get('my-workspace-id');
-await daytona.remove(workspace);
+const sandbox = await daytona.get('my-sandbox-id');
+await daytona.remove(sandbox);
 ```
 
 ***
@@ -266,7 +307,7 @@ await daytona.remove(workspace);
 #### start()
 
 ```ts
-start(workspace: Workspace, timeout?: number): Promise<void>
+start(sandbox: Sandbox, timeout?: number): Promise<void>
 ```
 
 Starts a Sandbox and waits for it to be ready.
@@ -275,7 +316,7 @@ Starts a Sandbox and waits for it to be ready.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workspace` | `Workspace` | The Sandbox to start |
+| `sandbox` | `Sandbox` | The Sandbox to start |
 | `timeout?` | `number` | Optional timeout in seconds (0 means no timeout) |
 
 ##### Returns
@@ -285,9 +326,9 @@ Starts a Sandbox and waits for it to be ready.
 ##### Example
 
 ```ts
-const workspace = await daytona.get('my-workspace-id');
-// Wait up to 60 seconds for the workspace to start
-await daytona.start(workspace, 60);
+const sandbox = await daytona.get('my-sandbox-id');
+// Wait up to 60 seconds for the sandbox to start
+await daytona.start(sandbox, 60);
 ```
 
 ***
@@ -295,7 +336,7 @@ await daytona.start(workspace, 60);
 #### stop()
 
 ```ts
-stop(workspace: Workspace): Promise<void>
+stop(sandbox: Sandbox): Promise<void>
 ```
 
 Stops a Sandbox.
@@ -304,7 +345,7 @@ Stops a Sandbox.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workspace` | `Workspace` | The Sandbox to stop |
+| `sandbox` | `Sandbox` | The Sandbox to stop |
 
 ##### Returns
 
@@ -313,30 +354,29 @@ Stops a Sandbox.
 ##### Example
 
 ```ts
-const workspace = await daytona.get('my-workspace-id');
-await daytona.stop(workspace);
+const sandbox = await daytona.get('my-sandbox-id');
+await daytona.stop(sandbox);
 ```
 
 ***
 
-## CreateWorkspaceParams
+## CreateSandboxParams
 
 Parameters for creating a new Sandbox.
 
 ### Example
 
 ```ts
-const params: CreateWorkspaceParams = {
+const params: CreateSandboxParams = {
     language: 'typescript',
     envVars: { NODE_ENV: 'development' },
     resources: {
         cpu: 2,
         memory: 4 // 4GB RAM
     },
-    timeout: 300,
     autoStopInterval: 60  // Auto-stop after 1 hour of inactivity
 };
-const workspace = await daytona.create(params);
+const sandbox = await daytona.create(params, 50);
 ```
 
 ### Properties
@@ -349,9 +389,9 @@ const workspace = await daytona.create(params);
 | `id?` | `string` | Optional Sandbox ID. If not provided, a random ID will be generated |
 | `image?` | `string` | Optional Docker image to use for the Sandbox |
 | `labels?` | `Record<string, string>` | Sandbox labels |
-| `language?` | `CodeLanguage` | Programming language for direct code execution |
+| `language?` | `string` | Programming language for direct code execution |
 | `public?` | `boolean` | Is the Sandbox port preview public |
-| `resources?` | `WorkspaceResources` | Resource allocation for the Sandbox |
+| `resources?` | `SandboxResources` | Resource allocation for the Sandbox |
 | `target?` | `string` | Target location for the Sandbox |
 | `timeout?` | `number` | Timeout in seconds for the Sandbox to be ready (0 means no timeout) |
 | `user?` | `string` | Optional os user to use for the Sandbox |
@@ -378,19 +418,19 @@ const daytona = new Daytona(config);
 | Property | Type | Description |
 | ------ | ------ | ------ |
 | `apiKey` | `string` | API key for authentication with Daytona server |
-| `serverUrl` | `string` | URL of the Daytona server |
-| `target` | `CreateWorkspaceTargetEnum` | Target location for Sandboxes |
+| `serverUrl?` | `string` | URL of the Daytona server |
+| `target?` | `CreateWorkspaceTargetEnum` | Target location for Sandboxes |
 
 ***
 
-## WorkspaceResources
+## SandboxResources
 
 Resource allocation for a Sandbox.
 
 ### Example
 
 ```ts
-const resources: WorkspaceResources = {
+const resources: SandboxResources = {
     cpu: 2,
     memory: 4,  // 4GB RAM
     disk: 20    // 20GB disk
@@ -405,13 +445,3 @@ const resources: WorkspaceResources = {
 | `disk?` | `number` | Disk space allocation for the Sandbox in GB |
 | `gpu?` | `number` | GPU allocation for the Sandbox in units |
 | `memory?` | `number` | Memory allocation for the Sandbox in GB |
-
-***
-
-## CodeLanguage
-
-```ts
-type CodeLanguage = "python" | "javascript" | "typescript";
-```
-
-Supported programming languages for code execution.

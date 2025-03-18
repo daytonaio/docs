@@ -240,6 +240,14 @@ export const sidebarConfig: NavigationGroup[] = [
           icon: 'rectangle.svg',
         },
       },
+      {
+        type: 'link',
+        href: '/docs/typescript-sdk/errors',
+        label: 'Errors',
+        attrs: {
+          icon: 'circle-error.svg',
+        },
+      },
     ],
   },
   {
@@ -294,6 +302,14 @@ export const sidebarConfig: NavigationGroup[] = [
         label: 'Sandbox',
         attrs: {
           icon: 'rectangle.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/python-sdk/errors',
+        label: 'Errors',
+        attrs: {
+          icon: 'circle-error.svg',
         },
       },
     ],

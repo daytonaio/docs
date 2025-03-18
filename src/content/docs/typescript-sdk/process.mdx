@@ -10,11 +10,11 @@ and best practices.
 
 ```ts
 // Execute a shell command
-const response = await workspace.process.executeCommand('ls -la');
+const response = await sandbox.process.executeCommand('ls -la');
 console.log(response.result);
 
 // Run TypeScript code
-const response = await workspace.process.codeRun('console.log("Hello, World!")');
+const response = await sandbox.process.codeRun('console.log("Hello, World!")');
 console.log(response.result);
 ```
 
@@ -22,21 +22,46 @@ console.log(response.result);
 // Using interactive sessions
 // Create a new session
 const sessionId = 'my-session';
-await workspace.process.createSession(sessionId);
+await sandbox.process.createSession(sessionId);
 
 // Execute commands in the session
-const response = await workspace.process.executeSessionCommand(sessionId, {
+const response = await sandbox.process.executeSessionCommand(sessionId, {
   command: 'cd /workspace'
 });
 
-const response2 = await workspace.process.executeSessionCommand(sessionId, {
+const response2 = await sandbox.process.executeSessionCommand(sessionId, {
   command: 'pwd'
 });
 console.log(response2.result);  // Should print "/workspace"
 
 // Clean up
-await workspace.process.deleteSession(sessionId);
+await sandbox.process.deleteSession(sessionId);
 ```
+
+## CodeRunParams
+
+Parameters for code execution
+
+### Constructors
+
+#### new CodeRunParams()
+
+```ts
+new CodeRunParams(): CodeRunParams
+```
+
+##### Returns
+
+`CodeRunParams`
+
+### Properties
+
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| `argv?` | `string[]` | Command line arguments |
+| `env?` | `Record<string, string>` | Environment variables |
+
+***
 
 ## Process
 
@@ -46,18 +71,18 @@ await workspace.process.deleteSession(sessionId);
 
 ```ts
 new Process(
-   codeToolbox: WorkspaceCodeToolbox, 
+   codeToolbox: SandboxCodeToolbox, 
    toolboxApi: ToolboxApi, 
-   instance: Workspace): Process
+   instance: SandboxInstance): Process
 ```
 
 ##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `codeToolbox` | `WorkspaceCodeToolbox` |
+| `codeToolbox` | `SandboxCodeToolbox` |
 | `toolboxApi` | `ToolboxApi` |
-| `instance` | `Workspace` |
+| `instance` | `SandboxInstance` |
 
 ##### Returns
 
@@ -68,7 +93,10 @@ new Process(
 #### codeRun()
 
 ```ts
-codeRun(code: string): Promise<ExecuteResponse>
+codeRun(
+   code: string, 
+   params?: CodeRunParams, 
+timeout?: number): Promise<ExecuteResponse>
 ```
 
 Executes code in the Sandbox using the appropriate language runtime.
@@ -78,6 +106,8 @@ Executes code in the Sandbox using the appropriate language runtime.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `code` | `string` | Code to execute |
+| `params?` | `CodeRunParams` | Parameters for code execution |
+| `timeout?` | `number` | - |
 
 ##### Returns
 
@@ -213,7 +243,10 @@ const result = await process.executeCommand('sleep 10', undefined, 5);
 #### executeSessionCommand()
 
 ```ts
-executeSessionCommand(sessionId: string, req: SessionExecuteRequest): Promise<SessionExecuteResponse>
+executeSessionCommand(
+   sessionId: string, 
+   req: SessionExecuteRequest, 
+timeout?: number): Promise<SessionExecuteResponse>
 ```
 
 Executes a command in an existing session.
@@ -224,6 +257,7 @@ Executes a command in an existing session.
 | ------ | ------ | ------ |
 | `sessionId` | `string` | Unique identifier of the session to use |
 | `req` | `SessionExecuteRequest` | Command execution request containing: - command: The command to execute - async: Whether to execute asynchronously |
+| `timeout?` | `number` | Timeout in seconds |
 
 ##### Returns
 
@@ -260,7 +294,7 @@ console.log(result.output);  // Prints: /workspace
 getSession(sessionId: string): Promise<Session>
 ```
 
-Get a session in the workspace.
+Get a session in the sandbox.
 
 ##### Parameters
 
