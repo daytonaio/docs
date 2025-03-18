@@ -70,21 +70,21 @@ export const sidebarConfig: NavigationGroup[] = [
         },
         relatedGroupCategory: NavigationCategory.GENERAL,
       },
-      // {
-      //   type: 'link',
-      //   href: '/docs/tools/cli',
-      //   label: 'CLI Reference',
-      //   disablePagination: true,
-      //   attrs: {
-      //     icon: 'terminal.svg',
-      //   },
-      //   relatedGroupCategory: NavigationCategory.GENERAL,
-      // },
+      {
+        type: 'link',
+        href: '/docs/tools/cli',
+        label: 'CLI Reference',
+        disablePagination: true,
+        attrs: {
+          icon: 'terminal.svg',
+        },
+        relatedGroupCategory: NavigationCategory.GENERAL,
+      },
     ],
   },
   {
     type: 'group',
-    label: 'About',
+    label: 'Introduction',
     homePageHref: '/docs',
     category: NavigationCategory.GENERAL,
     entries: [
@@ -110,30 +110,21 @@ export const sidebarConfig: NavigationGroup[] = [
       },
       {
         type: 'link',
-        href: '/docs/sandbox-persistence',
-        label: 'Sandbox Persistence',
-        description:
-          'Learn about sandbox persistence and how it can help you manage your development environments.',
-        attrs: {
-          icon: 'samples.svg',
-        },
-      },
-    ],
-  },
-  {
-    type: 'group',
-    label: 'Sandboxes',
-    homePageHref: '/docs',
-    category: NavigationCategory.GENERAL,
-    entries: [
-      {
-        type: 'link',
         href: '/docs/sandbox-management',
-        label: 'Management',
+        label: 'Sandboxes',
         description:
           'Learn how to create, manage, and remove Sandboxes using the Daytona SDK.',
         attrs: {
           icon: 'computer.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/images',
+        label: 'Images',
+        description: 'Learn how to create, manage, and remove custom Images.',
+        attrs: {
+          icon: 'layers.svg',
         },
       },
     ],

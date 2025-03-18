@@ -18,11 +18,11 @@ from daytona_sdk import Daytona, LspLanguageId
 # Create Sandbox
 
 daytona = Daytona()
-workspace = daytona.create()
+sandbox = daytona.create()
 
 # Create LSP server for Python
 
-lsp_server = workspace.create_lsp_server(
+lsp_server = sandbox.create_lsp_server(
     language_id=LspLanguageId.PYTHON,
     path_to_project="/workspace/project"
 )
@@ -33,14 +33,14 @@ lsp_server = workspace.create_lsp_server(
 ```typescript
 import { Daytona, LspLanguageId } from '@daytonaio/sdk'
 
-// Create workspace
+// Create sandbox
 const daytona = new Daytona()
-const workspace = await daytona.create({
+const sandbox = await daytona.create({
     language: 'typescript'
 })
 
 // Create LSP server for TypeScript
-const lspServer = workspace.createLspServer(
+const lspServer = sandbox.createLspServer(
     LspLanguageId.TYPESCRIPT,
     "/workspace/project"
 )

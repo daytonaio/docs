@@ -9,6 +9,7 @@ Sandboxes are isolated development environments managed by Daytona. This guide c
 ## Creating Sandboxes
 
 Daytona SDK provides an option to create Sandboxes with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the Sandbox.
+By default, the sandboxes auto-stop after 15 minutes of inactivity. To overwrite this behavior, you can increase the auto-stop interval or set it to 0 to completely disable it.
 
 ### Basic Sandbox Creation
 
@@ -23,17 +24,17 @@ daytona = Daytona()
 
 # Create a basic Sandbox
 
-workspace = daytona.create()
+sandbox = daytona.create()
 
 # Create a Sandbox with specific language
 
-params = CreateWorkspaceParams(language="python")
-workspace = daytona.create(params)
+params = CreateSandboxParams(language="python")
+sandbox = daytona.create(params)
 
 # Create a Sandbox with custom ID
 
-params = CreateWorkspaceParams(id="my-workspace")
-workspace = daytona.create(params)
+params = CreateSandboxParams(id="my-sandbox")
+sandbox = daytona.create(params)
 
 ```
 </TabItem>
@@ -43,18 +44,22 @@ import { Daytona } from '@daytonaio/sdk';
 
 const daytona = new Daytona();
 
-// Create a basic workspace
-const workspace = await daytona.create();
+// Create a basic Sandbox
+const sandbox = await daytona.create();
 
-// Create a workspace with specific language
-const workspace = await daytona.create({ language: 'typescript' });
+// Create a Sandbox with specific language
+const sandbox = await daytona.create({ language: 'typescript' });
 
-// Create a workspace with custom ID
-const workspace = await daytona.create({ id: 'my-workspace' });
+// Create a Sandbox with custom ID
+const sandbox = await daytona.create({ id: 'my-sandbox' });
 ```
 
 </TabItem>
 </Tabs>
+
+:::note
+Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are automatically used if a custom ID _isn't_ provided and the default image is used, reducing the creation time down to a fraction of a second.
+:::
 
 ## Sandbox Information
 
@@ -64,21 +69,40 @@ Daytona SDK provides methods to get information about a Sandbox, such as ID, roo
 <TabItem label="Python" icon="seti:python">
 ```python
 # Get Sandbox ID
-workspace_id = workspace.id
+sandbox_id = sandbox.id
 
-# Get Sandbox root directory
+# Get the root directory of tha Sandbox user
 
-root_dir = workspace.get_workspace_root_dir()
+root_dir = sandbox.get_user_root_dir()
+
+# Get the Sandbox name, image and state
+
+name = sandbox.instance.name
+image = sandbox.instance.image
+state = sandbox.instance.state
+
+# Get the preview link for an app running on port 3000
+
+preview_link = sandbox.get_preview_link(3000)
 
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Get workspace ID
-const workspaceId = workspace.id;
+// Get Sandbox ID
+const sandboxId = sandbox.id;
 
-// Get workspace root directory
-const rootDir = await workspace.getWorkspaceRootDir();
+// Get the root directory of tha Sandbox user
+const rootDir = await sandbox.getSandboxRootDir();
+
+// Get the Sandbox name, image and state
+const name = sandbox.instance.name
+const image = sandbox.instance.image
+const state = sandbox.instance.state
+
+// Get the preview link for an app running on port 3000
+const previewLink = sandbox.getPreviewLink(3000)
+
 ```
 
 </TabItem>
@@ -92,13 +116,67 @@ Daytona SDK provides methods to perform operations on Sandboxes, such as removin
 <TabItem label="Python" icon="seti:python">
 ```python
 # Remove Sandbox
-daytona.remove(workspace)
+daytona.remove(sandbox)
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Remove workspace
-await daytona.remove(workspace);
+// Remove Sandbox
+await daytona.remove(sandbox);
 ```
 </TabItem>
 </Tabs>
+
+:::tip
+Check out the [Daytona CLI](/docs/getting-started#setting-up-the-daytona-cli) if you prefer managing Sandboxes through the terminal:
+
+```bash
+daytona sandbox list
+```
+
+```text
+                                                                                                                   
+    Sandbox               State           Region        Class        Last Event                  
+    ────────────────────────────────────────────────────────────────────────────────────   
+    ugliest_quokka        STARTED         us            small        1 hour ago                  
+                                                                                                                     
+    associated_yak        STARTED         us            small        14 hours ago                
+                                                                                                                     
+    developed_lemur       STARTED         us            small        17 hours ago                
+                                                                                                                     
+```
+
+```bash
+daytona sandbox start|stop|remove --all
+```
+
+```text
+All sandboxes have been deleted
+```
+
+:::
+
+## Sandbox Persistence
+
+Daytona keeps the filesystem in its entirety during the Sandbox lifecycle. The persistence functionality is built into the system, and nothing needs to be explicitly done from the user side.
+
+It is important to understand the Sandbox states to maintain cost-effectiveness. A Sandbox can have three states during its lifecycle:
+
+### Running
+
+Running Sandboxes utilize CPU, memory, and disk storage. Every resource is charged per second of usage. When Sandboxes are not actively used, it is recommended that they be stopped. This can be done:
+
+- Manually using the stop command
+- Automatically by setting the autoStop interval
+
+### Stopped
+
+Stopped Sandboxes only utilize disk storage. They can be instantly started when needed. The stopped state should be used when the Sandbox is expected to be started again soon. Otherwise, it is recommended to archive the Sandbox to eliminate disk usage costs.
+
+### Archived
+
+When Sandboxes are archived, the entire filesystem state is moved to very cost-effective object storage, making it possible to keep Sandboxes available for an extended period.
+
+### Performance Considerations
+
+The tradeoff between archived and stopped states is that starting an archived Sandbox takes more time, depending on its size.
