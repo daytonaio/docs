@@ -110,6 +110,16 @@ export const sidebarConfig: NavigationGroup[] = [
       },
       {
         type: 'link',
+        href: '/docs/organizations',
+        label: 'Organizations',
+        description:
+          'Learn how to create, manage, and remove Organizations using the Daytona SDK.',
+        attrs: {
+          icon: 'building.svg',
+        },
+      },
+      {
+        type: 'link',
         href: '/docs/sandbox-management',
         label: 'Sandboxes',
         description:
