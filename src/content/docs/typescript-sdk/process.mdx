@@ -358,30 +358,64 @@ if (cmd.exitCode === 0) {
 
 #### getSessionCommandLogs()
 
+##### Call Signature
+
 ```ts
 getSessionCommandLogs(sessionId: string, commandId: string): Promise<string>
 ```
 
 Get the logs for a command executed in a session.
 
-##### Parameters
+###### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `sessionId` | `string` | Unique identifier of the session |
 | `commandId` | `string` | Unique identifier of the command |
 
-##### Returns
+###### Returns
 
 `Promise<string>`
 
 Command logs
 
-##### Example
+###### Example
 
 ```ts
 const logs = await process.getSessionCommandLogs('my-session', 'cmd-123');
 console.log('Command output:', logs);
+```
+
+##### Call Signature
+
+```ts
+getSessionCommandLogs(
+   sessionId: string, 
+   commandId: string, 
+   onLogs: (chunk: string) => void
+): Promise<void>
+```
+
+Asynchronously retrieve and process the logs for a command executed in a session as they become available.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | `string` | Unique identifier of the session |
+| `commandId` | `string` | Unique identifier of the command |
+| `onLogs` | `(chunk: string) => void` | Callback function to handle each log chunk |
+
+###### Returns
+
+`Promise<void>`
+
+###### Example
+
+```ts
+const logs = await process.getSessionCommandLogs('my-session', 'cmd-123', (chunk) => {
+  console.log('Log chunk:', chunk);
+});
 ```
 
 ***
