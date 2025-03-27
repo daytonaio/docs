@@ -277,10 +277,8 @@ print(f"Command output: {logs}")
 ```python
 @intercept_errors(message_prefix="Failed to get session command logs: ")
 async def get_session_command_logs_async(
-    session_id: str,
-    command_id: str,
-    on_logs: Callable[[str], None]
-) -> None
+        session_id: str, command_id: str, on_logs: Callable[[str],
+                                                            None]) -> None
 ```
 
 Asynchronously retrieve and process the logs for a command executed in a session as they become available.

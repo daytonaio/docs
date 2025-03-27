@@ -392,8 +392,7 @@ console.log('Command output:', logs);
 getSessionCommandLogs(
    sessionId: string, 
    commandId: string, 
-   onLogs: (chunk: string) => void
-): Promise<void>
+onLogs: (chunk: string) => void): Promise<void>
 ```
 
 Asynchronously retrieve and process the logs for a command executed in a session as they become available.

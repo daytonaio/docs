@@ -673,7 +673,7 @@
   },
   {
     "title": "Inviting New Users",
-    "description": "As an Organization `Owner`, to invite a new user to your Organization, navigate to the *Members page*,\nclick on *Invite Member*, enter the email address of the user you want to invite, and choose a **Role**.",
+    "description": "As an Organization `Owner`, to invite a new user to your Organization, navigate to the _Members page_,\nclick on _Invite Member_, enter the email address of the user you want to invite, and choose a **Role**.",
     "tag": "Documentation",
     "url": "/docs/organizations#inviting-new-users",
     "slug": "/organizations#inviting-new-users",
@@ -689,7 +689,7 @@
   },
   {
     "title": "Managing Invitations",
-    "description": "To view their pending invitations to join other Organizations, users can navigate to the *Invitations\npage* by expanding the dropdown at the bottom of the sidebar, and clicking on *Invitations*.",
+    "description": "To view their pending invitations to join other Organizations, users can navigate to the _Invitations\npage_ by expanding the dropdown at the bottom of the sidebar, and clicking on _Invitations_.",
     "tag": "Documentation",
     "url": "/docs/organizations#managing-invitations",
     "slug": "/organizations#managing-invitations",

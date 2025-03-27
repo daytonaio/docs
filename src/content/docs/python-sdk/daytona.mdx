@@ -12,7 +12,7 @@ This guide covers how to create, manage, and remove Sandboxes using the SDK.
 ```python
 from daytona_sdk import Daytona
 # Initialize using environment variables
-daytona = Daytona()  # Uses env vars DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET
+daytona = Daytona()  # Uses env vars DAYTONA_API_KEY, DAYTONA_API_URL, DAYTONA_TARGET
 
 # Create a default Python sandbox with custom environment variables
 sandbox = daytona.create(CreateSandboxParams(
@@ -40,7 +40,7 @@ from daytona_sdk import Daytona, DaytonaConfig, CreateSandboxParams, SandboxReso
 # Initialize with explicit configuration
 config = DaytonaConfig(
     api_key="your-api-key",
-    server_url="https://your-server.com",
+    api_url="https://your-api.com",
     target="us"
 )
 daytona = Daytona(config)
@@ -71,7 +71,7 @@ sandbox.process.execute_command("python -m pytest")
 class Daytona()
 ```
 
-Main class for interacting with Daytona Server API.
+Main class for interacting with the Daytona API.
 
 This class provides methods to create, manage, and interact with Daytona Sandboxes.
 It can be initialized either with explicit configuration or using environment variables.
@@ -79,7 +79,7 @@ It can be initialized either with explicit configuration or using environment va
 **Attributes**:
 
 - `api_key` _str_ - API key for authentication.
-- `server_url` _str_ - URL of the Daytona server.
+- `api_url` _str_ - URL of the Daytona API.
 - `target` _str_ - Default target location for Sandboxes.
   
 **Example**:
@@ -87,7 +87,7 @@ It can be initialized either with explicit configuration or using environment va
   Using environment variables:
 
 ```python
-daytona = Daytona()  # Uses DAYTONA_API_KEY, DAYTONA_SERVER_URL
+daytona = Daytona()  # Uses DAYTONA_API_KEY, DAYTONA_API_URL
 ```
   
   Using explicit configuration:
@@ -95,7 +95,7 @@ daytona = Daytona()  # Uses DAYTONA_API_KEY, DAYTONA_SERVER_URL
 ```python
 config = DaytonaConfig(
     api_key="your-api-key",
-    server_url="https://your-server.com",
+    api_url="https://your-api.com",
     target="us"
 )
 daytona = Daytona(config)
@@ -112,16 +112,16 @@ Initializes Daytona instance with optional configuration.
 If no config is provided, reads from environment variables:
 
 - `DAYTONA_API_KEY`: Required API key for authentication
-- `DAYTONA_SERVER_URL`: Required server URL
+- `DAYTONA_API_URL`: Required api URL
 - `DAYTONA_TARGET`: Optional target environment (defaults to SandboxTargetRegion.US)
 
 **Arguments**:
 
-- `config` _Optional[DaytonaConfig]_ - Object containing api_key, server_url, and target.
+- `config` _Optional[DaytonaConfig]_ - Object containing api_key, api_url, and target.
   
 **Raises**:
 
-- `DaytonaError` - If API key or Server URL is not provided either through config or environment variables
+- `DaytonaError` - If API key is not provided either through config or environment variables
   
 **Example**:
 
@@ -132,7 +132,7 @@ daytona1 = Daytona()
 # Using explicit configuration
 config = DaytonaConfig(
     api_key="your-api-key",
-    server_url="https://your-server.com",
+    api_url="https://your-api.com",
     target="us"
 )
 daytona2 = Daytona(config)
@@ -327,7 +327,7 @@ This guide covers how to create, manage, and remove Sandboxes using the SDK.
 ```python
 from daytona_sdk import Daytona
 # Initialize using environment variables
-daytona = Daytona()  # Uses env vars DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET
+daytona = Daytona()  # Uses env vars DAYTONA_API_KEY, DAYTONA_API_URL, DAYTONA_TARGET
 
 # Create a default Python sandbox with custom environment variables
 sandbox = daytona.create(CreateSandboxParams(
@@ -355,7 +355,7 @@ from daytona_sdk import Daytona, DaytonaConfig, CreateSandboxParams, SandboxReso
 # Initialize with explicit configuration
 config = DaytonaConfig(
     api_key="your-api-key",
-    server_url="https://your-server.com",
+    api_url="https://your-api.com",
     target="us"
 )
 daytona = Daytona(config)
@@ -394,18 +394,20 @@ Programming languages supported by Daytona
 ## DaytonaConfig
 
 ```python
-@dataclass
-class DaytonaConfig()
+class DaytonaConfig(BaseModel)
 ```
 
 Configuration options for initializing the Daytona client.
 
 **Attributes**:
 
-- `api_key` _Optional[str]_ - API key for authentication with Daytona server. If not set, it must be provided
+- `api_key` _Optional[str]_ - API key for authentication with the Daytona API. If not set, it must be provided
   as environment variable DAYTONA_API_KEY.
-- `server_url` _Optional[str]_ - URL of the Daytona server. Defaults to 'https://app.daytona.io/api' if not set.
-- `target` _Optional[SandboxTargetRegion]_ - Target environment for Sandbox. Defaults to 'us' if not set.
+- `api_url` _Optional[str]_ - URL of the Daytona API. Defaults to 'https://app.daytona.io/api' if not set
+  here and not set in environment variable DAYTONA_API_URL.
+- `server_url` _Optional[str]_ - Deprecated. Use `api_url` instead. This property will be removed in future versions.
+- `target` _Optional[SandboxTargetRegion]_ - Target environment for Sandbox. Defaults to 'us' if not set here
+  and not set in environment variable DAYTONA_TARGET.
   
 **Example**:
 
