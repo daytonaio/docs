@@ -152,7 +152,7 @@ const sandbox = await daytona.create();
 const params: CreateSandboxParams = {
     language: 'typescript',
     image: 'node:18',
-    envVars: { 
+    envVars: {
         NODE_ENV: 'development',
         DEBUG: 'true'
     },
@@ -417,7 +417,7 @@ const daytona = new Daytona(config);
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
-| `apiKey` | `string` | API key for authentication with Daytona server |
+| `apiKey?` | `string` | API key for authentication with Daytona server |
 | `serverUrl?` | `string` | URL of the Daytona server |
 | `target?` | `CreateWorkspaceTargetEnum` | Target location for Sandboxes |
 
