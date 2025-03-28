@@ -72,14 +72,14 @@ Daytona SDK provides an option to execute shell commands in Python and TypeScrip
 ```python
 # Execute shell command
 response = sandbox.process.exec("ls -la")
-print(response.output)
+print(response.result)
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Execute shell command
 const response = await sandbox.process.executeCommand("ls -la");
-console.log(response.output);
+console.log(response.result);
 ```
 </TabItem>
 </Tabs>
