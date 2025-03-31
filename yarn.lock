@@ -266,17 +266,17 @@
   resolved "https://registry.npmjs.org/@astrojs/starlight-tailwind/-/starlight-tailwind-2.0.1.tgz"
   integrity sha512-niMgFcR7NHcsBVy8UAN3F2gqhmoN5v83st5Hu4YzvUL+6SNwjQmIipXppXdN9+iVneRjPr6PLGzDfI+wnjSBWQ==
 
-"@astrojs/starlight@^0.21.4":
-  version "0.21.5"
-  resolved "https://registry.npmjs.org/@astrojs/starlight/-/starlight-0.21.5.tgz"
-  integrity sha512-cvftxu7DM4C25KGSxqyIk81DiQGX0zx9s5sfmprd1kKQK1h/MQXaRVDCpJrK4SjrgWtpG1UoKLJZBgD5w4k9kw==
+"@astrojs/starlight@^0.22.0":
+  version "0.22.4"
+  resolved "https://registry.yarnpkg.com/@astrojs/starlight/-/starlight-0.22.4.tgz#c85e306a71132ead4cd5e120b90e729c776ca6a4"
+  integrity sha512-AgiVEVv2ZkGHkoJcjY0azXG2K7892i+z4FpKtasnESTciomO91I/X9vAfKfHxmTxdVP5BGPxBFVi0Bp2X4Lxvg==
   dependencies:
     "@astrojs/mdx" "^2.1.1"
     "@astrojs/sitemap" "^3.0.5"
     "@pagefind/default-ui" "^1.0.3"
     "@types/hast" "^3.0.3"
     "@types/mdast" "^4.0.3"
-    astro-expressive-code "^0.33.4"
+    astro-expressive-code "^0.35.2"
     bcp-47 "^2.1.0"
     hast-util-from-html "^2.0.1"
     hast-util-select "^6.0.2"
@@ -286,6 +286,7 @@
     mdast-util-to-markdown "^2.1.0"
     pagefind "^1.0.3"
     rehype "^13.0.1"
+    rehype-format "^5.0.0"
     remark-directive "^3.0.0"
     unified "^11.0.4"
     unist-util-visit "^5.0.0"
@@ -669,11 +670,6 @@
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
 
-"@ctrl/tinycolor@^3.6.0":
-  version "3.6.1"
-  resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.6.1.tgz"
-  integrity sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==
-
 "@ctrl/tinycolor@^4.0.4":
   version "4.1.0"
   resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-4.1.0.tgz"
@@ -801,17 +797,6 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz#acad351d582d157bb145535db2a6ff53dd514b5c"
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
-"@expressive-code/core@^0.33.4":
-  version "0.33.4"
-  resolved "https://registry.npmjs.org/@expressive-code/core/-/core-0.33.4.tgz"
-  integrity sha512-IywACrwcR/7cIPBQ1qG/RsgvNp85/CAX6okxR0Niztrd7rh4IcEhAsz51jX/NPNnhU9yPynTT+mLdM1URqrnvw==
-  dependencies:
-    "@ctrl/tinycolor" "^3.6.0"
-    hast-util-to-html "^8.0.4"
-    hastscript "^7.2.0"
-    postcss "^8.4.21"
-    postcss-nested "^6.0.1"
-
 "@expressive-code/core@^0.34.2":
   version "0.34.2"
   resolved "https://registry.npmjs.org/@expressive-code/core/-/core-0.34.2.tgz"
@@ -827,13 +812,20 @@
     unist-util-visit "^5.0.0"
     unist-util-visit-parents "^6.0.1"
 
-"@expressive-code/plugin-frames@^0.33.4":
-  version "0.33.4"
-  resolved "https://registry.npmjs.org/@expressive-code/plugin-frames/-/plugin-frames-0.33.4.tgz"
-  integrity sha512-6HE5f8dAPjzmhs7yZJHVyH+w/UwVpktjlTvrUumrytHo6hidGlkB5lptWJlSAd9JXzev5BQEb4xrqQ0xQqO5+A==
+"@expressive-code/core@^0.35.6":
+  version "0.35.6"
+  resolved "https://registry.yarnpkg.com/@expressive-code/core/-/core-0.35.6.tgz#7fd2f6b5c130588acd956c0d8fd042a2d8d096cb"
+  integrity sha512-xGqCkmfkgT7lr/rvmfnYdDSeTdCSp1otAHgoFS6wNEeO7wGDPpxdosVqYiIcQ8CfWUABh/pGqWG90q+MV3824A==
   dependencies:
-    "@expressive-code/core" "^0.33.4"
-    hastscript "^7.2.0"
+    "@ctrl/tinycolor" "^4.0.4"
+    hast-util-select "^6.0.2"
+    hast-util-to-html "^9.0.1"
+    hast-util-to-text "^4.0.1"
+    hastscript "^9.0.0"
+    postcss "^8.4.38"
+    postcss-nested "^6.0.1"
+    unist-util-visit "^5.0.0"
+    unist-util-visit-parents "^6.0.1"
 
 "@expressive-code/plugin-frames@^0.34.2":
   version "0.34.2"
@@ -842,13 +834,12 @@
   dependencies:
     "@expressive-code/core" "^0.34.2"
 
-"@expressive-code/plugin-shiki@^0.33.4":
-  version "0.33.4"
-  resolved "https://registry.npmjs.org/@expressive-code/plugin-shiki/-/plugin-shiki-0.33.4.tgz"
-  integrity sha512-XnDchHqCGk046hgQnu83t9+SDrRjsvpvUEBiI0wl4RljVDr1E0yllx0y6C1yEuKfFfasib6BxX/PkItgQdi/0Q==
+"@expressive-code/plugin-frames@^0.35.6":
+  version "0.35.6"
+  resolved "https://registry.yarnpkg.com/@expressive-code/plugin-frames/-/plugin-frames-0.35.6.tgz#37566970a7e71cbb793cde8d9aeab8fd5e6c6abb"
+  integrity sha512-CqjSWjDJ3wabMJZfL9ZAzH5UAGKg7KWsf1TBzr4xvUbZvWoBtLA/TboBML0U1Ls8h/4TRCIvR4VEb8dv5+QG3w==
   dependencies:
-    "@expressive-code/core" "^0.33.4"
-    shiki "^1.1.7"
+    "@expressive-code/core" "^0.35.6"
 
 "@expressive-code/plugin-shiki@^0.34.2":
   version "0.34.2"
@@ -858,14 +849,13 @@
     "@expressive-code/core" "^0.34.2"
     shiki "^1.1.7"
 
-"@expressive-code/plugin-text-markers@^0.33.4":
-  version "0.33.4"
-  resolved "https://registry.npmjs.org/@expressive-code/plugin-text-markers/-/plugin-text-markers-0.33.4.tgz"
-  integrity sha512-hl3E+8iZJMYGDaKsN4bOPOEBb9QeFjg+zQkOJRtjJgsmIYmaZpoQTzTg/JMduE8PLNsD30nAMwG/AbjN/klwZQ==
+"@expressive-code/plugin-shiki@^0.35.6":
+  version "0.35.6"
+  resolved "https://registry.yarnpkg.com/@expressive-code/plugin-shiki/-/plugin-shiki-0.35.6.tgz#9f52f5e557a12fff702b94a414d3d41a5b0aebf8"
+  integrity sha512-xm+hzi9BsmhkDUGuyAWIydOAWer7Cs9cj8FM0t4HXaQ+qCubprT6wJZSKUxuvFJIUsIOqk1xXFaJzGJGnWtKMg==
   dependencies:
-    "@expressive-code/core" "^0.33.4"
-    hastscript "^7.2.0"
-    unist-util-visit-parents "^5.1.3"
+    "@expressive-code/core" "^0.35.6"
+    shiki "^1.1.7"
 
 "@expressive-code/plugin-text-markers@^0.34.2":
   version "0.34.2"
@@ -873,6 +863,13 @@
   integrity sha512-yHVNoIvqAruxtMnmcITkjhyFaHg6fraitodSXWe5KLZcaBLLJ9AieE/RGhzHIKjRuG0zlEWMNd2y2nh/XIPBew==
   dependencies:
     "@expressive-code/core" "^0.34.2"
+
+"@expressive-code/plugin-text-markers@^0.35.6":
+  version "0.35.6"
+  resolved "https://registry.yarnpkg.com/@expressive-code/plugin-text-markers/-/plugin-text-markers-0.35.6.tgz#bcca76e8eb90dc44fa8fd937f28d5eb78a4bc0c8"
+  integrity sha512-/k9eWVZSCs+uEKHR++22Uu6eIbHWEciVHbIuD8frT8DlqTtHYaaiwHPncO6KFWnGDz5i/gL7oyl6XmOi/E6GVg==
+  dependencies:
+    "@expressive-code/core" "^0.35.6"
 
 "@humanwhocodes/momoa@^2.0.3":
   version "2.0.4"
@@ -1466,13 +1463,6 @@
   resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.58.1.tgz#71ce3dec44de1452f56641d2c87c7dd8ea964b4d"
   integrity sha512-X9QTSvGJ0nCfMzYOnaVs/k6/4L+7F5uCS+4iUmkLEls6J9S/Phv+m/i3mDeyc49ZBgwab3EFO1HEoBY7k98EGQ==
 
-"@types/hast@^2.0.0":
-  version "2.3.8"
-  resolved "https://registry.npmjs.org/@types/hast/-/hast-2.3.8.tgz"
-  integrity sha512-aMIqAlFd2wTIDZuvLbhUT+TGvMxrNC8ECUIVtH6xxy0sQLs3iu6NO8Kp/VT5je7i5ufnebXzdV1dNDMnvaH6IQ==
-  dependencies:
-    "@types/unist" "^2"
-
 "@types/hast@^3.0.0", "@types/hast@^3.0.3":
   version "3.0.3"
   resolved "https://registry.npmjs.org/@types/hast/-/hast-3.0.3.tgz"
@@ -1539,11 +1529,6 @@
   version "17.0.45"
   resolved "https://registry.npmjs.org/@types/node/-/node-17.0.45.tgz"
   integrity sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==
-
-"@types/parse5@^6.0.0":
-  version "6.0.3"
-  resolved "https://registry.npmjs.org/@types/parse5/-/parse5-6.0.3.tgz"
-  integrity sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==
 
 "@types/prop-types@*":
   version "15.7.12"
@@ -1783,20 +1768,19 @@ astring@^1.8.0:
   resolved "https://registry.npmjs.org/astring/-/astring-1.8.6.tgz"
   integrity sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==
 
-astro-expressive-code@^0.33.4:
-  version "0.33.4"
-  resolved "https://registry.npmjs.org/astro-expressive-code/-/astro-expressive-code-0.33.4.tgz"
-  integrity sha512-PtXLjd89WBA1WsDYlt3V1LZs9Pa8FFoXilaGDSyfxtbYJ2OPHjWh2JJvCiXmfXmY3HkPJ2oW9Jjo6om5vUlVcg==
-  dependencies:
-    hast-util-to-html "^8.0.4"
-    remark-expressive-code "^0.33.4"
-
 astro-expressive-code@^0.34.1:
   version "0.34.2"
   resolved "https://registry.npmjs.org/astro-expressive-code/-/astro-expressive-code-0.34.2.tgz"
   integrity sha512-J90/kDlT5QLQC+CYVmMWvhkthmMwYhu3nmwKp7acCZCD+HNkaCCxSjg8OXBygAKL43Uv2DCUMTipGeb/X0hrXw==
   dependencies:
     remark-expressive-code "^0.34.2"
+
+astro-expressive-code@^0.35.2:
+  version "0.35.6"
+  resolved "https://registry.yarnpkg.com/astro-expressive-code/-/astro-expressive-code-0.35.6.tgz#5029d44cba99c674e1225968de1382466b997f3d"
+  integrity sha512-1U4KrvFuodaCV3z4I1bIR16SdhQlPkolGsYTtiANxPZUVv/KitGSCTjzksrkPonn1XuwVqvnwmUUVzTLWngnBA==
+  dependencies:
+    rehype-expressive-code "^0.35.6"
 
 astro@4.16.18:
   version "4.16.18"
@@ -2675,16 +2659,6 @@ express@^4.20.0:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
-expressive-code@^0.33.4:
-  version "0.33.4"
-  resolved "https://registry.npmjs.org/expressive-code/-/expressive-code-0.33.4.tgz"
-  integrity sha512-vb6DLHjG+jbLJGTvOUhxagsru7oUiBrQEsL9+hcWJvlxIqQ5mRFqjamQS9kCIhXXbfYWiYI7/wfTGxQxuHxsZQ==
-  dependencies:
-    "@expressive-code/core" "^0.33.4"
-    "@expressive-code/plugin-frames" "^0.33.4"
-    "@expressive-code/plugin-shiki" "^0.33.4"
-    "@expressive-code/plugin-text-markers" "^0.33.4"
-
 expressive-code@^0.34.2:
   version "0.34.2"
   resolved "https://registry.npmjs.org/expressive-code/-/expressive-code-0.34.2.tgz"
@@ -2694,6 +2668,16 @@ expressive-code@^0.34.2:
     "@expressive-code/plugin-frames" "^0.34.2"
     "@expressive-code/plugin-shiki" "^0.34.2"
     "@expressive-code/plugin-text-markers" "^0.34.2"
+
+expressive-code@^0.35.6:
+  version "0.35.6"
+  resolved "https://registry.yarnpkg.com/expressive-code/-/expressive-code-0.35.6.tgz#ad8ee87bd5d5376c07a5f4475bbf98366b5b307a"
+  integrity sha512-+mx+TPTbMqgo0mL92Xh9QgjW0kSQIsEivMgEcOnaqKqL7qCw8Vkqc5Rg/di7ZYw4aMUSr74VTc+w8GQWu05j1g==
+  dependencies:
+    "@expressive-code/core" "^0.35.6"
+    "@expressive-code/plugin-frames" "^0.35.6"
+    "@expressive-code/plugin-shiki" "^0.35.6"
+    "@expressive-code/plugin-text-markers" "^0.35.6"
 
 extend-shallow@^2.0.1:
   version "2.0.1"
@@ -2958,6 +2942,27 @@ hasown@^2.0.0:
   dependencies:
     function-bind "^1.1.2"
 
+hast-util-embedded@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/hast-util-embedded/-/hast-util-embedded-3.0.0.tgz#be4477780fbbe079cdba22982e357a0de4ba853e"
+  integrity sha512-naH8sld4Pe2ep03qqULEtvYr7EjrLK2QHY8KJR6RJkTUjPGObe1vnx585uzem2hGra+s1q08DZZpfgDVYRbaXA==
+  dependencies:
+    "@types/hast" "^3.0.0"
+    hast-util-is-element "^3.0.0"
+
+hast-util-format@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/hast-util-format/-/hast-util-format-1.1.0.tgz#373e77382e07deb04f6676f1b4437e7d8549d985"
+  integrity sha512-yY1UDz6bC9rDvCWHpx12aIBGRG7krurX0p0Fm6pT547LwDIZZiNr8a+IHDogorAdreULSEzP82Nlv5SZkHZcjA==
+  dependencies:
+    "@types/hast" "^3.0.0"
+    hast-util-embedded "^3.0.0"
+    hast-util-minify-whitespace "^1.0.0"
+    hast-util-phrasing "^3.0.0"
+    hast-util-whitespace "^3.0.0"
+    html-whitespace-sensitive-tag-names "^3.0.0"
+    unist-util-visit-parents "^6.0.0"
+
 hast-util-from-html@^2.0.0, hast-util-from-html@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/hast-util-from-html/-/hast-util-from-html-2.0.1.tgz"
@@ -2982,19 +2987,6 @@ hast-util-from-html@^2.0.3:
     vfile "^6.0.0"
     vfile-message "^4.0.0"
 
-hast-util-from-parse5@^7.0.0:
-  version "7.1.2"
-  resolved "https://registry.npmjs.org/hast-util-from-parse5/-/hast-util-from-parse5-7.1.2.tgz"
-  integrity sha512-Nz7FfPBuljzsN3tCQ4kCBKqdNhQE2l0Tn+X1ubgKBPRoiDIu1mL08Cfw4k7q71+Duyaw7DXDN+VTAp4Vh3oCOw==
-  dependencies:
-    "@types/hast" "^2.0.0"
-    "@types/unist" "^2.0.0"
-    hastscript "^7.0.0"
-    property-information "^6.0.0"
-    vfile "^5.0.0"
-    vfile-location "^4.0.0"
-    web-namespaces "^2.0.0"
-
 hast-util-from-parse5@^8.0.0:
   version "8.0.1"
   resolved "https://registry.npmjs.org/hast-util-from-parse5/-/hast-util-from-parse5-8.0.1.tgz"
@@ -3016,6 +3008,13 @@ hast-util-has-property@^3.0.0:
   dependencies:
     "@types/hast" "^3.0.0"
 
+hast-util-is-body-ok-link@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-is-body-ok-link/-/hast-util-is-body-ok-link-3.0.1.tgz#ef63cb2f14f04ecf775139cd92bda5026380d8b4"
+  integrity sha512-0qpnzOBLztXHbHQenVB8uNuxTnm/QBFUOmdOSsEn7GnBtyY07+ENTWVFBAnXd/zEgd9/SUG3lRY7hSIBWRgGpQ==
+  dependencies:
+    "@types/hast" "^3.0.0"
+
 hast-util-is-element@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/hast-util-is-element/-/hast-util-is-element-3.0.0.tgz"
@@ -3023,12 +3022,16 @@ hast-util-is-element@^3.0.0:
   dependencies:
     "@types/hast" "^3.0.0"
 
-hast-util-parse-selector@^3.0.0:
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/hast-util-parse-selector/-/hast-util-parse-selector-3.1.1.tgz"
-  integrity sha512-jdlwBjEexy1oGz0aJ2f4GKMaVKkA9jwjr4MjAAI22E5fM/TXVZHuS5OpONtdeIkRKqAaryQ2E9xNQxijoThSZA==
+hast-util-minify-whitespace@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-minify-whitespace/-/hast-util-minify-whitespace-1.0.1.tgz#7588fd1a53f48f1d30406b81959dffc3650daf55"
+  integrity sha512-L96fPOVpnclQE0xzdWb/D12VT5FabA7SnZOUMtL1DbXmYiHJMXZvFkIZfiMmTCNJHUeO2K9UYNXoVyfz+QHuOw==
   dependencies:
-    "@types/hast" "^2.0.0"
+    "@types/hast" "^3.0.0"
+    hast-util-embedded "^3.0.0"
+    hast-util-is-element "^3.0.0"
+    hast-util-whitespace "^3.0.0"
+    unist-util-is "^6.0.0"
 
 hast-util-parse-selector@^4.0.0:
   version "4.0.0"
@@ -3037,22 +3040,16 @@ hast-util-parse-selector@^4.0.0:
   dependencies:
     "@types/hast" "^3.0.0"
 
-hast-util-raw@^7.0.0:
-  version "7.2.3"
-  resolved "https://registry.npmjs.org/hast-util-raw/-/hast-util-raw-7.2.3.tgz"
-  integrity sha512-RujVQfVsOrxzPOPSzZFiwofMArbQke6DJjnFfceiEbFh7S05CbPt0cYN+A5YeD3pso0JQk6O1aHBnx9+Pm2uqg==
+hast-util-phrasing@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-phrasing/-/hast-util-phrasing-3.0.1.tgz#fa284c0cd4a82a0dd6020de8300a7b1ebffa1690"
+  integrity sha512-6h60VfI3uBQUxHqTyMymMZnEbNl1XmEGtOxxKYL7stY2o601COo62AWAYBQR9lZbYXYSBoxag8UpPRXK+9fqSQ==
   dependencies:
-    "@types/hast" "^2.0.0"
-    "@types/parse5" "^6.0.0"
-    hast-util-from-parse5 "^7.0.0"
-    hast-util-to-parse5 "^7.0.0"
-    html-void-elements "^2.0.0"
-    parse5 "^6.0.0"
-    unist-util-position "^4.0.0"
-    unist-util-visit "^4.0.0"
-    vfile "^5.0.0"
-    web-namespaces "^2.0.0"
-    zwitch "^2.0.0"
+    "@types/hast" "^3.0.0"
+    hast-util-embedded "^3.0.0"
+    hast-util-has-property "^3.0.0"
+    hast-util-is-body-ok-link "^3.0.0"
+    hast-util-is-element "^3.0.0"
 
 hast-util-raw@^9.0.0:
   version "9.0.1"
@@ -3116,23 +3113,6 @@ hast-util-to-estree@^3.0.0:
     style-to-object "^0.4.0"
     unist-util-position "^5.0.0"
     zwitch "^2.0.0"
-
-hast-util-to-html@^8.0.4:
-  version "8.0.4"
-  resolved "https://registry.npmjs.org/hast-util-to-html/-/hast-util-to-html-8.0.4.tgz"
-  integrity sha512-4tpQTUOr9BMjtYyNlt0P50mH7xj0Ks2xpo8M943Vykljf99HW6EzulIoJP1N3eKOSScEHzyzi9dm7/cn0RfGwA==
-  dependencies:
-    "@types/hast" "^2.0.0"
-    "@types/unist" "^2.0.0"
-    ccount "^2.0.0"
-    comma-separated-tokens "^2.0.0"
-    hast-util-raw "^7.0.0"
-    hast-util-whitespace "^2.0.0"
-    html-void-elements "^2.0.0"
-    property-information "^6.0.0"
-    space-separated-tokens "^2.0.0"
-    stringify-entities "^4.0.0"
-    zwitch "^2.0.4"
 
 hast-util-to-html@^9.0.0:
   version "9.0.0"
@@ -3208,18 +3188,6 @@ hast-util-to-jsx-runtime@^2.0.0:
     unist-util-position "^5.0.0"
     vfile-message "^4.0.0"
 
-hast-util-to-parse5@^7.0.0:
-  version "7.1.0"
-  resolved "https://registry.npmjs.org/hast-util-to-parse5/-/hast-util-to-parse5-7.1.0.tgz"
-  integrity sha512-YNRgAJkH2Jky5ySkIqFXTQiaqcAtJyVE+D5lkN6CdtOqrnkLfGYYrEcKuHOJZlp+MwjSwuD3fZuawI+sic/RBw==
-  dependencies:
-    "@types/hast" "^2.0.0"
-    comma-separated-tokens "^2.0.0"
-    property-information "^6.0.0"
-    space-separated-tokens "^2.0.0"
-    web-namespaces "^2.0.0"
-    zwitch "^2.0.0"
-
 hast-util-to-parse5@^8.0.0:
   version "8.0.0"
   resolved "https://registry.npmjs.org/hast-util-to-parse5/-/hast-util-to-parse5-8.0.0.tgz"
@@ -3250,28 +3218,12 @@ hast-util-to-text@^4.0.0, hast-util-to-text@^4.0.1, hast-util-to-text@^4.0.2:
     hast-util-is-element "^3.0.0"
     unist-util-find-after "^5.0.0"
 
-hast-util-whitespace@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/hast-util-whitespace/-/hast-util-whitespace-2.0.1.tgz"
-  integrity sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==
-
 hast-util-whitespace@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/hast-util-whitespace/-/hast-util-whitespace-3.0.0.tgz"
   integrity sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==
   dependencies:
     "@types/hast" "^3.0.0"
-
-hastscript@^7.0.0, hastscript@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.npmjs.org/hastscript/-/hastscript-7.2.0.tgz"
-  integrity sha512-TtYPq24IldU8iKoJQqvZOuhi5CyCQRAbvDOX0x1eW6rsHSxa/1i2CCiptNTotGHJ3VoHRGmqiv6/D3q113ikkw==
-  dependencies:
-    "@types/hast" "^2.0.0"
-    comma-separated-tokens "^2.0.0"
-    hast-util-parse-selector "^3.0.0"
-    property-information "^6.0.0"
-    space-separated-tokens "^2.0.0"
 
 hastscript@^8.0.0:
   version "8.0.0"
@@ -3313,15 +3265,15 @@ html-escaper@^3.0.3:
   resolved "https://registry.npmjs.org/html-escaper/-/html-escaper-3.0.3.tgz"
   integrity sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==
 
-html-void-elements@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/html-void-elements/-/html-void-elements-2.0.1.tgz"
-  integrity sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==
-
 html-void-elements@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/html-void-elements/-/html-void-elements-3.0.0.tgz"
   integrity sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==
+
+html-whitespace-sensitive-tag-names@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/html-whitespace-sensitive-tag-names/-/html-whitespace-sensitive-tag-names-3.0.1.tgz#c35edd28205f3bf8c1fd03274608d60b923de5b2"
+  integrity sha512-q+310vW8zmymYHALr1da4HyXUQ0zgiIwIicEfotYPWGN0OJVEN/58IJ3A4GBYcEq3LGAZqKb+ugvP0GNB9CEAA==
 
 http-cache-semantics@^4.1.1:
   version "4.1.1"
@@ -4845,11 +4797,6 @@ parse-latin@^7.0.0:
     unist-util-visit-children "^3.0.0"
     vfile "^6.0.0"
 
-parse5@^6.0.0:
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/parse5/-/parse5-6.0.1.tgz"
-  integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
-
 parse5@^7.0.0:
   version "7.1.2"
   resolved "https://registry.npmjs.org/parse5/-/parse5-7.1.2.tgz"
@@ -5002,7 +4949,7 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.2.0:
   resolved "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.4.21, postcss@^8.4.23, postcss@^8.4.28, postcss@^8.4.38, postcss@^8.4.43:
+postcss@^8.4.23, postcss@^8.4.28, postcss@^8.4.38, postcss@^8.4.43:
   version "8.4.47"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.47.tgz#5bf6c9a010f3e724c503bf03ef7947dcb0fea365"
   integrity sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==
@@ -5233,6 +5180,21 @@ regex@^5.0.2:
   dependencies:
     regex-utilities "^2.3.0"
 
+rehype-expressive-code@^0.35.6:
+  version "0.35.6"
+  resolved "https://registry.yarnpkg.com/rehype-expressive-code/-/rehype-expressive-code-0.35.6.tgz#aacae31a68664b4055b4c969a69992787ace5307"
+  integrity sha512-pPdE+pRcRw01kxMOwHQjuRxgwlblZt5+wAc3w2aPGgmcnn57wYjn07iKO7zaznDxYVxMYVvYlnL+R3vWFQS4Gw==
+  dependencies:
+    expressive-code "^0.35.6"
+
+rehype-format@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-format/-/rehype-format-5.0.1.tgz#e255e59bed0c062156aaf51c16fad5a521a1f5c8"
+  integrity sha512-zvmVru9uB0josBVpr946OR8ui7nJEdzZobwLOOqHb/OOD88W0Vk2SqLwoVOj0fM6IPCCO6TaV9CvQvJMWwukFQ==
+  dependencies:
+    "@types/hast" "^3.0.0"
+    hast-util-format "^1.0.0"
+
 rehype-parse@^9.0.0:
   version "9.0.0"
   resolved "https://registry.npmjs.org/rehype-parse/-/rehype-parse-9.0.0.tgz"
@@ -5288,15 +5250,6 @@ remark-directive@^3.0.0:
     mdast-util-directive "^3.0.0"
     micromark-extension-directive "^3.0.0"
     unified "^11.0.0"
-
-remark-expressive-code@^0.33.4:
-  version "0.33.4"
-  resolved "https://registry.npmjs.org/remark-expressive-code/-/remark-expressive-code-0.33.4.tgz"
-  integrity sha512-ucGzDknAY6LJKkcNSaYh9N0SEr1LDA0shageM1xa+4fu/o+7g6R1/ApF7d2c+cj1ERLvaF4OaUa87n5baY+MDA==
-  dependencies:
-    expressive-code "^0.33.4"
-    hast-util-to-html "^8.0.4"
-    unist-util-visit "^4.1.2"
 
 remark-expressive-code@^0.34.2:
   version "0.34.2"
@@ -6208,13 +6161,6 @@ unist-util-position-from-estree@^2.0.0:
   dependencies:
     "@types/unist" "^3.0.0"
 
-unist-util-position@^4.0.0:
-  version "4.0.4"
-  resolved "https://registry.npmjs.org/unist-util-position/-/unist-util-position-4.0.4.tgz"
-  integrity sha512-kUBE91efOWfIVBo8xzh/uZQ7p9ffYRtUbMRZBNFYwf0RK8koUMx6dGUfwylLOKmaT2cs4wSW96QoYUSXAyEtpg==
-  dependencies:
-    "@types/unist" "^2.0.0"
-
 unist-util-position@^5.0.0:
   version "5.0.0"
   resolved "https://registry.npmjs.org/unist-util-position/-/unist-util-position-5.0.0.tgz"
@@ -6258,7 +6204,7 @@ unist-util-visit-children@^3.0.0:
   dependencies:
     "@types/unist" "^3.0.0"
 
-unist-util-visit-parents@^5.1.1, unist-util-visit-parents@^5.1.3:
+unist-util-visit-parents@^5.1.1:
   version "5.1.3"
   resolved "https://registry.npmjs.org/unist-util-visit-parents/-/unist-util-visit-parents-5.1.3.tgz"
   integrity sha512-x6+y8g7wWMyQhL1iZfhIPhDAs7Xwbn9nRosDXl7qoPTSCy0yNxnKc+hWokFifWQIDGi154rdUqKvbCa4+1kLhg==
@@ -6274,7 +6220,7 @@ unist-util-visit-parents@^6.0.0, unist-util-visit-parents@^6.0.1:
     "@types/unist" "^3.0.0"
     unist-util-is "^6.0.0"
 
-unist-util-visit@^4.0.0, unist-util-visit@^4.1.0, unist-util-visit@^4.1.2:
+unist-util-visit@^4.0.0, unist-util-visit@^4.1.0:
   version "4.1.2"
   resolved "https://registry.npmjs.org/unist-util-visit/-/unist-util-visit-4.1.2.tgz"
   integrity sha512-MSd8OUGISqHdVvfY9TPhyK2VdUrPgxkUtWSuMHF6XAAFuL4LokseigBnZtPnJMu+FbynTkFNnFlyjxpVKujMRg==
@@ -6339,14 +6285,6 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
-
-vfile-location@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/vfile-location/-/vfile-location-4.1.0.tgz"
-  integrity sha512-YF23YMyASIIJXpktBa4vIGLJ5Gs88UB/XePgqPmTa7cDA+JeO3yclbpheQYCHjVHBn/yePzrXuygIL+xbvRYHw==
-  dependencies:
-    "@types/unist" "^2.0.0"
-    vfile "^5.0.0"
 
 vfile-location@^5.0.0:
   version "5.0.2"
