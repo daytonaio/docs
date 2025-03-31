@@ -562,6 +562,11 @@ main().catch(error => console.error("Error:", error));
 </TabItem>
 </Tabs>
 
+
+:::tip
+You can access the Sandbox `Web Terminal` by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
+:::
+
 ## Connect to an LLM
 
 The following snippet connects to an LLM using the Anthropic API and asks Claude a question by running Python code directly:
@@ -1324,11 +1329,12 @@ an option from the dropdown menu on the top of the sidebar.
 
 Users within an Organization can have one of two different **Roles**: `Owner` and `Member`. `Owners` have full
 administrative access to the Organization and its resources. `Members` have no administrative access
-to the Organization, while their access to Organization resources is based on **Assignments**. 
+to the Organization, while their access to Organization resources is based on **Assignments**.
 
 ### Administrative Actions
 
 Organization `Owners` can perform administrative actions such as:
+
 - Invite new users to the Organization
 - Manage pending invitations
 - Change Role of a user in the Organization
@@ -1338,8 +1344,8 @@ Organization `Owners` can perform administrative actions such as:
 
 ## Inviting New Users
 
-As an Organization `Owner`, to invite a new user to your Organization, navigate to the *Members page*,
-click on *Invite Member*, enter the email address of the user you want to invite, and choose a **Role**.
+As an Organization `Owner`, to invite a new user to your Organization, navigate to the _Members page_,
+click on _Invite Member_, enter the email address of the user you want to invite, and choose a **Role**.
 If you select the `Member` role, you can also define their **Assignments**.
 
 ## Available Assignments
@@ -1357,8 +1363,8 @@ The list of available **Assignments** includes:
 
 ## Managing Invitations
 
-To view their pending invitations to join other Organizations, users can navigate to the *Invitations
-page* by expanding the dropdown at the bottom of the sidebar, and clicking on *Invitations*. Once a user
+To view their pending invitations to join other Organizations, users can navigate to the _Invitations
+page_ by expanding the dropdown at the bottom of the sidebar, and clicking on _Invitations_. Once a user
 accepts an invitation to join an Organization, they get access to resource quotas assigned to that
 Organization and they may proceed by issuing a new API key and creating sandboxes.
 
