@@ -1124,26 +1124,47 @@ tableOfContents: false
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
+The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona,
+enabling you to programmatically manage development environments and execute code.
 
 ### Quick Start
 
-<Tabs>
-  <TabItem label="Python" icon="seti:python">
+Run your first line of code in a Daytona Sandbox.
 
+#### 1. Get Your API Key
+
+👉 Need an account? [Sign up for access](https://www.daytona.io/waitlist)
+
+- Go to the Daytona [Dashboard](https://app.daytona.io/dashboard).
+- Create a new [API key](https://app.daytona.io/dashboard/keys). Make sure to save it securely,
+as it won't be shown again.
+- You'll need it in the next step.
+
+#### 2. Install the SDK
+
+<Tabs syncKey="language">
+  <TabItem label="Python" icon="seti:python">
   ```bash
   pip install daytona_sdk
   ```
+  </TabItem>
+  <TabItem label="TypeScript" icon="seti:typescript">
+  ```bash
+  npm install @daytonaio/sdk
+  ```
+  </TabItem>
+</Tabs>
 
+#### 3. Write Your Code
+
+<Tabs syncKey="language">
+  <TabItem label="Python" icon="seti:python">
+  Create a file named: `main.py`
   ```python
   from daytona_sdk import Daytona, DaytonaConfig
 
   # Define the configuration
-  config = DaytonaConfig(
-    api_key="your-api-key",
-    server_url="your-server-url",
-    target="us"
-  )
+  config = DaytonaConfig(api_key="your-api-key")
 
   # Initialize the Daytona client
   daytona = Daytona(config)
@@ -1158,26 +1179,17 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
   else:
       print(response.result)
   
+  # Clean up
   daytona.remove(sandbox)
   ```
-
   </TabItem>
-
   <TabItem label="TypeScript" icon="seti:typescript">
-
-  ```bash
-  npm install @daytonaio/sdk
-  ```
-
+  Create a file named: `index.mts`
   ```typescript
   import { Daytona } from '@daytonaio/sdk';
 
   // Initialize the Daytona client
-  const daytona = new Daytona({
-    apiKey: 'your-api-key',
-    serverUrl: 'your-server-url',
-    target: 'us'
-  });
+  const daytona = new Daytona({ apiKey: 'your-api-key' });
 
   // Create the Sandbox instance
   const sandbox = await daytona.create({
@@ -1187,10 +1199,41 @@ The Daytona SDK provides official Python and TypeScript interfaces for interacti
   // Run the code securely inside the Sandbox
   const response = await sandbox.process.codeRun('console.log("Hello World from code!")')
   console.log(response.result);
+
+  // Clean up
+  await daytona.remove(sandbox)
   ```
 
   </TabItem>
 </Tabs>
+
+:::note
+Replace `your-api-key` with the value from your Daytona dashboard.
+:::
+
+#### 4. Run It
+
+<Tabs syncKey="language">
+  <TabItem label="Python" icon="seti:python">
+  ```bash
+  python main.py
+  ```
+  </TabItem>
+  <TabItem label="TypeScript" icon="seti:typescript">
+  ```bash
+  npx tsx index.mts
+  ```
+  </TabItem>
+</Tabs>
+
+#### ✅ What You Just Did
+
+- Installed the Daytona SDK.
+- Created a secure sandbox environment.
+- Executed code remotely inside that sandbox.
+- Retrieved and displayed the output locally.
+
+You're now ready to use Daytona for secure, isolated code execution.
 
 <ExploreMore />
 
@@ -1324,11 +1367,12 @@ an option from the dropdown menu on the top of the sidebar.
 
 Users within an Organization can have one of two different **Roles**: `Owner` and `Member`. `Owners` have full
 administrative access to the Organization and its resources. `Members` have no administrative access
-to the Organization, while their access to Organization resources is based on **Assignments**. 
+to the Organization, while their access to Organization resources is based on **Assignments**.
 
 ### Administrative Actions
 
 Organization `Owners` can perform administrative actions such as:
+
 - Invite new users to the Organization
 - Manage pending invitations
 - Change Role of a user in the Organization
@@ -1338,8 +1382,8 @@ Organization `Owners` can perform administrative actions such as:
 
 ## Inviting New Users
 
-As an Organization `Owner`, to invite a new user to your Organization, navigate to the *Members page*,
-click on *Invite Member*, enter the email address of the user you want to invite, and choose a **Role**.
+As an Organization `Owner`, to invite a new user to your Organization, navigate to the _Members page_,
+click on _Invite Member_, enter the email address of the user you want to invite, and choose a **Role**.
 If you select the `Member` role, you can also define their **Assignments**.
 
 ## Available Assignments
@@ -1357,8 +1401,8 @@ The list of available **Assignments** includes:
 
 ## Managing Invitations
 
-To view their pending invitations to join other Organizations, users can navigate to the *Invitations
-page* by expanding the dropdown at the bottom of the sidebar, and clicking on *Invitations*. Once a user
+To view their pending invitations to join other Organizations, users can navigate to the _Invitations
+page_ by expanding the dropdown at the bottom of the sidebar, and clicking on _Invitations_. Once a user
 accepts an invitation to join an Organization, they get access to resource quotas assigned to that
 Organization and they may proceed by issuing a new API key and creating sandboxes.
 
