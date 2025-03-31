@@ -562,6 +562,11 @@ main().catch(error => console.error("Error:", error));
 </TabItem>
 </Tabs>
 
+
+:::tip
+You can access the Sandbox `Web Terminal` by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
+:::
+
 ## Connect to an LLM
 
 The following snippet connects to an LLM using the Anthropic API and asks Claude a question by running Python code directly:
