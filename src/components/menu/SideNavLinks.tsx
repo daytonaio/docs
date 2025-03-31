@@ -30,7 +30,7 @@ export const SideNavLinks = () => {
     <>
       <div className="nav-item call">
         <a
-          href="https://daytona.zapier.app/"
+          href="https://www.daytona.io/contact"
           target="_blank"
           className="nav__link"
           rel="noreferrer"
