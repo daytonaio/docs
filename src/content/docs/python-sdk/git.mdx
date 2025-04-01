@@ -1,51 +1,6 @@
 ---
-title: Git Operations
+title: ""
 ---
-
-The Daytona SDK provides built-in Git support. This guide covers all available Git
-operations and best practices. Daytona SDK provides an option to clone, check status,
-and manage Git repositories in Sandboxes. You can interact with Git repositories using
-the `git` module.
-
-**Example**:
-
-  Basic Git workflow:
-
-```python
-sandbox = daytona.create()
-
-# Clone a repository
-sandbox.git.clone(
-    url="https://github.com/user/repo.git",
-    path="/workspace/repo"
-)
-
-# Make some changes
-sandbox.fs.upload_file("/workspace/repo/test.txt", "Hello, World!")
-
-# Stage and commit changes
-sandbox.git.add("/workspace/repo", ["test.txt"])
-sandbox.git.commit(
-    path="/workspace/repo",
-    message="Add test file",
-    author="John Doe",
-    email="john@example.com"
-)
-
-# Push changes (with authentication)
-sandbox.git.push(
-    path="/workspace/repo",
-    username="user",
-    password="token"
-)
-```
-  
-**Notes**:
-
-  All paths should be absolute paths within the Sandbox if not explicitly
-  stated otherwise.
-
-<a id="daytona_sdk.git.Git"></a>
 
 ## Git
 
@@ -55,16 +10,12 @@ class Git()
 
 Provides Git operations within a Sandbox.
 
-This class implements a high-level interface to Git operations that can be
-performed within a Daytona Sandbox. It supports common Git operations like
-cloning repositories, staging and committing changes, pushing and pulling
-changes, and checking repository status.
-
 **Attributes**:
 
 - `sandbox` _Sandbox_ - The parent Sandbox instance.
 - `instance` _SandboxInstance_ - The Sandbox instance this Git handler belongs to.
   
+
 **Example**:
 
 ```python
@@ -110,9 +61,7 @@ Initializes a new Git handler instance.
 def add(path: str, files: List[str]) -> None
 ```
 
-Stages files for commit.
-
-This method stages the specified files for the next commit, similar to
+Stages the specified files for the next commit, similar to
 running 'git add' on the command line.
 
 **Arguments**:
@@ -120,6 +69,7 @@ running 'git add' on the command line.
 - `path` _str_ - Absolute path to the Git repository root.
 - `files` _List[str]_ - List of file paths or directories to stage, relative to the repository root.
   
+
 **Example**:
 
 ```python
@@ -143,16 +93,16 @@ def branches(path: str) -> ListBranchResponse
 
 Lists branches in the repository.
 
-This method returns information about all branches in the repository.
-
 **Arguments**:
 
 - `path` _str_ - Absolute path to the Git repository root.
   
+
 **Returns**:
 
 - `ListBranchResponse` - List of branches in the repository.
   
+
 **Example**:
 
 ```python
@@ -172,9 +122,7 @@ def clone(url: str,
           password: Optional[str] = None) -> None
 ```
 
-Clones a Git repository.
-
-This method clones a Git repository into the specified path. It supports
+Clones a Git repository into the specified path. It supports
 cloning specific branches or commits, and can authenticate with the remote
 repository if credentials are provided.
 
@@ -189,6 +137,7 @@ repository if credentials are provided.
 - `username` _Optional[str]_ - Git username for authentication.
 - `password` _Optional[str]_ - Git password or token for authentication.
   
+
 **Example**:
 
 ```python
@@ -222,9 +171,7 @@ sandbox.git.clone(
 def commit(path: str, message: str, author: str, email: str) -> None
 ```
 
-Commits staged changes.
-
-This method creates a new commit with the staged changes. Make sure to stage
+Creates a new commit with the staged changes. Make sure to stage
 changes using the add() method before committing.
 
 **Arguments**:
@@ -234,6 +181,7 @@ changes using the add() method before committing.
 - `author` _str_ - Name of the commit author.
 - `email` _str_ - Email address of the commit author.
   
+
 **Example**:
 
 ```python
@@ -256,9 +204,7 @@ def push(path: str,
          password: Optional[str] = None) -> None
 ```
 
-Pushes local commits to the remote repository.
-
-This method pushes all local commits on the current branch to the remote
+Pushes all local commits on the current branch to the remote
 repository. If the remote repository requires authentication, provide
 username and password/token.
 
@@ -268,6 +214,7 @@ username and password/token.
 - `username` _Optional[str]_ - Git username for authentication.
 - `password` _Optional[str]_ - Git password or token for authentication.
   
+
 **Example**:
 
 ```python
@@ -291,10 +238,7 @@ def pull(path: str,
          password: Optional[str] = None) -> None
 ```
 
-Pulls changes from the remote repository.
-
-This method fetches and merges changes from the remote repository into
-the current branch. If the remote repository requires authentication,
+Pulls changes from the remote repository. If the remote repository requires authentication,
 provide username and password/token.
 
 **Arguments**:
@@ -303,6 +247,7 @@ provide username and password/token.
 - `username` _Optional[str]_ - Git username for authentication.
 - `password` _Optional[str]_ - Git password or token for authentication.
   
+
 **Example**:
 
 ```python
@@ -326,13 +271,11 @@ def status(path: str) -> GitStatus
 
 Gets the current Git repository status.
 
-This method returns detailed information about the current state of the
-repository, including staged, unstaged, and untracked files.
-
 **Arguments**:
 
 - `path` _str_ - Absolute path to the Git repository root.
   
+
 **Returns**:
 
 - `GitStatus` - Repository status information including:
@@ -342,6 +285,7 @@ repository, including staged, unstaged, and untracked files.
   - behind: Number of remote commits not pulled locally
   - branch_published: Whether the branch has been published to the remote repository
   
+
 **Example**:
 
 ```python
@@ -351,45 +295,4 @@ print(f"Commits ahead: {status.ahead}")
 print(f"Commits behind: {status.behind}")
 ```
 
-The Daytona SDK provides built-in Git support. This guide covers all available Git
-operations and best practices. Daytona SDK provides an option to clone, check status,
-and manage Git repositories in Sandboxes. You can interact with Git repositories using
-the `git` module.
 
-**Example**:
-
-  Basic Git workflow:
-
-```python
-sandbox = daytona.create()
-
-# Clone a repository
-sandbox.git.clone(
-    url="https://github.com/user/repo.git",
-    path="/workspace/repo"
-)
-
-# Make some changes
-sandbox.fs.upload_file("/workspace/repo/test.txt", "Hello, World!")
-
-# Stage and commit changes
-sandbox.git.add("/workspace/repo", ["test.txt"])
-sandbox.git.commit(
-    path="/workspace/repo",
-    message="Add test file",
-    author="John Doe",
-    email="john@example.com"
-)
-
-# Push changes (with authentication)
-sandbox.git.push(
-    path="/workspace/repo",
-    username="user",
-    password="token"
-)
-```
-  
-**Notes**:
-
-  All paths should be absolute paths within the Sandbox if not explicitly
-  stated otherwise.

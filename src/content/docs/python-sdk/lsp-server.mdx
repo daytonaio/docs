@@ -1,45 +1,6 @@
 ---
-title: Language Server Protocol
+title: ""
 ---
-
-The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances.
-This enables advanced language features like code completion, diagnostics, and more.
-
-**Example**:
-
-  Basic LSP server usage:
-
-```python
-sandbox = daytona.create()
-
-# Create and start LSP server
-lsp = sandbox.create_lsp_server("typescript", "/workspace/project")
-lsp.start()
-
-# Open a file for editing
-lsp.did_open("/workspace/project/src/index.ts")
-
-# Get completions at a position
-pos = Position(line=10, character=15)
-completions = lsp.completions("/workspace/project/src/index.ts", pos)
-print(f"Completions: {completions}")
-
-# Get document symbols
-symbols = lsp.document_symbols("/workspace/project/src/index.ts")
-for symbol in symbols:
-    print(f"{symbol.name}: {symbol.kind}")
-
-# Clean up
-lsp.did_close("/workspace/project/src/index.ts")
-lsp.stop()
-```
-  
-**Notes**:
-
-  The LSP server must be started with start() before using any other methods,
-  and should be stopped with stop() when no longer needed to free resources.
-
-<a id="daytona_sdk.lsp_server.LspServer"></a>
 
 ## LspServer
 
@@ -47,9 +8,7 @@ lsp.stop()
 class LspServer()
 ```
 
-Provides Language Server Protocol functionality for code intelligence.
-
-This class implements a subset of the Language Server Protocol (LSP) to provide
+Provides Language Server Protocol functionality for code intelligence to provide
 IDE-like features such as code completion, symbol search, and more.
 
 **Attributes**:
@@ -130,6 +89,7 @@ will begin tracking the file's contents and providing language features.
 
 - `path` _str_ - Absolute path to the opened file.
   
+
 **Example**:
 
 ```python
@@ -154,6 +114,7 @@ the language server to clean up any resources associated with that file.
 
 - `path` _str_ - Absolute path to the closed file.
   
+
 **Example**:
 
 ```python
@@ -168,15 +129,13 @@ lsp.did_close("/workspace/project/src/index.ts")
 def document_symbols(path: str) -> List[LspSymbol]
 ```
 
-Gets symbol information from a document.
-
-This method returns information about all symbols (functions, classes,
-variables, etc.) defined in the specified document.
+Gets symbol information (functions, classes, variables, etc.) from a document.
 
 **Arguments**:
 
 - `path` _str_ - Absolute path to the file to get symbols from.
   
+
 **Returns**:
 
 - `List[LspSymbol]` - List of symbols in the document. Each symbol includes:
@@ -184,6 +143,7 @@ variables, etc.) defined in the specified document.
   - kind: The symbol's kind (function, class, variable, etc.)
   - location: The location of the symbol in the file
   
+
 **Example**:
 
 ```python
@@ -203,16 +163,14 @@ for symbol in symbols:
 def workspace_symbols(query: str) -> List[LspSymbol]
 ```
 
-Searches for symbols across the entire Sandbox.
-
-This method searches for symbols matching the query string across all files
-in the Sandbox. It's useful for finding declarations and definitions
-without knowing which file they're in.
+Searches for symbols matching the query string across all files
+in the Sandbox.
 
 **Arguments**:
 
 - `query` _str_ - Search query to match against symbol names.
   
+
 **Returns**:
 
 - `List[LspSymbol]` - List of matching symbols from all files.
@@ -224,16 +182,14 @@ without knowing which file they're in.
 def sandbox_symbols(query: str) -> List[LspSymbol]
 ```
 
-Searches for symbols across the entire Sandbox.
-
-This method searches for symbols matching the query string across all files
-in the Sandbox. It's useful for finding declarations and definitions
-without knowing which file they're in.
+Searches for symbols matching the query string across all files
+in the Sandbox.
 
 **Arguments**:
 
 - `query` _str_ - Search query to match against symbol names.
   
+
 **Returns**:
 
 - `List[LspSymbol]` - List of matching symbols from all files. Each symbol
@@ -242,6 +198,7 @@ without knowing which file they're in.
   - kind: The symbol's kind (function, class, variable, etc.)
   - location: The location of the symbol in the file
   
+
 **Example**:
 
 ```python
@@ -265,6 +222,7 @@ Gets completion suggestions at a position in a file.
 - `path` _str_ - Absolute path to the file.
 - `position` _Position_ - Cursor position to get completions for.
   
+
 **Returns**:
 
 - `CompletionList` - List of completion suggestions. The list includes:
@@ -278,6 +236,7 @@ Gets completion suggestions at a position in a file.
   - filterText: Text used to filter the item
   - insertText: The actual text to insert (if different from label)
   
+
 **Example**:
 
 ```python
@@ -288,44 +247,19 @@ for item in completions.items:
     print(f"{item.label} ({item.kind}): {item.detail}")
 ```
 
-The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances.
-This enables advanced language features like code completion, diagnostics, and more.
 
-**Example**:
-
-  Basic LSP server usage:
+## LspLanguageId
 
 ```python
-sandbox = daytona.create()
-
-# Create and start LSP server
-lsp = sandbox.create_lsp_server("typescript", "/workspace/project")
-lsp.start()
-
-# Open a file for editing
-lsp.did_open("/workspace/project/src/index.ts")
-
-# Get completions at a position
-pos = Position(line=10, character=15)
-completions = lsp.completions("/workspace/project/src/index.ts", pos)
-print(f"Completions: {completions}")
-
-# Get document symbols
-symbols = lsp.document_symbols("/workspace/project/src/index.ts")
-for symbol in symbols:
-    print(f"{symbol.name}: {symbol.kind}")
-
-# Clean up
-lsp.did_close("/workspace/project/src/index.ts")
-lsp.stop()
+class LspLanguageId(Enum)
 ```
-  
-**Notes**:
 
-  The LSP server must be started with start() before using any other methods,
-  and should be stopped with stop() when no longer needed to free resources.
+Language IDs for Language Server Protocol (LSP).
 
-<a id="daytona_sdk.lsp_server.Position"></a>
+**Enum Members**:
+    - `PYTHON` ("python")
+    - `TYPESCRIPT` ("typescript")
+    - `JAVASCRIPT` ("javascript")
 
 ## Position
 
@@ -333,9 +267,7 @@ lsp.stop()
 class Position()
 ```
 
-Represents a position in a text document.
-
-This class represents a zero-based position within a text document,
+Represents a zero-based position in a text document,
 specified by line number and character offset.
 
 **Attributes**:
@@ -355,3 +287,4 @@ Initialize a new Position instance.
 
 - `line` _int_ - Zero-based line number in the document.
 - `character` _int_ - Zero-based character offset on the line.
+

@@ -1,47 +1,6 @@
 ---
-title: Sandbox
+title: ""
 ---
-
-The Daytona SDK core Sandbox functionality.
-
-Provides the main Sandbox class representing a Daytona Sandbox that coordinates file system,
-Git, process execution, and LSP functionality. It serves as the central point
-for interacting with Daytona sandboxes.
-
-**Examples**:
-
-  Basic usage:
-
-```python
-# Create and initialize sandbox
-daytona = Daytona()
-sandbox = daytona.create()
-
-# File operations
-sandbox.fs.upload_file(
-    '/app/config.json',
-    b'{"setting": "value"}'
-)
-content = sandbox.fs.download_file('/app/config.json')
-
-# Git operations
-sandbox.git.clone('https://github.com/user/repo.git')
-
-# Process execution
-response = sandbox.process.execute_command('ls -la')
-print(response.result)
-
-# LSP functionality
-lsp = sandbox.create_lsp_server('python', '/workspace/project')
-lsp.did_open('/workspace/project/src/main.py')
-completions = lsp.completions('/workspace/project/src/main.py', {
-    'line': 10,
-    'character': 15
-})
-print(completions)
-```
-
-<a id="daytona_sdk.sandbox.Sandbox"></a>
 
 ## Sandbox
 
@@ -50,10 +9,6 @@ class Sandbox()
 ```
 
 Represents a Daytona Sandbox.
-
-A Sandbox provides file system operations, Git operations, process execution,
-and LSP functionality. It serves as the main interface for interacting with
-a Daytona Sandbox.
 
 **Attributes**:
 
@@ -94,6 +49,7 @@ Gets structured information about the Sandbox.
 - `SandboxInfo` - Detailed information about the Sandbox including its
   configuration, resources, and current state.
   
+
 **Example**:
 
 ```python
@@ -116,6 +72,7 @@ Gets the root directory path for the logged in user inside the Sandbox.
 
 - `str` - The absolute path to the Sandbox root directory for the logged in user.
   
+
 **Example**:
 
 ```python
@@ -140,10 +97,12 @@ diagnostics, and more.
 - `language_id` _LspLanguageId_ - The language server type (e.g., LspLanguageId.PYTHON).
 - `path_to_project` _str_ - Absolute path to the project root directory.
   
+
 **Returns**:
 
 - `LspServer` - A new LSP server instance configured for the specified language.
   
+
 **Example**:
 
 ```python
@@ -165,10 +124,12 @@ Labels are key-value pairs that can be used to organize and identify Sandboxes.
 
 - `labels` _Dict[str, str]_ - Dictionary of key-value pairs representing Sandbox labels.
   
+
 **Returns**:
 
   Dict[str, str]: Dictionary containing the updated Sandbox labels.
   
+
 **Example**:
 
 ```python
@@ -190,18 +151,18 @@ print(f"Updated labels: {new_labels}")
 def start(timeout: Optional[float] = 60)
 ```
 
-Starts the Sandbox.
-
-This method starts the Sandbox and waits for it to be ready.
+Starts the Sandbox and waits for it to be ready.
 
 **Arguments**:
 
 - `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
+
 **Raises**:
 
 - `DaytonaError` - If timeout is negative. If sandbox fails to start or times out.
   
+
 **Example**:
 
 ```python
@@ -220,18 +181,18 @@ print("Sandbox started successfully")
 def stop(timeout: Optional[float] = 60)
 ```
 
-Stops the Sandbox.
-
-This method stops the Sandbox and waits for it to be fully stopped.
+Stops the Sandbox and waits for it to be fully stopped.
 
 **Arguments**:
 
 - `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
+
 **Raises**:
 
 - `DaytonaError` - If timeout is negative; If sandbox fails to stop or times out
   
+
 **Example**:
 
 ```python
@@ -249,15 +210,14 @@ print("Sandbox stopped successfully")
 def wait_for_workspace_start(timeout: Optional[float] = 60) -> None
 ```
 
-Waits for the Sandbox to reach the 'started' state.
-
-This method polls the Sandbox status until it reaches the 'started' state
-or encounters an error.
+Waits for the Sandbox to reach the 'started' state. Polls the Sandbox status until it
+reaches the 'started' state, encounters an error or times out.
 
 **Arguments**:
 
 - `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
+
 **Raises**:
 
 - `DaytonaError` - If timeout is negative; If Sandbox fails to start or times out
@@ -273,15 +233,14 @@ or encounters an error.
 def wait_for_sandbox_start(timeout: Optional[float] = 60) -> None
 ```
 
-Waits for the Sandbox to reach the 'started' state.
-
-This method polls the Sandbox status until it reaches the 'started' state
-or encounters an error.
+Waits for the Sandbox to reach the 'started' state. Polls the Sandbox status until it
+reaches the 'started' state, encounters an error or times out.
 
 **Arguments**:
 
 - `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
+
 **Raises**:
 
 - `DaytonaError` - If timeout is negative; If Sandbox fails to start or times out
@@ -295,15 +254,15 @@ or encounters an error.
 def wait_for_workspace_stop(timeout: Optional[float] = 60) -> None
 ```
 
-Waits for the Sandbox to reach the 'stopped' state.
-
-This method polls the Sandbox status until it reaches the 'stopped' state
-or encounters an error. It will wait up to 60 seconds for the Sandbox to stop.
+Waits for the Sandbox to reach the 'stopped' state. Polls the Sandbox status until it
+reaches the 'stopped' state, encounters an error or times out. It will wait up to 60 seconds
+for the Sandbox to stop.
 
 **Arguments**:
 
 - `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
+
 **Raises**:
 
 - `DaytonaError` - If timeout is negative. If Sandbox fails to stop or times out.
@@ -319,15 +278,15 @@ or encounters an error. It will wait up to 60 seconds for the Sandbox to stop.
 def wait_for_sandbox_stop(timeout: Optional[float] = 60) -> None
 ```
 
-Waits for the Sandbox to reach the 'stopped' state.
-
-This method polls the Sandbox status until it reaches the 'stopped' state
-or encounters an error. It will wait up to 60 seconds for the Sandbox to stop.
+Waits for the Sandbox to reach the 'stopped' state. Polls the Sandbox status until it
+reaches the 'stopped' state, encounters an error or times out. It will wait up to 60 seconds
+for the Sandbox to stop.
 
 **Arguments**:
 
 - `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
+
 **Raises**:
 
 - `DaytonaError` - If timeout is negative. If Sandbox fails to stop or times out.
@@ -350,10 +309,12 @@ Interactions using Sandbox Previews are not included.
 - `interval` _int_ - Number of minutes of inactivity before auto-stopping.
   Set to 0 to disable auto-stop. Defaults to 15.
   
+
 **Raises**:
 
 - `DaytonaError` - If interval is negative
   
+
 **Example**:
 
 ```python
@@ -377,6 +338,7 @@ it will open it and return the link.
 
 - `port` _int_ - The port to open the preview link on
   
+
 **Returns**:
 
   The preview link for the sandbox at the specified port
@@ -401,56 +363,17 @@ Sandbox must be stopped before archiving.
 def to_sandbox_info(instance: ApiSandbox) -> SandboxInfo
 ```
 
-Converts an API sandbox instance to a SandboxInfo object.
+Converts an API Sandbox instance to a SandboxInfo object.
 
 **Arguments**:
 
-- `instance` _ApiSandbox_ - The API sandbox instance to convert
+- `instance` _ApiSandbox_ - The API Sandbox instance to convert
   
+
 **Returns**:
 
 - `SandboxInfo` - The converted SandboxInfo object
 
-The Daytona SDK core Sandbox functionality.
-
-Provides the main Sandbox class representing a Daytona Sandbox that coordinates file system,
-Git, process execution, and LSP functionality. It serves as the central point
-for interacting with Daytona sandboxes.
-
-**Examples**:
-
-  Basic usage:
-
-```python
-# Create and initialize sandbox
-daytona = Daytona()
-sandbox = daytona.create()
-
-# File operations
-sandbox.fs.upload_file(
-    '/app/config.json',
-    b'{"setting": "value"}'
-)
-content = sandbox.fs.download_file('/app/config.json')
-
-# Git operations
-sandbox.git.clone('https://github.com/user/repo.git')
-
-# Process execution
-response = sandbox.process.execute_command('ls -la')
-print(response.result)
-
-# LSP functionality
-lsp = sandbox.create_lsp_server('python', '/workspace/project')
-lsp.did_open('/workspace/project/src/main.py')
-completions = lsp.completions('/workspace/project/src/main.py', {
-    'line': 10,
-    'character': 15
-})
-print(completions)
-```
-
-<a id="daytona_sdk.sandbox.SandboxTargetRegion"></a>
 
 ## SandboxTargetRegion
 
@@ -461,7 +384,10 @@ class SandboxTargetRegion(Enum)
 
 Target regions for Sandboxes
 
-<a id="daytona_sdk.sandbox.SandboxResources"></a>
+**Enum Members**:
+    - `EU` ("eu")
+    - `US` ("us")
+    - `ASIA` ("asia")
 
 ## SandboxResources
 
@@ -479,6 +405,7 @@ Resources allocated to a Sandbox.
 - `memory` _str_ - Amount of memory allocated with unit (e.g., "2Gi", "4Gi").
 - `disk` _str_ - Amount of disk space allocated with unit (e.g., "10Gi", "20Gi").
   
+
 **Example**:
 
 ```python
@@ -490,8 +417,6 @@ resources = SandboxResources(
 )
 ```
 
-<a id="daytona_sdk.sandbox.SandboxInfo"></a>
-
 ## SandboxInfo
 
 ```python
@@ -499,9 +424,6 @@ class SandboxInfo(ApiSandboxInfo)
 ```
 
 Structured information about a Sandbox.
-
-This class provides detailed information about a Sandbox's configuration,
-resources, and current state.
 
 **Attributes**:
 
@@ -519,6 +441,7 @@ resources, and current state.
 - `snapshot_state` _Optional[str]_ - Current state of Sandbox snapshot.
 - `snapshot_state_created_at` _Optional[datetime]_ - When the snapshot state was created.
   
+
 **Example**:
 
 ```python
@@ -528,8 +451,6 @@ print(f"Sandbox {info.name} is {info.state}")
 print(f"Resources: {info.resources.cpu} CPU, {info.resources.memory} RAM")
 ```
 
-<a id="daytona_sdk.sandbox.SandboxInstance"></a>
-
 ## SandboxInstance
 
 ```python
@@ -537,3 +458,4 @@ class SandboxInstance(ApiSandbox)
 ```
 
 Represents a Daytona Sandbox instance.
+

@@ -1,5 +1,8 @@
 // Navigation Configuration
 // This file defines the relationship between main navigation items and their related pages
+import fs from 'node:fs'
+import path from 'node:path'
+
 import { NavigationCategory } from '../content/config'
 
 export interface NavigationItem {
@@ -33,7 +36,8 @@ export interface NavigationGroup extends NavigationItem {
   // If the current page is the first item in the list, it is also used as the previous link in the pagination component.
   // The referenced page should be a `MainNavigationLink`. It is ignored for `NavigationCategory.MAIN` groups.
   homePageHref?: string
-  entries: (NavigationLink | MainNavigationLink)[]
+  autopopulateFromDir?: string
+  entries?: (NavigationLink | MainNavigationLink)[]
 }
 
 // HELPER FUNCTIONS
@@ -60,7 +64,7 @@ function getNavLinksByCategory(
   category: NavigationCategory
 ): NavigationLink[] {
   const groups = getNavGroupsByCategory(sidebarConfig, category)
-  return groups.flatMap(group => group.entries) as NavigationLink[]
+  return groups.flatMap(group => group.entries || []) as NavigationLink[]
 }
 
 function getNavGroupByHref(
@@ -68,6 +72,8 @@ function getNavGroupByHref(
   href: string
 ): NavigationGroup | undefined {
   for (const group of sidebarConfig) {
+    if (!group.entries) continue
+
     for (const entry of group.entries) {
       if (entry.type === 'link' && comparePaths(entry.href, href)) {
         return group
@@ -86,9 +92,89 @@ function getNavLinkByHref(
 
   if (!group) return undefined
 
+  if (!group.entries) return undefined
+
   return group.entries.find(
     entry => entry.type === 'link' && comparePaths(entry.href, href)
   ) as NavigationLink
+}
+
+function toCamelCase(filename: string): string {
+  const nameWithoutExt = path.parse(filename).name
+
+  return nameWithoutExt
+    .split(/[-_\s]/)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('')
+}
+
+function populateEntriesFromDir(
+  group: NavigationGroup,
+  workspaceRoot: string = process.cwd()
+): NavigationLink[] {
+  if (!group.autopopulateFromDir) return group?.entries || []
+
+  const dirPath = path.join(
+    workspaceRoot,
+    '/src/content',
+    group.autopopulateFromDir
+  )
+
+  if (!fs.existsSync(dirPath)) {
+    console.warn(
+      `Directory ${dirPath} does not exist, cannot autopopulate navigation group`
+    )
+    return group?.entries || []
+  }
+
+  try {
+    const files = fs.readdirSync(dirPath, { withFileTypes: true })
+
+    const existingHrefs = new Set(
+      (group.entries || [])
+        .filter(entry => entry.type === 'link')
+        .map(entry => (entry as NavigationLink).href)
+    )
+
+    const entries = files
+      .filter(file => file.isFile())
+      .filter(file => !['index.md', 'index.mdx'].includes(file.name))
+      .filter(file => {
+        const ext = path.extname(file.name).toLowerCase()
+        return ext === '.md' || ext === '.mdx'
+      })
+      .map(file => {
+        const fileName = path.parse(file.name).name
+        const pathWithoutExt = path.join(
+          group.autopopulateFromDir || '',
+          fileName
+        )
+        const href = `${pathWithoutExt}`
+
+        const label = toCamelCase(fileName)
+
+        return {
+          type: 'link',
+          href,
+          label,
+        } as NavigationLink
+      })
+      .filter(entry => !existingHrefs.has(entry.href))
+
+    return [...(group.entries || []), ...entries]
+  } catch (error) {
+    console.error(`Error reading directory ${dirPath}:`, error)
+    return group?.entries || []
+  }
+}
+
+function processAutopopulateGroups(sidebarConfig: NavigationGroup[]) {
+  sidebarConfig.forEach(group => {
+    if (group.autopopulateFromDir) {
+      group.entries = populateEntriesFromDir(group)
+      group.autopopulateFromDir = undefined
+    }
+  })
 }
 
 export function getPagination(
@@ -98,6 +184,8 @@ export function getPagination(
   prev?: { href: string; label: string }
   next?: { href: string; label: string }
 } {
+  processAutopopulateGroups(sidebarConfig)
+
   currentPath = currentPath.replace(/\/$/, '')
   const result: {
     prev?: { href: string; label: string }
@@ -152,6 +240,8 @@ export function getSidebar(
   sidebarConfig: NavigationGroup[],
   currentPath: string
 ): NavigationGroup[] {
+  processAutopopulateGroups(sidebarConfig)
+
   currentPath = currentPath.replace(/\/$/, '')
   const mainGroup = getMainNavGroup(sidebarConfig)
   const currentGroup = getNavGroupByHref(sidebarConfig, currentPath)
@@ -180,7 +270,7 @@ export function getSidebar(
     contextHref = currentGroup.homePageHref || null
   }
 
-  if (contextHref) {
+  if (contextHref && mainGroup.entries) {
     mainGroup.entries = mainGroup.entries.map(entry => ({
       ...entry,
       context: comparePaths(entry.href, contextHref as string),
@@ -194,6 +284,8 @@ export function getExploreMoreData(
   sidebarConfig: NavigationGroup[],
   currentPath: string
 ) {
+  processAutopopulateGroups(sidebarConfig)
+
   currentPath = currentPath.replace(/\/$/, '')
   const link = getNavLinkByHref(
     sidebarConfig,
@@ -209,7 +301,7 @@ export function getExploreMoreData(
   )
 
   return relatedGroups.map(group => {
-    const items = group.entries.map(navLink => {
+    const items = (group.entries || []).map(navLink => {
       return {
         title: navLink.label,
         subtitle: navLink.description || '',
