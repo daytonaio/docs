@@ -1,79 +1,11 @@
 ---
-title: File  System  Operations
+title: ""
 ---
 
-The Daytona SDK provides comprehensive file system operations through the `fs` module in Sandboxes.
-You can perform various operations like listing files, creating directories, reading and writing files, and more.
-This guide covers all available file system operations and best practices.
-
-### Examples
-
-```ts
-// Basic file operations
-// Create a sandbox
-const sandbox = await daytona.create();
-
-// Create a directory
-await sandbox.fs.createFolder('/workspace/data', '755');
-
-// Upload a file
-const fileContent = new File(['content'], 'local_file.txt');
-await sandbox.fs.uploadFile('/workspace/data/file.txt', fileContent);
-
-// List directory contents
-const files = await sandbox.fs.listFiles('/workspace');
-files.forEach(file => {
-  console.log(`Name: ${file.name}`);
-  console.log(`Is directory: ${file.isDir}`);
-  console.log(`Size: ${file.size}`);
-  console.log(`Modified: ${file.modTime}`);
-});
-
-// Search file contents
-const matches = await sandbox.fs.findFiles(
-  '/workspace/src',
-  'text-of-interest'
-);
-matches.forEach(match => {
-  console.log(`Absolute file path: ${match.file}`);
-  console.log(`Line number: ${match.line}`);
-  console.log(`Line content: ${match.content}\n`);
-});
-```
-
-```ts
-// File manipulation
-// Move files
-await sandbox.fs.moveFiles(
-  '/workspace/data/old.txt',
-  '/workspace/data/new.txt'
-);
-
-// Replace text in files
-const results = await sandbox.fs.replaceInFiles(
-  ['/workspace/data/new.txt'],
-  'old_version',
-  'new_version'
-);
-
-// Set permissions
-await sandbox.fs.setFilePermissions(
-  '/workspace/data/script.sh',
-  {
-    mode: '755',
-    owner: 'daytona'
-  }
-);
-```
 
 ## FileSystem
 
 Provides file system operations within a Sandbox.
-
-This class implements a high-level interface to file system operations that can
-be performed within a Daytona Sandbox. It supports common operations like
-creating, deleting, and moving files, as well as searching file contents and
-managing permissions.
 
 ### Constructors
 
@@ -83,16 +15,15 @@ managing permissions.
 new FileSystem(instance: SandboxInstance, toolboxApi: ToolboxApi): FileSystem
 ```
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type |
-| ------ | ------ |
-| `instance` | `SandboxInstance` |
-| `toolboxApi` | `ToolboxApi` |
+- `instance` _SandboxInstance_
+- `toolboxApi` _ToolboxApi_
 
-##### Returns
 
-`FileSystem`
+**Returns**:
+
+- `FileSystem`
 
 ### Methods
 
@@ -104,18 +35,17 @@ createFolder(path: string, mode: string): Promise<void>
 
 Create a new directory in the Sandbox with specified permissions.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Path where the directory should be created |
-| `mode` | `string` | Directory permissions in octal format (e.g. "755") |
+- `path` _string_ - Path where the directory should be created
+- `mode` _string_ - Directory permissions in octal format (e.g. "755")
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Example
+- `Promise<void>`
+
+**Example:**
 
 ```ts
 // Create a directory with standard permissions
@@ -132,17 +62,16 @@ deleteFile(path: string): Promise<void>
 
 Deletes a file or directory from the Sandbox.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Path to the file or directory to delete |
+- `path` _string_ - Path to the file or directory to delete
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Example
+- `Promise<void>`
+
+**Example:**
 
 ```ts
 // Delete a file
@@ -159,19 +88,16 @@ downloadFile(path: string): Promise<Blob>
 
 Downloads a file from the Sandbox.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Path to the file to download |
+- `path` _string_ - Path to the file to download
 
-##### Returns
 
-`Promise<Blob>`
+**Returns**:
 
-The file contents as a Blob
+- `Promise<Blob>` - The file contents as a Blob
 
-##### Example
+**Example:**
 
 ```ts
 // Download and process a file
@@ -189,20 +115,17 @@ findFiles(path: string, pattern: string): Promise<Match[]>
 
 Searches for text patterns within files in the Sandbox.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Directory to search in |
-| `pattern` | `string` | Search pattern |
+- `path` _string_ - Directory to search in
+- `pattern` _string_ - Search pattern
 
-##### Returns
 
-`Promise<Match[]>`
+**Returns**:
 
-Array of matches with file and line information
+- `Promise<Match[]>` - Array of matches with file and line information
 
-##### Example
+**Example:**
 
 ```ts
 // Find all TODO comments in TypeScript files
@@ -222,19 +145,16 @@ getFileDetails(path: string): Promise<FileInfo>
 
 Retrieves detailed information about a file or directory.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Path to the file or directory |
+- `path` _string_ - Path to the file or directory
 
-##### Returns
 
-`Promise<FileInfo>`
+**Returns**:
 
-Detailed file information including size, permissions, modification time
+- `Promise<FileInfo>` - Detailed file information including size, permissions, modification time
 
-##### Example
+**Example:**
 
 ```ts
 // Get file details
@@ -252,19 +172,16 @@ listFiles(path: string): Promise<FileInfo[]>
 
 Lists contents of a directory in the Sandbox.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Directory path to list |
+- `path` _string_ - Directory path to list
 
-##### Returns
 
-`Promise<FileInfo[]>`
+**Returns**:
 
-Array of file and directory information
+- `Promise<FileInfo[]>` - Array of file and directory information
 
-##### Example
+**Example:**
 
 ```ts
 // List directory contents
@@ -284,18 +201,17 @@ moveFiles(source: string, destination: string): Promise<void>
 
 Moves or renames a file or directory.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `source` | `string` | Source path |
-| `destination` | `string` | Destination path |
+- `source` _string_ - Source path
+- `destination` _string_ - Destination path
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Example
+- `Promise<void>`
+
+**Example:**
 
 ```ts
 // Move a file to a new location
@@ -315,21 +231,18 @@ newValue: string): Promise<ReplaceResult[]>
 
 Replaces text content in multiple files.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `files` | `string[]` | Array of file paths to process |
-| `pattern` | `string` | Pattern to replace |
-| `newValue` | `string` | Replacement text |
+- `files` _string\[\]_ - Array of file paths to process
+- `pattern` _string_ - Pattern to replace
+- `newValue` _string_ - Replacement text
 
-##### Returns
 
-`Promise<ReplaceResult[]>`
+**Returns**:
 
-Results of the replace operation for each file
+- `Promise<ReplaceResult[]>` - Results of the replace operation for each file
 
-##### Example
+**Example:**
 
 ```ts
 // Update version number across multiple files
@@ -350,20 +263,17 @@ searchFiles(path: string, pattern: string): Promise<SearchFilesResponse>
 
 Searches for files and directories by name pattern in the Sandbox.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Directory to search in |
-| `pattern` | `string` | File name pattern (supports globs) |
+- `path` _string_ - Directory to search in
+- `pattern` _string_ - File name pattern (supports globs)
 
-##### Returns
 
-`Promise<SearchFilesResponse>`
+**Returns**:
 
-Search results with matching files
+- `Promise<SearchFilesResponse>` - Search results with matching files
 
-##### Example
+**Example:**
 
 ```ts
 // Find all TypeScript files
@@ -381,18 +291,17 @@ setFilePermissions(path: string, permissions: FilePermissionsParams): Promise<vo
 
 Sets permissions and ownership for a file or directory.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Path to the file or directory |
-| `permissions` | `FilePermissionsParams` | Permission settings |
+- `path` _string_ - Path to the file or directory
+- `permissions` _FilePermissionsParams_ - Permission settings
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Example
+- `Promise<void>`
+
+**Example:**
 
 ```ts
 // Set file permissions and ownership
@@ -413,18 +322,17 @@ uploadFile(path: string, file: File): Promise<void>
 
 Uploads a file to the Sandbox.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Destination path in the Sandbox |
-| `file` | `File` | File to upload |
+- `path` _string_ - Destination path in the Sandbox
+- `file` _File_ - File to upload
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Example
+- `Promise<void>`
+
+**Example:**
 
 ```ts
 // Upload a configuration file
@@ -434,13 +342,20 @@ await fs.uploadFile('/app/config.json', configFile);
 
 ***
 
+
 ## FilePermissionsParams
 
 Parameters for setting file permissions in the Sandbox.
 
- FilePermissionsParams
+**Properties**:
 
-### Example
+- `group?` _string_ - Group owner of the file
+- `mode?` _string_ - File mode/permissions in octal format (e.g. "644")
+- `owner?` _string_ - User owner of the file
+
+
+
+**Example:**
 
 ```ts
 const permissions: FilePermissionsParams = {
@@ -449,11 +364,3 @@ const permissions: FilePermissionsParams = {
   group: 'users'
 };
 ```
-
-### Properties
-
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| `group?` | `string` | Group owner of the file |
-| `mode?` | `string` | File mode/permissions in octal format (e.g. "644") |
-| `owner?` | `string` | User owner of the file |

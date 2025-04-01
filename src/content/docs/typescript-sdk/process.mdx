@@ -1,46 +1,20 @@
 ---
-title: Process and  Code  Execution
+title: ""
 ---
 
-The Daytona SDK provides powerful process and code execution capabilities through
-the `process` module in Sandboxes. This guide covers all available process operations
-and best practices.
-
-### Examples
-
-```ts
-// Execute a shell command
-const response = await sandbox.process.executeCommand('ls -la');
-console.log(response.result);
-
-// Run TypeScript code
-const response = await sandbox.process.codeRun('console.log("Hello, World!")');
-console.log(response.result);
-```
-
-```ts
-// Using interactive sessions
-// Create a new session
-const sessionId = 'my-session';
-await sandbox.process.createSession(sessionId);
-
-// Execute commands in the session
-const response = await sandbox.process.executeSessionCommand(sessionId, {
-  command: 'cd /workspace'
-});
-
-const response2 = await sandbox.process.executeSessionCommand(sessionId, {
-  command: 'pwd'
-});
-console.log(response2.result);  // Should print "/workspace"
-
-// Clean up
-await sandbox.process.deleteSession(sessionId);
-```
 
 ## CodeRunParams
 
 Parameters for code execution
+
+**Properties**:
+
+- `argv?` _string\[\]_ - Command line arguments
+- `env?` _Record\<string, string\>_ - Environment variables
+    
+
+
+
 
 ### Constructors
 
@@ -50,20 +24,12 @@ Parameters for code execution
 new CodeRunParams(): CodeRunParams
 ```
 
-##### Returns
+**Returns**:
 
-`CodeRunParams`
-
-### Properties
-
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| `argv?` | `string[]` | Command line arguments |
-| `env?` | `Record<string, string>` | Environment variables |
-
-***
-
+- `CodeRunParams`
 ## Process
+
+Handles process and code execution within a Sandbox.
 
 ### Constructors
 
@@ -76,17 +42,16 @@ new Process(
    instance: SandboxInstance): Process
 ```
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type |
-| ------ | ------ |
-| `codeToolbox` | `SandboxCodeToolbox` |
-| `toolboxApi` | `ToolboxApi` |
-| `instance` | `SandboxInstance` |
+- `codeToolbox` _SandboxCodeToolbox_
+- `toolboxApi` _ToolboxApi_
+- `instance` _SandboxInstance_
 
-##### Returns
 
-`Process`
+**Returns**:
+
+- `Process`
 
 ### Methods
 
@@ -101,23 +66,20 @@ timeout?: number): Promise<ExecuteResponse>
 
 Executes code in the Sandbox using the appropriate language runtime.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `code` | `string` | Code to execute |
-| `params?` | `CodeRunParams` | Parameters for code execution |
-| `timeout?` | `number` | - |
+- `code` _string_ - Code to execute
+- `params?` _CodeRunParams_ - Parameters for code execution
+- `timeout?` _number_
 
-##### Returns
 
-`Promise<ExecuteResponse>`
+**Returns**:
 
-Code execution results containing:
-                                   - exitCode: The execution's exit status
-                                   - result: Standard output from the code
+- `Promise<ExecuteResponse>` - Code execution results containing:
+    - exitCode: The execution's exit status
+    - result: Standard output from the code
 
-##### Example
+**Example:**
 
 ```ts
 // Run TypeScript code
@@ -143,17 +105,16 @@ Sessions are background processes that maintain state between commands, making t
 scenarios requiring multiple related commands or persistent environment setup. You can run
 long-running commands and monitor process status.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `sessionId` | `string` | Unique identifier for the new session |
+- `sessionId` _string_ - Unique identifier for the new session
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Example
+- `Promise<void>`
+
+**Example:**
 
 ```ts
 // Create a new session
@@ -174,17 +135,16 @@ deleteSession(sessionId: string): Promise<void>
 
 Delete a session from the Sandbox.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `sessionId` | `string` | Unique identifier of the session to delete |
+- `sessionId` _string_ - Unique identifier of the session to delete
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Example
+- `Promise<void>`
+
+**Example:**
 
 ```ts
 // Clean up a completed session
@@ -204,23 +164,20 @@ timeout?: number): Promise<ExecuteResponse>
 
 Executes a shell command in the Sandbox.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `command` | `string` | Shell command to execute |
-| `cwd?` | `string` | Working directory for command execution. If not specified, uses the Sandbox root directory |
-| `timeout?` | `number` | Maximum time in seconds to wait for the command to complete. 0 means wait indefinitely. |
+- `command` _string_ - Shell command to execute
+- `cwd?` _string_ - Working directory for command execution. If not specified, uses the Sandbox root directory
+- `timeout?` _number_ - Maximum time in seconds to wait for the command to complete. 0 means wait indefinitely.
 
-##### Returns
 
-`Promise<ExecuteResponse>`
+**Returns**:
 
-Command execution results containing:
-                                   - exitCode: The command's exit status
-                                   - result: Standard output from the command
+- `Promise<ExecuteResponse>` - Command execution results containing:
+    - exitCode: The command's exit status
+    - result: Standard output from the command
 
-##### Examples
+**Examples:**
 
 ```ts
 // Simple command
@@ -251,24 +208,23 @@ timeout?: number): Promise<SessionExecuteResponse>
 
 Executes a command in an existing session.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `sessionId` | `string` | Unique identifier of the session to use |
-| `req` | `SessionExecuteRequest` | Command execution request containing: - command: The command to execute - async: Whether to execute asynchronously |
-| `timeout?` | `number` | Timeout in seconds |
+- `sessionId` _string_ - Unique identifier of the session to use
+- `req` _SessionExecuteRequest_ - Command execution request containing:
+    - command: The command to execute
+    - async: Whether to execute asynchronously
+- `timeout?` _number_ - Timeout in seconds
 
-##### Returns
 
-`Promise<SessionExecuteResponse>`
+**Returns**:
 
-Command execution results containing:
-                                          - cmdId: Unique identifier for the executed command
-                                          - output: Command output (if synchronous execution)
-                                          - exitCode: Command exit status (if synchronous execution)
+- `Promise<SessionExecuteResponse>` - Command execution results containing:
+    - cmdId: Unique identifier for the executed command
+    - output: Command output (if synchronous execution)
+    - exitCode: Command exit status (if synchronous execution)
 
-##### Example
+**Example:**
 
 ```ts
 // Execute commands in sequence, maintaining state
@@ -296,21 +252,18 @@ getSession(sessionId: string): Promise<Session>
 
 Get a session in the sandbox.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `sessionId` | `string` | Unique identifier of the session to retrieve |
+- `sessionId` _string_ - Unique identifier of the session to retrieve
 
-##### Returns
 
-`Promise<Session>`
+**Returns**:
 
-Session information including:
-                           - sessionId: The session's unique identifier
-                           - commands: List of commands executed in the session
+- `Promise<Session>` - Session information including:
+    - sessionId: The session's unique identifier
+    - commands: List of commands executed in the session
 
-##### Example
+**Example:**
 
 ```ts
 const session = await process.getSession('my-session');
@@ -329,23 +282,20 @@ getSessionCommand(sessionId: string, commandId: string): Promise<Command>
 
 Gets information about a specific command executed in a session.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `sessionId` | `string` | Unique identifier of the session |
-| `commandId` | `string` | Unique identifier of the command |
+- `sessionId` _string_ - Unique identifier of the session
+- `commandId` _string_ - Unique identifier of the command
 
-##### Returns
 
-`Promise<Command>`
+**Returns**:
 
-Command information including:
-                           - id: The command's unique identifier
-                           - command: The executed command string
-                           - exitCode: Command's exit status (if completed)
+- `Promise<Command>` - Command information including:
+    - id: The command's unique identifier
+    - command: The executed command string
+    - exitCode: Command's exit status (if completed)
 
-##### Example
+**Example:**
 
 ```ts
 const cmd = await process.getSessionCommand('my-session', 'cmd-123');
@@ -366,20 +316,16 @@ getSessionCommandLogs(sessionId: string, commandId: string): Promise<string>
 
 Get the logs for a command executed in a session.
 
-###### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `sessionId` | `string` | Unique identifier of the session |
-| `commandId` | `string` | Unique identifier of the command |
+- `sessionId` _string_ - Unique identifier of the session
+- `commandId` _string_ - Unique identifier of the command
 
-###### Returns
+**Returns**:
 
-`Promise<string>`
+- `Promise<string>` - Command logs
 
-Command logs
-
-###### Example
+**Example:**
 
 ```ts
 const logs = await process.getSessionCommandLogs('my-session', 'cmd-123');
@@ -392,25 +338,22 @@ console.log('Command output:', logs);
 getSessionCommandLogs(
    sessionId: string, 
    commandId: string, 
-   onLogs: (chunk: string) => void
-): Promise<void>
+onLogs: (chunk: string) => void): Promise<void>
 ```
 
 Asynchronously retrieve and process the logs for a command executed in a session as they become available.
 
-###### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `sessionId` | `string` | Unique identifier of the session |
-| `commandId` | `string` | Unique identifier of the command |
-| `onLogs` | `(chunk: string) => void` | Callback function to handle each log chunk |
+- `sessionId` _string_ - Unique identifier of the session
+- `commandId` _string_ - Unique identifier of the command
+- `onLogs` _\(chunk: string\) =\> void_ - Callback function to handle each log chunk
 
-###### Returns
+**Returns**:
 
-`Promise<void>`
+- `Promise<void>`
 
-###### Example
+**Example:**
 
 ```ts
 const logs = await process.getSessionCommandLogs('my-session', 'cmd-123', (chunk) => {
@@ -428,13 +371,11 @@ listSessions(): Promise<Session[]>
 
 Lists all active sessions in the Sandbox.
 
-##### Returns
+**Returns**:
 
-`Promise<Session[]>`
+- `Promise<Session[]>` - Array of active sessions
 
-Array of active sessions
-
-##### Example
+**Example:**
 
 ```ts
 const sessions = await process.listSessions();

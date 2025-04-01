@@ -562,7 +562,6 @@ main().catch(error => console.error("Error:", error));
 </TabItem>
 </Tabs>
 
-
 :::tip
 You can access the Sandbox `Web Terminal` by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
 :::

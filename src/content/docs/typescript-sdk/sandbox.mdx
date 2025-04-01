@@ -1,53 +1,25 @@
 ---
-title: Sandbox
+title: ""
 ---
 
-The Daytona SDK core Sandbox functionality.
-
-Provides the main Sandbox class representing a Daytona Sandbox that coordinates file system,
-Git, process execution, and LSP functionality. It serves as the central point
-for interacting with Daytona Sandboxes.
-
-The Sandbox must be in a 'started' state before performing operations.
-
-### Example
-
-```ts
-// Create and initialize sandbox
-const daytona = new Daytona();
-const sandbox = await daytona.create();
-
-// File operations
-await sandbox.fs.uploadFile(
-  '/app/config.json',
-  new File(['{"setting": "value"}'], 'config.json')
-);
-const contentBlob = await sandbox.fs.downloadFile('/app/config.json');
-
-// Git operations
-await sandbox.git.clone('https://github.com/user/repo.git');
-
-// Process execution
-const response = await sandbox.process.executeCommand('ls -la');
-console.log(response.result);
-
-// LSP functionality
-const lsp = sandbox.createLspServer('typescript', '/workspace/project');
-await lsp.didOpen('/workspace/project/src/index.ts');
-const completions = await lsp.completions('/workspace/project/src/index.ts', {
-  line: 10,
-  character: 15
-});
-console.log(completions);
-```
 
 ## Sandbox
 
 Represents a Daytona Sandbox.
 
-A Sandbox provides file system operations, Git operations, process execution,
-and LSP functionality. It serves as the main interface for interacting with
-a Daytona sandbox.
+**Properties**:
+
+- `fs` _FileSystem_ - File system operations interface
+- `git` _Git_ - Git operations interface
+- `id` _string_ - Unique identifier for the Sandbox
+- `instance` _SandboxInstance_ - The underlying Sandbox instance
+- `process` _Process_ - Process execution interface
+- `sandboxApi` _WorkspaceApi_ - API client for Sandbox operations
+- `toolboxApi` _ToolboxApi_ - API client for toolbox operations
+    
+
+
+
 
 ### Constructors
 
@@ -64,31 +36,18 @@ new Sandbox(
 
 Creates a new Sandbox instance
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `id` | `string` | Unique identifier for the Sandbox |
-| `instance` | `SandboxInstance` | The underlying Sandbox instance |
-| `sandboxApi` | `WorkspaceApi` | API client for Sandbox operations |
-| `toolboxApi` | `ToolboxApi` | API client for toolbox operations |
-| `codeToolbox` | `SandboxCodeToolbox` | Language-specific toolbox implementation |
+- `id` _string_ - Unique identifier for the Sandbox
+- `instance` _SandboxInstance_ - The underlying Sandbox instance
+- `sandboxApi` _WorkspaceApi_ - API client for Sandbox operations
+- `toolboxApi` _ToolboxApi_ - API client for toolbox operations
+- `codeToolbox` _SandboxCodeToolbox_ - Language-specific toolbox implementation
 
-##### Returns
 
-`Sandbox`
+**Returns**:
 
-### Properties
-
-| Property | Modifier | Type | Description |
-| ------ | ------ | ------ | ------ |
-| `fs` | `readonly` | `FileSystem` | File system operations interface |
-| `git` | `readonly` | `Git` | Git operations interface |
-| `id` | `readonly` | `string` | Unique identifier for the Sandbox |
-| `instance` | `readonly` | `SandboxInstance` | The underlying Sandbox instance |
-| `process` | `readonly` | `Process` | Process execution interface |
-| `sandboxApi` | `readonly` | `WorkspaceApi` | API client for Sandbox operations |
-| `toolboxApi` | `readonly` | `ToolboxApi` | API client for toolbox operations |
+- `Sandbox`
 
 ### Methods
 
@@ -100,17 +59,14 @@ static toSandboxInfo(instance: Workspace): SandboxInfo
 
 Converts an API sandbox instance to a SandboxInfo object.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `instance` | `Workspace` | The API sandbox instance to convert |
+- `instance` _Workspace_ - The API sandbox instance to convert
 
-##### Returns
 
-`SandboxInfo`
+**Returns**:
 
-The converted SandboxInfo object
+- `SandboxInfo` - The converted SandboxInfo object
 
 ***
 
@@ -122,17 +78,14 @@ static toWorkspaceInfo(instance: Workspace): SandboxInfo
 
 Converts an API workspace instance to a WorkspaceInfo object.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `instance` | `Workspace` | The API workspace instance to convert |
+- `instance` _Workspace_ - The API workspace instance to convert
 
-##### Returns
 
-`SandboxInfo`
+**Returns**:
 
-The converted WorkspaceInfo object
+- `SandboxInfo` - The converted WorkspaceInfo object
 
 ##### Deprecated
 
@@ -151,9 +104,9 @@ state is moved to cost-effective object storage, making it possible to keep sand
 The tradeoff between archived and stopped states is that starting an archived sandbox takes more time, depending on its size.
 Sandbox must be stopped before archiving.
 
-##### Returns
+**Returns**:
 
-`Promise<void>`
+- `Promise<void>`
 
 ***
 
@@ -168,20 +121,17 @@ Creates a new Language Server Protocol (LSP) server instance.
 The LSP server provides language-specific features like code completion,
 diagnostics, and more.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `languageId` | `string` | The language server type (e.g., "typescript") |
-| `pathToProject` | `string` | Absolute path to the project root directory |
+- `languageId` _string_ - The language server type (e.g., "typescript")
+- `pathToProject` _string_ - Absolute path to the project root directory
 
-##### Returns
 
-`LspServer`
+**Returns**:
 
-A new LSP server instance configured for the specified language
+- `LspServer` - A new LSP server instance configured for the specified language
 
-##### Example
+**Example:**
 
 ```ts
 const lsp = sandbox.createLspServer('typescript', '/workspace/project');
@@ -197,9 +147,9 @@ delete(): Promise<void>
 
 Deletes the Sandbox.
 
-##### Returns
+**Returns**:
 
-`Promise<void>`
+- `Promise<void>`
 
 ***
 
@@ -211,19 +161,16 @@ getPreviewLink(port: number): string
 
 Gets the preview link for the sandbox at a specific port. If the port is not open, it will open it and return the link.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `port` | `number` | The port to open the preview link on |
+- `port` _number_ - The port to open the preview link on
 
-##### Returns
 
-`string`
+**Returns**:
 
-The preview link for the sandbox at the specified port
+- `string` - The preview link for the sandbox at the specified port
 
-##### Throws
+**Throws**:
 
 If the node domain is not found in the provider metadata
 
@@ -237,13 +184,11 @@ getUserRootDir(): Promise<undefined | string>
 
 Gets the root directory path for the logged in user inside the Sandbox.
 
-##### Returns
+**Returns**:
 
-`Promise<undefined | string>`
+- `Promise<undefined | string>` - The absolute path to the Sandbox root directory for the logged in user
 
-The absolute path to the Sandbox root directory for the logged in user
-
-##### Example
+**Example:**
 
 ```ts
 const rootDir = await sandbox.getUserRootDir();
@@ -258,9 +203,9 @@ console.log(`Sandbox root: ${rootDir}`);
 getWorkspaceRootDir(): Promise<undefined | string>
 ```
 
-##### Returns
+**Returns**:
 
-`Promise<undefined | string>`
+- `Promise<undefined | string>`
 
 ##### Deprecated
 
@@ -276,14 +221,12 @@ info(): Promise<SandboxInfo>
 
 Gets structured information about the Sandbox.
 
-##### Returns
+**Returns**:
 
-`Promise<SandboxInfo>`
+- `Promise<SandboxInfo>` - Detailed information about the Sandbox including its
+    configuration, resources, and current state
 
-Detailed information about the Sandbox including its
-                                  configuration, resources, and current state
-
-##### Example
+**Example:**
 
 ```ts
 const info = await sandbox.info();
@@ -306,21 +249,21 @@ The Sandbox will automatically stop after being idle (no new events) for the spe
 Events include any state changes or interactions with the Sandbox through the sdk.
 Interactions using Sandbox Previews are not included.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `interval` | `number` | Number of minutes of inactivity before auto-stopping. Set to 0 to disable auto-stop. Default is 15 minutes. |
+- `interval` _number_ - Number of minutes of inactivity before auto-stopping.
+    Set to 0 to disable auto-stop. Default is 15 minutes.
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Throws
+- `Promise<void>`
+
+**Throws**:
 
 - `DaytonaError` - If interval is not a non-negative integer
 
-##### Example
+**Example:**
 
 ```ts
 // Auto-stop after 1 hour
@@ -341,17 +284,16 @@ Sets labels for the Sandbox.
 
 Labels are key-value pairs that can be used to organize and identify Sandboxes.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `labels` | `Record<string, string>` | Dictionary of key-value pairs representing Sandbox labels |
+- `labels` _Record\<string, string\>_ - Dictionary of key-value pairs representing Sandbox labels
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Example
+- `Promise<void>`
+
+**Example:**
 
 ```ts
 // Set sandbox labels
@@ -374,21 +316,21 @@ Start the Sandbox.
 
 This method starts the Sandbox and waits for it to be ready.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| `timeout?` | `number` | `60` | Maximum time to wait in seconds. 0 means no timeout. Defaults to 60-second timeout. |
+- `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
+    Defaults to 60-second timeout.
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Throws
+- `Promise<void>`
+
+**Throws**:
 
 - `DaytonaError` - If Sandbox fails to start or times out
 
-##### Example
+**Example:**
 
 ```ts
 const sandbox = await daytona.getCurrentSandbox('my-sandbox');
@@ -408,17 +350,17 @@ Stops the Sandbox.
 
 This method stops the Sandbox and waits for it to be fully stopped.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| `timeout?` | `number` | `60` | Maximum time to wait in seconds. 0 means no timeout. Defaults to 60-second timeout. |
+- `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
+    Defaults to 60-second timeout.
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Example
+- `Promise<void>`
+
+**Example:**
 
 ```ts
 const sandbox = await daytona.getCurrentSandbox('my-sandbox');
@@ -439,17 +381,17 @@ Waits for the Sandbox to reach the 'started' state.
 This method polls the Sandbox status until it reaches the 'started' state
 or encounters an error.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| `timeout?` | `number` | `60` | Maximum time to wait in seconds. 0 means no timeout. Defaults to 60 seconds. |
+- `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
+    Defaults to 60 seconds.
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Throws
+- `Promise<void>`
+
+**Throws**:
 
 - `DaytonaError` - If the sandbox ends up in an error state or fails to start within the timeout period.
 
@@ -466,26 +408,22 @@ Wait for Sandbox to reach 'stopped' state.
 This method polls the Sandbox status until it reaches the 'stopped' state
 or encounters an error.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| `timeout?` | `number` | `60` | Maximum time to wait in seconds. 0 means no timeout. Defaults to 60 seconds. |
+- `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
+    Defaults to 60 seconds.
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Throws
+- `Promise<void>`
+
+**Throws**:
 
 - `DaytonaError` - If the sandbox fails to stop within the timeout period.
-
-***
-
 ## SandboxCodeToolbox
 
 Interface defining methods that a code toolbox must implement
- SandboxCodeToolbox
 
 ### Methods
 
@@ -497,18 +435,18 @@ getRunCommand(code: string, params?: CodeRunParams): string
 
 Generates a command to run the provided code
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type |
-| ------ | ------ |
-| `code` | `string` |
-| `params?` | `CodeRunParams` |
+- `code` _string_
+- `params?` _CodeRunParams_
 
-##### Returns
 
-`string`
+**Returns**:
+
+- `string`
 
 ***
+
 
 ## SandboxInfo
 
@@ -517,9 +455,35 @@ Structured information about a Sandbox
 This interface provides detailed information about a Sandbox's configuration,
 resources, and current state.
 
- SandboxInfo
+**Properties**:
 
-### Example
+- `autoStopInterval` _number_ - Auto-stop interval in minutes
+- `class` _CreateNodeClassEnum_ - Class
+- `env` _Record\<string, string\>_ - Environment variables set in the Sandbox
+- `errorReason` _null \| string_ - Error message if Sandbox is in error state
+- `id` _string_ - Unique identifier for the Sandbox
+- `image` _string_ - Docker image used for the Sandbox
+- `labels` _Record\<string, string\>_ - Custom labels attached to the Sandbox
+- `lastSnapshot` _null \| string_ - Last snapshot
+- `name` _string_ - Display name of the Sandbox
+    
+- `nodeDomain` _string_ - Node domain
+- ~~`providerMetadata?`~~ _string_ - **_Deprecated_** - Use `state`, `nodeDomain`, `region`, `class`, `updatedAt`, `lastSnapshot`, `resources`, `autoStopInterval` instead.
+- `public` _boolean_ - Whether the Sandbox is publicly accessible
+- `region` _CreateNodeRegionEnum_ - Region
+- `resources` _SandboxResources_ - Resource allocations for the Sandbox
+- `snapshotState` _null \| string_ - Current state of Sandbox snapshot
+- `snapshotStateCreatedAt` _null \| Date_ - When the snapshot state was created
+- `state` _WorkspaceState_ - Current state of the Sandbox (e.g., "started", "stopped")
+- `target` _string_ - Target environment where the Sandbox runs
+- `updatedAt` _string_ - Updated at
+- `user` _string_ - OS user running in the Sandbox
+    
+
+
+
+
+**Example:**
 
 ```ts
 const sandbox = await daytona.create();
@@ -528,58 +492,35 @@ console.log(`Sandbox ${info.name} is ${info.state}`);
 console.log(`Resources: ${info.resources.cpu} CPU, ${info.resources.memory} RAM`);
 ```
 
-### Extends
+**Extends:**
 
 - `WorkspaceInfo`
-
-### Properties
-
-| Property | Type | Description | Overrides |
-| ------ | ------ | ------ | ------ |
-| `autoStopInterval` | `number` | Auto-stop interval in minutes | - |
-| `class` | `CreateNodeClassEnum` | Class | - |
-| `env` | `Record<string, string>` | Environment variables set in the Sandbox | - |
-| `errorReason` | `null \| string` | Error message if Sandbox is in error state | - |
-| `id` | `string` | Unique identifier for the Sandbox | - |
-| `image` | `string` | Docker image used for the Sandbox | - |
-| `labels` | `Record<string, string>` | Custom labels attached to the Sandbox | - |
-| `lastSnapshot` | `null \| string` | Last snapshot | - |
-| `name` | `string` | Display name of the Sandbox | `ApiSandboxInfo.name` |
-| `nodeDomain` | `string` | Node domain | - |
-| `~~providerMetadata?~~` | `string` | `**Deprecated** Use state, nodeDomain, region, class, updatedAt, lastSnapshot, resources, autoStopInterval instead.` | `ApiSandboxInfo.providerMetadata` |
-| `public` | `boolean` | Whether the Sandbox is publicly accessible | - |
-| `region` | `CreateNodeRegionEnum` | Region | - |
-| `resources` | `SandboxResources` | Resource allocations for the Sandbox | - |
-| `snapshotState` | `null \| string` | Current state of Sandbox snapshot | - |
-| `snapshotStateCreatedAt` | `null \| Date` | When the snapshot state was created | - |
-| `state` | `WorkspaceState` | Current state of the Sandbox (e.g., "started", "stopped") | - |
-| `target` | `string` | Target environment where the Sandbox runs | - |
-| `updatedAt` | `string` | Updated at | - |
-| `user` | `string` | OS user running in the Sandbox | - |
-
-***
-
 ## SandboxInstance
 
-### Extends
+**Properties**:
+
+- `info?` _SandboxInfo_
+
+
+
+
+**Extends:**
 
 - `Omit`\<`ApiSandbox`, `"info"`\>
-
-### Properties
-
-| Property | Type |
-| ------ | ------ |
-| `info?` | `SandboxInfo` |
-
-***
-
 ## SandboxResources
 
 Resources allocated to a Sandbox
 
- SandboxResources
+**Properties**:
 
-### Example
+- `cpu` _string_ - Number of CPU cores allocated (e.g., "1", "2")
+- `disk` _string_ - Amount of disk space allocated with unit (e.g., "10Gi", "20Gi")
+- `gpu` _null \| string_ - Number of GPUs allocated (e.g., "1") or null if no GPU
+- `memory` _string_ - Amount of memory allocated with unit (e.g., "2Gi", "4Gi")
+
+
+
+**Example:**
 
 ```ts
 const resources: SandboxResources = {
@@ -589,12 +530,3 @@ const resources: SandboxResources = {
   disk: "20Gi"
 };
 ```
-
-### Properties
-
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| `cpu` | `string` | Number of CPU cores allocated (e.g., "1", "2") |
-| `disk` | `string` | Amount of disk space allocated with unit (e.g., "10Gi", "20Gi") |
-| `gpu` | `null \| string` | Number of GPUs allocated (e.g., "1") or null if no GPU |
-| `memory` | `string` | Amount of memory allocated with unit (e.g., "2Gi", "4Gi") |

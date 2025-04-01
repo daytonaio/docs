@@ -1,49 +1,11 @@
 ---
-title: Git  Operations
+title: ""
 ---
 
-The Daytona SDK provides built-in Git support. This guide covers all available Git
-operations and best practices. Daytona SDK provides an option to clone, check status,
-and manage Git repositories in Sandboxes. You can interact with Git repositories using
-the `git` module.
-
-### Example
-
-```ts
-// Basic Git workflow
-// Create and initialize sandbox
-const sandbox = await daytona.create();
-
-// Clone a repository
-await sandbox.git.clone(
-  'https://github.com/user/repo.git',
-  '/workspace/repo'
-);
-
-// Make some changes
-await sandbox.fs.uploadFile(
-  '/workspace/repo/test.txt',
-  new File([Buffer.from('Hello, World!')], 'test.txt')
-);
-
-// Stage and commit changes
-await sandbox.git.add('/workspace/repo', ['test.txt']);
-await sandbox.git.commit(
-  '/workspace/repo',
-  'Add test file',
-  'John Doe',
-  'john@example.com'
-);
-
-// Push changes (with authentication)
-await sandbox.git.push(
-  '/workspace/repo',
-  'user',
-  'token'
-);
-```
 
 ## Git
+
+Provides Git operations within a Sandbox.
 
 ### Constructors
 
@@ -56,17 +18,16 @@ new Git(
    instance: SandboxInstance): Git
 ```
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type |
-| ------ | ------ |
-| `sandbox` | `Sandbox` |
-| `toolboxApi` | `ToolboxApi` |
-| `instance` | `SandboxInstance` |
+- `sandbox` _Sandbox_
+- `toolboxApi` _ToolboxApi_
+- `instance` _SandboxInstance_
 
-##### Returns
 
-`Git`
+**Returns**:
+
+- `Git`
 
 ### Methods
 
@@ -76,23 +37,20 @@ new Git(
 add(path: string, files: string[]): Promise<void>
 ```
 
-Stages files for commit.
-
-This method stages the specified files for the next commit, similar to
+Stages the specified files for the next commit, similar to
 running 'git add' on the command line.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Absolute path to the Git repository root |
-| `files` | `string[]` | List of file paths or directories to stage, relative to the repository root |
+- `path` _string_ - Absolute path to the Git repository root
+- `files` _string\[\]_ - List of file paths or directories to stage, relative to the repository root
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Examples
+- `Promise<void>`
+
+**Examples:**
 
 ```ts
 // Stage a single file
@@ -114,21 +72,16 @@ branches(path: string): Promise<ListBranchResponse>
 
 List branches in the repository.
 
-This method returns information about all branches in the repository.
+**Parameters**:
 
-##### Parameters
+- `path` _string_ - Absolute path to the Git repository root
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Absolute path to the Git repository root |
 
-##### Returns
+**Returns**:
 
-`Promise<ListBranchResponse>`
+- `Promise<ListBranchResponse>` - List of branches in the repository
 
-List of branches in the repository
-
-##### Example
+**Example:**
 
 ```ts
 const response = await git.branches('/workspace/repo');
@@ -149,28 +102,25 @@ clone(
 password?: string): Promise<void>
 ```
 
-Clones a Git repository.
-
-This method clones a Git repository into the specified path. It supports
+Clones a Git repository into the specified path. It supports
 cloning specific branches or commits, and can authenticate with the remote
 repository if credentials are provided.
 
-##### Parameters
+**Parameters**:
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `url` | `string` | Repository URL to clone from |
-| `path` | `string` | Absolute path where the repository should be cloned |
-| `branch?` | `string` | Specific branch to clone. If not specified, clones the default branch |
-| `commitId?` | `string` | Specific commit to clone. If specified, the repository will be left in a detached HEAD state at this commit |
-| `username?` | `string` | Git username for authentication |
-| `password?` | `string` | Git password or token for authentication |
+- `url` _string_ - Repository URL to clone from
+- `path` _string_ - Absolute path where the repository should be cloned
+- `branch?` _string_ - Specific branch to clone. If not specified, clones the default branch
+- `commitId?` _string_ - Specific commit to clone. If specified, the repository will be left in a detached HEAD state at this commit
+- `username?` _string_ - Git username for authentication
+- `password?` _string_ - Git password or token for authentication
 
-##### Returns
 
-`Promise<void>`
+**Returns**:
 
-##### Examples
+- `Promise<void>`
+
+**Examples:**
 
 ```ts
 // Clone the default branch
@@ -214,23 +164,19 @@ email: string): Promise<void>
 
 Commits staged changes.
 
-This method creates a new commit with the staged changes. Make sure to stage
-changes using the add() method before committing.
+**Parameters**:
 
-##### Parameters
+- `path` _string_ - Absolute path to the Git repository root
+- `message` _string_ - Commit message describing the changes
+- `author` _string_ - Name of the commit author
+- `email` _string_ - Email address of the commit author
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Absolute path to the Git repository root |
-| `message` | `string` | Commit message describing the changes |
-| `author` | `string` | Name of the commit author |
-| `email` | `string` | Email address of the commit author |
 
-##### Returns
+**Returns**:
 
-`Promise<void>`
+- `Promise<void>`
 
-##### Example
+**Example:**
 
 ```ts
 // Stage and commit changes
@@ -256,22 +202,18 @@ password?: string): Promise<void>
 
 Pulls changes from the remote repository.
 
-This method fetches and merges changes from the remote repository. If the remote
-requires authentication, username and password/token must be provided.
+**Parameters**:
 
-##### Parameters
+- `path` _string_ - Absolute path to the Git repository root
+- `username?` _string_ - Git username for authentication
+- `password?` _string_ - Git password or token for authentication
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Absolute path to the Git repository root |
-| `username?` | `string` | Git username for authentication |
-| `password?` | `string` | Git password or token for authentication |
 
-##### Returns
+**Returns**:
 
-`Promise<void>`
+- `Promise<void>`
 
-##### Examples
+**Examples:**
 
 ```ts
 // Pull from a public repository
@@ -300,22 +242,18 @@ password?: string): Promise<void>
 
 Push local changes to the remote repository.
 
-This method pushes committed changes to the remote repository. If the remote
-requires authentication, username and password/token must be provided.
+**Parameters**:
 
-##### Parameters
+- `path` _string_ - Absolute path to the Git repository root
+- `username?` _string_ - Git username for authentication
+- `password?` _string_ - Git password or token for authentication
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Absolute path to the Git repository root |
-| `username?` | `string` | Git username for authentication |
-| `password?` | `string` | Git password or token for authentication |
 
-##### Returns
+**Returns**:
 
-`Promise<void>`
+- `Promise<void>`
 
-##### Examples
+**Examples:**
 
 ```ts
 // Push to a public repository
@@ -341,27 +279,21 @@ status(path: string): Promise<GitStatus>
 
 Gets the current status of the Git repository.
 
-This method returns information about the current state of the repository,
-including staged and unstaged changes, current branch, and untracked files.
+**Parameters**:
 
-##### Parameters
+- `path` _string_ - Absolute path to the Git repository root
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | Absolute path to the Git repository root |
 
-##### Returns
+**Returns**:
 
-`Promise<GitStatus>`
+- `Promise<GitStatus>` - Current repository status including:
+    - currentBranch: Name of the current branch
+    - ahead: Number of commits ahead of the remote branch
+    - behind: Number of commits behind the remote branch
+    - branchPublished: Whether the branch has been published to the remote repository
+    - fileStatus: List of file statuses
 
-Current repository status including:
-                              - currentBranch: Name of the current branch
-                              - ahead: Number of commits ahead of the remote branch
-                              - behind: Number of commits behind the remote branch
-                              - branchPublished: Whether the branch has been published to the remote repository
-                              - fileStatus: List of file statuses
-
-##### Example
+**Example:**
 
 ```ts
 const status = await sandbox.git.status('/workspace/repo');

@@ -27,6 +27,7 @@ export enum NavigationCategory {
  * category - Applicable to groups. All links with that category will be shown in the sidebar when the link with that category or the main link that is related to the category is active.
  * homePageHref - Applicable to groups. The href of the link that will be used as previous link for the pagination component (if the current link is the first in the list).
  * disablePagination - Applicable to all links. If true, the pagination component will not be shown for the link.
+ * autopopulateFromDir - Applicable to groups. If set, the group will be populated with all the files (except index file) in the directory.
  */
 export const sidebarConfig: NavigationGroup[] = [
   {
@@ -192,62 +193,17 @@ export const sidebarConfig: NavigationGroup[] = [
     label: 'TS SDK Reference',
     homePageHref: '/docs/typescript-sdk',
     category: NavigationCategory.TYPESCRIPT_SDK,
+    autopopulateFromDir: '/docs/typescript-sdk',
     entries: [
       {
         type: 'link',
         href: '/docs/typescript-sdk/daytona',
-        label: 'Management',
-        attrs: {
-          icon: 'computer.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/typescript-sdk/file-system',
-        label: 'File System',
-        attrs: {
-          icon: 'folder.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/typescript-sdk/git',
-        label: 'Git Operations',
-        attrs: {
-          icon: 'git-branch.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/typescript-sdk/lsp-server',
-        label: 'Language Server Protocol',
-        attrs: {
-          icon: 'pulse.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/typescript-sdk/process',
-        label: 'Process & Code Execution',
-        attrs: {
-          icon: 'terminal.svg',
-        },
+        label: 'Daytona',
       },
       {
         type: 'link',
         href: '/docs/typescript-sdk/sandbox',
         label: 'Sandbox',
-        attrs: {
-          icon: 'rectangle.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/typescript-sdk/errors',
-        label: 'Errors',
-        attrs: {
-          icon: 'circle-error.svg',
-        },
       },
     ],
   },
@@ -256,62 +212,17 @@ export const sidebarConfig: NavigationGroup[] = [
     label: 'Python SDK Reference',
     homePageHref: '/docs/python-sdk',
     category: NavigationCategory.PYTHON_SDK,
+    autopopulateFromDir: '/docs/python-sdk',
     entries: [
       {
         type: 'link',
         href: '/docs/python-sdk/daytona',
-        label: 'Management',
-        attrs: {
-          icon: 'computer.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/python-sdk/file-system',
-        label: 'File System',
-        attrs: {
-          icon: 'folder.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/python-sdk/git',
-        label: 'Git Operations',
-        attrs: {
-          icon: 'git-branch.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/python-sdk/lsp-server',
-        label: 'Language Server Protocol',
-        attrs: {
-          icon: 'pulse.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/python-sdk/process',
-        label: 'Process & Code Execution',
-        attrs: {
-          icon: 'terminal.svg',
-        },
+        label: 'Daytona',
       },
       {
         type: 'link',
         href: '/docs/python-sdk/sandbox',
         label: 'Sandbox',
-        attrs: {
-          icon: 'rectangle.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/python-sdk/errors',
-        label: 'Errors',
-        attrs: {
-          icon: 'circle-error.svg',
-        },
       },
     ],
   },
