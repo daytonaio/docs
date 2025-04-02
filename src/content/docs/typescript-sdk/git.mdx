@@ -24,7 +24,6 @@ new Git(
 - `toolboxApi` _ToolboxApi_
 - `instance` _SandboxInstance_
 
-
 **Returns**:
 
 - `Git`
@@ -44,7 +43,6 @@ running 'git add' on the command line.
 
 - `path` _string_ - Absolute path to the Git repository root
 - `files` _string\[\]_ - List of file paths or directories to stage, relative to the repository root
-
 
 **Returns**:
 
@@ -75,7 +73,6 @@ List branches in the repository.
 **Parameters**:
 
 - `path` _string_ - Absolute path to the Git repository root
-
 
 **Returns**:
 
@@ -114,7 +111,6 @@ repository if credentials are provided.
 - `commitId?` _string_ - Specific commit to clone. If specified, the repository will be left in a detached HEAD state at this commit
 - `username?` _string_ - Git username for authentication
 - `password?` _string_ - Git password or token for authentication
-
 
 **Returns**:
 
@@ -159,7 +155,7 @@ commit(
    path: string, 
    message: string, 
    author: string, 
-email: string): Promise<void>
+email: string): Promise<GitCommitResponse>
 ```
 
 Commits staged changes.
@@ -171,10 +167,9 @@ Commits staged changes.
 - `author` _string_ - Name of the commit author
 - `email` _string_ - Email address of the commit author
 
-
 **Returns**:
 
-- `Promise<void>`
+- `Promise<GitCommitResponse>`
 
 **Example:**
 
@@ -207,7 +202,6 @@ Pulls changes from the remote repository.
 - `path` _string_ - Absolute path to the Git repository root
 - `username?` _string_ - Git username for authentication
 - `password?` _string_ - Git password or token for authentication
-
 
 **Returns**:
 
@@ -248,7 +242,6 @@ Push local changes to the remote repository.
 - `username?` _string_ - Git username for authentication
 - `password?` _string_ - Git password or token for authentication
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -283,15 +276,14 @@ Gets the current status of the Git repository.
 
 - `path` _string_ - Absolute path to the Git repository root
 
-
 **Returns**:
 
 - `Promise<GitStatus>` - Current repository status including:
-    - currentBranch: Name of the current branch
-    - ahead: Number of commits ahead of the remote branch
-    - behind: Number of commits behind the remote branch
-    - branchPublished: Whether the branch has been published to the remote repository
-    - fileStatus: List of file statuses
+  - currentBranch: Name of the current branch
+  - ahead: Number of commits ahead of the remote branch
+  - behind: Number of commits behind the remote branch
+  - branchPublished: Whether the branch has been published to the remote repository
+  - fileStatus: List of file statuses
 
 **Example:**
 
@@ -301,3 +293,13 @@ console.log(`Current branch: ${status.currentBranch}`);
 console.log(`Commits ahead: ${status.ahead}`);
 console.log(`Commits behind: ${status.behind}`);
 ```
+
+***
+
+## GitCommitResponse
+
+**Properties**:
+
+- `sha` _string_ - The SHA of the commit
+
+Response from the git commit.

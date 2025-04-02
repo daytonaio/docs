@@ -50,20 +50,20 @@ Execute a shell command in the Sandbox.
 - `timeout` _Optional[int]_ - Maximum time in seconds to wait for the command
   to complete. 0 means wait indefinitely.
   
-
 **Returns**:
 
 - `ExecuteResponse` - Command execution results containing:
   - exit_code: The command's exit status
   - result: Standard output from the command
+  - artifacts: ExecutionArtifacts object containing `stdout` (same as result)
+  and `charts` (matplotlib charts metadata)
   
-
 **Example**:
 
 ```python
 # Simple command
 response = sandbox.process.exec("echo 'Hello'")
-print(response.result)  # Prints: Hello
+print(response.artifacts.stdout)  # Prints: Hello
 
 # Command with working directory
 result = sandbox.process.exec("ls", cwd="/workspace/src")
@@ -89,14 +89,14 @@ Executes code in the Sandbox using the appropriate language runtime.
 - `timeout` _Optional[int]_ - Maximum time in seconds to wait for the code
   to complete. 0 means wait indefinitely.
   
-
 **Returns**:
 
 - `ExecuteResponse` - Code execution result containing:
   - exit_code: The execution's exit status
   - result: Standard output from the code
+  - artifacts: ExecutionArtifacts object containing `stdout` (same as result)
+  and `charts` (matplotlib charts metadata)
   
-
 **Example**:
 
 ```python
@@ -106,7 +106,47 @@ response = sandbox.process.code_run('''
     y = 20
     print(f"Sum: {x + y}")
 ''')
-print(response.result)  # Prints: Sum: 30
+print(response.artifacts.stdout)  # Prints: Sum: 30
+```
+  
+  Matplotlib charts are automatically detected and returned in the `charts` field
+  of the `ExecutionArtifacts` object.
+
+```python
+code = '''
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 30)
+y = np.sin(x)
+
+plt.figure(figsize=(8, 5))
+plt.plot(x, y, 'b-', linewidth=2)
+plt.title('Line Chart')
+plt.xlabel('X-axis (seconds)')
+plt.ylabel('Y-axis (amplitude)')
+plt.grid(True)
+plt.show()
+'''
+
+response = sandbox.process.code_run(code)
+chart = response.artifacts.charts[0]
+
+print(f"Type: {chart.type}")
+print(f"Title: {chart.title}")
+if chart.type == ChartType.LINE and isinstance(chart, LineChart):
+    print(f"X Label: {chart.x_label}")
+    print(f"Y Label: {chart.y_label}")
+    print(f"X Ticks: {chart.x_ticks}")
+    print(f"X Tick Labels: {chart.x_tick_labels}")
+    print(f"X Scale: {chart.x_scale}")
+    print(f"Y Ticks: {chart.y_ticks}")
+    print(f"Y Tick Labels: {chart.y_tick_labels}")
+    print(f"Y Scale: {chart.y_scale}")
+    print("Elements:")
+    for element in chart.elements:
+        print(f"Label: {element.label}")
+        print(f" Points: {element.points}")
 ```
 
 #### Process.create\_session
@@ -126,7 +166,6 @@ long-running commands and monitor process status.
 
 - `session_id` _str_ - Unique identifier for the new session.
   
-
 **Example**:
 
 ```python
@@ -151,14 +190,12 @@ Gets a session in the Sandbox.
 
 - `session_id` _str_ - Unique identifier of the session to retrieve.
   
-
 **Returns**:
 
 - `Session` - Session information including:
   - session_id: The session's unique identifier
   - commands: List of commands executed in the session
   
-
 **Example**:
 
 ```python
@@ -181,7 +218,6 @@ Gets information about a specific command executed in a session.
 - `session_id` _str_ - Unique identifier of the session.
 - `command_id` _str_ - Unique identifier of the command.
   
-
 **Returns**:
 
 - `Command` - Command information including:
@@ -189,7 +225,6 @@ Gets information about a specific command executed in a session.
   - command: The executed command string
   - exit_code: Command's exit status (if completed)
   
-
 **Example**:
 
 ```python
@@ -217,7 +252,6 @@ Executes a command in the session.
   - command: The command to execute
   - var_async: Whether to execute asynchronously
   
-
 **Returns**:
 
 - `SessionExecuteResponse` - Command execution results containing:
@@ -225,7 +259,6 @@ Executes a command in the session.
   - output: Command output (if synchronous execution)
   - exit_code: Command exit status (if synchronous execution)
   
-
 **Example**:
 
 ```python
@@ -261,12 +294,10 @@ Get the logs for a command executed in a session. Retrieves the complete output
 - `session_id` _str_ - Unique identifier of the session.
 - `command_id` _str_ - Unique identifier of the command.
   
-
 **Returns**:
 
 - `str` - Complete command output including both stdout and stderr.
   
-
 **Example**:
 
 ```python
@@ -294,7 +325,6 @@ Asynchronously retrieves and processes the logs for a command executed in a sess
 - `command_id` _str_ - Unique identifier of the command.
 - `on_logs` _Callable[[str], None]_ - Callback function to handle log chunks.
   
-
 **Example**:
 
 ```python
@@ -318,7 +348,6 @@ Lists all sessions in the Sandbox.
 
 - `List[Session]` - List of all sessions in the Sandbox.
   
-
 **Example**:
 
 ```python
@@ -342,7 +371,6 @@ associated with it.
 
 - `session_id` _str_ - Unique identifier of the session to delete.
   
-
 **Example**:
 
 ```python
@@ -354,7 +382,6 @@ sandbox.process.create_session("temp-session")
 sandbox.process.delete_session("temp-session")
 ```
 
-
 ## CodeRunParams
 
 ```python
@@ -364,3 +391,7 @@ class CodeRunParams()
 
 Parameters for code execution.
 
+**Attributes**:
+
+- `argv` _Optional[List[str]]_ - Command line arguments
+- `env` _Optional[Dict[str, str]]_ - Environment variables

@@ -5,16 +5,12 @@ title: ""
 
 ## CodeRunParams
 
-Parameters for code execution
+Parameters for code execution.
 
 **Properties**:
 
 - `argv?` _string\[\]_ - Command line arguments
 - `env?` _Record\<string, string\>_ - Environment variables
-    
-
-
-
 
 ### Constructors
 
@@ -27,6 +23,7 @@ new CodeRunParams(): CodeRunParams
 **Returns**:
 
 - `CodeRunParams`
+
 ## Process
 
 Handles process and code execution within a Sandbox.
@@ -47,7 +44,6 @@ new Process(
 - `codeToolbox` _SandboxCodeToolbox_
 - `toolboxApi` _ToolboxApi_
 - `instance` _SandboxInstance_
-
 
 **Returns**:
 
@@ -70,16 +66,16 @@ Executes code in the Sandbox using the appropriate language runtime.
 
 - `code` _string_ - Code to execute
 - `params?` _CodeRunParams_ - Parameters for code execution
-- `timeout?` _number_
-
+- `timeout?` _number_ - Maximum time in seconds to wait for execution to complete
 
 **Returns**:
 
 - `Promise<ExecuteResponse>` - Code execution results containing:
-    - exitCode: The execution's exit status
-    - result: Standard output from the code
+  - exitCode: The execution's exit status
+  - result: Standard output from the code
+  - artifacts: ExecutionArtifacts object containing `stdout` (same as result) and `charts` (matplotlib charts metadata)
 
-**Example:**
+**Examples:**
 
 ```ts
 // Run TypeScript code
@@ -88,7 +84,46 @@ const response = await process.codeRun(`
   const y = 20;
   console.log(\`Sum: \${x + y}\`);
 `);
-console.log(response.result);  // Prints: Sum: 30
+console.log(response.artifacts.stdout);  // Prints: Sum: 30
+```
+
+```ts
+// Run Python code with matplotlib
+const response = await process.codeRun(`
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 30)
+y = np.sin(x)
+
+plt.figure(figsize=(8, 5))
+plt.plot(x, y, 'b-', linewidth=2)
+plt.title('Line Chart')
+plt.xlabel('X-axis (seconds)')
+plt.ylabel('Y-axis (amplitude)')
+plt.grid(True)
+plt.show()
+`);
+
+if (response.artifacts?.charts) {
+  const chart = response.artifacts.charts[0];
+
+  console.log(`Type: ${chart.type}`);
+  console.log(`Title: ${chart.title}`);
+  if (chart.type === ChartType.LINE) {
+    const lineChart = chart as LineChart
+    console.log('X Label:', lineChart.x_label)
+    console.log('Y Label:', lineChart.y_label)
+    console.log('X Ticks:', lineChart.x_ticks)
+    console.log('Y Ticks:', lineChart.y_ticks)
+    console.log('X Tick Labels:', lineChart.x_tick_labels)
+    console.log('Y Tick Labels:', lineChart.y_tick_labels)
+    console.log('X Scale:', lineChart.x_scale)
+    console.log('Y Scale:', lineChart.y_scale)
+    console.log('Elements:')
+    console.dir(lineChart.elements, { depth: null })
+  }
+}
 ```
 
 ***
@@ -108,7 +143,6 @@ long-running commands and monitor process status.
 **Parameters**:
 
 - `sessionId` _string_ - Unique identifier for the new session
-
 
 **Returns**:
 
@@ -138,7 +172,6 @@ Delete a session from the Sandbox.
 **Parameters**:
 
 - `sessionId` _string_ - Unique identifier of the session to delete
-
 
 **Returns**:
 
@@ -170,19 +203,19 @@ Executes a shell command in the Sandbox.
 - `cwd?` _string_ - Working directory for command execution. If not specified, uses the Sandbox root directory
 - `timeout?` _number_ - Maximum time in seconds to wait for the command to complete. 0 means wait indefinitely.
 
-
 **Returns**:
 
 - `Promise<ExecuteResponse>` - Command execution results containing:
-    - exitCode: The command's exit status
-    - result: Standard output from the command
+  - exitCode: The command's exit status
+  - result: Standard output from the command
+  - artifacts: ExecutionArtifacts object containing `stdout` (same as result) and `charts` (matplotlib charts metadata)
 
 **Examples:**
 
 ```ts
 // Simple command
 const response = await process.executeCommand('echo "Hello"');
-console.log(response.result);  // Prints: Hello
+console.log(response.artifacts.stdout);  // Prints: Hello
 ```
 
 ```ts
@@ -212,17 +245,16 @@ Executes a command in an existing session.
 
 - `sessionId` _string_ - Unique identifier of the session to use
 - `req` _SessionExecuteRequest_ - Command execution request containing:
-    - command: The command to execute
-    - async: Whether to execute asynchronously
+  - command: The command to execute
+  - async: Whether to execute asynchronously
 - `timeout?` _number_ - Timeout in seconds
-
 
 **Returns**:
 
 - `Promise<SessionExecuteResponse>` - Command execution results containing:
-    - cmdId: Unique identifier for the executed command
-    - output: Command output (if synchronous execution)
-    - exitCode: Command exit status (if synchronous execution)
+  - cmdId: Unique identifier for the executed command
+  - output: Command output (if synchronous execution)
+  - exitCode: Command exit status (if synchronous execution)
 
 **Example:**
 
@@ -256,12 +288,11 @@ Get a session in the sandbox.
 
 - `sessionId` _string_ - Unique identifier of the session to retrieve
 
-
 **Returns**:
 
 - `Promise<Session>` - Session information including:
-    - sessionId: The session's unique identifier
-    - commands: List of commands executed in the session
+  - sessionId: The session's unique identifier
+  - commands: List of commands executed in the session
 
 **Example:**
 
@@ -287,13 +318,12 @@ Gets information about a specific command executed in a session.
 - `sessionId` _string_ - Unique identifier of the session
 - `commandId` _string_ - Unique identifier of the command
 
-
 **Returns**:
 
 - `Promise<Command>` - Command information including:
-    - id: The command's unique identifier
-    - command: The executed command string
-    - exitCode: Command's exit status (if completed)
+  - id: The command's unique identifier
+  - command: The executed command string
+  - exitCode: Command's exit status (if completed)
 
 **Example:**
 

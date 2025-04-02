@@ -16,10 +16,6 @@ Represents a Daytona Sandbox.
 - `process` _Process_ - Process execution interface
 - `sandboxApi` _WorkspaceApi_ - API client for Sandbox operations
 - `toolboxApi` _ToolboxApi_ - API client for toolbox operations
-    
-
-
-
 
 ### Constructors
 
@@ -44,7 +40,6 @@ Creates a new Sandbox instance
 - `toolboxApi` _ToolboxApi_ - API client for toolbox operations
 - `codeToolbox` _SandboxCodeToolbox_ - Language-specific toolbox implementation
 
-
 **Returns**:
 
 - `Sandbox`
@@ -63,7 +58,6 @@ Converts an API sandbox instance to a SandboxInfo object.
 
 - `instance` _Workspace_ - The API sandbox instance to convert
 
-
 **Returns**:
 
 - `SandboxInfo` - The converted SandboxInfo object
@@ -81,7 +75,6 @@ Converts an API workspace instance to a WorkspaceInfo object.
 **Parameters**:
 
 - `instance` _Workspace_ - The API workspace instance to convert
-
 
 **Returns**:
 
@@ -126,7 +119,6 @@ diagnostics, and more.
 - `languageId` _string_ - The language server type (e.g., "typescript")
 - `pathToProject` _string_ - Absolute path to the project root directory
 
-
 **Returns**:
 
 - `LspServer` - A new LSP server instance configured for the specified language
@@ -164,7 +156,6 @@ Gets the preview link for the sandbox at a specific port. If the port is not ope
 **Parameters**:
 
 - `port` _number_ - The port to open the preview link on
-
 
 **Returns**:
 
@@ -254,7 +245,6 @@ Interactions using Sandbox Previews are not included.
 - `interval` _number_ - Number of minutes of inactivity before auto-stopping.
     Set to 0 to disable auto-stop. Default is 15 minutes.
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -288,7 +278,6 @@ Labels are key-value pairs that can be used to organize and identify Sandboxes.
 
 - `labels` _Record\<string, string\>_ - Dictionary of key-value pairs representing Sandbox labels
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -320,7 +309,6 @@ This method starts the Sandbox and waits for it to be ready.
 
 - `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
     Defaults to 60-second timeout.
-
 
 **Returns**:
 
@@ -355,7 +343,6 @@ This method stops the Sandbox and waits for it to be fully stopped.
 - `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
     Defaults to 60-second timeout.
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -386,7 +373,6 @@ or encounters an error.
 - `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
     Defaults to 60 seconds.
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -413,7 +399,6 @@ or encounters an error.
 - `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
     Defaults to 60 seconds.
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -421,6 +406,7 @@ or encounters an error.
 **Throws**:
 
 - `DaytonaError` - If the sandbox fails to stop within the timeout period.
+
 ## SandboxCodeToolbox
 
 Interface defining methods that a code toolbox must implement
@@ -440,20 +426,15 @@ Generates a command to run the provided code
 - `code` _string_
 - `params?` _CodeRunParams_
 
-
 **Returns**:
 
 - `string`
 
 ***
 
-
 ## SandboxInfo
 
 Structured information about a Sandbox
-
-This interface provides detailed information about a Sandbox's configuration,
-resources, and current state.
 
 **Properties**:
 
@@ -466,7 +447,7 @@ resources, and current state.
 - `labels` _Record\<string, string\>_ - Custom labels attached to the Sandbox
 - `lastSnapshot` _null \| string_ - Last snapshot
 - `name` _string_ - Display name of the Sandbox
-    
+
 - `nodeDomain` _string_ - Node domain
 - ~~`providerMetadata?`~~ _string_ - **_Deprecated_** - Use `state`, `nodeDomain`, `region`, `class`, `updatedAt`, `lastSnapshot`, `resources`, `autoStopInterval` instead.
 - `public` _boolean_ - Whether the Sandbox is publicly accessible
@@ -478,10 +459,9 @@ resources, and current state.
 - `target` _string_ - Target environment where the Sandbox runs
 - `updatedAt` _string_ - Updated at
 - `user` _string_ - OS user running in the Sandbox
-    
 
-
-
+This interface provides detailed information about a Sandbox's configuration,
+resources, and current state.
 
 **Example:**
 
@@ -495,18 +475,17 @@ console.log(`Resources: ${info.resources.cpu} CPU, ${info.resources.memory} RAM`
 **Extends:**
 
 - `WorkspaceInfo`
+
 ## SandboxInstance
+
+**Extends:**
 
 **Properties**:
 
 - `info?` _SandboxInfo_
 
-
-
-
-**Extends:**
-
 - `Omit`\<`ApiSandbox`, `"info"`\>
+
 ## SandboxResources
 
 Resources allocated to a Sandbox
@@ -517,8 +496,6 @@ Resources allocated to a Sandbox
 - `disk` _string_ - Amount of disk space allocated with unit (e.g., "10Gi", "20Gi")
 - `gpu` _null \| string_ - Number of GPUs allocated (e.g., "1") or null if no GPU
 - `memory` _string_ - Amount of memory allocated with unit (e.g., "2Gi", "4Gi")
-
-
 
 **Example:**
 
