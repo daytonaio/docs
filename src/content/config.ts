@@ -186,6 +186,16 @@ export const sidebarConfig: NavigationGroup[] = [
           icon: 'terminal.svg',
         },
       },
+      {
+        type: 'link',
+        href: '/docs/daytona-as-a-tool',
+        label: 'Daytona as a Tool',
+        description:
+          'Learn how to set up Daytona for use as a tool by AI agents.',
+        attrs: {
+          icon: 'brain.svg',
+        },
+      },
     ],
   },
   {

@@ -1,0 +1,607 @@
+---
+title: Daytona as A Tool
+description: Learn how to set up Daytona for use as a tool by AI agents
+---
+
+import { TabItem, Tabs } from '@astrojs/starlight/components'
+
+This guide explains how to set up Daytona for use as a tool by AI agents. We'll cover the setup process, best practices, and examples using both TypeScript and Python.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- A Daytona account and API key
+- An OpenAI API key (or other supported LLM provider)
+- Basic understanding of AI agents and their capabilities
+- Familiarity with the Daytona SDK
+
+## Environment Setup
+
+Set up your environment variables:
+
+```bash
+# Required API keys
+OPENAI_API_KEY=your_openai_api_key_here
+DAYTONA_API_KEY=your_daytona_api_key_here
+```
+
+## Setting Up the Required SDKs
+
+First, install the required SDKs:
+
+<Tabs>
+<TabItem value="python" label="Python" icon="seti:python">
+
+```bash
+# Install Daytona SDK
+pip install daytona-sdk
+
+# Install LangChain and OpenAI
+pip install langchain langchain-openai
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript" icon="seti:typescript">
+
+```bash
+# Using npm
+npm install @daytonaio/sdk @mastra/core @mastra/rag
+
+# Using yarn
+yarn add @daytonaio/sdk @mastra/core @mastra/rag
+
+# Using pnpm
+pnpm add @daytonaio/sdk @mastra/core @mastra/rag
+```
+
+</TabItem>
+</Tabs>
+
+## Creating a Workspace Tool for AI Agents
+
+To enable AI agents to create and manage Daytona workspaces, you'll need to set up a tool that handles workspace operations. Here are example implementations for both TypeScript and Python:
+
+<Tabs>
+<TabItem value="python" label="Python" icon="seti:python">
+
+```python
+from langchain.agents import AgentExecutor, create_openai_functions_agent
+from langchain_openai import ChatOpenAI
+from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain.tools import Tool
+from daytona_sdk import Daytona, DaytonaConfig
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+class DaytonaWorkspaceTool:
+    def __init__(self, daytona_api_key: str, openai_api_key: str):
+        # Initialize Daytona with the correct configuration
+        config = DaytonaConfig(
+            api_key=daytona_api_key,
+            target="us"  # Set the target to "cloud" which is likely the default value
+        )
+        self.daytona = Daytona(config)
+        self.llm = ChatOpenAI(
+            model="gpt-4",
+            temperature=0,
+            openai_api_key=openai_api_key
+        )
+
+        # Define the tools
+        self.tools = [
+            Tool(
+                name="run_code",
+                func=self._run_code_wrapper,
+                description="Execute code in the Daytona workspace. Input should be a string containing the code to execute."
+            ),
+            Tool(
+                name="cleanup",
+                func=self._cleanup_wrapper,
+                description="Clean up the Daytona workspace"
+            )
+        ]
+
+        # Create the agent
+        self.agent = self._create_agent()
+
+    def _create_agent(self) -> AgentExecutor:
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", """You are a helpful assistant that helps users run code in Daytona workspaces.
+            You have access to the following tools:
+            - run_code: Execute code in the workspace
+            - cleanup: Clean up the workspace when done
+
+            When running code:
+            1. Always check documentation for best practices
+            2. Implement proper error handling
+            3. Clean up resources when done
+            4. Use environment variables for sensitive data
+            5. IMPORTANT: After generating code, you MUST use the run_code tool to execute it
+            6. Format your response to include both the code and its execution results"""),
+            MessagesPlaceholder(variable_name="chat_history"),
+            ("human", "{input}"),
+            MessagesPlaceholder(variable_name="agent_scratchpad"),
+        ])
+
+        agent = create_openai_functions_agent(
+            llm=self.llm,
+            tools=self.tools,
+            prompt=prompt
+        )
+
+        return AgentExecutor(
+            agent=agent,
+            tools=self.tools,
+            verbose=True
+        )
+
+    def create_workspace(self) -> dict:
+        try:
+            # Create the workspace without await
+            workspace = self.daytona.create()
+            return workspace
+        except Exception as e:
+            print(f"Error creating workspace: {e}")
+            raise
+
+    async def run_code(self, workspace: dict, code: str) -> str:
+        try:
+            # The code_run method returns an ExecuteResponse object that doesn't need to be awaited
+            response = workspace.process.code_run(code)
+            # Extract the result from the response
+            if hasattr(response, 'result'):
+                return response.result
+            elif hasattr(response, 'output'):
+                return response.output
+            else:
+                return str(response)
+        except Exception as e:
+            print(f"Error running code: {e}")
+            raise
+
+    async def cleanup(self, workspace: dict) -> None:
+        try:
+            # The remove method is not async, so we don't need to await it
+            self.daytona.remove(workspace)
+        except Exception as e:
+            print(f"Error cleaning up workspace: {e}")
+            raise
+
+    async def execute_with_agent(self, prompt: str, workspace: dict) -> str:
+        try:
+            # Execute the agent with the correct input format
+            response = await self.agent.ainvoke({
+                "input": prompt,
+                "chat_history": []
+            })
+
+            # Extract the content from the response
+            if hasattr(response, 'output'):
+                output = response.output
+            elif hasattr(response, 'return_values'):
+                output = response.return_values.get('output', str(response))
+            else:
+                output = str(response)
+
+            return output
+        except Exception as e:
+            print(f"Error executing agent: {e}")
+            raise
+
+    def _run_code_wrapper(self, code: str) -> str:
+        """Wrapper for the async run_code method to be used with LangChain Tool"""
+        # Create a workspace if not provided
+        workspace = self.create_workspace()
+        # Run the code synchronously using a new event loop
+        try:
+            # Create a new event loop
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            # Run the code
+            result = loop.run_until_complete(self.run_code(workspace, code))
+            return result
+        finally:
+            # Clean up the event loop
+            loop.close()
+
+    def _cleanup_wrapper(self, _: str = "") -> str:
+        """Wrapper for the async cleanup method to be used with LangChain Tool"""
+        # Create a workspace if not provided
+        workspace = self.create_workspace()
+        try:
+            # Call the cleanup method directly since it's not actually async
+            self.cleanup(workspace)
+            return "Workspace cleaned up successfully"
+        except Exception as e:
+            return f"Error during workspace cleanup: {e}"
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript" icon="seti:typescript">
+
+````typescript
+import { openai } from '@ai-sdk/openai'
+import { Daytona } from '@daytonaio/sdk'
+import { Agent } from '@mastra/core/agent'
+
+class DaytonaWorkspaceTool {
+  private daytona: Daytona
+  private agent: Agent
+
+  constructor(daytonaApiKey: string, openaiApiKey: string) {
+    this.daytona = new Daytona({
+      apiKey: daytonaApiKey,
+    })
+
+    // Initialize Mastra agent with OpenAI
+    this.agent = new Agent({
+      name: 'Daytona Workspace Agent',
+      model: openai('gpt-4'),
+      instructions: `
+        You are a helpful assistant that helps users run code in Daytona workspaces.
+        You have access to the following tools:
+        - runCode: Execute code in the workspace
+        - cleanup: Clean up the workspace when done
+
+        When running code:
+        1. Always check documentation for best practices
+        2. Implement proper error handling
+        3. Clean up resources when done
+        4. Use environment variables for sensitive data
+        5. IMPORTANT: After generating code, you MUST use the runCode tool to execute it in the workspace
+        6. Format your response to include both the code and its execution results
+      `,
+      tools: {
+        runCode: this.runCode.bind(this),
+        cleanup: this.cleanup.bind(this),
+      },
+    })
+  }
+
+  async createWorkspace(params: {
+    language: string
+    envVars?: Record<string, string>
+  }) {
+    try {
+      const workspace = await this.daytona.create({
+        language: params.language,
+        envVars: params.envVars,
+      })
+      return workspace
+    } catch (error) {
+      console.error('Error creating workspace:', error)
+      throw error
+    }
+  }
+
+  async runCode(workspace: any, code: string) {
+    try {
+      const response = await workspace.process.codeRun(code)
+      return response
+    } catch (error) {
+      console.error('Error running code:', error)
+      throw error
+    }
+  }
+
+  async cleanup(workspace: any) {
+    try {
+      await this.daytona.remove(workspace)
+    } catch (error) {
+      console.error('Error cleaning up workspace:', error)
+      throw error
+    }
+  }
+
+  async executeWithAgent(prompt: string, workspace: any) {
+    try {
+      const response = await this.agent.generate(prompt, {
+        context: [
+          {
+            role: 'system',
+            content: JSON.stringify({
+              workspaceInfo: {
+                id: workspace.id,
+                language: workspace.language,
+                status: workspace.status,
+              },
+            }),
+          },
+        ],
+        toolsets: {
+          workspace: {
+            runCode: this.runCode.bind(workspace),
+            cleanup: this.cleanup.bind(workspace),
+          },
+        },
+      })
+
+      // Handle tool calls if any
+      if (response.toolCalls && response.toolCalls.length > 0) {
+        for (const toolCall of response.toolCalls) {
+          if (toolCall.toolName === 'runCode') {
+            // Extract code from the response text
+            const codeMatch = response.text.match(/```python\n([\s\S]*?)```/)
+            if (codeMatch) {
+              const code = codeMatch[1].trim()
+              // Add a print statement to ensure output is captured
+              const codeWithOutput = `
+${code}
+
+# Execute the function and print the result
+if __name__ == "__main__":
+    result = factorial(5)
+    print(f"Factorial of 5 is: {result}")
+`
+              const executionResult = await this.runCode(
+                workspace,
+                codeWithOutput
+              )
+              console.log('Code execution result:', executionResult)
+            }
+          }
+        }
+      }
+
+      return response
+    } catch (error) {
+      console.error('Error executing agent:', error)
+      throw error
+    }
+  }
+}
+````
+
+</TabItem>
+</Tabs>
+
+## Integrating with AI Agents
+
+Here's how to integrate the workspace tool with AI agents in both TypeScript and Python:
+
+<Tabs>
+<TabItem value="python" label="Python" icon="seti:python">
+
+```python
+import asyncio
+from daytona_workspace_tool import DaytonaWorkspaceTool
+async def setup_langchain_with_workspace():
+    workspace_tool = DaytonaWorkspaceTool(
+        daytona_api_key=os.getenv("DAYTONA_API_KEY"),
+        openai_api_key=os.getenv("OPENAI_API_KEY")
+    )
+
+    # Create a workspace for the agent
+    workspace = workspace_tool.create_workspace()
+
+    # Execute a task with the LangChain agent
+    result = await workspace_tool.execute_with_agent(
+        """Write a Python function that calculates the factorial of a number and test it with n=5.
+        Make sure to:
+        1. Include proper error handling
+        2. Add type hints
+        3. Include docstrings
+        4. Print the result in a formatted way
+        5. Execute the code and show me the output""",
+        workspace
+    )
+
+    print(result)
+
+    # Clean up when done
+    await workspace_tool.cleanup(workspace)
+
+if __name__ == "__main__":
+    asyncio.run(setup_langchain_with_workspace())
+```
+
+</TabItem>
+</Tabs>
+
+## Best Practices
+
+1. **Workspace Lifecycle Management**
+
+   - Always clean up workspaces after use
+   - Implement proper error handling
+   - Use try-catch blocks for workspace operations
+
+2. **Security Considerations**
+
+   - Never expose API keys in code
+   - Use environment variables for sensitive data
+   - Implement proper access controls
+
+3. **Resource Management**
+
+   - Monitor workspace resource usage
+   - Set appropriate timeouts
+   - Implement rate limiting if needed
+
+4. **Error Handling**
+   - Implement proper error logging
+   - Set up monitoring for workspace operations
+   - Have fallback mechanisms in place
+
+## Example Use Cases
+
+### Data Analysis with AI Agents
+
+<Tabs>
+<TabItem value="python" label="Python" icon="seti:python">
+
+```python
+async def run_data_analysis_with_langchain():
+    workspace_tool = DaytonaWorkspaceTool(
+        daytona_api_key=os.getenv("DAYTONA_API_KEY"),
+        openai_api_key=os.getenv("OPENAI_API_KEY")
+    )
+
+    workspace = await workspace_tool.create_workspace(
+        language="python",
+        env_vars={
+            "PYTHON_ENV": "analysis"
+        }
+    )
+
+    result = await workspace_tool.execute_with_agent(
+        """Create a comprehensive data analysis script that:
+        1. Generates a random dataset with 1000 points
+        2. Performs basic statistical analysis (mean, std, min, max)
+        3. Creates a histogram visualization using matplotlib
+        4. Saves the plot to a file
+        5. Prints the statistical results in a formatted table
+        6. Includes proper error handling and logging""",
+        workspace
+    )
+
+    print(result)
+    await workspace_tool.cleanup(workspace)
+
+if __name__ == "__main__":
+    asyncio.run(run_data_analysis_with_langchain())
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript" icon="seti:typescript">
+
+```typescript
+async function runDataAnalysisWithMastra() {
+  const workspaceTool = new DaytonaWorkspaceTool(
+    process.env.DAYTONA_API_KEY!,
+    process.env.OPENAI_API_KEY!
+  )
+
+  const workspace = await workspaceTool.createWorkspace({
+    language: 'python',
+    envVars: {
+      PYTHON_ENV: 'analysis',
+    },
+  })
+
+  const result = await workspaceTool.executeWithAgent(
+    `Create a comprehensive data analysis script that:
+    1. Generates a random dataset with 1000 points
+    2. Performs basic statistical analysis (mean, std, min, max)
+    3. Creates a histogram visualization using matplotlib
+    4. Saves the plot to a file
+    5. Prints the statistical results in a formatted table
+    6. Includes proper error handling and logging`,
+    workspace
+  )
+
+  console.log(result)
+  await workspaceTool.cleanup(workspace)
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Machine Learning with AI Agents
+
+<Tabs>
+<TabItem value="python" label="Python" icon="seti:python">
+
+```python
+async def run_ml_task_with_langchain():
+    workspace_tool = DaytonaWorkspaceTool(
+        daytona_api_key=os.getenv("DAYTONA_API_KEY"),
+        openai_api_key=os.getenv("OPENAI_API_KEY")
+    )
+
+    workspace = await workspace_tool.create_workspace(
+        language="python",
+        env_vars={
+            "PYTHON_ENV": "ml"
+        }
+    )
+
+    result = await workspace_tool.execute_with_agent(
+        """Create a machine learning script that:
+        1. Loads the iris dataset using scikit-learn
+        2. Splits it into training and test sets
+        3. Trains a RandomForestClassifier with proper hyperparameters
+        4. Evaluates the model using multiple metrics (accuracy, precision, recall)
+        5. Creates a confusion matrix visualization
+        6. Saves the model to a file
+        7. Includes proper error handling and logging""",
+        workspace
+    )
+
+    print(result)
+    await workspace_tool.cleanup(workspace)
+
+if __name__ == "__main__":
+    asyncio.run(run_ml_task_with_langchain())
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript" icon="seti:typescript">
+
+```typescript
+async function runMLTaskWithMastra() {
+  const workspaceTool = new DaytonaWorkspaceTool(
+    process.env.DAYTONA_API_KEY!,
+    process.env.OPENAI_API_KEY!
+  )
+
+  const workspace = await workspaceTool.createWorkspace({
+    language: 'python',
+    envVars: {
+      PYTHON_ENV: 'ml',
+    },
+  })
+
+  const result = await workspaceTool.executeWithAgent(
+    `Create a machine learning script that:
+    1. Loads the iris dataset using scikit-learn
+    2. Splits it into training and test sets
+    3. Trains a RandomForestClassifier with proper hyperparameters
+    4. Evaluates the model using multiple metrics (accuracy, precision, recall)
+    5. Creates a confusion matrix visualization
+    6. Saves the model to a file
+    7. Includes proper error handling and logging`,
+    workspace
+  )
+
+  console.log(result)
+  await workspaceTool.cleanup(workspace)
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Troubleshooting
+
+Common issues and solutions:
+
+1. **Workspace Creation Fails**
+
+   - Check API key validity
+   - Verify resource limits
+   - Ensure proper network connectivity
+
+2. **Code Execution Issues**
+
+   - Verify language support
+   - Check package dependencies
+   - Review error logs
+
+3. **Resource Exhaustion**
+   - Monitor workspace usage
+   - Implement cleanup routines
+   - Set up alerts for resource limits
+
+## Next Steps
+
+- Explore the [Daytona SDK documentation](/docs/sdk) for more features
+- Learn about [workspace configuration options](/docs/workspace-config)
+- Check out [security best practices](/docs/security)
+- Visit the [Mastra documentation](https://docs.mastra.ai) for more AI agent capabilities
+- Learn about [Mastra's MCP documentation server](https://mastra.ai/blog/introducing-mastra-mcp) for enhanced agent capabilities
