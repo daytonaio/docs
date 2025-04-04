@@ -9,7 +9,13 @@ Sandboxes are isolated development environments managed by Daytona. This guide c
 ## Creating Sandboxes
 
 Daytona SDK provides an option to create Sandboxes with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the Sandbox.
-By default, the sandboxes auto-stop after 15 minutes of inactivity. To overwrite this behavior, you can increase the auto-stop interval or set it to 0 to completely disable it.
+By default, the sandboxes auto-stop after `15 minutes` of inactivity in order to save resources but the timeout can be increased.
+
+:::tip
+If you want to prolong the auto-stop interval, you can use the `auto_stop_interval` parameter when creating a Sandbox. The parameter is measured in minutes.
+
+Setting the auto-stop interval parameter to `0` will disable the auto-stop functionality altogether and allow the sandbox to run indefinitely.
+:::
 
 ### Basic Sandbox Creation
 
