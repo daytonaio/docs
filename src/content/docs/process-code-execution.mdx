@@ -18,7 +18,9 @@ Daytona SDK provides an option to run code snippets in Python and TypeScript. Yo
 <TabItem label="Python" icon="seti:python">
 ```python
 # Run Python code
-response = sandbox.process.code_run('''
+response = sandbox.process.code_run(
+    "python",
+'''
 def greet(name):
     return f"Hello, {name}!"
 
@@ -32,17 +34,21 @@ print(response.result)
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Run TypeScript code
-let response = await sandbox.process.codeRun(`
-function greet(name: string): string {
-    return \`Hello, \${name}!\`;
-}
+let response = await sandbox.process.codeRun(
+    'typescript',
+    `
+    function greet(name: string): string {
+        return \`Hello, \${name}!\`;
+    }
 
-console.log(greet("Daytona"));
-`);
+    console.log(greet("Daytona"));
+    `
+);
 console.log(response.result);
 
 // Run code with argv and environment variables
 response = await sandbox.process.codeRun(
+    'typescript',
     `
     console.log(\`Hello, \${process.argv[2]}!\`);
     console.log(\`FOO: \${process.env.FOO}\`);
@@ -56,6 +62,7 @@ console.log(response.result);
 
 // Run code with timeout
 response = await sandbox.process.codeRun(
+    'typescript',
     'setTimeout(() => console.log("Done"), 2000);',
     undefined,
     5000
@@ -184,7 +191,7 @@ Daytona SDK provides best practices for process and code execution in Sandboxes.
 <TabItem label="Python" icon="seti:python">
 ```python
 try:
-    response = sandbox.process.code_run("invalid python code")
+    response = sandbox.process.code_run("python", "invalid python code")
 except ProcessExecutionError as e:
     print(f"Execution failed: {e}")
     print(f"Exit code: {e.exit_code}")
@@ -194,12 +201,12 @@ except ProcessExecutionError as e:
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 try {
-    const response = await sandbox.process.codeRun("invalid typescript code");
+    const response = await sandbox.process.codeRun('typescript', 'invalid typescript code');
 } catch (e) {
     if (e instanceof ProcessExecutionError) {
-        console.error("Execution failed:", e);
-        console.error("Exit code:", e.exitCode);
-        console.error("Error output:", e.stderr);
+        console.error('Execution failed:', e);
+        console.error('Exit code:', e.exitCode);
+        console.error('Error output:', e.stderr);
     }
 }
 ```

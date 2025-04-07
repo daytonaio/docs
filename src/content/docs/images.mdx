@@ -18,14 +18,13 @@ Once the image is pulled, validated and has an `Active` state, it is ready to be
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```bash
-params = CreateSandboxParams(image="alpine/3.21", language="python")
+params = CreateSandboxParams(image="alpine/3.21")
 sandbox = daytona.create(params)
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```bash
 const sandbox = await daytona.create({
-  language: 'python',
   image: 'alpine/3.21',
 })
 ```
@@ -41,9 +40,9 @@ from daytona_sdk import Daytona, CreateSandboxParams
 
 daytona = Daytona()
 
-sandbox = daytona.create(CreateSandboxParams(image="alpine/3.21", language="python"))
+sandbox = daytona.create(CreateSandboxParams(image="alpine/3.21"))
 
-response = sandbox.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
+response = sandbox.process.code_run("python", 'print("Sum of 3 and 4 is " + str(3 + 4))')
 if response.exit_code != 0:
     print(f"Error running code: {response.exit_code} {response.result}")
 else:
@@ -65,11 +64,11 @@ async function main() {
   try {
     // Create the Sandbox instance
     const sandbox = await daytona.create({
-      language: 'python',
       image: 'alpine/3.21',
     })
     // Run the code securely inside the Sandbox
     const response = await sandbox.process.codeRun(
+      'python',
       'print("Sum of 3 and 4 is " + str(3 + 4))',
     )
     if (response.exitCode !== 0) {

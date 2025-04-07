@@ -856,20 +856,12 @@
     "objectID": 107
   },
   {
-    "title": "Create a Sandbox with specific language",
-    "description": "",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#create-a-sandbox-with-specific-language",
-    "slug": "/sandbox-management#create-a-sandbox-with-specific-language",
-    "objectID": 108
-  },
-  {
     "title": "Create a Sandbox with custom ID",
     "description": "",
     "tag": "Documentation",
     "url": "/docs/sandbox-management#create-a-sandbox-with-custom-id",
     "slug": "/sandbox-management#create-a-sandbox-with-custom-id",
-    "objectID": 109
+    "objectID": 108
   },
   {
     "title": "Sandbox Information",
@@ -877,7 +869,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#sandbox-information",
     "slug": "/sandbox-management#sandbox-information",
-    "objectID": 110
+    "objectID": 109
   },
   {
     "title": "Get Sandbox ID",
@@ -885,7 +877,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#get-sandbox-id",
     "slug": "/sandbox-management#get-sandbox-id",
-    "objectID": 111
+    "objectID": 110
   },
   {
     "title": "Get the root directory of tha Sandbox user",
@@ -893,7 +885,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#get-the-root-directory-of-tha-sandbox-user",
     "slug": "/sandbox-management#get-the-root-directory-of-tha-sandbox-user",
-    "objectID": 112
+    "objectID": 111
   },
   {
     "title": "Get the Sandbox name, image and state",
@@ -901,7 +893,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#get-the-sandbox-name-image-and-state",
     "slug": "/sandbox-management#get-the-sandbox-name-image-and-state",
-    "objectID": 113
+    "objectID": 112
   },
   {
     "title": "Get the preview link for an app running on port 3000",
@@ -909,7 +901,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#get-the-preview-link-for-an-app-running-on-port-3000",
     "slug": "/sandbox-management#get-the-preview-link-for-an-app-running-on-port-3000",
-    "objectID": 114
+    "objectID": 113
   },
   {
     "title": "Remove Sandbox",
@@ -917,7 +909,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#remove-sandbox",
     "slug": "/sandbox-management#remove-sandbox",
-    "objectID": 115
+    "objectID": 114
   },
   {
     "title": "Remove Sandbox",
@@ -925,7 +917,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#remove-sandbox",
     "slug": "/sandbox-management#remove-sandbox",
-    "objectID": 116
+    "objectID": 115
   },
   {
     "title": "Sandbox Persistence",
@@ -933,7 +925,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#sandbox-persistence",
     "slug": "/sandbox-management#sandbox-persistence",
-    "objectID": 117
+    "objectID": 116
   },
   {
     "title": "Running",
@@ -941,7 +933,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#running",
     "slug": "/sandbox-management#running",
-    "objectID": 118
+    "objectID": 117
   },
   {
     "title": "Stopped",
@@ -949,7 +941,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#stopped",
     "slug": "/sandbox-management#stopped",
-    "objectID": 119
+    "objectID": 118
   },
   {
     "title": "Archived",
@@ -957,7 +949,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#archived",
     "slug": "/sandbox-management#archived",
-    "objectID": 120
+    "objectID": 119
   },
   {
     "title": "Performance Considerations",
@@ -965,7 +957,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#performance-considerations",
     "slug": "/sandbox-management#performance-considerations",
-    "objectID": 121
+    "objectID": 120
   },
   {
     "title": "CLI",
@@ -973,7 +965,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli",
     "slug": "/tools/cli",
-    "objectID": 122
+    "objectID": 121
   },
   {
     "title": "daytona version",
@@ -981,7 +973,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-version",
     "slug": "/tools/cli#daytona-version",
-    "objectID": 123
+    "objectID": 122
   },
   {
     "title": "daytona sandbox info",
@@ -989,7 +981,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-info",
     "slug": "/tools/cli#daytona-sandbox-info",
-    "objectID": 124
+    "objectID": 123
   },
   {
     "title": "daytona sandbox list",
@@ -997,7 +989,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-list",
     "slug": "/tools/cli#daytona-sandbox-list",
-    "objectID": 125
+    "objectID": 124
   },
   {
     "title": "daytona sandbox start",
@@ -1005,7 +997,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-start",
     "slug": "/tools/cli#daytona-sandbox-start",
-    "objectID": 126
+    "objectID": 125
   },
   {
     "title": "daytona sandbox stop",
@@ -1013,7 +1005,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-stop",
     "slug": "/tools/cli#daytona-sandbox-stop",
-    "objectID": 127
+    "objectID": 126
   },
   {
     "title": "daytona sandbox",
@@ -1021,7 +1013,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox",
     "slug": "/tools/cli#daytona-sandbox",
-    "objectID": 128
+    "objectID": 127
   },
   {
     "title": "daytona sandbox create",
@@ -1029,7 +1021,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-create",
     "slug": "/tools/cli#daytona-sandbox-create",
-    "objectID": 129
+    "objectID": 128
   },
   {
     "title": "daytona sandbox delete",
@@ -1037,7 +1029,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-delete",
     "slug": "/tools/cli#daytona-sandbox-delete",
-    "objectID": 130
+    "objectID": 129
   },
   {
     "title": "daytona image push",
@@ -1045,7 +1037,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image-push",
     "slug": "/tools/cli#daytona-image-push",
-    "objectID": 131
+    "objectID": 130
   },
   {
     "title": "daytona login",
@@ -1053,7 +1045,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-login",
     "slug": "/tools/cli#daytona-login",
-    "objectID": 132
+    "objectID": 131
   },
   {
     "title": "daytona logout",
@@ -1061,7 +1053,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-logout",
     "slug": "/tools/cli#daytona-logout",
-    "objectID": 133
+    "objectID": 132
   },
   {
     "title": "daytona image",
@@ -1069,7 +1061,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image",
     "slug": "/tools/cli#daytona-image",
-    "objectID": 134
+    "objectID": 133
   },
   {
     "title": "daytona image create",
@@ -1077,7 +1069,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image-create",
     "slug": "/tools/cli#daytona-image-create",
-    "objectID": 135
+    "objectID": 134
   },
   {
     "title": "daytona image delete",
@@ -1085,7 +1077,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image-delete",
     "slug": "/tools/cli#daytona-image-delete",
-    "objectID": 136
+    "objectID": 135
   },
   {
     "title": "daytona image list",
@@ -1093,7 +1085,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image-list",
     "slug": "/tools/cli#daytona-image-list",
-    "objectID": 137
+    "objectID": 136
   },
   {
     "title": "daytona",
@@ -1101,7 +1093,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona",
     "slug": "/tools/cli#daytona",
-    "objectID": 138
+    "objectID": 137
   },
   {
     "title": "daytona autocomplete",
@@ -1109,7 +1101,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-autocomplete",
     "slug": "/tools/cli#daytona-autocomplete",
-    "objectID": 139
+    "objectID": 138
   },
   {
     "title": "daytona docs",
@@ -1117,6 +1109,6 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-docs",
     "slug": "/tools/cli#daytona-docs",
-    "objectID": 140
+    "objectID": 139
   }
 ]

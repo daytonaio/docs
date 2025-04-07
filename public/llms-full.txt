@@ -358,16 +358,16 @@ Run the following code to create a Daytona Sandbox and execute commands:
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-from daytona_sdk import Daytona, DaytonaConfig, CreateSandboxParams
+from daytona_sdk import Daytona, DaytonaConfig
 
 # Initialize the Daytona client
 daytona = Daytona(DaytonaConfig(api_key="YOUR_API_KEY"))
 
 # Create the Sandbox instance
-sandbox = daytona.create(CreateSandboxParams(language="python"))
+sandbox = daytona.create()
 
 # Run code securely inside the Sandbox
-response = sandbox.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
+response = sandbox.process.code_run("python", 'print("Sum of 3 and 4 is " + str(3 + 4))')
 if response.exit_code != 0:
     print(f"Error running code: {response.exit_code} {response.result}")
 else:
@@ -392,11 +392,10 @@ async function main() {
   let sandbox;
   try {
     // Create the Sandbox instance
-    sandbox = await daytona.create({
-      language: "python",
-    });
+    sandbox = await daytona.create();
     // Run code securely inside the Sandbox
     const response = await sandbox.process.codeRun(
+      'python',
       'print("Sum of 3 and 4 is " + str(3 + 4))'
     );
     if (response.exitCode !== 0) {
@@ -610,7 +609,7 @@ if __name__ == "__main__":
 
 # Run Python code inside the Sandbox and get the output
 
-response = sandbox.process.code_run(app_code)
+response = sandbox.process.code_run("python", app_code)
 print(response.result)
 
 ```
@@ -658,7 +657,7 @@ if __name__ == "__main__":
 `;
 
   // Run Python code inside the Sandbox and get the output
-  const response = await sandbox.process.codeRun(appCode);
+  const response = await sandbox.process.codeRun('python', appCode);
   console.log(response.result);
 }
 
@@ -965,14 +964,13 @@ Once the image is pulled, validated and has an `Active` state, it is ready to be
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```bash
-params = CreateSandboxParams(image="alpine/3.21", language="python")
+params = CreateSandboxParams(image="alpine/3.21")
 sandbox = daytona.create(params)
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```bash
 const sandbox = await daytona.create({
-  language: 'python',
   image: 'alpine/3.21',
 })
 ```
@@ -988,9 +986,9 @@ from daytona_sdk import Daytona, CreateSandboxParams
 
 daytona = Daytona()
 
-sandbox = daytona.create(CreateSandboxParams(image="alpine/3.21", language="python"))
+sandbox = daytona.create(CreateSandboxParams(image="alpine/3.21"))
 
-response = sandbox.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
+response = sandbox.process.code_run("python", 'print("Sum of 3 and 4 is " + str(3 + 4))')
 if response.exit_code != 0:
     print(f"Error running code: {response.exit_code} {response.result}")
 else:
@@ -1012,11 +1010,11 @@ async function main() {
   try {
     // Create the Sandbox instance
     const sandbox = await daytona.create({
-      language: 'python',
       image: 'alpine/3.21',
     })
     // Run the code securely inside the Sandbox
     const response = await sandbox.process.codeRun(
+      'python',
       'print("Sum of 3 and 4 is " + str(3 + 4))',
     )
     if (response.exitCode !== 0) {
@@ -1167,24 +1165,30 @@ as it won't be shown again.
   ```python
   from daytona_sdk import Daytona, DaytonaConfig
 
-  # Define the configuration
+# Define the configuration
+
   config = DaytonaConfig(api_key="your-api-key")
 
-  # Initialize the Daytona client
+# Initialize the Daytona client
+
   daytona = Daytona(config)
 
-  # Create the Sandbox instance
+# Create the Sandbox instance
+
   sandbox = daytona.create()
 
-  # Run the code securely inside the Sandbox
-  response = sandbox.process.code_run('print("Hello World from code!")')
+# Run the code securely inside the Sandbox
+
+  response = sandbox.process.code_run("python", 'print("Hello World from code!")')
   if response.exit_code != 0:
     print(f"Error: {response.exit_code} {response.result}")
   else:
       print(response.result)
   
-  # Clean up
+# Clean up
+
   daytona.remove(sandbox)
+
   ```
   </TabItem>
   <TabItem label="TypeScript" icon="seti:typescript">
@@ -1196,12 +1200,10 @@ as it won't be shown again.
   const daytona = new Daytona({ apiKey: 'your-api-key' });
 
   // Create the Sandbox instance
-  const sandbox = await daytona.create({
-    language: 'typescript',
-  });
+  const sandbox = await daytona.create();
 
   // Run the code securely inside the Sandbox
-  const response = await sandbox.process.codeRun('console.log("Hello World from code!")')
+  const response = await sandbox.process.codeRun('typescript', 'console.log("Hello World from code!")')
   console.log(response.result);
 
   // Clean up
@@ -1278,9 +1280,7 @@ import { Daytona, LspLanguageId } from '@daytonaio/sdk'
 
 // Create sandbox
 const daytona = new Daytona()
-const sandbox = await daytona.create({
-    language: 'typescript'
-})
+const sandbox = await daytona.create()
 
 // Create LSP server for TypeScript
 const lspServer = sandbox.createLspServer(
@@ -1430,7 +1430,9 @@ Daytona SDK provides an option to run code snippets in Python and TypeScript. Yo
 <TabItem label="Python" icon="seti:python">
 ```python
 # Run Python code
-response = sandbox.process.code_run('''
+response = sandbox.process.code_run(
+    "python",
+'''
 def greet(name):
     return f"Hello, {name}!"
 
@@ -1444,17 +1446,21 @@ print(response.result)
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Run TypeScript code
-let response = await sandbox.process.codeRun(`
-function greet(name: string): string {
-    return \`Hello, \${name}!\`;
-}
+let response = await sandbox.process.codeRun(
+    'typescript',
+    `
+    function greet(name: string): string {
+        return \`Hello, \${name}!\`;
+    }
 
-console.log(greet("Daytona"));
-`);
+    console.log(greet("Daytona"));
+    `
+);
 console.log(response.result);
 
 // Run code with argv and environment variables
 response = await sandbox.process.codeRun(
+    'typescript',
     `
     console.log(\`Hello, \${process.argv[2]}!\`);
     console.log(\`FOO: \${process.env.FOO}\`);
@@ -1468,6 +1474,7 @@ console.log(response.result);
 
 // Run code with timeout
 response = await sandbox.process.codeRun(
+    'typescript',
     'setTimeout(() => console.log("Done"), 2000);',
     undefined,
     5000
@@ -1596,7 +1603,7 @@ Daytona SDK provides best practices for process and code execution in Sandboxes.
 <TabItem label="Python" icon="seti:python">
 ```python
 try:
-    response = sandbox.process.code_run("invalid python code")
+    response = sandbox.process.code_run("python", "invalid python code")
 except ProcessExecutionError as e:
     print(f"Execution failed: {e}")
     print(f"Exit code: {e.exit_code}")
@@ -1606,12 +1613,12 @@ except ProcessExecutionError as e:
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 try {
-    const response = await sandbox.process.codeRun("invalid typescript code");
+    const response = await sandbox.process.codeRun('typescript', 'invalid typescript code');
 } catch (e) {
     if (e instanceof ProcessExecutionError) {
-        console.error("Execution failed:", e);
-        console.error("Exit code:", e.exitCode);
-        console.error("Error output:", e.stderr);
+        console.error('Execution failed:', e);
+        console.error('Exit code:', e.exitCode);
+        console.error('Error output:', e.stderr);
     }
 }
 ```
@@ -1668,11 +1675,6 @@ daytona = Daytona()
 
 sandbox = daytona.create()
 
-# Create a Sandbox with specific language
-
-params = CreateSandboxParams(language="python")
-sandbox = daytona.create(params)
-
 # Create a Sandbox with custom ID
 
 params = CreateSandboxParams(id="my-sandbox")
@@ -1688,9 +1690,6 @@ const daytona = new Daytona();
 
 // Create a basic Sandbox
 const sandbox = await daytona.create();
-
-// Create a Sandbox with specific language
-const sandbox = await daytona.create({ language: 'typescript' });
 
 // Create a Sandbox with custom ID
 const sandbox = await daytona.create({ id: 'my-sandbox' });
