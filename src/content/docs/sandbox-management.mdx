@@ -26,11 +26,6 @@ daytona = Daytona()
 
 sandbox = daytona.create()
 
-# Create a Sandbox with specific language
-
-params = CreateSandboxParams(language="python")
-sandbox = daytona.create(params)
-
 # Create a Sandbox with custom ID
 
 params = CreateSandboxParams(id="my-sandbox")
@@ -46,9 +41,6 @@ const daytona = new Daytona();
 
 // Create a basic Sandbox
 const sandbox = await daytona.create();
-
-// Create a Sandbox with specific language
-const sandbox = await daytona.create({ language: 'typescript' });
 
 // Create a Sandbox with custom ID
 const sandbox = await daytona.create({ id: 'my-sandbox' });

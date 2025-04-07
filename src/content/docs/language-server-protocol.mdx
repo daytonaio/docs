@@ -35,9 +35,7 @@ import { Daytona, LspLanguageId } from '@daytonaio/sdk'
 
 // Create sandbox
 const daytona = new Daytona()
-const sandbox = await daytona.create({
-    language: 'typescript'
-})
+const sandbox = await daytona.create()
 
 // Create LSP server for TypeScript
 const lspServer = sandbox.createLspServer(

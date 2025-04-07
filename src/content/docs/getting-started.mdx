@@ -44,16 +44,16 @@ Run the following code to create a Daytona Sandbox and execute commands:
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-from daytona_sdk import Daytona, DaytonaConfig, CreateSandboxParams
+from daytona_sdk import Daytona, DaytonaConfig
 
 # Initialize the Daytona client
 daytona = Daytona(DaytonaConfig(api_key="YOUR_API_KEY"))
 
 # Create the Sandbox instance
-sandbox = daytona.create(CreateSandboxParams(language="python"))
+sandbox = daytona.create()
 
 # Run code securely inside the Sandbox
-response = sandbox.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
+response = sandbox.process.code_run("python", 'print("Sum of 3 and 4 is " + str(3 + 4))')
 if response.exit_code != 0:
     print(f"Error running code: {response.exit_code} {response.result}")
 else:
@@ -78,11 +78,10 @@ async function main() {
   let sandbox;
   try {
     // Create the Sandbox instance
-    sandbox = await daytona.create({
-      language: "python",
-    });
+    sandbox = await daytona.create();
     // Run code securely inside the Sandbox
     const response = await sandbox.process.codeRun(
+      'python',
       'print("Sum of 3 and 4 is " + str(3 + 4))'
     );
     if (response.exitCode !== 0) {
@@ -296,7 +295,7 @@ if __name__ == "__main__":
 
 # Run Python code inside the Sandbox and get the output
 
-response = sandbox.process.code_run(app_code)
+response = sandbox.process.code_run("python", app_code)
 print(response.result)
 
 ```
@@ -344,7 +343,7 @@ if __name__ == "__main__":
 `;
 
   // Run Python code inside the Sandbox and get the output
-  const response = await sandbox.process.codeRun(appCode);
+  const response = await sandbox.process.codeRun('python', appCode);
   console.log(response.result);
 }
 
