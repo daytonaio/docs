@@ -186,6 +186,15 @@ export const sidebarConfig: NavigationGroup[] = [
           icon: 'terminal.svg',
         },
       },
+      {
+        type: 'link',
+        href: '/docs/log-streaming',
+        label: 'Log Streaming',
+        description: 'Learn how to stream logs from your Sandboxes using the Daytona SDK.',
+        attrs: {
+          icon: 'log.svg',
+        },
+      },
     ],
   },
   {
