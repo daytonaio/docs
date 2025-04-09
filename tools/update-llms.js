@@ -6,6 +6,22 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
+const version = packageJson.version;
+
+const getCurrentDate = () => {
+    const date = new Date();
+    return date.toISOString().split('T')[0]; // YYYY-MM-DD format
+};
+
+const getVersionHeader = () => {
+    return [
+        `# Daytona Documentation v${version}`,
+        `# Generated on: ${getCurrentDate()}`,
+        ''
+    ].join('\n');
+};
+
 const DOCS_PATH = path.join(__dirname, '../src/content/docs');
 const SUBFOLDERS = new Set(['about', 'configuration', 'installation', 'misc', 'usage', 'tools', 'sdk']);
 const EXCLUDE_FILES = new Set(['404.md', 'api.mdx']);
@@ -13,7 +29,15 @@ const EXCLUDE_FILES = new Set(['404.md', 'api.mdx']);
 const processContent = content =>
     content
         .split('\n')
-        .filter(line => !/^(import\s+.*from\s+['"](@components\/|@assets\/).*['"];?|export\s+(default|const|let|function|class)\b)/.test(line.trim()))
+        .filter(line => {
+            const trimmed = line.trim();
+            return !(
+                /^(import\s+.*from\s+['"](@components\/|@assets\/).*['"];?|export\s+(default|const|let|function|class)\b)/.test(trimmed) ||
+                trimmed.startsWith('<Tab') ||
+                trimmed.startsWith('</Tab') ||
+                trimmed.startsWith('---')
+            );
+        })
         .join('\n')
         .trim();
 
@@ -72,9 +96,10 @@ const searchDocs = () => {
 
 const generateLlmsTxtFile = docsData => {
     const llmsContent = [
+        getVersionHeader(),
         '# Daytona',
         '',
-        '> Daytona is a self-hosted and secure open source development environment manager.',
+        '> Secure and Elastic Infrastructure for Running Your Al-Generated Code.',
         '',
         '## Docs',
         '',
@@ -85,9 +110,14 @@ const generateLlmsTxtFile = docsData => {
 };
 
 const generateLlmsFullTxtFile = fullContent => {
+    const content = [
+        getVersionHeader(),
+        fullContent
+    ].join('\n\n');
+
     fs.writeFileSync(
         path.join(__dirname, '../public/llms-full.txt'),
-        fullContent,
+        content,
         'utf8'
     );
     console.log('llms-full.txt index updated');

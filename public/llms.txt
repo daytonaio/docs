@@ -1,6 +1,9 @@
+# Daytona Documentation v0.12.0
+# Generated on: 2025-04-09
+
 # Daytona
 
-> Daytona is a self-hosted and secure open source development environment manager.
+> Secure and Elastic Infrastructure for Running Your Al-Generated Code.
 
 ## Docs
 

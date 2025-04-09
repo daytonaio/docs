@@ -1,6 +1,8 @@
----
+# Daytona Documentation v0.12.0
+# Generated on: 2025-04-09
+
+
 title: Configuration
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -22,8 +24,6 @@ Daytona SDK provides an option to configure settings using the `DaytonaConfig` c
 - `server_url`: URL of your Daytona server
 - `target`: Daytona Target to create the Sandboxes on.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import DaytonaConfig
 
@@ -34,8 +34,6 @@ config = DaytonaConfig(
 )
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { DaytonaConfig } from '@daytonaio/sdk';
 
@@ -46,8 +44,6 @@ const config: DaytonaConfig = {
 };
 ```
 
-</TabItem>
-</Tabs>
 
 ## Environment Variables
 
@@ -84,20 +80,14 @@ DAYTONA_TARGET=us
 
 Set environment variables in your shell:
 
-<Tabs>
-<TabItem label="Bash/Zsh" icon="seti:shell">
 ```bash
 export DAYTONA_API_KEY=your-api-key
 export DAYTONA_SERVER_URL=https://your-server-url
 ```
-</TabItem>
-<TabItem label="Windows PowerShell" icon="seti:powershell">
 ```bash
 $env:DAYTONA_API_KEY="your-api-key"
 $env:DAYTONA_SERVER_URL="https://your-server-url"
 ```
-</TabItem>
-</Tabs>
 
 ## Configuration Precedence
 
@@ -108,9 +98,7 @@ The SDK uses the following precedence order for configuration (highest to lowest
 3. Configuration file.
 4. Default values.
 
----
 title: File System Operations
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -124,8 +112,6 @@ Daytona SDK provides an option to interact with the file system in Sandboxes. Yo
 
 Daytona SDK provides an option to list files and directories in a Sandbox using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # List files in a directory
 files = sandbox.fs.list_files("/workspace")
@@ -136,8 +122,6 @@ for file in files:
     print(f"Modified: {file.mod_time}")
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // List files in a directory
 const files = await sandbox.fs.listFiles("/workspace");
@@ -150,15 +134,11 @@ files.forEach(file => {
 });
 ```
 
-</TabItem>
-</Tabs>
 
 ### Creating Directories
 
 Daytona SDK provides an option to create directories with specific permissions using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Create a directory
 sandbox.fs.create_folder("/workspace/new-dir")
@@ -168,8 +148,6 @@ sandbox.fs.create_folder("/workspace/new-dir")
 sandbox.fs.create_folder("/workspace/new-dir", "755")
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Create a directory
 await sandbox.fs.createFolder("/workspace/new-dir");
@@ -178,15 +156,11 @@ await sandbox.fs.createFolder("/workspace/new-dir");
 await sandbox.fs.createFolder("/workspace/new-dir", "755");
 ```
 
-</TabItem>
-</Tabs>
 
 ### File Operations
 
 Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Upload a file
 with open("local_file.txt", "rb") as f:
@@ -204,8 +178,6 @@ with open("local_file.txt", "wb") as f:
 sandbox.fs.delete_file("/workspace/file.txt")
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Upload a file
 const fileContent = new File(
@@ -223,8 +195,6 @@ console.log('File content:', downloadedFile.toString())
 await sandbox.fs.deleteFile("/workspace/file.txt");
 ```
 
-</TabItem>
-</Tabs>
 
 ## Advanced Operations
 
@@ -234,8 +204,6 @@ Daytona SDK provides advanced file system operations like file permissions, sear
 
 Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Set file permissions
 sandbox.fs.set_file_permissions("/workspace/file.txt", "644")
@@ -246,8 +214,6 @@ file_info = sandbox.fs.get_file_info("/workspace/file.txt")
 print(f"Permissions: {file_info.permissions}")
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Set file permissions
 await sandbox.fs.setFilePermissions("/workspace/file.txt", { mode: "644" });
@@ -257,15 +223,11 @@ const fileInfo = await sandbox.fs.getFileDetails("/workspace/file.txt");
 console.log(`Permissions: ${fileInfo.permissions}`);
 ```
 
-</TabItem>
-</Tabs>
 
 ### File Search and Replace
 
 Daytona SDK provides an option to search for text in files and replace text in files using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Search for text in files; if a folder is specified, the search is recursive
 results = sandbox.fs.find_files(
@@ -287,8 +249,6 @@ sandbox.fs.replace_in_files(
 )
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Search for text in files; if a folder is specified, the search is recursive
 const results = await sandbox.fs.findFiles({
@@ -309,12 +269,7 @@ await sandbox.fs.replaceInFiles(
 );
 ```
 
-</TabItem>
-</Tabs>
-
----
 title: Getting Started
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -328,13 +283,9 @@ For steps on additional configuration, including setting environmnent variables 
 
 Daytona provides official Python and TypeScript SDKs for interacting with the Daytona platform. Install the SDK using your preferred method:
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```bash
 pip install daytona-sdk
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```bash
 # Using npm
 npm install @daytonaio/sdk
@@ -348,15 +299,11 @@ yarn add @daytonaio/sdk
 pnpm add @daytonaio/sdk
 
 ```
-</TabItem>
-</Tabs>
 
 ## Run Code Inside a Sandbox
 
 Run the following code to create a Daytona Sandbox and execute commands:
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import Daytona, DaytonaConfig, CreateSandboxParams
 
@@ -378,8 +325,6 @@ daytona.remove(sandbox)
 
 ```
 
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { Daytona } from '@daytonaio/sdk'
 
@@ -417,29 +362,19 @@ async function main() {
 main().catch(console.error)
 
 ```
-</TabItem>
-</Tabs>
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```bash
 python main.py
 ```
 
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```bash
 npx tsx ./index.ts
 ```
-</TabItem>
-</Tabs>
 
 ## Preview Your App
 
 The following snippet uploads a file containing a simple Flask app to a Daytona Sandbox. The web server runs on port `3000` and is accessible through the provided preview URL:
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import Daytona, DaytonaConfig, SessionExecuteRequest
 
@@ -495,8 +430,6 @@ print(f"Flask app is available at: {preview_link}")
 
 ```
 
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { Daytona } from '@daytonaio/sdk';
 
@@ -559,8 +492,6 @@ main().catch(error => console.error("Error:", error));
 
 ```
 
-</TabItem>
-</Tabs>
 
 :::tip
 You can access the Sandbox `Web Terminal` by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
@@ -570,8 +501,6 @@ You can access the Sandbox `Web Terminal` by printing out the preview URL for po
 
 The following snippet connects to an LLM using the Anthropic API and asks Claude a question by running Python code directly:
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import Daytona, DaytonaConfig
 
@@ -615,8 +544,6 @@ print(response.result)
 
 ```
 
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { Daytona } from '@daytonaio/sdk';
 
@@ -666,8 +593,6 @@ main().catch(console.error);
 
 ```
 
-</TabItem>
-</Tabs>
 
 ## Additional Examples
 
@@ -679,23 +604,15 @@ Learn more by checkout out the Daytona SDK repository on [GitHub](https://github
 
 If you want to use [images](/docs/images) from your local device or simply prefer managing your Sandboxes using the command line interface, install the Daytona CLI by running:
 
-<Tabs>
-<TabItem label="Mac/Linux">
 ```bash
 brew install daytonaio/cli/daytona
 ```
 
-</TabItem>
-<TabItem label="Windows">
 ```bash
 powershell -Command "irm https://get.daytona.io/windows | iex"
 ```
-</TabItem>
-</Tabs>
 
----
 title: Git Operations
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -709,8 +626,6 @@ Daytona SDK provides an option to clone, check status, and manage Git repositori
 
 Daytona SDK provides an option to clone Git repositories into Sandboxes using Python and TypeScript. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Basic clone
 sandbox.git.clone(
@@ -736,8 +651,6 @@ sandbox.git.clone(
 )
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Basic clone
 await sandbox.git.clone(
@@ -763,15 +676,11 @@ await sandbox.git.clone(
 );
 ```
 
-</TabItem>
-</Tabs>
 
 ### Repository Status
 
 Daytona SDK provides an option to check the status of Git repositories in Sandboxes. You can get the current branch, modified files, number of commits ahead and behind main branch using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Get repository status
 status = sandbox.git.status("/workspace/repo")
@@ -788,8 +697,6 @@ for branch in response.branches:
     print(f"Branch: {branch}")
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Get repository status
 const status = await sandbox.git.status("/workspace/repo");
@@ -807,8 +714,6 @@ response.branches.forEach(branch => {
 });
 ```
 
-</TabItem>
-</Tabs>
 
 ## Branch Operations
 
@@ -818,8 +723,6 @@ Daytona SDK provides an option to manage branches in Git repositories. You can c
 
 Daytona SDK provides an option to create, switch, and delete branches in Git repositories using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Create new branch
 sandbox.git.create_branch("/workspace/repo", "feature/new-feature")
@@ -833,8 +736,6 @@ sandbox.git.checkout("/workspace/repo", "feature/new-feature")
 sandbox.git.delete_branch("/workspace/repo", "feature/old-feature")
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Create new branch
 await sandbox.git.createBranch("/workspace/repo", "feature/new-feature");
@@ -846,8 +747,6 @@ await sandbox.git.checkout("/workspace/repo", "feature/new-feature");
 await sandbox.git.deleteBranch("/workspace/repo", "feature/old-feature");
 ```
 
-</TabItem>
-</Tabs>
 
 ## Staging and Committing
 
@@ -855,8 +754,6 @@ Daytona SDK provides an option to stage and commit changes in Git repositories. 
 
 ### Working with Changes
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Stage specific files
 sandbox.git.add("/workspace/repo", ["file1.txt", "file2.txt"])
@@ -878,8 +775,6 @@ for commit in commits:
     print(f"Message: {commit.message}")
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Stage specific files
 await sandbox.git.add("/workspace/repo", ["file1.txt", "file2.txt"]);
@@ -899,8 +794,6 @@ commits.forEach(commit => {
 });
 ```
 
-</TabItem>
-</Tabs>
 
 ## Remote Operations
 
@@ -910,8 +803,6 @@ Daytona SDK provides an option to work with remote repositories in Git. You can 
 
 Daytona SDK provides an option to push, pull, and list remotes in Git repositories using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Push changes
 sandbox.git.push("/workspace/repo")
@@ -927,8 +818,6 @@ for remote in remotes:
     print(f"Remote: {remote.name} URL: {remote.url}")
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Push changes
 await sandbox.git.push("/workspace/repo");
@@ -943,12 +832,7 @@ await sandbox.git.pull("/workspace/repo");
 await sandbox.git.pull("/workspace/repo", "origin", "main");
 ```
 
-</TabItem>
-</Tabs>
-
----
 title: Images
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -962,27 +846,19 @@ Since images tagged `latest` get frequent updates, only specific tags (e.g. `0.1
 
 Once the image is pulled, validated and has an `Active` state, it is ready to be used. Define the `CreateSandboxParams` object to specify the custom image to use:
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```bash
 params = CreateSandboxParams(image="alpine/3.21", language="python")
 sandbox = daytona.create(params)
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```bash
 const sandbox = await daytona.create({
   language: 'python',
   image: 'alpine/3.21',
 })
 ```
-</TabItem>
-</Tabs>
 
 Full example:
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import Daytona, CreateSandboxParams
 
@@ -1000,8 +876,6 @@ daytona.remove(sandbox)
 
 ```
 
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { Daytona } from '@daytonaio/sdk'
 
@@ -1036,8 +910,6 @@ main()
 
 ```
 
-</TabItem>
-</Tabs>
 
 ## Custom Container Registries
 
@@ -1108,7 +980,6 @@ The default image used by Daytona contains `python`, `node` and their respective
 - `llama-index` (v0.12.22)
 - `ollama` (v0.4.7)
 
----
 title: Daytona Documentation
 description: Start managing your Sandboxes with Daytona.
 template: doc
@@ -1124,7 +995,6 @@ head:
         name: twitter:title
         content: Documentation · Daytona
 tableOfContents: false
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -1146,23 +1016,15 @@ as it won't be shown again.
 
 #### 2. Install the SDK
 
-<Tabs syncKey="language">
-  <TabItem label="Python" icon="seti:python">
   ```bash
   pip install daytona_sdk
   ```
-  </TabItem>
-  <TabItem label="TypeScript" icon="seti:typescript">
   ```bash
   npm install @daytonaio/sdk
   ```
-  </TabItem>
-</Tabs>
 
 #### 3. Write Your Code
 
-<Tabs syncKey="language">
-  <TabItem label="Python" icon="seti:python">
   Create a file named: `main.py`
   ```python
   from daytona_sdk import Daytona, DaytonaConfig
@@ -1186,8 +1048,6 @@ as it won't be shown again.
   # Clean up
   daytona.remove(sandbox)
   ```
-  </TabItem>
-  <TabItem label="TypeScript" icon="seti:typescript">
   Create a file named: `index.mts`
   ```typescript
   import { Daytona } from '@daytonaio/sdk';
@@ -1208,8 +1068,6 @@ as it won't be shown again.
   await daytona.remove(sandbox)
   ```
 
-  </TabItem>
-</Tabs>
 
 :::note
 Replace `your-api-key` with the value from your Daytona dashboard.
@@ -1217,18 +1075,12 @@ Replace `your-api-key` with the value from your Daytona dashboard.
 
 #### 4. Run It
 
-<Tabs syncKey="language">
-  <TabItem label="Python" icon="seti:python">
   ```bash
   python main.py
   ```
-  </TabItem>
-  <TabItem label="TypeScript" icon="seti:typescript">
   ```bash
   npx tsx index.mts
   ```
-  </TabItem>
-</Tabs>
 
 #### ✅ What You Just Did
 
@@ -1241,9 +1093,7 @@ You're now ready to use Daytona for secure, isolated code execution.
 
 <ExploreMore />
 
----
 title: Language Server Protocol
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -1253,8 +1103,6 @@ The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox 
 
 Daytona SDK provides an option to create LSP servers using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import Daytona, LspLanguageId
 
@@ -1271,8 +1119,6 @@ lsp_server = sandbox.create_lsp_server(
 )
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { Daytona, LspLanguageId } from '@daytonaio/sdk'
 
@@ -1289,15 +1135,11 @@ const lspServer = sandbox.createLspServer(
 )
 ```
 
-</TabItem>
-</Tabs>
 
 ## Supported Languages
 
 Daytona SDK provides an option to create LSP servers for various languages through the `LspLanguageId` enum in Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import LspLanguageId
 
@@ -1307,8 +1149,6 @@ LspLanguageId.PYTHON
 LspLanguageId.TYPESCRIPT
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { LspLanguageId } from '@daytonaio/sdk'
 
@@ -1317,8 +1157,6 @@ LspLanguageId.PYTHON
 LspLanguageId.TYPESCRIPT    
 ```
 
-</TabItem>
-</Tabs>
 
 - `LspLanguageId.PYTHON`: Python language server.
 - `LspLanguageId.TYPESCRIPT`: TypeScript/JavaScript language server.
@@ -1331,8 +1169,6 @@ Daytona SDK provides various LSP features for code analysis and editing.
 
 Daytona SDK provides an option to get code completions for a specific position in a file using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 completions = lsp_server.completions(
     path="/workspace/project/main.py",
@@ -1340,8 +1176,6 @@ completions = lsp_server.completions(
 )
 print(f"Completions: {completions}")
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 const completions = await lspServer.getCompletions({
     path: "/workspace/project/main.ts",
@@ -1349,12 +1183,8 @@ const completions = await lspServer.getCompletions({
 })
 console.log('Completions:', completions)
 ```
-</TabItem>
-</Tabs>
 
----
 title: Log Streaming
----
 
 When executing long-running processes in a sandbox, you’ll often want to access and process their logs in **real time**.
 
@@ -1378,8 +1208,6 @@ This is ideal for:
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs syncKey="language">
-  <TabItem label="Python" icon="seti:python">
   ```python
   import asyncio
   from daytona_sdk import Daytona, SessionExecuteRequest
@@ -1422,8 +1250,6 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   if __name__ == "__main__":
       asyncio.run(main())
   ```
-  </TabItem>
-  <TabItem label="Typescript" icon="seti:typescript">
   ```typescript
   import { Daytona, Sandbox } from '@daytonaio/sdk'
 
@@ -1460,16 +1286,12 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
   main()
   ```
-  </TabItem>
-</Tabs>
 
 ## Synchronous
 
 If the command has a predictable duration, or if you don't need to run it in the background,
 you can process log stream synchronously. For example, you can write logs to a file or some other storage.
 
-<Tabs syncKey="language">
-  <TabItem label="Python" icon="seti:python">
   ```python
   import asyncio
   import os
@@ -1515,8 +1337,6 @@ you can process log stream synchronously. For example, you can write logs to a f
   if __name__ == "__main__":
       asyncio.run(main())
   ```
-  </TabItem>
-  <TabItem label="Typescript" icon="seti:typescript">
   ```typescript
   import { Daytona, Sandbox } from '@daytonaio/sdk'
 
@@ -1556,12 +1376,8 @@ you can process log stream synchronously. For example, you can write logs to a f
 
   main()
   ```
-  </TabItem>
-</Tabs>
 
----
 title: Organizations
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -1617,9 +1433,7 @@ page_ by expanding the dropdown at the bottom of the sidebar, and clicking on _I
 accepts an invitation to join an Organization, they get access to resource quotas assigned to that
 Organization and they may proceed by issuing a new API key and creating sandboxes.
 
----
 title: Process and Code Execution
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -1633,8 +1447,6 @@ Daytona SDK provides an option to execute code in Python and TypeScript.
 
 Daytona SDK provides an option to run code snippets in Python and TypeScript. You can execute code with input, timeout, and environment variables.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Run Python code
 response = sandbox.process.code_run('''
@@ -1647,8 +1459,6 @@ print(greet("Daytona"))
 print(response.result)
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Run TypeScript code
 let response = await sandbox.process.codeRun(`
@@ -1682,8 +1492,6 @@ response = await sandbox.process.codeRun(
 console.log(response.result);
 ```
 
-</TabItem>
-</Tabs>
 
 ## Process Execution
 
@@ -1693,22 +1501,16 @@ Daytona SDK provides an option to execute shell commands and manage background p
 
 Daytona SDK provides an option to execute shell commands in Python and TypeScript. You can run commands with input, timeout, and environment variables.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Execute shell command
 response = sandbox.process.exec("ls -la")
 print(response.result)
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Execute shell command
 const response = await sandbox.process.executeCommand("ls -la");
 console.log(response.result);
 ```
-</TabItem>
-</Tabs>
 
 ## Sessions (Background Processes)
 
@@ -1718,8 +1520,6 @@ Daytona SDK provides an option to start, stop, and manage background process ses
 
 Daytona SDK provides an option to start and stop background processes. You can run long-running commands and monitor process status.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Check session's executed commands
 session = sandbox.process.get_session(session_id)
@@ -1734,8 +1534,6 @@ for session in sessions:
     print(f"PID: {session.id}, Commands: {session.commands}")
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Check session's executed commands
 const session = await sandbox.process.getSession(sessionId);
@@ -1752,8 +1550,6 @@ for (const session of sessions) {
 
 ```
 
-</TabItem>
-</Tabs>
 
 ## Best Practices
 
@@ -1765,8 +1561,6 @@ Daytona SDK provides best practices for process and code execution in Sandboxes.
 - Clean up sessions after execution
 - Handle session exceptions properly
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
    ```python
    # Python - Clean up session
    session_id = "long-running-cmd"
@@ -1777,8 +1571,6 @@ Daytona SDK provides best practices for process and code execution in Sandboxes.
    finally:
        sandbox.process.delete_session(session.session_id)
    ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
    ```typescript
    // TypeScript - Clean up session
    const sessionId = "long-running-cmd";
@@ -1790,8 +1582,6 @@ Daytona SDK provides best practices for process and code execution in Sandboxes.
        await sandbox.process.deleteSession(session.sessionId);
    }
    ```
-</TabItem>
-</Tabs>
 
 2. **Error Handling**
 
@@ -1799,8 +1589,6 @@ Daytona SDK provides best practices for process and code execution in Sandboxes.
 - Log error details for debugging
 - Use try-catch blocks for error handling
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 try:
     response = sandbox.process.code_run("invalid python code")
@@ -1809,8 +1597,6 @@ except ProcessExecutionError as e:
     print(f"Exit code: {e.exit_code}")
     print(f"Error output: {e.stderr}")
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 try {
     const response = await sandbox.process.codeRun("invalid typescript code");
@@ -1822,8 +1608,6 @@ try {
     }
 }
 ```
-</TabItem>
-</Tabs>
 
 ## Common Issues
 
@@ -1847,9 +1631,7 @@ Daytona SDK provides an option to troubleshoot common issues related to process 
 - Handle process cleanup properly
 - Use appropriate resource constraints
 
----
 title: Sandbox Management
----
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -1864,8 +1646,6 @@ By default, the sandboxes auto-stop after 15 minutes of inactivity. To overwrite
 
 Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom IDs using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 from daytona_sdk import Daytona
 
@@ -1886,8 +1666,6 @@ params = CreateSandboxParams(id="my-sandbox")
 sandbox = daytona.create(params)
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 import { Daytona } from '@daytonaio/sdk';
 
@@ -1903,8 +1681,6 @@ const sandbox = await daytona.create({ language: 'typescript' });
 const sandbox = await daytona.create({ id: 'my-sandbox' });
 ```
 
-</TabItem>
-</Tabs>
 
 :::note
 Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are automatically used if a custom ID _isn't_ provided and the default image is used, reducing the creation time down to a fraction of a second.
@@ -1914,8 +1690,6 @@ Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are a
 
 Daytona SDK provides methods to get information about a Sandbox, such as ID, root directory, and status using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Get Sandbox ID
 sandbox_id = sandbox.id
@@ -1935,8 +1709,6 @@ state = sandbox.instance.state
 preview_link = sandbox.get_preview_link(3000)
 
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Get Sandbox ID
 const sandboxId = sandbox.id;
@@ -1954,27 +1726,19 @@ const previewLink = sandbox.getPreviewLink(3000)
 
 ```
 
-</TabItem>
-</Tabs>
 
 ## Remove Sandbox
 
 Daytona SDK provides methods to perform operations on Sandboxes, such as removing Sandboxes using Python and TypeScript.
 
-<Tabs>
-<TabItem label="Python" icon="seti:python">
 ```python
 # Remove Sandbox
 daytona.remove(sandbox)
 ```
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Remove Sandbox
 await daytona.remove(sandbox);
 ```
-</TabItem>
-</Tabs>
 
 :::tip
 Check out the [Daytona CLI](/docs/getting-started#setting-up-the-daytona-cli) if you prefer managing Sandboxes through the terminal:
@@ -2030,12 +1794,10 @@ When Sandboxes are archived, the entire filesystem state is moved to very cost-e
 
 The tradeoff between archived and stopped states is that starting an archived Sandbox takes more time, depending on its size.
 
----
 title: CLI
 description: A reference of supported operations using the Daytona CLI.
 sidebar:
   label: Daytona CLI Reference
----
 
 The `daytona` command-line tool provides access to Daytona's core features including managing images and the lifecycle of Daytona Sandboxes. View the installation instructions by clicking [here](/docs/getting-started#setting-up-the-daytona-cli).
 
