@@ -2,6 +2,28 @@
 # Generated on: 2025-04-09
 
 
+title: API Keys
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Daytona API keys are used to authenticate requests to the [Daytona API](/docs/tools/api).
+
+The [Configuration](/docs/configuration) page covers how to set up your environment variables, including the `DAYTONA_API_KEY` environment variable.
+
+To list existing API Keys go to the Keys subpage in the Dashboard. Clicking on `Create Key` will show a modal for creating and copying a new key to your clipboard.
+
+## Permissions
+
+When adding a new API Key you will be prompted to select a set of permissions for the key:
+
+| Permission | Description |
+|------------|-------------|
+| **`Sandboxes`** | Grants the ability to create and manage Sandboxes |
+| **`Images`** | Grants the ability to create and manage Images |
+| **`Registries`** | Grants the ability to create and manage Registries |
+
+Each of these permissions have scopes for creating and updating resources (e.g. `write:sandboxes`) and delete resources (e.g. `delete:sandboxes`) that can be separately granted.
+
 title: Configuration
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -499,63 +521,20 @@ You can access the Sandbox `Web Terminal` by printing out the preview URL for po
 
 ## Connect to an LLM
 
-The following snippet connects to an LLM using the Anthropic API and asks Claude a question by running Python code directly:
+The following snippet connects to an LLM using the Anthropic API and asks Claude to generate code for getting the factorial of 25 and then executes it inside of a Daytona Sandbox:
 
 ```python
+import os
+import re
+import requests
 from daytona_sdk import Daytona, DaytonaConfig
+from dotenv import load_dotenv
 
-daytona = Daytona(DaytonaConfig(api_key="YOUR_DAYTONA_API_KEY"))
+load_dotenv()
+
+daytona = Daytona(DaytonaConfig())
 
 sandbox = daytona.create()
-
-app_code = '''
-import requests
-
-def get_claude_response(api_key, prompt):
-    url = "<https://api.anthropic.com/v1/messages>"
-    headers = {
-        "x-api-key": api_key,
-        "anthropic-version": "2023-06-01",
-        "Content-Type": "application/json"
-    }
-    data = {
-        "model": "claude-2",
-        "max_tokens": 256,
-        "messages": [{"role": "user", "content": prompt}]
-    }
-    response = requests.post(url, json=data, headers=headers)
-    if response.status_code == 200:
-        content = response.json().get("content", [])
-        return "".join([item["text"] for item in content if item["type"] == "text"])
-    else:
-        return f"Error {response.status_code}: {response.text}"
-
-if __name__ == "__main__":
-    api_key = "YOUR_ANTHROPIC_API_KEY"
-    prompt = "Hello Claude, how are you today?"
-    result = get_claude_response(api_key, prompt)
-    print("Claude's response:", result)
-'''
-
-# Run Python code inside the Sandbox and get the output
-
-response = sandbox.process.code_run(app_code)
-print(response.result)
-
-```
-
-```typescript
-import { Daytona } from '@daytonaio/sdk';
-
-const daytona = new Daytona({
-  apiKey: "YOUR_DAYTONA_API_KEY"
-});
-
-async function main() {
-  const sandbox = await daytona.create();
-
-  const appCode = `
-import requests
 
 def get_claude_response(api_key, prompt):
     url = "https://api.anthropic.com/v1/messages"
@@ -569,7 +548,6 @@ def get_claude_response(api_key, prompt):
         "max_tokens": 256,
         "messages": [{"role": "user", "content": prompt}]
     }
-    
     response = requests.post(url, json=data, headers=headers)
     if response.status_code == 200:
         content = response.json().get("content", [])
@@ -577,20 +555,107 @@ def get_claude_response(api_key, prompt):
     else:
         return f"Error {response.status_code}: {response.text}"
 
-if __name__ == "__main__":
-    api_key = "YOUR_ANTHROPIC_API_KEY"
-    prompt = "Hello Claude, how are you today?"
-    result = get_claude_response(api_key, prompt)
-    print("Claude's response:", result)
-`;
+prompt = "Python code that returns the factorial of 25. Output only the code. No explanation. No intro. No comments. Just raw code in a single code block."
 
-  // Run Python code inside the Sandbox and get the output
-  const response = await sandbox.process.codeRun(appCode);
-  console.log(response.result);
+result = get_claude_response(os.environ["ANTHROPIC_API_KEY"], prompt)
+
+code_match = re.search(r"```python\n(.*?)```", result, re.DOTALL)
+
+code = code_match.group(1) if code_match else result
+code = code.replace('\\', '\\\\')
+
+# Run Python code inside the Sandbox and get the output
+
+response = sandbox.process.code_run(code)
+print("The factorial of 25 is", response.result)
+
+```
+
+Running the snippet:
+
+```bash
+ANTHROPIC_API_KEY="your-anthropic-api-key"
+DAYTONA_API_KEY="your-daytona-api-key"
+DAYTONA_TARGET=us
+python claude-example.py
+```
+
+```bash
+> The factorial of 25 is 15511210043330985984000000
+```
+
+```typescript
+import { Daytona } from '@daytonaio/sdk'
+import * as dotenv from 'dotenv'
+import axios from 'axios'
+
+dotenv.config()
+
+const daytona = new Daytona()
+
+async function getClaudeResponse(apiKey: string, prompt: string): Promise<string> {
+  const url = "https://api.anthropic.com/v1/messages"
+  const headers = {
+    "x-api-key": apiKey,
+    "anthropic-version": "2023-06-01",
+    "Content-Type": "application/json"
+  }
+  const data = {
+    "model": "claude-2",
+    "max_tokens": 256,
+    "messages": [{"role": "user", "content": prompt}]
+  }
+
+  try {
+    const response = await axios.post(url, data, { headers })
+    if (response.status === 200) {
+      const content = response.data.content || []
+      return content
+        .filter((item: any) => item.type === "text")
+        .map((item: any) => item.text)
+        .join("")
+    } else {
+      return `Error ${response.status}: ${response.statusText}`
+    }
+  } catch (error: any) {
+    return `Error: ${error.message}`
+  }
 }
 
-main().catch(console.error);
+async function main() {
+  const sandbox = await daytona.create()
 
+  const prompt = "Python code that returns the factorial of 25. Output only the code. No explanation. No intro. No comments. Just raw code in a single code block."
+  
+  const result = await getClaudeResponse(process.env.ANTHROPIC_API_KEY || "", prompt)
+  
+  // Extract code from the response using regex
+  const codeMatch = result.match(/```python\n(.*?)```/s)
+  
+  let code = codeMatch ? codeMatch[1] : result
+  code = code.replace(/\\/g, '\\\\')
+  
+  // Run the extracted code in the sandbox
+  const response = await sandbox.process.codeRun(code)
+  console.log("The factorial of 25 is", response.result)
+}
+
+main().catch(console.error)
+
+```
+
+
+Running the snippet:
+
+```bash
+ANTHROPIC_API_KEY="your-anthropic-api-key"
+DAYTONA_API_KEY="your-daytona-api-key"
+DAYTONA_TARGET=us
+npx ts-node claude-example.ts
+```
+
+```bash
+> The factorial of 25 is 15511210043330985984000000
 ```
 
 
@@ -1433,6 +1498,10 @@ page_ by expanding the dropdown at the bottom of the sidebar, and clicking on _I
 accepts an invitation to join an Organization, they get access to resource quotas assigned to that
 Organization and they may proceed by issuing a new API key and creating sandboxes.
 
+## Settings
+
+The Settings subpage in the Dashboard allows you to view the Organization ID and Name and to delete the Organization if you don't need it anymore. This action is irreversible, so please proceed with caution. Personal Organizations are there by default and cannot be deleted.
+
 title: Process and Code Execution
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -1630,6 +1699,36 @@ Daytona SDK provides an option to troubleshoot common issues related to process 
 - Monitor process memory usage
 - Handle process cleanup properly
 - Use appropriate resource constraints
+
+title: Quotas
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+The Quota subpage in the Dashboard shows different types of Quotas assigned to Organizations. Contact us at [support@daytona.io](mailto:support@daytona.io) to request a quota increase.
+
+## CPU Quota
+
+The CPU Quota is the maximum number of CPU cores that can be used by Sandboxes in an Organization.
+
+## Memory Quota
+
+The Memory Quota is the maximum amount of RAM that can be used by Sandboxes in an Organization expressed in gigabytes.
+
+## Disk Quota
+
+The Disk Quota is the maximum amount of disk space that can be used by Sandboxes in an Organization expressed in gigabytes.
+
+## Sandboxes/Running Sandboxes Quota
+
+The Sandboxes Quota is the maximum number of Sandboxes that can be created in an Organization.
+
+The Running Sandboxes Quota is the maximum number of Sandboxes that can be in Running state in an Organization at the same time.
+
+## Images/Total Image Size Quota
+
+The Images Quota is the maximum number of Images that can be created in an Organization.
+
+The Total image size Quota is the maximum amount of disk space that can be used by Images in an Organization expressed in gigabytes.
 
 title: Sandbox Management
 

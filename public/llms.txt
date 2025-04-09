@@ -7,6 +7,8 @@
 
 ## Docs
 
+- [API Keys](https://daytona.io/docs/api-keys)
+- [Permissions](https://daytona.io/docs/api-keys#permissions)
 - [Configuration](https://daytona.io/docs/configuration)
 - [Set Up Your Environment Variables](https://daytona.io/docs/configuration#set-up-your-environment-variables)
 - [Configuration Options](https://daytona.io/docs/configuration#configuration-options)
@@ -58,6 +60,7 @@
 - [Inviting New Users](https://daytona.io/docs/organizations#inviting-new-users)
 - [Available Assignments](https://daytona.io/docs/organizations#available-assignments)
 - [Managing Invitations](https://daytona.io/docs/organizations#managing-invitations)
+- [Settings](https://daytona.io/docs/organizations#settings)
 - [Process and Code Execution](https://daytona.io/docs/process-code-execution)
 - [Code Execution](https://daytona.io/docs/process-code-execution#code-execution)
 - [Running Code](https://daytona.io/docs/process-code-execution#running-code)
@@ -70,6 +73,12 @@
 - [Process Execution Failed](https://daytona.io/docs/process-code-execution#process-execution-failed)
 - [Process Timeout](https://daytona.io/docs/process-code-execution#process-timeout)
 - [Resource Limits](https://daytona.io/docs/process-code-execution#resource-limits)
+- [Quotas](https://daytona.io/docs/quotas)
+- [CPU Quota](https://daytona.io/docs/quotas#cpu-quota)
+- [Memory Quota](https://daytona.io/docs/quotas#memory-quota)
+- [Disk Quota](https://daytona.io/docs/quotas#disk-quota)
+- [Sandboxes/Running Sandboxes Quota](https://daytona.io/docs/quotas#sandboxesrunning-sandboxes-quota)
+- [Images/Total Image Size Quota](https://daytona.io/docs/quotas#imagestotal-image-size-quota)
 - [Sandbox Management](https://daytona.io/docs/sandbox-management)
 - [Creating Sandboxes](https://daytona.io/docs/sandbox-management#creating-sandboxes)
 - [Basic Sandbox Creation](https://daytona.io/docs/sandbox-management#basic-sandbox-creation)
