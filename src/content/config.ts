@@ -111,16 +111,6 @@ export const sidebarConfig: NavigationGroup[] = [
       },
       {
         type: 'link',
-        href: '/docs/organizations',
-        label: 'Organizations',
-        description:
-          'Learn how to create, manage, and remove Organizations using the Daytona SDK.',
-        attrs: {
-          icon: 'building.svg',
-        },
-      },
-      {
-        type: 'link',
         href: '/docs/sandbox-management',
         label: 'Sandboxes',
         description:
@@ -136,6 +126,42 @@ export const sidebarConfig: NavigationGroup[] = [
         description: 'Learn how to create, manage, and remove custom Images.',
         attrs: {
           icon: 'layers.svg',
+        },
+      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'Account management',
+    homePageHref: '/docs',
+    category: NavigationCategory.GENERAL,
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/api-keys',
+        label: 'API Keys',
+        description: 'Daytona API Key management and scopes.',
+        attrs: {
+          icon: 'tag.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/organizations',
+        label: 'Organizations',
+        description:
+          'Learn how to create, manage, and remove Organizations using the Daytona SDK.',
+        attrs: {
+          icon: 'building.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/quotas',
+        label: 'Quotas',
+        description: 'Different types of quotas assigned to Organizations.',
+        attrs: {
+          icon: 'log.svg',
         },
       },
     ],
@@ -190,7 +216,8 @@ export const sidebarConfig: NavigationGroup[] = [
         type: 'link',
         href: '/docs/log-streaming',
         label: 'Log Streaming',
-        description: 'Learn how to stream logs from your Sandboxes using the Daytona SDK.',
+        description:
+          'Learn how to stream logs from your Sandboxes using the Daytona SDK.',
         attrs: {
           icon: 'log.svg',
         },
