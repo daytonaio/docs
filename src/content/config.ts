@@ -9,6 +9,7 @@ export const collections = {
       extend: z.object({
         licence: z.string().optional(),
         distribution: z.string().optional(),
+        hideTitleOnPage: z.boolean().optional(),
       }),
     }),
   }),
