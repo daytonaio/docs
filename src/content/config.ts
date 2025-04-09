@@ -133,7 +133,8 @@ export const sidebarConfig: NavigationGroup[] = [
         type: 'link',
         href: '/docs/images',
         label: 'Images',
-        description: 'Learn how to create, manage, and remove custom Images.',
+        description:
+          'Learn how to manage Docker/OCI compatible Daytona Images.',
         attrs: {
           icon: 'layers.svg',
         },
@@ -190,7 +191,8 @@ export const sidebarConfig: NavigationGroup[] = [
         type: 'link',
         href: '/docs/log-streaming',
         label: 'Log Streaming',
-        description: 'Learn how to stream logs from your Sandboxes using the Daytona SDK.',
+        description:
+          'Learn how to stream logs from your Sandboxes using the Daytona SDK.',
         attrs: {
           icon: 'log.svg',
         },

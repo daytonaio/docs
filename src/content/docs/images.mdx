@@ -9,6 +9,8 @@ By default, when spinning up a Sandbox, Daytona uses a simple image with some us
 
 It is possible to use custom images by visiting the Dashboard, clicking on Images and on `Create Image`. If your image hasn't got a long-running entrypoint, Daytona will ensure sure that the resulting container won't exit immediately upon creation by adding its own `sleep infinity` entrypoint.
 
+Images used in Daytona are standard [Docker](https://www.docker.com/) or [OCI](https://opencontainers.org/) compatible images.
+
 :::note
 Since images tagged `latest` get frequent updates, only specific tags (e.g. `0.1.0`) are supported. Same idea applies to tags such as `lts` or `stable` and we recommend avoiding those when defining an image.
 :::
