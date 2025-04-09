@@ -279,7 +279,7 @@ def get_claude_response(api_key, prompt):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "claude-2",
+        "model": "claude-3-7-sonnet-latest",
         "max_tokens": 256,
         "messages": [{"role": "user", "content": prompt}]
     }
@@ -338,7 +338,7 @@ async function getClaudeResponse(apiKey: string, prompt: string): Promise<string
     "Content-Type": "application/json"
   }
   const data = {
-    "model": "claude-2",
+    "model": "claude-3-7-sonnet-latest",
     "max_tokens": 256,
     "messages": [{"role": "user", "content": prompt}]
   }
