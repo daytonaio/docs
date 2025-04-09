@@ -1,0 +1,33 @@
+---
+title: Other
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Region Selection
+
+Daytona is currently available in the following regions:
+
+- United States (US)
+- Europe (EU)
+
+You can select the region when creating a Sandbox.
+
+```python
+from daytona_sdk import Daytona, DaytonaConfig, SandboxTargetRegion
+
+config = DaytonaConfig(
+    target=SandboxTargetRegion.US
+)
+
+daytona = Daytona(config)
+
+```
+
+```typescript
+import { Daytona, SandboxTargetRegion } from '@daytonaio/sdk';
+
+const daytona: Daytona = new Daytona({
+    target: SandboxTargetRegion.US
+});
+```

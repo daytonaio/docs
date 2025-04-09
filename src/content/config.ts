@@ -130,6 +130,15 @@ export const sidebarConfig: NavigationGroup[] = [
           icon: 'layers.svg',
         },
       },
+      {
+        type: 'link',
+        href: '/docs/other',
+        label: 'Other',
+        description: 'Learn about other features of Daytona SDK.',
+        attrs: {
+          icon: 'log.svg',
+        },
+      },
     ],
   },
   {

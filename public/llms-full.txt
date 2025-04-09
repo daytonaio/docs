@@ -1504,6 +1504,38 @@ Organization and they may proceed by issuing a new API key and creating sandboxe
 
 The Settings subpage in the Dashboard allows you to view the Organization ID and Name and to delete the Organization if you don't need it anymore. This action is irreversible, so please proceed with caution. Personal Organizations are there by default and cannot be deleted.
 
+title: Other
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Region Selection
+
+Daytona is currently available in the following regions:
+
+- United States (US)
+- Europe (EU)
+
+You can select the region when creating a Sandbox.
+
+```python
+from daytona_sdk import Daytona, DaytonaConfig, SandboxTargetRegion
+
+config = DaytonaConfig(
+    target=SandboxTargetRegion.US
+)
+
+daytona = Daytona(config)
+
+```
+
+```typescript
+import { Daytona, SandboxTargetRegion } from '@daytonaio/sdk';
+
+const daytona: Daytona = new Daytona({
+    target: SandboxTargetRegion.US
+});
+```
+
 title: Process and Code Execution
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -1793,6 +1825,51 @@ const sandbox = await daytona.create({ id: 'my-sandbox' });
 Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are automatically used if a custom ID _isn't_ provided and the default image is used, reducing the creation time down to a fraction of a second.
 :::
 
+### Sandbox Resources
+
+You can configure the compute resources allocated to your Sandbox using the `SandboxResources` class. This allows you to specify CPU cores, memory, disk space, and GPU allocation.
+
+```python
+from daytona_sdk import Daytona, CreateSandboxParams, SandboxResources
+
+daytona = Daytona()
+
+# Create a Sandbox with custom resources
+resources = SandboxResources(
+    cpu=2,      # 2 CPU cores
+    memory=4,   # 4GB RAM
+    disk=20,    # 20GB disk space
+    gpu=1       # 1 GPU
+)
+
+params = CreateSandboxParams(
+    language="python",
+    resources=resources
+)
+
+sandbox = daytona.create(params)
+```
+```typescript
+import { Daytona } from '@daytonaio/sdk';
+
+const daytona = new Daytona();
+
+// Create a Sandbox with custom resources
+const sandbox = await daytona.create({
+    language: 'typescript',
+    resources: {
+        cpu: 2,      // 2 CPU cores
+        memory: 4,   // 4GB RAM
+        disk: 20,    // 20GB disk space
+        gpu: 1       // 1 GPU
+    }
+});
+```
+
+:::note
+All resource parameters are optional. If not specified, Daytona will use default values appropriate for the selected language and use case.
+:::
+
 ## Sandbox Information
 
 Daytona SDK provides methods to get information about a Sandbox, such as ID, root directory, and status using Python and TypeScript.
@@ -1811,10 +1888,6 @@ name = sandbox.instance.name
 image = sandbox.instance.image
 state = sandbox.instance.state
 
-# Get the preview link for an app running on port 3000
-
-preview_link = sandbox.get_preview_link(3000)
-
 ```
 ```typescript
 // Get Sandbox ID
@@ -1828,7 +1901,22 @@ const name = sandbox.instance.name
 const image = sandbox.instance.image
 const state = sandbox.instance.state
 
+```
+
+
+## Sandbox Preview Port
+
+Daytona SDK provides method to get the preview port for the Sandbox.
+
+```python
+# Get the preview link for an app running on port 3000
+
+preview_link = sandbox.get_preview_link(3000)
+
+```
+```typescript
 // Get the preview link for an app running on port 3000
+
 const previewLink = sandbox.getPreviewLink(3000)
 
 ```
