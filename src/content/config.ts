@@ -123,7 +123,8 @@ export const sidebarConfig: NavigationGroup[] = [
         type: 'link',
         href: '/docs/images',
         label: 'Images',
-        description: 'Learn how to create, manage, and remove custom Images.',
+        description:
+          'Learn how to manage Docker/OCI compatible Daytona Images.',
         attrs: {
           icon: 'layers.svg',
         },
