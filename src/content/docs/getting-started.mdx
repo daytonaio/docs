@@ -254,67 +254,22 @@ You can access the Sandbox `Web Terminal` by printing out the preview URL for po
 
 ## Connect to an LLM
 
-The following snippet connects to an LLM using the Anthropic API and asks Claude a question by running Python code directly:
+The following snippet connects to an LLM using the Anthropic API and asks Claude to generate code for getting the factorial of 25 and then executes it inside of a Daytona Sandbox:
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
+import os
+import re
+import requests
 from daytona_sdk import Daytona, DaytonaConfig
+from dotenv import load_dotenv
 
-daytona = Daytona(DaytonaConfig(api_key="YOUR_DAYTONA_API_KEY"))
+load_dotenv()
+
+daytona = Daytona(DaytonaConfig())
 
 sandbox = daytona.create()
-
-app_code = '''
-import requests
-
-def get_claude_response(api_key, prompt):
-    url = "<https://api.anthropic.com/v1/messages>"
-    headers = {
-        "x-api-key": api_key,
-        "anthropic-version": "2023-06-01",
-        "Content-Type": "application/json"
-    }
-    data = {
-        "model": "claude-2",
-        "max_tokens": 256,
-        "messages": [{"role": "user", "content": prompt}]
-    }
-    response = requests.post(url, json=data, headers=headers)
-    if response.status_code == 200:
-        content = response.json().get("content", [])
-        return "".join([item["text"] for item in content if item["type"] == "text"])
-    else:
-        return f"Error {response.status_code}: {response.text}"
-
-if __name__ == "__main__":
-    api_key = "YOUR_ANTHROPIC_API_KEY"
-    prompt = "Hello Claude, how are you today?"
-    result = get_claude_response(api_key, prompt)
-    print("Claude's response:", result)
-'''
-
-# Run Python code inside the Sandbox and get the output
-
-response = sandbox.process.code_run(app_code)
-print(response.result)
-
-```
-
-</TabItem>
-<TabItem label="TypeScript" icon="seti:typescript">
-```typescript
-import { Daytona } from '@daytonaio/sdk';
-
-const daytona = new Daytona({
-  apiKey: "YOUR_DAYTONA_API_KEY"
-});
-
-async function main() {
-  const sandbox = await daytona.create();
-
-  const appCode = `
-import requests
 
 def get_claude_response(api_key, prompt):
     url = "https://api.anthropic.com/v1/messages"
@@ -328,7 +283,6 @@ def get_claude_response(api_key, prompt):
         "max_tokens": 256,
         "messages": [{"role": "user", "content": prompt}]
     }
-    
     response = requests.post(url, json=data, headers=headers)
     if response.status_code == 200:
         content = response.json().get("content", [])
@@ -336,20 +290,109 @@ def get_claude_response(api_key, prompt):
     else:
         return f"Error {response.status_code}: {response.text}"
 
-if __name__ == "__main__":
-    api_key = "YOUR_ANTHROPIC_API_KEY"
-    prompt = "Hello Claude, how are you today?"
-    result = get_claude_response(api_key, prompt)
-    print("Claude's response:", result)
-`;
+prompt = "Python code that returns the factorial of 25. Output only the code. No explanation. No intro. No comments. Just raw code in a single code block."
 
-  // Run Python code inside the Sandbox and get the output
-  const response = await sandbox.process.codeRun(appCode);
-  console.log(response.result);
+result = get_claude_response(os.environ["ANTHROPIC_API_KEY"], prompt)
+
+code_match = re.search(r"```python\n(.*?)```", result, re.DOTALL)
+
+code = code_match.group(1) if code_match else result
+code = code.replace('\\', '\\\\')
+
+# Run Python code inside the Sandbox and get the output
+
+response = sandbox.process.code_run(code)
+print("The factorial of 25 is", response.result)
+
+```
+
+Running the snippet:
+
+```bash
+ANTHROPIC_API_KEY="your-anthropic-api-key"
+DAYTONA_API_KEY="your-daytona-api-key"
+DAYTONA_TARGET=us
+python claude-example.py
+```
+
+```bash
+> The factorial of 25 is 15511210043330985984000000
+```
+
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+import { Daytona } from '@daytonaio/sdk'
+import * as dotenv from 'dotenv'
+import axios from 'axios'
+
+dotenv.config()
+
+const daytona = new Daytona()
+
+async function getClaudeResponse(apiKey: string, prompt: string): Promise<string> {
+  const url = "https://api.anthropic.com/v1/messages"
+  const headers = {
+    "x-api-key": apiKey,
+    "anthropic-version": "2023-06-01",
+    "Content-Type": "application/json"
+  }
+  const data = {
+    "model": "claude-2",
+    "max_tokens": 256,
+    "messages": [{"role": "user", "content": prompt}]
+  }
+
+  try {
+    const response = await axios.post(url, data, { headers })
+    if (response.status === 200) {
+      const content = response.data.content || []
+      return content
+        .filter((item: any) => item.type === "text")
+        .map((item: any) => item.text)
+        .join("")
+    } else {
+      return `Error ${response.status}: ${response.statusText}`
+    }
+  } catch (error: any) {
+    return `Error: ${error.message}`
+  }
 }
 
-main().catch(console.error);
+async function main() {
+  const sandbox = await daytona.create()
 
+  const prompt = "Python code that returns the factorial of 25. Output only the code. No explanation. No intro. No comments. Just raw code in a single code block."
+  
+  const result = await getClaudeResponse(process.env.ANTHROPIC_API_KEY || "", prompt)
+  
+  // Extract code from the response using regex
+  const codeMatch = result.match(/```python\n(.*?)```/s)
+  
+  let code = codeMatch ? codeMatch[1] : result
+  code = code.replace(/\\/g, '\\\\')
+  
+  // Run the extracted code in the sandbox
+  const response = await sandbox.process.codeRun(code)
+  console.log("The factorial of 25 is", response.result)
+}
+
+main().catch(console.error)
+
+```
+
+
+Running the snippet:
+
+```bash
+ANTHROPIC_API_KEY="your-anthropic-api-key"
+DAYTONA_API_KEY="your-daytona-api-key"
+DAYTONA_TARGET=us
+npx ts-node claude-example.ts
+```
+
+```bash
+> The factorial of 25 is 15511210043330985984000000
 ```
 
 </TabItem>
