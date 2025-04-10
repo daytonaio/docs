@@ -1,5 +1,5 @@
 # Daytona Documentation v0.12.0
-# Generated on: 2025-04-09
+# Generated on: 2025-04-10
 
 # Daytona
 
@@ -84,7 +84,7 @@
 - [Basic Sandbox Creation](https://daytona.io/docs/sandbox-management#basic-sandbox-creation)
 - [Sandbox Information](https://daytona.io/docs/sandbox-management#sandbox-information)
 - [Remove Sandbox](https://daytona.io/docs/sandbox-management#remove-sandbox)
-- [Sandbox Persistence](https://daytona.io/docs/sandbox-management#sandbox-persistence)
+- [Sandbox States and Persistence](https://daytona.io/docs/sandbox-management#sandbox-states-and-persistence)
 - [Running](https://daytona.io/docs/sandbox-management#running)
 - [Stopped](https://daytona.io/docs/sandbox-management#stopped)
 - [Archived](https://daytona.io/docs/sandbox-management#archived)
@@ -108,3 +108,8 @@
 - [daytona](https://daytona.io/docs/tools/cli#daytona)
 - [daytona autocomplete](https://daytona.io/docs/tools/cli#daytona-autocomplete)
 - [daytona docs](https://daytona.io/docs/tools/cli#daytona-docs)
+- [daytona organization](https://daytona.io/docs/tools/cli#daytona-organization)
+- [daytona organization create](https://daytona.io/docs/tools/cli#daytona-organization-create)
+- [daytona organization delete](https://daytona.io/docs/tools/cli#daytona-organization-delete)
+- [daytona organization list](https://daytona.io/docs/tools/cli#daytona-organization-list)
+- [daytona organization use](https://daytona.io/docs/tools/cli#daytona-organization-use)

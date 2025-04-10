@@ -11,7 +11,7 @@
     "preview": "astro preview --host",
     "astro": "astro",
     "update-cli-reference": "node ./tools/update-cli-reference.js",
-    "update-server-reference": "node ./tools/update-server-reference.js",
+    "update-api-reference": "node ./tools/update-api-reference.js",
     "update-sdk-reference": "node ./tools/update-sdk-reference.js",
     "update-llms": "node ./tools/update-llms.js",
     "update-search": "node ./tools/update-search.js",
