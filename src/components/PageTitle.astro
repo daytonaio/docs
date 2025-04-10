@@ -2,7 +2,11 @@
 import { PAGE_TITLE_ID } from './TableOfContent/constants'
 ---
 
-<h1 id={PAGE_TITLE_ID}>{Astro.props.entry.data.title}</h1>
+{
+  !Astro.props.entry.data.hideTitleOnPage && (
+    <h1 id={PAGE_TITLE_ID}>{Astro.props.entry.data.title}</h1>
+  )
+}
 {
   (Astro.props.entry.data.licence || Astro.props.entry.data.distribution) && (
     <dl class="tiers-distribution-list">
