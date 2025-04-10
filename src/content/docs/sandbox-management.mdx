@@ -69,7 +69,7 @@ Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are a
 
 ### Sandbox Resources
 
-You can configure the compute resources allocated to your Sandbox using the `SandboxResources` class. This allows you to specify CPU cores, memory, disk space, and GPU allocation.
+You can configure the compute resources allocated to your Sandbox using the `SandboxResources` class. This allows you to specify the number of CPU cores, the memory and disk space.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -84,7 +84,6 @@ resources = SandboxResources(
     cpu=2,      # 2 CPU cores
     memory=4,   # 4GB RAM
     disk=20,    # 20GB disk space
-    gpu=1       # 1 GPU
 )
 
 params = CreateSandboxParams(
@@ -109,7 +108,6 @@ const sandbox = await daytona.create({
         cpu: 2,      // 2 CPU cores
         memory: 4,   // 4GB RAM
         disk: 20,    // 20GB disk space
-        gpu: 1       // 1 GPU
     }
 });
 ```
@@ -161,9 +159,9 @@ const state = sandbox.instance.state
 </TabItem>
 </Tabs>
 
-## Sandbox Preview Port
+### Sandbox Preview Port
 
-Daytona SDK provides method to get the preview port for the Sandbox.
+Daytona SDK also provides a method to get the preview port for the Sandbox.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">

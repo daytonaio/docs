@@ -1033,7 +1033,7 @@
   },
   {
     "title": "Sandbox Preview Port",
-    "description": "Daytona SDK provides method to get the preview port for the Sandbox.",
+    "description": "Daytona SDK also provides a method to get the preview port for the Sandbox.",
     "tag": "Documentation",
     "url": "/docs/sandbox-management#sandbox-preview-port",
     "slug": "/sandbox-management#sandbox-preview-port",
@@ -1069,7 +1069,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#sandbox-states-and-persistence",
     "slug": "/sandbox-management#sandbox-states-and-persistence",
-    "objectID": 129
+    "objectID": 134
   },
   {
     "title": "Running",
@@ -1253,7 +1253,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-docs",
     "slug": "/tools/cli#daytona-docs",
-    "objectID": 152
+    "objectID": 157
   },
   {
     "title": "daytona organization",
@@ -1261,7 +1261,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization",
     "slug": "/tools/cli#daytona-organization",
-    "objectID": 153
+    "objectID": 158
   },
   {
     "title": "daytona organization create",
@@ -1269,7 +1269,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-create",
     "slug": "/tools/cli#daytona-organization-create",
-    "objectID": 154
+    "objectID": 159
   },
   {
     "title": "daytona organization delete",
@@ -1277,7 +1277,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-delete",
     "slug": "/tools/cli#daytona-organization-delete",
-    "objectID": 155
+    "objectID": 160
   },
   {
     "title": "daytona organization list",
@@ -1285,7 +1285,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-list",
     "slug": "/tools/cli#daytona-organization-list",
-    "objectID": 156
+    "objectID": 161
   },
   {
     "title": "daytona organization use",
@@ -1293,6 +1293,6 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-use",
     "slug": "/tools/cli#daytona-organization-use",
-    "objectID": 157
+    "objectID": 162
   }
 ]
