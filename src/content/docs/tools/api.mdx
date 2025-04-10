@@ -5,96 +5,29 @@ description: A reference of supported operations using the Daytona API.
 
 import Label from '@components/Label.astro'
 
-## POST /docker-registry
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`201`** | The docker registry has been successfully created. |
-
-## GET /docker-registry
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | List of all docker registries |
-
-## GET /docker-registry/registry-push-access
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | Temporary registry access has been generated |
-
-## GET /docker-registry/\{id\}
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`id`** | path | true | undefined | undefined |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | The docker registry |
-
-## PATCH /docker-registry/\{id\}
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`id`** | path | true | undefined | undefined |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | The docker registry has been successfully updated. |
-
-## DELETE /docker-registry/\{id\}
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`id`** | path | true | undefined | undefined |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`204`** | The docker registry has been successfully deleted. |
-
-## POST /docker-registry/\{id\}/set-default
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`id`** | path | true | undefined | undefined |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | The docker registry has been set as default. |
-
 ## POST /api-keys
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
 | **`201`** | API key created successfully. |
+| **`403`** | Insufficient permissions. |
 | **`500`** | Error creating API key. |
 
 ## GET /api-keys
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 
 ### Responses
 
@@ -109,6 +42,7 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`name`** | path | true | undefined | undefined |
 
 ### Responses
@@ -125,6 +59,7 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`name`** | path | true | undefined | undefined |
 
 ### Responses
@@ -134,6 +69,319 @@ import Label from '@components/Label.astro'
 | **`204`** | API key deleted successfully. |
 | **`404`** | API key not found. |
 | **`500`** | Error deleting API key. |
+
+## GET /organizations/invitations
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | List of organization invitations |
+
+## GET /organizations/invitations/count
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Count of organization invitations |
+
+## POST /organizations/invitations/\{invitationId\}/accept
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`invitationId`** | path | true | undefined | Invitation ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Organization invitation accepted successfully |
+
+## POST /organizations/invitations/\{invitationId\}/decline
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`invitationId`** | path | true | undefined | Invitation ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Organization invitation declined successfully |
+
+## POST /organizations
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`201`** | Organization created successfully |
+
+## GET /organizations
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | List of organizations |
+
+## GET /organizations/\{organizationId\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Organization details |
+
+## DELETE /organizations/\{organizationId\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`204`** | Organization deleted successfully |
+
+## GET /organizations/\{organizationId\}/usage
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Current usage overview |
+
+## PUT /organizations/\{organizationId\}/quota
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Organization details |
+
+## POST /organizations/\{organizationId\}/leave
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`204`** | Organization left successfully |
+
+## POST /organizations/\{organizationId\}/roles
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`201`** | Organization role created successfully |
+
+## GET /organizations/\{organizationId\}/roles
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | List of organization roles |
+
+## PUT /organizations/\{organizationId\}/roles/\{roleId\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+| **`roleId`** | path | true | undefined | Role ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Role updated successfully |
+
+## DELETE /organizations/\{organizationId\}/roles/\{roleId\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+| **`roleId`** | path | true | undefined | Role ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`204`** | Organization role deleted successfully |
+
+## GET /organizations/\{organizationId\}/users
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | List of organization members |
+
+## POST /organizations/\{organizationId\}/users/\{userId\}/role
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+| **`userId`** | path | true | undefined | User ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Role updated successfully |
+
+## POST /organizations/\{organizationId\}/users/\{userId\}/assigned-roles
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+| **`userId`** | path | true | undefined | User ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Assigned roles updated successfully |
+
+## DELETE /organizations/\{organizationId\}/users/\{userId\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+| **`userId`** | path | true | undefined | User ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`204`** | User removed from organization successfully |
+
+## POST /organizations/\{organizationId\}/invitations
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`201`** | Organization invitation created successfully |
+
+## GET /organizations/\{organizationId\}/invitations
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | List of pending organization invitations |
+
+## PUT /organizations/\{organizationId\}/invitations/\{invitationId\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+| **`invitationId`** | path | true | undefined | Invitation ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Organization invitation updated successfully |
+
+## POST /organizations/\{organizationId\}/invitations/\{invitationId\}/cancel
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`organizationId`** | path | true | undefined | Organization ID |
+| **`invitationId`** | path | true | undefined | Invitation ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`204`** | Organization invitation cancelled successfully |
+
+## GET /users/me
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | User details |
 
 ## POST /users
 
@@ -165,35 +413,15 @@ import Label from '@components/Label.astro'
 | :-------- | :---------- |
 | **`201`** |  |
 
-## GET /users/overview
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** | Current usage overview |
-
-## PUT /users/\{id\}/quota
-
-### Parameters
-
-| Name | Location | Required | Type | Description |
-| :--- | :------- | :------- | :--- | :---------- |
-| **`id`** | path | true | undefined | undefined |
-
-### Responses
-
-| Status Code | Description |
-| :-------- | :---------- |
-| **`200`** |  |
-
 ## GET /workspace
 
 ### Parameters
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`verbose`** | query | false | undefined | Include verbose output |
+| **`labels`** | query | false | undefined | Filter workspaces by labels |
 
 ### Responses
 
@@ -202,6 +430,12 @@ import Label from '@components/Label.astro'
 | **`200`** | List of all workspaces |
 
 ## POST /workspace
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 
 ### Responses
 
@@ -215,8 +449,9 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | undefined | undefined |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`verbose`** | query | false | undefined | Include verbose output |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
 
 ### Responses
 
@@ -230,7 +465,8 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | undefined | undefined |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
 | **`force`** | query | true | undefined | undefined |
 
 ### Responses
@@ -245,7 +481,8 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | undefined | undefined |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
 
 ### Responses
 
@@ -259,7 +496,8 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | undefined | undefined |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
 
 ### Responses
 
@@ -273,7 +511,8 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | undefined | undefined |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
 
 ### Responses
 
@@ -287,7 +526,8 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | undefined | undefined |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
 
 ### Responses
 
@@ -301,6 +541,7 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | ID of the workspace |
 | **`isPublic`** | path | true | undefined | Public status to set |
 
@@ -316,7 +557,8 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`workspaceId`** | path | true | undefined | undefined |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
 
 ### Responses
 
@@ -330,6 +572,7 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | ID of the workspace |
 | **`interval`** | path | true | undefined | Auto-stop interval in minutes (0 to disable) |
 
@@ -345,6 +588,7 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -352,6 +596,22 @@ import Label from '@components/Label.astro'
 | Status Code | Description |
 | :-------- | :---------- |
 | **`200`** | Workspace has been archived |
+
+## GET /workspace/\{workspaceId\}/ports/\{port\}/preview-url
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
+| **`port`** | path | true | undefined | Port number to get preview URL for |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Preview URL for the specified port |
 
 ## POST /nodes
 
@@ -389,6 +649,7 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -403,6 +664,7 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | false | undefined | undefined |
 
@@ -420,6 +682,7 @@ Delete file inside workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 
@@ -437,6 +700,7 @@ Download file from workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 
@@ -454,6 +718,7 @@ Search for text/pattern inside workspace files
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 | **`pattern`** | query | true | undefined | undefined |
@@ -472,6 +737,7 @@ Create folder inside workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 | **`mode`** | query | true | undefined | undefined |
@@ -490,6 +756,7 @@ Get file info inside workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 
@@ -507,6 +774,7 @@ Move file inside workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`source`** | query | true | undefined | undefined |
 | **`destination`** | query | true | undefined | undefined |
@@ -525,6 +793,7 @@ Set file owner/group/permissions inside workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 | **`owner`** | query | false | undefined | undefined |
@@ -545,6 +814,7 @@ Replace text/pattern in multiple files inside workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -561,6 +831,7 @@ Search for files inside workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 | **`pattern`** | query | true | undefined | undefined |
@@ -579,6 +850,7 @@ Upload file inside workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 
@@ -596,6 +868,7 @@ Add files to git commit
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -612,6 +885,7 @@ Get branch list from git repository
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 
@@ -629,6 +903,7 @@ Create branch on git repository
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -645,6 +920,7 @@ Clone git repository
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -661,6 +937,7 @@ Commit changes to git repository
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -677,6 +954,7 @@ Get commit history from git repository
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 
@@ -694,6 +972,7 @@ Pull changes from remote
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -710,6 +989,7 @@ Push changes to remote
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -726,6 +1006,7 @@ Get status from git repository
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`path`** | query | true | undefined | undefined |
 
@@ -743,6 +1024,7 @@ Execute command synchronously inside workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -759,6 +1041,7 @@ List all active sessions in the workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -775,6 +1058,7 @@ Create a new session in the workspace
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -791,6 +1075,7 @@ Get session by ID
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`sessionId`** | path | true | undefined | undefined |
 
@@ -808,6 +1093,7 @@ Delete a specific session
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`sessionId`** | path | true | undefined | undefined |
 
@@ -825,6 +1111,7 @@ Execute a command in a specific session
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`sessionId`** | path | true | undefined | undefined |
 
@@ -833,6 +1120,7 @@ Execute a command in a specific session
 | Status Code | Description |
 | :-------- | :---------- |
 | **`200`** | Command executed successfully |
+| **`202`** | Command accepted and is being processed |
 
 ## GET /toolbox/\{workspaceId\}/toolbox/process/session/\{sessionId\}/command/\{commandId\}
 
@@ -842,6 +1130,7 @@ Get session command by ID
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`sessionId`** | path | true | undefined | undefined |
 | **`commandId`** | path | true | undefined | undefined |
@@ -860,15 +1149,17 @@ Get logs for a specific command in a session
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`sessionId`** | path | true | undefined | undefined |
 | **`commandId`** | path | true | undefined | undefined |
+| **`follow`** | query | false | undefined | undefined |
 
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
-| **`200`** | Command logs retrieved successfully |
+| **`200`** | Command log stream |
 
 ## POST /toolbox/\{workspaceId\}/toolbox/lsp/completions
 
@@ -878,6 +1169,7 @@ The Completion request is sent from the client to the server to compute completi
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -894,6 +1186,7 @@ The document close notification is sent from the client to the server when the d
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -910,6 +1203,7 @@ The document open notification is sent from the client to the server to signal n
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -926,6 +1220,7 @@ The document symbol request is sent from the client to the server.
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`languageId`** | query | true | undefined | undefined |
 | **`pathToProject`** | query | true | undefined | undefined |
@@ -945,6 +1240,7 @@ Start Lsp server process inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -961,6 +1257,7 @@ Stop Lsp server process inside workspace project
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 
 ### Responses
@@ -977,6 +1274,7 @@ The workspace symbol request is sent from the client to the server to list proje
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`workspaceId`** | path | true | undefined | undefined |
 | **`languageId`** | query | true | undefined | undefined |
 | **`pathToProject`** | query | true | undefined | undefined |
@@ -990,11 +1288,18 @@ The workspace symbol request is sent from the client to the server to list proje
 
 ## POST /images
 
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+
 ### Responses
 
 | Status Code | Description |
 | :-------- | :---------- |
 | **`200`** | The image has been successfully created. |
+| **`400`** | Bad request - Images with tag ":latest" are not allowed |
 
 ## GET /images
 
@@ -1002,6 +1307,7 @@ The workspace symbol request is sent from the client to the server to list proje
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`limit`** | query | false | undefined | Number of items per page |
 | **`page`** | query | false | undefined | Page number |
 
@@ -1017,6 +1323,7 @@ The workspace symbol request is sent from the client to the server to list proje
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`id`** | path | true | undefined | Image ID |
 
 ### Responses
@@ -1031,6 +1338,7 @@ The workspace symbol request is sent from the client to the server to list proje
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`id`** | path | true | undefined | Image ID |
 
 ### Responses
@@ -1038,3 +1346,163 @@ The workspace symbol request is sent from the client to the server to list proje
 | Status Code | Description |
 | :-------- | :---------- |
 | **`200`** | Image has been deleted |
+
+## PATCH /images/\{id\}/general
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`id`** | path | true | undefined | Image ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Image general status has been set |
+
+## GET /preview/\{workspaceId\}/public
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Public status of the workspace |
+
+## GET /preview/\{workspaceId\}/validate/\{authToken\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
+| **`authToken`** | path | true | undefined | Auth token of the workspace |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Workspace auth token validation status |
+
+## GET /preview/\{workspaceId\}/access
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`workspaceId`** | path | true | undefined | undefined |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** |  |
+
+## POST /docker-registry
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`201`** | The docker registry has been successfully created. |
+
+## GET /docker-registry
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | List of all docker registries |
+
+## GET /docker-registry/registry-push-access
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Temporary registry access has been generated |
+
+## GET /docker-registry/\{id\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`id`** | path | true | undefined | ID of the docker registry |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | The docker registry |
+
+## PATCH /docker-registry/\{id\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`id`** | path | true | undefined | ID of the docker registry |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | The docker registry has been successfully updated. |
+
+## DELETE /docker-registry/\{id\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`id`** | path | true | undefined | ID of the docker registry |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`204`** | The docker registry has been successfully deleted. |
+
+## POST /docker-registry/\{id\}/set-default
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`id`** | path | true | undefined | ID of the docker registry |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | The docker registry has been set as default. |

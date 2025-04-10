@@ -1024,11 +1024,11 @@
     "objectID": 128
   },
   {
-    "title": "Sandbox Persistence",
+    "title": "Sandbox States and Persistence",
     "description": "Daytona keeps the filesystem in its entirety during the Sandbox lifecycle.",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#sandbox-persistence",
-    "slug": "/sandbox-management#sandbox-persistence",
+    "url": "/docs/sandbox-management#sandbox-states-and-persistence",
+    "slug": "/sandbox-management#sandbox-states-and-persistence",
     "objectID": 129
   },
   {
@@ -1214,5 +1214,45 @@
     "url": "/docs/tools/cli#daytona-docs",
     "slug": "/tools/cli#daytona-docs",
     "objectID": 152
+  },
+  {
+    "title": "daytona organization",
+    "description": "Manage Daytona organizations",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization",
+    "slug": "/tools/cli#daytona-organization",
+    "objectID": 153
+  },
+  {
+    "title": "daytona organization create",
+    "description": "Create a new organization and set it as active",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization-create",
+    "slug": "/tools/cli#daytona-organization-create",
+    "objectID": 154
+  },
+  {
+    "title": "daytona organization delete",
+    "description": "Delete an organization",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization-delete",
+    "slug": "/tools/cli#daytona-organization-delete",
+    "objectID": 155
+  },
+  {
+    "title": "daytona organization list",
+    "description": "List all organizations",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization-list",
+    "slug": "/tools/cli#daytona-organization-list",
+    "objectID": 156
+  },
+  {
+    "title": "daytona organization use",
+    "description": "Set active organization",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization-use",
+    "slug": "/tools/cli#daytona-organization-use",
+    "objectID": 157
   }
 ]

@@ -1,5 +1,5 @@
 # Daytona Documentation v0.12.0
-# Generated on: 2025-04-09
+# Generated on: 2025-04-10
 
 
 title: API Keys
@@ -36,14 +36,14 @@ To authenticate with Daytona, you need an API key. You can obtain an API key fro
 2. Go to API Keys.
 3. Click the **`Create Key`** button.
 4. Add your API key to your **`.env`** file by setting the **`DAYTONA_API_KEY`** environment variable.
-5. Define the Daytona server URL in your **`.env`** file by setting the **`DAYTONA_SERVER_URL`** environment variable.
+5. Define the Daytona API URL in your **`.env`** file by setting the **`DAYTONA_API_URL`** environment variable.
 
 ## Configuration Options
 
 Daytona SDK provides an option to configure settings using the `DaytonaConfig` class in Python and TypeScript. The `DaytonaConfig` class accepts the following parameters:
 
 - `api_key`: Your Daytona API key
-- `server_url`: URL of your Daytona server
+- `api_url`: URL of your Daytona API
 - `target`: Daytona Target to create the Sandboxes on.
 
 ```python
@@ -51,7 +51,7 @@ from daytona_sdk import DaytonaConfig
 
 config = DaytonaConfig(
     api_key="your-api-key",
-    server_url="your-server-url",
+    api_url="your-api-url",
     target="us"
 )
 
@@ -61,7 +61,7 @@ import { DaytonaConfig } from '@daytonaio/sdk';
 
 const config: DaytonaConfig = {
     apiKey: "your-api-key",          
-    serverUrl: "your-server-url",     
+    apiUrl: "your-api-url",     
     target: "us"                  
 };
 ```
@@ -74,7 +74,7 @@ Daytona SDK supports environment variables for configuration. The SDK automatica
 | Variable | Description | Optional |
 |----------|-------------|---------|
 | **`DAYTONA_API_KEY`** | Your Daytona API key. |  |
-| **`DAYTONA_SERVER_URL`** | URL of your Daytona server. | Yes |
+| **`DAYTONA_API_URL`** | URL of your Daytona API. | Yes |
 | **`DAYTONA_TARGET`** | Daytona Target to create the Sandboxes on. | Yes |
 
 ### Setting Environment Variables
@@ -90,12 +90,12 @@ Create a `.env` file in your project root directory:
 
 ```bash
 DAYTONA_API_KEY=your-api-key
-DAYTONA_SERVER_URL=https://your-server-url
+DAYTONA_API_URL=https://your-api-url
 DAYTONA_TARGET=us
 ```
 
 - `DAYTONA_API_KEY`: Your Daytona API key.
-- `DAYTONA_SERVER_URL`: URL of your Daytona server.
+- `DAYTONA_API_URL`: URL of your Daytona API.
 - `DAYTONA_TARGET`: Daytona Target to create the Sandboxes on.
 
 #### Using Shell Environment
@@ -104,11 +104,11 @@ Set environment variables in your shell:
 
 ```bash
 export DAYTONA_API_KEY=your-api-key
-export DAYTONA_SERVER_URL=https://your-server-url
+export DAYTONA_API_URL=https://your-api-url
 ```
 ```bash
 $env:DAYTONA_API_KEY="your-api-key"
-$env:DAYTONA_SERVER_URL="https://your-server-url"
+$env:DAYTONA_API_URL="https://your-api-url"
 ```
 
 ## Configuration Precedence
@@ -904,6 +904,8 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 By default, when spinning up a Sandbox, Daytona uses a simple image with some useful utilities pre-installed, such as `python`, `node`, `pip` as well as some common pip packages. More information [below](#default-sandbox-image).
 
 It is possible to use custom images by visiting the Dashboard, clicking on Images and on `Create Image`. If your image hasn't got a long-running entrypoint, Daytona will ensure sure that the resulting container won't exit immediately upon creation by adding its own `sleep infinity` entrypoint.
+
+Images used in Daytona are standard [Docker](https://www.docker.com/) or [OCI](https://opencontainers.org/) compatible images.
 
 :::note
 Since images tagged `latest` get frequent updates, only specific tags (e.g. `0.1.0`) are supported. Same idea applies to tags such as `lts` or `stable` and we recommend avoiding those when defining an image.
@@ -1739,7 +1741,13 @@ Sandboxes are isolated development environments managed by Daytona. This guide c
 ## Creating Sandboxes
 
 Daytona SDK provides an option to create Sandboxes with default or custom configurations. You can specify the language, image, resources, environment variables, and volumes for the Sandbox.
-By default, the sandboxes auto-stop after 15 minutes of inactivity. To overwrite this behavior, you can increase the auto-stop interval or set it to 0 to completely disable it.
+By default, the sandboxes auto-stop after `15 minutes` of inactivity in order to save resources but the timeout can be increased.
+
+:::tip
+If you want to prolong the auto-stop interval, you can use the `auto_stop_interval` parameter when creating a Sandbox. The parameter is measured in minutes.
+
+Setting the auto-stop interval parameter to `0` will disable the auto-stop functionality altogether and allow the sandbox to run indefinitely.
+:::
 
 ### Basic Sandbox Creation
 
@@ -1868,7 +1876,7 @@ All sandboxes have been deleted
 
 :::
 
-## Sandbox Persistence
+## Sandbox States and Persistence
 
 Daytona keeps the filesystem in its entirety during the Sandbox lifecycle. The persistence functionality is built into the system, and nothing needs to be explicitly done from the user side.
 
@@ -2039,6 +2047,7 @@ daytona image push [IMAGE] [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--context` | `-c` | Build context directory (defaults to Dockerfile directory) |
 | `--dockerfile` | `-f` | Path to Dockerfile to build before pushing |
 | `--entrypoint` | `-e` | The entrypoint command for the image |
 | `--help` |  | help for daytona |
@@ -2163,6 +2172,72 @@ Opens the Daytona documentation in your default browser.
 
 ```shell
 daytona docs [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona organization
+
+Manage Daytona organizations
+
+```shell
+daytona organization [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona organization create
+
+Create a new organization and set it as active
+
+```shell
+daytona organization create [ORGANIZATION_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona organization delete
+
+Delete an organization
+
+```shell
+daytona organization delete [ORGANIZATION] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona organization list
+
+List all organizations
+
+```shell
+daytona organization list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+## daytona organization use
+
+Set active organization
+
+```shell
+daytona organization use [ORGANIZATION] [flags]
 ```
 
 __Flags__
