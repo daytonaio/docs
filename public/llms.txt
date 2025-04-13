@@ -1,5 +1,5 @@
 # Daytona Documentation v0.12.0
-# Generated on: 2025-04-10
+# Generated on: 2025-04-13
 
 # Daytona
 
@@ -61,8 +61,6 @@
 - [Available Assignments](https://daytona.io/docs/organizations#available-assignments)
 - [Managing Invitations](https://daytona.io/docs/organizations#managing-invitations)
 - [Settings](https://daytona.io/docs/organizations#settings)
-- [Other](https://daytona.io/docs/other)
-- [Region Selection](https://daytona.io/docs/other#region-selection)
 - [Process and Code Execution](https://daytona.io/docs/process-code-execution)
 - [Code Execution](https://daytona.io/docs/process-code-execution#code-execution)
 - [Running Code](https://daytona.io/docs/process-code-execution#running-code)
@@ -81,6 +79,7 @@
 - [Disk Quota](https://daytona.io/docs/quotas#disk-quota)
 - [Sandboxes/Running Sandboxes Quota](https://daytona.io/docs/quotas#sandboxesrunning-sandboxes-quota)
 - [Images/Total Image Size Quota](https://daytona.io/docs/quotas#imagestotal-image-size-quota)
+- [Region Selection](https://daytona.io/docs/regions)
 - [Sandbox Management](https://daytona.io/docs/sandbox-management)
 - [Creating Sandboxes](https://daytona.io/docs/sandbox-management#creating-sandboxes)
 - [Basic Sandbox Creation](https://daytona.io/docs/sandbox-management#basic-sandbox-creation)
@@ -89,6 +88,7 @@
 - [Sandbox Preview Port](https://daytona.io/docs/sandbox-management#sandbox-preview-port)
 - [Remove Sandbox](https://daytona.io/docs/sandbox-management#remove-sandbox)
 - [Sandbox States and Persistence](https://daytona.io/docs/sandbox-management#sandbox-states-and-persistence)
+- [Auto-stop Interval](https://daytona.io/docs/sandbox-management#auto-stop-interval)
 - [Running](https://daytona.io/docs/sandbox-management#running)
 - [Stopped](https://daytona.io/docs/sandbox-management#stopped)
 - [Archived](https://daytona.io/docs/sandbox-management#archived)
@@ -117,3 +117,4 @@
 - [daytona organization delete](https://daytona.io/docs/tools/cli#daytona-organization-delete)
 - [daytona organization list](https://daytona.io/docs/tools/cli#daytona-organization-list)
 - [daytona organization use](https://daytona.io/docs/tools/cli#daytona-organization-use)
+- [Web Terminal](https://daytona.io/docs/web-terminal)

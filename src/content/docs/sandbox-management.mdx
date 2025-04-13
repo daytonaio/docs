@@ -235,7 +235,35 @@ All sandboxes have been deleted
 
 Daytona keeps the filesystem in its entirety during the Sandbox lifecycle. The persistence functionality is built into the system, and nothing needs to be explicitly done from the user side.
 
-It is important to understand the Sandbox states to maintain cost-effectiveness. A Sandbox can have three states during its lifecycle:
+### Auto-stop Interval
+
+It is important to understand the Sandbox states to maintain cost-effectiveness. One useful built-in feature is the auto-stop interval. By default, it triggers after `15 minutes` of inactivity by stopping the Sandbox, but the number can changed to any value, including `0` which disables auto-stopping.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+
+sandbox = daytona.create(CreateSandboxParams(
+    language = "python",
+    auto_stop_interval = 0 # Disables the auto-stop feature - default was 15 (minutes)
+))
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+
+const sandbox = await daytona.create({
+    language: 'typescript',
+    autoStopInterval: 0 // Disables the auto-stop feature - default was 15 (minutes)
+});
+
+```
+
+</TabItem>
+</Tabs>
+
+ A Daytona Sandbox can have three states during its lifecycle:
 
 ### Running
 
