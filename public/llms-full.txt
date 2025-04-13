@@ -1,5 +1,5 @@
 # Daytona Documentation v0.12.0
-# Generated on: 2025-04-10
+# Generated on: 2025-04-13
 
 
 title: API Keys
@@ -516,7 +516,7 @@ main().catch(error => console.error("Error:", error));
 
 
 :::tip
-You can access the Sandbox `Web Terminal` by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
+You can access the Sandbox [Web Terminal](/docs/other#web-terminal) by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
 :::
 
 ## Connect to an LLM
@@ -1508,6 +1508,26 @@ title: Other
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
+## Web Terminal
+
+Daytona provides a Web Terminal for interacting with your Sandboxes, allowing for a convenient way to view files, run commands, and debug.
+
+
+You can open it by clicking on the Terminal icon `>_` in the [Sandbox list](https://app.daytona.io/dashboard/sandboxes) under Access for any running Sandbox. It is available by default and is accessible on port `22222`.
+
+
+```text
+                                                                                                                   
+ID                    State         Region     Created             Access
+──────────────────────────────────────────────────────────────────────────────
+sandbox-963e3f71      STARTED       us         12 minutes ago      >_         
+                                                                                                                                                                                                                                          
+```
+
+:::note
+Since Terminal access is a very sensitive procedure, it is accessible only to users in your Organization, even when setting the `public` parameter to `True` in `CreateSandboxParams`.
+:::
+
 ## Region Selection
 
 Daytona is currently available in the following regions:
@@ -1968,8 +1988,29 @@ All sandboxes have been deleted
 ## Sandbox States and Persistence
 
 Daytona keeps the filesystem in its entirety during the Sandbox lifecycle. The persistence functionality is built into the system, and nothing needs to be explicitly done from the user side.
+### Auto-stop Interval
 
-It is important to understand the Sandbox states to maintain cost-effectiveness. A Sandbox can have three states during its lifecycle:
+It is important to understand the Sandbox states to maintain cost-effectiveness. One useful built-in feature is the auto-stop interval. By default, it triggers after `15 minutes` of inactivity by stopping the Sandbox, but the number can changed to any value, including `0` which disables auto-stopping.
+
+```python
+
+sandbox = daytona.create(CreateSandboxParams(
+    language = "python",
+    auto_stop_interval = 0 # Disables the auto-stop feature - default was 15 (minutes)
+))
+
+```
+```typescript
+
+const sandbox = await daytona.create({
+    language: 'typescript',
+    autoStopInterval: 0 // Disables the auto-stop feature - default was 15 (minutes)
+});
+
+```
+
+
+ A Daytona Sandbox can have three states during its lifecycle:
 
 ### Running
 
