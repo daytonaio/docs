@@ -516,7 +516,7 @@ main().catch(error => console.error("Error:", error));
 
 
 :::tip
-You can access the Sandbox [Web Terminal](/docs/other#web-terminal) by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
+You can access the Sandbox [Web Terminal](/docs/web-terminal) by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
 :::
 
 ## Connect to an LLM
@@ -1504,58 +1504,6 @@ Organization and they may proceed by issuing a new API key and creating sandboxe
 
 The Settings subpage in the Dashboard allows you to view the Organization ID and Name and to delete the Organization if you don't need it anymore. This action is irreversible, so please proceed with caution. Personal Organizations are there by default and cannot be deleted.
 
-title: Other
-
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-
-## Web Terminal
-
-Daytona provides a Web Terminal for interacting with your Sandboxes, allowing for a convenient way to view files, run commands, and debug.
-
-
-You can open it by clicking on the Terminal icon `>_` in the [Sandbox list](https://app.daytona.io/dashboard/sandboxes) under Access for any running Sandbox. It is available by default and is accessible on port `22222`.
-
-
-```text
-                                                                                                                   
-ID                    State         Region     Created             Access
-──────────────────────────────────────────────────────────────────────────────
-sandbox-963e3f71      STARTED       us         12 minutes ago      >_         
-                                                                                                                                                                                                                                          
-```
-
-:::note
-Since Terminal access is a very sensitive procedure, it is accessible only to users in your Organization, even when setting the `public` parameter to `True` in `CreateSandboxParams`.
-:::
-
-## Region Selection
-
-Daytona is currently available in the following regions:
-
-- United States (US)
-- Europe (EU)
-
-You can select the region during the Daytona [configuration](/docs/configuration) step.
-
-```python
-from daytona_sdk import Daytona, DaytonaConfig, SandboxTargetRegion
-
-config = DaytonaConfig(
-    target=SandboxTargetRegion.US
-)
-
-daytona = Daytona(config)
-
-```
-
-```typescript
-import { Daytona, SandboxTargetRegion } from '@daytonaio/sdk';
-
-const daytona: Daytona = new Daytona({
-    target: SandboxTargetRegion.US
-});
-```
-
 title: Process and Code Execution
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -1784,6 +1732,36 @@ The Images Quota is the maximum number of Images that can be created in an Organ
 
 The Total image size Quota is the maximum amount of disk space that can be used by Images in an Organization expressed in gigabytes.
 
+title: Region Selection
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Daytona is currently available in the following regions:
+
+- United States (US)
+- Europe (EU)
+
+You can select the region during the Daytona [configuration](/docs/configuration) step.
+
+```python
+from daytona_sdk import Daytona, DaytonaConfig, SandboxTargetRegion
+
+config = DaytonaConfig(
+    target=SandboxTargetRegion.US
+)
+
+daytona = Daytona(config)
+
+```
+
+```typescript
+import { Daytona, SandboxTargetRegion } from '@daytonaio/sdk';
+
+const daytona: Daytona = new Daytona({
+    target: SandboxTargetRegion.US
+});
+```
+
 title: Sandbox Management
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -1988,6 +1966,7 @@ All sandboxes have been deleted
 ## Sandbox States and Persistence
 
 Daytona keeps the filesystem in its entirety during the Sandbox lifecycle. The persistence functionality is built into the system, and nothing needs to be explicitly done from the user side.
+
 ### Auto-stop Interval
 
 It is important to understand the Sandbox states to maintain cost-effectiveness. One useful built-in feature is the auto-stop interval. By default, it triggers after `15 minutes` of inactivity by stopping the Sandbox, but the number can changed to any value, including `0` which disables auto-stopping.
@@ -2374,3 +2353,23 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
+
+title: Web Terminal
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Daytona provides a Web Terminal for interacting with your Sandboxes, allowing for a convenient way to view files, run commands, and debug.
+
+You can open it by clicking on the Terminal icon `>_` in the [Sandbox list](https://app.daytona.io/dashboard/sandboxes) under Access for any running Sandbox. It is available by default and is accessible on port `22222`.
+
+```text
+                                                                                                                   
+ID                    State         Region     Created             Access
+──────────────────────────────────────────────────────────────────────────────
+sandbox-963e3f71      STARTED       us         12 minutes ago      >_         
+                                                                                                                                                                                                                                          
+```
+
+:::note
+Since Terminal access is a very sensitive procedure, it is accessible only to users in your Organization, even when setting the `public` parameter to `True` in `CreateSandboxParams`.
+:::

@@ -117,7 +117,7 @@ export const sidebarConfig: NavigationGroup[] = [
         description:
           'Learn how to create, manage, and remove Sandboxes using the Daytona SDK.',
         attrs: {
-          icon: 'computer.svg',
+          icon: 'rectangle.svg',
         },
       },
       {
@@ -128,15 +128,6 @@ export const sidebarConfig: NavigationGroup[] = [
           'Learn how to manage Docker/OCI compatible Daytona Images.',
         attrs: {
           icon: 'layers.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/other',
-        label: 'Other',
-        description: 'Learn about other features of Daytona SDK.',
-        attrs: {
-          icon: 'log.svg',
         },
       },
     ],
@@ -220,7 +211,7 @@ export const sidebarConfig: NavigationGroup[] = [
         description:
           'Learn about running commands and code in isolated environments using the Daytona SDK.',
         attrs: {
-          icon: 'terminal.svg',
+          icon: 'computer.svg',
         },
       },
       {
@@ -231,6 +222,32 @@ export const sidebarConfig: NavigationGroup[] = [
           'Learn how to stream logs from your Sandboxes using the Daytona SDK.',
         attrs: {
           icon: 'log.svg',
+        },
+      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'Other',
+    homePageHref: '/docs',
+    category: NavigationCategory.GENERAL,
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/web-terminal',
+        label: 'Web Terminal',
+        description: 'Web Terminal access to Daytona Sandboxes.',
+        attrs: {
+          icon: 'terminal.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/regions',
+        label: 'Regions',
+        description: 'Setting the region to spin up Daytona Sandboxes in.',
+        attrs: {
+          icon: 'globe.svg',
         },
       },
     ],
