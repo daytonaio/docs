@@ -901,11 +901,17 @@ title: Images
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-By default, when spinning up a Sandbox, Daytona uses a simple image with some useful utilities pre-installed, such as `python`, `node`, `pip` as well as some common pip packages. More information [below](#default-sandbox-image).
+Images are pre-configured templates containing all dependencies, tools and environment settings you need inside of your Daytona Sandbox. Daytona supports all standard [Docker](https://www.docker.com/) or [OCI](https://opencontainers.org/) compatible images.
 
-It is possible to use custom images by visiting the Dashboard, clicking on Images and on `Create Image`. If your image hasn't got a long-running entrypoint, Daytona will ensure sure that the resulting container won't exit immediately upon creation by adding its own `sleep infinity` entrypoint.
+## Creating Images
 
-Images used in Daytona are standard [Docker](https://www.docker.com/) or [OCI](https://opencontainers.org/) compatible images.
+When spinning up a Sandbox, Daytona uses a simple image with some useful utilities pre-installed, such as `python`, `node`, `pip` as well as some common pip packages. More information [below](#default-sandbox-image).
+
+It is possible to override this behavior and create custom Images by visiting the Dashboard, clicking on [Images](https://app.daytona.io/dashboard/images) and on `Create Image`.
+
+You may enter the name and tag of any publicly accessible image from Docker Hub such as `alpine:3.21.3` and `debian:12.10` or from another public container registry - e.g. `my-public-registry.com/custom-alpine:3.21`.
+
+The entrypoint field is optional and if your image hasn't got a long-running entrypoint, Daytona will ensure sure that the resulting container won't exit immediately upon creation by automatically running `sleep infinity`.
 
 :::note
 Since images tagged `latest` get frequent updates, only specific tags (e.g. `0.1.0`) are supported. Same idea applies to tags such as `lts` or `stable` and we recommend avoiding those when defining an image.
@@ -914,13 +920,13 @@ Since images tagged `latest` get frequent updates, only specific tags (e.g. `0.1
 Once the image is pulled, validated and has an `Active` state, it is ready to be used. Define the `CreateSandboxParams` object to specify the custom image to use:
 
 ```bash
-params = CreateSandboxParams(image="alpine/3.21", language="python")
+params = CreateSandboxParams(image="alpine:3.21.3", language="python")
 sandbox = daytona.create(params)
 ```
 ```bash
 const sandbox = await daytona.create({
   language: 'python',
-  image: 'alpine/3.21',
+  image: 'alpine:3.21.3',
 })
 ```
 
@@ -931,7 +937,10 @@ from daytona_sdk import Daytona, CreateSandboxParams
 
 daytona = Daytona()
 
-sandbox = daytona.create(CreateSandboxParams(image="alpine/3.21", language="python"))
+sandbox = daytona.create(CreateSandboxParams(
+  image="alpine:3.21.3",
+  language="python"
+))
 
 response = sandbox.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
 if response.exit_code != 0:
@@ -954,7 +963,7 @@ async function main() {
     // Create the Sandbox instance
     const sandbox = await daytona.create({
       language: 'python',
-      image: 'alpine/3.21',
+      image: 'alpine:3.21.3',
     })
     // Run the code securely inside the Sandbox
     const response = await sandbox.process.codeRun(
@@ -978,9 +987,15 @@ main()
 ```
 
 
-## Custom Container Registries
+## Images from Private Registries
 
-If you want to use a private image, go to Dashboard -> Registries -> Add Registry and input the necessary fields. Once the Container Registry is created, you may go back to the Images page and add images from the newly created registry.
+To use an Image that is not publicly available, you need to start by adding the image's private Container Registry:
+
+1. Go to the [Registries](https://app.daytona.io/dashboard/registries) page in the Dashboard
+2. Click the `Add Registry` button.
+3. Input the Registry's name and URL, username, password, project, and submit
+4. Once the Container Registry is created, you may go back to the [Images](https://app.daytona.io/dashboard/images) page
+5. When creating a new private Image, make sure to input the entire Image name, including the registry location and project name - `my-private-registry.com/<my-project>/custom-alpine:3.21`
 
 The next step is the same; simply set the `CreateSandboxParams` field to use the full image name and no more authentication is needed.
 
@@ -1017,6 +1032,16 @@ Step 1/5 : FROM alpine:latest
 ```
 
 This approach also ensures that the resulting image is for the AMD architecture which is the architecture we use when spinning up Daytona Sandboxes.
+
+## Deleting Images
+
+Deleting your custom Images is a straightforward process. Simply go to the [Images](https://app.daytona.io/dashboard/images) page and click on the `Delete` button that shows up when clicking the three dots at the end of a row of the Image you want removed.
+
+:::tip
+
+To temporarily disable an image, instead of deleting, you can click `Disable`. This will prevent the image from being used in any new Sandboxes but will not delete it.
+
+:::
 
 ## Default Sandbox Image
 
