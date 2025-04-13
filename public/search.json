@@ -608,11 +608,11 @@
     "objectID": 76
   },
   {
-    "title": "Default Sandbox Image",
+    "title": "Default Image",
     "description": "The default image used by Daytona contains `python`, `node` and their respective LSP's, as well as these pre-installed `pip` packages:",
     "tag": "Documentation",
-    "url": "/docs/images#default-sandbox-image",
-    "slug": "/images#default-sandbox-image",
+    "url": "/docs/images#default-image",
+    "slug": "/images#default-image",
     "objectID": 77
   },
   {

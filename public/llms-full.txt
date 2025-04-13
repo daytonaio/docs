@@ -905,7 +905,7 @@ Images are pre-configured templates containing all dependencies, tools and envir
 
 ## Creating Images
 
-When spinning up a Sandbox, Daytona uses a simple image with some useful utilities pre-installed, such as `python`, `node`, `pip` as well as some common pip packages. More information [below](#default-sandbox-image).
+When spinning up a Sandbox, Daytona uses a simple image with some useful utilities pre-installed, such as `python`, `node`, `pip` as well as some common pip packages. More information [below](#default-image).
 
 It is possible to override this behavior and create custom Images by visiting the Dashboard, clicking on [Images](https://app.daytona.io/dashboard/images) and on `Create Image`.
 
@@ -1043,7 +1043,7 @@ To temporarily disable an image, instead of deleting, you can click `Disable`. T
 
 :::
 
-## Default Sandbox Image
+## Default Image
 
 The default image used by Daytona contains `python`, `node` and their respective LSP's, as well as these pre-installed `pip` packages:
 

@@ -45,7 +45,7 @@
 - [Images from Private Registries](https://daytona.io/docs/images#images-from-private-registries)
 - [Using a Local Image](https://daytona.io/docs/images#using-a-local-image)
 - [Deleting Images](https://daytona.io/docs/images#deleting-images)
-- [Default Sandbox Image](https://daytona.io/docs/images#default-sandbox-image)
+- [Default Image](https://daytona.io/docs/images#default-image)
 - [Daytona Documentation](https://daytona.io/docs/index)
 - [Quick Start](https://daytona.io/docs/index#quick-start)
 - [Language Server Protocol](https://daytona.io/docs/language-server-protocol)
