@@ -76,6 +76,10 @@ await sandbox.fs.createFolder("/workspace/new-dir", "755")
 
 Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python and TypeScript.
 
+#### Uploading a Single File
+
+If you want to upload a single file, you can do it as follows:
+
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
@@ -87,6 +91,36 @@ root_dir = sandbox.get_user_root_dir()
 with open("local_file.txt", "rb") as f:
     content = f.read()
 sandbox.fs.upload_file(root_dir + "/remote_file.txt", content)
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+
+const rootDir = await workspace.getUserRootDir()
+
+// Upload a single file
+const fileContent = new File(
+    [Buffer.from('Hello, World!')],
+    'data.txt',
+    { type: 'text/plain' }
+)
+await workspace.fs.uploadFile(rootDir + "/data.txt", fileContent)
+
+```
+
+</TabItem>
+</Tabs>
+
+#### Uploading Multiple Files
+
+The following example shows how to efficiently upload multiple files with a single method call.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+
+root_dir = sandbox.get_user_root_dir()
 
 # Upload multiple files at once
 
@@ -118,14 +152,6 @@ sandbox.fs.upload_files(files_to_upload)
 ```typescript
 
 const rootDir = await workspace.getUserRootDir()
-
-// Upload a single file
-const fileContent = new File(
-    [Buffer.from('Hello, World!')],
-    'data.txt',
-    { type: 'text/plain' }
-)
-await workspace.fs.uploadFile(rootDir + "/data.txt", fileContent)
 
 // Upload multiple files at once
 const files = [
