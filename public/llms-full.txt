@@ -1,5 +1,5 @@
 # Daytona Documentation v0.12.0
-# Generated on: 2025-04-13
+# Generated on: 2025-04-14
 
 
 title: API Keys
@@ -137,6 +137,7 @@ Daytona SDK provides an option to list files and directories in a Sandbox using 
 ```python
 # List files in a directory
 files = sandbox.fs.list_files("/workspace")
+
 for file in files:
     print(f"Name: {file.name}")
     print(f"Is directory: {file.is_dir}")
@@ -146,14 +147,14 @@ for file in files:
 ```
 ```typescript
 // List files in a directory
-const files = await sandbox.fs.listFiles("/workspace");
+const files = await sandbox.fs.listFiles("/workspace")
 
 files.forEach(file => {
-    console.log(`Name: ${file.name}`);
-    console.log(`Is directory: ${file.isDir}`);
-    console.log(`Size: ${file.size}`);
-    console.log(`Modified: ${file.modTime}`);
-});
+    console.log(`Name: ${file.name}`)
+    console.log(`Is directory: ${file.isDir}`)
+    console.log(`Size: ${file.size}`)
+    console.log(`Modified: ${file.modTime}`)
+})
 ```
 
 
@@ -172,49 +173,124 @@ sandbox.fs.create_folder("/workspace/new-dir", "755")
 ```
 ```typescript
 // Create a directory
-await sandbox.fs.createFolder("/workspace/new-dir");
+await sandbox.fs.createFolder("/workspace/new-dir")
 
 // Create with specific permissions
-await sandbox.fs.createFolder("/workspace/new-dir", "755");
+await sandbox.fs.createFolder("/workspace/new-dir", "755")
 ```
 
 
-### File Operations
+### Uploading Files
 
 Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python and TypeScript.
 
 ```python
-# Upload a file
+
+root_dir = sandbox.get_user_root_dir()
+
+# Upload a single file
+
 with open("local_file.txt", "rb") as f:
     content = f.read()
-sandbox.fs.upload_file("/workspace/remote_file.txt", content)
+sandbox.fs.upload_file(root_dir + "/remote_file.txt", content)
 
-# Download a file
+# Upload multiple files at once
 
-content = sandbox.fs.download_file("/workspace/remote_file.txt")
+files_to_upload = []
+
+with open("file1.txt", "rb") as f1:
+    files_to_upload.append(FileUpload(
+        path=root_dir + "/data/file1.txt",
+        content=f1.read()
+    ))
+
+with open("file2.txt", "rb") as f2:
+    files_to_upload.append(FileUpload(
+        path=root_dir + "/data/file1.txt",
+        content=f2.read()
+    ))
+
+with open("settings.json", "rb") as f3:
+    files_to_upload.append(FileUpload(
+        path=root_dir + "/config/settings.json",
+        content=f3.read()
+    ))
+
+sandbox.fs.upload_files(files_to_upload)
+
+```
+```typescript
+
+const rootDir = await workspace.getUserRootDir()
+
+// Upload a single file
+const fileContent = new File(
+    [Buffer.from('Hello, World!')],
+    'data.txt',
+    { type: 'text/plain' }
+)
+await workspace.fs.uploadFile(rootDir + "/data.txt", fileContent)
+
+// Upload multiple files at once
+const files = [
+    {
+      path: rootDir + '/data/file1.txt',
+      content: new File(['Content of file 1'], 'file1.txt')
+    },
+    {
+      path: rootDir + '/data/file2.txt',
+      content: new File(['Content of file 2'], 'file2.txt')
+    },
+    {
+        path: rootDir + '/config/settings.json',
+        content: new File(['{"key": "value"}'], 'settings.json')
+    }
+]
+
+await workspace.fs.uploadFiles(files)
+
+```
+
+
+### Downloading Files
+
+The following commands downloads the file `file1.txt` from the Sandbox user's root directory and prints out the content:
+
+```python
+
+root_dir = sandbox.get_user_root_dir()
+
+content = sandbox.fs.download_file(root_dir + "/file1.txt")
+
 with open("local_file.txt", "wb") as f:
     f.write(content)
 
-# Delete a file
+print(content.decode('utf-8'))
+
+```
+```typescript
+
+const rootDir = await workspace.getUserRootDir()
+
+const downloadedFile = await sandbox.fs.downloadFile(rootDir + "/file1.txt")
+
+console.log('File content:', downloadedFile.toString())
+
+```
+
+
+### Deleting files
+
+Once you no longer need them, simply delete files by using the `delete_file` function.
+
+```python
 
 sandbox.fs.delete_file("/workspace/file.txt")
 
 ```
 ```typescript
-// Upload a file
-const fileContent = new File(
-    [Buffer.from('Hello, World!')],
-    'data.txt',
-    { type: 'text/plain' }
-);
-await sandbox.fs.uploadFile("/workspace/remote_file.txt", fileContent);
 
-// Download a file
-const downloadedFile = await sandbox.fs.downloadFile("/workspace/remote_file.txt");
-console.log('File content:', downloadedFile.toString())
-
-// Delete a file
-await sandbox.fs.deleteFile("/workspace/file.txt");
+await sandbox.fs.deleteFile("/workspace/file.txt")
 ```
 
 
@@ -238,11 +314,11 @@ print(f"Permissions: {file_info.permissions}")
 ```
 ```typescript
 // Set file permissions
-await sandbox.fs.setFilePermissions("/workspace/file.txt", { mode: "644" });
+await sandbox.fs.setFilePermissions("/workspace/file.txt", { mode: "644" })
 
 // Get file permissions
-const fileInfo = await sandbox.fs.getFileDetails("/workspace/file.txt");
-console.log(`Permissions: ${fileInfo.permissions}`);
+const fileInfo = await sandbox.fs.getFileDetails("/workspace/file.txt")
+console.log(`Permissions: ${fileInfo.permissions}`)
 ```
 
 
@@ -276,19 +352,19 @@ sandbox.fs.replace_in_files(
 const results = await sandbox.fs.findFiles({
     path="/workspace/src",
     pattern: "text-of-interest"
-});
+})
 results.forEach(match => {
     console.log('Absolute file path:', match.file)
     console.log('Line number:', match.line)
     console.log('Line content:', match.content)
-});
+})
 
 // Replace text in files
 await sandbox.fs.replaceInFiles(
     ["/workspace/file1.txt", "/workspace/file2.txt"],
     "old_text",
     "new_text"
-);
+)
 ```
 
 title: Getting Started
@@ -447,8 +523,8 @@ sandbox.process.execute_session_command(exec_session_id, SessionExecuteRequest(
 
 # Get the preview link for the Flask app
 
-preview_link = sandbox.get_preview_link(3000)
-print(f"Flask app is available at: {preview_link}")
+preview_info = sandbox.get_preview_link(3000)
+print(f"Flask app is available at: {preview_info.url}")
 
 ```
 
@@ -506,14 +582,16 @@ if __name__ == '__main__':
   }));
 
   // Get the preview link for the Flask app
-  const previewLink = sandbox.getPreviewLink(3000);
-  console.log(`Flask app is available at: ${previewLink}`);
+  const previewInfo = sandbox.getPreviewLink(3000);
+  console.log(`Flask app is available at: ${previewInfo.url}`);
 }
 
 main().catch(error => console.error("Error:", error));
 
 ```
 
+
+Need to access this endpoint programmatically? Learn more about [Preview & Authentication](/docs/preview-and-authentication).
 
 :::tip
 You can access the Sandbox [Web Terminal](/docs/web-terminal) by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
@@ -662,6 +740,8 @@ npx ts-node claude-example.ts
 ## Additional Examples
 
 Use the Daytona SDK [Python examples](https://github.com/daytonaio/sdk/tree/main/examples/python) or [TypeScript/JavaScript examples](https://github.com/daytonaio/sdk/tree/main/examples/typescript) to create a Sandbox and run your code.
+
+Speed up your development on Daytona using LLMs. Copy the /llms.txt files and include them into your projects or chat context: [llms-full.txt](https://www.daytona.io/docs/llms-full.txt) or [llms.txt](https://www.daytona.io/docs/llms.txt)
 
 Learn more by checkout out the Daytona SDK repository on [GitHub](https://github.com/daytonaio/sdk).
 
@@ -1095,7 +1175,7 @@ enabling you to programmatically manage development environments and execute cod
 
 ### Quick Start
 
-Run your first line of code in a Daytona Sandbox.
+Run your first line of code in a Daytona Sandbox. Use our [LLMs context files](/docs/getting-started#additional-examples) for faster development with AI assistants.
 
 #### 1. Get Your API Key
 
@@ -1104,7 +1184,6 @@ Run your first line of code in a Daytona Sandbox.
 - Go to the Daytona [Dashboard](https://app.daytona.io/dashboard).
 - Create a new [API key](https://app.daytona.io/dashboard/keys). Make sure to save it securely,
 as it won't be shown again.
-- You'll need it in the next step.
 
 #### 2. Install the SDK
 
@@ -1529,6 +1608,40 @@ Organization and they may proceed by issuing a new API key and creating sandboxe
 
 The Settings subpage in the Dashboard allows you to view the Organization ID and Name and to delete the Organization if you don't need it anymore. This action is irreversible, so please proceed with caution. Personal Organizations are there by default and cannot be deleted.
 
+title: Preview & Authentication
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Processes listening for HTTP traffic in port range `3000-9999` can be previewed using preview links.
+
+A preview link's schema consists of the port, Sandbox ID and node combination, e.g.:
+`https://3000-sandbox-123456.h7890.daytona.work`
+
+If the Sandbox has its `public` property set to `true`, these links will be publicly accessible, otherwise the preview link will be available only to the Sandbox Organization users.
+
+For programmatic access (for example, `curl`), use the authorization token to access the preview URL, e.g.:
+`curl -H "Authorization: x-daytona-preview-token vg5c0ylmcimr8b_v1ne0u6mdnvit6gc0" https://3000-sandbox-123456.h7890.daytona.work`
+
+To fetch the preview link and the authorization token for a specific port, you can simply use the SDK method:
+
+```python
+
+preview_info = sandbox.get_preview_link(3000)
+
+print(f"Preview link url: {preview_info.url}")
+print(f"Preview link token: {preview_info.token}")
+
+```
+
+```typescript
+
+const previewInfo = await sandbox.getPreviewUrl(3000);
+
+console.log(`Preview link url: ${previewInfo.url}`);
+console.log(`Preview link token: ${previewInfo.token}`);
+
+```
+
 title: Process and Code Execution
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -1598,15 +1711,45 @@ Daytona SDK provides an option to execute shell commands and manage background p
 Daytona SDK provides an option to execute shell commands in Python and TypeScript. You can run commands with input, timeout, and environment variables.
 
 ```python
-# Execute shell command
+
+# Execute any shell command
+
 response = sandbox.process.exec("ls -la")
 print(response.result)
+
+# Setting a working directory and a timeout
+
+response = sandbox.process.exec("sleep 3", cwd="/workspace/src", timeout=5)
+print(response.result)
+
+# Passing environment variables
+
+response = sandbox.process.exec("echo $CUSTOM_SECRET", env={
+        "CUSTOM_SECRET": "DAYTONA"
+    }
+)
+print(response.result)
+
 ```
 ```typescript
-// Execute shell command
+
+// Execute any shell command
 const response = await sandbox.process.executeCommand("ls -la");
 console.log(response.result);
+
+// Setting a working directory and a timeout
+const response2 = await sandbox.process.executeCommand("sleep 3", "/workspace/src", undefined, 5);
+console.log(response2.result);
+
+// Passing environment variables
+const response3 = await sandbox.process.executeCommand("echo $CUSTOM_SECRET", "/", {
+        "CUSTOM_SECRET": "DAYTONA"
+    }
+);
+console.log(response3.result);
+
 ```
+
 
 ## Sessions (Background Processes)
 
@@ -1928,23 +2071,7 @@ const state = sandbox.instance.state
 ```
 
 
-### Sandbox Preview Port
-
-Daytona SDK also provides a method to get the preview port for the Sandbox.
-
-```python
-# Get the preview link for an app running on port 3000
-
-preview_link = sandbox.get_preview_link(3000)
-
-```
-```typescript
-// Get the preview link for an app running on port 3000
-
-const previewLink = sandbox.getPreviewLink(3000)
-
-```
-
+To get the preview URL for a specific port, check out [Preview & Authentication](/docs/preview-and-authentication).
 
 ## Remove Sandbox
 

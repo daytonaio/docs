@@ -77,17 +77,47 @@ Daytona SDK provides an option to execute shell commands in Python and TypeScrip
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Execute shell command
+
+# Execute any shell command
+
 response = sandbox.process.exec("ls -la")
 print(response.result)
+
+# Setting a working directory and a timeout
+
+response = sandbox.process.exec("sleep 3", cwd="/workspace/src", timeout=5)
+print(response.result)
+
+# Passing environment variables
+
+response = sandbox.process.exec("echo $CUSTOM_SECRET", env={
+        "CUSTOM_SECRET": "DAYTONA"
+    }
+)
+print(response.result)
+
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Execute shell command
+
+// Execute any shell command
 const response = await sandbox.process.executeCommand("ls -la");
 console.log(response.result);
+
+// Setting a working directory and a timeout
+const response2 = await sandbox.process.executeCommand("sleep 3", "/workspace/src", undefined, 5);
+console.log(response2.result);
+
+// Passing environment variables
+const response3 = await sandbox.process.executeCommand("echo $CUSTOM_SECRET", "/", {
+        "CUSTOM_SECRET": "DAYTONA"
+    }
+);
+console.log(response3.result);
+
 ```
+
 </TabItem>
 </Tabs>
 

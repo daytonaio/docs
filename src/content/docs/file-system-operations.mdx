@@ -19,6 +19,7 @@ Daytona SDK provides an option to list files and directories in a Sandbox using 
 ```python
 # List files in a directory
 files = sandbox.fs.list_files("/workspace")
+
 for file in files:
     print(f"Name: {file.name}")
     print(f"Is directory: {file.is_dir}")
@@ -30,14 +31,14 @@ for file in files:
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // List files in a directory
-const files = await sandbox.fs.listFiles("/workspace");
+const files = await sandbox.fs.listFiles("/workspace")
 
 files.forEach(file => {
-    console.log(`Name: ${file.name}`);
-    console.log(`Is directory: ${file.isDir}`);
-    console.log(`Size: ${file.size}`);
-    console.log(`Modified: ${file.modTime}`);
-});
+    console.log(`Name: ${file.name}`)
+    console.log(`Is directory: ${file.isDir}`)
+    console.log(`Size: ${file.size}`)
+    console.log(`Modified: ${file.modTime}`)
+})
 ```
 
 </TabItem>
@@ -62,34 +63,133 @@ sandbox.fs.create_folder("/workspace/new-dir", "755")
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Create a directory
-await sandbox.fs.createFolder("/workspace/new-dir");
+await sandbox.fs.createFolder("/workspace/new-dir")
 
 // Create with specific permissions
-await sandbox.fs.createFolder("/workspace/new-dir", "755");
+await sandbox.fs.createFolder("/workspace/new-dir", "755")
 ```
 
 </TabItem>
 </Tabs>
 
-### File Operations
+### Uploading Files
 
 Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Upload a file
+
+root_dir = sandbox.get_user_root_dir()
+
+# Upload a single file
+
 with open("local_file.txt", "rb") as f:
     content = f.read()
-sandbox.fs.upload_file("/workspace/remote_file.txt", content)
+sandbox.fs.upload_file(root_dir + "/remote_file.txt", content)
 
-# Download a file
+# Upload multiple files at once
 
-content = sandbox.fs.download_file("/workspace/remote_file.txt")
+files_to_upload = []
+
+with open("file1.txt", "rb") as f1:
+    files_to_upload.append(FileUpload(
+        path=root_dir + "/data/file1.txt",
+        content=f1.read()
+    ))
+
+with open("file2.txt", "rb") as f2:
+    files_to_upload.append(FileUpload(
+        path=root_dir + "/data/file1.txt",
+        content=f2.read()
+    ))
+
+with open("settings.json", "rb") as f3:
+    files_to_upload.append(FileUpload(
+        path=root_dir + "/config/settings.json",
+        content=f3.read()
+    ))
+
+sandbox.fs.upload_files(files_to_upload)
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+
+const rootDir = await workspace.getUserRootDir()
+
+// Upload a single file
+const fileContent = new File(
+    [Buffer.from('Hello, World!')],
+    'data.txt',
+    { type: 'text/plain' }
+)
+await workspace.fs.uploadFile(rootDir + "/data.txt", fileContent)
+
+// Upload multiple files at once
+const files = [
+    {
+      path: rootDir + '/data/file1.txt',
+      content: new File(['Content of file 1'], 'file1.txt')
+    },
+    {
+      path: rootDir + '/data/file2.txt',
+      content: new File(['Content of file 2'], 'file2.txt')
+    },
+    {
+        path: rootDir + '/config/settings.json',
+        content: new File(['{"key": "value"}'], 'settings.json')
+    }
+]
+
+await workspace.fs.uploadFiles(files)
+
+```
+
+</TabItem>
+</Tabs>
+
+### Downloading Files
+
+The following commands downloads the file `file1.txt` from the Sandbox user's root directory and prints out the content:
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+
+root_dir = sandbox.get_user_root_dir()
+
+content = sandbox.fs.download_file(root_dir + "/file1.txt")
+
 with open("local_file.txt", "wb") as f:
     f.write(content)
 
-# Delete a file
+print(content.decode('utf-8'))
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+
+const rootDir = await workspace.getUserRootDir()
+
+const downloadedFile = await sandbox.fs.downloadFile(rootDir + "/file1.txt")
+
+console.log('File content:', downloadedFile.toString())
+
+```
+
+</TabItem>
+</Tabs>
+
+### Deleting files
+
+Once you no longer need them, simply delete files by using the `delete_file` function.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
 
 sandbox.fs.delete_file("/workspace/file.txt")
 
@@ -97,20 +197,8 @@ sandbox.fs.delete_file("/workspace/file.txt")
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Upload a file
-const fileContent = new File(
-    [Buffer.from('Hello, World!')],
-    'data.txt',
-    { type: 'text/plain' }
-);
-await sandbox.fs.uploadFile("/workspace/remote_file.txt", fileContent);
 
-// Download a file
-const downloadedFile = await sandbox.fs.downloadFile("/workspace/remote_file.txt");
-console.log('File content:', downloadedFile.toString())
-
-// Delete a file
-await sandbox.fs.deleteFile("/workspace/file.txt");
+await sandbox.fs.deleteFile("/workspace/file.txt")
 ```
 
 </TabItem>
@@ -140,11 +228,11 @@ print(f"Permissions: {file_info.permissions}")
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 // Set file permissions
-await sandbox.fs.setFilePermissions("/workspace/file.txt", { mode: "644" });
+await sandbox.fs.setFilePermissions("/workspace/file.txt", { mode: "644" })
 
 // Get file permissions
-const fileInfo = await sandbox.fs.getFileDetails("/workspace/file.txt");
-console.log(`Permissions: ${fileInfo.permissions}`);
+const fileInfo = await sandbox.fs.getFileDetails("/workspace/file.txt")
+console.log(`Permissions: ${fileInfo.permissions}`)
 ```
 
 </TabItem>
@@ -184,19 +272,19 @@ sandbox.fs.replace_in_files(
 const results = await sandbox.fs.findFiles({
     path="/workspace/src",
     pattern: "text-of-interest"
-});
+})
 results.forEach(match => {
     console.log('Absolute file path:', match.file)
     console.log('Line number:', match.line)
     console.log('Line content:', match.content)
-});
+})
 
 // Replace text in files
 await sandbox.fs.replaceInFiles(
     ["/workspace/file1.txt", "/workspace/file2.txt"],
     "old_text",
     "new_text"
-);
+)
 ```
 
 </TabItem>
