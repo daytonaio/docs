@@ -1,5 +1,6 @@
 ---
-title: ""
+title: "Daytona"
+hideTitleOnPage: true
 ---
 
 
@@ -45,7 +46,6 @@ Creates a new Daytona client instance.
 
 - `config?` _DaytonaConfig_ - Configuration options
 
-
 **Returns**:
 
 - `Daytona`
@@ -69,7 +69,6 @@ including language, image, resources, environment variables, and volumes for the
 
 - `params?` _CreateSandboxParams_ - Parameters for Sandbox creation
 - `timeout?` _number = 60_ - Timeout in seconds (0 means no timeout, default is 60)
-
 
 **Returns**:
 
@@ -114,7 +113,6 @@ Gets a Sandbox by its ID.
 
 - `sandboxId` _string_ - The ID of the Sandbox to retrieve
 
-
 **Returns**:
 
 - `Promise<Sandbox>` - The Sandbox
@@ -140,7 +138,6 @@ Gets the Sandbox by ID.
 
 - `sandboxId` _string_ - The ID of the Sandbox to retrieve
 
-
 **Returns**:
 
 - `Promise<Sandbox>` - The Sandbox
@@ -165,7 +162,6 @@ Gets the Sandbox by ID.
 **Parameters**:
 
 - `workspaceId` _string_ - The ID of the Sandbox to retrieve
-
 
 **Returns**:
 
@@ -213,7 +209,6 @@ Removes a Sandbox.
 - `sandbox` _Sandbox_ - The Sandbox to remove
 - `timeout` _number = 60_ - Timeout in seconds (0 means no timeout, default is 60)
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -239,7 +234,6 @@ Starts a Sandbox and waits for it to be ready.
 
 - `sandbox` _Sandbox_ - The Sandbox to start
 - `timeout?` _number_ - Optional timeout in seconds (0 means no timeout)
-
 
 **Returns**:
 
@@ -267,7 +261,6 @@ Stops a Sandbox.
 
 - `sandbox` _Sandbox_ - The Sandbox to stop
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -280,7 +273,6 @@ await daytona.stop(sandbox);
 ```
 
 ***
-
 
 ## CodeLanguage
 
@@ -310,10 +302,6 @@ Parameters for creating a new Sandbox.
 - `target?` _string_ - Target location for the Sandbox
 - `timeout?` _number_ - Timeout in seconds for the Sandbox to be ready (0 means no timeout)
 - `user?` _string_ - Optional os user to use for the Sandbox
-    
-
-
-
 
 **Example:**
 
@@ -329,6 +317,7 @@ const params: CreateSandboxParams = {
 };
 const sandbox = await daytona.create(params, 50);
 ```
+
 ## DaytonaConfig
 
 Configuration options for initializing the Daytona client.
@@ -338,12 +327,12 @@ Configuration options for initializing the Daytona client.
 - `apiKey?` _string_ - API key for authentication with the Daytona API
 - `apiUrl?` _string_ - URL of the Daytona API. Defaults to 'https://app.daytona.io/api'
     if not set here and not set in environment variable DAYTONA_API_URL.
+- `jwtToken?` _string_ - JWT token for authentication with the Daytona API. If not set, it must be provided
+    via the environment variable `DAYTONA_JWT_TOKEN`, or an API key must be provided instead.
+- `organizationId?` _string_ - Organization ID used for JWT-based authentication. Required if a JWT token
+    is provided, and must be set either here or in the environment variable `DAYTONA_ORGANIZATION_ID`.
 - ~~`serverUrl?`~~ _string_ - **_Deprecated_** - Use `apiUrl` instead. This property will be removed in future versions.
 - `target?` _CreateWorkspaceTargetEnum_ - Target location for Sandboxes
-    
-
-
-
 
 **Example:**
 
@@ -355,6 +344,7 @@ const config: DaytonaConfig = {
 };
 const daytona = new Daytona(config);
 ```
+
 ## SandboxResources
 
 Resource allocation for a Sandbox.
@@ -365,8 +355,6 @@ Resource allocation for a Sandbox.
 - `disk?` _number_ - Disk space allocation for the Sandbox in GB
 - `gpu?` _number_ - GPU allocation for the Sandbox in units
 - `memory?` _number_ - Memory allocation for the Sandbox in GB
-
-
 
 **Example:**
 

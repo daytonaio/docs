@@ -1,5 +1,6 @@
 ---
-title: ""
+title: "LspServer"
+hideTitleOnPage: true
 ---
 
 ## LspServer
@@ -89,7 +90,6 @@ will begin tracking the file's contents and providing language features.
 
 - `path` _str_ - Absolute path to the opened file.
   
-
 **Example**:
 
 ```python
@@ -114,7 +114,6 @@ the language server to clean up any resources associated with that file.
 
 - `path` _str_ - Absolute path to the closed file.
   
-
 **Example**:
 
 ```python
@@ -135,7 +134,6 @@ Gets symbol information (functions, classes, variables, etc.) from a document.
 
 - `path` _str_ - Absolute path to the file to get symbols from.
   
-
 **Returns**:
 
 - `List[LspSymbol]` - List of symbols in the document. Each symbol includes:
@@ -143,7 +141,6 @@ Gets symbol information (functions, classes, variables, etc.) from a document.
   - kind: The symbol's kind (function, class, variable, etc.)
   - location: The location of the symbol in the file
   
-
 **Example**:
 
 ```python
@@ -170,7 +167,6 @@ in the Sandbox.
 
 - `query` _str_ - Search query to match against symbol names.
   
-
 **Returns**:
 
 - `List[LspSymbol]` - List of matching symbols from all files.
@@ -189,7 +185,6 @@ in the Sandbox.
 
 - `query` _str_ - Search query to match against symbol names.
   
-
 **Returns**:
 
 - `List[LspSymbol]` - List of matching symbols from all files. Each symbol
@@ -198,7 +193,6 @@ in the Sandbox.
   - kind: The symbol's kind (function, class, variable, etc.)
   - location: The location of the symbol in the file
   
-
 **Example**:
 
 ```python
@@ -222,7 +216,6 @@ Gets completion suggestions at a position in a file.
 - `path` _str_ - Absolute path to the file.
 - `position` _Position_ - Cursor position to get completions for.
   
-
 **Returns**:
 
 - `CompletionList` - List of completion suggestions. The list includes:
@@ -236,7 +229,6 @@ Gets completion suggestions at a position in a file.
   - filterText: Text used to filter the item
   - insertText: The actual text to insert (if different from label)
   
-
 **Example**:
 
 ```python
@@ -246,7 +238,6 @@ completions = lsp.completions("/workspace/project/src/index.ts", pos)
 for item in completions.items:
     print(f"{item.label} ({item.kind}): {item.detail}")
 ```
-
 
 ## LspLanguageId
 
@@ -287,4 +278,3 @@ Initialize a new Position instance.
 
 - `line` _int_ - Zero-based line number in the document.
 - `character` _int_ - Zero-based character offset on the line.
-

@@ -1,5 +1,6 @@
 ---
-title: ""
+title: "LspServer"
+hideTitleOnPage: true
 ---
 
 
@@ -27,7 +28,6 @@ new LspServer(
 - `toolboxApi` _ToolboxApi_
 - `instance` _SandboxInstance_
 
-
 **Returns**:
 
 - `LspServer`
@@ -47,19 +47,18 @@ Gets completion suggestions at a position in a file.
 - `path` _string_ - Absolute path to the file
 - `position` _Position_ - The position in the file where completion was requested
 
-
 **Returns**:
 
 - `Promise<CompletionList>` - List of completion suggestions. The list includes:
-    - isIncomplete: Whether more items might be available
-    - items: List of completion items, each containing:
-    - label: The text to insert
-    - kind: The kind of completion
-    - detail: Additional details about the item
-    - documentation: Documentation for the item
-    - sortText: Text used to sort the item in the list
-    - filterText: Text used to filter the item
-    - insertText: The actual text to insert (if different from label)
+  - isIncomplete: Whether more items might be available
+  - items: List of completion items, each containing:
+  - label: The text to insert
+  - kind: The kind of completion
+  - detail: Additional details about the item
+  - documentation: Documentation for the item
+  - sortText: Text used to sort the item in the list
+  - filterText: Text used to filter the item
+  - insertText: The actual text to insert (if different from label)
 
 **Example:**
 
@@ -89,7 +88,6 @@ in the editor to allow the language server to clean up any resources associated 
 
 - `path` _string_ - Absolute path to the closed file
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -117,7 +115,6 @@ will begin tracking the file's contents and providing language features.
 
 - `path` _string_ - Absolute path to the opened file
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -144,13 +141,12 @@ Get symbol information (functions, classes, variables, etc.) from a document.
 
 - `path` _string_ - Absolute path to the file to get symbols from
 
-
 **Returns**:
 
 - `Promise<LspSymbol[]>` - List of symbols in the document. Each symbol includes:
-    - name: The symbol's name
-    - kind: The symbol's kind (function, class, variable, etc.)
-    - location: The location of the symbol in the file
+  - name: The symbol's name
+  - kind: The symbol's kind (function, class, variable, etc.)
+  - location: The location of the symbol in the file
 
 **Example:**
 
@@ -176,13 +172,12 @@ Searches for symbols matching the query string across the entire Sandbox.
 
 - `query` _string_ - Search query to match against symbol names
 
-
 **Returns**:
 
 - `Promise<LspSymbol[]>` - List of matching symbols from all files. Each symbol includes:
-    - name: The symbol's name
-    - kind: The symbol's kind (function, class, variable, etc.)
-    - location: The location of the symbol in the file
+  - name: The symbol's name
+  - kind: The symbol's kind (function, class, variable, etc.)
+  - location: The location of the symbol in the file
 
 **Example:**
 
@@ -253,20 +248,18 @@ Searches for symbols matching the query string across the entire Sandbox.
 
 - `query` _string_ - Search query to match against symbol names
 
-
 **Returns**:
 
 - `Promise<LspSymbol[]>` - List of matching symbols from all files. Each symbol includes:
-    - name: The symbol's name
-    - kind: The symbol's kind (function, class, variable, etc.)
-    - location: The location of the symbol in the file
+  - name: The symbol's name
+  - kind: The symbol's kind (function, class, variable, etc.)
+  - location: The location of the symbol in the file
 
 ##### Deprecated
 
 Use `sandboxSymbols` instead. This method will be removed in a future version.
 
 ***
-
 
 ## LspLanguageId
 
@@ -287,8 +280,6 @@ specified by line number and character offset.
 
 - `character` _number_ - Zero-based character offset on the line
 - `line` _number_ - Zero-based line number in the document
-
-
 
 **Example:**
 

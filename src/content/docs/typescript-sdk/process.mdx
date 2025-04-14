@@ -1,5 +1,6 @@
 ---
-title: ""
+title: "Process"
+hideTitleOnPage: true
 ---
 
 
@@ -192,6 +193,7 @@ await process.deleteSession('my-session');
 executeCommand(
    command: string, 
    cwd?: string, 
+   env?: Record<string, string>, 
 timeout?: number): Promise<ExecuteResponse>
 ```
 
@@ -201,6 +203,7 @@ Executes a shell command in the Sandbox.
 
 - `command` _string_ - Shell command to execute
 - `cwd?` _string_ - Working directory for command execution. If not specified, uses the Sandbox root directory
+- `env?` _Record\<string, string\>_ - Environment variables to set for the command
 - `timeout?` _number_ - Maximum time in seconds to wait for the command to complete. 0 means wait indefinitely.
 
 **Returns**:

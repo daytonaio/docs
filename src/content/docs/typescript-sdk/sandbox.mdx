@@ -1,5 +1,6 @@
 ---
-title: ""
+title: "Sandbox"
+hideTitleOnPage: true
 ---
 
 
@@ -148,22 +149,29 @@ Deletes the Sandbox.
 #### getPreviewLink()
 
 ```ts
-getPreviewLink(port: number): string
+getPreviewLink(port: number): Promise<PortPreviewUrl>
 ```
 
-Gets the preview link for the sandbox at a specific port. If the port is not open, it will open it and return the link.
+Retrieves the preview link for the sandbox at the specified port. If the port is closed,
+it will be opened automatically. For private sandboxes, a token is included to grant access
+to the URL.
 
 **Parameters**:
 
-- `port` _number_ - The port to open the preview link on
+- `port` _number_ - The port to open the preview link on.
 
 **Returns**:
 
-- `string` - The preview link for the sandbox at the specified port
+- `Promise<PortPreviewUrl>` - The response object for the preview link, which includes the `url`
+    and the `token` (to access private sandboxes).
 
-**Throws**:
+**Example:**
 
-If the node domain is not found in the provider metadata
+```ts
+const previewLink = await sandbox.getPreviewLink(3000);
+console.log(`Preview URL: ${previewLink.url}`);
+console.log(`Token: ${previewLink.token}`);
+```
 
 ***
 
@@ -439,25 +447,25 @@ Structured information about a Sandbox
 **Properties**:
 
 - `autoStopInterval` _number_ - Auto-stop interval in minutes
-- `class` _CreateNodeClassEnum_ - Class
+- `class` _CreateNodeClassEnum_ - Sandbox class
 - `env` _Record\<string, string\>_ - Environment variables set in the Sandbox
 - `errorReason` _null \| string_ - Error message if Sandbox is in error state
 - `id` _string_ - Unique identifier for the Sandbox
 - `image` _string_ - Docker image used for the Sandbox
 - `labels` _Record\<string, string\>_ - Custom labels attached to the Sandbox
-- `lastSnapshot` _null \| string_ - Last snapshot
+- `lastSnapshot` _null \| string_ - When the last snapshot was created
 - `name` _string_ - Display name of the Sandbox
 
-- `nodeDomain` _string_ - Node domain
+- `nodeDomain` _string_ - Domain name of the Sandbox node
 - ~~`providerMetadata?`~~ _string_ - **_Deprecated_** - Use `state`, `nodeDomain`, `region`, `class`, `updatedAt`, `lastSnapshot`, `resources`, `autoStopInterval` instead.
 - `public` _boolean_ - Whether the Sandbox is publicly accessible
-- `region` _CreateNodeRegionEnum_ - Region
+- `region` _CreateNodeRegionEnum_ - Region of the Sandbox node
 - `resources` _SandboxResources_ - Resource allocations for the Sandbox
+- `snapshotCreatedAt` _null \| Date_ - When the snapshot was created
 - `snapshotState` _null \| string_ - Current state of Sandbox snapshot
-- `snapshotStateCreatedAt` _null \| Date_ - When the snapshot state was created
 - `state` _WorkspaceState_ - Current state of the Sandbox (e.g., "started", "stopped")
 - `target` _string_ - Target environment where the Sandbox runs
-- `updatedAt` _string_ - Updated at
+- `updatedAt` _string_ - When the Sandbox was last updated
 - `user` _string_ - OS user running in the Sandbox
 
 This interface provides detailed information about a Sandbox's configuration,

@@ -1,5 +1,6 @@
 ---
-title: ""
+title: "Daytona"
+hideTitleOnPage: true
 ---
 
 ## Daytona
@@ -19,15 +20,16 @@ It can be initialized either with explicit configuration or using environment va
 - `api_url` _str_ - URL of the Daytona API.
 - `target` _str_ - Default target location for Sandboxes.
   
-
 **Example**:
 
   Using environment variables:
+
 ```python
 daytona = Daytona()  # Uses DAYTONA_API_KEY, DAYTONA_API_URL
 ```
   
   Using explicit configuration:
+
 ```python
 config = DaytonaConfig(
     api_key="your-api-key",
@@ -46,6 +48,7 @@ def __init__(config: Optional[DaytonaConfig] = None)
 Initializes Daytona instance with optional configuration.
 
 If no config is provided, reads from environment variables:
+
 - `DAYTONA_API_KEY`: Required API key for authentication
 - `DAYTONA_API_URL`: Required api URL
 - `DAYTONA_TARGET`: Optional target environment (defaults to SandboxTargetRegion.US)
@@ -54,12 +57,10 @@ If no config is provided, reads from environment variables:
 
 - `config` _Optional[DaytonaConfig]_ - Object containing api_key, api_url, and target.
   
-
 **Raises**:
 
 - `DaytonaError` - If API key is not provided either through config or environment variables
   
-
 **Example**:
 
 ```python
@@ -93,25 +94,24 @@ including language, image, resources, environment variables, and volumes for the
 - `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
   Default is 60 seconds.
   
-
 **Returns**:
 
 - `Sandbox` - The created Sandbox instance.
   
-
 **Raises**:
 
 - `DaytonaError` - If timeout or auto_stop_interval is negative; If sandbox fails to start or times out
   
-
 **Example**:
 
   Create a default Python Sandbox:
+
 ```python
 sandbox = daytona.create()
 ```
   
   Create a custom Sandbox:
+
 ```python
 params = CreateSandboxParams(
     language="python",
@@ -139,12 +139,10 @@ Removes a Sandbox.
 - `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox removal. 0 means no timeout.
   Default is 60 seconds.
   
-
 **Raises**:
 
 - `DaytonaError` - If sandbox fails to remove or times out
   
-
 **Example**:
 
 ```python
@@ -168,7 +166,6 @@ Gets a Sandbox by its ID.
 
 - `workspace_id` _str_ - The ID of the Sandbox to retrieve.
   
-
 **Returns**:
 
 - `Workspace` - The Sandbox instance.
@@ -186,17 +183,14 @@ Gets a Sandbox by its ID.
 
 - `sandbox_id` _str_ - The ID of the Sandbox to retrieve.
   
-
 **Returns**:
 
 - `Sandbox` - The Sandbox instance.
   
-
 **Raises**:
 
 - `DaytonaError` - If sandbox_id is not provided.
   
-
 **Example**:
 
 ```python
@@ -217,7 +211,6 @@ Lists all Sandboxes.
 
 - `List[Sandbox]` - List of all available Sandbox instances.
   
-
 **Example**:
 
 ```python
@@ -240,7 +233,6 @@ Starts a Sandbox and waits for it to be ready.
 - `timeout` _Optional[float]_ - Optional timeout in seconds to wait for the Sandbox to start.
   0 means no timeout. Default is 60 seconds.
   
-
 **Raises**:
 
 - `DaytonaError` - If timeout is negative; If Sandbox fails to start or times out
@@ -259,11 +251,9 @@ Stops a Sandbox and waits for it to be stopped.
 - `timeout` _Optional[float]_ - Optional timeout (in seconds) for sandbox stop.
   0 means no timeout. Default is 60 seconds.
   
-
 **Raises**:
 
 - `DaytonaError` - If timeout is negative; If Sandbox fails to stop or times out
-
 
 ## CodeLanguage
 
@@ -290,18 +280,26 @@ Configuration options for initializing the Daytona client.
 **Attributes**:
 
 - `api_key` _Optional[str]_ - API key for authentication with the Daytona API. If not set, it must be provided
-  as environment variable DAYTONA_API_KEY.
-- `api_url` _Optional[str]_ - URL of the Daytona API. Defaults to 'https://app.daytona.io/api' if not set
-  here and not set in environment variable DAYTONA_API_URL.
-- `server_url` _Optional[str]_ - Deprecated. Use `api_url` instead. This property will be removed in future versions.
-- `target` _Optional[SandboxTargetRegion]_ - Target environment for Sandbox. Defaults to 'us' if not set here
-  and not set in environment variable DAYTONA_TARGET.
+  via the environment variable `DAYTONA_API_KEY`, or a JWT token must be provided instead.
+- `jwt_token` _Optional[str]_ - JWT token for authentication with the Daytona API. If not set, it must be provided
+  via the environment variable `DAYTONA_JWT_TOKEN`, or an API key must be provided instead.
+- `organization_id` _Optional[str]_ - Organization ID used for JWT-based authentication. Required if a JWT token
+  is provided, and must be set either here or in the environment variable `DAYTONA_ORGANIZATION_ID`.
+- `api_url` _Optional[str]_ - URL of the Daytona API. Defaults to `'https://app.daytona.io/api'` if not set
+  here or in the environment variable `DAYTONA_API_URL`.
+- `server_url` _Optional[str]_ - Deprecated. Use `api_url` instead. This property will be removed
+  in a future version.
+- `target` _Optional[SandboxTargetRegion]_ - Target environment for the Sandbox. Defaults to `'us'` if not set here
+  or in the environment variable `DAYTONA_TARGET`.
   
-
 **Example**:
 
 ```python
 config = DaytonaConfig(api_key="your-api-key")
+```
+
+```python
+config = DaytonaConfig(jwt_token="your-jwt-token", organization_id="your-organization-id")
 ```
 
 ## SandboxResources
@@ -320,7 +318,6 @@ Resources configuration for Sandbox.
 - `disk` _Optional[int]_ - Amount of disk space in GB to allocate.
 - `gpu` _Optional[int]_ - Number of GPUs to allocate.
   
-
 **Example**:
 
 ```python
@@ -362,7 +359,6 @@ Parameters for creating a new Sandbox.
   automatically stop if no Sandbox event occurs during that time. Default is 15 minutes.
   0 means no auto-stop.
   
-
 **Example**:
 
 ```python
@@ -375,4 +371,3 @@ params = CreateSandboxParams(
 )
 sandbox = daytona.create(params, 50)
 ```
-
