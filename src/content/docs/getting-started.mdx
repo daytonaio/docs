@@ -176,8 +176,8 @@ sandbox.process.execute_session_command(exec_session_id, SessionExecuteRequest(
 
 # Get the preview link for the Flask app
 
-preview_link = sandbox.get_preview_link(3000)
-print(f"Flask app is available at: {preview_link}")
+preview_info = sandbox.get_preview_link(3000)
+print(f"Flask app is available at: {preview_info.url}")
 
 ```
 
@@ -237,8 +237,8 @@ if __name__ == '__main__':
   }));
 
   // Get the preview link for the Flask app
-  const previewLink = sandbox.getPreviewLink(3000);
-  console.log(`Flask app is available at: ${previewLink}`);
+  const previewInfo = sandbox.getPreviewLink(3000);
+  console.log(`Flask app is available at: ${previewInfo.url}`);
 }
 
 main().catch(error => console.error("Error:", error));
@@ -247,6 +247,8 @@ main().catch(error => console.error("Error:", error));
 
 </TabItem>
 </Tabs>
+
+Need to access this endpoint programmatically? Learn more about [Preview & Authentication](/docs/preview-and-authentication).
 
 :::tip
 You can access the Sandbox [Web Terminal](/docs/web-terminal) by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.

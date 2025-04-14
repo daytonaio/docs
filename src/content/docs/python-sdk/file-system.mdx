@@ -1,5 +1,6 @@
 ---
-title: ""
+title: "FileSystem"
+hideTitleOnPage: true
 ---
 
 ## FileSystem
@@ -45,7 +46,6 @@ permissions.
 - `path` _str_ - Absolute path where the folder should be created.
 - `mode` _str_ - Folder permissions in octal format (e.g., "755" for rwxr-xr-x).
   
-
 **Example**:
 
 ```python
@@ -69,7 +69,6 @@ Deletes a file from the Sandbox.
 
 - `path` _str_ - Absolute path to the file to delete.
   
-
 **Example**:
 
 ```python
@@ -90,12 +89,10 @@ Downloads a file from the Sandbox.
 
 - `path` _str_ - Absolute path to the file to download.
   
-
 **Returns**:
 
 - `bytes` - The file contents as a bytes object.
   
-
 **Example**:
 
 ```python
@@ -125,7 +122,6 @@ the grep command.
   the search will be performed recursively.
 - `pattern` _str_ - Search pattern to match against file contents.
   
-
 **Returns**:
 
 - `List[Match]` - List of matches found in files. Each Match object includes:
@@ -133,7 +129,6 @@ the grep command.
   - line: The line number where the match was found
   - content: The matching line content
   
-
 **Example**:
 
 ```python
@@ -157,7 +152,6 @@ size, permissions, and timestamps.
 
 - `path` _str_ - Absolute path to the file or directory.
   
-
 **Returns**:
 
 - `FileInfo` - Detailed file information including:
@@ -170,7 +164,6 @@ size, permissions, and timestamps.
   - owner: File owner
   - group: File group
   
-
 **Example**:
 
 ```python
@@ -199,13 +192,11 @@ Lists files and directories in a given path and returns their information, simil
 
 - `path` _str_ - Absolute path to the directory to list contents from.
   
-
 **Returns**:
 
 - `List[FileInfo]` - List of file and directory information. Each FileInfo
   object includes the same fields as described in get_file_info().
   
-
 **Example**:
 
 ```python
@@ -236,7 +227,6 @@ Moves or renames a file or directory. The parent directory of the destination mu
 - `source` _str_ - Absolute path to the source file or directory.
 - `destination` _str_ - Absolute path to the destination.
   
-
 **Example**:
 
 ```python
@@ -275,7 +265,6 @@ Performs search and replace operations across multiple files.
 - `pattern` _str_ - Pattern to search for.
 - `new_value` _str_ - Text to replace matches with.
   
-
 **Returns**:
 
 - `List[ReplaceResult]` - List of results indicating replacements made in
@@ -284,7 +273,6 @@ Performs search and replace operations across multiple files.
   - success: Whether the operation was successful
   - error: Error message if the operation failed
   
-
 **Example**:
 
 ```python
@@ -319,13 +307,11 @@ specified pattern. The pattern can be a simple string or a glob pattern.
 - `pattern` _str_ - Pattern to match against file names. Supports glob
   patterns (e.g., "*.py" for Python files).
   
-
 **Returns**:
 
 - `SearchFilesResponse` - Search results containing:
   - files: List of matching file and directory paths
   
-
 **Example**:
 
 ```python
@@ -360,7 +346,6 @@ to leave that attribute unchanged.
 - `owner` _Optional[str]_ - User owner of the file.
 - `group` _Optional[str]_ - Group owner of the file.
   
-
 **Example**:
 
 ```python
@@ -394,7 +379,6 @@ path, it will be overwritten.
 - `path` _str_ - Absolute destination path in the Sandbox.
 - `file` _bytes_ - File contents as a bytes object.
   
-
 **Example**:
 
 ```python
@@ -414,4 +398,51 @@ content = json.dumps(data).encode('utf-8')
 sandbox.fs.upload_file("/workspace/data/config.json", content)
 ```
 
+#### FileSystem.upload\_files
 
+```python
+@intercept_errors(message_prefix="Failed to upload files: ")
+def upload_files(files: List[FileUpload]) -> None
+```
+
+Uploads multiple files to the Sandbox. The parent directories must exist.
+If files already exist at the destination paths, they will be overwritten.
+
+**Arguments**:
+
+- `files` _List[FileUpload]_ - List of files to upload.
+  
+**Example**:
+
+```python
+# Upload multiple text files
+files = [
+    FileUpload(
+        path="/workspace/data/file1.txt",
+        content=b"Content of file 1"
+    ),
+    FileUpload(
+        path="/workspace/data/file2.txt",
+        content=b"Content of file 2"
+    ),
+    FileUpload(
+        path="/workspace/config/settings.json",
+        content=b'{"key": "value"}'
+    )
+]
+sandbox.fs.upload_files(files)
+```
+
+## FileUpload
+
+```python
+@dataclass
+class FileUpload()
+```
+
+Represents a file to be uploaded to the Sandbox.
+
+**Attributes**:
+
+- `path` _str_ - Absolute destination path in the Sandbox.
+- `content` _bytes_ - File contents as a bytes object.

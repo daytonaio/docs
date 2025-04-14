@@ -1,5 +1,5 @@
 # Daytona Documentation v0.12.0
-# Generated on: 2025-04-13
+# Generated on: 2025-04-14
 
 # Daytona
 
@@ -19,7 +19,9 @@
 - [Basic Operations](https://daytona.io/docs/file-system-operations#basic-operations)
 - [Listing Files and Directories](https://daytona.io/docs/file-system-operations#listing-files-and-directories)
 - [Creating Directories](https://daytona.io/docs/file-system-operations#creating-directories)
-- [File Operations](https://daytona.io/docs/file-system-operations#file-operations)
+- [Uploading Files](https://daytona.io/docs/file-system-operations#uploading-files)
+- [Downloading Files](https://daytona.io/docs/file-system-operations#downloading-files)
+- [Deleting files](https://daytona.io/docs/file-system-operations#deleting-files)
 - [Advanced Operations](https://daytona.io/docs/file-system-operations#advanced-operations)
 - [File Permissions](https://daytona.io/docs/file-system-operations#file-permissions)
 - [File Search and Replace](https://daytona.io/docs/file-system-operations#file-search-and-replace)
@@ -63,6 +65,7 @@
 - [Available Assignments](https://daytona.io/docs/organizations#available-assignments)
 - [Managing Invitations](https://daytona.io/docs/organizations#managing-invitations)
 - [Settings](https://daytona.io/docs/organizations#settings)
+- [Preview & Authentication](https://daytona.io/docs/preview-and-authentication)
 - [Process and Code Execution](https://daytona.io/docs/process-code-execution)
 - [Code Execution](https://daytona.io/docs/process-code-execution#code-execution)
 - [Running Code](https://daytona.io/docs/process-code-execution#running-code)
@@ -87,7 +90,6 @@
 - [Basic Sandbox Creation](https://daytona.io/docs/sandbox-management#basic-sandbox-creation)
 - [Sandbox Resources](https://daytona.io/docs/sandbox-management#sandbox-resources)
 - [Sandbox Information](https://daytona.io/docs/sandbox-management#sandbox-information)
-- [Sandbox Preview Port](https://daytona.io/docs/sandbox-management#sandbox-preview-port)
 - [Remove Sandbox](https://daytona.io/docs/sandbox-management#remove-sandbox)
 - [Sandbox States and Persistence](https://daytona.io/docs/sandbox-management#sandbox-states-and-persistence)
 - [Auto-stop Interval](https://daytona.io/docs/sandbox-management#auto-stop-interval)

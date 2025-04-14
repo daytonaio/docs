@@ -1,5 +1,6 @@
 ---
-title: ""
+title: "FileSystem"
+hideTitleOnPage: true
 ---
 
 
@@ -20,7 +21,6 @@ new FileSystem(instance: SandboxInstance, toolboxApi: ToolboxApi): FileSystem
 - `instance` _SandboxInstance_
 - `toolboxApi` _ToolboxApi_
 
-
 **Returns**:
 
 - `FileSystem`
@@ -39,7 +39,6 @@ Create a new directory in the Sandbox with specified permissions.
 
 - `path` _string_ - Path where the directory should be created
 - `mode` _string_ - Directory permissions in octal format (e.g. "755")
-
 
 **Returns**:
 
@@ -66,7 +65,6 @@ Deletes a file or directory from the Sandbox.
 
 - `path` _string_ - Path to the file or directory to delete
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -91,7 +89,6 @@ Downloads a file from the Sandbox.
 **Parameters**:
 
 - `path` _string_ - Path to the file to download
-
 
 **Returns**:
 
@@ -119,7 +116,6 @@ Searches for text patterns within files in the Sandbox.
 
 - `path` _string_ - Directory to search in
 - `pattern` _string_ - Search pattern
-
 
 **Returns**:
 
@@ -149,7 +145,6 @@ Retrieves detailed information about a file or directory.
 
 - `path` _string_ - Path to the file or directory
 
-
 **Returns**:
 
 - `Promise<FileInfo>` - Detailed file information including size, permissions, modification time
@@ -175,7 +170,6 @@ Lists contents of a directory in the Sandbox.
 **Parameters**:
 
 - `path` _string_ - Directory path to list
-
 
 **Returns**:
 
@@ -205,7 +199,6 @@ Moves or renames a file or directory.
 
 - `source` _string_ - Source path
 - `destination` _string_ - Destination path
-
 
 **Returns**:
 
@@ -237,7 +230,6 @@ Replaces text content in multiple files.
 - `pattern` _string_ - Pattern to replace
 - `newValue` _string_ - Replacement text
 
-
 **Returns**:
 
 - `Promise<ReplaceResult[]>` - Results of the replace operation for each file
@@ -268,7 +260,6 @@ Searches for files and directories by name pattern in the Sandbox.
 - `path` _string_ - Directory to search in
 - `pattern` _string_ - File name pattern (supports globs)
 
-
 **Returns**:
 
 - `Promise<SearchFilesResponse>` - Search results with matching files
@@ -295,7 +286,6 @@ Sets permissions and ownership for a file or directory.
 
 - `path` _string_ - Path to the file or directory
 - `permissions` _FilePermissionsParams_ - Permission settings
-
 
 **Returns**:
 
@@ -327,7 +317,6 @@ Uploads a file to the Sandbox.
 - `path` _string_ - Destination path in the Sandbox
 - `file` _File_ - File to upload
 
-
 **Returns**:
 
 - `Promise<void>`
@@ -342,6 +331,45 @@ await fs.uploadFile('/app/config.json', configFile);
 
 ***
 
+#### uploadFiles()
+
+```ts
+uploadFiles(files: FileUpload[]): Promise<void>
+```
+
+Uploads multiple files to the Sandbox. The parent directories must exist.
+If files already exist at the destination paths, they will be overwritten.
+
+**Parameters**:
+
+- `files` _FileUpload\[\]_ - Array of files to upload
+
+**Returns**:
+
+- `Promise<void>`
+
+**Example:**
+
+```ts
+// Upload multiple text files
+const files = [
+  {
+    path: '/app/data/file1.txt',
+    content: new File(['Content of file 1'], 'file1.txt')
+  },
+  {
+    path: '/app/data/file2.txt',
+    content: new File(['Content of file 2'], 'file2.txt')
+  },
+  {
+    path: '/app/config/settings.json',
+    content: new File(['{"key": "value"}'], 'settings.json')
+  }
+];
+await fs.uploadFiles(files);
+```
+
+***
 
 ## FilePermissionsParams
 
@@ -353,8 +381,6 @@ Parameters for setting file permissions in the Sandbox.
 - `mode?` _string_ - File mode/permissions in octal format (e.g. "644")
 - `owner?` _string_ - User owner of the file
 
-
-
 **Example:**
 
 ```ts
@@ -364,3 +390,12 @@ const permissions: FilePermissionsParams = {
   group: 'users'
 };
 ```
+
+## FileUpload
+
+Represents a file to be uploaded to the Sandbox.
+
+**Properties**:
+
+- `content` _File_ - File to upload
+- `path` _string_ - Absolute destination path in the Sandbox

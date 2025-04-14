@@ -243,6 +243,15 @@ export const sidebarConfig: NavigationGroup[] = [
       },
       {
         type: 'link',
+        href: '/docs/preview-and-authentication',
+        label: 'Preview & Authentication',
+        description: 'Preview URLs and authentication tokens.',
+        attrs: {
+          icon: 'shield.svg',
+        },
+      },
+      {
+        type: 'link',
         href: '/docs/regions',
         label: 'Regions',
         description: 'Setting the region to spin up Daytona Sandboxes in.',
