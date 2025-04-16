@@ -2,6 +2,8 @@
 title: Daytona MCP Server
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 The Daytona Model Context Protocol (MCP) Server enables AI agents to interact with Daytona's features programmatically. This guide covers how to set up and use the MCP server with various AI agents.
 
 ## Prerequisites
@@ -16,14 +18,19 @@ Before getting started, ensure you have:
 
 ### 1. Install Daytona CLI
 
+<Tabs>
+<TabItem label="Mac/Linux">
 ```bash
-# Installation method varies by platform
 brew install daytonaio/cli/daytona
 ```
 
-:::note
-For other OS installation follow the instructions [here](/docs/getting-started#setting-up-the-daytona-cli).
-:::
+</TabItem>
+<TabItem label="Windows">
+```bash
+powershell -Command "irm https://get.daytona.io/windows | iex"
+```
+</TabItem>
+</Tabs>
 
 ### 2. Authenticate with Daytona
 
