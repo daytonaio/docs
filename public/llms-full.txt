@@ -1,5 +1,5 @@
 # Daytona Documentation v0.14.0
-# Generated on: 2025-04-14
+# Generated on: 2025-04-16
 
 
 title: API Keys
@@ -223,6 +223,7 @@ The following example shows how to efficiently upload multiple files with a sing
 root_dir = sandbox.get_user_root_dir()
 
 # Upload multiple files at once
+
 files_to_upload = []
 
 with open("file1.txt", "rb") as f1:
@@ -269,6 +270,7 @@ const files = [
 await workspace.fs.uploadFiles(files)
 
 ```
+
 
 ### Downloading Files
 
@@ -1566,6 +1568,205 @@ you can process log stream synchronously. For example, you can write logs to a f
   main()
   ```
 
+title: Daytona MCP Server
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+The Daytona Model Context Protocol (MCP) Server enables AI agents to interact with Daytona's features programmatically. This guide covers how to set up and use the MCP server with various AI agents.
+
+## Prerequisites
+
+Before getting started, ensure you have:
+
+- A Daytona account
+- Daytona CLI installed
+- A compatible AI agent (Claude Desktop App, Claude Code, Cursor, or Windsurf)
+
+## Installation and Setup
+
+### 1. Install Daytona CLI
+
+```bash
+brew install daytonaio/cli/daytona
+```
+
+```bash
+powershell -Command "irm https://get.daytona.io/windows | iex"
+```
+
+### 2. Authenticate with Daytona
+
+```bash
+daytona login
+```
+
+### 3. Initialize MCP Server
+
+Initialize the Daytona MCP server with your preferred AI agent:
+
+```bash
+daytona mcp init [claude/cursor/windsurf]
+```
+
+### 4. Open Your AI Agent
+
+After initialization, open your AI agent application to begin using Daytona features.
+
+## Integration with Other AI Agents
+
+To integrate Daytona MCP with other AI agents, follow these steps:
+
+1. Generate the MCP configuration:
+
+```bash
+daytona mcp config
+```
+
+This command outputs a JSON configuration that you can copy into your agent's settings:
+
+```json
+{
+  "mcpServers": {
+    "daytona-mcp": {
+      "command": "daytona",
+      "args": ["mcp", "start"],
+      "env": {
+        "HOME": "${HOME}",
+        "PATH": "${HOME}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin"
+      },
+      "logFile": "${HOME}/Library/Logs/daytona/daytona-mcp-server.log"
+    }
+  }
+}
+```
+
+:::note
+For Windows users, add the following to the `env` field:
+
+```json
+"APPDATA": "${APPDATA}"
+```
+
+:::
+
+2. Open or restart your AI agent to apply the configuration.
+
+## Available Tools
+
+### Sandbox Management
+
+- **Create Sandbox**
+  - Creates a new Daytona sandbox
+  - Parameters:
+    - `target` (default: "us"): Target region
+    - `image`: Sandbox image (optional)
+    - `auto_stop_interval` (default: "15"): Auto-stop interval in minutes (0 disables)
+
+- **Destroy Sandbox**
+  - Removes an existing Daytona sandbox
+
+### File Operations
+
+- **Download File**
+  - Downloads a file from the Daytona workspace
+  - Returns content as text or base64 encoded image
+  - Parameters:
+    - `file_path`: Path to the file
+
+- **Upload File**
+  - Uploads a file to the Daytona sandbox
+  - Supports text or base64-encoded binary content
+  - Creates necessary parent directories automatically
+  - Files persist during the session with appropriate permissions
+  - Supports overwrite controls and maintains original file formats
+  - Parameters:
+    - `file_path`: Path to the file to upload
+    - `content`: Content of the file to upload
+    - `encoding`: Encoding of the file to upload
+    - `overwrite`: Overwrite the file if it already exists
+
+- **Create Folder**
+  - Creates a new directory in the workspace
+  - Parameters:
+    - `folder_path`: Path to create
+    - `mode`: Directory permissions (default: 0755)
+
+- **Get File Info**
+  - Retrieves information about a file
+  - Parameters:
+    - `file_path`: Path to the file
+
+- **List Files**
+  - Lists contents of a directory
+  - Parameters:
+    - `path`: Directory path (defaults to current directory)
+
+- **Move File**
+  - Moves or renames a file
+  - Parameters:
+    - `source_path`: Source location
+    - `dest_path`: Destination location
+
+- **Delete File**
+  - Removes a file or directory
+  - Parameters:
+    - `file_path`: Path to delete
+
+### Preview
+
+- **Preview Link**
+  - Generates accessible preview URLs for web applications
+  - Creates secure tunnels to expose local ports externally
+  - Validates server status on specified ports
+  - Provides diagnostic information for troubleshooting
+  - Supports custom descriptions and metadata for service organization
+  - Parameters:
+    - `port`: Port to expose
+    - `description`: Description of the service
+    - `check_server`: Check if a server is running on the port
+
+### Git Operations
+
+- **Git Clone**
+  - Clones a Git repository
+  - Parameters:
+    - `url`: Repository URL
+    - `path`: Target directory (defaults to current)
+    - `branch`: Branch to clone
+    - `commit_id`: Specific commit to clone
+    - `username`: Git username
+    - `password`: Git password
+
+### Command Execution
+
+- **Execute Command**
+  - Runs shell commands in the Daytona environment
+  - Returns stdout, stderr, and exit code
+  - Commands run with sandbox user permissions
+  - Parameters:
+    - `command`: Command to execute
+
+## Troubleshooting
+
+Common issues and solutions:
+
+- **Authentication Issues**
+  - Run `daytona login` to refresh credentials
+
+- **Connection Errors**
+  - Verify MCP server configuration
+  - Check server status
+
+- **Sandbox Errors**
+  - Use `daytona sandbox list` to check sandbox status
+
+## Support
+
+For additional assistance:
+
+- Visit [daytona.io](https://daytona.io)
+- Contact support at support@daytona.io
+
 title: Organizations
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -2191,7 +2392,6 @@ This reference lists all commands supported by the `daytona` command-line tool c
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
 
 ## daytona version
-
 Print the version number
 
 ```shell
@@ -2203,8 +2403,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona sandbox info
 
+## daytona sandbox info
 Get sandbox info
 
 ```shell
@@ -2218,8 +2418,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-## daytona sandbox list
 
+## daytona sandbox list
 List sandboxes
 
 ```shell
@@ -2233,8 +2433,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-## daytona sandbox start
 
+## daytona sandbox start
 Start a sandbox
 
 ```shell
@@ -2247,8 +2447,8 @@ __Flags__
 | `--all` | `-a` | Start all sandboxes |
 | `--help` |  | help for daytona |
 
-## daytona sandbox stop
 
+## daytona sandbox stop
 Stop a sandbox
 
 ```shell
@@ -2261,8 +2461,8 @@ __Flags__
 | `--all` | `-a` | Stop all sandboxes |
 | `--help` |  | help for daytona |
 
-## daytona sandbox
 
+## daytona sandbox
 Manage Daytona sandboxes
 
 ```shell
@@ -2274,8 +2474,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona sandbox create
 
+## daytona sandbox create
 Create a new sandbox
 
 ```shell
@@ -2300,8 +2500,8 @@ __Flags__
 | `--user` |  | User associated with the sandbox |
 | `--help` |  | help for daytona |
 
-## daytona sandbox delete
 
+## daytona sandbox delete
 Delete a sandbox
 
 ```shell
@@ -2315,8 +2515,8 @@ __Flags__
 | `--force` | `-f` | Force delete |
 | `--help` |  | help for daytona |
 
-## daytona image push
 
+## daytona image push
 Push local image
 
 ```shell
@@ -2331,8 +2531,8 @@ __Flags__
 | `--entrypoint` | `-e` | The entrypoint command for the image |
 | `--help` |  | help for daytona |
 
-## daytona login
 
+## daytona login
 Log in to Daytona
 
 ```shell
@@ -2342,10 +2542,11 @@ daytona login [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--api-key` |  | API key to use for authentication |
 | `--help` |  | help for daytona |
 
-## daytona logout
 
+## daytona logout
 Logout from Daytona
 
 ```shell
@@ -2357,8 +2558,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona image
 
+## daytona image
 Manage Daytona images
 
 ```shell
@@ -2370,8 +2571,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona image create
 
+## daytona image create
 Create an image
 
 ```shell
@@ -2384,8 +2585,8 @@ __Flags__
 | `--entrypoint` | `-e` | The entrypoint command for the image |
 | `--help` |  | help for daytona |
 
-## daytona image delete
 
+## daytona image delete
 Delete an image
 
 ```shell
@@ -2398,8 +2599,8 @@ __Flags__
 | `--all` | `-a` | Delete all images |
 | `--help` |  | help for daytona |
 
-## daytona image list
 
+## daytona image list
 List all images
 
 ```shell
@@ -2412,8 +2613,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona
 
+## daytona
 Daytona CLI
 
 ```shell
@@ -2426,8 +2627,8 @@ __Flags__
 | `--help` |  | help for daytona |
 | `--version` | `-v` | Display the version of Daytona |
 
-## daytona autocomplete
 
+## daytona autocomplete
 Adds a completion script for your shell environment
 
 ```shell
@@ -2446,7 +2647,6 @@ macOS Installation: ```brew install bash-completion```
 </Aside>
 
 ## daytona docs
-
 Opens the Daytona documentation in your default browser.
 
 ```shell
@@ -2458,8 +2658,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona organization
 
+## daytona organization
 Manage Daytona organizations
 
 ```shell
@@ -2471,8 +2671,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona organization create
 
+## daytona organization create
 Create a new organization and set it as active
 
 ```shell
@@ -2484,8 +2684,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona organization delete
 
+## daytona organization delete
 Delete an organization
 
 ```shell
@@ -2497,8 +2697,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona organization list
 
+## daytona organization list
 List all organizations
 
 ```shell
@@ -2511,12 +2711,65 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona organization use
 
+## daytona organization use
 Set active organization
 
 ```shell
 daytona organization use [ORGANIZATION] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+
+## daytona mcp
+Manage Daytona MCP Server
+
+```shell
+daytona mcp [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+
+## daytona mcp init
+Initialize Daytona MCP Server with an agent (currently supported: claude, windsurf, cursor)
+
+
+```shell
+daytona mcp init [AGENT_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+
+## daytona mcp start
+Start Daytona MCP Server
+
+```shell
+daytona mcp start [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+
+## daytona mcp config
+Outputs JSON configuration for Daytona MCP Server
+
+```shell
+daytona mcp config [AGENT_NAME] [flags]
 ```
 
 __Flags__

@@ -1,5 +1,5 @@
 # Daytona Documentation v0.14.0
-# Generated on: 2025-04-14
+# Generated on: 2025-04-16
 
 # Daytona
 
@@ -58,6 +58,22 @@
 - [Log Streaming](https://daytona.io/docs/log-streaming)
 - [Asynchronous](https://daytona.io/docs/log-streaming#asynchronous)
 - [Synchronous](https://daytona.io/docs/log-streaming#synchronous)
+- [Daytona MCP Server](https://daytona.io/docs/mcp)
+- [Prerequisites](https://daytona.io/docs/mcp#prerequisites)
+- [Installation and Setup](https://daytona.io/docs/mcp#installation-and-setup)
+- [1. Install Daytona CLI](https://daytona.io/docs/mcp#1-install-daytona-cli)
+- [2. Authenticate with Daytona](https://daytona.io/docs/mcp#2-authenticate-with-daytona)
+- [3. Initialize MCP Server](https://daytona.io/docs/mcp#3-initialize-mcp-server)
+- [4. Open Your AI Agent](https://daytona.io/docs/mcp#4-open-your-ai-agent)
+- [Integration with Other AI Agents](https://daytona.io/docs/mcp#integration-with-other-ai-agents)
+- [Available Tools](https://daytona.io/docs/mcp#available-tools)
+- [Sandbox Management](https://daytona.io/docs/mcp#sandbox-management)
+- [File Operations](https://daytona.io/docs/mcp#file-operations)
+- [Preview](https://daytona.io/docs/mcp#preview)
+- [Git Operations](https://daytona.io/docs/mcp#git-operations)
+- [Command Execution](https://daytona.io/docs/mcp#command-execution)
+- [Troubleshooting](https://daytona.io/docs/mcp#troubleshooting)
+- [Support](https://daytona.io/docs/mcp#support)
 - [Organizations](https://daytona.io/docs/organizations)
 - [Organization Roles](https://daytona.io/docs/organizations#organization-roles)
 - [Administrative Actions](https://daytona.io/docs/organizations#administrative-actions)
@@ -121,4 +137,8 @@
 - [daytona organization delete](https://daytona.io/docs/tools/cli#daytona-organization-delete)
 - [daytona organization list](https://daytona.io/docs/tools/cli#daytona-organization-list)
 - [daytona organization use](https://daytona.io/docs/tools/cli#daytona-organization-use)
+- [daytona mcp](https://daytona.io/docs/tools/cli#daytona-mcp)
+- [daytona mcp init](https://daytona.io/docs/tools/cli#daytona-mcp-init)
+- [daytona mcp start](https://daytona.io/docs/tools/cli#daytona-mcp-start)
+- [daytona mcp config](https://daytona.io/docs/tools/cli#daytona-mcp-config)
 - [Web Terminal](https://daytona.io/docs/web-terminal)

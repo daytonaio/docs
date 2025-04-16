@@ -164,6 +164,7 @@ daytona login [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--api-key` |  | API key to use for authentication |
 | `--help` |  | help for daytona |
 
 ## daytona logout
@@ -339,6 +340,58 @@ Set active organization
 
 ```shell
 daytona organization use [ORGANIZATION] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona mcp
+
+Manage Daytona MCP Server
+
+```shell
+daytona mcp [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona mcp init
+
+Initialize Daytona MCP Server with an agent (currently supported: claude, windsurf, cursor)
+
+```shell
+daytona mcp init [AGENT_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona mcp start
+
+Start Daytona MCP Server
+
+```shell
+daytona mcp start [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona mcp config
+
+Outputs JSON configuration for Daytona MCP Server
+
+```shell
+daytona mcp config [AGENT_NAME] [flags]
 ```
 
 __Flags__
