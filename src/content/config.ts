@@ -259,6 +259,15 @@ export const sidebarConfig: NavigationGroup[] = [
           icon: 'globe.svg',
         },
       },
+      {
+        type: 'link',
+        href: '/docs/mcp',
+        label: 'MCP Server',
+        disablePagination: true,
+        attrs: {
+          icon: 'server.svg',
+        },
+      },
     ],
   },
   {
