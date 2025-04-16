@@ -82,16 +82,6 @@ export const sidebarConfig: NavigationGroup[] = [
         },
         relatedGroupCategory: NavigationCategory.GENERAL,
       },
-      {
-        type: 'link',
-        href: '/docs/tools/mcp',
-        label: 'MCP Reference',
-        disablePagination: true,
-        attrs: {
-          icon: 'server.svg',
-        },
-        relatedGroupCategory: NavigationCategory.GENERAL,
-      },
     ],
   },
   {
@@ -267,6 +257,15 @@ export const sidebarConfig: NavigationGroup[] = [
         description: 'Setting the region to spin up Daytona Sandboxes in.',
         attrs: {
           icon: 'globe.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/mcp',
+        label: 'MCP Server',
+        disablePagination: true,
+        attrs: {
+          icon: 'server.svg',
         },
       },
     ],
