@@ -82,6 +82,16 @@ export const sidebarConfig: NavigationGroup[] = [
         },
         relatedGroupCategory: NavigationCategory.GENERAL,
       },
+      {
+        type: 'link',
+        href: '/docs/tools/mcp',
+        label: 'MCP Reference',
+        disablePagination: true,
+        attrs: {
+          icon: 'server.svg',
+        },
+        relatedGroupCategory: NavigationCategory.GENERAL,
+      },
     ],
   },
   {
