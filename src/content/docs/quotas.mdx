@@ -4,7 +4,7 @@ title: Quotas
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-The Quota subpage in the Dashboard shows different types of Quotas assigned to Organizations. Contact us at [support@daytona.io](mailto:support@daytona.io) to request a quota increase.
+The Quota subpage in the Dashboard shows different types of Quotas assigned to Organizations. To request a quota increase, see [Requesting a Quota Increase](#requesting-a-quota-increase).
 
 ## CPU Quota
 
@@ -16,7 +16,7 @@ The Memory Quota is the maximum amount of RAM that can be used by Sandboxes in a
 
 ## Disk Quota
 
-The Disk Quota is the maximum amount of disk space that can be used by Sandboxes in an Organization expressed in gigabytes.
+The Disk Quota is the maximum amount of **persistent storage** available to Sandboxes in an Organization, expressed in gigabytes. This quota applies to files and data stored inside each sandbox that persist across sessions.
 
 ## Sandboxes/Running Sandboxes Quota
 
@@ -29,3 +29,55 @@ The Running Sandboxes Quota is the maximum number of Sandboxes that can be in Ru
 The Images Quota is the maximum number of Images that can be created in an Organization.
 
 The Total image size Quota is the maximum amount of disk space that can be used by Images in an Organization expressed in gigabytes.
+
+## Default Quota Allocations for New Organizations
+
+New Organizations are provisioned with the following default quotas:
+
+- **Sandboxes:** 10 total  
+- **Running Sandboxes:** 10 concurrently running  
+- **Images:** Up to 5 images  
+- **Image Storage:** 10 GB total 
+- **vCPU:** 20 vCPUs  
+- **Memory:** 40 GB RAM
+- **Disk:** 50 GB persistent storage
+
+These values are subject to change and may vary depending on your plan. To request an increase, contact [support@daytona.io](mailto:support@daytona.io).
+
+## Quota Enforcement Behavior
+
+When an Organization reaches 100% usage of any quota:
+
+- **New sandboxes, images, or other resources cannot be created** until usage falls below the limit or a quota increase is granted.  
+- **Existing sandboxes are granted a 24-hour grace period**, allowing users time to save their work and shut down environments cleanly.
+
+This approach maintains system stability while providing a buffer for active sessions.
+
+## Billing vs. Quotas
+
+Quotas define the maximum resources your Organization can allocate.
+
+**Billing is based on actual usage, not quota limits.** You are only billed when sandboxes are running and actively consuming CPU, memory, or storage.
+
+Inactive or stopped sandboxes do not incur compute costs.
+
+## Requesting a Quota Increase {#requesting-a-quota-increase}
+
+If your team requires more resources, contact [support@daytona.io](mailto:support@daytona.io) with the following details:
+
+- Your Organization ID
+- The resource(s) you need increased (e.g., CPU, memory, disk)
+- A brief explanation of your use case
+
+We review requests quickly and typically respond within the business day.
+
+## FAQ
+
+### **Do I get charged if I hit my quota?**
+No. Quotas are limits, not billing triggers. You’re only charged for active resource usage.
+
+### **Can quotas vary between users in the same organization?**
+No. Quotas are assigned at the **organization** level, not per-user.
+
+### **Can I use quotas across multiple users in my org?**
+Yes. All users in your organization share the same quotas for CPU, memory, disk, and sandboxes.
