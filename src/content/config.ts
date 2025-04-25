@@ -159,11 +159,20 @@ export const sidebarConfig: NavigationGroup[] = [
       },
       {
         type: 'link',
-        href: '/docs/quotas',
-        label: 'Quotas',
-        description: 'Different types of quotas assigned to Organizations.',
+        href: '/docs/usage',
+        label: 'Usage',
+        description: 'Usage and limits assigned to Organizations.',
         attrs: {
           icon: 'log.svg',
+        },
+      },
+      {
+        type: 'link',
+        href: '/docs/billing',
+        label: 'Billing',
+        description: 'Billing management for Organizations.',
+        attrs: {
+          icon: 'credit-card.svg',
         },
       },
     ],
