@@ -1,5 +1,5 @@
-# Daytona Documentation v0.14.0
-# Generated on: 2025-04-16
+# Daytona Documentation v0.15.0
+# Generated on: 2025-04-25
 
 
 title: API Keys
@@ -23,6 +23,30 @@ When adding a new API Key you will be prompted to select a set of permissions fo
 | **`Registries`** | Grants the ability to create and manage Registries |
 
 Each of these permissions have scopes for creating and updating resources (e.g. `write:sandboxes`) and delete resources (e.g. `delete:sandboxes`) that can be separately granted.
+
+title: Billing
+
+The Billing subpage in the Dashboard shows billing information for Organizations.
+
+## Wallet
+
+The Wallet section shows the balance of the Organization's wallet and the amount of credits spent this month.
+
+## Automatic Top-Up
+
+The Automatic Top-Up section allows organizations to set automatic top-up rules for their wallets.
+
+The Threshold parameter sets the amount of credits that will trigger a top-up.
+
+The Target parameter sets the amount of credits that will be available in the wallet after the top-up.
+
+Setting Threshold and Target to 0 will disable the automatic top-up.
+
+## Cost Breakdown
+
+The Cost Breakdown chart shows breakdown of costs per resource.
+
+Users can view consumption for CPU, RAM and Disk and toggle between area and bar charts.
 
 title: Configuration
 
@@ -1199,8 +1223,6 @@ Run your first line of code in a Daytona Sandbox. Use our [LLMs context files](/
 
 #### 1. Get Your API Key
 
-👉 Need an account? [Sign up for access](https://www.daytona.io/waitlist)
-
 - Go to the Daytona [Dashboard](https://app.daytona.io/dashboard).
 - Create a new [API key](https://app.daytona.io/dashboard/keys). Make sure to save it securely,
 as it won't be shown again.
@@ -1220,24 +1242,30 @@ as it won't be shown again.
   ```python
   from daytona_sdk import Daytona, DaytonaConfig
 
-  # Define the configuration
+# Define the configuration
+
   config = DaytonaConfig(api_key="your-api-key")
 
-  # Initialize the Daytona client
+# Initialize the Daytona client
+
   daytona = Daytona(config)
 
-  # Create the Sandbox instance
+# Create the Sandbox instance
+
   sandbox = daytona.create()
 
-  # Run the code securely inside the Sandbox
+# Run the code securely inside the Sandbox
+
   response = sandbox.process.code_run('print("Hello World from code!")')
   if response.exit_code != 0:
     print(f"Error: {response.exit_code} {response.result}")
   else:
       print(response.result)
   
-  # Clean up
+# Clean up
+
   daytona.remove(sandbox)
+
   ```
   Create a file named: `index.mts`
   ```typescript
@@ -2089,36 +2117,6 @@ Daytona SDK provides an option to troubleshoot common issues related to process 
 - Handle process cleanup properly
 - Use appropriate resource constraints
 
-title: Quotas
-
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-
-The Quota subpage in the Dashboard shows different types of Quotas assigned to Organizations. Contact us at [support@daytona.io](mailto:support@daytona.io) to request a quota increase.
-
-## CPU Quota
-
-The CPU Quota is the maximum number of CPU cores that can be used by Sandboxes in an Organization.
-
-## Memory Quota
-
-The Memory Quota is the maximum amount of RAM that can be used by Sandboxes in an Organization expressed in gigabytes.
-
-## Disk Quota
-
-The Disk Quota is the maximum amount of disk space that can be used by Sandboxes in an Organization expressed in gigabytes.
-
-## Sandboxes/Running Sandboxes Quota
-
-The Sandboxes Quota is the maximum number of Sandboxes that can be created in an Organization.
-
-The Running Sandboxes Quota is the maximum number of Sandboxes that can be in Running state in an Organization at the same time.
-
-## Images/Total Image Size Quota
-
-The Images Quota is the maximum number of Images that can be created in an Organization.
-
-The Total image size Quota is the maximum amount of disk space that can be used by Images in an Organization expressed in gigabytes.
-
 title: Region Selection
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -2392,6 +2390,7 @@ This reference lists all commands supported by the `daytona` command-line tool c
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
 
 ## daytona version
+
 Print the version number
 
 ```shell
@@ -2403,8 +2402,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox info
+
 Get sandbox info
 
 ```shell
@@ -2418,8 +2417,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox list
+
 List sandboxes
 
 ```shell
@@ -2433,8 +2432,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox start
+
 Start a sandbox
 
 ```shell
@@ -2447,8 +2446,8 @@ __Flags__
 | `--all` | `-a` | Start all sandboxes |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox stop
+
 Stop a sandbox
 
 ```shell
@@ -2461,8 +2460,8 @@ __Flags__
 | `--all` | `-a` | Stop all sandboxes |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox
+
 Manage Daytona sandboxes
 
 ```shell
@@ -2474,8 +2473,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox create
+
 Create a new sandbox
 
 ```shell
@@ -2500,8 +2499,8 @@ __Flags__
 | `--user` |  | User associated with the sandbox |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox delete
+
 Delete a sandbox
 
 ```shell
@@ -2515,8 +2514,8 @@ __Flags__
 | `--force` | `-f` | Force delete |
 | `--help` |  | help for daytona |
 
-
 ## daytona image push
+
 Push local image
 
 ```shell
@@ -2531,8 +2530,8 @@ __Flags__
 | `--entrypoint` | `-e` | The entrypoint command for the image |
 | `--help` |  | help for daytona |
 
-
 ## daytona login
+
 Log in to Daytona
 
 ```shell
@@ -2545,8 +2544,8 @@ __Flags__
 | `--api-key` |  | API key to use for authentication |
 | `--help` |  | help for daytona |
 
-
 ## daytona logout
+
 Logout from Daytona
 
 ```shell
@@ -2558,8 +2557,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona image
+
 Manage Daytona images
 
 ```shell
@@ -2571,8 +2570,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona image create
+
 Create an image
 
 ```shell
@@ -2585,8 +2584,8 @@ __Flags__
 | `--entrypoint` | `-e` | The entrypoint command for the image |
 | `--help` |  | help for daytona |
 
-
 ## daytona image delete
+
 Delete an image
 
 ```shell
@@ -2599,8 +2598,8 @@ __Flags__
 | `--all` | `-a` | Delete all images |
 | `--help` |  | help for daytona |
 
-
 ## daytona image list
+
 List all images
 
 ```shell
@@ -2613,8 +2612,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona
+
 Daytona CLI
 
 ```shell
@@ -2627,8 +2626,8 @@ __Flags__
 | `--help` |  | help for daytona |
 | `--version` | `-v` | Display the version of Daytona |
 
-
 ## daytona autocomplete
+
 Adds a completion script for your shell environment
 
 ```shell
@@ -2647,6 +2646,7 @@ macOS Installation: ```brew install bash-completion```
 </Aside>
 
 ## daytona docs
+
 Opens the Daytona documentation in your default browser.
 
 ```shell
@@ -2658,8 +2658,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization
+
 Manage Daytona organizations
 
 ```shell
@@ -2671,8 +2671,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization create
+
 Create a new organization and set it as active
 
 ```shell
@@ -2684,8 +2684,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization delete
+
 Delete an organization
 
 ```shell
@@ -2697,8 +2697,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization list
+
 List all organizations
 
 ```shell
@@ -2711,8 +2711,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization use
+
 Set active organization
 
 ```shell
@@ -2724,8 +2724,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona mcp
+
 Manage Daytona MCP Server
 
 ```shell
@@ -2737,10 +2737,9 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona mcp init
-Initialize Daytona MCP Server with an agent (currently supported: claude, windsurf, cursor)
 
+Initialize Daytona MCP Server with an agent (currently supported: claude, windsurf, cursor)
 
 ```shell
 daytona mcp init [AGENT_NAME] [flags]
@@ -2751,8 +2750,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona mcp start
+
 Start Daytona MCP Server
 
 ```shell
@@ -2764,8 +2763,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona mcp config
+
 Outputs JSON configuration for Daytona MCP Server
 
 ```shell
@@ -2776,6 +2775,34 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
+
+title: Usage
+
+The Usage subpage in the Dashboard shows usage limits assigned to Organizations. Contact us at [support@daytona.io](mailto:support@daytona.io) to request a limit increase.
+
+## CPU Quota
+
+The CPU Quota is the maximum number of CPU cores that can be used by Sandboxes in an Organization.
+
+## Memory Quota
+
+The Memory Quota is the maximum amount of RAM that can be used by Sandboxes in an Organization expressed in gigabytes.
+
+## Disk Quota
+
+The Disk Quota is the maximum amount of disk space that can be used by Sandboxes in an Organization expressed in gigabytes.
+
+## Sandboxes/Running Sandboxes Quota
+
+The Sandboxes Quota is the maximum number of Sandboxes that can be created in an Organization.
+
+The Running Sandboxes Quota is the maximum number of Sandboxes that can be in Running state in an Organization at the same time.
+
+## Images/Total Image Size Quota
+
+The Images Quota is the maximum number of Images that can be created in an Organization.
+
+The Total image size Quota is the maximum amount of disk space that can be used by Images in an Organization expressed in gigabytes.
 
 title: Web Terminal
 
