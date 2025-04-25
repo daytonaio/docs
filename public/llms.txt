@@ -1,5 +1,5 @@
-# Daytona Documentation v0.14.0
-# Generated on: 2025-04-16
+# Daytona Documentation v0.15.0
+# Generated on: 2025-04-25
 
 # Daytona
 
@@ -9,6 +9,10 @@
 
 - [API Keys](https://daytona.io/docs/api-keys)
 - [Permissions](https://daytona.io/docs/api-keys#permissions)
+- [Billing](https://daytona.io/docs/billing)
+- [Wallet](https://daytona.io/docs/billing#wallet)
+- [Automatic Top-Up](https://daytona.io/docs/billing#automatic-top-up)
+- [Cost Breakdown](https://daytona.io/docs/billing#cost-breakdown)
 - [Configuration](https://daytona.io/docs/configuration)
 - [Set Up Your Environment Variables](https://daytona.io/docs/configuration#set-up-your-environment-variables)
 - [Configuration Options](https://daytona.io/docs/configuration#configuration-options)
@@ -94,12 +98,6 @@
 - [Process Execution Failed](https://daytona.io/docs/process-code-execution#process-execution-failed)
 - [Process Timeout](https://daytona.io/docs/process-code-execution#process-timeout)
 - [Resource Limits](https://daytona.io/docs/process-code-execution#resource-limits)
-- [Quotas](https://daytona.io/docs/quotas)
-- [CPU Quota](https://daytona.io/docs/quotas#cpu-quota)
-- [Memory Quota](https://daytona.io/docs/quotas#memory-quota)
-- [Disk Quota](https://daytona.io/docs/quotas#disk-quota)
-- [Sandboxes/Running Sandboxes Quota](https://daytona.io/docs/quotas#sandboxesrunning-sandboxes-quota)
-- [Images/Total Image Size Quota](https://daytona.io/docs/quotas#imagestotal-image-size-quota)
 - [Region Selection](https://daytona.io/docs/regions)
 - [Sandbox Management](https://daytona.io/docs/sandbox-management)
 - [Creating Sandboxes](https://daytona.io/docs/sandbox-management#creating-sandboxes)
@@ -141,4 +139,10 @@
 - [daytona mcp init](https://daytona.io/docs/tools/cli#daytona-mcp-init)
 - [daytona mcp start](https://daytona.io/docs/tools/cli#daytona-mcp-start)
 - [daytona mcp config](https://daytona.io/docs/tools/cli#daytona-mcp-config)
+- [Usage](https://daytona.io/docs/usage)
+- [CPU Quota](https://daytona.io/docs/usage#cpu-quota)
+- [Memory Quota](https://daytona.io/docs/usage#memory-quota)
+- [Disk Quota](https://daytona.io/docs/usage#disk-quota)
+- [Sandboxes/Running Sandboxes Quota](https://daytona.io/docs/usage#sandboxesrunning-sandboxes-quota)
+- [Images/Total Image Size Quota](https://daytona.io/docs/usage#imagestotal-image-size-quota)
 - [Web Terminal](https://daytona.io/docs/web-terminal)
