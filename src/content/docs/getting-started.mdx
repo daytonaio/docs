@@ -162,7 +162,7 @@ if __name__ == '__main__':
 
 # Save the Flask app to a file
 
-sandbox.fs.upload_file(sandbox.get_user_root_dir() + "/app.py", app_code)
+sandbox.fs.upload_file("/app.py", app_code)
 
 # Create a new session and execute a command
 
@@ -170,7 +170,7 @@ exec_session_id = "python-app-session"
 sandbox.process.create_session(exec_session_id)
 
 sandbox.process.execute_session_command(exec_session_id, SessionExecuteRequest(
-    command="python " + sandbox.get_user_root_dir() + "/app.py",
+    command="python /app.py",
     var_async=True
 ))
 
