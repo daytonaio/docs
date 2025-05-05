@@ -162,7 +162,7 @@ Daytona SDK provides an option to list files and directories in a Sandbox using 
 
 ```python
 # List files in a directory
-files = sandbox.fs.list_files("/workspace")
+files = sandbox.fs.list_files("workspace")
 
 for file in files:
     print(f"Name: {file.name}")
@@ -173,7 +173,7 @@ for file in files:
 ```
 ```typescript
 // List files in a directory
-const files = await sandbox.fs.listFiles("/workspace")
+const files = await sandbox.fs.listFiles("workspace")
 
 files.forEach(file => {
     console.log(`Name: ${file.name}`)
@@ -190,18 +190,19 @@ Daytona SDK provides an option to create directories with specific permissions u
 
 ```python
 # Create a directory
-sandbox.fs.create_folder("/workspace/new-dir")
+sandbox.fs.create_folder("workspace/new-dir")
 
 # Create with specific permissions
-sandbox.fs.create_folder("/workspace/new-dir", "755")
+
+sandbox.fs.create_folder("workspace/new-dir", "755")
 
 ```
 ```typescript
 // Create a directory
-await sandbox.fs.createFolder("/workspace/new-dir")
+await sandbox.fs.createFolder("workspace/new-dir")
 
 // Create with specific permissions
-await sandbox.fs.createFolder("/workspace/new-dir", "755")
+await sandbox.fs.createFolder("workspace/new-dir", "755")
 ```
 
 
@@ -216,9 +217,10 @@ If you want to upload a single file, you can do it as follows:
 ```python
 
 # Upload a single file
+
 with open("local_file.txt", "rb") as f:
     content = f.read()
-sandbox.fs.upload_file("/remote_file.txt", content)
+sandbox.fs.upload_file("remote_file.txt", content)
 
 ```
 ```typescript
@@ -243,6 +245,7 @@ The following example shows how to efficiently upload multiple files with a sing
 ```python
 
 # Upload multiple files at once
+
 files_to_upload = []
 
 with open("file1.txt", "rb") as f1:
@@ -297,7 +300,7 @@ The following commands downloads the file `file1.txt` from the Sandbox user's ro
 
 ```python
 
-content = sandbox.fs.download_file("/file1.txt")
+content = sandbox.fs.download_file("file1.txt")
 
 with open("local_file.txt", "wb") as f:
     f.write(content)
@@ -322,12 +325,12 @@ Once you no longer need them, simply delete files by using the `delete_file` fun
 
 ```python
 
-sandbox.fs.delete_file("/workspace/file.txt")
+sandbox.fs.delete_file("workspace/file.txt")
 
 ```
 ```typescript
 
-await sandbox.fs.deleteFile("/workspace/file.txt")
+await sandbox.fs.deleteFile("workspace/file.txt")
 ```
 
 
@@ -341,19 +344,20 @@ Daytona SDK provides an option to set file permissions, get file permissions, an
 
 ```python
 # Set file permissions
-sandbox.fs.set_file_permissions("/workspace/file.txt", "644")
+sandbox.fs.set_file_permissions("workspace/file.txt", "644")
 
 # Get file permissions
-file_info = sandbox.fs.get_file_info("/workspace/file.txt")
+
+file_info = sandbox.fs.get_file_info("workspace/file.txt")
 print(f"Permissions: {file_info.permissions}")
 
 ```
 ```typescript
 // Set file permissions
-await sandbox.fs.setFilePermissions("/workspace/file.txt", { mode: "644" })
+await sandbox.fs.setFilePermissions("workspace/file.txt", { mode: "644" })
 
 // Get file permissions
-const fileInfo = await sandbox.fs.getFileDetails("/workspace/file.txt")
+const fileInfo = await sandbox.fs.getFileDetails("workspace/file.txt")
 console.log(`Permissions: ${fileInfo.permissions}`)
 ```
 
@@ -375,6 +379,7 @@ for match in results:
     print("\n")
 
 # Replace text in files
+
 sandbox.fs.replace_in_files(
     files=["/workspace/file1.txt", "/workspace/file2.txt"],
     pattern="old_text",
@@ -544,7 +549,7 @@ if __name__ == '__main__':
 
 # Save the Flask app to a file
 
-sandbox.fs.upload_file("/app.py", app_code)
+sandbox.fs.upload_file("app.py", app_code)
 
 # Create a new session and execute a command
 
@@ -816,6 +821,7 @@ sandbox.git.clone(
 )
 
 # Clone with authentication
+
 sandbox.git.clone(
     url="<https://github.com/user/repo.git>",
     path="/workspace/repo",
@@ -824,6 +830,7 @@ sandbox.git.clone(
 )
 
 # Clone specific branch
+
 sandbox.git.clone(
     url="<https://github.com/user/repo.git>",
     path="/workspace/repo",
@@ -863,7 +870,7 @@ Daytona SDK provides an option to check the status of Git repositories in Sandbo
 
 ```python
 # Get repository status
-status = sandbox.git.status("/workspace/repo")
+status = sandbox.git.status("workspace/repo")
 print(f"Current branch: {status.current_branch}")
 print(f"Commits ahead: {status.ahead}")
 print(f"Commits behind: {status.behind}")
@@ -871,14 +878,15 @@ for file in status.file_status:
     print(f"File: {file.name}")
 
 # List branches
-response = sandbox.git.branches("/workspace/repo")
+
+response = sandbox.git.branches("workspace/repo")
 for branch in response.branches:
     print(f"Branch: {branch}")
 
 ```
 ```typescript
 // Get repository status
-const status = await sandbox.git.status("/workspace/repo");
+const status = await sandbox.git.status("workspace/repo");
 console.log(`Current branch: ${status.currentBranch}`);
 console.log(`Commits ahead: ${status.ahead}`);
 console.log(`Commits behind: ${status.behind}`);
@@ -887,7 +895,7 @@ status['FileStatus[]'].forEach(file => {
 });
 
 // List branches
-const response = await sandbox.git.branches("/workspace/repo");
+const response = await sandbox.git.branches("workspace/repo");
 response.branches.forEach(branch => {
     console.log(`Branch: ${branch}`);
 });
@@ -904,24 +912,26 @@ Daytona SDK provides an option to create, switch, and delete branches in Git rep
 
 ```python
 # Create new branch
-sandbox.git.create_branch("/workspace/repo", "feature/new-feature")
+sandbox.git.create_branch("workspace/repo", "feature/new-feature")
 
 # Switch branch
-sandbox.git.checkout("/workspace/repo", "feature/new-feature")
+
+sandbox.git.checkout("workspace/repo", "feature/new-feature")
 
 # Delete branch
-sandbox.git.delete_branch("/workspace/repo", "feature/old-feature")
+
+sandbox.git.delete_branch("workspace/repo", "feature/old-feature")
 
 ```
 ```typescript
 // Create new branch
-await sandbox.git.createBranch("/workspace/repo", "feature/new-feature");
+await sandbox.git.createBranch("workspace/repo", "feature/new-feature");
 
 // Switch branch
-await sandbox.git.checkout("/workspace/repo", "feature/new-feature");
+await sandbox.git.checkout("workspace/repo", "feature/new-feature");
 
 // Delete branch
-await sandbox.git.deleteBranch("/workspace/repo", "feature/old-feature");
+await sandbox.git.deleteBranch("workspace/repo", "feature/old-feature");
 ```
 
 
@@ -933,16 +943,19 @@ Daytona SDK provides an option to stage and commit changes in Git repositories. 
 
 ```python
 # Stage specific files
-sandbox.git.add("/workspace/repo", ["file1.txt", "file2.txt"])
+sandbox.git.add("workspace/repo", ["file1.txt", "file2.txt"])
 
 # Stage all changes
-sandbox.git.add("/workspace/repo", ["."])
+
+sandbox.git.add("workspace/repo", ["."])
 
 # Commit changes
-sandbox.git.commit("/workspace/repo", "feat: add new feature")
+
+sandbox.git.commit("workspace/repo", "feat: add new feature")
 
 # Get commit history
-commits = sandbox.git.log("/workspace/repo")
+
+commits = sandbox.git.log("workspace/repo")
 for commit in commits:
     print(f"Commit: {commit.hash}")
     print(f"Author: {commit.author}")
@@ -951,16 +964,16 @@ for commit in commits:
 ```
 ```typescript
 // Stage specific files
-await sandbox.git.add("/workspace/repo", ["file1.txt", "file2.txt"]);
+await sandbox.git.add("workspace/repo", ["file1.txt", "file2.txt"]);
 
 // Stage all changes
-await sandbox.git.add("/workspace/repo", ["."]);
+await sandbox.git.add("workspace/repo", ["."]);
 
 // Commit changes
-await sandbox.git.commit("/workspace/repo", "feat: add new feature");
+await sandbox.git.commit("workspace/repo", "feat: add new feature");
 
 // Get commit history
-const commits = await sandbox.git.log("/workspace/repo");
+const commits = await sandbox.git.log("workspace/repo");
 commits.forEach(commit => {
     console.log(`Commit: ${commit.hash}`);
     console.log(`Author: ${commit.author}`);
@@ -979,29 +992,31 @@ Daytona SDK provides an option to push, pull, and list remotes in Git repositori
 
 ```python
 # Push changes
-sandbox.git.push("/workspace/repo")
+sandbox.git.push("workspace/repo")
 
 # Pull changes
-sandbox.git.pull("/workspace/repo")
+
+sandbox.git.pull("workspace/repo")
 
 # List remotes
-remotes = sandbox.git.list_remotes("/workspace/repo")
+
+remotes = sandbox.git.list_remotes("workspace/repo")
 for remote in remotes:
     print(f"Remote: {remote.name} URL: {remote.url}")
 
 ```
 ```typescript
 // Push changes
-await sandbox.git.push("/workspace/repo");
+await sandbox.git.push("workspace/repo");
 
 // Push to specific remote and branch
-await sandbox.git.push("/workspace/repo", "origin", "feature/new-feature");
+await sandbox.git.push("workspace/repo", "origin", "feature/new-feature");
 
 // Pull changes
-await sandbox.git.pull("/workspace/repo");
+await sandbox.git.pull("workspace/repo");
 
 // Pull from specific remote and branch
-await sandbox.git.pull("/workspace/repo", "origin", "main");
+await sandbox.git.pull("workspace/repo", "origin", "main");
 ```
 
 title: Images
@@ -1943,10 +1958,12 @@ Daytona SDK provides an option to execute shell commands in Python and TypeScrip
 ```python
 
 # Execute any shell command
+
 response = sandbox.process.exec("ls -la")
 print(response.result)
 
 # Setting a working directory and a timeout
+
 response = sandbox.process.exec("sleep 3", cwd="/workspace/src", timeout=5)
 print(response.result)
 
@@ -1995,6 +2012,7 @@ for command in session.commands:
     print(f"Command: {command.command}, Exit Code: {command.exit_code}")
 
 # List all running sessions
+
 sessions = sandbox.process.list_sessions()
 for session in sessions:
     print(f"PID: {session.id}, Commands: {session.commands}")
