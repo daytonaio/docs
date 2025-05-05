@@ -21,7 +21,7 @@ Handles process and code execution within a Sandbox.
 
 ```python
 def __init__(code_toolbox: SandboxPythonCodeToolbox, toolbox_api: ToolboxApi,
-             instance: SandboxInstance)
+             instance: SandboxInstance, root_dir: str)
 ```
 
 Initialize a new Process instance.
@@ -31,6 +31,7 @@ Initialize a new Process instance.
 - `code_toolbox` _SandboxPythonCodeToolbox_ - Language-specific code execution toolbox.
 - `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
 - `instance` _SandboxInstance_ - The Sandbox instance this process belongs to.
+- `root_dir` _str_ - The default root directory of the Sandbox.
 
 #### Process.exec
 
@@ -48,7 +49,7 @@ Execute a shell command in the Sandbox.
 
 - `command` _str_ - Shell command to execute.
 - `cwd` _Optional[str]_ - Working directory for command execution. If not
-  specified, uses the Sandbox root directory.
+  specified, uses the Sandbox root directory. Default is the user's root directory.
 - `env` _Optional[Dict[str, str]]_ - Environment variables to set for the command.
 - `timeout` _Optional[int]_ - Maximum time in seconds to wait for the command
   to complete. 0 means wait indefinitely.
@@ -69,7 +70,7 @@ response = sandbox.process.exec("echo 'Hello'")
 print(response.artifacts.stdout)  # Prints: Hello
 
 # Command with working directory
-result = sandbox.process.exec("ls", cwd="/workspace/src")
+result = sandbox.process.exec("ls", cwd="workspace/src")
 
 # Command with timeout
 result = sandbox.process.exec("sleep 10", timeout=5)
@@ -254,7 +255,7 @@ Executes a command in the session.
 - `session_id` _str_ - Unique identifier of the session to use.
 - `req` _SessionExecuteRequest_ - Command execution request containing:
   - command: The command to execute
-  - var_async: Whether to execute asynchronously
+  - run_async: Whether to execute asynchronously
   
 **Returns**:
 
@@ -399,3 +400,17 @@ Parameters for code execution.
 
 - `argv` _Optional[List[str]]_ - Command line arguments
 - `env` _Optional[Dict[str, str]]_ - Environment variables
+
+## SessionExecuteRequest
+
+```python
+class SessionExecuteRequest(ApiSessionExecuteRequest)
+```
+
+Contains the request for executing a command in a session.
+
+**Attributes**:
+
+- `command` _str_ - The command to execute.
+- `run_async` _Optional[bool]_ - Whether to execute the command asynchronously.
+- `var_async` _Optional[bool]_ - Deprecated. Use `run_async` instead.

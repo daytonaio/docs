@@ -22,17 +22,17 @@ Provides Git operations within a Sandbox.
 # Clone a repository
 sandbox.git.clone(
     url="https://github.com/user/repo.git",
-    path="/workspace/repo"
+    path="workspace/repo"
 )
 
 # Check repository status
-status = sandbox.git.status("/workspace/repo")
+status = sandbox.git.status("workspace/repo")
 print(f"Modified files: {status.modified}")
 
 # Stage and commit changes
-sandbox.git.add("/workspace/repo", ["file.txt"])
+sandbox.git.add("workspace/repo", ["file.txt"])
 sandbox.git.commit(
-    path="/workspace/repo",
+    path="workspace/repo",
     message="Update file",
     author="John Doe",
     email="john@example.com"
@@ -43,7 +43,7 @@ sandbox.git.commit(
 
 ```python
 def __init__(sandbox: "Sandbox", toolbox_api: ToolboxApi,
-             instance: SandboxInstance)
+             instance: SandboxInstance, root_dir: str)
 ```
 
 Initializes a new Git handler instance.
@@ -53,6 +53,7 @@ Initializes a new Git handler instance.
 - `sandbox` _Sandbox_ - The parent Sandbox instance.
 - `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
 - `instance` _SandboxInstance_ - The Sandbox instance this Git handler belongs to.
+- `root_dir` _str_ - The default root directory of the Sandbox.
 
 #### Git.add
 
@@ -66,17 +67,18 @@ running 'git add' on the command line.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the Git repository root.
+- `path` _str_ - Path to the Git repository root. Relative paths are resolved based on the user's
+  root directory.
 - `files` _List[str]_ - List of file paths or directories to stage, relative to the repository root.
   
 **Example**:
 
 ```python
 # Stage a single file
-sandbox.git.add("/workspace/repo", ["file.txt"])
+sandbox.git.add("workspace/repo", ["file.txt"])
 
 # Stage multiple files
-sandbox.git.add("/workspace/repo", [
+sandbox.git.add("workspace/repo", [
     "src/main.py",
     "tests/test_main.py",
     "README.md"
@@ -94,7 +96,8 @@ Lists branches in the repository.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the Git repository root.
+- `path` _str_ - Path to the Git repository root. Relative paths are resolved based on the user's
+  root directory.
   
 **Returns**:
 
@@ -103,7 +106,7 @@ Lists branches in the repository.
 **Example**:
 
 ```python
-response = sandbox.git.branches("/workspace/repo")
+response = sandbox.git.branches("workspace/repo")
 print(f"Branches: {response.branches}")
 ```
 
@@ -126,7 +129,8 @@ repository if credentials are provided.
 **Arguments**:
 
 - `url` _str_ - Repository URL to clone from.
-- `path` _str_ - Absolute path where the repository should be cloned.
+- `path` _str_ - Path where the repository should be cloned. Relative paths are resolved based on the user's
+  root directory.
 - `branch` _Optional[str]_ - Specific branch to clone. If not specified,
   clones the default branch.
 - `commit_id` _Optional[str]_ - Specific commit to clone. If specified,
@@ -140,13 +144,13 @@ repository if credentials are provided.
 # Clone the default branch
 sandbox.git.clone(
     url="https://github.com/user/repo.git",
-    path="/workspace/repo"
+    path="workspace/repo"
 )
 
 # Clone a specific branch with authentication
 sandbox.git.clone(
     url="https://github.com/user/private-repo.git",
-    path="/workspace/private",
+    path="workspace/private",
     branch="develop",
     username="user",
     password="token"
@@ -155,7 +159,7 @@ sandbox.git.clone(
 # Clone a specific commit
 sandbox.git.clone(
     url="https://github.com/user/repo.git",
-    path="/workspace/repo-old",
+    path="workspace/repo-old",
     commit_id="abc123"
 )
 ```
@@ -173,7 +177,8 @@ changes using the add() method before committing.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the Git repository root.
+- `path` _str_ - Path to the Git repository root. Relative paths are resolved based on the user's
+  root directory.
 - `message` _str_ - Commit message describing the changes.
 - `author` _str_ - Name of the commit author.
 - `email` _str_ - Email address of the commit author.
@@ -182,9 +187,9 @@ changes using the add() method before committing.
 
 ```python
 # Stage and commit changes
-sandbox.git.add("/workspace/repo", ["README.md"])
+sandbox.git.add("workspace/repo", ["README.md"])
 sandbox.git.commit(
-    path="/workspace/repo",
+    path="workspace/repo",
     message="Update documentation",
     author="John Doe",
     email="john@example.com"
@@ -206,7 +211,8 @@ username and password/token.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the Git repository root.
+- `path` _str_ - Path to the Git repository root. Relative paths are resolved based on the user's
+  root directory.
 - `username` _Optional[str]_ - Git username for authentication.
 - `password` _Optional[str]_ - Git password or token for authentication.
   
@@ -214,11 +220,11 @@ username and password/token.
 
 ```python
 # Push without authentication (for public repos or SSH)
-sandbox.git.push("/workspace/repo")
+sandbox.git.push("workspace/repo")
 
 # Push with authentication
 sandbox.git.push(
-    path="/workspace/repo",
+    path="workspace/repo",
     username="user",
     password="github_token"
 )
@@ -238,7 +244,8 @@ provide username and password/token.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the Git repository root.
+- `path` _str_ - Path to the Git repository root. Relative paths are resolved based on the user's
+  root directory.
 - `username` _Optional[str]_ - Git username for authentication.
 - `password` _Optional[str]_ - Git password or token for authentication.
   
@@ -246,11 +253,11 @@ provide username and password/token.
 
 ```python
 # Pull without authentication
-sandbox.git.pull("/workspace/repo")
+sandbox.git.pull("workspace/repo")
 
 # Pull with authentication
 sandbox.git.pull(
-    path="/workspace/repo",
+    path="workspace/repo",
     username="user",
     password="github_token"
 )
@@ -267,7 +274,8 @@ Gets the current Git repository status.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the Git repository root.
+- `path` _str_ - Path to the Git repository root. Relative paths are resolved based on the user's
+  root directory.
   
 **Returns**:
 
@@ -281,7 +289,7 @@ Gets the current Git repository status.
 **Example**:
 
 ```python
-status = sandbox.git.status("/workspace/repo")
+status = sandbox.git.status("workspace/repo")
 print(f"On branch: {status.current_branch}")
 print(f"Commits ahead: {status.ahead}")
 print(f"Commits behind: {status.behind}")

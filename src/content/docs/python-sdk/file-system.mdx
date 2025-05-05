@@ -21,7 +21,8 @@ be performed within a Daytona Sandbox.
 #### FileSystem.\_\_init\_\_
 
 ```python
-def __init__(instance: SandboxInstance, toolbox_api: ToolboxApi)
+def __init__(instance: SandboxInstance, toolbox_api: ToolboxApi,
+             root_dir: str)
 ```
 
 Initializes a new FileSystem instance.
@@ -30,6 +31,7 @@ Initializes a new FileSystem instance.
 
 - `instance` _SandboxInstance_ - The Sandbox instance this file system belongs to.
 - `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
+- `root_dir` _str_ - The default root directory of the Sandbox.
 
 #### FileSystem.create\_folder
 
@@ -43,17 +45,18 @@ permissions.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path where the folder should be created.
+- `path` _str_ - Path where the folder should be created. Relative paths are resolved based
+  on the user's root directory.
 - `mode` _str_ - Folder permissions in octal format (e.g., "755" for rwxr-xr-x).
   
 **Example**:
 
 ```python
 # Create a directory with standard permissions
-sandbox.fs.create_folder("/workspace/data", "755")
+sandbox.fs.create_folder("workspace/data", "755")
 
 # Create a private directory
-sandbox.fs.create_folder("/workspace/secrets", "700")
+sandbox.fs.create_folder("workspace/secrets", "700")
 ```
 
 #### FileSystem.delete\_file
@@ -73,7 +76,7 @@ Deletes a file from the Sandbox.
 
 ```python
 # Delete a file
-sandbox.fs.delete_file("/workspace/data/old_file.txt")
+sandbox.fs.delete_file("workspace/data/old_file.txt")
 ```
 
 #### FileSystem.download\_file
@@ -87,7 +90,8 @@ Downloads a file from the Sandbox.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the file to download.
+- `path` _str_ - Path to the file to download. Relative paths are resolved based on the user's
+  root directory.
   
 **Returns**:
 
@@ -97,12 +101,12 @@ Downloads a file from the Sandbox.
 
 ```python
 # Download and save a file locally
-content = sandbox.fs.download_file("/workspace/data/file.txt")
+content = sandbox.fs.download_file("workspace/data/file.txt")
 with open("local_copy.txt", "wb") as f:
     f.write(content)
 
 # Download and process text content
-content = sandbox.fs.download_file("/workspace/data/config.json")
+content = sandbox.fs.download_file("workspace/data/config.json")
 config = json.loads(content.decode('utf-8'))
 ```
 
@@ -118,8 +122,9 @@ the grep command.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the file or directory to search. If the path is a directory,
-  the search will be performed recursively.
+- `path` _str_ - Path to the file or directory to search. If the path is a directory,
+  the search will be performed recursively. Relative paths are resolved based on the user's
+  root directory.
 - `pattern` _str_ - Search pattern to match against file contents.
   
 **Returns**:
@@ -133,7 +138,7 @@ the grep command.
 
 ```python
 # Search for TODOs in Python files
-matches = sandbox.fs.find_files("/workspace/src", "TODO:")
+matches = sandbox.fs.find_files("workspace/src", "TODO:")
 for match in matches:
     print(f"{match.file}:{match.line}: {match.content.strip()}")
 ```
@@ -150,7 +155,8 @@ size, permissions, and timestamps.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the file or directory.
+- `path` _str_ - Path to the file or directory. Relative paths are resolved based on the user's
+  root directory.
   
 **Returns**:
 
@@ -168,13 +174,13 @@ size, permissions, and timestamps.
 
 ```python
 # Get file metadata
-info = sandbox.fs.get_file_info("/workspace/data/file.txt")
+info = sandbox.fs.get_file_info("workspace/data/file.txt")
 print(f"Size: {info.size} bytes")
 print(f"Modified: {info.mod_time}")
 print(f"Mode: {info.mode}")
 
 # Check if path is a directory
-info = sandbox.fs.get_file_info("/workspace/data")
+info = sandbox.fs.get_file_info("workspace/data")
 if info.is_dir:
     print("Path is a directory")
 ```
@@ -190,7 +196,8 @@ Lists files and directories in a given path and returns their information, simil
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the directory to list contents from.
+- `path` _str_ - Path to the directory to list contents from. Relative paths are resolved based on the user's
+  root directory.
   
 **Returns**:
 
@@ -201,7 +208,7 @@ Lists files and directories in a given path and returns their information, simil
 
 ```python
 # List directory contents
-files = sandbox.fs.list_files("/workspace/data")
+files = sandbox.fs.list_files("workspace/data")
 
 # Print files and their sizes
 for file in files:
@@ -224,28 +231,30 @@ Moves or renames a file or directory. The parent directory of the destination mu
 
 **Arguments**:
 
-- `source` _str_ - Absolute path to the source file or directory.
-- `destination` _str_ - Absolute path to the destination.
+- `source` _str_ - Path to the source file or directory. Relative paths are resolved based on the user's
+  root directory.
+- `destination` _str_ - Path to the destination. Relative paths are resolved based on the user's
+  root directory.
   
 **Example**:
 
 ```python
 # Rename a file
 sandbox.fs.move_files(
-    "/workspace/data/old_name.txt",
-    "/workspace/data/new_name.txt"
+    "workspace/data/old_name.txt",
+    "workspace/data/new_name.txt"
 )
 
 # Move a file to a different directory
 sandbox.fs.move_files(
-    "/workspace/data/file.txt",
-    "/workspace/archive/file.txt"
+    "workspace/data/file.txt",
+    "workspace/archive/file.txt"
 )
 
 # Move a directory
 sandbox.fs.move_files(
-    "/workspace/old_dir",
-    "/workspace/new_dir"
+    "workspace/old_dir",
+    "workspace/new_dir"
 )
 ```
 
@@ -261,7 +270,9 @@ Performs search and replace operations across multiple files.
 
 **Arguments**:
 
-- `files` _List[str]_ - List of absolute file paths to perform replacements in.
+- `files` _List[str]_ - List of file paths to perform replacements in. Relative paths are
+  resolved based on the user's
+  root directory.
 - `pattern` _str_ - Pattern to search for.
 - `new_value` _str_ - Text to replace matches with.
   
@@ -278,7 +289,7 @@ Performs search and replace operations across multiple files.
 ```python
 # Replace in specific files
 results = sandbox.fs.replace_in_files(
-    files=["/workspace/src/file1.py", "/workspace/src/file2.py"],
+    files=["workspace/src/file1.py", "workspace/src/file2.py"],
     pattern="old_function",
     new_value="new_function"
 )
@@ -303,7 +314,8 @@ specified pattern. The pattern can be a simple string or a glob pattern.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the root directory to start search from.
+- `path` _str_ - Path to the root directory to start search from. Relative paths are resolved based on the user's
+  root directory.
 - `pattern` _str_ - Pattern to match against file names. Supports glob
   patterns (e.g., "*.py" for Python files).
   
@@ -316,12 +328,12 @@ specified pattern. The pattern can be a simple string or a glob pattern.
 
 ```python
 # Find all Python files
-result = sandbox.fs.search_files("/workspace", "*.py")
+result = sandbox.fs.search_files("workspace", "*.py")
 for file in result.files:
     print(file)
 
 # Find files with specific prefix
-result = sandbox.fs.search_files("/workspace/data", "test_*")
+result = sandbox.fs.search_files("workspace/data", "test_*")
 print(f"Found {len(result.files)} test files")
 ```
 
@@ -340,7 +352,8 @@ to leave that attribute unchanged.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the file or directory.
+- `path` _str_ - Path to the file or directory. Relative paths are resolved based on the user's
+  root directory.
 - `mode` _Optional[str]_ - File mode/permissions in octal format
   (e.g., "644" for rw-r--r--).
 - `owner` _Optional[str]_ - User owner of the file.
@@ -351,13 +364,13 @@ to leave that attribute unchanged.
 ```python
 # Make a file executable
 sandbox.fs.set_file_permissions(
-    path="/workspace/scripts/run.sh",
+    path="workspace/scripts/run.sh",
     mode="755"  # rwxr-xr-x
 )
 
 # Change file owner
 sandbox.fs.set_file_permissions(
-    path="/workspace/data/file.txt",
+    path="workspace/data/file.txt",
     owner="daytona",
     group="daytona"
 )
@@ -376,7 +389,8 @@ path, it will be overwritten.
 
 **Arguments**:
 
-- `path` _str_ - Absolute destination path in the Sandbox.
+- `path` _str_ - Path to the destination file. Relative paths are resolved based on the user's
+  root directory.
 - `file` _bytes_ - File contents as a bytes object.
   
 **Example**:
@@ -384,18 +398,18 @@ path, it will be overwritten.
 ```python
 # Upload a text file
 content = b"Hello, World!"
-sandbox.fs.upload_file("/workspace/data/hello.txt", content)
+sandbox.fs.upload_file("workspace/data/hello.txt", content)
 
 # Upload a local file
 with open("local_file.txt", "rb") as f:
     content = f.read()
-sandbox.fs.upload_file("/workspace/data/file.txt", content)
+sandbox.fs.upload_file("workspace/data/file.txt", content)
 
 # Upload binary data
 import json
 data = {"key": "value"}
 content = json.dumps(data).encode('utf-8')
-sandbox.fs.upload_file("/workspace/data/config.json", content)
+sandbox.fs.upload_file("workspace/data/config.json", content)
 ```
 
 #### FileSystem.upload\_files
@@ -410,7 +424,10 @@ If files already exist at the destination paths, they will be overwritten.
 
 **Arguments**:
 
-- `files` _List[FileUpload]_ - List of files to upload.
+- `files` _List[FileUpload]_ - List of files to upload. Each FileUpload object includes:
+  - path: Path to the destination file. Relative paths are resolved based on the user's
+  root directory.
+  - content: File contents as a bytes object.
   
 **Example**:
 
@@ -418,15 +435,15 @@ If files already exist at the destination paths, they will be overwritten.
 # Upload multiple text files
 files = [
     FileUpload(
-        path="/workspace/data/file1.txt",
+        path="workspace/data/file1.txt",
         content=b"Content of file 1"
     ),
     FileUpload(
-        path="/workspace/data/file2.txt",
+        path="workspace/data/file2.txt",
         content=b"Content of file 2"
     ),
     FileUpload(
-        path="/workspace/config/settings.json",
+        path="workspace/config/settings.json",
         content=b'{"key": "value"}'
     )
 ]

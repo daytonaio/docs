@@ -37,7 +37,8 @@ Handles process and code execution within a Sandbox.
 new Process(
    codeToolbox: SandboxCodeToolbox, 
    toolboxApi: ToolboxApi, 
-   instance: SandboxInstance): Process
+   instance: SandboxInstance, 
+   getRootDir: () => Promise<string>): Process
 ```
 
 **Parameters**:
@@ -45,6 +46,7 @@ new Process(
 - `codeToolbox` _SandboxCodeToolbox_
 - `toolboxApi` _ToolboxApi_
 - `instance` _SandboxInstance_
+- `getRootDir` _\(\) =\> Promise\<string\>_
 
 **Returns**:
 
@@ -202,7 +204,8 @@ Executes a shell command in the Sandbox.
 **Parameters**:
 
 - `command` _string_ - Shell command to execute
-- `cwd?` _string_ - Working directory for command execution. If not specified, uses the Sandbox root directory
+- `cwd?` _string_ - Working directory for command execution. If not specified, uses the Sandbox root directory.
+    Default is the user's root directory.
 - `env?` _Record\<string, string\>_ - Environment variables to set for the command
 - `timeout?` _number_ - Maximum time in seconds to wait for the command to complete. 0 means wait indefinitely.
 
@@ -223,7 +226,7 @@ console.log(response.artifacts.stdout);  // Prints: Hello
 
 ```ts
 // Command with working directory
-const result = await process.executeCommand('ls', '/workspace/src');
+const result = await process.executeCommand('ls', 'workspace/src');
 ```
 
 ```ts
@@ -249,7 +252,7 @@ Executes a command in an existing session.
 - `sessionId` _string_ - Unique identifier of the session to use
 - `req` _SessionExecuteRequest_ - Command execution request containing:
   - command: The command to execute
-  - async: Whether to execute asynchronously
+  - runAsync: Whether to execute asynchronously
 - `timeout?` _number_ - Timeout in seconds
 
 **Returns**:
@@ -267,14 +270,14 @@ const sessionId = 'my-session';
 
 // Change directory
 await process.executeSessionCommand(sessionId, {
-  command: 'cd /workspace'
+  command: 'cd /home/daytona'
 });
 
 // Run command in new directory
 const result = await process.executeSessionCommand(sessionId, {
   command: 'pwd'
 });
-console.log(result.output);  // Prints: /workspace
+console.log(result.output);  // Prints: /home/daytona
 ```
 
 ***

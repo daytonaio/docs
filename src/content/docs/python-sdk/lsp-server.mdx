@@ -49,7 +49,7 @@ It initializes the language server for the specified language and project.
 **Example**:
 
 ```python
-lsp = sandbox.create_lsp_server("typescript", "/workspace/project")
+lsp = sandbox.create_lsp_server("typescript", "workspace/project")
 lsp.start()  # Initialize the server
 # Now ready for LSP operations
 ```
@@ -88,13 +88,14 @@ will begin tracking the file's contents and providing language features.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the opened file.
+- `path` _str_ - Path to the opened file. Relative paths are resolved based on the project path
+  set in the LSP server constructor.
   
 **Example**:
 
 ```python
 # When opening a file for editing
-lsp.did_open("/workspace/project/src/index.ts")
+lsp.did_open("workspace/project/src/index.ts")
 # Now can get completions, symbols, etc. for this file
 ```
 
@@ -112,13 +113,14 @@ the language server to clean up any resources associated with that file.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the closed file.
+- `path` _str_ - Path to the closed file. Relative paths are resolved based on the project path
+  set in the LSP server constructor.
   
 **Example**:
 
 ```python
 # When done editing a file
-lsp.did_close("/workspace/project/src/index.ts")
+lsp.did_close("workspace/project/src/index.ts")
 ```
 
 #### LspServer.document\_symbols
@@ -132,7 +134,8 @@ Gets symbol information (functions, classes, variables, etc.) from a document.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the file to get symbols from.
+- `path` _str_ - Path to the file to get symbols from. Relative paths are resolved based on the project path
+  set in the LSP server constructor.
   
 **Returns**:
 
@@ -145,7 +148,7 @@ Gets symbol information (functions, classes, variables, etc.) from a document.
 
 ```python
 # Get all symbols in a file
-symbols = lsp.document_symbols("/workspace/project/src/index.ts")
+symbols = lsp.document_symbols("workspace/project/src/index.ts")
 for symbol in symbols:
     print(f"{symbol.kind} {symbol.name}: {symbol.location}")
 ```
@@ -213,7 +216,8 @@ Gets completion suggestions at a position in a file.
 
 **Arguments**:
 
-- `path` _str_ - Absolute path to the file.
+- `path` _str_ - Path to the file. Relative paths are resolved based on the project path
+  set in the LSP server constructor.
 - `position` _Position_ - Cursor position to get completions for.
   
 **Returns**:
@@ -234,7 +238,7 @@ Gets completion suggestions at a position in a file.
 ```python
 # Get completions at a specific position
 pos = Position(line=10, character=15)
-completions = lsp.completions("/workspace/project/src/index.ts", pos)
+completions = lsp.completions("workspace/project/src/index.ts", pos)
 for item in completions.items:
     print(f"{item.label} ({item.kind}): {item.detail}")
 ```
