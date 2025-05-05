@@ -255,7 +255,7 @@ Executes a command in the session.
 - `session_id` _str_ - Unique identifier of the session to use.
 - `req` _SessionExecuteRequest_ - Command execution request containing:
   - command: The command to execute
-  - run_async: Whether to execute asynchronously
+  - var_async: Whether to execute asynchronously
   
 **Returns**:
 
@@ -400,17 +400,3 @@ Parameters for code execution.
 
 - `argv` _Optional[List[str]]_ - Command line arguments
 - `env` _Optional[Dict[str, str]]_ - Environment variables
-
-## SessionExecuteRequest
-
-```python
-class SessionExecuteRequest(ApiSessionExecuteRequest)
-```
-
-Contains the request for executing a command in a session.
-
-**Attributes**:
-
-- `command` _str_ - The command to execute.
-- `run_async` _Optional[bool]_ - Whether to execute the command asynchronously.
-- `var_async` _Optional[bool]_ - Deprecated. Use `run_async` instead.
