@@ -1316,10 +1316,12 @@ Daytona SDK provides an option to create LSP servers using Python and TypeScript
 from daytona_sdk import Daytona, LspLanguageId
 
 # Create Sandbox
+
 daytona = Daytona()
 sandbox = daytona.create()
 
 # Create LSP server for Python
+
 lsp_server = sandbox.create_lsp_server(
     language_id=LspLanguageId.PYTHON,
     path_to_project="workspace/project"
@@ -1336,7 +1338,7 @@ const sandbox = await daytona.create({
 })
 
 // Create LSP server for TypeScript
-const lspServer = sandbox.createLspServer(
+const lspServer = await sandbox.createLspServer(
     LspLanguageId.TYPESCRIPT,
     "workspace/project"
 )
@@ -1351,6 +1353,7 @@ Daytona SDK provides an option to create LSP servers for various languages throu
 from daytona_sdk import LspLanguageId
 
 # Available language IDs
+
 LspLanguageId.PYTHON
 LspLanguageId.TYPESCRIPT
 
