@@ -16,7 +16,8 @@ Provides Git operations within a Sandbox.
 new Git(
    sandbox: Sandbox, 
    toolboxApi: ToolboxApi, 
-   instance: SandboxInstance): Git
+   instance: SandboxInstance, 
+   getRootDir: () => Promise<string>): Git
 ```
 
 **Parameters**:
@@ -24,6 +25,7 @@ new Git(
 - `sandbox` _Sandbox_
 - `toolboxApi` _ToolboxApi_
 - `instance` _SandboxInstance_
+- `getRootDir` _\(\) =\> Promise\<string\>_
 
 **Returns**:
 
@@ -42,7 +44,8 @@ running 'git add' on the command line.
 
 **Parameters**:
 
-- `path` _string_ - Absolute path to the Git repository root
+- `path` _string_ - Path to the Git repository root. Relative paths are resolved based on the user's
+    root directory.
 - `files` _string\[\]_ - List of file paths or directories to stage, relative to the repository root
 
 **Returns**:
@@ -53,12 +56,12 @@ running 'git add' on the command line.
 
 ```ts
 // Stage a single file
-await git.add('/workspace/repo', ['file.txt']);
+await git.add('workspace/repo', ['file.txt']);
 ```
 
 ```ts
 // Stage whole repository
-await git.add('/workspace/repo', ['.']);
+await git.add('workspace/repo', ['.']);
 ```
 
 ***
@@ -73,7 +76,8 @@ List branches in the repository.
 
 **Parameters**:
 
-- `path` _string_ - Absolute path to the Git repository root
+- `path` _string_ - Path to the Git repository root. Relative paths are resolved based on the user's
+    root directory.
 
 **Returns**:
 
@@ -82,7 +86,7 @@ List branches in the repository.
 **Example:**
 
 ```ts
-const response = await git.branches('/workspace/repo');
+const response = await git.branches('workspace/repo');
 console.log(`Branches: ${response.branches}`);
 ```
 
@@ -107,7 +111,8 @@ repository if credentials are provided.
 **Parameters**:
 
 - `url` _string_ - Repository URL to clone from
-- `path` _string_ - Absolute path where the repository should be cloned
+- `path` _string_ - Path where the repository should be cloned. Relative paths are resolved based on the user's
+    root directory.
 - `branch?` _string_ - Specific branch to clone. If not specified, clones the default branch
 - `commitId?` _string_ - Specific commit to clone. If specified, the repository will be left in a detached HEAD state at this commit
 - `username?` _string_ - Git username for authentication
@@ -123,7 +128,7 @@ repository if credentials are provided.
 // Clone the default branch
 await git.clone(
   'https://github.com/user/repo.git',
-  '/workspace/repo'
+  'workspace/repo'
 );
 ```
 
@@ -131,7 +136,7 @@ await git.clone(
 // Clone a specific branch with authentication
 await git.clone(
   'https://github.com/user/private-repo.git',
-  '/workspace/private',
+  'workspace/private',
   branch='develop',
   username='user',
   password='token'
@@ -142,7 +147,7 @@ await git.clone(
 // Clone a specific commit
 await git.clone(
   'https://github.com/user/repo.git',
-  '/workspace/repo-old',
+  'workspace/repo-old',
   commitId='abc123'
 );
 ```
@@ -163,7 +168,8 @@ Commits staged changes.
 
 **Parameters**:
 
-- `path` _string_ - Absolute path to the Git repository root
+- `path` _string_ - Path to the Git repository root. Relative paths are resolved based on the user's
+    root directory.
 - `message` _string_ - Commit message describing the changes
 - `author` _string_ - Name of the commit author
 - `email` _string_ - Email address of the commit author
@@ -176,9 +182,9 @@ Commits staged changes.
 
 ```ts
 // Stage and commit changes
-await git.add('/workspace/repo', ['README.md']);
+await git.add('workspace/repo', ['README.md']);
 await git.commit(
-  '/workspace/repo',
+  'workspace/repo',
   'Update documentation',
   'John Doe',
   'john@example.com'
@@ -200,7 +206,8 @@ Pulls changes from the remote repository.
 
 **Parameters**:
 
-- `path` _string_ - Absolute path to the Git repository root
+- `path` _string_ - Path to the Git repository root. Relative paths are resolved based on the user's
+    root directory.
 - `username?` _string_ - Git username for authentication
 - `password?` _string_ - Git password or token for authentication
 
@@ -212,13 +219,13 @@ Pulls changes from the remote repository.
 
 ```ts
 // Pull from a public repository
-await git.pull('/workspace/repo');
+await git.pull('workspace/repo');
 ```
 
 ```ts
 // Pull from a private repository
 await git.pull(
-  '/workspace/repo',
+  'workspace/repo',
   'user',
   'token'
 );
@@ -239,7 +246,8 @@ Push local changes to the remote repository.
 
 **Parameters**:
 
-- `path` _string_ - Absolute path to the Git repository root
+- `path` _string_ - Path to the Git repository root. Relative paths are resolved based on the user's
+    root directory.
 - `username?` _string_ - Git username for authentication
 - `password?` _string_ - Git password or token for authentication
 
@@ -251,13 +259,13 @@ Push local changes to the remote repository.
 
 ```ts
 // Push to a public repository
-await git.push('/workspace/repo');
+await git.push('workspace/repo');
 ```
 
 ```ts
 // Push to a private repository
 await git.push(
-  '/workspace/repo',
+  'workspace/repo',
   'user',
   'token'
 );
@@ -275,7 +283,8 @@ Gets the current status of the Git repository.
 
 **Parameters**:
 
-- `path` _string_ - Absolute path to the Git repository root
+- `path` _string_ - Path to the Git repository root. Relative paths are resolved based on the user's
+    root directory.
 
 **Returns**:
 
@@ -289,7 +298,7 @@ Gets the current status of the Git repository.
 **Example:**
 
 ```ts
-const status = await sandbox.git.status('/workspace/repo');
+const status = await sandbox.git.status('workspace/repo');
 console.log(`Current branch: ${status.currentBranch}`);
 console.log(`Commits ahead: ${status.ahead}`);
 console.log(`Commits behind: ${status.behind}`);
