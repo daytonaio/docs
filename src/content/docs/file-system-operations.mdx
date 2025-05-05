@@ -10,7 +10,7 @@ The Daytona SDK provides comprehensive file system operations through the `fs` m
 
 Daytona SDK provides an option to interact with the file system in Sandboxes. You can perform various operations like listing files, creating directories, reading and writing files, and more.
 
-For simplicity, all file operations by default assume you are operating in the root directory of the Sandbox user - e.g. `/workspace` implies `/home/[username]/workspace`, but you are free to provide an absolute workdir path as well.
+For simplicity, file operations by default assume you are operating in the root directory of the Sandbox user - e.g. `workspace` implies `/home/[username]/workspace`, but you are free to provide an absolute workdir path as well - which should start with a leading slash `/`.
 
 ### Listing Files and Directories
 
@@ -97,15 +97,13 @@ sandbox.fs.upload_file("remote_file.txt", content)
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 
-const rootDir = await workspace.getUserRootDir()
-
 // Upload a single file
 const fileContent = new File(
     [Buffer.from('Hello, World!')],
     'data.txt',
     { type: 'text/plain' }
 )
-await workspace.fs.uploadFile(rootDir + "/data.txt", fileContent)
+await workspace.fs.uploadFile("data.txt", fileContent)
 
 ```
 
@@ -126,19 +124,19 @@ files_to_upload = []
 
 with open("file1.txt", "rb") as f1:
     files_to_upload.append(FileUpload(
-        path="/data/file1.txt",
+        path="data/file1.txt",
         content=f1.read()
     ))
 
 with open("file2.txt", "rb") as f2:
     files_to_upload.append(FileUpload(
-        path="/data/file1.txt",
+        path="data/file1.txt",
         content=f2.read()
     ))
 
 with open("settings.json", "rb") as f3:
     files_to_upload.append(FileUpload(
-        path="/config/settings.json",
+        path="config/settings.json",
         content=f3.read()
     ))
 
@@ -149,20 +147,18 @@ sandbox.fs.upload_files(files_to_upload)
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 
-const rootDir = await workspace.getUserRootDir()
-
 // Upload multiple files at once
 const files = [
     {
-      path: rootDir + '/data/file1.txt',
+      path: 'data/file1.txt',
       content: new File(['Content of file 1'], 'file1.txt')
     },
     {
-      path: rootDir + '/data/file2.txt',
+      path: 'data/file2.txt',
       content: new File(['Content of file 2'], 'file2.txt')
     },
     {
-        path: rootDir + '/config/settings.json',
+        path: 'config/settings.json',
         content: new File(['{"key": "value"}'], 'settings.json')
     }
 ]
@@ -194,9 +190,7 @@ print(content.decode('utf-8'))
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
 
-const rootDir = await workspace.getUserRootDir()
-
-const downloadedFile = await sandbox.fs.downloadFile(rootDir + "/file1.txt")
+const downloadedFile = await sandbox.fs.downloadFile("file1.txt")
 
 console.log('File content:', downloadedFile.toString())
 
@@ -269,7 +263,7 @@ Daytona SDK provides an option to search for text in files and replace text in f
 ```python
 # Search for text in files; if a folder is specified, the search is recursive
 results = sandbox.fs.find_files(
-    path="/workspace/src",
+    path="workspace/src",
     pattern="text-of-interest"
 )
 for match in results:
@@ -281,7 +275,7 @@ for match in results:
 # Replace text in files
 
 sandbox.fs.replace_in_files(
-    files=["/workspace/file1.txt", "/workspace/file2.txt"],
+    files=["workspace/file1.txt", "workspace/file2.txt"],
     pattern="old_text",
     new_value="new_text"
 )
@@ -292,7 +286,7 @@ sandbox.fs.replace_in_files(
 ```typescript
 // Search for text in files; if a folder is specified, the search is recursive
 const results = await sandbox.fs.findFiles({
-    path="/workspace/src",
+    path="workspace/src",
     pattern: "text-of-interest"
 })
 results.forEach(match => {
@@ -303,7 +297,7 @@ results.forEach(match => {
 
 // Replace text in files
 await sandbox.fs.replaceInFiles(
-    ["/workspace/file1.txt", "/workspace/file2.txt"],
+    ["workspace/file1.txt", "workspace/file2.txt"],
     "old_text",
     "new_text"
 )

@@ -221,18 +221,16 @@ if __name__ == '__main__':
   `;
 
   const fileContent = new File([appCode], "app.py")
-  
-  let rootDir = await sandbox.getUserRootDir();
 
   // Save the Flask app to a file
-  await sandbox.fs.uploadFile(rootDir + "/app.py", fileContent);
+  await sandbox.fs.uploadFile("app.py", fileContent);
 
   // Create a new session and execute a command
   const execSessionId = "python-app-session";
   await sandbox.process.createSession(execSessionId);
   
   await sandbox.process.executeSessionCommand(execSessionId, ({
-    command: `python ${rootDir}/app.py`,
+    command: `python app.py`,
     async: true,
   }));
 
