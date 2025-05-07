@@ -12,6 +12,10 @@ Base error for Daytona SDK.
 
 - `Error`
 
+### Extended by
+
+- `DaytonaNotFoundError`
+
 ### Constructors
 
 #### new DaytonaError()
@@ -33,3 +37,33 @@ new DaytonaError(message?: string): DaytonaError
 ```ts
 Error.constructor
 ```
+
+***
+
+## DaytonaNotFoundError
+
+Base error for Daytona SDK.
+
+**Extends:**
+
+- `DaytonaError`
+
+### Constructors
+
+#### new DaytonaNotFoundError()
+
+```ts
+new DaytonaNotFoundError(message?: string): DaytonaNotFoundError
+```
+
+**Parameters**:
+
+- `message?` _string_
+
+**Returns**:
+
+- `DaytonaNotFoundError`
+
+##### Inherited from
+
+`DaytonaError`.`constructor`
