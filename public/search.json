@@ -1121,7 +1121,7 @@
   },
   {
     "title": "Basic Sandbox Creation",
-    "description": "Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom IDs using Python and TypeScript.",
+    "description": "Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom labels using Python and TypeScript.",
     "tag": "Documentation",
     "url": "/docs/sandbox-management#basic-sandbox-creation",
     "slug": "/sandbox-management#basic-sandbox-creation",
@@ -1144,11 +1144,11 @@
     "objectID": 143
   },
   {
-    "title": "Create a Sandbox with custom ID",
+    "title": "Create a Sandbox with custom labels",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#create-a-sandbox-with-custom-id",
-    "slug": "/sandbox-management#create-a-sandbox-with-custom-id",
+    "url": "/docs/sandbox-management#create-a-sandbox-with-custom-labels",
+    "slug": "/sandbox-management#create-a-sandbox-with-custom-labels",
     "objectID": 144
   },
   {

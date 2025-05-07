@@ -2156,7 +2156,7 @@ Setting the auto-stop interval parameter to `0` will disable the auto-stop funct
 
 ### Basic Sandbox Creation
 
-Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom IDs using Python and TypeScript.
+Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom labels using Python and TypeScript.
 
 ```python
 from daytona_sdk import Daytona
@@ -2172,9 +2172,9 @@ sandbox = daytona.create()
 params = CreateSandboxParams(language="python")
 sandbox = daytona.create(params)
 
-# Create a Sandbox with custom ID
+# Create a Sandbox with custom labels
 
-params = CreateSandboxParams(id="my-sandbox")
+params = CreateSandboxParams(labels={"SOME_LABEL": "my-label"})
 sandbox = daytona.create(params)
 
 ```
@@ -2189,13 +2189,13 @@ const sandbox = await daytona.create();
 // Create a Sandbox with specific language
 const sandbox = await daytona.create({ language: 'typescript' });
 
-// Create a Sandbox with custom ID
-const sandbox = await daytona.create({ id: 'my-sandbox' });
+// Create a Sandbox with custom labels
+const sandbox = await daytona.create({ labels: { SOME_LABEL: 'my-label' } });
 ```
 
 
 :::note
-Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are automatically used if a custom ID _isn't_ provided and the default image is used, reducing the creation time down to a fraction of a second.
+Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are automatically used if the default image is used, reducing the creation time down to a fraction of a second.
 :::
 
 ### Sandbox Resources
