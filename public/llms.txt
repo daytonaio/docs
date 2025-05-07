@@ -1,5 +1,5 @@
-# Daytona Documentation v0.16.0
-# Generated on: 2025-05-05
+# Daytona Documentation v0.17.0
+# Generated on: 2025-05-07
 
 # Daytona
 
@@ -145,4 +145,10 @@
 - [Disk Quota](https://daytona.io/docs/usage#disk-quota)
 - [Sandboxes/Running Sandboxes Quota](https://daytona.io/docs/usage#sandboxesrunning-sandboxes-quota)
 - [Images/Total Image Size Quota](https://daytona.io/docs/usage#imagestotal-image-size-quota)
+- [Volumes](https://daytona.io/docs/volumes)
+- [Creating Volumes](https://daytona.io/docs/volumes#creating-volumes)
+- [Mounting Volumes to Sandboxes](https://daytona.io/docs/volumes#mounting-volumes-to-sandboxes)
+- [Deleting Volumes](https://daytona.io/docs/volumes#deleting-volumes)
+- [Working with Volumes](https://daytona.io/docs/volumes#working-with-volumes)
+- [Limitations](https://daytona.io/docs/volumes#limitations)
 - [Web Terminal](https://daytona.io/docs/web-terminal)

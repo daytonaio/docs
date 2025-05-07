@@ -1121,7 +1121,7 @@
   },
   {
     "title": "Basic Sandbox Creation",
-    "description": "Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom IDs using Python and TypeScript.",
+    "description": "Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom labels using Python and TypeScript.",
     "tag": "Documentation",
     "url": "/docs/sandbox-management#basic-sandbox-creation",
     "slug": "/sandbox-management#basic-sandbox-creation",
@@ -1144,11 +1144,11 @@
     "objectID": 143
   },
   {
-    "title": "Create a Sandbox with custom ID",
+    "title": "Create a Sandbox with custom labels",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#create-a-sandbox-with-custom-id",
-    "slug": "/sandbox-management#create-a-sandbox-with-custom-id",
+    "url": "/docs/sandbox-management#create-a-sandbox-with-custom-labels",
+    "slug": "/sandbox-management#create-a-sandbox-with-custom-labels",
     "objectID": 144
   },
   {
@@ -1536,11 +1536,91 @@
     "objectID": 192
   },
   {
+    "title": "Volumes",
+    "description": "Volumes are FUSE-based mounts on the Sandbox file system that enable file sharing between Sandboxes and instant access to existing files already present on the mounted volume.",
+    "tag": "Documentation",
+    "url": "/docs/volumes",
+    "slug": "/volumes",
+    "objectID": 193
+  },
+  {
+    "title": "Creating Volumes",
+    "description": "In order to mount a volume to a Sandbox, one must be created.",
+    "tag": "Documentation",
+    "url": "/docs/volumes#creating-volumes",
+    "slug": "/volumes#creating-volumes",
+    "objectID": 194
+  },
+  {
+    "title": "Mounting Volumes to Sandboxes",
+    "description": "Once a volume is created, it can be mounted to a Sandbox by specifying it in the `CreateSandboxParams` object:",
+    "tag": "Documentation",
+    "url": "/docs/volumes#mounting-volumes-to-sandboxes",
+    "slug": "/volumes#mounting-volumes-to-sandboxes",
+    "objectID": 195
+  },
+  {
+    "title": "Create a new volume or get an existing one",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/volumes#create-a-new-volume-or-get-an-existing-one",
+    "slug": "/volumes#create-a-new-volume-or-get-an-existing-one",
+    "objectID": 196
+  },
+  {
+    "title": "Mount the volume to the sandbox",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/volumes#mount-the-volume-to-the-sandbox",
+    "slug": "/volumes#mount-the-volume-to-the-sandbox",
+    "objectID": 197
+  },
+  {
+    "title": "When you're done with the sandbox, you can remove it",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
+    "slug": "/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
+    "objectID": 198
+  },
+  {
+    "title": "The volume will persist even after the sandbox is removed",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
+    "slug": "/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
+    "objectID": 199
+  },
+  {
+    "title": "Deleting Volumes",
+    "description": "When a volume is no longer needed, it can be removed.",
+    "tag": "Documentation",
+    "url": "/docs/volumes#deleting-volumes",
+    "slug": "/volumes#deleting-volumes",
+    "objectID": 200
+  },
+  {
+    "title": "Working with Volumes",
+    "description": "Once mounted, you can read from and write to the volume just like any other directory in the Sandbox file system.",
+    "tag": "Documentation",
+    "url": "/docs/volumes#working-with-volumes",
+    "slug": "/volumes#working-with-volumes",
+    "objectID": 201
+  },
+  {
+    "title": "Limitations",
+    "description": "Since volumes are FUSE-based mounts, they can not be used for applications that require block storage access (like database tables).",
+    "tag": "Documentation",
+    "url": "/docs/volumes#limitations",
+    "slug": "/volumes#limitations",
+    "objectID": 202
+  },
+  {
     "title": "Web Terminal",
     "description": "Daytona provides a Web Terminal for interacting with your Sandboxes, allowing for a convenient way to view files, run commands, and debug.",
     "tag": "Documentation",
     "url": "/docs/web-terminal",
     "slug": "/web-terminal",
-    "objectID": 193
+    "objectID": 203
   }
 ]

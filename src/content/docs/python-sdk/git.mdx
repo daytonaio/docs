@@ -43,7 +43,7 @@ sandbox.git.commit(
 
 ```python
 def __init__(sandbox: "Sandbox", toolbox_api: ToolboxApi,
-             instance: SandboxInstance, root_dir: str)
+             instance: SandboxInstance, get_root_dir: Callable[[], str])
 ```
 
 Initializes a new Git handler instance.
@@ -53,7 +53,7 @@ Initializes a new Git handler instance.
 - `sandbox` _Sandbox_ - The parent Sandbox instance.
 - `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
 - `instance` _SandboxInstance_ - The Sandbox instance this Git handler belongs to.
-- `root_dir` _str_ - The default root directory of the Sandbox.
+- `get_root_dir` _Callable[[], str]_ - A function to get the default root directory of the Sandbox.
 
 #### Git.add
 

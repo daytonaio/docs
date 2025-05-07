@@ -19,6 +19,7 @@ It can be initialized either with explicit configuration or using environment va
 - `api_key` _str_ - API key for authentication.
 - `api_url` _str_ - URL of the Daytona API.
 - `target` _str_ - Default target location for Sandboxes.
+- `volume` _VolumeService_ - Service for managing volumes.
   
 **Example**:
 
@@ -117,7 +118,7 @@ params = CreateSandboxParams(
     language="python",
     image="debian:12.9",
     env_vars={"DEBUG": "true"},
-    resources=SandboxResources(cpu=2, memory=4096),
+    resources=SandboxResources(cpu=2, memory=4),
     auto_stop_interval=0
 )
 sandbox = daytona.create(params, 40)

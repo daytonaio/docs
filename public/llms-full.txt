@@ -1,5 +1,5 @@
-# Daytona Documentation v0.16.0
-# Generated on: 2025-05-05
+# Daytona Documentation v0.17.0
+# Generated on: 2025-05-07
 
 
 title: API Keys
@@ -2156,7 +2156,7 @@ Setting the auto-stop interval parameter to `0` will disable the auto-stop funct
 
 ### Basic Sandbox Creation
 
-Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom IDs using Python and TypeScript.
+Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom labels using Python and TypeScript.
 
 ```python
 from daytona_sdk import Daytona
@@ -2172,9 +2172,9 @@ sandbox = daytona.create()
 params = CreateSandboxParams(language="python")
 sandbox = daytona.create(params)
 
-# Create a Sandbox with custom ID
+# Create a Sandbox with custom labels
 
-params = CreateSandboxParams(id="my-sandbox")
+params = CreateSandboxParams(labels={"SOME_LABEL": "my-label"})
 sandbox = daytona.create(params)
 
 ```
@@ -2189,13 +2189,13 @@ const sandbox = await daytona.create();
 // Create a Sandbox with specific language
 const sandbox = await daytona.create({ language: 'typescript' });
 
-// Create a Sandbox with custom ID
-const sandbox = await daytona.create({ id: 'my-sandbox' });
+// Create a Sandbox with custom labels
+const sandbox = await daytona.create({ labels: { SOME_LABEL: 'my-label' } });
 ```
 
 
 :::note
-Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are automatically used if a custom ID _isn't_ provided and the default image is used, reducing the creation time down to a fraction of a second.
+Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are automatically used if the default image is used, reducing the creation time down to a fraction of a second.
 :::
 
 ### Sandbox Resources
@@ -2793,6 +2793,103 @@ The Running Sandboxes Quota is the maximum number of Sandboxes that can be in Ru
 The Images Quota is the maximum number of Images that can be created in an Organization.
 
 The Total image size Quota is the maximum amount of disk space that can be used by Images in an Organization expressed in gigabytes.
+
+title: Volumes
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Volumes are FUSE-based mounts on the Sandbox file system that enable file sharing between Sandboxes and instant access to existing files already present on the mounted volume.
+Using Volumes the Sandboxes can instantly read from large files eliminating the need to upload them first to the Sandbox file system.
+The volume data is stored on the S3 compatible object store. Multiple volumes can be mounted to a single Sandbox and each volume can be mounted on multiple Sandboxes simultaneously.
+
+## Creating Volumes
+
+In order to mount a volume to a Sandbox, one must be created.
+
+```bash
+volume = daytona.volume.get("my-volume", create=True)
+```
+```bash
+const volume = await daytona.volume.get('my-volume', true)
+```
+
+## Mounting Volumes to Sandboxes
+
+Once a volume is created, it can be mounted to a Sandbox by specifying it in the `CreateSandboxParams` object:
+
+```python
+import os
+from daytona_sdk import CreateSandboxParams, Daytona, VolumeMount
+
+daytona = Daytona()
+
+# Create a new volume or get an existing one
+volume = daytona.volume.get("my-volume", create=True)
+
+# Mount the volume to the sandbox
+mount_dir_1 = "/home/daytona/volume"
+
+params = CreateSandboxParams(
+    language="python",
+    volumes=[VolumeMount(volumeId=volume.id, mountPath=mount_dir_1)],
+)
+sandbox = daytona.create(params)
+
+# When you're done with the sandbox, you can remove it
+# The volume will persist even after the sandbox is removed
+daytona.remove(sandbox)
+
+```
+
+```typescript
+import { Daytona } from '@daytonaio/sdk'
+import path from 'path'
+
+async function main() {
+  const daytona = new Daytona()
+
+  //  Create a new volume or get an existing one
+  const volume = await daytona.volume.get('my-volume', true)
+
+  // Mount the volume to the sandbox
+  const mountDir1 = '/home/daytona/volume'
+
+  const sandbox1 = await daytona.create({
+    language: 'typescript',
+    volumes: [{ volumeId: volume.id, mountPath: mountDir1 }],
+  })
+  
+  // When you're done with the sandbox, you can remove it
+  // The volume will persist even after the sandbox is removed
+  await daytona.remove(sandbox1)
+}
+
+main()
+
+```
+
+
+## Deleting Volumes
+
+When a volume is no longer needed, it can be removed.
+
+```python
+volume = daytona.volume.get("my-volume", create=True)
+daytona.volume.delete(volume)
+```
+```typescript
+const volume = await daytona.volume.get('my-volume', true)
+await daytona.volume.delete(volume)
+```
+
+## Working with Volumes
+
+Once mounted, you can read from and write to the volume just like any other directory in the Sandbox file system. Files written to the volume persist beyond the lifecycle of any individual Sandbox.
+
+## Limitations
+
+Since volumes are FUSE-based mounts, they can not be used for applications that require block storage access (like database tables).
+Volumes are generally slower for both read and write operations compared to the local Sandbox file system.
 
 title: Web Terminal
 
