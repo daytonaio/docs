@@ -145,6 +145,7 @@
 - [Disk Quota](https://daytona.io/docs/usage#disk-quota)
 - [Sandboxes/Running Sandboxes Quota](https://daytona.io/docs/usage#sandboxesrunning-sandboxes-quota)
 - [Images/Total Image Size Quota](https://daytona.io/docs/usage#imagestotal-image-size-quota)
+- [Volumes Quota](https://daytona.io/docs/usage#volumes-quota)
 - [Volumes](https://daytona.io/docs/volumes)
 - [Creating Volumes](https://daytona.io/docs/volumes#creating-volumes)
 - [Mounting Volumes to Sandboxes](https://daytona.io/docs/volumes#mounting-volumes-to-sandboxes)

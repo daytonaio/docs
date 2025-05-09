@@ -1536,12 +1536,20 @@
     "objectID": 192
   },
   {
+    "title": "Volumes Quota",
+    "description": "The Volumes Quota is the maximum number of Volumes that can be created in an Organization.",
+    "tag": "Documentation",
+    "url": "/docs/usage#volumes-quota",
+    "slug": "/usage#volumes-quota",
+    "objectID": 193
+  },
+  {
     "title": "Volumes",
     "description": "Volumes are FUSE-based mounts on the Sandbox file system that enable file sharing between Sandboxes and instant access to existing files already present on the mounted volume.",
     "tag": "Documentation",
     "url": "/docs/volumes",
     "slug": "/volumes",
-    "objectID": 193
+    "objectID": 194
   },
   {
     "title": "Creating Volumes",
@@ -1549,7 +1557,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#creating-volumes",
     "slug": "/volumes#creating-volumes",
-    "objectID": 194
+    "objectID": 195
   },
   {
     "title": "Mounting Volumes to Sandboxes",
@@ -1557,7 +1565,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#mounting-volumes-to-sandboxes",
     "slug": "/volumes#mounting-volumes-to-sandboxes",
-    "objectID": 195
+    "objectID": 196
   },
   {
     "title": "Create a new volume or get an existing one",
@@ -1565,7 +1573,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#create-a-new-volume-or-get-an-existing-one",
     "slug": "/volumes#create-a-new-volume-or-get-an-existing-one",
-    "objectID": 196
+    "objectID": 197
   },
   {
     "title": "Mount the volume to the sandbox",
@@ -1573,7 +1581,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#mount-the-volume-to-the-sandbox",
     "slug": "/volumes#mount-the-volume-to-the-sandbox",
-    "objectID": 197
+    "objectID": 198
   },
   {
     "title": "When you're done with the sandbox, you can remove it",
@@ -1581,7 +1589,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
     "slug": "/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
-    "objectID": 198
+    "objectID": 199
   },
   {
     "title": "The volume will persist even after the sandbox is removed",
@@ -1589,7 +1597,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
     "slug": "/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
-    "objectID": 199
+    "objectID": 200
   },
   {
     "title": "Deleting Volumes",
@@ -1597,7 +1605,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#deleting-volumes",
     "slug": "/volumes#deleting-volumes",
-    "objectID": 200
+    "objectID": 201
   },
   {
     "title": "Working with Volumes",
@@ -1605,7 +1613,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#working-with-volumes",
     "slug": "/volumes#working-with-volumes",
-    "objectID": 201
+    "objectID": 202
   },
   {
     "title": "Limitations",
@@ -1613,7 +1621,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#limitations",
     "slug": "/volumes#limitations",
-    "objectID": 202
+    "objectID": 203
   },
   {
     "title": "Web Terminal",
@@ -1621,6 +1629,6 @@
     "tag": "Documentation",
     "url": "/docs/web-terminal",
     "slug": "/web-terminal",
-    "objectID": 203
+    "objectID": 204
   }
 ]
