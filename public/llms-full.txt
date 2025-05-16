@@ -2794,6 +2794,10 @@ The Images Quota is the maximum number of Images that can be created in an Organ
 
 The Total image size Quota is the maximum amount of disk space that can be used by Images in an Organization expressed in gigabytes.
 
+## Volumes Quota
+
+The Volumes Quota is the maximum number of Volumes that can be created in an Organization.
+
 title: Volumes
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
