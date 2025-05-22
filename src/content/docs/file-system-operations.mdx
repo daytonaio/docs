@@ -90,7 +90,7 @@ If you want to upload a single file, you can do it as follows:
 
 with open("local_file.txt", "rb") as f:
     content = f.read()
-sandbox.fs.upload_file("remote_file.txt", content)
+sandbox.fs.upload_file(content, "remote_file.txt")
 
 ```
 </TabItem>
@@ -98,12 +98,8 @@ sandbox.fs.upload_file("remote_file.txt", content)
 ```typescript
 
 // Upload a single file
-const fileContent = new File(
-    [Buffer.from('Hello, World!')],
-    'data.txt',
-    { type: 'text/plain' }
-)
-await workspace.fs.uploadFile("data.txt", fileContent)
+const fileContent = Buffer.from('Hello, World!')
+await workspace.fs.uploadFile(fileContent, "data.txt")
 
 ```
 
@@ -124,20 +120,20 @@ files_to_upload = []
 
 with open("file1.txt", "rb") as f1:
     files_to_upload.append(FileUpload(
-        path="data/file1.txt",
-        content=f1.read()
+        source=f1.read(),
+        destination="data/file1.txt",
     ))
 
 with open("file2.txt", "rb") as f2:
     files_to_upload.append(FileUpload(
-        path="data/file1.txt",
-        content=f2.read()
+        source=f2.read(),
+        destination="data/file2.txt",
     ))
 
 with open("settings.json", "rb") as f3:
     files_to_upload.append(FileUpload(
-        path="config/settings.json",
-        content=f3.read()
+        source=f3.read(),
+        destination="config/settings.json",
     ))
 
 sandbox.fs.upload_files(files_to_upload)
@@ -150,16 +146,16 @@ sandbox.fs.upload_files(files_to_upload)
 // Upload multiple files at once
 const files = [
     {
-      path: 'data/file1.txt',
-      content: new File(['Content of file 1'], 'file1.txt')
+        source: Buffer.from('Content of file 1'),
+        destination: 'data/file1.txt',
     },
     {
-      path: 'data/file2.txt',
-      content: new File(['Content of file 2'], 'file2.txt')
+        source: Buffer.from('Content of file 2'),
+        destination: 'data/file2.txt',
     },
     {
-        path: 'config/settings.json',
-        content: new File(['{"key": "value"}'], 'settings.json')
+        source: Buffer.from('{"key": "value"}'),
+        destination: 'config/settings.json',
     }
 ]
 
