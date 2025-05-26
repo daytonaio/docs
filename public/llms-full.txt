@@ -1,5 +1,5 @@
 # Daytona Documentation v0.18.0
-# Generated on: 2025-05-22
+# Generated on: 2025-05-26
 
 
 title: API Keys
@@ -1387,6 +1387,51 @@ const completions = await lspServer.getCompletions({
 console.log('Completions:', completions)
 ```
 
+title: Limits
+
+Daytona enforces resource limits to ensure fair usage and stability across all organizations. Your organization has access to a compute pool consisting of:
+
+- **vCPU** — total CPU cores available
+- **Memory** — total RAM available
+- **Disk** — total disk space across sandboxes
+
+These resources are pooled and shared across all running Sandboxes.  
+The number of Sandboxes you can run at once depends on how much CPU, RAM, and disk each one uses.   You can see how to configure and estimate resource usage in the [Sandbox Management docs](https://www.daytona.io/docs/sandbox-management/).
+
+:::tip 
+### Manage usage dynamically
+
+Only **Running** Sandboxes count against your vCPU, memory, and disk limits.  
+Use **Stop**, **Archive**, or **Delete** to manage resources:
+
+- **Stopped** Sandboxes free up CPU and memory but still consume disk.
+- **Archived** Sandboxes free up all compute and move data to cold storage (no quota impact).
+- **Deleted** Sandboxes are permanently removed and free up all resources, including disk.
+:::
+
+
+
+
+Check your current usage and limits in the [Dashboard](https://app.daytona.io/dashboard/limits).
+
+## Tiers & Limit Increases
+
+Organizations are automatically placed into a Tier based on verification status.  
+You can unlock higher limits by completing the following steps:
+
+| Tier     | Compute Pool (vCPU / RAM / Disk) | Access Requirements                |
+|----------|----------------------------------|------------------------------------|
+| Tier 1   | 10 / 10GiB / 30GiB               | Email verified                     |
+| Tier 2   | 100 / 200GiB / 300GiB            | Credit card linked, GitHub connected, $10 top-up. |
+| Tier 3   | Everything bigger  🚀            | Coming soon. |
+| Custom   | Custom limits                    | Contact [support@daytona.io](mailto:support@daytona.io) |
+
+You’ll be automatically upgraded once you meet the criteria.
+
+## Need More?
+
+If you need higher or specialized limits, reach out to [support@daytona.io](mailto:support@daytona.io).
+
 title: Log Streaming
 
 When executing long-running processes in a sandbox, you’ll often want to access and process their logs in **real time**.
@@ -2136,6 +2181,7 @@ title: Sandbox Management
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 Sandboxes are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove Sandboxes using the SDK.
+By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU**, **1GB RAM**, and **3GiB disk** disk.
 
 ## Creating Sandboxes
 
@@ -2189,12 +2235,17 @@ const sandbox = await daytona.create({ labels: { SOME_LABEL: 'my-label' } });
 
 
 :::note
-Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are automatically used if the default image is used, reducing the creation time down to a fraction of a second.
+Daytona keeps a pool of warm Sandboxes using default images.  
+When available, your Sandbox will launch in milliseconds instead of cold-booting.
 :::
 
 ### Sandbox Resources
 
-You can configure the compute resources allocated to your Sandbox using the `SandboxResources` class. This allows you to specify the number of CPU cores, the memory and disk space.
+Daytona Sandboxes come with **1 vCPU**, **1GB RAM**, and **3GiB disk** by default.  
+
+Need more power? Use the `SandboxResources` class to define exactly what you need: CPU, memory, and disk space are all customizable.
+
+Check your available resources and limits in the [dashboard](https://app.daytona.io/dashboard/limits).
 
 ```python
 from daytona_sdk import Daytona, CreateSandboxParams, SandboxResources
@@ -2274,9 +2325,9 @@ const state = sandbox.instance.state
 
 To get the preview URL for a specific port, check out [Preview & Authentication](/docs/preview-and-authentication).
 
-## Remove Sandbox
+## Stop & Remove Sandbox
 
-Daytona SDK provides methods to perform operations on Sandboxes, such as removing Sandboxes using Python and TypeScript.
+Daytona SDK provides methods to stop and delete Sandboxes using Python and TypeScript.
 
 ```python
 # Remove Sandbox
@@ -2759,38 +2810,6 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
-
-title: Usage
-
-The Usage subpage in the Dashboard shows usage limits assigned to Organizations. Contact us at [support@daytona.io](mailto:support@daytona.io) to request a limit increase.
-
-## CPU Quota
-
-The CPU Quota is the maximum number of CPU cores that can be used by Sandboxes in an Organization.
-
-## Memory Quota
-
-The Memory Quota is the maximum amount of RAM that can be used by Sandboxes in an Organization expressed in gigabytes.
-
-## Disk Quota
-
-The Disk Quota is the maximum amount of disk space that can be used by Sandboxes in an Organization expressed in gigabytes.
-
-## Sandboxes/Running Sandboxes Quota
-
-The Sandboxes Quota is the maximum number of Sandboxes that can be created in an Organization.
-
-The Running Sandboxes Quota is the maximum number of Sandboxes that can be in Running state in an Organization at the same time.
-
-## Images/Total Image Size Quota
-
-The Images Quota is the maximum number of Images that can be created in an Organization.
-
-The Total image size Quota is the maximum amount of disk space that can be used by Images in an Organization expressed in gigabytes.
-
-## Volumes Quota
-
-The Volumes Quota is the maximum number of Volumes that can be created in an Organization.
 
 title: Volumes
 

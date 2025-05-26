@@ -5,6 +5,7 @@ title: Sandbox Management
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 Sandboxes are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove Sandboxes using the SDK.
+By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU**, **1GB RAM**, and **3GiB disk** disk.
 
 ## Creating Sandboxes
 
@@ -64,12 +65,17 @@ const sandbox = await daytona.create({ labels: { SOME_LABEL: 'my-label' } });
 </Tabs>
 
 :::note
-Daytona keeps a pool of ready-to-go "warm" Sandboxes. When available, they are automatically used if the default image is used, reducing the creation time down to a fraction of a second.
+Daytona keeps a pool of warm Sandboxes using default images.  
+When available, your Sandbox will launch in milliseconds instead of cold-booting.
 :::
 
 ### Sandbox Resources
 
-You can configure the compute resources allocated to your Sandbox using the `SandboxResources` class. This allows you to specify the number of CPU cores, the memory and disk space.
+Daytona Sandboxes come with **1 vCPU**, **1GB RAM**, and **3GiB disk** by default.  
+
+Need more power? Use the `SandboxResources` class to define exactly what you need: CPU, memory, and disk space are all customizable.
+
+Check your available resources and limits in the [dashboard](https://app.daytona.io/dashboard/limits).
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -161,9 +167,9 @@ const state = sandbox.instance.state
 
 To get the preview URL for a specific port, check out [Preview & Authentication](/docs/preview-and-authentication).
 
-## Remove Sandbox
+## Stop & Remove Sandbox
 
-Daytona SDK provides methods to perform operations on Sandboxes, such as removing Sandboxes using Python and TypeScript.
+Daytona SDK provides methods to stop and delete Sandboxes using Python and TypeScript.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">

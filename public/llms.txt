@@ -1,5 +1,5 @@
 # Daytona Documentation v0.18.0
-# Generated on: 2025-05-22
+# Generated on: 2025-05-26
 
 # Daytona
 
@@ -59,6 +59,10 @@
 - [Supported Languages](https://daytona.io/docs/language-server-protocol#supported-languages)
 - [LSP Features](https://daytona.io/docs/language-server-protocol#lsp-features)
 - [Code Completion](https://daytona.io/docs/language-server-protocol#code-completion)
+- [Limits](https://daytona.io/docs/limits)
+- [Manage usage dynamically](https://daytona.io/docs/limits#manage-usage-dynamically)
+- [Tiers & Limit Increases](https://daytona.io/docs/limits#tiers--limit-increases)
+- [Need More?](https://daytona.io/docs/limits#need-more)
 - [Log Streaming](https://daytona.io/docs/log-streaming)
 - [Asynchronous](https://daytona.io/docs/log-streaming#asynchronous)
 - [Synchronous](https://daytona.io/docs/log-streaming#synchronous)
@@ -104,7 +108,7 @@
 - [Basic Sandbox Creation](https://daytona.io/docs/sandbox-management#basic-sandbox-creation)
 - [Sandbox Resources](https://daytona.io/docs/sandbox-management#sandbox-resources)
 - [Sandbox Information](https://daytona.io/docs/sandbox-management#sandbox-information)
-- [Remove Sandbox](https://daytona.io/docs/sandbox-management#remove-sandbox)
+- [Stop & Remove Sandbox](https://daytona.io/docs/sandbox-management#stop--remove-sandbox)
 - [Sandbox States and Persistence](https://daytona.io/docs/sandbox-management#sandbox-states-and-persistence)
 - [Auto-stop Interval](https://daytona.io/docs/sandbox-management#auto-stop-interval)
 - [Running](https://daytona.io/docs/sandbox-management#running)
@@ -139,13 +143,6 @@
 - [daytona mcp init](https://daytona.io/docs/tools/cli#daytona-mcp-init)
 - [daytona mcp start](https://daytona.io/docs/tools/cli#daytona-mcp-start)
 - [daytona mcp config](https://daytona.io/docs/tools/cli#daytona-mcp-config)
-- [Usage](https://daytona.io/docs/usage)
-- [CPU Quota](https://daytona.io/docs/usage#cpu-quota)
-- [Memory Quota](https://daytona.io/docs/usage#memory-quota)
-- [Disk Quota](https://daytona.io/docs/usage#disk-quota)
-- [Sandboxes/Running Sandboxes Quota](https://daytona.io/docs/usage#sandboxesrunning-sandboxes-quota)
-- [Images/Total Image Size Quota](https://daytona.io/docs/usage#imagestotal-image-size-quota)
-- [Volumes Quota](https://daytona.io/docs/usage#volumes-quota)
 - [Volumes](https://daytona.io/docs/volumes)
 - [Creating Volumes](https://daytona.io/docs/volumes#creating-volumes)
 - [Mounting Volumes to Sandboxes](https://daytona.io/docs/volumes#mounting-volumes-to-sandboxes)

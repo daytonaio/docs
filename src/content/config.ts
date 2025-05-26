@@ -159,9 +159,9 @@ export const sidebarConfig: NavigationGroup[] = [
       },
       {
         type: 'link',
-        href: '/docs/usage',
-        label: 'Usage',
-        description: 'Usage and limits assigned to Organizations.',
+        href: '/docs/limits',
+        label: 'Limits',
+        description: 'Limits and tiers assigned to Organizations.',
         attrs: {
           icon: 'log.svg',
         },
