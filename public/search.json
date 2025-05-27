@@ -33,7 +33,7 @@
   },
   {
     "title": "Automatic Top-Up",
-    "description": "The Automatic Top-Up section allows organizations to set automatic top-up rules for their wallets.",
+    "description": "Organizations can set automatic top-up rules for their wallets.",
     "tag": "Documentation",
     "url": "/docs/billing#automatic-top-up",
     "slug": "/billing#automatic-top-up",
@@ -41,7 +41,7 @@
   },
   {
     "title": "Cost Breakdown",
-    "description": "The Cost Breakdown chart shows breakdown of costs per resource.",
+    "description": "The **Cost Breakdown** chart displays cost usage by resource.",
     "tag": "Documentation",
     "url": "/docs/billing#cost-breakdown",
     "slug": "/billing#cost-breakdown",
@@ -744,19 +744,19 @@
     "objectID": 93
   },
   {
-    "title": "Manage usage dynamically",
-    "description": "Only **Running** Sandboxes count against your vCPU, memory, and disk limits.",
-    "tag": "Documentation",
-    "url": "/docs/limits#manage-usage-dynamically",
-    "slug": "/limits#manage-usage-dynamically",
-    "objectID": 94
-  },
-  {
     "title": "Tiers & Limit Increases",
     "description": "Organizations are automatically placed into a Tier based on verification status.",
     "tag": "Documentation",
     "url": "/docs/limits#tiers--limit-increases",
     "slug": "/limits#tiers--limit-increases",
+    "objectID": 94
+  },
+  {
+    "title": "Manage usage dynamically",
+    "description": "This is how different sandbox states affect your available resources:",
+    "tag": "Documentation",
+    "url": "/docs/limits#manage-usage-dynamically",
+    "slug": "/limits#manage-usage-dynamically",
     "objectID": 95
   },
   {
@@ -1521,7 +1521,7 @@
   },
   {
     "title": "Volumes",
-    "description": "Volumes are FUSE-based mounts on the Sandbox file system that enable file sharing between Sandboxes and instant access to existing files already present on the mounted volume.",
+    "description": "Volumes are FUSE-based mounts that provide shared file access across Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/volumes",
     "slug": "/volumes",
@@ -1529,18 +1529,18 @@
   },
   {
     "title": "Creating Volumes",
-    "description": "In order to mount a volume to a Sandbox, one must be created.",
+    "description": "Before mounting a volume to a Sandbox, it must be created.",
     "tag": "Documentation",
     "url": "/docs/volumes#creating-volumes",
     "slug": "/volumes#creating-volumes",
     "objectID": 192
   },
   {
-    "title": "Mounting Volumes to Sandboxes",
-    "description": "Once a volume is created, it can be mounted to a Sandbox by specifying it in the `CreateSandboxParams` object:",
+    "title": "Mounting Volumes",
+    "description": "Mount a volume to a Sandbox using `CreateSandboxParams`:",
     "tag": "Documentation",
-    "url": "/docs/volumes#mounting-volumes-to-sandboxes",
-    "slug": "/volumes#mounting-volumes-to-sandboxes",
+    "url": "/docs/volumes#mounting-volumes",
+    "slug": "/volumes#mounting-volumes",
     "objectID": 193
   },
   {
@@ -1568,11 +1568,11 @@
     "objectID": 196
   },
   {
-    "title": "The volume will persist even after the sandbox is removed",
+    "title": "The volume persists after the sandbox is removed",
     "description": "",
     "tag": "Documentation",
-    "url": "/docs/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
-    "slug": "/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
+    "url": "/docs/volumes#the-volume-persists-after-the-sandbox-is-removed",
+    "slug": "/volumes#the-volume-persists-after-the-sandbox-is-removed",
     "objectID": 197
   },
   {

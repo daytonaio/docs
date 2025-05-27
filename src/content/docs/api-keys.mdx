@@ -6,9 +6,9 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 Daytona API keys are used to authenticate requests to the [Daytona API](/docs/tools/api).
 
-The [Configuration](/docs/configuration) page covers how to set up your environment variables, including the `DAYTONA_API_KEY` environment variable.
+The [Configuration](/docs/configuration) page explains how to set the `DAYTONA_API_KEY` environment variable.
 
-To list existing API Keys go to the Keys subpage in the Dashboard. Clicking on `Create Key` will show a modal for creating and copying a new key to your clipboard.
+To manage your API keys, go to the [Keys](https://app.daytona.io/dashboard/keys) section in the Dashboard. Click `Create Key` to generate a new key and copy it to your clipboard.
 
 ## Permissions
 
@@ -19,5 +19,11 @@ When adding a new API Key you will be prompted to select a set of permissions fo
 | **`Sandboxes`** | Grants the ability to create and manage Sandboxes |
 | **`Images`** | Grants the ability to create and manage Images |
 | **`Registries`** | Grants the ability to create and manage Registries |
+| **`Volumes`** | Grants the ability to create and manage Volumes |
 
-Each of these permissions have scopes for creating and updating resources (e.g. `write:sandboxes`) and delete resources (e.g. `delete:sandboxes`) that can be separately granted.
+Each permission includes fine-grained scopes:  
+
+- `write:*` for creating and updating  
+- `delete:*` for deleting resources  
+
+Example: `write:sandboxes`, `delete:sandboxes`
