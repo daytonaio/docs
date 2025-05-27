@@ -1,5 +1,5 @@
 # Daytona Documentation v0.18.0
-# Generated on: 2025-05-26
+# Generated on: 2025-05-27
 
 # Daytona
 
@@ -60,8 +60,8 @@
 - [LSP Features](https://daytona.io/docs/language-server-protocol#lsp-features)
 - [Code Completion](https://daytona.io/docs/language-server-protocol#code-completion)
 - [Limits](https://daytona.io/docs/limits)
-- [Manage usage dynamically](https://daytona.io/docs/limits#manage-usage-dynamically)
 - [Tiers & Limit Increases](https://daytona.io/docs/limits#tiers--limit-increases)
+- [Manage usage dynamically](https://daytona.io/docs/limits#manage-usage-dynamically)
 - [Need More?](https://daytona.io/docs/limits#need-more)
 - [Log Streaming](https://daytona.io/docs/log-streaming)
 - [Asynchronous](https://daytona.io/docs/log-streaming#asynchronous)
@@ -145,7 +145,7 @@
 - [daytona mcp config](https://daytona.io/docs/tools/cli#daytona-mcp-config)
 - [Volumes](https://daytona.io/docs/volumes)
 - [Creating Volumes](https://daytona.io/docs/volumes#creating-volumes)
-- [Mounting Volumes to Sandboxes](https://daytona.io/docs/volumes#mounting-volumes-to-sandboxes)
+- [Mounting Volumes](https://daytona.io/docs/volumes#mounting-volumes)
 - [Deleting Volumes](https://daytona.io/docs/volumes#deleting-volumes)
 - [Working with Volumes](https://daytona.io/docs/volumes#working-with-volumes)
 - [Limitations](https://daytona.io/docs/volumes#limitations)

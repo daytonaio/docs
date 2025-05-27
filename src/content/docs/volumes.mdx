@@ -5,13 +5,14 @@ title: Volumes
 import Label from '@components/Label.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-Volumes are FUSE-based mounts on the Sandbox file system that enable file sharing between Sandboxes and instant access to existing files already present on the mounted volume.
-Using Volumes the Sandboxes can instantly read from large files eliminating the need to upload them first to the Sandbox file system.
-The volume data is stored on the S3 compatible object store. Multiple volumes can be mounted to a single Sandbox and each volume can be mounted on multiple Sandboxes simultaneously.
+Volumes are FUSE-based mounts that provide shared file access across Sandboxes. They allow Sandboxes to read from large files instantly - no need to upload files manually to each Sandbox. Volume data is stored on an S3-compatible object store.
+
+- Multiple volumes can be mounted to a single Sandbox  
+- A single volume can be mounted to multiple Sandboxes
 
 ## Creating Volumes
 
-In order to mount a volume to a Sandbox, one must be created.
+Before mounting a volume to a Sandbox, it must be created.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -26,9 +27,9 @@ const volume = await daytona.volume.get('my-volume', true)
 </TabItem>
 </Tabs>
 
-## Mounting Volumes to Sandboxes
+## Mounting Volumes
 
-Once a volume is created, it can be mounted to a Sandbox by specifying it in the `CreateSandboxParams` object:
+Mount a volume to a Sandbox using `CreateSandboxParams`:
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -39,9 +40,11 @@ from daytona_sdk import CreateSandboxParams, Daytona, VolumeMount
 daytona = Daytona()
 
 # Create a new volume or get an existing one
+
 volume = daytona.volume.get("my-volume", create=True)
 
 # Mount the volume to the sandbox
+
 mount_dir_1 = "/home/daytona/volume"
 
 params = CreateSandboxParams(
@@ -51,7 +54,9 @@ params = CreateSandboxParams(
 sandbox = daytona.create(params)
 
 # When you're done with the sandbox, you can remove it
-# The volume will persist even after the sandbox is removed
+
+# The volume persists after the sandbox is removed
+
 daytona.remove(sandbox)
 
 ```
