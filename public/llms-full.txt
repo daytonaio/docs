@@ -1,5 +1,5 @@
 # Daytona Documentation v0.18.0
-# Generated on: 2025-05-26
+# Generated on: 2025-05-28
 
 
 title: API Keys
@@ -71,7 +71,7 @@ Daytona SDK provides an option to configure settings using the `DaytonaConfig` c
 - `target`: Daytona Target to create the Sandboxes on.
 
 ```python
-from daytona_sdk import DaytonaConfig
+from daytona import DaytonaConfig
 
 config = DaytonaConfig(
     api_key="your-api-key",
@@ -412,7 +412,7 @@ For steps on additional configuration, including setting environmnent variables 
 Daytona provides official Python and TypeScript SDKs for interacting with the Daytona platform. Install the SDK using your preferred method:
 
 ```bash
-pip install daytona-sdk
+pip install daytona
 ```
 ```bash
 # Using npm
@@ -433,7 +433,7 @@ pnpm add @daytonaio/sdk
 Run the following code to create a Daytona Sandbox and execute commands:
 
 ```python
-from daytona_sdk import Daytona, DaytonaConfig, CreateSandboxParams
+from daytona import Daytona, DaytonaConfig, CreateSandboxParams
 
 # Initialize the Daytona client
 daytona = Daytona(DaytonaConfig(api_key="YOUR_API_KEY"))
@@ -504,7 +504,7 @@ npx tsx ./index.ts
 The following snippet uploads a file containing a simple Flask app to a Daytona Sandbox. The web server runs on port `3000` and is accessible through the provided preview URL:
 
 ```python
-from daytona_sdk import Daytona, DaytonaConfig, SessionExecuteRequest
+from daytona import Daytona, DaytonaConfig, SessionExecuteRequest
 
 daytona = Daytona(DaytonaConfig(api_key="YOUR_API_KEY"))
 
@@ -631,7 +631,7 @@ The following snippet connects to an LLM using the Anthropic API and asks Claude
 import os
 import re
 import requests
-from daytona_sdk import Daytona, DaytonaConfig
+from daytona import Daytona, DaytonaConfig
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -1041,7 +1041,7 @@ const sandbox = await daytona.create({
 Full example:
 
 ```python
-from daytona_sdk import Daytona, CreateSandboxParams
+from daytona import Daytona, CreateSandboxParams
 
 daytona = Daytona()
 
@@ -1173,7 +1173,7 @@ The default image used by Daytona contains `python`, `node` and their respective
 - `SQLAlchemy` (v2.0.38)
 - `transformers` (v4.49.0)
 - `anthropic` (v0.49.0)
-- `daytona_sdk` (v0.11.1)
+- `daytona` (v0.11.1)
 - `huggingface` (v0.0.1)
 - `instructor` (v1.7.3)
 - `langchain` (v0.3.20)
@@ -1214,7 +1214,7 @@ as it won't be shown again.
 #### 2. Install the SDK
 
   ```bash
-  pip install daytona_sdk
+  pip install daytona
   ```
   ```bash
   npm install @daytonaio/sdk
@@ -1224,7 +1224,7 @@ as it won't be shown again.
 
   Create a file named: `main.py`
   ```python
-  from daytona_sdk import Daytona, DaytonaConfig
+  from daytona import Daytona, DaytonaConfig
 
 # Define the configuration
 
@@ -1307,7 +1307,7 @@ The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox 
 Daytona SDK provides an option to create LSP servers using Python and TypeScript. The `path_to_project` starting point defaults to the current Sandbox user's root - e.g. `workspace/project` implies `/home/[username]/workspace/project`, but by starting with `/`, you may define an absolute path as well.
 
 ```python
-from daytona_sdk import Daytona, LspLanguageId
+from daytona import Daytona, LspLanguageId
 
 # Create Sandbox
 
@@ -1344,7 +1344,7 @@ const lspServer = await sandbox.createLspServer(
 Daytona SDK provides an option to create LSP servers for various languages through the `LspLanguageId` enum in Python and TypeScript.
 
 ```python
-from daytona_sdk import LspLanguageId
+from daytona import LspLanguageId
 
 # Available language IDs
 
@@ -1398,7 +1398,8 @@ Daytona enforces resource limits to ensure fair usage and stability across all o
 These resources are pooled and shared across all running Sandboxes.  
 The number of Sandboxes you can run at once depends on how much CPU, RAM, and disk each one uses.   You can see how to configure and estimate resource usage in the [Sandbox Management docs](https://www.daytona.io/docs/sandbox-management/).
 
-:::tip 
+:::tip
+
 ### Manage usage dynamically
 
 Only **Running** Sandboxes count against your vCPU, memory, and disk limits.  
@@ -1407,10 +1408,8 @@ Use **Stop**, **Archive**, or **Delete** to manage resources:
 - **Stopped** Sandboxes free up CPU and memory but still consume disk.
 - **Archived** Sandboxes free up all compute and move data to cold storage (no quota impact).
 - **Deleted** Sandboxes are permanently removed and free up all resources, including disk.
+
 :::
-
-
-
 
 Check your current usage and limits in the [Dashboard](https://app.daytona.io/dashboard/limits).
 
@@ -1458,7 +1457,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
   ```python
   import asyncio
-  from daytona_sdk import Daytona, SessionExecuteRequest
+  from daytona import Daytona, SessionExecuteRequest
 
   async def main():
       daytona = Daytona()
@@ -1543,7 +1542,7 @@ you can process log stream synchronously. For example, you can write logs to a f
   ```python
   import asyncio
   import os
-  from daytona_sdk import Daytona, SessionExecuteRequest
+  from daytona import Daytona, SessionExecuteRequest
 
   async def main():
       daytona = Daytona()
@@ -2158,7 +2157,7 @@ Daytona is currently available in the following regions:
 You can select the region during the Daytona [configuration](/docs/configuration) step.
 
 ```python
-from daytona_sdk import Daytona, DaytonaConfig, SandboxTargetRegion
+from daytona import Daytona, DaytonaConfig, SandboxTargetRegion
 
 config = DaytonaConfig(
     target=SandboxTargetRegion.US
@@ -2181,7 +2180,7 @@ title: Sandbox Management
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 Sandboxes are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove Sandboxes using the SDK.
-By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU**, **1GB RAM**, and **3GiB disk** disk.
+By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU**, **1GB RAM**, and **3GiB disk**.
 
 ## Creating Sandboxes
 
@@ -2199,7 +2198,7 @@ Setting the auto-stop interval parameter to `0` will disable the auto-stop funct
 Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom labels using Python and TypeScript.
 
 ```python
-from daytona_sdk import Daytona
+from daytona import Daytona
 
 daytona = Daytona()
 
@@ -2248,7 +2247,7 @@ Need more power? Use the `SandboxResources` class to define exactly what you nee
 Check your available resources and limits in the [dashboard](https://app.daytona.io/dashboard/limits).
 
 ```python
-from daytona_sdk import Daytona, CreateSandboxParams, SandboxResources
+from daytona import Daytona, CreateSandboxParams, SandboxResources
 
 daytona = Daytona()
 
@@ -2836,7 +2835,7 @@ Once a volume is created, it can be mounted to a Sandbox by specifying it in the
 
 ```python
 import os
-from daytona_sdk import CreateSandboxParams, Daytona, VolumeMount
+from daytona import CreateSandboxParams, Daytona, VolumeMount
 
 daytona = Daytona()
 

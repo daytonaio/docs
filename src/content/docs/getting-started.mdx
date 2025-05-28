@@ -17,7 +17,7 @@ Daytona provides official Python and TypeScript SDKs for interacting with the Da
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```bash
-pip install daytona-sdk
+pip install daytona
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
@@ -44,7 +44,7 @@ Run the following code to create a Daytona Sandbox and execute commands:
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-from daytona_sdk import Daytona, DaytonaConfig, CreateSandboxParams
+from daytona import Daytona, DaytonaConfig, CreateSandboxParams
 
 # Initialize the Daytona client
 daytona = Daytona(DaytonaConfig(api_key="YOUR_API_KEY"))
@@ -127,7 +127,7 @@ The following snippet uploads a file containing a simple Flask app to a Daytona 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-from daytona_sdk import Daytona, DaytonaConfig, SessionExecuteRequest
+from daytona import Daytona, DaytonaConfig, SessionExecuteRequest
 
 daytona = Daytona(DaytonaConfig(api_key="YOUR_API_KEY"))
 
@@ -260,7 +260,7 @@ The following snippet connects to an LLM using the Anthropic API and asks Claude
 import os
 import re
 import requests
-from daytona_sdk import Daytona, DaytonaConfig
+from daytona import Daytona, DaytonaConfig
 from dotenv import load_dotenv
 
 load_dotenv()
