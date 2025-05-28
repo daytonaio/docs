@@ -28,7 +28,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   <TabItem label="Python" icon="seti:python">
   ```python
   import asyncio
-  from daytona_sdk import Daytona, SessionExecuteRequest
+  from daytona import Daytona, SessionExecuteRequest
 
   async def main():
       daytona = Daytona()
@@ -119,7 +119,7 @@ you can process log stream synchronously. For example, you can write logs to a f
   ```python
   import asyncio
   import os
-  from daytona_sdk import Daytona, SessionExecuteRequest
+  from daytona import Daytona, SessionExecuteRequest
 
   async def main():
       daytona = Daytona()
