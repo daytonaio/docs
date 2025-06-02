@@ -1,5 +1,5 @@
 # Daytona Documentation v0.18.0
-# Generated on: 2025-05-26
+# Generated on: 2025-06-02
 
 # Daytona
 
@@ -19,6 +19,16 @@
 - [Environment Variables](https://daytona.io/docs/configuration#environment-variables)
 - [Setting Environment Variables](https://daytona.io/docs/configuration#setting-environment-variables)
 - [Configuration Precedence](https://daytona.io/docs/configuration#configuration-precedence)
+- [Declarative Builder](https://daytona.io/docs/declarative-builder)
+- [Overview](https://daytona.io/docs/declarative-builder#overview)
+- [Base Image Selection](https://daytona.io/docs/declarative-builder#base-image-selection)
+- [Package Management](https://daytona.io/docs/declarative-builder#package-management)
+- [File System Operations](https://daytona.io/docs/declarative-builder#file-system-operations)
+- [Environment Configuration](https://daytona.io/docs/declarative-builder#environment-configuration)
+- [Dynamic Image Building](https://daytona.io/docs/declarative-builder#dynamic-image-building)
+- [Creating Pre-built Images](https://daytona.io/docs/declarative-builder#creating-pre-built-images)
+- [Using an Existing Dockerfile](https://daytona.io/docs/declarative-builder#using-an-existing-dockerfile)
+- [Best Practices](https://daytona.io/docs/declarative-builder#best-practices)
 - [File System Operations](https://daytona.io/docs/file-system-operations)
 - [Basic Operations](https://daytona.io/docs/file-system-operations#basic-operations)
 - [Listing Files and Directories](https://daytona.io/docs/file-system-operations#listing-files-and-directories)
