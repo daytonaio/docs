@@ -130,6 +130,16 @@ export const sidebarConfig: NavigationGroup[] = [
           icon: 'layers.svg',
         },
       },
+      {
+        type: 'link',
+        href: '/docs/declarative-builder',
+        label: 'Declarative Builder',
+        description:
+          'Learn how to dynamically build Docker/OCI compatible Daytona Images using the Daytona SDK.',
+        attrs: {
+          icon: 'prebuilds.svg',
+        },
+      },
     ],
   },
   {
