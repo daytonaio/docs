@@ -140,6 +140,15 @@ export const sidebarConfig: NavigationGroup[] = [
           icon: 'prebuilds.svg',
         },
       },
+      {
+        type: 'link',
+        href: '/docs/volumes',
+        label: 'Volumes',
+        description: 'Learn how to manage volumes in your Daytona Sandboxes.',
+        attrs: {
+          icon: 'container-registries.svg',
+        },
+      },
     ],
   },
   {
@@ -285,15 +294,6 @@ export const sidebarConfig: NavigationGroup[] = [
         disablePagination: true,
         attrs: {
           icon: 'server.svg',
-        },
-      },
-      {
-        type: 'link',
-        href: '/docs/volumes',
-        label: 'Volumes',
-        description: 'Learn how to manage volumes in your Daytona Sandboxes.',
-        attrs: {
-          icon: 'container-registries.svg',
         },
       },
     ],
