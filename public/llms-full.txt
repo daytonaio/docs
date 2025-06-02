@@ -203,6 +203,7 @@ dynamic_image = (
 )
 
 # Create a new Sandbox with the dynamic image and stream the build logs
+
 sandbox = daytona.create(
     CreateSandboxParams(
         image=dynamic_image,
@@ -253,10 +254,12 @@ This image will stay visible in the Daytona dashboard and be permanently cached,
 image_name = f"python-example:{int(time.time())}"
 
 # Create a local file with some data to add to the image
+
 with open("file_example.txt", "w") as f:
     f.write("Hello, World!")
 
 # Create a Python image with common data science packages
+
 image = (
     Image.debian_slim("3.12")
     .pip_install(["numpy", "pandas", "matplotlib", "scipy", "scikit-learn", "jupyter"])
@@ -274,10 +277,12 @@ image = (
 )
 
 # Create the image and stream the build logs
+
 print(f"=== Creating Image: {image_name} ===")
 daytona.create_image(image_name, image, on_logs=lambda log_line: print(log_line, end=''))
 
 # Create a new Sandbox using the pre-built image
+
 sandbox = daytona.create(CreateSandboxParams(image_name=image_name, os_user="daytona"))
 
 ```
