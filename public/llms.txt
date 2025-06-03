@@ -121,6 +121,7 @@
 - [Stop & Remove Sandbox](https://daytona.io/docs/sandbox-management#stop--remove-sandbox)
 - [Sandbox States and Persistence](https://daytona.io/docs/sandbox-management#sandbox-states-and-persistence)
 - [Auto-stop Interval](https://daytona.io/docs/sandbox-management#auto-stop-interval)
+- [Auto-archive Interval](https://daytona.io/docs/sandbox-management#auto-archive-interval)
 - [Running](https://daytona.io/docs/sandbox-management#running)
 - [Stopped](https://daytona.io/docs/sandbox-management#stopped)
 - [Archived](https://daytona.io/docs/sandbox-management#archived)

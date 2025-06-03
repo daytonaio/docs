@@ -247,6 +247,34 @@ const sandbox = await daytona.create({
 </TabItem>
 </Tabs>
 
+### Auto-archive Interval
+
+Another useful built-in feature is the auto-archive interval. By default, it triggers after a Sandbox has been continuously stopped for `7 days` by archiving it, but the number can changed to any value, including `0` which means the maximum interval of `30 days` will be used.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+
+sandbox = daytona.create(CreateSandboxParams(
+    language = "python",
+    auto_archive_interval = 60 # Auto-archive after a Sandbox has been stopped for 1 hour
+))
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+
+const sandbox = await daytona.create({
+    language: 'typescript',
+    autoArchiveInterval: 60 // Auto-archive after a Sandbox has been stopped for 1 hour
+});
+
+```
+
+</TabItem>
+</Tabs>
+
  A Daytona Sandbox can have three states during its lifecycle:
 
 ### Running
