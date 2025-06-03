@@ -13,7 +13,7 @@ The declarative builder system supports two primary workflows:
 1. **Dynamic Images**: Build images with varying dependencies on demand when creating Sandboxes
 2. **Pre-built Images**: Create and register reusable images that can be shared across multiple Sandboxes
 
-It provides the following capabilities. For a complete API reference and method signatures, check the [Python](/docs/python-sdk) and [TypeScript](/docs/typescript-sdk) SDK references.
+It provides the following capabilities. For a complete API reference and method signatures, check the [Python](/docs/python-sdk/image) and [TypeScript](/docs/typescript-sdk/image) SDK references.
 
 ### Base Image Selection
 
@@ -38,7 +38,7 @@ It provides the following capabilities. For a complete API reference and method 
 - **Shell command execution** during the image build process
 - **Container runtime settings** including an entrypoint and default commands
 
-For detailed method signatures and usage examples, refer to the [Python](/docs/python-sdk) and [TypeScript](/docs/typescript-sdk) SDK references.
+For detailed method signatures and usage examples, refer to the [Python](/docs/python-sdk/image) and [TypeScript](/docs/typescript-sdk/image) SDK references.
 
 ## Dynamic Image Building
 
@@ -208,11 +208,6 @@ const image = Image.fromDockerfile("app/Dockerfile").pipInstall(['numpy'])
 
 </TabItem>
 </Tabs>
-
-:::note
-If your Dockerfile relies on specific context files or directories, you can use the `add_local_file` and `add_local_directory` methods to add them to the image.
-This way, the client uploads the contents onto a object storage managed by Daytona which will in turn be added to the build context.
-:::
 
 ## Best Practices
 
