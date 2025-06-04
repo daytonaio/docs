@@ -1,37 +1,37 @@
 ---
-title: "Git"
+title: "AsyncGit"
 hideTitleOnPage: true
 ---
 
-## Git
+## AsyncGit
 
 ```python
-class Git()
+class AsyncGit()
 ```
 
 Provides Git operations within a Sandbox.
 
 **Attributes**:
 
-- `sandbox` _Sandbox_ - The parent Sandbox instance.
+- `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
 - `instance` _SandboxInstance_ - The Sandbox instance this Git handler belongs to.
   
 **Example**:
 
 ```python
 # Clone a repository
-sandbox.git.clone(
+await sandbox.git.clone(
     url="https://github.com/user/repo.git",
     path="workspace/repo"
 )
 
 # Check repository status
-status = sandbox.git.status("workspace/repo")
+status = await sandbox.git.status("workspace/repo")
 print(f"Modified files: {status.modified}")
 
 # Stage and commit changes
-sandbox.git.add("workspace/repo", ["file.txt"])
-sandbox.git.commit(
+await sandbox.git.add("workspace/repo", ["file.txt"])
+await sandbox.git.commit(
     path="workspace/repo",
     message="Update file",
     author="John Doe",
@@ -39,27 +39,26 @@ sandbox.git.commit(
 )
 ```
 
-#### Git.\_\_init\_\_
+#### AsyncGit.\_\_init\_\_
 
 ```python
-def __init__(sandbox: "Sandbox", toolbox_api: ToolboxApi,
-             instance: SandboxInstance, get_root_dir: Callable[[], str])
+def __init__(toolbox_api: ToolboxApi, instance: SandboxInstance,
+             get_root_dir: Callable[[], Awaitable[str]])
 ```
 
 Initializes a new Git handler instance.
 
 **Arguments**:
 
-- `sandbox` _Sandbox_ - The parent Sandbox instance.
 - `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
 - `instance` _SandboxInstance_ - The Sandbox instance this Git handler belongs to.
 - `get_root_dir` _Callable[[], str]_ - A function to get the default root directory of the Sandbox.
 
-#### Git.add
+#### AsyncGit.add
 
 ```python
 @intercept_errors(message_prefix="Failed to add files: ")
-def add(path: str, files: List[str]) -> None
+async def add(path: str, files: List[str]) -> None
 ```
 
 Stages the specified files for the next commit, similar to
@@ -75,21 +74,21 @@ running 'git add' on the command line.
 
 ```python
 # Stage a single file
-sandbox.git.add("workspace/repo", ["file.txt"])
+await sandbox.git.add("workspace/repo", ["file.txt"])
 
 # Stage multiple files
-sandbox.git.add("workspace/repo", [
+await sandbox.git.add("workspace/repo", [
     "src/main.py",
     "tests/test_main.py",
     "README.md"
 ])
 ```
 
-#### Git.branches
+#### AsyncGit.branches
 
 ```python
 @intercept_errors(message_prefix="Failed to list branches: ")
-def branches(path: str) -> ListBranchResponse
+async def branches(path: str) -> ListBranchResponse
 ```
 
 Lists branches in the repository.
@@ -106,20 +105,20 @@ Lists branches in the repository.
 **Example**:
 
 ```python
-response = sandbox.git.branches("workspace/repo")
+response = await sandbox.git.branches("workspace/repo")
 print(f"Branches: {response.branches}")
 ```
 
-#### Git.clone
+#### AsyncGit.clone
 
 ```python
 @intercept_errors(message_prefix="Failed to clone repository: ")
-def clone(url: str,
-          path: str,
-          branch: Optional[str] = None,
-          commit_id: Optional[str] = None,
-          username: Optional[str] = None,
-          password: Optional[str] = None) -> None
+async def clone(url: str,
+                path: str,
+                branch: Optional[str] = None,
+                commit_id: Optional[str] = None,
+                username: Optional[str] = None,
+                password: Optional[str] = None) -> None
 ```
 
 Clones a Git repository into the specified path. It supports
@@ -142,13 +141,13 @@ repository if credentials are provided.
 
 ```python
 # Clone the default branch
-sandbox.git.clone(
+await sandbox.git.clone(
     url="https://github.com/user/repo.git",
     path="workspace/repo"
 )
 
 # Clone a specific branch with authentication
-sandbox.git.clone(
+await sandbox.git.clone(
     url="https://github.com/user/private-repo.git",
     path="workspace/private",
     branch="develop",
@@ -157,19 +156,19 @@ sandbox.git.clone(
 )
 
 # Clone a specific commit
-sandbox.git.clone(
+await sandbox.git.clone(
     url="https://github.com/user/repo.git",
     path="workspace/repo-old",
     commit_id="abc123"
 )
 ```
 
-#### Git.commit
+#### AsyncGit.commit
 
 ```python
 @intercept_errors(message_prefix="Failed to commit changes: ")
-def commit(path: str, message: str, author: str,
-           email: str) -> GitCommitResponse
+async def commit(path: str, message: str, author: str,
+                 email: str) -> GitCommitResponse
 ```
 
 Creates a new commit with the staged changes. Make sure to stage
@@ -187,8 +186,8 @@ changes using the add() method before committing.
 
 ```python
 # Stage and commit changes
-sandbox.git.add("workspace/repo", ["README.md"])
-sandbox.git.commit(
+await sandbox.git.add("workspace/repo", ["README.md"])
+await sandbox.git.commit(
     path="workspace/repo",
     message="Update documentation",
     author="John Doe",
@@ -196,13 +195,13 @@ sandbox.git.commit(
 )
 ```
 
-#### Git.push
+#### AsyncGit.push
 
 ```python
 @intercept_errors(message_prefix="Failed to push changes: ")
-def push(path: str,
-         username: Optional[str] = None,
-         password: Optional[str] = None) -> None
+async def push(path: str,
+               username: Optional[str] = None,
+               password: Optional[str] = None) -> None
 ```
 
 Pushes all local commits on the current branch to the remote
@@ -220,23 +219,23 @@ username and password/token.
 
 ```python
 # Push without authentication (for public repos or SSH)
-sandbox.git.push("workspace/repo")
+await sandbox.git.push("workspace/repo")
 
 # Push with authentication
-sandbox.git.push(
+await sandbox.git.push(
     path="workspace/repo",
     username="user",
     password="github_token"
 )
 ```
 
-#### Git.pull
+#### AsyncGit.pull
 
 ```python
 @intercept_errors(message_prefix="Failed to pull changes: ")
-def pull(path: str,
-         username: Optional[str] = None,
-         password: Optional[str] = None) -> None
+async def pull(path: str,
+               username: Optional[str] = None,
+               password: Optional[str] = None) -> None
 ```
 
 Pulls changes from the remote repository. If the remote repository requires authentication,
@@ -253,21 +252,21 @@ provide username and password/token.
 
 ```python
 # Pull without authentication
-sandbox.git.pull("workspace/repo")
+await sandbox.git.pull("workspace/repo")
 
 # Pull with authentication
-sandbox.git.pull(
+await sandbox.git.pull(
     path="workspace/repo",
     username="user",
     password="github_token"
 )
 ```
 
-#### Git.status
+#### AsyncGit.status
 
 ```python
 @intercept_errors(message_prefix="Failed to get status: ")
-def status(path: str) -> GitStatus
+async def status(path: str) -> GitStatus
 ```
 
 Gets the current Git repository status.
@@ -289,7 +288,7 @@ Gets the current Git repository status.
 **Example**:
 
 ```python
-status = sandbox.git.status("workspace/repo")
+status = await sandbox.git.status("workspace/repo")
 print(f"On branch: {status.current_branch}")
 print(f"Commits ahead: {status.ahead}")
 print(f"Commits behind: {status.behind}")

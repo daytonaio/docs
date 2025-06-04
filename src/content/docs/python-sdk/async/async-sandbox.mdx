@@ -1,12 +1,12 @@
 ---
-title: "Sandbox"
+title: "AsyncSandbox"
 hideTitleOnPage: true
 ---
 
-## Sandbox
+## AsyncSandbox
 
 ```python
-class Sandbox()
+class AsyncSandbox()
 ```
 
 Represents a Daytona Sandbox.
@@ -16,11 +16,11 @@ Represents a Daytona Sandbox.
 - `id` _str_ - Unique identifier for the Sandbox.
 - `instance` _SandboxInstance_ - The underlying Sandbox instance.
 - `code_toolbox` _SandboxCodeToolbox_ - Language-specific toolbox implementation.
-- `fs` _FileSystem_ - File system operations interface.
-- `git` _Git_ - Git operations interface.
-- `process` _Process_ - Process execution interface.
+- `fs` _AsyncFileSystem_ - File system operations interface.
+- `git` _AsyncGit_ - Git operations interface.
+- `process` _AsyncProcess_ - Process execution interface.
 
-#### Sandbox.\_\_init\_\_
+#### AsyncSandbox.\_\_init\_\_
 
 ```python
 def __init__(id: str, instance: SandboxInstance, sandbox_api: SandboxApi,
@@ -37,10 +37,10 @@ Initialize a new Sandbox instance.
 - `toolbox_api` _ToolboxApi_ - API client for toolbox operations.
 - `code_toolbox` _SandboxCodeToolbox_ - Language-specific toolbox implementation.
 
-#### Sandbox.info
+#### AsyncSandbox.info
 
 ```python
-def info() -> SandboxInfo
+async def info() -> SandboxInfo
 ```
 
 Gets structured information about the Sandbox.
@@ -53,17 +53,17 @@ Gets structured information about the Sandbox.
 **Example**:
 
 ```python
-info = sandbox.info()
+info = await sandbox.info()
 print(f"Sandbox {info.id}:")
 print(f"State: {info.state}")
 print(f"Resources: {info.resources.cpu} CPU, {info.resources.memory} RAM")
 ```
 
-#### Sandbox.get\_user\_root\_dir
+#### AsyncSandbox.get\_user\_root\_dir
 
 ```python
 @intercept_errors(message_prefix="Failed to get sandbox root directory: ")
-def get_user_root_dir() -> str
+async def get_user_root_dir() -> str
 ```
 
 Gets the root directory path for the logged in user inside the Sandbox.
@@ -75,15 +75,15 @@ Gets the root directory path for the logged in user inside the Sandbox.
 **Example**:
 
 ```python
-root_dir = sandbox.get_user_root_dir()
+root_dir = await sandbox.get_user_root_dir()
 print(f"Sandbox root: {root_dir}")
 ```
 
-#### Sandbox.create\_lsp\_server
+#### AsyncSandbox.create\_lsp\_server
 
 ```python
 def create_lsp_server(language_id: LspLanguageId,
-                      path_to_project: str) -> LspServer
+                      path_to_project: str) -> AsyncLspServer
 ```
 
 Creates a new Language Server Protocol (LSP) server instance.
@@ -107,11 +107,11 @@ diagnostics, and more.
 lsp = sandbox.create_lsp_server("python", "workspace/project")
 ```
 
-#### Sandbox.set\_labels
+#### AsyncSandbox.set\_labels
 
 ```python
 @intercept_errors(message_prefix="Failed to set labels: ")
-def set_labels(labels: Dict[str, str]) -> Dict[str, str]
+async def set_labels(labels: Dict[str, str]) -> Dict[str, str]
 ```
 
 Sets labels for the Sandbox.
@@ -137,14 +137,14 @@ new_labels = sandbox.set_labels({
 print(f"Updated labels: {new_labels}")
 ```
 
-#### Sandbox.start
+#### AsyncSandbox.start
 
 ```python
 @intercept_errors(message_prefix="Failed to start sandbox: ")
 @with_timeout(error_message=lambda self, timeout: (
     f"Sandbox {self.id} failed to start within the {timeout} seconds timeout period"
 ))
-def start(timeout: Optional[float] = 60)
+async def start(timeout: Optional[float] = 60)
 ```
 
 Starts the Sandbox and waits for it to be ready.
@@ -165,14 +165,14 @@ sandbox.start(timeout=40)  # Wait up to 40 seconds
 print("Sandbox started successfully")
 ```
 
-#### Sandbox.stop
+#### AsyncSandbox.stop
 
 ```python
 @intercept_errors(message_prefix="Failed to stop sandbox: ")
 @with_timeout(error_message=lambda self, timeout: (
     f"Sandbox {self.id} failed to stop within the {timeout} seconds timeout period"
 ))
-def stop(timeout: Optional[float] = 60)
+async def stop(timeout: Optional[float] = 60)
 ```
 
 Stops the Sandbox and waits for it to be fully stopped.
@@ -193,21 +193,21 @@ sandbox.stop()
 print("Sandbox stopped successfully")
 ```
 
-#### Sandbox.delete
+#### AsyncSandbox.delete
 
 ```python
-def delete() -> None
+async def delete() -> None
 ```
 
 Deletes the Sandbox.
 
-#### Sandbox.wait\_for\_workspace\_start
+#### AsyncSandbox.wait\_for\_workspace\_start
 
 ```python
 @deprecated(reason=(
     "Method is deprecated. Use `wait_for_sandbox_start` instead. This method will be removed in a future"
     " version."))
-def wait_for_workspace_start(timeout: Optional[float] = 60) -> None
+async def wait_for_workspace_start(timeout: Optional[float] = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'started' state. Polls the Sandbox status until it
@@ -221,7 +221,7 @@ reaches the 'started' state, encounters an error or times out.
 
 - `DaytonaError` - If timeout is negative; If Sandbox fails to start or times out
 
-#### Sandbox.wait\_for\_sandbox\_start
+#### AsyncSandbox.wait\_for\_sandbox\_start
 
 ```python
 @intercept_errors(
@@ -229,7 +229,7 @@ reaches the 'started' state, encounters an error or times out.
 @with_timeout(error_message=lambda self, timeout: (
     f"Sandbox {self.id} failed to become ready within the {timeout} seconds timeout period"
 ))
-def wait_for_sandbox_start(timeout: Optional[float] = 60) -> None
+async def wait_for_sandbox_start(timeout: Optional[float] = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'started' state. Polls the Sandbox status until it
@@ -243,13 +243,13 @@ reaches the 'started' state, encounters an error or times out.
 
 - `DaytonaError` - If timeout is negative; If Sandbox fails to start or times out
 
-#### Sandbox.wait\_for\_workspace\_stop
+#### AsyncSandbox.wait\_for\_workspace\_stop
 
 ```python
 @deprecated(reason=(
     "Method is deprecated. Use `wait_for_sandbox_stop` instead. This method will be removed in a future"
     " version."))
-def wait_for_workspace_stop(timeout: Optional[float] = 60) -> None
+async def wait_for_workspace_stop(timeout: Optional[float] = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'stopped' state. Polls the Sandbox status until it
@@ -264,7 +264,7 @@ for the Sandbox to stop.
 
 - `DaytonaError` - If timeout is negative. If Sandbox fails to stop or times out.
 
-#### Sandbox.wait\_for\_sandbox\_stop
+#### AsyncSandbox.wait\_for\_sandbox\_stop
 
 ```python
 @intercept_errors(
@@ -272,7 +272,7 @@ for the Sandbox to stop.
 @with_timeout(error_message=lambda self, timeout: (
     f"Sandbox {self.id} failed to become stopped within the {timeout} seconds timeout period"
 ))
-def wait_for_sandbox_stop(timeout: Optional[float] = 60) -> None
+async def wait_for_sandbox_stop(timeout: Optional[float] = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'stopped' state. Polls the Sandbox status until it
@@ -287,11 +287,11 @@ for the Sandbox to stop.
 
 - `DaytonaError` - If timeout is negative. If Sandbox fails to stop or times out.
 
-#### Sandbox.set\_autostop\_interval
+#### AsyncSandbox.set\_autostop\_interval
 
 ```python
 @intercept_errors(message_prefix="Failed to set auto-stop interval: ")
-def set_autostop_interval(interval: int) -> None
+async def set_autostop_interval(interval: int) -> None
 ```
 
 Sets the auto-stop interval for the Sandbox.
@@ -318,11 +318,11 @@ sandbox.set_autostop_interval(60)
 sandbox.set_autostop_interval(0)
 ```
 
-#### Sandbox.set\_auto\_archive\_interval
+#### AsyncSandbox.set\_auto\_archive\_interval
 
 ```python
 @intercept_errors(message_prefix="Failed to set auto-archive interval: ")
-def set_auto_archive_interval(interval: int) -> None
+async def set_auto_archive_interval(interval: int) -> None
 ```
 
 Sets the auto-archive interval for the Sandbox.
@@ -347,11 +347,11 @@ sandbox.set_autoarchive_interval(60)
 sandbox.set_autoarchive_interval(0)
 ```
 
-#### Sandbox.get\_preview\_link
+#### AsyncSandbox.get\_preview\_link
 
 ```python
 @intercept_errors(message_prefix="Failed to get preview link: ")
-def get_preview_link(port: int) -> PortPreviewUrl
+async def get_preview_link(port: int) -> PortPreviewUrl
 ```
 
 Retrieves the preview link for the sandbox at the specified port. If the port is closed,
@@ -375,11 +375,11 @@ print(f"Preview URL: {preview_link.url}")
 print(f"Token: {preview_link.token}")
 ```
 
-#### Sandbox.archive
+#### AsyncSandbox.archive
 
 ```python
 @intercept_errors(message_prefix="Failed to archive sandbox: ")
-def archive() -> None
+async def archive() -> None
 ```
 
 Archives the sandbox, making it inactive and preserving its state. When sandboxes are
@@ -388,7 +388,7 @@ possible to keep sandboxes available for an extended period. The tradeoff betwee
 and stopped states is that starting an archived sandbox takes more time, depending on its size.
 Sandbox must be stopped before archiving.
 
-#### Sandbox.to\_sandbox\_info
+#### AsyncSandbox.to\_sandbox\_info
 
 ```python
 @staticmethod
@@ -475,15 +475,6 @@ Structured information about a Sandbox.
 - `last_snapshot` _Optional[str]_ - When the last snapshot was created.
 - `auto_stop_interval` _int_ - Auto-stop interval in minutes.
 - `auto_archive_interval` _int_ - Auto-archive interval in minutes.
-  
-**Example**:
-
-```python
-sandbox = daytona.create()
-info = sandbox.info()
-print(f"Sandbox {info.id} is {info.state}")
-print(f"Resources: {info.resources.cpu} CPU, {info.resources.memory} RAM")
-```
 
 ## SandboxInstance
 

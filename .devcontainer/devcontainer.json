@@ -13,14 +13,14 @@
       "version": "lts",
       "nvmVersion": "0.40.0"
     },
-    "ghcr.io/devcontainers-contrib/features/typescript:2": {},
+    "ghcr.io/devcontainers-extra/features/typescript:2": {},
     "ghcr.io/devcontainers/features/git:1": {}
   },
   "overrideFeatureInstallOrder": [
     "ghcr.io/devcontainers/features/common-utils",
     "ghcr.io/devcontainers/features/git",
     "ghcr.io/devcontainers/features/node",
-    "ghcr.io/devcontainers-contrib/features/typescript"
+    "ghcr.io/devcontainers-extra/features/typescript"
   ],
   "customizations": {
     "codespaces": {
@@ -44,6 +44,6 @@
   "workspaceFolder": "/workspaces/docs",
   "onCreateCommand": "sudo cp ${containerWorkspaceFolder}/.devcontainer/welcome-message.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
   "postCreateCommand": "yarn install",
-  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && sudo sysctl -w fs.inotify.max_user_watches=100000",
   "remoteUser": "daytona"
 }

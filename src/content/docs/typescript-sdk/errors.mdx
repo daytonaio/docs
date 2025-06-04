@@ -38,6 +38,27 @@ new DaytonaError(message?: string): DaytonaError
 Error.constructor
 ```
 
+#### new DaytonaError()
+
+```ts
+new DaytonaError(message?: string, options?: ErrorOptions): DaytonaError
+```
+
+**Parameters**:
+
+- `message?` _string_
+- `options?` _ErrorOptions_
+
+**Returns**:
+
+- `DaytonaError`
+
+##### Inherited from
+
+```ts
+Error.constructor
+```
+
 ***
 
 ## DaytonaNotFoundError
@@ -59,6 +80,25 @@ new DaytonaNotFoundError(message?: string): DaytonaNotFoundError
 **Parameters**:
 
 - `message?` _string_
+
+**Returns**:
+
+- `DaytonaNotFoundError`
+
+##### Inherited from
+
+`DaytonaError`.`constructor`
+
+#### new DaytonaNotFoundError()
+
+```ts
+new DaytonaNotFoundError(message?: string, options?: ErrorOptions): DaytonaNotFoundError
+```
+
+**Parameters**:
+
+- `message?` _string_
+- `options?` _ErrorOptions_
 
 **Returns**:
 

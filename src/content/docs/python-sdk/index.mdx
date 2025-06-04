@@ -4,6 +4,8 @@ description: Interact with Daytona Sandboxes using the Python SDK
 next: /docs/python-sdk/daytona
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
 The Daytona Python SDK provides a robust interface for programmatically interacting with Daytona Sandboxes.
 
 ## Installation
@@ -24,13 +26,15 @@ poetry add daytona_sdk
 
 Here's a simple example to help you get started with the Daytona Python SDK:
 
+<Tabs>
+<TabItem label="Sync" icon="seti:python">
+
 ```python
 from daytona_sdk import Daytona, CreateSandboxParams
 
 def main():
     # Initialize the SDK (uses environment variables by default)
     daytona = Daytona()
-    
     # Create a new sandbox
     sandbox = daytona.create(CreateSandboxParams(
         language="python",
@@ -45,9 +49,39 @@ if __name__ == "__main__":
     main()
 ```
 
+</TabItem>
+<TabItem label="Async" icon="seti:python">
+
+```python
+import asyncio
+from daytona_sdk import AsyncDaytona, CreateSandboxParams
+
+async def main():
+    # Initialize the SDK (uses environment variables by default)
+    async with AsyncDaytona() as daytona:
+        # Create a new sandbox
+        sandbox = await daytona.create(CreateSandboxParams(
+            language="python",
+            env_vars={"PYTHON_ENV": "development"}
+        ))
+        
+        # Execute a command
+        response = await sandbox.process.exec("echo 'Hello, World!'")
+        print(response.result)
+    
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+</TabItem>
+</Tabs>
+
 ## Configuration
 
 The SDK can be configured using environment variables or by passing options to the constructor:
+
+<Tabs>
+<TabItem label="Sync" icon="seti:python">
 
 ```python
 from daytona_sdk import Daytona, DaytonaConfig, SandboxTargetRegion
@@ -63,3 +97,36 @@ config = DaytonaConfig(
 )
 daytona = Daytona(config)
 ```
+
+</TabItem>
+<TabItem label="Async" icon="seti:python">
+
+```python
+import asyncio
+from daytona_sdk import AsyncDaytona, DaytonaConfig, SandboxTargetRegion
+
+async def main():
+    try:
+        # Using environment variables (DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET)
+        daytona = AsyncDaytona()
+        # Your async code here
+        pass
+    finally:
+        await daytona.close()
+
+    # Using explicit configuration
+    config = DaytonaConfig(
+        api_key="your-api-key",
+        server_url="https://app.daytona.io/api",
+        target=SandboxTargetRegion.US
+    )
+    async with AsyncDaytona(config) as daytona:
+        # Your code here
+        pass
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+</TabItem>
+</Tabs>

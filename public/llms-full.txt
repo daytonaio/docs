@@ -1,5 +1,5 @@
-# Daytona Documentation v0.19.0
-# Generated on: 2025-06-03
+# Daytona Documentation v0.20.0
+# Generated on: 2025-06-04
 
 
 title: API Keys
@@ -157,7 +157,7 @@ The declarative builder system supports two primary workflows:
 1. **Dynamic Images**: Build images with varying dependencies on demand when creating Sandboxes
 2. **Pre-built Images**: Create and register reusable images that can be shared across multiple Sandboxes
 
-It provides the following capabilities. For a complete API reference and method signatures, check the [Python](/docs/python-sdk/image) and [TypeScript](/docs/typescript-sdk/image) SDK references.
+It provides the following capabilities. For a complete API reference and method signatures, check the [Python](/docs/python-sdk/common/image) and [TypeScript](/docs/typescript-sdk/common/image) SDK references.
 
 ### Base Image Selection
 
@@ -182,7 +182,7 @@ It provides the following capabilities. For a complete API reference and method 
 - **Shell command execution** during the image build process
 - **Container runtime settings** including an entrypoint and default commands
 
-For detailed method signatures and usage examples, refer to the [Python](/docs/python-sdk/image) and [TypeScript](/docs/typescript-sdk/image) SDK references.
+For detailed method signatures and usage examples, refer to the [Python](/docs/python-sdk/common/image) and [TypeScript](/docs/typescript-sdk/common/image) SDK references.
 
 ## Dynamic Image Building
 
@@ -602,7 +602,7 @@ title: Getting Started
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-The Daytona SDK provides official [Python](/docs/python-sdk) and [TypeScript](/docs/typescript-sdk) interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code.
+The Daytona SDK provides official [Python](/docs/python-sdk) and [TypeScript](/docs/typescript-sdk) interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code. [Python SDK](/docs/python-sdk) supports both sync and async programming models where async classes are prefixed with `Async`.
 
 Follow the step by step guide to create and run your first Daytona Sandbox for an AI Agent.
 
@@ -1918,6 +1918,7 @@ For Windows users, add the following to the `env` field:
     - `target` (default: "us"): Target region
     - `image`: Sandbox image (optional)
     - `auto_stop_interval` (default: "15"): Auto-stop interval in minutes (0 disables)
+    - `auto_archive_interval` (default: "10080"): Auto-archive interval in minutes (0 means the maximum interval will be used)
 
 - **Destroy Sandbox**
   - Removes an existing Daytona sandbox
@@ -2592,6 +2593,7 @@ const sandbox = await daytona.create({
 
 ```
 
+
 ### Auto-archive Interval
 
 Another useful built-in feature is the auto-archive interval. By default, it triggers after a Sandbox has been continuously stopped for `7 days` by archiving it, but the number can changed to any value, including `0` which means the maximum interval of `30 days` will be used.
@@ -2608,7 +2610,7 @@ sandbox = daytona.create(CreateSandboxParams(
 
 const sandbox = await daytona.create({
     language: 'typescript',
-    autoArchiveInterval = 60 # Auto-archive after a Sandbox has been stopped for 1 hour
+    autoArchiveInterval: 60 // Auto-archive after a Sandbox has been stopped for 1 hour
 });
 
 ```
@@ -2741,6 +2743,7 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--auto-stop` |  | Auto-stop interval in minutes (0 means disabled) |
+| `--auto-archive` |  | Auto-archive interval in minutes (0 means the maximum interval will be used) |
 | `--class` |  | Workspace class type (small, medium, large) |
 | `--cpu` |  | CPU cores allocated to the sandbox |
 | `--disk` |  | Disk space allocated to the sandbox in GB |
