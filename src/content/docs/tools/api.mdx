@@ -582,6 +582,22 @@ import Label from '@components/Label.astro'
 | :-------- | :---------- |
 | **`200`** | Auto-stop interval has been set |
 
+## POST /workspace/\{workspaceId\}/autoarchive/\{interval\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`workspaceId`** | path | true | undefined | ID of the workspace |
+| **`interval`** | path | true | undefined | Auto-archive interval in minutes (0 means the maximum interval will be used) |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Auto-archive interval has been set |
+
 ## POST /workspace/\{workspaceId\}/archive
 
 ### Parameters

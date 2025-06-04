@@ -1400,12 +1400,20 @@
     "objectID": 175
   },
   {
+    "title": "Auto-archive Interval",
+    "description": "Interval in minutes after which a continuously stopped Sandbox will automatically archive.",
+    "tag": "Documentation",
+    "url": "/docs/sandbox-management#auto-archive-interval",
+    "slug": "/sandbox-management#auto-archive-interval",
+    "objectID": 176
+  },
+  {
     "title": "Running",
     "description": "Running Sandboxes utilize CPU, memory, and disk storage.",
     "tag": "Documentation",
     "url": "/docs/sandbox-management#running",
     "slug": "/sandbox-management#running",
-    "objectID": 176
+    "objectID": 177
   },
   {
     "title": "Stopped",
@@ -1413,7 +1421,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#stopped",
     "slug": "/sandbox-management#stopped",
-    "objectID": 177
+    "objectID": 178
   },
   {
     "title": "Archived",
@@ -1421,7 +1429,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#archived",
     "slug": "/sandbox-management#archived",
-    "objectID": 178
+    "objectID": 179
   },
   {
     "title": "Performance Considerations",
@@ -1429,7 +1437,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#performance-considerations",
     "slug": "/sandbox-management#performance-considerations",
-    "objectID": 179
+    "objectID": 180
   },
   {
     "title": "CLI",
@@ -1437,7 +1445,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli",
     "slug": "/tools/cli",
-    "objectID": 180
+    "objectID": 181
   },
   {
     "title": "daytona version",
@@ -1445,7 +1453,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-version",
     "slug": "/tools/cli#daytona-version",
-    "objectID": 181
+    "objectID": 182
   },
   {
     "title": "daytona sandbox info",
@@ -1453,7 +1461,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-info",
     "slug": "/tools/cli#daytona-sandbox-info",
-    "objectID": 182
+    "objectID": 183
   },
   {
     "title": "daytona sandbox list",
@@ -1461,7 +1469,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-list",
     "slug": "/tools/cli#daytona-sandbox-list",
-    "objectID": 183
+    "objectID": 184
   },
   {
     "title": "daytona sandbox start",
@@ -1469,7 +1477,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-start",
     "slug": "/tools/cli#daytona-sandbox-start",
-    "objectID": 184
+    "objectID": 185
   },
   {
     "title": "daytona sandbox stop",
@@ -1477,7 +1485,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-stop",
     "slug": "/tools/cli#daytona-sandbox-stop",
-    "objectID": 185
+    "objectID": 186
   },
   {
     "title": "daytona sandbox",
@@ -1485,7 +1493,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox",
     "slug": "/tools/cli#daytona-sandbox",
-    "objectID": 186
+    "objectID": 187
   },
   {
     "title": "daytona sandbox create",
@@ -1493,7 +1501,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-create",
     "slug": "/tools/cli#daytona-sandbox-create",
-    "objectID": 187
+    "objectID": 188
   },
   {
     "title": "daytona sandbox delete",
@@ -1501,7 +1509,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-delete",
     "slug": "/tools/cli#daytona-sandbox-delete",
-    "objectID": 188
+    "objectID": 189
   },
   {
     "title": "daytona image push",
@@ -1509,7 +1517,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image-push",
     "slug": "/tools/cli#daytona-image-push",
-    "objectID": 189
+    "objectID": 190
   },
   {
     "title": "daytona login",
@@ -1517,7 +1525,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-login",
     "slug": "/tools/cli#daytona-login",
-    "objectID": 190
+    "objectID": 191
   },
   {
     "title": "daytona logout",
@@ -1525,7 +1533,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-logout",
     "slug": "/tools/cli#daytona-logout",
-    "objectID": 191
+    "objectID": 192
   },
   {
     "title": "daytona image",
@@ -1533,7 +1541,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image",
     "slug": "/tools/cli#daytona-image",
-    "objectID": 192
+    "objectID": 193
   },
   {
     "title": "daytona image create",
@@ -1541,7 +1549,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image-create",
     "slug": "/tools/cli#daytona-image-create",
-    "objectID": 193
+    "objectID": 194
   },
   {
     "title": "daytona image delete",
@@ -1549,7 +1557,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image-delete",
     "slug": "/tools/cli#daytona-image-delete",
-    "objectID": 194
+    "objectID": 195
   },
   {
     "title": "daytona image list",
@@ -1557,7 +1565,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-image-list",
     "slug": "/tools/cli#daytona-image-list",
-    "objectID": 195
+    "objectID": 196
   },
   {
     "title": "daytona",
@@ -1565,7 +1573,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona",
     "slug": "/tools/cli#daytona",
-    "objectID": 196
+    "objectID": 197
   },
   {
     "title": "daytona autocomplete",
@@ -1573,7 +1581,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-autocomplete",
     "slug": "/tools/cli#daytona-autocomplete",
-    "objectID": 197
+    "objectID": 198
   },
   {
     "title": "daytona docs",
@@ -1581,7 +1589,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-docs",
     "slug": "/tools/cli#daytona-docs",
-    "objectID": 198
+    "objectID": 199
   },
   {
     "title": "daytona organization",
@@ -1589,7 +1597,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization",
     "slug": "/tools/cli#daytona-organization",
-    "objectID": 199
+    "objectID": 200
   },
   {
     "title": "daytona organization create",
@@ -1597,7 +1605,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-create",
     "slug": "/tools/cli#daytona-organization-create",
-    "objectID": 200
+    "objectID": 201
   },
   {
     "title": "daytona organization delete",
@@ -1605,7 +1613,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-delete",
     "slug": "/tools/cli#daytona-organization-delete",
-    "objectID": 201
+    "objectID": 202
   },
   {
     "title": "daytona organization list",
@@ -1613,7 +1621,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-list",
     "slug": "/tools/cli#daytona-organization-list",
-    "objectID": 202
+    "objectID": 203
   },
   {
     "title": "daytona organization use",
@@ -1621,7 +1629,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-use",
     "slug": "/tools/cli#daytona-organization-use",
-    "objectID": 203
+    "objectID": 204
   },
   {
     "title": "daytona mcp",
@@ -1629,7 +1637,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp",
     "slug": "/tools/cli#daytona-mcp",
-    "objectID": 204
+    "objectID": 205
   },
   {
     "title": "daytona mcp init",
@@ -1637,7 +1645,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp-init",
     "slug": "/tools/cli#daytona-mcp-init",
-    "objectID": 205
+    "objectID": 206
   },
   {
     "title": "daytona mcp start",
@@ -1645,7 +1653,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp-start",
     "slug": "/tools/cli#daytona-mcp-start",
-    "objectID": 206
+    "objectID": 207
   },
   {
     "title": "daytona mcp config",
@@ -1653,7 +1661,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp-config",
     "slug": "/tools/cli#daytona-mcp-config",
-    "objectID": 207
+    "objectID": 208
   },
   {
     "title": "Volumes",
@@ -1661,7 +1669,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes",
     "slug": "/volumes",
-    "objectID": 208
+    "objectID": 209
   },
   {
     "title": "Creating Volumes",
@@ -1669,7 +1677,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#creating-volumes",
     "slug": "/volumes#creating-volumes",
-    "objectID": 209
+    "objectID": 210
   },
   {
     "title": "Mounting Volumes to Sandboxes",
@@ -1677,7 +1685,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#mounting-volumes-to-sandboxes",
     "slug": "/volumes#mounting-volumes-to-sandboxes",
-    "objectID": 210
+    "objectID": 211
   },
   {
     "title": "Create a new volume or get an existing one",
@@ -1685,7 +1693,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#create-a-new-volume-or-get-an-existing-one",
     "slug": "/volumes#create-a-new-volume-or-get-an-existing-one",
-    "objectID": 211
+    "objectID": 212
   },
   {
     "title": "Mount the volume to the sandbox",
@@ -1693,7 +1701,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#mount-the-volume-to-the-sandbox",
     "slug": "/volumes#mount-the-volume-to-the-sandbox",
-    "objectID": 212
+    "objectID": 213
   },
   {
     "title": "When you're done with the sandbox, you can remove it",
@@ -1701,7 +1709,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
     "slug": "/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
-    "objectID": 213
+    "objectID": 214
   },
   {
     "title": "The volume will persist even after the sandbox is removed",
@@ -1709,7 +1717,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
     "slug": "/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
-    "objectID": 214
+    "objectID": 215
   },
   {
     "title": "Deleting Volumes",
@@ -1717,7 +1725,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#deleting-volumes",
     "slug": "/volumes#deleting-volumes",
-    "objectID": 215
+    "objectID": 216
   },
   {
     "title": "Working with Volumes",
@@ -1725,7 +1733,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#working-with-volumes",
     "slug": "/volumes#working-with-volumes",
-    "objectID": 216
+    "objectID": 217
   },
   {
     "title": "Limitations",
@@ -1733,7 +1741,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#limitations",
     "slug": "/volumes#limitations",
-    "objectID": 217
+    "objectID": 218
   },
   {
     "title": "Web Terminal",
@@ -1741,6 +1749,6 @@
     "tag": "Documentation",
     "url": "/docs/web-terminal",
     "slug": "/web-terminal",
-    "objectID": 218
+    "objectID": 219
   }
 ]
