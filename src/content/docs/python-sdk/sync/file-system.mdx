@@ -83,7 +83,7 @@ sandbox.fs.delete_file("workspace/data/old_file.txt")
 
 ```python
 @overload
-def download_file(remote_path: str, timeout: int = 10 * 60) -> bytes
+def download_file(remote_path: str, timeout: int = 30 * 60) -> bytes
 ```
 
 Downloads a file from the Sandbox. Returns the file contents as a bytes object.
@@ -94,7 +94,7 @@ It can only be used for smaller files.
 
 - `remote_path` _str_ - Path to the file in the Sandbox. Relative paths are resolved based on the user's
   root directory.
-- `timeout` _int_ - Timeout for the download operation in seconds. 0 means no timeout. Default is 10 minutes.
+- `timeout` _int_ - Timeout for the download operation in seconds. 0 means no timeout. Default is 30 minutes.
   
 **Returns**:
 
@@ -119,7 +119,7 @@ config = json.loads(content.decode('utf-8'))
 @overload
 def download_file(remote_path: str,
                   local_path: str,
-                  timeout: int = 10 * 60) -> None
+                  timeout: int = 30 * 60) -> None
 ```
 
 Downloads a file from the Sandbox and saves it to a local file using stream.
@@ -130,7 +130,7 @@ This method is useful when you want to download larger files that may not fit in
 - `remote_path` _str_ - Path to the file in the Sandbox. Relative paths are resolved based on the user's
   root directory.
 - `local_path` _str_ - Path to save the file locally.
-- `timeout` _int_ - Timeout for the download operation in seconds. 0 means no timeout. Default is 10 minutes.
+- `timeout` _int_ - Timeout for the download operation in seconds. 0 means no timeout. Default is 30 minutes.
   
 **Example**:
 
@@ -411,7 +411,7 @@ sandbox.fs.set_file_permissions(
 
 ```python
 @overload
-def upload_file(file: bytes, remote_path: str, timeout: int = 10 * 60) -> None
+def upload_file(file: bytes, remote_path: str, timeout: int = 30 * 60) -> None
 ```
 
 Uploads a file to the specified path in the Sandbox. If a file already exists at
@@ -423,7 +423,7 @@ small files that fit into memory.
 - `file` _bytes_ - File contents as a bytes object.
 - `remote_path` _str_ - Path to the destination file. Relative paths are resolved based on the user's
   root directory.
-- `timeout` _int_ - Timeout for the upload operation in seconds. 0 means no timeout. Default is 10 minutes.
+- `timeout` _int_ - Timeout for the upload operation in seconds. 0 means no timeout. Default is 30 minutes.
   
 **Example**:
 
@@ -450,7 +450,7 @@ sandbox.fs.upload_file(content, "tmp/config.json")
 @overload
 def upload_file(local_path: str,
                 remote_path: str,
-                timeout: int = 10 * 60) -> None
+                timeout: int = 30 * 60) -> None
 ```
 
 Uploads a file from the local file system to the specified path in the Sandbox.
@@ -463,7 +463,7 @@ not fit into memory.
 - `local_path` _str_ - Path to the local file to upload.
 - `remote_path` _str_ - Path to the destination file in the Sandbox. Relative paths are
   resolved based on the user's root directory.
-- `timeout` _int_ - Timeout for the upload operation in seconds. 0 means no timeout. Default is 10 minutes.
+- `timeout` _int_ - Timeout for the upload operation in seconds. 0 means no timeout. Default is 30 minutes.
   
 **Example**:
 
@@ -475,7 +475,7 @@ sandbox.fs.upload_file("local_file.txt", "tmp/large_file.txt")
 
 ```python
 @intercept_errors(message_prefix="Failed to upload files: ")
-def upload_files(files: List[FileUpload], timeout: int = 10 * 60) -> None
+def upload_files(files: List[FileUpload], timeout: int = 30 * 60) -> None
 ```
 
 Uploads multiple files to the Sandbox. If files already exist at the destination paths,
@@ -484,7 +484,7 @@ they will be overwritten.
 **Arguments**:
 
 - `files` _List[FileUpload]_ - List of files to upload.
-- `timeout` _int_ - Timeout for the upload operation in seconds. 0 means no timeout. Default is 10 minutes.
+- `timeout` _int_ - Timeout for the upload operation in seconds. 0 means no timeout. Default is 30 minutes.
 
 **Example**:
 

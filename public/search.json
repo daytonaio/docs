@@ -1401,7 +1401,7 @@
   },
   {
     "title": "Auto-archive Interval",
-    "description": "Interval in minutes after which a continuously stopped Sandbox will automatically archive.",
+    "description": "Another useful built-in feature is the auto-archive interval.",
     "tag": "Documentation",
     "url": "/docs/sandbox-management#auto-archive-interval",
     "slug": "/sandbox-management#auto-archive-interval",

@@ -322,17 +322,49 @@ export const sidebarConfig: NavigationGroup[] = [
     label: 'Python SDK Reference',
     homePageHref: '/docs/python-sdk',
     category: NavigationCategory.PYTHON_SDK,
-    autopopulateFromDir: '/docs/python-sdk',
+  },
+  {
+    type: 'group',
+    label: 'Common',
+    homePageHref: '/docs/python-sdk',
+    category: NavigationCategory.PYTHON_SDK,
+    autopopulateFromDir: '/docs/python-sdk/common',
+  },
+  {
+    type: 'group',
+    label: 'Sync Python',
+    homePageHref: '/docs/python-sdk',
+    category: NavigationCategory.PYTHON_SDK,
+    autopopulateFromDir: '/docs/python-sdk/sync',
     entries: [
       {
         type: 'link',
-        href: '/docs/python-sdk/daytona',
+        href: '/docs/python-sdk/sync/daytona',
         label: 'Daytona',
       },
       {
         type: 'link',
-        href: '/docs/python-sdk/sandbox',
+        href: '/docs/python-sdk/sync/sandbox',
         label: 'Sandbox',
+      },
+    ],
+  },
+  {
+    type: 'group',
+    label: 'Async Python',
+    homePageHref: '/docs/python-sdk',
+    category: NavigationCategory.PYTHON_SDK,
+    autopopulateFromDir: '/docs/python-sdk/async',
+    entries: [
+      {
+        type: 'link',
+        href: '/docs/python-sdk/async/async-daytona',
+        label: 'AsyncDaytona',
+      },
+      {
+        type: 'link',
+        href: '/docs/python-sdk/async/async-sandbox',
+        label: 'AsyncSandbox',
       },
     ],
   },
