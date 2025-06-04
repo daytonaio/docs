@@ -44,6 +44,6 @@
   "workspaceFolder": "/workspaces/docs",
   "onCreateCommand": "sudo cp ${containerWorkspaceFolder}/.devcontainer/welcome-message.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
   "postCreateCommand": "yarn install",
-  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && sudo sysctl -w fs.inotify.max_user_watches=100000",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
   "remoteUser": "daytona"
 }
