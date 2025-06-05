@@ -194,6 +194,15 @@ export const sidebarConfig: NavigationGroup[] = [
           icon: 'credit-card.svg',
         },
       },
+      {
+        type: 'link',
+        href: '/docs/linked-accounts',
+        label: 'Linked Accounts',
+        description: 'Linked Accounts for Users.',
+        attrs: {
+          icon: 'link.svg',
+        },
+      },
     ],
   },
   {
