@@ -139,11 +139,11 @@ sandbox_id = sandbox.id
 
 root_dir = sandbox.get_user_root_dir()
 
-# Get the Sandbox name, image and state
+# Get the Sandbox image and state
 
-name = sandbox.instance.name
-image = sandbox.instance.image
-state = sandbox.instance.state
+info = sandbox.info()
+image = info.image
+state = info.state
 
 ```
 </TabItem>
@@ -155,10 +155,10 @@ const sandboxId = sandbox.id;
 // Get the root directory of tha Sandbox user
 const rootDir = await sandbox.getSandboxRootDir();
 
-// Get the Sandbox name, image and state
-const name = sandbox.instance.name
-const image = sandbox.instance.image
-const state = sandbox.instance.state
+// Get the Sandbox image and state
+const info = await sandbox.info()
+const image = info.image
+const state = info.state
 
 ```
 
