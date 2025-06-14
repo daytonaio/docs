@@ -1,5 +1,5 @@
 # Daytona Documentation v0.20.0
-# Generated on: 2025-06-04
+# Generated on: 2025-06-14
 
 # Daytona
 
@@ -8,6 +8,7 @@
 ## Docs
 
 - [API Keys](https://daytona.io/docs/api-keys)
+- [Expiration](https://daytona.io/docs/api-keys#expiration)
 - [Permissions](https://daytona.io/docs/api-keys#permissions)
 - [Billing](https://daytona.io/docs/billing)
 - [Wallet](https://daytona.io/docs/billing#wallet)
@@ -118,18 +119,17 @@
 - [Resource Limits](https://daytona.io/docs/process-code-execution#resource-limits)
 - [Region Selection](https://daytona.io/docs/regions)
 - [Sandbox Management](https://daytona.io/docs/sandbox-management)
+- [Sandbox Lifecycle](https://daytona.io/docs/sandbox-management#sandbox-lifecycle)
 - [Creating Sandboxes](https://daytona.io/docs/sandbox-management#creating-sandboxes)
 - [Basic Sandbox Creation](https://daytona.io/docs/sandbox-management#basic-sandbox-creation)
 - [Sandbox Resources](https://daytona.io/docs/sandbox-management#sandbox-resources)
 - [Sandbox Information](https://daytona.io/docs/sandbox-management#sandbox-information)
-- [Stop & Remove Sandbox](https://daytona.io/docs/sandbox-management#stop--remove-sandbox)
-- [Sandbox States and Persistence](https://daytona.io/docs/sandbox-management#sandbox-states-and-persistence)
+- [Stop and Resume Sandbox](https://daytona.io/docs/sandbox-management#stop-and-resume-sandbox)
+- [Archive Sandbox](https://daytona.io/docs/sandbox-management#archive-sandbox)
+- [Remove Sandbox](https://daytona.io/docs/sandbox-management#remove-sandbox)
+- [Auto-stop and Auto-archive](https://daytona.io/docs/sandbox-management#auto-stop-and-auto-archive)
 - [Auto-stop Interval](https://daytona.io/docs/sandbox-management#auto-stop-interval)
 - [Auto-archive Interval](https://daytona.io/docs/sandbox-management#auto-archive-interval)
-- [Running](https://daytona.io/docs/sandbox-management#running)
-- [Stopped](https://daytona.io/docs/sandbox-management#stopped)
-- [Archived](https://daytona.io/docs/sandbox-management#archived)
-- [Performance Considerations](https://daytona.io/docs/sandbox-management#performance-considerations)
 - [CLI](https://daytona.io/docs/tools/cli)
 - [daytona version](https://daytona.io/docs/tools/cli#daytona-version)
 - [daytona sandbox info](https://daytona.io/docs/tools/cli#daytona-sandbox-info)
