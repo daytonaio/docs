@@ -2,8 +2,8 @@
 title: Snapshots
 ---
 
+import { TabItem, Tabs } from '@astrojs/starlight/components'
 import Label from '@components/Label.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 Snapshots are pre-configured templates containing all dependencies, tools, environment settings and resource requirements for your Daytona Sandbox. Daytona supports creating Snapshots from all standard [Docker](https://www.docker.com/) or [OCI](https://opencontainers.org/) compatible images.
 
@@ -50,18 +50,18 @@ from daytona import Daytona, CreateSandboxFromSnapshotParams
 daytona = Daytona()
 
 sandbox = daytona.create(CreateSandboxFromSnapshotParams(
-    snapshot="my-snapshot-name",
+snapshot="my-snapshot-name",
 ))
 
 response = sandbox.process.code_run('print("Sum of 3 and 4 is " + str(3 + 4))')
 if response.exit_code != 0:
-    print(f"Error running code: {response.exit_code} {response.result}")
+print(f"Error running code: {response.exit_code} {response.result}")
 else:
-    print(response.result)
+print(response.result)
 
 sandbox.delete()
 
-```
+````
 
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
@@ -95,7 +95,7 @@ async function main() {
 }
 
 main()
-```
+````
 
 </TabItem>
 </Tabs>
@@ -134,13 +134,13 @@ daytona snapshot create trying-daytona:0.0.1 --dockerfile ./Dockerfile --context
 Building image from /Users/idagelic/docs/Dockerfile
 Step 1/5 : FROM alpine:latest
 
-...                                   
-                                          
- ⡿  Waiting for the Snapshot be validated ...
+...
+
+ ⡿  Waiting for the Snapshot to be validated ...
 
  ...
 
- ✓  Use 'harbor-transient.internal.daytona.app/daytona/dfile-try:0.1.0' to create a new sandbox using this Snapshot
+ ✓  Use 'harbor-transient.internal.daytona.app/daytona/trying-daytona:0.0.1' to create a new sandbox using this Snapshot
 
 ```
 

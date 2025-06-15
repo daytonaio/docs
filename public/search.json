@@ -1489,7 +1489,7 @@
   },
   {
     "title": "CLI",
-    "description": "The `daytona` command-line tool provides access to Daytona's core features including managing images and the lifecycle of Daytona Sandboxes.",
+    "description": "The `daytona` command-line tool provides access to Daytona's core features including managing Snapshots and the lifecycle of Daytona Sandboxes.",
     "tag": "Documentation",
     "url": "/docs/tools/cli",
     "slug": "/tools/cli",
@@ -1560,11 +1560,11 @@
     "objectID": 195
   },
   {
-    "title": "daytona image push",
-    "description": "Push local image",
+    "title": "daytona snapshot push",
+    "description": "Push local snapshot",
     "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-image-push",
-    "slug": "/tools/cli#daytona-image-push",
+    "url": "/docs/tools/cli#daytona-snapshot-push",
+    "slug": "/tools/cli#daytona-snapshot-push",
     "objectID": 196
   },
   {
@@ -1584,35 +1584,35 @@
     "objectID": 198
   },
   {
-    "title": "daytona image",
-    "description": "Manage Daytona images",
+    "title": "daytona snapshot",
+    "description": "Manage Daytona snapshots",
     "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-image",
-    "slug": "/tools/cli#daytona-image",
+    "url": "/docs/tools/cli#daytona-snapshot",
+    "slug": "/tools/cli#daytona-snapshot",
     "objectID": 199
   },
   {
-    "title": "daytona image create",
-    "description": "Create an image",
+    "title": "daytona snapshot create",
+    "description": "Create a snapshot",
     "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-image-create",
-    "slug": "/tools/cli#daytona-image-create",
+    "url": "/docs/tools/cli#daytona-snapshot-create",
+    "slug": "/tools/cli#daytona-snapshot-create",
     "objectID": 200
   },
   {
-    "title": "daytona image delete",
-    "description": "Delete an image",
+    "title": "daytona snapshot delete",
+    "description": "Delete a snapshot",
     "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-image-delete",
-    "slug": "/tools/cli#daytona-image-delete",
+    "url": "/docs/tools/cli#daytona-snapshot-delete",
+    "slug": "/tools/cli#daytona-snapshot-delete",
     "objectID": 201
   },
   {
-    "title": "daytona image list",
-    "description": "List all images",
+    "title": "daytona snapshot list",
+    "description": "List all snapshots",
     "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-image-list",
-    "slug": "/tools/cli#daytona-image-list",
+    "url": "/docs/tools/cli#daytona-snapshot-list",
+    "slug": "/tools/cli#daytona-snapshot-list",
     "objectID": 202
   },
   {
@@ -1712,12 +1712,52 @@
     "objectID": 214
   },
   {
+    "title": "daytona volume",
+    "description": "Manage Daytona volumes",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-volume",
+    "slug": "/tools/cli#daytona-volume",
+    "objectID": 215
+  },
+  {
+    "title": "daytona volume list",
+    "description": "List all volumes",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-volume-list",
+    "slug": "/tools/cli#daytona-volume-list",
+    "objectID": 216
+  },
+  {
+    "title": "daytona volume create",
+    "description": "Create a volume",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-volume-create",
+    "slug": "/tools/cli#daytona-volume-create",
+    "objectID": 217
+  },
+  {
+    "title": "daytona volume get",
+    "description": "Get volume details",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-volume-get",
+    "slug": "/tools/cli#daytona-volume-get",
+    "objectID": 218
+  },
+  {
+    "title": "daytona volume delete",
+    "description": "Delete a volume",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-volume-delete",
+    "slug": "/tools/cli#daytona-volume-delete",
+    "objectID": 219
+  },
+  {
     "title": "Volumes",
     "description": "Volumes are FUSE-based mounts on the Sandbox file system that enable file sharing between Sandboxes and instant access to existing files already present on the mounted volume.",
     "tag": "Documentation",
     "url": "/docs/volumes",
     "slug": "/volumes",
-    "objectID": 215
+    "objectID": 220
   },
   {
     "title": "Creating Volumes",
@@ -1725,7 +1765,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#creating-volumes",
     "slug": "/volumes#creating-volumes",
-    "objectID": 216
+    "objectID": 221
   },
   {
     "title": "Mounting Volumes to Sandboxes",
@@ -1733,7 +1773,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#mounting-volumes-to-sandboxes",
     "slug": "/volumes#mounting-volumes-to-sandboxes",
-    "objectID": 217
+    "objectID": 222
   },
   {
     "title": "Create a new volume or get an existing one",
@@ -1741,7 +1781,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#create-a-new-volume-or-get-an-existing-one",
     "slug": "/volumes#create-a-new-volume-or-get-an-existing-one",
-    "objectID": 218
+    "objectID": 223
   },
   {
     "title": "Mount the volume to the sandbox",
@@ -1749,7 +1789,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#mount-the-volume-to-the-sandbox",
     "slug": "/volumes#mount-the-volume-to-the-sandbox",
-    "objectID": 219
+    "objectID": 224
   },
   {
     "title": "When you're done with the sandbox, you can remove it",
@@ -1757,7 +1797,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
     "slug": "/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
-    "objectID": 220
+    "objectID": 225
   },
   {
     "title": "The volume will persist even after the sandbox is removed",
@@ -1765,7 +1805,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
     "slug": "/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
-    "objectID": 221
+    "objectID": 226
   },
   {
     "title": "Deleting Volumes",
@@ -1773,7 +1813,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#deleting-volumes",
     "slug": "/volumes#deleting-volumes",
-    "objectID": 222
+    "objectID": 227
   },
   {
     "title": "Working with Volumes",
@@ -1781,7 +1821,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#working-with-volumes",
     "slug": "/volumes#working-with-volumes",
-    "objectID": 223
+    "objectID": 228
   },
   {
     "title": "Limitations",
@@ -1789,7 +1829,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#limitations",
     "slug": "/volumes#limitations",
-    "objectID": 224
+    "objectID": 229
   },
   {
     "title": "Web Terminal",
@@ -1797,6 +1837,6 @@
     "tag": "Documentation",
     "url": "/docs/web-terminal",
     "slug": "/web-terminal",
-    "objectID": 225
+    "objectID": 230
   }
 ]
