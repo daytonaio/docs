@@ -12,20 +12,19 @@ Daytona is currently available in the following regions:
 You can select the region during the Daytona [configuration](/docs/configuration) step.
 
 ```python
-from daytona_sdk import Daytona, DaytonaConfig, SandboxTargetRegion
+from daytona import Daytona, DaytonaConfig
 
 config = DaytonaConfig(
-    target=SandboxTargetRegion.US
+    target="us"
 )
 
 daytona = Daytona(config)
-
 ```
 
 ```typescript
-import { Daytona, SandboxTargetRegion } from '@daytonaio/sdk';
+import { Daytona } from '@daytonaio/sdk';
 
 const daytona: Daytona = new Daytona({
-    target: SandboxTargetRegion.US
+    target: "eu"
 });
 ```

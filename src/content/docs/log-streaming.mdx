@@ -18,6 +18,7 @@ If your sandboxed process is part of a larger system and is expected to run for 
 you can process logs asynchronously **in the background**, while the rest of your system continues executing.
 
 This is ideal for:
+
 - Continuous monitoring
 - Debugging long-running jobs
 - Live log forwarding or visualizations
@@ -25,50 +26,50 @@ This is ideal for:
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Tabs syncKey="language">
-  <TabItem label="Python" icon="seti:python">
-  ```python
-  import asyncio
-  from daytona_sdk import Daytona, SessionExecuteRequest
+<TabItem label="Python" icon="seti:python">
+```python
+import asyncio
+from daytona import Daytona, SessionExecuteRequest
 
-  async def main():
-      daytona = Daytona()
-      sandbox = daytona.create()
+async def main():
+    daytona = Daytona()
+    sandbox = daytona.create()
 
-      try:
-          session_id = "exec-session-1"
-          sandbox.process.create_session(session_id)
+    try:
+        session_id = "exec-session-1"
+        sandbox.process.create_session(session_id)
 
-          command = sandbox.process.execute_session_command(
-              session_id,
-              SessionExecuteRequest(
-                  command='for i in {1..10}; do echo "Processing step $i..."; sleep 1; done',
-                  var_async=True,
-              ),
-          )
+        command = sandbox.process.execute_session_command(
+            session_id,
+            SessionExecuteRequest(
+                command='for i in {1..10}; do echo "Processing step $i..."; sleep 1; done',
+                var_async=True,
+            ),
+        )
 
-          logs_task = asyncio.create_task(
-              sandbox.process.get_session_command_logs_async(
-                  session_id, command.cmd_id, lambda chunk: print(f"Log chunk: {chunk}")
-              )
-          )
+        logs_task = asyncio.create_task(
+            sandbox.process.get_session_command_logs_async(
+                session_id, command.cmd_id, lambda chunk: print(f"Log chunk: {chunk}")
+            )
+        )
 
-          print("Continuing execution while logs are streaming...")
-          await asyncio.sleep(1)
-          print("Other operations completed!")
+        print("Continuing execution while logs are streaming...")
+        await asyncio.sleep(1)
+        print("Other operations completed!")
 
-          print("At the end wait for any asynchronous task to complete and clean up resources...")
-          await logs_task
-      except Exception as e:
-          print(f"Error: {e}")
-      finally:
-          print("Cleaning up sandbox...")
-          daytona.remove(sandbox)
+        print("At the end wait for any asynchronous task to complete and clean up resources...")
+        await logs_task
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        print("Cleaning up sandbox...")
+        sandbox.delete()
 
+if **name** == "**main**":
+    asyncio.run(main())
 
-  if __name__ == "__main__":
-      asyncio.run(main())
-  ```
-  </TabItem>
+```
+</TabItem>
   <TabItem label="Typescript" icon="seti:typescript">
   ```typescript
   import { Daytona, Sandbox } from '@daytonaio/sdk'
@@ -100,12 +101,13 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
       console.error('Error:', error)
     } finally {
       console.log('Cleaning up sandbox...')
-      await daytona.remove(sandbox)
+      await sandbox.delete()
     }
   }
 
   main()
   ```
+
   </TabItem>
 </Tabs>
 
@@ -119,7 +121,7 @@ you can process log stream synchronously. For example, you can write logs to a f
   ```python
   import asyncio
   import os
-  from daytona_sdk import Daytona, SessionExecuteRequest
+  from daytona import Daytona, SessionExecuteRequest
 
   async def main():
       daytona = Daytona()
@@ -155,11 +157,11 @@ you can process log stream synchronously. For example, you can write logs to a f
           print(f"Error: {e}")
       finally:
           print("Cleaning up sandbox...")
-          daytona.remove(sandbox)
+          sandbox.delete()
 
-
-  if __name__ == "__main__":
+  if **name** == "**main**":
       asyncio.run(main())
+
   ```
   </TabItem>
   <TabItem label="Typescript" icon="seti:typescript">
@@ -196,11 +198,12 @@ you can process log stream synchronously. For example, you can write logs to a f
       console.error('Error:', error)
     } finally {
       console.log('Cleaning up sandbox...')
-      await daytona.remove(sandbox)
+      await sandbox.delete()
     }
   }
 
   main()
   ```
+
   </TabItem>
 </Tabs>

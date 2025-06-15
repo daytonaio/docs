@@ -50,15 +50,15 @@ main().catch(console.error);
 The SDK can be configured using environment variables or by passing options to the constructor:
 
 ```typescript
-import { Daytona, SandboxTargetRegion } from '@daytonaio/sdk';
+import { Daytona } from '@daytonaio/sdk';
 
-// Using environment variables (DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET)
+// Using environment variables (DAYTONA_API_KEY, DAYTONA_API_URL, DAYTONA_TARGET)
 const daytona = new Daytona();
 
 // Using explicit configuration
 const daytona = new Daytona({
   apiKey: 'your-api-key',
-  serverUrl: 'https://app.daytona.io/api',
-  target: SandboxTargetRegion.US
+  apiUrl: 'https://app.daytona.io/api',
+  target: 'us'
 });
 ```

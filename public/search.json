@@ -192,11 +192,11 @@
     "objectID": 24
   },
   {
-    "title": "Creating Pre-built Images",
-    "description": "If you want to prepare a new Daytona Image with specific dependencies and then use it across multiple Sandboxes whenever necessary, you can create a pre-built Image.",
+    "title": "Creating Pre-built Snapshots",
+    "description": "If you want to prepare a new Daytona Snapshot with specific dependencies and then use it across multiple Sandboxes whenever necessary, you can create a pre-built Snapshot.",
     "tag": "Documentation",
-    "url": "/docs/declarative-builder#creating-pre-built-images",
-    "slug": "/declarative-builder#creating-pre-built-images",
+    "url": "/docs/declarative-builder#creating-pre-built-snapshots",
+    "slug": "/declarative-builder#creating-pre-built-snapshots",
     "objectID": 25
   },
   {
@@ -768,51 +768,51 @@
     "objectID": 96
   },
   {
-    "title": "Images",
-    "description": "Images are pre-configured templates containing all dependencies, tools and environment settings you need inside of your Daytona Sandbox.",
+    "title": "Snapshots",
+    "description": "Snapshots are pre-configured templates containing all dependencies, tools, environment settings and resource requirements for your Daytona Sandbox.",
     "tag": "Documentation",
-    "url": "/docs/images",
-    "slug": "/images",
+    "url": "/docs/snapshots",
+    "slug": "/snapshots",
     "objectID": 97
   },
   {
-    "title": "Creating Images",
-    "description": "When spinning up a Sandbox, Daytona uses a simple image with some useful utilities pre-installed, such as `python`, `node`, `pip` as well as some common pip packages.",
+    "title": "Creating Snapshots",
+    "description": "When spinning up a Sandbox, Daytona uses a Snapshot created from a simple image with some useful utilities pre-installed, such as `python`, `node`, `pip` as well as some common pip packages.",
     "tag": "Documentation",
-    "url": "/docs/images#creating-images",
-    "slug": "/images#creating-images",
+    "url": "/docs/snapshots#creating-snapshots",
+    "slug": "/snapshots#creating-snapshots",
     "objectID": 98
   },
   {
     "title": "Images from Private Registries",
-    "description": "To use an Image that is not publicly available, you need to start by adding the image's private Container Registry:",
+    "description": "To create a Snapshot from an image that is not publicly available, you need to start by adding the image's private Container Registry:",
     "tag": "Documentation",
-    "url": "/docs/images#images-from-private-registries",
-    "slug": "/images#images-from-private-registries",
+    "url": "/docs/snapshots#images-from-private-registries",
+    "slug": "/snapshots#images-from-private-registries",
     "objectID": 99
   },
   {
     "title": "Using a Local Image",
-    "description": "In order to avoid having to manually set up a private container registry and push your image there, the [Daytona CLI](/docs/getting-started",
+    "description": "In order to avoid having to manually set up a private container registry and push your image there, the [Daytona CLI](/docs/getting-started#setting-up-the-daytona-cli) allows you to push a Snapshot from your local device or from a local Dockerfile and use it in your Sandboxes.",
     "tag": "Documentation",
-    "url": "/docs/images#using-a-local-image",
-    "slug": "/images#using-a-local-image",
+    "url": "/docs/snapshots#using-a-local-image",
+    "slug": "/snapshots#using-a-local-image",
     "objectID": 100
   },
   {
-    "title": "Deleting Images",
-    "description": "Deleting your custom Images is a straightforward process.",
+    "title": "Deleting Snapshots",
+    "description": "Deleting your custom Snapshots is a straightforward process.",
     "tag": "Documentation",
-    "url": "/docs/images#deleting-images",
-    "slug": "/images#deleting-images",
+    "url": "/docs/snapshots#deleting-snapshots",
+    "slug": "/snapshots#deleting-snapshots",
     "objectID": 101
   },
   {
-    "title": "Default Image",
-    "description": "The default image used by Daytona contains `python`, `node` and their respective LSP's, as well as these pre-installed `pip` packages:",
+    "title": "Default Snapshot",
+    "description": "The default Snapshot used by Daytona is based on an image that contains `python`, `node` and their respective LSP's, as well as these pre-installed `pip` packages:",
     "tag": "Documentation",
-    "url": "/docs/images#default-image",
-    "slug": "/images#default-image",
+    "url": "/docs/snapshots#default-snapshot",
+    "slug": "/snapshots#default-snapshot",
     "objectID": 102
   },
   {
@@ -1721,7 +1721,7 @@
   },
   {
     "title": "Mounting Volumes to Sandboxes",
-    "description": "Once a volume is created, it can be mounted to a Sandbox by specifying it in the `CreateSandboxParams` object:",
+    "description": "Once a volume is created, it can be mounted to a Sandbox by specifying it in the `CreateSandboxFromSnapshotParams` object:",
     "tag": "Documentation",
     "url": "/docs/volumes#mounting-volumes-to-sandboxes",
     "slug": "/volumes#mounting-volumes-to-sandboxes",

@@ -37,7 +37,7 @@ as it won't be shown again.
 <Tabs syncKey="language">
   <TabItem label="Python" icon="seti:python">
   ```bash
-  pip install daytona_sdk
+  pip install daytona
   ```
   </TabItem>
   <TabItem label="TypeScript" icon="seti:typescript">
@@ -53,7 +53,7 @@ as it won't be shown again.
   <TabItem label="Python" icon="seti:python">
   Create a file named: `main.py`
   ```python
-  from daytona_sdk import Daytona, DaytonaConfig
+  from daytona import Daytona, DaytonaConfig
 
 # Define the configuration
 
@@ -77,7 +77,7 @@ as it won't be shown again.
   
 # Clean up
 
-  daytona.remove(sandbox)
+  sandbox.delete()
 
   ```
   </TabItem>
@@ -99,7 +99,7 @@ as it won't be shown again.
   console.log(response.result);
 
   // Clean up
-  await daytona.remove(sandbox)
+  await sandbox.delete()
   ```
 
   </TabItem>

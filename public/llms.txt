@@ -1,5 +1,5 @@
-# Daytona Documentation v0.20.0
-# Generated on: 2025-06-04
+# Daytona Documentation v0.21.0
+# Generated on: 2025-06-15
 
 # Daytona
 
@@ -26,7 +26,7 @@
 - [File System Operations](https://daytona.io/docs/declarative-builder#file-system-operations)
 - [Environment Configuration](https://daytona.io/docs/declarative-builder#environment-configuration)
 - [Dynamic Image Building](https://daytona.io/docs/declarative-builder#dynamic-image-building)
-- [Creating Pre-built Images](https://daytona.io/docs/declarative-builder#creating-pre-built-images)
+- [Creating Pre-built Snapshots](https://daytona.io/docs/declarative-builder#creating-pre-built-snapshots)
 - [Using an Existing Dockerfile](https://daytona.io/docs/declarative-builder#using-an-existing-dockerfile)
 - [Best Practices](https://daytona.io/docs/declarative-builder#best-practices)
 - [File System Operations](https://daytona.io/docs/file-system-operations)
@@ -56,12 +56,12 @@
 - [Working with Changes](https://daytona.io/docs/git-operations#working-with-changes)
 - [Remote Operations](https://daytona.io/docs/git-operations#remote-operations)
 - [Working with Remotes](https://daytona.io/docs/git-operations#working-with-remotes)
-- [Images](https://daytona.io/docs/images)
-- [Creating Images](https://daytona.io/docs/images#creating-images)
-- [Images from Private Registries](https://daytona.io/docs/images#images-from-private-registries)
-- [Using a Local Image](https://daytona.io/docs/images#using-a-local-image)
-- [Deleting Images](https://daytona.io/docs/images#deleting-images)
-- [Default Image](https://daytona.io/docs/images#default-image)
+- [Snapshots](https://daytona.io/docs/snapshots)
+- [Creating Snapshots](https://daytona.io/docs/snapshots#creating-snapshots)
+- [Images from Private Registries](https://daytona.io/docs/snapshots#images-from-private-registries)
+- [Using a Local Image](https://daytona.io/docs/snapshots#using-a-local-image)
+- [Deleting Snapshots](https://daytona.io/docs/snapshots#deleting-snapshots)
+- [Default Snapshot](https://daytona.io/docs/snapshots#default-snapshot)
 - [Daytona Documentation](https://daytona.io/docs/index)
 - [Quick Start](https://daytona.io/docs/index#quick-start)
 - [Language Server Protocol](https://daytona.io/docs/language-server-protocol)

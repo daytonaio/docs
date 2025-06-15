@@ -97,7 +97,7 @@ For Windows users, add the following to the `env` field:
   - Creates a new Daytona sandbox
   - Parameters:
     - `target` (default: "us"): Target region
-    - `image`: Sandbox image (optional)
+    - `snapshot`: Snapshot for the sandbox (optional)
     - `auto_stop_interval` (default: "15"): Auto-stop interval in minutes (0 disables)
     - `auto_archive_interval` (default: "10080"): Auto-archive interval in minutes (0 means the maximum interval will be used)
 
@@ -107,7 +107,7 @@ For Windows users, add the following to the `env` field:
 ### File Operations
 
 - **Download File**
-  - Downloads a file from the Daytona workspace
+  - Downloads a file from the Daytona sandbox
   - Returns content as text or base64 encoded image
   - Parameters:
     - `file_path`: Path to the file
@@ -125,7 +125,7 @@ For Windows users, add the following to the `env` field:
     - `overwrite`: Overwrite the file if it already exists
 
 - **Create Folder**
-  - Creates a new directory in the workspace
+  - Creates a new directory in the sandbox
   - Parameters:
     - `folder_path`: Path to create
     - `mode`: Directory permissions (default: 0755)

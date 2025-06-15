@@ -11,26 +11,20 @@ class Process()
 
 Handles process and code execution within a Sandbox.
 
-**Attributes**:
-
-- `code_toolbox` _SandboxPythonCodeToolbox_ - Language-specific code execution toolbox.
-- `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
-- `instance` _SandboxInstance_ - The Sandbox instance this process belongs to.
-
 #### Process.\_\_init\_\_
 
 ```python
-def __init__(code_toolbox: SandboxPythonCodeToolbox, toolbox_api: ToolboxApi,
-             instance: SandboxInstance, get_root_dir: Callable[[], str])
+def __init__(sandbox_id: str, code_toolbox: SandboxPythonCodeToolbox,
+             toolbox_api: ToolboxApi, get_root_dir: Callable[[], str])
 ```
 
 Initialize a new Process instance.
 
 **Arguments**:
 
+- `sandbox_id` _str_ - The ID of the Sandbox.
 - `code_toolbox` _SandboxPythonCodeToolbox_ - Language-specific code execution toolbox.
 - `toolbox_api` _ToolboxApi_ - API client for Sandbox operations.
-- `instance` _SandboxInstance_ - The Sandbox instance this process belongs to.
 - `get_root_dir` _Callable[[], str]_ - A function to get the default root directory of the Sandbox.
 
 #### Process.exec
@@ -117,41 +111,40 @@ print(response.artifacts.stdout)  # Prints: Sum: 30
   of the `ExecutionArtifacts` object.
 
 ```python
-           code = '''
-           import matplotlib.pyplot as plt
-           import numpy as np
+code = '''
+import matplotlib.pyplot as plt
+import numpy as np
 
-           x = np.linspace(0, 10, 30)
-           y = np.sin(x)
+x = np.linspace(0, 10, 30)
+y = np.sin(x)
 
-           plt.figure(figsize=(8, 5))
-           plt.plot(x, y, 'b-', linewidth=2)
-           plt.title('Line Chart')
-           plt.xlabel('X-axis (seconds)')
-           plt.ylabel('Y-axis (amplitude)')
-           plt.grid(True)
-           plt.show()
-           '''
+plt.figure(figsize=(8, 5))
+plt.plot(x, y, 'b-', linewidth=2)
+plt.title('Line Chart')
+plt.xlabel('X-axis (seconds)')
+plt.ylabel('Y-axis (amplitude)')
+plt.grid(True)
+plt.show()
+'''
 
-           response = sandbox.process.code_run(code)
-           chart = response.artifacts.charts[0]
+response = sandbox.process.code_run(code)
+chart = response.artifacts.charts[0]
 
-           print(f"Type: {chart.type}")
-           print(f"Title: {chart.title}")
-           if chart.type == ChartType.LINE and isinstance(chart, LineChart):
-               print(f"X Label: {chart.x_label}")
-               print(f"Y Label: {chart.y_label}")
-               print(f"X Ticks: {chart.x_ticks}")
-               print(f"X Tick Labels: {chart.x_tick_labels}")
-               print(f"X Scale: {chart.x_scale}")
-               print(f"Y Ticks: {chart.y_ticks}")
-               print(f"Y Tick Labels: {chart.y_tick_labels}")
-               print(f"Y Scale: {chart.y_scale}")
-               print("Elements:")
-               for element in chart.elements:
-                   print(f"
-Label: {element.label}")
-                   print(f" Points: {element.points}")
+print(f"Type: {chart.type}")
+print(f"Title: {chart.title}")
+if chart.type == ChartType.LINE and isinstance(chart, LineChart):
+    print(f"X Label: {chart.x_label}")
+    print(f"Y Label: {chart.y_label}")
+    print(f"X Ticks: {chart.x_ticks}")
+    print(f"X Tick Labels: {chart.x_tick_labels}")
+    print(f"X Scale: {chart.x_scale}")
+    print(f"Y Ticks: {chart.y_ticks}")
+    print(f"Y Tick Labels: {chart.y_tick_labels}")
+    print(f"Y Scale: {chart.y_scale}")
+    print("Elements:")
+    for element in chart.elements:
+        print(f"Label: {element.label}")
+        print(f"Points: {element.points}")
 ```
 
 #### Process.create\_session

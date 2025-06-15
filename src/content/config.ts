@@ -122,10 +122,10 @@ export const sidebarConfig: NavigationGroup[] = [
       },
       {
         type: 'link',
-        href: '/docs/images',
-        label: 'Images',
+        href: '/docs/snapshots',
+        label: 'Snapshots',
         description:
-          'Learn how to manage Docker/OCI compatible Daytona Images.',
+          'Learn how to create, manage and remove Snapshots using the Daytona SDK.',
         attrs: {
           icon: 'layers.svg',
         },
@@ -135,7 +135,7 @@ export const sidebarConfig: NavigationGroup[] = [
         href: '/docs/declarative-builder',
         label: 'Declarative Builder',
         description:
-          'Learn how to dynamically build Docker/OCI compatible Daytona Images using the Daytona SDK.',
+          'Learn how to dynamically build Snapshots from Docker/OCI compatible images using the Daytona SDK.',
         attrs: {
           icon: 'prebuilds.svg',
         },
