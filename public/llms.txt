@@ -1,5 +1,5 @@
-# Daytona Documentation v0.20.0
-# Generated on: 2025-06-04
+# Daytona Documentation v0.21.0
+# Generated on: 2025-06-15
 
 # Daytona
 
@@ -8,6 +8,7 @@
 ## Docs
 
 - [API Keys](https://daytona.io/docs/api-keys)
+- [Expiration](https://daytona.io/docs/api-keys#expiration)
 - [Permissions](https://daytona.io/docs/api-keys#permissions)
 - [Billing](https://daytona.io/docs/billing)
 - [Wallet](https://daytona.io/docs/billing#wallet)
@@ -26,7 +27,7 @@
 - [File System Operations](https://daytona.io/docs/declarative-builder#file-system-operations)
 - [Environment Configuration](https://daytona.io/docs/declarative-builder#environment-configuration)
 - [Dynamic Image Building](https://daytona.io/docs/declarative-builder#dynamic-image-building)
-- [Creating Pre-built Images](https://daytona.io/docs/declarative-builder#creating-pre-built-images)
+- [Creating Pre-built Snapshots](https://daytona.io/docs/declarative-builder#creating-pre-built-snapshots)
 - [Using an Existing Dockerfile](https://daytona.io/docs/declarative-builder#using-an-existing-dockerfile)
 - [Best Practices](https://daytona.io/docs/declarative-builder#best-practices)
 - [File System Operations](https://daytona.io/docs/file-system-operations)
@@ -56,12 +57,6 @@
 - [Working with Changes](https://daytona.io/docs/git-operations#working-with-changes)
 - [Remote Operations](https://daytona.io/docs/git-operations#remote-operations)
 - [Working with Remotes](https://daytona.io/docs/git-operations#working-with-remotes)
-- [Images](https://daytona.io/docs/images)
-- [Creating Images](https://daytona.io/docs/images#creating-images)
-- [Images from Private Registries](https://daytona.io/docs/images#images-from-private-registries)
-- [Using a Local Image](https://daytona.io/docs/images#using-a-local-image)
-- [Deleting Images](https://daytona.io/docs/images#deleting-images)
-- [Default Image](https://daytona.io/docs/images#default-image)
 - [Daytona Documentation](https://daytona.io/docs/index)
 - [Quick Start](https://daytona.io/docs/index#quick-start)
 - [Language Server Protocol](https://daytona.io/docs/language-server-protocol)
@@ -130,6 +125,12 @@
 - [Stopped](https://daytona.io/docs/sandbox-management#stopped)
 - [Archived](https://daytona.io/docs/sandbox-management#archived)
 - [Performance Considerations](https://daytona.io/docs/sandbox-management#performance-considerations)
+- [Snapshots](https://daytona.io/docs/snapshots)
+- [Creating Snapshots](https://daytona.io/docs/snapshots#creating-snapshots)
+- [Images from Private Registries](https://daytona.io/docs/snapshots#images-from-private-registries)
+- [Using a Local Image](https://daytona.io/docs/snapshots#using-a-local-image)
+- [Deleting Snapshots](https://daytona.io/docs/snapshots#deleting-snapshots)
+- [Default Snapshot](https://daytona.io/docs/snapshots#default-snapshot)
 - [CLI](https://daytona.io/docs/tools/cli)
 - [daytona version](https://daytona.io/docs/tools/cli#daytona-version)
 - [daytona sandbox info](https://daytona.io/docs/tools/cli#daytona-sandbox-info)
@@ -139,13 +140,13 @@
 - [daytona sandbox](https://daytona.io/docs/tools/cli#daytona-sandbox)
 - [daytona sandbox create](https://daytona.io/docs/tools/cli#daytona-sandbox-create)
 - [daytona sandbox delete](https://daytona.io/docs/tools/cli#daytona-sandbox-delete)
-- [daytona image push](https://daytona.io/docs/tools/cli#daytona-image-push)
+- [daytona snapshot push](https://daytona.io/docs/tools/cli#daytona-snapshot-push)
 - [daytona login](https://daytona.io/docs/tools/cli#daytona-login)
 - [daytona logout](https://daytona.io/docs/tools/cli#daytona-logout)
-- [daytona image](https://daytona.io/docs/tools/cli#daytona-image)
-- [daytona image create](https://daytona.io/docs/tools/cli#daytona-image-create)
-- [daytona image delete](https://daytona.io/docs/tools/cli#daytona-image-delete)
-- [daytona image list](https://daytona.io/docs/tools/cli#daytona-image-list)
+- [daytona snapshot](https://daytona.io/docs/tools/cli#daytona-snapshot)
+- [daytona snapshot create](https://daytona.io/docs/tools/cli#daytona-snapshot-create)
+- [daytona snapshot delete](https://daytona.io/docs/tools/cli#daytona-snapshot-delete)
+- [daytona snapshot list](https://daytona.io/docs/tools/cli#daytona-snapshot-list)
 - [daytona](https://daytona.io/docs/tools/cli#daytona)
 - [daytona autocomplete](https://daytona.io/docs/tools/cli#daytona-autocomplete)
 - [daytona docs](https://daytona.io/docs/tools/cli#daytona-docs)
@@ -158,6 +159,11 @@
 - [daytona mcp init](https://daytona.io/docs/tools/cli#daytona-mcp-init)
 - [daytona mcp start](https://daytona.io/docs/tools/cli#daytona-mcp-start)
 - [daytona mcp config](https://daytona.io/docs/tools/cli#daytona-mcp-config)
+- [daytona volume](https://daytona.io/docs/tools/cli#daytona-volume)
+- [daytona volume list](https://daytona.io/docs/tools/cli#daytona-volume-list)
+- [daytona volume create](https://daytona.io/docs/tools/cli#daytona-volume-create)
+- [daytona volume get](https://daytona.io/docs/tools/cli#daytona-volume-get)
+- [daytona volume delete](https://daytona.io/docs/tools/cli#daytona-volume-delete)
 - [Volumes](https://daytona.io/docs/volumes)
 - [Creating Volumes](https://daytona.io/docs/volumes#creating-volumes)
 - [Mounting Volumes to Sandboxes](https://daytona.io/docs/volumes#mounting-volumes-to-sandboxes)

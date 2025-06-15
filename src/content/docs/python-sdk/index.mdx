@@ -13,13 +13,13 @@ The Daytona Python SDK provides a robust interface for programmatically interact
 Install the Daytona Python SDK using pip:
 
 ```bash
-pip install daytona_sdk
+pip install daytona
 ```
 
 Or using poetry:
 
 ```bash
-poetry add daytona_sdk
+poetry add daytona
 ```
 
 ## Getting Started
@@ -30,16 +30,14 @@ Here's a simple example to help you get started with the Daytona Python SDK:
 <TabItem label="Sync" icon="seti:python">
 
 ```python
-from daytona_sdk import Daytona, CreateSandboxParams
+from daytona import Daytona
 
 def main():
     # Initialize the SDK (uses environment variables by default)
     daytona = Daytona()
+
     # Create a new sandbox
-    sandbox = daytona.create(CreateSandboxParams(
-        language="python",
-        env_vars={"PYTHON_ENV": "development"}
-    ))
+    sandbox = daytona.create()
     
     # Execute a command
     response = sandbox.process.exec("echo 'Hello, World!'")
@@ -54,16 +52,13 @@ if __name__ == "__main__":
 
 ```python
 import asyncio
-from daytona_sdk import AsyncDaytona, CreateSandboxParams
+from daytona import AsyncDaytona
 
 async def main():
     # Initialize the SDK (uses environment variables by default)
     async with AsyncDaytona() as daytona:
         # Create a new sandbox
-        sandbox = await daytona.create(CreateSandboxParams(
-            language="python",
-            env_vars={"PYTHON_ENV": "development"}
-        ))
+        sandbox = await daytona.create()
         
         # Execute a command
         response = await sandbox.process.exec("echo 'Hello, World!'")
@@ -84,16 +79,16 @@ The SDK can be configured using environment variables or by passing options to t
 <TabItem label="Sync" icon="seti:python">
 
 ```python
-from daytona_sdk import Daytona, DaytonaConfig, SandboxTargetRegion
+from daytona import Daytona, DaytonaConfig
 
-# Using environment variables (DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET)
+# Using environment variables (DAYTONA_API_KEY, DAYTONA_API_URL, DAYTONA_TARGET)
 daytona = Daytona()
 
 # Using explicit configuration
 config = DaytonaConfig(
     api_key="your-api-key",
-    server_url="https://app.daytona.io/api",
-    target=SandboxTargetRegion.US
+    api_url="https://app.daytona.io/api",
+    target="us"
 )
 daytona = Daytona(config)
 ```
@@ -103,11 +98,11 @@ daytona = Daytona(config)
 
 ```python
 import asyncio
-from daytona_sdk import AsyncDaytona, DaytonaConfig, SandboxTargetRegion
+from daytona import AsyncDaytona, DaytonaConfig
 
 async def main():
     try:
-        # Using environment variables (DAYTONA_API_KEY, DAYTONA_SERVER_URL, DAYTONA_TARGET)
+        # Using environment variables (DAYTONA_API_KEY, DAYTONA_API_URL, DAYTONA_TARGET)
         daytona = AsyncDaytona()
         # Your async code here
         pass
@@ -117,8 +112,8 @@ async def main():
     # Using explicit configuration
     config = DaytonaConfig(
         api_key="your-api-key",
-        server_url="https://app.daytona.io/api",
-        target=SandboxTargetRegion.US
+        api_url="https://app.daytona.io/api",
+        target="us"
     )
     async with AsyncDaytona(config) as daytona:
         # Your code here

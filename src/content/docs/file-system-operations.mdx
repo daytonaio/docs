@@ -53,20 +53,12 @@ Daytona SDK provides an option to create directories with specific permissions u
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-# Create a directory
-sandbox.fs.create_folder("workspace/new-dir")
-
 # Create with specific permissions
-
 sandbox.fs.create_folder("workspace/new-dir", "755")
-
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-// Create a directory
-await sandbox.fs.createFolder("workspace/new-dir")
-
 // Create with specific permissions
 await sandbox.fs.createFolder("workspace/new-dir", "755")
 ```
@@ -85,22 +77,17 @@ If you want to upload a single file, you can do it as follows:
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-
 # Upload a single file
-
 with open("local_file.txt", "rb") as f:
     content = f.read()
 sandbox.fs.upload_file(content, "remote_file.txt")
-
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-
 // Upload a single file
 const fileContent = Buffer.from('Hello, World!')
-await workspace.fs.uploadFile(fileContent, "data.txt")
-
+await sandbox.fs.uploadFile(fileContent, "data.txt")
 ```
 
 </TabItem>
@@ -113,9 +100,7 @@ The following example shows how to efficiently upload multiple files with a sing
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
-
 # Upload multiple files at once
-
 files_to_upload = []
 
 with open("file1.txt", "rb") as f1:
@@ -142,7 +127,6 @@ sandbox.fs.upload_files(files_to_upload)
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
-
 // Upload multiple files at once
 const files = [
     {
@@ -159,8 +143,7 @@ const files = [
     }
 ]
 
-await workspace.fs.uploadFiles(files)
-
+await sandbox.fs.uploadFiles(files)
 ```
 
 </TabItem>

@@ -7,7 +7,7 @@ sidebar:
 import Aside from "@components/Aside.astro";
 import Label from "@components/Label.astro";
 
-The `daytona` command-line tool provides access to Daytona's core features including managing images and the lifecycle of Daytona Sandboxes. View the installation instructions by clicking [here](/docs/getting-started#setting-up-the-daytona-cli).
+The `daytona` command-line tool provides access to Daytona's core features including managing Snapshots and the lifecycle of Daytona Sandboxes. View the installation instructions by clicking [here](/docs/getting-started#setting-up-the-daytona-cli).
 
 This reference lists all commands supported by the `daytona` command-line tool complete with a description of their behaviour, and any supported flags.
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
@@ -52,6 +52,8 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--limit` | `-l` | Maximum number of items per page |
+| `--page` | `-p` | Page number for pagination (starting from 1) |
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
@@ -107,20 +109,22 @@ daytona sandbox create [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--auto-stop` |  | Auto-stop interval in minutes (0 means disabled) |
 | `--auto-archive` |  | Auto-archive interval in minutes (0 means the maximum interval will be used) |
-| `--class` |  | Workspace class type (small, medium, large) |
+| `--auto-stop` |  | Auto-stop interval in minutes (0 means disabled) |
+| `--class` |  | Sandbox class type (small, medium, large) |
+| `--context` | `-c` | Files or directories to include in the build context (can be specified multiple times) |
 | `--cpu` |  | CPU cores allocated to the sandbox |
 | `--disk` |  | Disk space allocated to the sandbox in GB |
+| `--dockerfile` | `-f` | Path to Dockerfile for Sandbox snapshot |
 | `--env` | `-e` | Environment variables (format: KEY=VALUE) |
 | `--gpu` |  | GPU units allocated to the sandbox |
-| `--image` |  | Image to use for the sandbox |
 | `--label` | `-l` | Labels (format: KEY=VALUE) |
 | `--memory` |  | Memory allocated to the sandbox in MB |
-| `--name` |  | Name of the sandbox |
 | `--public` |  | Make sandbox publicly accessible |
-| `--target` |  | Target region (eu, us, asia) |
+| `--snapshot` |  | Snapshot to use for the sandbox |
+| `--target` |  | Target region (eu, us) |
 | `--user` |  | User associated with the sandbox |
+| `--volume` | `-v` | Volumes to mount (format: VOLUME_NAME:MOUNT_PATH) |
 | `--help` |  | help for daytona |
 
 ## daytona sandbox delete
@@ -138,19 +142,17 @@ __Flags__
 | `--force` | `-f` | Force delete |
 | `--help` |  | help for daytona |
 
-## daytona image push
+## daytona snapshot push
 
-Push local image
+Push local snapshot
 
 ```shell
-daytona image push [IMAGE] [flags]
+daytona snapshot push [SNAPSHOT] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--context` | `-c` | Build context directory (defaults to Dockerfile directory) |
-| `--dockerfile` | `-f` | Path to Dockerfile to build before pushing |
 | `--entrypoint` | `-e` | The entrypoint command for the image |
 | `--help` |  | help for daytona |
 
@@ -181,12 +183,12 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona image
+## daytona snapshot
 
-Manage Daytona images
+Manage Daytona snapshots
 
 ```shell
-daytona image [flags]
+daytona snapshot [flags]
 ```
 
 __Flags__
@@ -194,46 +196,51 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona image create
+## daytona snapshot create
 
-Create an image
+Create a snapshot
 
 ```shell
-daytona image create [IMAGE] [flags]
+daytona snapshot create [SNAPSHOT] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--entrypoint` | `-e` | The entrypoint command for the image |
+| `--context` | `-c` | Files or directories to include in the build context (can be specified multiple times) |
+| `--dockerfile` | `-f` | Path to Dockerfile to build |
+| `--entrypoint` | `-e` | The entrypoint command for the snapshot |
+| `--image` | `-i` | The image name for the snapshot |
 | `--help` |  | help for daytona |
 
-## daytona image delete
+## daytona snapshot delete
 
-Delete an image
+Delete a snapshot
 
 ```shell
-daytona image delete [IMAGE_ID] [flags]
+daytona snapshot delete [SNAPSHOT_ID] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--all` | `-a` | Delete all images |
+| `--all` | `-a` | Delete all snapshots |
 | `--help` |  | help for daytona |
 
-## daytona image list
+## daytona snapshot list
 
-List all images
+List all snapshots
 
 ```shell
-daytona image list [flags]
+daytona snapshot list [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--limit` | `-l` | Maximum number of items per page |
+| `--page` | `-p` | Page number for pagination (starting from 1) |
 | `--help` |  | help for daytona |
 
 ## daytona
@@ -393,6 +400,74 @@ Outputs JSON configuration for Daytona MCP Server
 
 ```shell
 daytona mcp config [AGENT_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona volume
+
+Manage Daytona volumes
+
+```shell
+daytona volume [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+## daytona volume list
+
+List all volumes
+
+```shell
+daytona volume list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+## daytona volume create
+
+Create a volume
+
+```shell
+daytona volume create [NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--size` | `-s` | Size of the volume in GB |
+| `--help` |  | help for daytona |
+
+## daytona volume get
+
+Get volume details
+
+```shell
+daytona volume get [VOLUME_ID] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+## daytona volume delete
+
+Delete a volume
+
+```shell
+daytona volume delete [VOLUME_ID] [flags]
 ```
 
 __Flags__
