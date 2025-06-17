@@ -1,5 +1,5 @@
 # Daytona Documentation v0.21.0
-# Generated on: 2025-06-15
+# Generated on: 2025-06-17
 
 # Daytona
 
@@ -127,6 +127,7 @@
 - [Performance Considerations](https://daytona.io/docs/sandbox-management#performance-considerations)
 - [Snapshots](https://daytona.io/docs/snapshots)
 - [Creating Snapshots](https://daytona.io/docs/snapshots#creating-snapshots)
+- [Snapshot Resources](https://daytona.io/docs/snapshots#snapshot-resources)
 - [Images from Private Registries](https://daytona.io/docs/snapshots#images-from-private-registries)
 - [Using a Local Image](https://daytona.io/docs/snapshots#using-a-local-image)
 - [Deleting Snapshots](https://daytona.io/docs/snapshots#deleting-snapshots)
