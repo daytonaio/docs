@@ -1,5 +1,5 @@
 # Daytona Documentation v0.21.0
-# Generated on: 2025-06-15
+# Generated on: 2025-06-17
 
 
 title: API Keys
@@ -2265,16 +2265,13 @@ from daytona import Daytona, CreateSandboxFromSnapshotParams
 daytona = Daytona()
 
 # Create a basic Sandbox
-
 sandbox = daytona.create()
 
 # Create a Sandbox with specific language
-
 params = CreateSandboxFromSnapshotParams(language="python")
 sandbox = daytona.create(params)
 
 # Create a Sandbox with custom labels
-
 params = CreateSandboxFromSnapshotParams(labels={"SOME_LABEL": "my-label"})
 sandbox = daytona.create(params)
 
@@ -2315,7 +2312,6 @@ from daytona import Daytona, Resources, CreateSandboxFromImageParams, Image
 daytona = Daytona()
 
 # Create a Sandbox with custom resources
-
 resources = Resources(
     cpu=2,  # 2 CPU cores
     memory=4,  # 4GB RAM
@@ -2364,11 +2360,9 @@ Daytona SDK provides methods to get information about a Sandbox, such as ID, roo
 sandbox_id = sandbox.id
 
 # Get the root directory of the Sandbox user
-
 root_dir = sandbox.get_user_root_dir()
 
 # Get the Sandbox id, auto-stop interval and state
-
 print(sandbox.id)
 print(sandbox.auto_stop_interval)
 print(sandbox.state)
@@ -2400,7 +2394,6 @@ Daytona SDK provides methods to stop and delete Sandboxes using Python and TypeS
 sandbox.stop()
 
 # Delete Sandbox
-
 sandbox.delete()
 
 ```
@@ -2554,7 +2547,7 @@ print(response.result)
 
 sandbox.delete()
 
-````
+```
 
 ```typescript
 import { Daytona } from '@daytonaio/sdk'
@@ -2586,8 +2579,82 @@ async function main() {
 }
 
 main()
-````
+```
 
+
+### Snapshot Resources
+
+Snapshots contain the resource requirements for Daytona Sandboxes. By default, Daytona Sandboxes come with **1 vCPU**, **1GB RAM**, and **3GiB disk**.  
+
+Need more power? Use the `Resources` class to define exactly what you need: CPU, memory, and disk space are all customizable.
+
+Check your available resources and limits in the [dashboard](https://app.daytona.io/dashboard/limits).
+
+```python
+from daytona import (
+    Daytona,
+    CreateSnapshotParams,
+    Image,
+    Resources,
+    CreateSandboxFromSnapshotParams,
+)
+
+daytona = Daytona()
+
+# Create a Snapshot with custom resources
+daytona.snapshot.create(
+    CreateSnapshotParams(
+        name="my-snapshot",
+        image=Image.debian_slim("3.12"),
+        resources=Resources(
+          cpu=2,
+          memory=4,
+          disk=8,
+        ),
+    ),
+    on_logs=print,
+)
+
+# Create a Sandbox with custom Snapshot
+sandbox = daytona.create(
+    CreateSandboxFromSnapshotParams(
+        snapshot="my-snapshot",
+    )
+)
+```
+```typescript
+import { Daytona, Image } from "@daytonaio/sdk";
+
+async function main() {
+  const daytona = new Daytona();
+
+  // Create a Snapshot with custom resources
+  await daytona.snapshot.create(
+    {
+      name: "my-snapshot",
+      image: Image.debianSlim("3.13"),
+      resources: {
+        cpu: 2,
+        memory: 4,
+        disk: 8,
+      },
+    },
+    { onLogs: console.log }
+  );
+
+  // Create a Sandbox with custom Snapshot
+  const sandbox = await daytona.create({
+    snapshot: "my-snapshot",
+  });
+}
+
+main();
+```
+
+
+:::note
+All resource parameters are optional. If not specified, Daytona will use the default values.
+:::
 
 ### Images from Private Registries
 
@@ -2683,6 +2750,7 @@ This reference lists all commands supported by the `daytona` command-line tool c
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
 
 ## daytona version
+
 Print the version number
 
 ```shell
@@ -2694,8 +2762,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox info
+
 Get sandbox info
 
 ```shell
@@ -2709,8 +2777,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox list
+
 List sandboxes
 
 ```shell
@@ -2726,8 +2794,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox start
+
 Start a sandbox
 
 ```shell
@@ -2740,8 +2808,8 @@ __Flags__
 | `--all` | `-a` | Start all sandboxes |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox stop
+
 Stop a sandbox
 
 ```shell
@@ -2754,8 +2822,8 @@ __Flags__
 | `--all` | `-a` | Stop all sandboxes |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox
+
 Manage Daytona sandboxes
 
 ```shell
@@ -2767,8 +2835,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox create
+
 Create a new sandbox
 
 ```shell
@@ -2796,8 +2864,8 @@ __Flags__
 | `--volume` | `-v` | Volumes to mount (format: VOLUME_NAME:MOUNT_PATH) |
 | `--help` |  | help for daytona |
 
-
 ## daytona sandbox delete
+
 Delete a sandbox
 
 ```shell
@@ -2811,8 +2879,8 @@ __Flags__
 | `--force` | `-f` | Force delete |
 | `--help` |  | help for daytona |
 
-
 ## daytona snapshot push
+
 Push local snapshot
 
 ```shell
@@ -2825,8 +2893,8 @@ __Flags__
 | `--entrypoint` | `-e` | The entrypoint command for the image |
 | `--help` |  | help for daytona |
 
-
 ## daytona login
+
 Log in to Daytona
 
 ```shell
@@ -2839,8 +2907,8 @@ __Flags__
 | `--api-key` |  | API key to use for authentication |
 | `--help` |  | help for daytona |
 
-
 ## daytona logout
+
 Logout from Daytona
 
 ```shell
@@ -2852,8 +2920,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona snapshot
+
 Manage Daytona snapshots
 
 ```shell
@@ -2865,8 +2933,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona snapshot create
+
 Create a snapshot
 
 ```shell
@@ -2882,8 +2950,8 @@ __Flags__
 | `--image` | `-i` | The image name for the snapshot |
 | `--help` |  | help for daytona |
 
-
 ## daytona snapshot delete
+
 Delete a snapshot
 
 ```shell
@@ -2896,8 +2964,8 @@ __Flags__
 | `--all` | `-a` | Delete all snapshots |
 | `--help` |  | help for daytona |
 
-
 ## daytona snapshot list
+
 List all snapshots
 
 ```shell
@@ -2912,8 +2980,8 @@ __Flags__
 | `--page` | `-p` | Page number for pagination (starting from 1) |
 | `--help` |  | help for daytona |
 
-
 ## daytona
+
 Daytona CLI
 
 ```shell
@@ -2926,8 +2994,8 @@ __Flags__
 | `--help` |  | help for daytona |
 | `--version` | `-v` | Display the version of Daytona |
 
-
 ## daytona autocomplete
+
 Adds a completion script for your shell environment
 
 ```shell
@@ -2946,6 +3014,7 @@ macOS Installation: ```brew install bash-completion```
 </Aside>
 
 ## daytona docs
+
 Opens the Daytona documentation in your default browser.
 
 ```shell
@@ -2957,8 +3026,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization
+
 Manage Daytona organizations
 
 ```shell
@@ -2970,8 +3039,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization create
+
 Create a new organization and set it as active
 
 ```shell
@@ -2983,8 +3052,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization delete
+
 Delete an organization
 
 ```shell
@@ -2996,8 +3065,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization list
+
 List all organizations
 
 ```shell
@@ -3010,8 +3079,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona organization use
+
 Set active organization
 
 ```shell
@@ -3023,8 +3092,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona mcp
+
 Manage Daytona MCP Server
 
 ```shell
@@ -3036,10 +3105,9 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona mcp init
-Initialize Daytona MCP Server with an agent (currently supported: claude, windsurf, cursor)
 
+Initialize Daytona MCP Server with an agent (currently supported: claude, windsurf, cursor)
 
 ```shell
 daytona mcp init [AGENT_NAME] [flags]
@@ -3050,8 +3118,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona mcp start
+
 Start Daytona MCP Server
 
 ```shell
@@ -3063,8 +3131,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona mcp config
+
 Outputs JSON configuration for Daytona MCP Server
 
 ```shell
@@ -3076,8 +3144,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona volume
+
 Manage Daytona volumes
 
 ```shell
@@ -3089,8 +3157,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-
 ## daytona volume list
+
 List all volumes
 
 ```shell
@@ -3103,8 +3171,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona volume create
+
 Create a volume
 
 ```shell
@@ -3117,8 +3185,8 @@ __Flags__
 | `--size` | `-s` | Size of the volume in GB |
 | `--help` |  | help for daytona |
 
-
 ## daytona volume get
+
 Get volume details
 
 ```shell
@@ -3131,8 +3199,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-
 ## daytona volume delete
+
 Delete a volume
 
 ```shell
