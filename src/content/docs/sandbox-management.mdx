@@ -17,7 +17,7 @@ A Daytona Sandbox can have three states during its lifetime: [Started](#creating
     <Image src={sandboxDiagram} alt="Sandbox Diagram" loading="lazy" style={{ maxWidth: '100%', height: 'auto' }} />
 </div>
 
-By default, sandboxes auto-stop after `15 minutes` of inactivity and auto-archive after `7 days` of inactivity.
+By default, sandboxes auto-stop after `15 minutes` of inactivity and auto-archive after `7 days` of being stopped.
 
 ## Creating Sandboxes
 
@@ -231,7 +231,7 @@ await sandbox.start();
 </TabItem>
 </Tabs>
 
-The stopped state should be used when the Sandbox is expected to be started again soon. Otherwise, it is recommended to archive the Sandbox to eliminate disk usage costs.
+The stopped state should be used when the Sandbox is expected to be started again soon. Otherwise, it is recommended to stop and then archive the Sandbox to eliminate disk usage costs.
 
 ## Archive Sandbox
 
@@ -320,7 +320,7 @@ Daytona Sandboxes can be automatically stopped and archived based on user-define
 
 ### Auto-stop Interval
 
-The `auto_stop_interval` parameter sets the amount of time after which the Sandbox will be automatically stopped.
+The `auto_stop_interval` parameter sets the amount of time after which a running Sandbox will be automatically stopped.
 
 The parameter can either be set to:
 
@@ -353,7 +353,7 @@ const sandbox = await daytona.create({
 
 ### Auto-archive Interval
 
-The `auto_archive_interval` parameter sets the amount of time after which the Sandbox will be automatically archived.
+The `auto_archive_interval` parameter sets the amount of time after which a stopped Sandbox will be automatically archived.
 
 The parameter can either be set to:
 
