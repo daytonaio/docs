@@ -186,7 +186,7 @@ To get the preview URL for a specific port, check out [Preview & Authentication]
 
 The Daytona SDK provides methods to stop and start Sandboxes using Python and TypeScript.
 
-Stopped Sandboxes only utilize disk storage. They can be instantly started when needed.
+Stopped Sandboxes maintain filesystem persistence while their memory state is cleared. They incur only disk usage costs and can be started again when needed.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
