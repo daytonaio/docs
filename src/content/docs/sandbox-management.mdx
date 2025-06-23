@@ -13,9 +13,7 @@ By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU*
 
 A Daytona Sandbox can have three states during its lifetime: [Started](#creating-sandboxes), [Stopped](#stop-and-resume-sandbox) and [Archived](#archive-sandbox). The diagram below shows the states and possible transitions between them.
 
-<div style={{ display: 'flex', justifyContent: 'center', maxWidth: '100%', overflow: 'hidden' }}>
-  <Fragment set:html={sandboxDiagram} />
-</div>
+<Fragment set:html={sandboxDiagram} />
 
 By default, sandboxes auto-stop after `15 minutes` of inactivity and auto-archive after `7 days` of being stopped.
 
