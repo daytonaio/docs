@@ -4,7 +4,7 @@ title: Sandbox Management
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import Image from 'astro/components/Image.astro';
-import sandboxDiagram from '@assets/docs/sandbox-states.svg';
+import sandboxDiagram from '@assets/docs/sandbox-states.svg?raw';
 
 Sandboxes are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove Sandboxes using the SDK.
 By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU**, **1GB RAM**, and **3GiB disk**.
@@ -14,7 +14,7 @@ By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU*
 A Daytona Sandbox can have three states during its lifetime: [Started](#creating-sandboxes), [Stopped](#stop-and-resume-sandbox) and [Archived](#archive-sandbox). The diagram below shows the states and possible transitions between them.
 
 <div style={{ display: 'flex', justifyContent: 'center', maxWidth: '100%', overflow: 'hidden' }}>
-    <Image src={sandboxDiagram} alt="Sandbox Diagram" loading="lazy" style={{ maxWidth: '100%', height: 'auto' }} />
+  <Fragment set:html={sandboxDiagram} />
 </div>
 
 By default, sandboxes auto-stop after `15 minutes` of inactivity and auto-archive after `7 days` of being stopped.
