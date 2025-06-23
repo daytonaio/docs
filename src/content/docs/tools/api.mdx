@@ -664,6 +664,22 @@ import Label from '@components/Label.astro'
 | :-------- | :---------- |
 | **`200`** | Auto-archive interval has been set |
 
+## POST /sandbox/\{sandboxId\}/autodelete/\{interval\}
+
+### Parameters
+
+| Name | Location | Required | Type | Description |
+| :--- | :------- | :------- | :--- | :---------- |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
+| **`sandboxId`** | path | true | undefined | ID of the sandbox |
+| **`interval`** | path | true | undefined | Auto-delete interval in minutes (negative value means disabled, 0 means delete immediately upon stopping) |
+
+### Responses
+
+| Status Code | Description |
+| :-------- | :---------- |
+| **`200`** | Auto-delete interval has been set |
+
 ## POST /sandbox/\{sandboxId\}/archive
 
 ### Parameters
