@@ -1,5 +1,5 @@
 ---
-title: "Daytona"
+title: 'Daytona'
 hideTitleOnPage: true
 ---
 
@@ -18,17 +18,17 @@ It can be initialized either with explicit configuration or using environment va
 
 - `volume` _VolumeService_ - Service for managing volumes.
 - `snapshot` _SnapshotService_ - Service for managing snapshots.
-  
+
 **Example**:
 
-  Using environment variables:
+Using environment variables:
 
 ```python
 daytona = Daytona()  # Uses DAYTONA_API_KEY, DAYTONA_API_URL
 sandbox = daytona.create()
 ```
-  
-  Using explicit configuration:
+
+Using explicit configuration:
 
 ```python
 config = DaytonaConfig(
@@ -57,11 +57,11 @@ If no config is provided, reads from environment variables:
 **Arguments**:
 
 - `config` _Optional[DaytonaConfig]_ - Object containing api_key, api_url, and target.
-  
+
 **Raises**:
 
 - `DaytonaError` - If API key is not provided either through config or environment variables
-  
+
 **Example**:
 
 ```python
@@ -97,25 +97,25 @@ including language, image, environment variables, and volumes.
   defaults to default Daytona snapshot and Python language.
 - `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
   Default is 60 seconds.
-  
+
 **Returns**:
 
 - `Sandbox` - The created Sandbox instance.
-  
+
 **Raises**:
 
 - `DaytonaError` - If timeout, auto_stop_interval or auto_archive_interval is negative;
   If sandbox fails to start or times out
-  
+
 **Example**:
 
-  Create a default Python Sandbox:
+Create a default Python Sandbox:
 
 ```python
 sandbox = daytona.create()
 ```
-  
-  Create a custom Sandbox:
+
+Create a custom Sandbox:
 
 ```python
 params = CreateSandboxFromSnapshotParams(
@@ -123,7 +123,8 @@ params = CreateSandboxFromSnapshotParams(
     snapshot="my-snapshot-id",
     env_vars={"DEBUG": "true"},
     auto_stop_interval=0,
-    auto_archive_interval=60
+    auto_archive_interval=60,
+    auto_delete_interval=120
 )
 sandbox = daytona.create(params, timeout=40)
 ```
@@ -148,25 +149,25 @@ and volumes. Daytona creates snapshot from provided image and uses it to create 
 - `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
   Default is 60 seconds.
 - `on_snapshot_create_logs` _Callable[[str], None]_ - This callback function handles snapshot creation logs.
-  
+
 **Returns**:
 
 - `Sandbox` - The created Sandbox instance.
-  
+
 **Raises**:
 
 - `DaytonaError` - If timeout, auto_stop_interval or auto_archive_interval is negative;
   If sandbox fails to start or times out
-  
+
 **Example**:
 
-  Create a default Python Sandbox from image:
+Create a default Python Sandbox from image:
 
 ```python
 sandbox = daytona.create(CreateSandboxFromImageParams(image="debian:12.9"))
 ```
-  
-  Create a custom Sandbox from declarative Image definition:
+
+Create a custom Sandbox from declarative Image definition:
 
 ```python
 declarative_image = (
@@ -181,6 +182,7 @@ params = CreateSandboxFromImageParams(
     resources=Resources(cpu=2, memory=4),
     auto_stop_interval=0,
     auto_archive_interval=60,
+    auto_delete_interval=120
 )
 sandbox = daytona.create(
     params,
@@ -192,7 +194,6 @@ sandbox = daytona.create(
 #### Daytona.delete
 
 ```python
-@intercept_errors(message_prefix="Failed to remove sandbox: ")
 def delete(sandbox: Sandbox, timeout: Optional[float] = 60) -> None
 ```
 
@@ -203,11 +204,11 @@ Deletes a Sandbox.
 - `sandbox` _Sandbox_ - The Sandbox instance to delete.
 - `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
   Default is 60 seconds.
-  
+
 **Raises**:
 
 - `DaytonaError` - If sandbox fails to delete or times out
-  
+
 **Example**:
 
 ```python
@@ -228,15 +229,15 @@ Gets a Sandbox by its ID.
 **Arguments**:
 
 - `sandbox_id` _str_ - The ID of the Sandbox to retrieve.
-  
+
 **Returns**:
 
 - `Sandbox` - The Sandbox instance.
-  
+
 **Raises**:
 
 - `DaytonaError` - If sandbox_id is not provided.
-  
+
 **Example**:
 
 ```python
@@ -244,7 +245,7 @@ sandbox = daytona.get("my-sandbox-id")
 print(sandbox.status)
 ```
 
-#### Daytona.find\_one
+#### Daytona.find_one
 
 ```python
 @intercept_errors(message_prefix="Failed to find sandbox: ")
@@ -258,15 +259,15 @@ Finds a Sandbox by its ID or labels.
 
 - `sandbox_id` _Optional[str]_ - The ID of the Sandbox to retrieve.
 - `labels` _Optional[Dict[str, str]]_ - Labels to filter Sandboxes.
-  
+
 **Returns**:
 
 - `Sandbox` - First Sandbox that matches the ID or labels.
-  
+
 **Raises**:
 
 - `DaytonaError` - If no Sandbox is found.
-  
+
 **Example**:
 
 ```python
@@ -286,11 +287,11 @@ Lists Sandboxes filtered by labels.
 **Arguments**:
 
 - `labels` _Optional[Dict[str, str]]_ - Labels to filter Sandboxes.
-  
+
 **Returns**:
 
 - `List[Sandbox]` - List of Sandbox instances that match the labels.
-  
+
 **Example**:
 
 ```python
@@ -312,7 +313,7 @@ Starts a Sandbox and waits for it to be ready.
 - `sandbox` _Sandbox_ - The Sandbox to start.
 - `timeout` _Optional[float]_ - Optional timeout in seconds to wait for the Sandbox to start.
   0 means no timeout. Default is 60 seconds.
-  
+
 **Raises**:
 
 - `DaytonaError` - If timeout is negative; If Sandbox fails to start or times out
@@ -330,7 +331,7 @@ Stops a Sandbox and waits for it to be stopped.
 - `sandbox` _Sandbox_ - The sandbox to stop
 - `timeout` _Optional[float]_ - Optional timeout (in seconds) for sandbox stop.
   0 means no timeout. Default is 60 seconds.
-  
+
 **Raises**:
 
 - `DaytonaError` - If timeout is negative; If Sandbox fails to stop or times out
@@ -344,10 +345,7 @@ class CodeLanguage(Enum)
 
 Programming languages supported by Daytona
 
-**Enum Members**:
-    - `PYTHON` ("python")
-    - `TYPESCRIPT` ("typescript")
-    - `JAVASCRIPT` ("javascript")
+**Enum Members**: - `PYTHON` ("python") - `TYPESCRIPT` ("typescript") - `JAVASCRIPT` ("javascript")
 
 ## DaytonaConfig
 
@@ -369,9 +367,9 @@ Configuration options for initializing the Daytona client.
   here or in the environment variable `DAYTONA_API_URL`.
 - `server_url` _Optional[str]_ - Deprecated. Use `api_url` instead. This property will be removed
   in a future version.
-- `target` _Optional[SandboxTargetRegion]_ - Target environment for the Sandbox. Defaults to `'us'` if not set here
+- `target` _Optional[str]_ - Target runner location for the Sandbox. Defaults to `'us'` if not set here
   or in the environment variable `DAYTONA_TARGET`.
-  
+
 **Example**:
 
 ```python
@@ -404,6 +402,9 @@ Base parameters for creating a new Sandbox.
 - `auto_archive_interval` _Optional[int]_ - Interval in minutes after which a continuously stopped Sandbox will
   automatically archive. Default is 7 days.
   0 means the maximum interval will be used.
+- `auto_delete_interval` _Optional[int]_ - Interval in minutes after which a continuously stopped Sandbox will
+  automatically be deleted. By default, auto-delete is disabled.
+  Negative value means disabled, 0 means delete immediately upon stopping.
 
 ## CreateSandboxFromImageParams
 

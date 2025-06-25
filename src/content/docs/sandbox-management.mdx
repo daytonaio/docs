@@ -172,7 +172,7 @@ console.log(sandbox.state)
 
 To get the preview URL for a specific port, check out [Preview & Authentication](/docs/preview-and-authentication).
 
-## Stop & Remove Sandbox
+## Stop & Delete Sandbox
 
 Daytona SDK provides methods to stop and delete Sandboxes using Python and TypeScript.
 
@@ -277,6 +277,45 @@ const sandbox = await daytona.create({
     autoArchiveInterval: 60 // Auto-archive after a Sandbox has been stopped for 1 hour
 });
 ```
+</TabItem>
+</Tabs>
+
+### Auto-delete Interval
+
+By default, Sandboxes will never be automatically deleted. However, this can be changed by setting the auto-delete interval. This interval is measured in minutes and it determines how long it takes for a Sandbox to be deleted after it has been continuously stopped. Setting the interval to `0` will delete the Sandbox immediately after it has been stopped. Setting the interval to `-1` will disable auto-deletion.
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+sandbox = daytona.create(CreateSandboxFromSnapshotParams(
+    snapshot="my-snapshot-name",
+    auto_delete_interval=60,  # Auto-delete after a Sandbox has been stopped for 1 hour
+))
+
+# Delete the Sandbox immediately after it has been stopped
+
+sandbox.set_auto_delete_interval(0)
+
+# Disable auto-deletion
+
+sandbox.set_auto_delete_interval(-1)
+
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+const sandbox = await daytona.create({
+    snapshot: "my-snapshot-name",
+    autoDeleteInterval: 60, // Auto-delete after a Sandbox has been stopped for 1 hour
+});
+
+// Delete the Sandbox immediately after it has been stopped
+await sandbox.setAutoDeleteInterval(0)
+
+// Disable auto-deletion
+await sandbox.setAutoDeleteInterval(-1)
+```
+
 </TabItem>
 </Tabs>
 
