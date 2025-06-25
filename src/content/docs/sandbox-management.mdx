@@ -282,7 +282,7 @@ const sandbox = await daytona.create({
 
 ### Auto-delete Interval
 
-By default, Sandboxes will never be automatically deleted. However, this can be changed by setting the auto-delete interval. This interval is measured in minutes and it determines how long it takes for a Sandbox to be deleted after it has been continuously stopped. Setting the interval to `0` will disable auto-deletion.
+By default, Sandboxes will never be automatically deleted. However, this can be changed by setting the auto-delete interval. This interval is measured in minutes and it determines how long it takes for a Sandbox to be deleted after it has been continuously stopped. Setting the interval to `0` will delete the Sandbox immediately after it has been stopped. Setting the interval to `-1` will disable auto-deletion.
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -292,9 +292,13 @@ sandbox = daytona.create(CreateSandboxFromSnapshotParams(
     auto_delete_interval=60,  # Auto-delete after a Sandbox has been stopped for 1 hour
 ))
 
-# Disable auto-deletion
+# Delete the Sandbox immediately after it has been stopped
 
 sandbox.set_auto_delete_interval(0)
+
+# Disable auto-deletion
+
+sandbox.set_auto_delete_interval(-1)
 
 ```
 </TabItem>
@@ -305,8 +309,11 @@ const sandbox = await daytona.create({
     autoDeleteInterval: 60, // Auto-delete after a Sandbox has been stopped for 1 hour
 });
 
-// Disable auto-deletion
+// Delete the Sandbox immediately after it has been stopped
 await sandbox.setAutoDeleteInterval(0)
+
+// Disable auto-deletion
+await sandbox.setAutoDeleteInterval(-1)
 ```
 
 </TabItem>

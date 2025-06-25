@@ -1,5 +1,5 @@
 # Daytona Documentation v0.21.0
-# Generated on: 2025-06-24
+# Generated on: 2025-06-25
 
 
 title: API Keys
@@ -2483,7 +2483,7 @@ const sandbox = await daytona.create({
 
 ### Auto-delete Interval
 
-By default, Sandboxes will never be automatically deleted. However, this can be changed by setting the auto-delete interval. This interval is measured in minutes and it determines how long it takes for a Sandbox to be deleted after it has been continuously stopped. Setting the interval to `0` will disable auto-deletion.
+By default, Sandboxes will never be automatically deleted. However, this can be changed by setting the auto-delete interval. This interval is measured in minutes and it determines how long it takes for a Sandbox to be deleted after it has been continuously stopped. Setting the interval to `0` will delete the Sandbox immediately after it has been stopped. Setting the interval to `-1` will disable auto-deletion.
 
 ```python
 sandbox = daytona.create(CreateSandboxFromSnapshotParams(
@@ -2491,10 +2491,11 @@ sandbox = daytona.create(CreateSandboxFromSnapshotParams(
     auto_delete_interval=60,  # Auto-delete after a Sandbox has been stopped for 1 hour
 ))
 
-# Disable auto-deletion
-
+# Delete the Sandbox immediately after it has been stopped
 sandbox.set_auto_delete_interval(0)
 
+# Disable auto-deletion
+sandbox.set_auto_delete_interval(-1)
 ```
 ```typescript
 const sandbox = await daytona.create({
@@ -2502,8 +2503,11 @@ const sandbox = await daytona.create({
     autoDeleteInterval: 60, // Auto-delete after a Sandbox has been stopped for 1 hour
 });
 
-// Disable auto-deletion
+// Delete the Sandbox immediately after it has been stopped
 await sandbox.setAutoDeleteInterval(0)
+
+// Disable auto-deletion
+await sandbox.setAutoDeleteInterval(-1)
 ```
 
 
@@ -2786,7 +2790,6 @@ This reference lists all commands supported by the `daytona` command-line tool c
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
 
 ## daytona
-
 Daytona CLI
 
 ```shell
@@ -2799,8 +2802,8 @@ __Flags__
 | `--help` |  | help for daytona |
 | `--version` | `-v` | Display the version of Daytona |
 
-## daytona autocomplete
 
+## daytona autocomplete
 Adds a completion script for your shell environment
 
 ```shell
@@ -2819,7 +2822,6 @@ macOS Installation: ```brew install bash-completion```
 </Aside>
 
 ## daytona docs
-
 Opens the Daytona documentation in your default browser.
 
 ```shell
@@ -2831,8 +2833,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona login
 
+## daytona login
 Log in to Daytona
 
 ```shell
@@ -2845,8 +2847,8 @@ __Flags__
 | `--api-key` |  | API key to use for authentication |
 | `--help` |  | help for daytona |
 
-## daytona logout
 
+## daytona logout
 Logout from Daytona
 
 ```shell
@@ -2858,8 +2860,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona mcp
 
+## daytona mcp
 Manage Daytona MCP Server
 
 ```shell
@@ -2871,8 +2873,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona mcp config
 
+## daytona mcp config
 Outputs JSON configuration for Daytona MCP Server
 
 ```shell
@@ -2884,9 +2886,10 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona mcp init
 
+## daytona mcp init
 Initialize Daytona MCP Server with an agent (currently supported: claude, windsurf, cursor)
+
 
 ```shell
 daytona mcp init [AGENT_NAME] [flags]
@@ -2897,8 +2900,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona mcp start
 
+## daytona mcp start
 Start Daytona MCP Server
 
 ```shell
@@ -2910,8 +2913,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona organization
 
+## daytona organization
 Manage Daytona organizations
 
 ```shell
@@ -2923,8 +2926,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona organization create
 
+## daytona organization create
 Create a new organization and set it as active
 
 ```shell
@@ -2936,8 +2939,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona organization delete
 
+## daytona organization delete
 Delete an organization
 
 ```shell
@@ -2949,8 +2952,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona organization list
 
+## daytona organization list
 List all organizations
 
 ```shell
@@ -2963,8 +2966,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona organization use
 
+## daytona organization use
 Set active organization
 
 ```shell
@@ -2976,8 +2979,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona sandbox
 
+## daytona sandbox
 Manage Daytona sandboxes
 
 ```shell
@@ -2989,8 +2992,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona sandbox create
 
+## daytona sandbox create
 Create a new sandbox
 
 ```shell
@@ -3001,7 +3004,7 @@ __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--auto-archive` |  | Auto-archive interval in minutes (0 means the maximum interval will be used) |
-| `--auto-delete` |  | Auto-delete interval in minutes (0 means disabled) |
+| `--auto-delete` |  | Auto-delete interval in minutes (negative value means disabled, 0 means delete immediately upon stopping) |
 | `--auto-stop` |  | Auto-stop interval in minutes (0 means disabled) |
 | `--class` |  | Sandbox class type (small, medium, large) |
 | `--context` | `-c` | Files or directories to include in the build context (can be specified multiple times) |
@@ -3019,8 +3022,8 @@ __Flags__
 | `--volume` | `-v` | Volumes to mount (format: VOLUME_NAME:MOUNT_PATH) |
 | `--help` |  | help for daytona |
 
-## daytona sandbox delete
 
+## daytona sandbox delete
 Delete a sandbox
 
 ```shell
@@ -3034,8 +3037,8 @@ __Flags__
 | `--force` | `-f` | Force delete |
 | `--help` |  | help for daytona |
 
-## daytona sandbox info
 
+## daytona sandbox info
 Get sandbox info
 
 ```shell
@@ -3049,8 +3052,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-## daytona sandbox list
 
+## daytona sandbox list
 List sandboxes
 
 ```shell
@@ -3066,8 +3069,8 @@ __Flags__
 | `--verbose` | `-v` | Include verbose output |
 | `--help` |  | help for daytona |
 
-## daytona sandbox start
 
+## daytona sandbox start
 Start a sandbox
 
 ```shell
@@ -3080,8 +3083,8 @@ __Flags__
 | `--all` | `-a` | Start all sandboxes |
 | `--help` |  | help for daytona |
 
-## daytona sandbox stop
 
+## daytona sandbox stop
 Stop a sandbox
 
 ```shell
@@ -3094,8 +3097,8 @@ __Flags__
 | `--all` | `-a` | Stop all sandboxes |
 | `--help` |  | help for daytona |
 
-## daytona snapshot
 
+## daytona snapshot
 Manage Daytona snapshots
 
 ```shell
@@ -3107,8 +3110,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona snapshot create
 
+## daytona snapshot create
 Create a snapshot
 
 ```shell
@@ -3127,8 +3130,8 @@ __Flags__
 | `--memory` |  | Memory that will be allocated to the underlying sandboxes in GB (default: 1) |
 | `--help` |  | help for daytona |
 
-## daytona snapshot delete
 
+## daytona snapshot delete
 Delete a snapshot
 
 ```shell
@@ -3141,8 +3144,8 @@ __Flags__
 | `--all` | `-a` | Delete all snapshots |
 | `--help` |  | help for daytona |
 
-## daytona snapshot list
 
+## daytona snapshot list
 List all snapshots
 
 ```shell
@@ -3157,8 +3160,8 @@ __Flags__
 | `--page` | `-p` | Page number for pagination (starting from 1) |
 | `--help` |  | help for daytona |
 
-## daytona snapshot push
 
+## daytona snapshot push
 Push local snapshot
 
 ```shell
@@ -3175,8 +3178,8 @@ __Flags__
 | `--name` | `-n` | Specify the Snapshot name |
 | `--help` |  | help for daytona |
 
-## daytona version
 
+## daytona version
 Print the version number
 
 ```shell
@@ -3188,8 +3191,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona volume
 
+## daytona volume
 Manage Daytona volumes
 
 ```shell
@@ -3201,8 +3204,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona volume create
 
+## daytona volume create
 Create a volume
 
 ```shell
@@ -3215,8 +3218,8 @@ __Flags__
 | `--size` | `-s` | Size of the volume in GB |
 | `--help` |  | help for daytona |
 
-## daytona volume delete
 
+## daytona volume delete
 Delete a volume
 
 ```shell
@@ -3228,8 +3231,8 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
-## daytona volume get
 
+## daytona volume get
 Get volume details
 
 ```shell
@@ -3242,8 +3245,8 @@ __Flags__
 | `--format` | `-f` | Output format. Must be one of (yaml, json) |
 | `--help` |  | help for daytona |
 
-## daytona volume list
 
+## daytona volume list
 List all volumes
 
 ```shell

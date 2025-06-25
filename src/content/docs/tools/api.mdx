@@ -672,7 +672,7 @@ import Label from '@components/Label.astro'
 | :--- | :------- | :------- | :--- | :---------- |
 | **`X-Daytona-Organization-ID`** | header | false | undefined | Use with JWT to specify the organization ID |
 | **`sandboxId`** | path | true | undefined | ID of the sandbox |
-| **`interval`** | path | true | undefined | Auto-delete interval in minutes (0 to disable) |
+| **`interval`** | path | true | undefined | Auto-delete interval in minutes (negative value means disabled, 0 means delete immediately upon stopping) |
 
 ### Responses
 
