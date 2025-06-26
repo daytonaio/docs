@@ -1,5 +1,5 @@
 # Daytona Documentation v0.21.0
-# Generated on: 2025-06-17
+# Generated on: 2025-06-26
 
 
 title: API Keys
@@ -2265,13 +2265,16 @@ from daytona import Daytona, CreateSandboxFromSnapshotParams
 daytona = Daytona()
 
 # Create a basic Sandbox
+
 sandbox = daytona.create()
 
 # Create a Sandbox with specific language
+
 params = CreateSandboxFromSnapshotParams(language="python")
 sandbox = daytona.create(params)
 
 # Create a Sandbox with custom labels
+
 params = CreateSandboxFromSnapshotParams(labels={"SOME_LABEL": "my-label"})
 sandbox = daytona.create(params)
 
@@ -2312,6 +2315,7 @@ from daytona import Daytona, Resources, CreateSandboxFromImageParams, Image
 daytona = Daytona()
 
 # Create a Sandbox with custom resources
+
 resources = Resources(
     cpu=2,  # 2 CPU cores
     memory=4,  # 4GB RAM
@@ -2360,9 +2364,11 @@ Daytona SDK provides methods to get information about a Sandbox, such as ID, roo
 sandbox_id = sandbox.id
 
 # Get the root directory of the Sandbox user
+
 root_dir = sandbox.get_user_root_dir()
 
 # Get the Sandbox id, auto-stop interval and state
+
 print(sandbox.id)
 print(sandbox.auto_stop_interval)
 print(sandbox.state)
@@ -2394,6 +2400,7 @@ Daytona SDK provides methods to stop and delete Sandboxes using Python and TypeS
 sandbox.stop()
 
 # Delete Sandbox
+
 sandbox.delete()
 
 ```
@@ -2602,6 +2609,7 @@ from daytona import (
 daytona = Daytona()
 
 # Create a Snapshot with custom resources
+
 daytona.snapshot.create(
     CreateSnapshotParams(
         name="my-snapshot",
@@ -2616,11 +2624,13 @@ daytona.snapshot.create(
 )
 
 # Create a Sandbox with custom Snapshot
+
 sandbox = daytona.create(
     CreateSandboxFromSnapshotParams(
         snapshot="my-snapshot",
     )
 )
+
 ```
 ```typescript
 import { Daytona, Image } from "@daytonaio/sdk";
@@ -2672,18 +2682,22 @@ The next step is the same; simply set the `CreateSandboxFromSnapshotParams` fiel
 
 In order to avoid having to manually set up a private container registry and push your image there, the [Daytona CLI](/docs/getting-started#setting-up-the-daytona-cli) allows you to create a Snapshot from your local image or from a local Dockerfile and use it in your Sandboxes.
 
-After running `docker images` and ensuring the image and tag you want to use is available use the `daytona snapshot push` command to create a Snapshot and push it to Daytona, e.g.:
+After running `docker images` and ensuring the image and tag you want to use is available use the `daytona snapshot push <your_local_docker_image>` command to create a Snapshot and push it to Daytona, e.g.:
 
 ```bash
-daytona snapshot push custom-alpine:3.21
+daytona snapshot push custom-alpine:3.21 --name alpine-minimal
 ```
+
+:::tip
+Use the flags `--cpu`, `--memory` and `--disk` to specify the resources you want the underlying Sandboxes to have - for example `daytona snapshot push custom-alpine:3.21 --name alpine-minimal --cpu 2 --memory 4 --disk 8` will create Alpine Sandboxes with 2 vCPU, 4GiB of memory and 8GiB of disk space.
+:::
 
 If you haven't built the desired image yet, and have a Dockerfile ready, you can use the Declarative Builder in our SDK - read more about it [here](/docs/getting-started#declarative-builder).
 
 Alternatively, to do it through the CLI, use the `--dockerfile` flag under `create` to pass the path to the Dockerfile you want to use and Daytona will build the Snapshot for you:
 
 ```bash
-daytona snapshot create trying-daytona:0.0.1 --dockerfile ./Dockerfile --context ./requirements.txt
+daytona snapshot create data-analysis01 --dockerfile ./Dockerfile --context ./requirements.txt
 ```
 
 ```text
