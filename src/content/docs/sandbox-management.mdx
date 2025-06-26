@@ -11,7 +11,7 @@ By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU*
 
 ## Sandbox Lifecycle
 
-A Daytona Sandbox can have three states during its lifetime: [Started](#creating-sandboxes), [Stopped](#stop-and-start-sandbox) and [Archived](#archive-sandbox). The diagram below shows the states and possible transitions between them.
+Throughout its lifecycle, a Daytona Sandbox can have several different states. The diagram below shows the states and possible transitions between them.
 
 <Fragment set:html={sandboxDiagram} />
 
@@ -23,7 +23,7 @@ The Daytona SDK provides an option to create Sandboxes with default or custom co
 Running Sandboxes utilize CPU, memory, and disk storage. Every resource is charged per second of usage.
 
 :::tip
-If you want to prolong the auto-stop interval, you can [set the auto_stop_interval parameter](/docs/sandbox-management#auto-stop-interval) when creating a Sandbox.
+If you want to prolong the auto-stop interval, you can [set the auto-stop interval parameter](/docs/sandbox-management#auto-stop-interval) when creating a Sandbox.
 :::
 
 ### Basic Sandbox Creation
@@ -255,7 +255,7 @@ await sandbox.archive();
 </TabItem>
 </Tabs>
 
-## Remove Sandbox
+## Delete Sandbox
 
 The Daytona SDK provides methods to stop and delete Sandboxes using Python and TypeScript.
 
@@ -318,7 +318,7 @@ Daytona Sandboxes can be automatically stopped and archived based on user-define
 
 ### Auto-stop Interval
 
-The `auto_stop_interval` parameter sets the amount of time after which a running Sandbox will be automatically stopped.
+The auto-stop interval parameter sets the amount of time after which a running Sandbox will be automatically stopped.
 
 The parameter can either be set to:
 
@@ -351,7 +351,7 @@ const sandbox = await daytona.create({
 
 ### Auto-archive Interval
 
-The `auto_archive_interval` parameter sets the amount of time after which a stopped Sandbox will be automatically archived.
+The auto-archive interval parameter sets the amount of time after which a continuously stopped Sandbox will be automatically archived.
 
 The parameter can either be set to:
 
