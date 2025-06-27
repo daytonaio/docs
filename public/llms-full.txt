@@ -1,5 +1,5 @@
 # Daytona Documentation v0.21.0
-# Generated on: 2025-06-17
+# Generated on: 2025-06-27
 
 
 title: API Keys
@@ -2247,13 +2247,11 @@ By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU*
 
 ## Sandbox Lifecycle
 
-A Daytona Sandbox can have three states during its lifetime: [Started](#creating-sandboxes), [Stopped](#stop-and-resume-sandbox) and [Archived](#archive-sandbox). The diagram below shows the states and possible transitions between them.
+Throughout its lifecycle, a Daytona Sandbox can have several different states. The diagram below shows the states and possible transitions between them.
 
-<div style={{ display: 'flex', justifyContent: 'center', maxWidth: '100%', overflow: 'hidden' }}>
-    <Image src={sandboxDiagram} alt="Sandbox Diagram" loading="lazy" style={{ maxWidth: '100%', height: 'auto' }} />
-</div>
+<Fragment set:html={sandboxDiagram} />
 
-By default, sandboxes auto-stop after `15 minutes` of inactivity and auto-archive after `7 days` of inactivity.
+By default, sandboxes auto-stop after `15 minutes` of inactivity and auto-archive after `7 days` of being stopped.
 
 ## Creating Sandboxes
 
@@ -2261,7 +2259,7 @@ The Daytona SDK provides an option to create Sandboxes with default or custom co
 Running Sandboxes utilize CPU, memory, and disk storage. Every resource is charged per second of usage.
 
 :::tip
-If you want to prolong the auto-stop interval, you can [set the auto_stop_interval parameter](/docs/sandbox-management#auto-stop-interval) when creating a Sandbox.
+If you want to prolong the auto-stop interval, you can [set the auto-stop interval parameter](/docs/sandbox-management#auto-stop-interval) when creating a Sandbox.
 :::
 
 ### Basic Sandbox Creation
@@ -2305,7 +2303,7 @@ const sandbox = await daytona.create({ labels: { SOME_LABEL: 'my-label' } });
 ```
 
 
- When Sandboxes are not actively used, it is recommended that they be stopped. This can be done manually [using the stop command](/docs/sandbox-management#stop-and-resume-sandbox) or automatically by [setting the auto-stop interval](/docs/sandbox-management#auto-stop-and-auto-archive).
+ When Sandboxes are not actively used, it is recommended that they be stopped. This can be done manually [using the stop command](/docs/sandbox-management#stop-and-start-sandbox) or automatically by [setting the auto-stop interval](/docs/sandbox-management#auto-stop-and-auto-archive).
 
 :::note
 Daytona keeps a pool of warm Sandboxes using default Snapshots.  
@@ -2402,11 +2400,11 @@ console.log(sandbox.state)
 
 To get the preview URL for a specific port, check out [Preview & Authentication](/docs/preview-and-authentication).
 
-## Stop and Resume Sandbox
+## Stop and Start Sandbox
 
-The Daytona SDK provides methods to stop and resume Sandboxes using Python and TypeScript.
+The Daytona SDK provides methods to stop and start Sandboxes using Python and TypeScript.
 
-Stopped Sandboxes only utilize disk storage. They can be instantly started when needed.
+Stopped Sandboxes maintain filesystem persistence while their memory state is cleared. They incur only disk usage costs and can be started again when needed.
 
 ```python
 sandbox = daytona.create(CreateSandboxParams(language="python"))
@@ -2417,11 +2415,11 @@ sandbox.stop()
 
 print(sandbox.id) # 7cd11133-96c1-4cc8-9baa-c757b8f8c916
 
-# The sandbox ID can later be used to find the sandbox and resume it
+# The sandbox ID can later be used to find the sandbox and start it
 
 sandbox = daytona.find_one("7cd11133-96c1-4cc8-9baa-c757b8f8c916")
 
-# Resume Sandbox
+# Start Sandbox
 
 sandbox.start()
 
@@ -2434,16 +2432,16 @@ await sandbox.stop();
 
 console.log(sandbox.id) // 7cd11133-96c1-4cc8-9baa-c757b8f8c916
 
-// The sandbox ID can later be used to find the sandbox and resume it
+// The sandbox ID can later be used to find the sandbox and start it
 
 const sandbox = await daytona.findOne("7cd11133-96c1-4cc8-9baa-c757b8f8c916");
 
-// Resume Sandbox
+// Start Sandbox
 await sandbox.start();
 ```
 
 
-The stopped state should be used when the Sandbox is expected to be started again soon. Otherwise, it is recommended to archive the Sandbox to eliminate disk usage costs.
+The stopped state should be used when the Sandbox is expected to be started again soon. Otherwise, it is recommended to stop and then archive the Sandbox to eliminate disk usage costs.
 
 ## Archive Sandbox
 
@@ -2452,7 +2450,7 @@ The Daytona SDK provides methods to archive Sandboxes using Python and TypeScrip
 When Sandboxes are archived, the entire filesystem state is moved to very cost-effective object storage, making it possible to keep Sandboxes available for an extended period.
 Starting an archived Sandbox takes more time than starting a stopped Sandbox, depending on its size.
 
-A Sandbox must be stopped before it can be archived, and can be resumed in the same way as a stopped Sandbox.
+A Sandbox must be stopped before it can be archived, and can be started again in the same way as a stopped Sandbox.
 
 ```python
 # Archive Sandbox
@@ -2463,23 +2461,15 @@ sandbox.archive()
 await sandbox.archive();
 ```
 
-## Remove Sandbox
+## Delete Sandbox
 
-The Daytona SDK provides methods to stop and delete Sandboxes using Python and TypeScript.
+The Daytona SDK provides methods to delete Sandboxes using Python and TypeScript.
 
 ```python
-# Stop Sandbox
-sandbox.stop()
-
 # Delete Sandbox
-
 sandbox.delete()
-
 ```
 ```typescript
-// Stop Sandbox
-await sandbox.stop();
-
 // Delete Sandbox
 await sandbox.delete();
 ```
@@ -2520,7 +2510,7 @@ Daytona Sandboxes can be automatically stopped and archived based on user-define
 
 ### Auto-stop Interval
 
-The `auto_stop_interval` parameter sets the amount of time after which the Sandbox will be automatically stopped.
+The auto-stop interval parameter sets the amount of time after which a running Sandbox will be automatically stopped.
 
 The parameter can either be set to:
 
@@ -2547,7 +2537,7 @@ const sandbox = await daytona.create({
 
 ### Auto-archive Interval
 
-The `auto_archive_interval` parameter sets the amount of time after which the Sandbox will be automatically archived.
+The auto-archive interval parameter sets the amount of time after which a continuously stopped Sandbox will be automatically archived.
 
 The parameter can either be set to:
 

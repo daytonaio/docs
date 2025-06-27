@@ -1272,20 +1272,28 @@
     "objectID": 159
   },
   {
-    "title": "Creating Sandboxes",
-    "description": "Daytona SDK provides an option to create Sandboxes with default or custom configurations.",
+    "title": "Sandbox Lifecycle",
+    "description": "Throughout its lifecycle, a Daytona Sandbox can have several different states.",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#creating-sandboxes",
-    "slug": "/sandbox-management#creating-sandboxes",
+    "url": "/docs/sandbox-management#sandbox-lifecycle",
+    "slug": "/sandbox-management#sandbox-lifecycle",
     "objectID": 160
   },
   {
+    "title": "Creating Sandboxes",
+    "description": "The Daytona SDK provides an option to create Sandboxes with default or custom configurations.",
+    "tag": "Documentation",
+    "url": "/docs/sandbox-management#creating-sandboxes",
+    "slug": "/sandbox-management#creating-sandboxes",
+    "objectID": 161
+  },
+  {
     "title": "Basic Sandbox Creation",
-    "description": "Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom labels using Python and TypeScript.",
+    "description": "The Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, or custom labels using Python and TypeScript.",
     "tag": "Documentation",
     "url": "/docs/sandbox-management#basic-sandbox-creation",
     "slug": "/sandbox-management#basic-sandbox-creation",
-    "objectID": 161
+    "objectID": 162
   },
   {
     "title": "Create a basic Sandbox",
@@ -1293,7 +1301,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#create-a-basic-sandbox",
     "slug": "/sandbox-management#create-a-basic-sandbox",
-    "objectID": 162
+    "objectID": 163
   },
   {
     "title": "Create a Sandbox with specific language",
@@ -1301,15 +1309,15 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#create-a-sandbox-with-specific-language",
     "slug": "/sandbox-management#create-a-sandbox-with-specific-language",
-    "objectID": 163
+    "objectID": 164
   },
   {
     "title": "Create a Sandbox with custom labels",
-    "description": "",
+    "description": "When Sandboxes are not actively used, it is recommended that they be stopped.",
     "tag": "Documentation",
     "url": "/docs/sandbox-management#create-a-sandbox-with-custom-labels",
     "slug": "/sandbox-management#create-a-sandbox-with-custom-labels",
-    "objectID": 164
+    "objectID": 165
   },
   {
     "title": "Sandbox Resources",
@@ -1317,7 +1325,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#sandbox-resources",
     "slug": "/sandbox-management#sandbox-resources",
-    "objectID": 165
+    "objectID": 166
   },
   {
     "title": "Create a Sandbox with custom resources",
@@ -1325,15 +1333,15 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#create-a-sandbox-with-custom-resources",
     "slug": "/sandbox-management#create-a-sandbox-with-custom-resources",
-    "objectID": 166
+    "objectID": 167
   },
   {
     "title": "Sandbox Information",
-    "description": "Daytona SDK provides methods to get information about a Sandbox, such as ID, root directory, and status using Python and TypeScript.",
+    "description": "The Daytona SDK provides methods to get information about a Sandbox, such as ID, root directory, and status using Python and TypeScript.",
     "tag": "Documentation",
     "url": "/docs/sandbox-management#sandbox-information",
     "slug": "/sandbox-management#sandbox-information",
-    "objectID": 167
+    "objectID": 168
   },
   {
     "title": "Get Sandbox ID",
@@ -1341,7 +1349,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#get-sandbox-id",
     "slug": "/sandbox-management#get-sandbox-id",
-    "objectID": 168
+    "objectID": 169
   },
   {
     "title": "Get the root directory of the Sandbox user",
@@ -1349,7 +1357,7 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#get-the-root-directory-of-the-sandbox-user",
     "slug": "/sandbox-management#get-the-root-directory-of-the-sandbox-user",
-    "objectID": 169
+    "objectID": 170
   },
   {
     "title": "Get the Sandbox id, auto-stop interval and state",
@@ -1357,15 +1365,15 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#get-the-sandbox-id-auto-stop-interval-and-state",
     "slug": "/sandbox-management#get-the-sandbox-id-auto-stop-interval-and-state",
-    "objectID": 170
+    "objectID": 171
   },
   {
-    "title": "Stop & Remove Sandbox",
-    "description": "Daytona SDK provides methods to stop and delete Sandboxes using Python and TypeScript.",
+    "title": "Stop and Start Sandbox",
+    "description": "The Daytona SDK provides methods to stop and start Sandboxes using Python and TypeScript.",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#stop--remove-sandbox",
-    "slug": "/sandbox-management#stop--remove-sandbox",
-    "objectID": 171
+    "url": "/docs/sandbox-management#stop-and-start-sandbox",
+    "slug": "/sandbox-management#stop-and-start-sandbox",
+    "objectID": 172
   },
   {
     "title": "Stop Sandbox",
@@ -1373,7 +1381,47 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#stop-sandbox",
     "slug": "/sandbox-management#stop-sandbox",
-    "objectID": 172
+    "objectID": 173
+  },
+  {
+    "title": "The sandbox ID can later be used to find the sandbox and start it",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/sandbox-management#the-sandbox-id-can-later-be-used-to-find-the-sandbox-and-start-it",
+    "slug": "/sandbox-management#the-sandbox-id-can-later-be-used-to-find-the-sandbox-and-start-it",
+    "objectID": 174
+  },
+  {
+    "title": "Start Sandbox",
+    "description": "The stopped state should be used when the Sandbox is expected to be started again soon.",
+    "tag": "Documentation",
+    "url": "/docs/sandbox-management#start-sandbox",
+    "slug": "/sandbox-management#start-sandbox",
+    "objectID": 175
+  },
+  {
+    "title": "Archive Sandbox",
+    "description": "The Daytona SDK provides methods to archive Sandboxes using Python and TypeScript.",
+    "tag": "Documentation",
+    "url": "/docs/sandbox-management#archive-sandbox",
+    "slug": "/sandbox-management#archive-sandbox",
+    "objectID": 176
+  },
+  {
+    "title": "Archive Sandbox",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/sandbox-management#archive-sandbox",
+    "slug": "/sandbox-management#archive-sandbox",
+    "objectID": 177
+  },
+  {
+    "title": "Delete Sandbox",
+    "description": "The Daytona SDK provides methods to delete Sandboxes using Python and TypeScript.",
+    "tag": "Documentation",
+    "url": "/docs/sandbox-management#delete-sandbox",
+    "slug": "/sandbox-management#delete-sandbox",
+    "objectID": 178
   },
   {
     "title": "Delete Sandbox",
@@ -1381,63 +1429,31 @@
     "tag": "Documentation",
     "url": "/docs/sandbox-management#delete-sandbox",
     "slug": "/sandbox-management#delete-sandbox",
-    "objectID": 173
-  },
-  {
-    "title": "Sandbox States and Persistence",
-    "description": "Daytona keeps the filesystem in its entirety during the Sandbox lifecycle.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#sandbox-states-and-persistence",
-    "slug": "/sandbox-management#sandbox-states-and-persistence",
-    "objectID": 174
-  },
-  {
-    "title": "Auto-stop Interval",
-    "description": "It is important to understand the Sandbox states to maintain cost-effectiveness.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#auto-stop-interval",
-    "slug": "/sandbox-management#auto-stop-interval",
-    "objectID": 175
-  },
-  {
-    "title": "Auto-archive Interval",
-    "description": "Another useful built-in feature is the auto-archive interval.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#auto-archive-interval",
-    "slug": "/sandbox-management#auto-archive-interval",
-    "objectID": 176
-  },
-  {
-    "title": "Running",
-    "description": "Running Sandboxes utilize CPU, memory, and disk storage.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#running",
-    "slug": "/sandbox-management#running",
-    "objectID": 177
-  },
-  {
-    "title": "Stopped",
-    "description": "Stopped Sandboxes only utilize disk storage.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#stopped",
-    "slug": "/sandbox-management#stopped",
-    "objectID": 178
-  },
-  {
-    "title": "Archived",
-    "description": "When Sandboxes are archived, the entire filesystem state is moved to very cost-effective object storage, making it possible to keep Sandboxes available for an extended period.",
-    "tag": "Documentation",
-    "url": "/docs/sandbox-management#archived",
-    "slug": "/sandbox-management#archived",
     "objectID": 179
   },
   {
-    "title": "Performance Considerations",
-    "description": "The tradeoff between archived and stopped states is that starting an archived Sandbox takes more time, depending on its size.",
+    "title": "Auto-stop and Auto-archive",
+    "description": "Daytona Sandboxes can be automatically stopped and archived based on user-defined intervals.",
     "tag": "Documentation",
-    "url": "/docs/sandbox-management#performance-considerations",
-    "slug": "/sandbox-management#performance-considerations",
+    "url": "/docs/sandbox-management#auto-stop-and-auto-archive",
+    "slug": "/sandbox-management#auto-stop-and-auto-archive",
     "objectID": 180
+  },
+  {
+    "title": "Auto-stop Interval",
+    "description": "The auto-stop interval parameter sets the amount of time after which a running Sandbox will be automatically stopped.",
+    "tag": "Documentation",
+    "url": "/docs/sandbox-management#auto-stop-interval",
+    "slug": "/sandbox-management#auto-stop-interval",
+    "objectID": 181
+  },
+  {
+    "title": "Auto-archive Interval",
+    "description": "The auto-archive interval parameter sets the amount of time after which a continuously stopped Sandbox will be automatically archived.",
+    "tag": "Documentation",
+    "url": "/docs/sandbox-management#auto-archive-interval",
+    "slug": "/sandbox-management#auto-archive-interval",
+    "objectID": 182
   },
   {
     "title": "Snapshots",
@@ -1445,7 +1461,7 @@
     "tag": "Documentation",
     "url": "/docs/snapshots",
     "slug": "/snapshots",
-    "objectID": 181
+    "objectID": 183
   },
   {
     "title": "Creating Snapshots",
@@ -1453,7 +1469,7 @@
     "tag": "Documentation",
     "url": "/docs/snapshots#creating-snapshots",
     "slug": "/snapshots#creating-snapshots",
-    "objectID": 182
+    "objectID": 184
   },
   {
     "title": "Snapshot Resources",
@@ -1461,7 +1477,23 @@
     "tag": "Documentation",
     "url": "/docs/snapshots#snapshot-resources",
     "slug": "/snapshots#snapshot-resources",
-    "objectID": 183
+    "objectID": 185
+  },
+  {
+    "title": "Create a Snapshot with custom resources",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/snapshots#create-a-snapshot-with-custom-resources",
+    "slug": "/snapshots#create-a-snapshot-with-custom-resources",
+    "objectID": 186
+  },
+  {
+    "title": "Create a Sandbox with custom Snapshot",
+    "description": "",
+    "tag": "Documentation",
+    "url": "/docs/snapshots#create-a-sandbox-with-custom-snapshot",
+    "slug": "/snapshots#create-a-sandbox-with-custom-snapshot",
+    "objectID": 187
   },
   {
     "title": "Images from Private Registries",
@@ -1469,7 +1501,7 @@
     "tag": "Documentation",
     "url": "/docs/snapshots#images-from-private-registries",
     "slug": "/snapshots#images-from-private-registries",
-    "objectID": 184
+    "objectID": 188
   },
   {
     "title": "Using a Local Image",
@@ -1477,7 +1509,7 @@
     "tag": "Documentation",
     "url": "/docs/snapshots#using-a-local-image",
     "slug": "/snapshots#using-a-local-image",
-    "objectID": 185
+    "objectID": 189
   },
   {
     "title": "Deleting Snapshots",
@@ -1485,7 +1517,7 @@
     "tag": "Documentation",
     "url": "/docs/snapshots#deleting-snapshots",
     "slug": "/snapshots#deleting-snapshots",
-    "objectID": 186
+    "objectID": 190
   },
   {
     "title": "Default Snapshot",
@@ -1493,7 +1525,7 @@
     "tag": "Documentation",
     "url": "/docs/snapshots#default-snapshot",
     "slug": "/snapshots#default-snapshot",
-    "objectID": 187
+    "objectID": 191
   },
   {
     "title": "CLI",
@@ -1501,7 +1533,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli",
     "slug": "/tools/cli",
-    "objectID": 188
+    "objectID": 192
   },
   {
     "title": "daytona version",
@@ -1509,7 +1541,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-version",
     "slug": "/tools/cli#daytona-version",
-    "objectID": 189
+    "objectID": 193
   },
   {
     "title": "daytona sandbox info",
@@ -1517,7 +1549,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-info",
     "slug": "/tools/cli#daytona-sandbox-info",
-    "objectID": 190
+    "objectID": 194
   },
   {
     "title": "daytona sandbox list",
@@ -1525,7 +1557,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-list",
     "slug": "/tools/cli#daytona-sandbox-list",
-    "objectID": 191
+    "objectID": 195
   },
   {
     "title": "daytona sandbox start",
@@ -1533,7 +1565,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-start",
     "slug": "/tools/cli#daytona-sandbox-start",
-    "objectID": 192
+    "objectID": 196
   },
   {
     "title": "daytona sandbox stop",
@@ -1541,7 +1573,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-stop",
     "slug": "/tools/cli#daytona-sandbox-stop",
-    "objectID": 193
+    "objectID": 197
   },
   {
     "title": "daytona sandbox",
@@ -1549,7 +1581,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox",
     "slug": "/tools/cli#daytona-sandbox",
-    "objectID": 194
+    "objectID": 198
   },
   {
     "title": "daytona sandbox create",
@@ -1557,7 +1589,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-create",
     "slug": "/tools/cli#daytona-sandbox-create",
-    "objectID": 195
+    "objectID": 199
   },
   {
     "title": "daytona sandbox delete",
@@ -1565,7 +1597,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-sandbox-delete",
     "slug": "/tools/cli#daytona-sandbox-delete",
-    "objectID": 196
+    "objectID": 200
   },
   {
     "title": "daytona snapshot push",
@@ -1573,7 +1605,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-snapshot-push",
     "slug": "/tools/cli#daytona-snapshot-push",
-    "objectID": 197
+    "objectID": 201
   },
   {
     "title": "daytona login",
@@ -1581,7 +1613,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-login",
     "slug": "/tools/cli#daytona-login",
-    "objectID": 198
+    "objectID": 202
   },
   {
     "title": "daytona logout",
@@ -1589,7 +1621,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-logout",
     "slug": "/tools/cli#daytona-logout",
-    "objectID": 199
+    "objectID": 203
   },
   {
     "title": "daytona snapshot",
@@ -1597,7 +1629,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-snapshot",
     "slug": "/tools/cli#daytona-snapshot",
-    "objectID": 200
+    "objectID": 204
   },
   {
     "title": "daytona snapshot create",
@@ -1605,7 +1637,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-snapshot-create",
     "slug": "/tools/cli#daytona-snapshot-create",
-    "objectID": 201
+    "objectID": 205
   },
   {
     "title": "daytona snapshot delete",
@@ -1613,7 +1645,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-snapshot-delete",
     "slug": "/tools/cli#daytona-snapshot-delete",
-    "objectID": 202
+    "objectID": 206
   },
   {
     "title": "daytona snapshot list",
@@ -1621,7 +1653,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-snapshot-list",
     "slug": "/tools/cli#daytona-snapshot-list",
-    "objectID": 203
+    "objectID": 207
   },
   {
     "title": "daytona",
@@ -1629,7 +1661,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona",
     "slug": "/tools/cli#daytona",
-    "objectID": 204
+    "objectID": 208
   },
   {
     "title": "daytona autocomplete",
@@ -1637,7 +1669,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-autocomplete",
     "slug": "/tools/cli#daytona-autocomplete",
-    "objectID": 205
+    "objectID": 209
   },
   {
     "title": "daytona docs",
@@ -1645,7 +1677,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-docs",
     "slug": "/tools/cli#daytona-docs",
-    "objectID": 206
+    "objectID": 210
   },
   {
     "title": "daytona organization",
@@ -1653,7 +1685,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization",
     "slug": "/tools/cli#daytona-organization",
-    "objectID": 207
+    "objectID": 211
   },
   {
     "title": "daytona organization create",
@@ -1661,7 +1693,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-create",
     "slug": "/tools/cli#daytona-organization-create",
-    "objectID": 208
+    "objectID": 212
   },
   {
     "title": "daytona organization delete",
@@ -1669,7 +1701,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-delete",
     "slug": "/tools/cli#daytona-organization-delete",
-    "objectID": 209
+    "objectID": 213
   },
   {
     "title": "daytona organization list",
@@ -1677,7 +1709,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-list",
     "slug": "/tools/cli#daytona-organization-list",
-    "objectID": 210
+    "objectID": 214
   },
   {
     "title": "daytona organization use",
@@ -1685,7 +1717,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-organization-use",
     "slug": "/tools/cli#daytona-organization-use",
-    "objectID": 211
+    "objectID": 215
   },
   {
     "title": "daytona mcp",
@@ -1693,7 +1725,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp",
     "slug": "/tools/cli#daytona-mcp",
-    "objectID": 212
+    "objectID": 216
   },
   {
     "title": "daytona mcp init",
@@ -1701,7 +1733,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp-init",
     "slug": "/tools/cli#daytona-mcp-init",
-    "objectID": 213
+    "objectID": 217
   },
   {
     "title": "daytona mcp start",
@@ -1709,7 +1741,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp-start",
     "slug": "/tools/cli#daytona-mcp-start",
-    "objectID": 214
+    "objectID": 218
   },
   {
     "title": "daytona mcp config",
@@ -1717,7 +1749,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp-config",
     "slug": "/tools/cli#daytona-mcp-config",
-    "objectID": 215
+    "objectID": 219
   },
   {
     "title": "daytona volume",
@@ -1725,7 +1757,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-volume",
     "slug": "/tools/cli#daytona-volume",
-    "objectID": 216
+    "objectID": 220
   },
   {
     "title": "daytona volume list",
@@ -1733,7 +1765,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-volume-list",
     "slug": "/tools/cli#daytona-volume-list",
-    "objectID": 217
+    "objectID": 221
   },
   {
     "title": "daytona volume create",
@@ -1741,7 +1773,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-volume-create",
     "slug": "/tools/cli#daytona-volume-create",
-    "objectID": 218
+    "objectID": 222
   },
   {
     "title": "daytona volume get",
@@ -1749,7 +1781,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-volume-get",
     "slug": "/tools/cli#daytona-volume-get",
-    "objectID": 219
+    "objectID": 223
   },
   {
     "title": "daytona volume delete",
@@ -1757,7 +1789,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-volume-delete",
     "slug": "/tools/cli#daytona-volume-delete",
-    "objectID": 220
+    "objectID": 224
   },
   {
     "title": "Volumes",
@@ -1765,7 +1797,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes",
     "slug": "/volumes",
-    "objectID": 221
+    "objectID": 225
   },
   {
     "title": "Creating Volumes",
@@ -1773,7 +1805,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#creating-volumes",
     "slug": "/volumes#creating-volumes",
-    "objectID": 222
+    "objectID": 226
   },
   {
     "title": "Mounting Volumes to Sandboxes",
@@ -1781,7 +1813,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#mounting-volumes-to-sandboxes",
     "slug": "/volumes#mounting-volumes-to-sandboxes",
-    "objectID": 223
+    "objectID": 227
   },
   {
     "title": "Create a new volume or get an existing one",
@@ -1789,7 +1821,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#create-a-new-volume-or-get-an-existing-one",
     "slug": "/volumes#create-a-new-volume-or-get-an-existing-one",
-    "objectID": 224
+    "objectID": 228
   },
   {
     "title": "Mount the volume to the sandbox",
@@ -1797,7 +1829,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#mount-the-volume-to-the-sandbox",
     "slug": "/volumes#mount-the-volume-to-the-sandbox",
-    "objectID": 225
+    "objectID": 229
   },
   {
     "title": "When you're done with the sandbox, you can remove it",
@@ -1805,7 +1837,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
     "slug": "/volumes#when-youre-done-with-the-sandbox-you-can-remove-it",
-    "objectID": 226
+    "objectID": 230
   },
   {
     "title": "The volume will persist even after the sandbox is removed",
@@ -1813,7 +1845,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
     "slug": "/volumes#the-volume-will-persist-even-after-the-sandbox-is-removed",
-    "objectID": 227
+    "objectID": 231
   },
   {
     "title": "Deleting Volumes",
@@ -1821,7 +1853,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#deleting-volumes",
     "slug": "/volumes#deleting-volumes",
-    "objectID": 228
+    "objectID": 232
   },
   {
     "title": "Working with Volumes",
@@ -1829,7 +1861,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#working-with-volumes",
     "slug": "/volumes#working-with-volumes",
-    "objectID": 229
+    "objectID": 233
   },
   {
     "title": "Limitations",
@@ -1837,7 +1869,7 @@
     "tag": "Documentation",
     "url": "/docs/volumes#limitations",
     "slug": "/volumes#limitations",
-    "objectID": 230
+    "objectID": 234
   },
   {
     "title": "Web Terminal",
@@ -1845,6 +1877,6 @@
     "tag": "Documentation",
     "url": "/docs/web-terminal",
     "slug": "/web-terminal",
-    "objectID": 231
+    "objectID": 235
   }
 ]

@@ -1,5 +1,5 @@
 # Daytona Documentation v0.21.0
-# Generated on: 2025-06-17
+# Generated on: 2025-06-27
 
 # Daytona
 
@@ -118,9 +118,9 @@
 - [Basic Sandbox Creation](https://daytona.io/docs/sandbox-management#basic-sandbox-creation)
 - [Sandbox Resources](https://daytona.io/docs/sandbox-management#sandbox-resources)
 - [Sandbox Information](https://daytona.io/docs/sandbox-management#sandbox-information)
-- [Stop and Resume Sandbox](https://daytona.io/docs/sandbox-management#stop-and-resume-sandbox)
+- [Stop and Start Sandbox](https://daytona.io/docs/sandbox-management#stop-and-start-sandbox)
 - [Archive Sandbox](https://daytona.io/docs/sandbox-management#archive-sandbox)
-- [Remove Sandbox](https://daytona.io/docs/sandbox-management#remove-sandbox)
+- [Delete Sandbox](https://daytona.io/docs/sandbox-management#delete-sandbox)
 - [Auto-stop and Auto-archive](https://daytona.io/docs/sandbox-management#auto-stop-and-auto-archive)
 - [Auto-stop Interval](https://daytona.io/docs/sandbox-management#auto-stop-interval)
 - [Auto-archive Interval](https://daytona.io/docs/sandbox-management#auto-archive-interval)
