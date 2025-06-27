@@ -1,5 +1,5 @@
 # Daytona Documentation v0.21.0
-# Generated on: 2025-06-17
+# Generated on: 2025-06-27
 
 # Daytona
 
@@ -113,18 +113,17 @@
 - [Resource Limits](https://daytona.io/docs/process-code-execution#resource-limits)
 - [Region Selection](https://daytona.io/docs/regions)
 - [Sandbox Management](https://daytona.io/docs/sandbox-management)
+- [Sandbox Lifecycle](https://daytona.io/docs/sandbox-management#sandbox-lifecycle)
 - [Creating Sandboxes](https://daytona.io/docs/sandbox-management#creating-sandboxes)
 - [Basic Sandbox Creation](https://daytona.io/docs/sandbox-management#basic-sandbox-creation)
 - [Sandbox Resources](https://daytona.io/docs/sandbox-management#sandbox-resources)
 - [Sandbox Information](https://daytona.io/docs/sandbox-management#sandbox-information)
-- [Stop & Remove Sandbox](https://daytona.io/docs/sandbox-management#stop--remove-sandbox)
-- [Sandbox States and Persistence](https://daytona.io/docs/sandbox-management#sandbox-states-and-persistence)
+- [Stop and Start Sandbox](https://daytona.io/docs/sandbox-management#stop-and-start-sandbox)
+- [Archive Sandbox](https://daytona.io/docs/sandbox-management#archive-sandbox)
+- [Delete Sandbox](https://daytona.io/docs/sandbox-management#delete-sandbox)
+- [Auto-stop and Auto-archive](https://daytona.io/docs/sandbox-management#auto-stop-and-auto-archive)
 - [Auto-stop Interval](https://daytona.io/docs/sandbox-management#auto-stop-interval)
 - [Auto-archive Interval](https://daytona.io/docs/sandbox-management#auto-archive-interval)
-- [Running](https://daytona.io/docs/sandbox-management#running)
-- [Stopped](https://daytona.io/docs/sandbox-management#stopped)
-- [Archived](https://daytona.io/docs/sandbox-management#archived)
-- [Performance Considerations](https://daytona.io/docs/sandbox-management#performance-considerations)
 - [Snapshots](https://daytona.io/docs/snapshots)
 - [Creating Snapshots](https://daytona.io/docs/snapshots#creating-snapshots)
 - [Snapshot Resources](https://daytona.io/docs/snapshots#snapshot-resources)
