@@ -3,8 +3,17 @@ export function localizePath(
   locale: string = 'en',
   currentLocale?: string
 ): string {
-  if (currentLocale) {
-    return path.replace(`docs/${currentLocale}`, `docs/${locale}`)
+  if (!currentLocale) {
+    if (locale === 'en') return path
+    return path.replace(`docs`, `docs/${locale}`)
   }
-  return path.replace('/docs', `/docs/${locale}`)
+
+  if (currentLocale === 'en') {
+    if (locale === 'en') return path
+    return path.replace(`docs`, `docs/${locale}`)
+  } else if (locale === 'en') {
+    return path.replace(`docs/${currentLocale}`, `docs`)
+  }
+
+  return path.replace(`docs/${currentLocale}`, `docs/${locale}`)
 }

@@ -5,12 +5,11 @@ sidebar:
   label: サンプル
 ---
 
-import Keyboard from "../../../components/Keyboard.astro"
 import Label from '@components/Label.astro'
 
-<Label>
-  Distribution: **Open Source**, **Cloud**, **Self-Managed**
-</Label>
+import Keyboard from '../../../../components/Keyboard.astro'
+
+<Label>Distribution: **Open Source**, **Cloud**, **Self-Managed**</Label>
 
 サンプルは、Workspaceを作成するために使用される、事前定義された開発設定、環境、および依存関係を持つクイックスタートリポジトリです。
 
@@ -20,11 +19,11 @@ Daytonaでは、カスタムサンプルを使用してワークスペースを�
 
 - [**サンプルリポジトリ**](#sample-repository)
 
-    サンプルコードと開発環境を定義する`devcontainer.json`ファイルを含むリポジトリ。
+  サンプルコードと開発環境を定義する`devcontainer.json`ファイルを含むリポジトリ。
 
 - [**サンプルインデックス**](#samples-index)
 
-    ワークスペース作成用の利用可能なサンプルのレジストリとして機能するサンプルインデックス（`index.json`）ファイル。
+  ワークスペース作成用の利用可能なサンプルのレジストリとして機能するサンプルインデックス（`index.json`）ファイル。
 
 ### サンプルリポジトリ
 
@@ -42,16 +41,14 @@ Go プログラミング言語を使用する開発環境の**`devcontainer.json
 
 ```json
 {
-    "name": "Go",
-    "image": "mcr.microsoft.com/devcontainers/go:1-1.21-bookworm",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "golang.Go"
-            ]
-        }
-    },
-    "postCreateCommand": "go test -v"
+  "name": "Go",
+  "image": "mcr.microsoft.com/devcontainers/go:1-1.21-bookworm",
+  "customizations": {
+    "vscode": {
+      "extensions": ["golang.Go"]
+    }
+  },
+  "postCreateCommand": "go test -v"
 }
 ```
 
@@ -69,7 +66,7 @@ Go プログラミング言語を使用する開発環境の**`devcontainer.json
 
 2. サンプルを表すJSONオブジェクトの配列を定義します。
 
-    配列内の各JSONオブジェクトはサンプルを表します：
+   配列内の各JSONオブジェクトはサンプルを表します：
 
 ```json
 [
@@ -83,11 +80,11 @@ Go プログラミング言語を使用する開発環境の**`devcontainer.json
 
 - **`name`**
 
-    サンプルの名前。
+  サンプルの名前。
 
 - **`gitUrl`**
 
-    公開されているサンプルリポジトリへのリンク。
+  公開されているサンプルリポジトリへのリンク。
 
 3. **`index.json`**ファイルをGitリポジトリまたは他のプラットフォームで公開ホストします。
 

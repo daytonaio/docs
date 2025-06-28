@@ -5,12 +5,11 @@ sidebar:
   label: Samples
 ---
 
-import Keyboard from "../../../components/Keyboard.astro"
 import Label from '@components/Label.astro'
 
-<Label>
-  Distribution: **Open Source**, **Cloud**, **Self-Managed**
-</Label>
+import Keyboard from '../../../components/Keyboard.astro'
+
+<Label>Distribution: **Open Source**, **Cloud**, **Self-Managed**</Label>
 
 Samples are quick-start repositories with predefined development configurations, environments, and dependencies used to create Workspaces.
 
@@ -20,11 +19,11 @@ Daytona provides an option to use custom Samples to create Workspaces. Creating 
 
 - [**Sample Repository**](#sample-repository)
 
-    A repository containing the Sample code and a `devcontainer.json` file defining the development environment.
+  A repository containing the Sample code and a `devcontainer.json` file defining the development environment.
 
 - [**Samples Index**](#samples-index)
 
-    Samples Index (`index.json`) file serving as a registry of available Samples for creating Workspaces.
+  Samples Index (`index.json`) file serving as a registry of available Samples for creating Workspaces.
 
 ### Sample Repository
 
@@ -42,16 +41,14 @@ Example of a **`devcontainer.json`** file for development environment using Go p
 
 ```json
 {
-    "name": "Go",
-    "image": "mcr.microsoft.com/devcontainers/go:1-1.21-bookworm",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "golang.Go"
-            ]
-        }
-    },
-    "postCreateCommand": "go test -v"
+  "name": "Go",
+  "image": "mcr.microsoft.com/devcontainers/go:1-1.21-bookworm",
+  "customizations": {
+    "vscode": {
+      "extensions": ["golang.Go"]
+    }
+  },
+  "postCreateCommand": "go test -v"
 }
 ```
 
@@ -69,7 +66,7 @@ Samples require a Sample Index (`index.json`) file that serves as a registry of 
 
 2. Define an array of JSON objects representing the Samples.
 
-    Each JSON object in the array represents a Sample:
+   Each JSON object in the array represents a Sample:
 
 ```json
 [
@@ -83,11 +80,11 @@ Samples require a Sample Index (`index.json`) file that serves as a registry of 
 
 - **`name`**
 
-    Name of the Sample.
+  Name of the Sample.
 
 - **`gitUrl`**
 
-    Link to the publicly available Sample repository.
+  Link to the publicly available Sample repository.
 
 3. Host the **`index.json`** file publicly on a Git repository or another platform.
 

@@ -60,9 +60,10 @@ export default defineConfig({
         minSyntaxHighlightingColorContrast: 0,
         themes: [myThemeDark, myThemeLight],
       },
-      defaultLocale: 'en',
+      defaultLocale: 'root',
       locales: {
-        en: {
+        root: {
+          lang: 'en',
           label: 'English',
         },
         ja: {

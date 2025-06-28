@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.json yarn.lock ./
 
-RUN yarn --prod
+RUN yarn
 
 FROM node:20.10.0 as build
 
