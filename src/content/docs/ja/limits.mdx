@@ -1,0 +1,45 @@
+---
+title: 制限
+---
+
+Daytonaは、すべての組織で公平な使用と安定性を確保するためにリソース制限を設けています。あなたの組織は以下で構成されるコンピュートプールにアクセスできます：
+
+- **vCPU** — 利用可能な総CPU コア数
+- **Memory** — 利用可能な総RAM
+- **Disk** — Sandbox全体での総ディスク容量
+
+これらのリソースはプールされ、実行中のすべてのSandbox間で共有されます。  
+同時に実行できるSandboxの数は、それぞれがどれだけのCPU、RAM、ディスクを使用するかによって決まります。リソース使用量の設定と見積もり方法については、[Sandbox Management docs](https://www.daytona.io/docs/sandbox-management/)をご覧ください。
+
+:::tip
+
+### 使用量を動的に管理する
+
+**実行中**のSandboxのみがvCPU、メモリ、ディスク制限にカウントされます。  
+リソースを管理するには**Stop**、**Archive**、または**Delete**を使用してください：
+
+- **停止済み**のSandboxはCPUとメモリを解放しますが、ディスクは引き続き消費します。
+- **アーカイブ済み**のSandboxはすべてのコンピュートを解放し、データをコールドストレージに移動します（クォータへの影響なし）。
+- **削除済み**のSandboxは完全に削除され、ディスクを含むすべてのリソースを解放します。
+
+:::
+
+現在の使用量と制限は[Dashboard](https://app.daytona.io/dashboard/limits)で確認できます。
+
+## ティアと制限の増加
+
+組織は認証ステータスに基づいて自動的にティアに配置されます。  
+以下の手順を完了することで、より高い制限を解除できます：
+
+| ティア     | Compute Pool (vCPU / RAM / Disk) | アクセス要件                |
+|----------|----------------------------------|------------------------------------|
+| Tier 1   | 10 / 10GiB / 30GiB               | メール認証済み                     |
+| Tier 2   | 100 / 200GiB / 300GiB            | クレジットカード連携、[GitHub接続](https://www.daytona.io/docs/linked-accounts#how-to-link-an-account)、$10チャージ。 |
+| Tier 3   | それ以上のすべて  🚀            | 近日公開。 |
+| Custom   | カスタム制限                    | [support@daytona.io](mailto:support@daytona.io)にお問い合わせください |
+
+条件を満たすと自動的にアップグレードされます。
+
+## さらに必要ですか？
+
+より高い制限や特別な制限が必要な場合は、[support@daytona.io](mailto:support@daytona.io)までお問い合わせください。

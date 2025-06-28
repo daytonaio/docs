@@ -60,8 +60,22 @@ export default defineConfig({
         minSyntaxHighlightingColorContrast: 0,
         themes: [myThemeDark, myThemeLight],
       },
+      defaultLocale: 'en',
+      locales: {
+        en: {
+          label: 'English',
+        },
+        ja: {
+          lang: 'ja',
+          label: '日本語',
+        },
+      },
     }),
   ],
+  i18n: {
+    locales: ['en', 'ja'],
+    defaultLocale: 'en',
+  },
   output: 'hybrid',
   adapter: node({
     mode: 'middleware',
@@ -71,4 +85,5 @@ export default defineConfig({
       noExternal: ['path-to-regexp'],
     },
   },
+  experimental: { contentLayer: true },
 })

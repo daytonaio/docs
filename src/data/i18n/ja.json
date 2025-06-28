@@ -1,0 +1,22 @@
+{
+  "9e72619d4c534b5410fcd1efc8512acd46c188e30b8f90ce607405c635178942": [
+    "スター"
+  ],
+  "4db23ad7772b2b113405a4b3668a17ae5e6d536993585cacef34f02784e89678": {
+    "type": "div",
+    "props": {
+      "data-_gt": {
+        "id": 1
+      },
+      "children": {
+        "type": "a",
+        "props": {
+          "data-_gt": {
+            "id": 2
+          },
+          "children": "デモを見る"
+        }
+      }
+    }
+  }
+}

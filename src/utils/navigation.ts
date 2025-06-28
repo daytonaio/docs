@@ -14,6 +14,9 @@ export interface NavigationLink extends NavigationItem {
   type: 'link'
   href: string
   label: string
+  translations?: {
+    [key: string]: string
+  }
   description?: string
   disablePagination?: boolean
   attrs?: {
@@ -37,6 +40,9 @@ export interface NavigationGroup extends NavigationItem {
   // The referenced page should be a `MainNavigationLink`. It is ignored for `NavigationCategory.MAIN` groups.
   homePageHref?: string
   autopopulateFromDir?: string
+  translations?: {
+    [key: string]: string
+  }
   entries?: (NavigationLink | MainNavigationLink)[]
 }
 
@@ -181,15 +187,27 @@ export function getPagination(
   sidebarConfig: NavigationGroup[],
   currentPath: string
 ): {
-  prev?: { href: string; label: string }
-  next?: { href: string; label: string }
+  prev?: {
+    href: string
+    label: string
+  }
+  next?: {
+    href: string
+    label: string
+  }
 } {
   processAutopopulateGroups(sidebarConfig)
 
   currentPath = currentPath.replace(/\/$/, '')
   const result: {
-    prev?: { href: string; label: string }
-    next?: { href: string; label: string }
+    prev?: {
+      href: string
+      label: string
+    }
+    next?: {
+      href: string
+      label: string
+    }
   } = {}
 
   let link = getNavLinkByHref(sidebarConfig, currentPath)
@@ -205,7 +223,10 @@ export function getPagination(
       (link as MainNavigationLink).relatedGroupCategory
     )
     if (links && links.length > 0) {
-      result.next = { href: links[0].href, label: links[0].label }
+      result.next = {
+        href: links[0].href,
+        label: links[0].label,
+      }
     }
   } else {
     const links = getNavLinksByCategory(sidebarConfig, group.category)
@@ -216,7 +237,10 @@ export function getPagination(
       if (group.homePageHref) {
         const homePageLink = getNavLinkByHref(sidebarConfig, group.homePageHref)
         if (homePageLink) {
-          result.prev = { href: homePageLink.href, label: homePageLink.label }
+          result.prev = {
+            href: homePageLink.href,
+            label: homePageLink.label,
+          }
         }
       }
     } else {
