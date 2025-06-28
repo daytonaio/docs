@@ -5,9 +5,7 @@ description: 複数のWorkspace間でWorkspace Templatesを管理し、再利用
 
 import Label from '@components/Label.astro'
 
-<Label>
-  Distribution: **Open Source**
-</Label>
+<Label>Distribution: **Open Source**</Label>
 
 Workspace Templateは開発環境の管理を簡素化するように設計されており、新しいWorkspaceに簡単に適用できる設定を事前に定義することができます。
 
@@ -17,25 +15,25 @@ Workspace TemplateはWorkspaceをセットアップするためのすべての�
 
 - **Repository URL**
 
-   Workspaceに関連付けられたGitリポジトリのURL。
+  Workspaceに関連付けられたGitリポジトリのURL。
 
 - **Build Configuration**
 
-   [Automatic](/docs/usage/builders#automatic)はWorkspaceに最も適切なBuilderを自動検出します。
+  [Automatic](/docs/ja/usage/builders#automatic)はWorkspaceに最も適切なBuilderを自動検出します。
 
-   [Devcontainer](/docs/usage/builders#dev-container)は`devcontainer.json`ファイルで指定された事前定義された開発コンテナを利用します。
+  [Devcontainer](/docs/ja/usage/builders#dev-container)は`devcontainer.json`ファイルで指定された事前定義された開発コンテナを利用します。
 
-   [Custom image](/docs/usage/builders#custom-image)はカスタムベースコンテナを指定してWorkspaceイメージをビルドします。
+  [Custom image](/docs/ja/usage/builders#custom-image)はカスタムベースコンテナを指定してWorkspaceイメージをビルドします。
 
-   [None](/docs/usage/builders#none)はデフォルトのベースイメージ（`daytonaio/workspace-project`）を使用してWorkspaceをビルドします。
+  [None](/docs/ja/usage/builders#none)はデフォルトのベースイメージ（`daytonaio/workspace-project`）を使用してWorkspaceをビルドします。
 
 - **Environment Variables**
 
-   環境変数は`KEY=VALUE`形式で指定されます。これらの変数はWorkspaceのビルドおよびランタイム環境に不可欠です。変数を直接設定するか、実行時にマシンの環境から渡すことができます。
+  環境変数は`KEY=VALUE`形式で指定されます。これらの変数はWorkspaceのビルドおよびランタイム環境に不可欠です。変数を直接設定するか、実行時にマシンの環境から渡すことができます。
 
 - **Workspace Template name**
 
-   Workspace Templateの一意の識別子で、システム内の他のTemplateと区別します。
+  Workspace Templateの一意の識別子で、システム内の他のTemplateと区別します。
 
 `daytona workspace-template`コマンドを使用すると、Workspace Templatesの追加、表示、更新、一覧表示、デフォルトとして設定、削除ができ、異なるWorkspace間でのTemplateとWorkspaceセットアップの再利用を完全に制御できます。
 
@@ -53,11 +51,11 @@ daytona workspace-template add
 
 - **カスタムリポジトリURLを入力**
 
-   リポジトリがGit Providerアカウントにリストされていない場合や外部ソースからのものである場合に、カスタムリポジトリURLを手動で入力するオプションです。
+  リポジトリがGit Providerアカウントにリストされていない場合や外部ソースからのものである場合に、カスタムリポジトリURLを手動で入力するオプションです。
 
 - **サンプルから作成**
 
-   Gitリポジトリの準備ができていない場合は、Daytonaによって提供されるサンプルプロジェクトからWorkspace Templateを作成できます。
+  Gitリポジトリの準備ができていない場合は、Daytonaによって提供されるサンプルプロジェクトからWorkspace Templateを作成できます。
 
 3. 設定したいWorkspaceのリポジトリURLを入力するか、サンプルプロジェクトからWorkspace Templateを作成することを選択します。
 
@@ -98,7 +96,7 @@ SUMMARY - Workspace Template
 
 Workspace - MyWorkspace
 Repository  https://github.com/daytonaio/docs
-Branch      main 
+Branch      main
 Build       Automatic
 Image       daytonaio/workspace-project:latest
 User        daytona
@@ -195,7 +193,7 @@ MyWorkspaceConfig
 https://github.com/username/MyWorkspace
 ```
 
-   Workspace Templateを選択すると、Daytonaは選択されたTemplateの詳細を表示します。Workspace Template名、リンクされているリポジトリURL、ビルド設定、Devcontainerパスを確認できます。
+Workspace Templateを選択すると、Daytonaは選択されたTemplateの詳細を表示します。Workspace Template名、リンクされているリポジトリURL、ビルド設定、Devcontainerパスを確認できます。
 
 ```text
 Workspace Config Info

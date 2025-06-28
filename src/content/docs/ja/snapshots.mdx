@@ -197,7 +197,7 @@ main();
 
 ### ローカルイメージの使用
 
-プライベートコンテナレジストリを手動で設定してイメージをプッシュする必要を避けるために、[Daytona CLI](/docs/getting-started#setting-up-the-daytona-cli)では、ローカルイメージまたはローカルのDockerfileからSnapshotを作成し、Sandboxで使用することができます。
+プライベートコンテナレジストリを手動で設定してイメージをプッシュする必要を避けるために、[Daytona CLI](/docs/ja/getting-started#setting-up-the-daytona-cli)では、ローカルイメージまたはローカルのDockerfileからSnapshotを作成し、Sandboxで使用することができます。
 
 `docker images`を実行して、使用したいイメージとタグが利用可能であることを確認した後、`daytona snapshot push`コマンドを使用してSnapshotを作成し、Daytonaにプッシュします。例：
 
@@ -205,7 +205,7 @@ main();
 daytona snapshot push custom-alpine:3.21
 ```
 
-まだ目的のイメージをビルドしておらず、Dockerfileが準備できている場合は、SDKのDeclarative Builderを使用できます - 詳細については[こちら](/docs/getting-started#declarative-builder)をお読みください。
+まだ目的のイメージをビルドしておらず、Dockerfileが準備できている場合は、SDKのDeclarative Builderを使用できます - 詳細については[こちら](/docs/ja/getting-started#declarative-builder)をお読みください。
 
 または、CLIを通じて行うには、`create`の下で`--dockerfile`フラグを使用して、使用したいDockerfileのパスを渡すと、DaytonaがSnapshotをビルドしてくれます：
 

@@ -3,15 +3,15 @@ title: Runners
 description: DaytonaでRunnersを使用し管理する方法を学びます。
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { TabItem, Tabs } from '@astrojs/starlight/components'
 
 Runnerは、どこにでもデプロイできるスタンドアロンサービスです。ユーザーは、Runner登録時に生成される一連の指示とコマンドを実行することで、ターゲットシステムにRunnerをデプロイできます。
 
-デプロイされると、Runnerが起動し[Daytona Server](/docs/usage/server)に接続し、その時点でステータスが`Running`としてマークされます。
+デプロイされると、Runnerが起動し[Daytona Server](/docs/ja/usage/server)に接続し、その時点でステータスが`Running`としてマークされます。
 
-Runnerがすべてのリクエストを送信し、Serverは応答のみを行います。Runnerは_Heartbeat_（ステータスを共有するため）や_Job Requests_（割り当てられたジョブをDaytona Serverに要求するため）などのリクエストを送信します。
+Runnerがすべてのリクエストを送信し、Serverは応答のみを行います。Runnerは*Heartbeat*（ステータスを共有するため）や*Job Requests*（割り当てられたジョブをDaytona Serverに要求するため）などのリクエストを送信します。
 
-単一のRunnerは複数の[Providers](/docs/configuration/providers)を使用でき、デプロイ時またはジョブを通じて後から設定することで、様々な環境に対する柔軟性を実現します。
+単一のRunnerは複数の[Providers](/docs/ja/configuration/providers)を使用でき、デプロイ時またはジョブを通じて後から設定することで、様々な環境に対する柔軟性を実現します。
 
 ## Runnerの作成
 
@@ -32,16 +32,10 @@ daytona server runner create
 Daytona は、Runner をフォアグラウンドで提供するか、Runner をデーモン/バックグラウンドプロセスとして開始するオプションを提供します。要件に最も適した方法を使用してください。
 
 <Tabs>
-<TabItem label="フォアグラウンド">
-```shell
-daytona runner serve
-```
-</TabItem>
-<TabItem label="デーモン/バックグラウンド">
-```shell
-daytona runner start
-```
-</TabItem>
+  <TabItem label="フォアグラウンド">```shell daytona runner serve ```</TabItem>
+  <TabItem label="デーモン/バックグラウンド">
+    ```shell daytona runner start ```
+  </TabItem>
 </Tabs>
 
 Runner は Daytona Server に接続し、そのステータスは `Running` としてマークされます。

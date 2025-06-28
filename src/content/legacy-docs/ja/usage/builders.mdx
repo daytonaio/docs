@@ -7,33 +7,31 @@ sidebar:
 
 import Label from '@components/Label.astro'
 
-<Label>
-  Distribution: **Open Source**
-</Label>
+<Label>Distribution: **Open Source**</Label>
 
 import Aside from '@components/Aside.astro'
 import Keyboard from '@components/Keyboard.astro'
 
-Buildersは、あなたの[Project](/docs/usage/projects)に必要なツールと設定を含むコンテナイメージを作成する責任があります。
+Buildersは、あなたの[Project](/docs/ja/usage/projects)に必要なツールと設定を含むコンテナイメージを作成する責任があります。
 Daytonaは、結果として生成されるProject環境の作成方法を制御し、Projectイメージをビルドするための好みの方法を選択できるようにします。
 
-[Workspaceの作成](/docs/usage/workspaces#create-a-workspace)時に、以下のBuildersから選択できます：
+[Workspaceの作成](/docs/ja/usage/workspaces#create-a-workspace)時に、以下のBuildersから選択できます：
 
 - [**Automatic**](#automatic)
 
-   Daytonaが最も適切なBuilderを自動検出した後、Projectイメージをビルドします。
+  Daytonaが最も適切なBuilderを自動検出した後、Projectイメージをビルドします。
 
 - [**Dev Container**](#dev-container)
 
-   Daytonaがプロジェクト内にあるDev Container設定に従ってProjectイメージをビルドします。
+  Daytonaがプロジェクト内にあるDev Container設定に従ってProjectイメージをビルドします。
 
 - [**Custom Image**](#custom-image)
 
-   Daytonaが指定したイメージを使用してProjectイメージをビルドします。
+  Daytonaが指定したイメージを使用してProjectイメージをビルドします。
 
 - [**None**](#none)
 
-   Daytonaがデフォルトのベースイメージを使用してProjectを作成します。
+  Daytonaがデフォルトのベースイメージを使用してProjectを作成します。
 
 ## Automatic
 
@@ -42,7 +40,7 @@ Daytonaは、あなたのProjectに最も適切なBuilderを自動検出でき�
 1. リポジトリルートからの相対パスで、**`.devcontainer.json`** または **`.devcontainer/devcontainer.json`** にDev Container設定が存在するかチェックします。
 2. 存在する場合は、[Dev Container](#dev-container) Builderを使用します。存在しない場合は、[None](#none) Builderを使用します。
 
-Automatic Builderを使用するには、[Workspace作成](/docs/usage/workspaces#create-a-workspace)時に`--builder`フラグの値を`auto`に設定します。このフラグは単一のProjectでWorkspaceを作成する場合にのみ適用されます。
+Automatic Builderを使用するには、[Workspace作成](/docs/ja/usage/workspaces#create-a-workspace)時に`--builder`フラグの値を`auto`に設定します。このフラグは単一のProjectでWorkspaceを作成する場合にのみ適用されます。
 
 ```shell
 daytona create <REPO_URL> --builder=auto
@@ -50,7 +48,7 @@ daytona create <REPO_URL> --builder=auto
 
 ## Dev Container
 
-Development Containers（Dev Containers）は、あなたの[Projects](/docs/usage/projects)に対して一貫性があり、完全に機能する開発環境を提供します。Dev Containerは、Projectsをビルドして実行するために必要なすべてのツール、ランタイム、および環境設定を定義します。
+Development Containers（Dev Containers）は、あなたの[Projects](/docs/ja/usage/projects)に対して一貫性があり、完全に機能する開発環境を提供します。Dev Containerは、Projectsをビルドして実行するために必要なすべてのツール、ランタイム、および環境設定を定義します。
 
 Dev Container仕様は、異なるプラットフォームやCI/CDシステム間で複製可能な開発環境を定義するように設計されています。この仕様は、プロジェクトリポジトリ内の`devcontainer.json`ファイル内で定義されます。
 
@@ -93,10 +91,10 @@ DaytonaはDev Container標準を使用してProjectイメージをビルドす�
 
 - **Devcontainer file path**
 
-   Dev Container設定が配置されているパス（リポジトリルートからの相対パス）。
-   デフォルト値は`.devcontainer/devcontainer.json`です。
+  Dev Container設定が配置されているパス（リポジトリルートからの相対パス）。
+  デフォルト値は`.devcontainer/devcontainer.json`です。
 
-Dev Container Builderを使用するには、[Workspace creation](/docs/usage/workspaces#create-a-workspace)中に`--devcontainer-path`フラグをリポジトリ内のDev Container設定パスに設定してください。このフラグは、単一のProjectでWorkspaceを作成する場合にのみ適用されます。
+Dev Container Builderを使用するには、[Workspace creation](/docs/ja/usage/workspaces#create-a-workspace)中に`--devcontainer-path`フラグをリポジトリ内のDev Container設定パスに設定してください。このフラグは、単一のProjectでWorkspaceを作成する場合にのみ適用されます。
 
 ```shell showLineNumbers
 daytona create <REPO_URL> --devcontainer-path=.devcontainer/devcontainer.json
@@ -113,17 +111,17 @@ Dev Container標準の詳細については、[containers.dev](https://container
 
 - **カスタムコンテナイメージ**
 
-   Projectのベースコンテナイメージの名前。
+  Projectのベースコンテナイメージの名前。
 
 - **コンテナユーザー**
 
-   イメージビルドプロセス中にコマンドを実行するユーザー。
+  イメージビルドプロセス中にコマンドを実行するユーザー。
 
 - **環境変数**
 
-   `KEY=VALUE`形式の環境変数のリスト。
+  `KEY=VALUE`形式の環境変数のリスト。
 
-Custom Image Builderを使用するには、[Workspaceの作成](/docs/usage/workspaces#create-a-workspace)時に`--custom-image`と`--custom-image-user`の両方のフラグを設定します。これらのフラグは、単一のProjectでWorkspaceを作成する場合にのみ適用されます。
+Custom Image Builderを使用するには、[Workspaceの作成](/docs/ja/usage/workspaces#create-a-workspace)時に`--custom-image`と`--custom-image-user`の両方のフラグを設定します。これらのフラグは、単一のProjectでWorkspaceを作成する場合にのみ適用されます。
 
 ```shell
 daytona create <REPO_URL> --custom-image=daytona-workspace:latest --custom-image-user=daytona
@@ -154,17 +152,18 @@ daytona container-registry set
 
 - **Server URL**
 
-   カスタムコンテナレジストリへの完全なURL。
+  カスタムコンテナレジストリへの完全なURL。
 
 - **Username**
 
-   Daytonaがコンテナレジストリにログインする際に使用するユーザー名。
+  Daytonaがコンテナレジストリにログインする際に使用するユーザー名。
 
 - **Password**
 
-   コンテナレジストリアカウントのパスワード。
+  コンテナレジストリアカウントのパスワード。
 
-3. <Keyboard shortcuts="Enter" />を押してカスタムビルドレジストリを設定します。
+3. <Keyboard shortcuts="Enter" />
+   を押してカスタムビルドレジストリを設定します。
 4. 以下のコマンドを実行してサーバーを設定します：
 
 ```shell
@@ -179,5 +178,6 @@ To add options, add a container registry with 'daytona cr set'
 > Local registry managed by Daytona
 ```
 
-6. <Keyboard shortcuts="↑" /> / <Keyboard shortcuts="↓" />矢印キーを使用して、以前に設定したカスタムレジストリを選択します。
+6. <Keyboard shortcuts="↑" /> / <Keyboard shortcuts="↓" />
+   矢印キーを使用して、以前に設定したカスタムレジストリを選択します。
 7. 設定を保存するためにコマンドが終了するまで<Keyboard shortcuts="Enter" />を押します。

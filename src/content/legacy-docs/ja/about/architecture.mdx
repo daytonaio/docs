@@ -3,16 +3,14 @@ title: アーキテクチャ
 description: Daytonaのアーキテクチャとそのコンポーネントについて学びます。
 ---
 
-import Label from '@components/Label.astro'
-import Image from '@components/Image.astro';
+import ArchitectureDiagramDark from '@assets/index/images/architecture-diagram-dark.png'
 // import DocumentList from "@components/DocumentList.astro";
 // import DocumentListItem from "@components/DocumentListItem.astro";
-import ArchitectureDiagramLight from '@assets/index/images/architecture-diagram-light.png';
-import ArchitectureDiagramDark from '@assets/index/images/architecture-diagram-dark.png';
+import ArchitectureDiagramLight from '@assets/index/images/architecture-diagram-light.png'
+import Image from '@components/Image.astro'
+import Label from '@components/Label.astro'
 
-<Label>
-  Distribution: **Open Source**, **Cloud**, **Self-Managed**
-</Label>
+<Label>Distribution: **Open Source**, **Cloud**, **Self-Managed**</Label>
 
 Daytonaアーキテクチャ図は、[Open Source](#open-source)および[Enterprise](#enterprise)ディストリビューションで利用可能なコンポーネントとサービスを特徴とするDaytonaプラットフォームを表しています。Daytona Open Sourceは開発のためのコア機能を提供するように設計されており、Daytona Enterpriseはこの基盤の上に、認証、認可、ダッシュボード、可観測性機能、リソース管理など、大規模な組織向けに調整された拡張機能を構築しています。
 
@@ -28,18 +26,18 @@ Daytonaアーキテクチャ図は、[Open Source](#open-source)および[Enterp
 
 ## Open Source
 
-Daytona Open Sourceには、Daytonaとプログラム的にやり取りするための中央インターフェースとして機能する[Daytona API](/docs/tools/api)が含まれています。Open Sourceバージョンは、[インターフェース](#interfaces)、[Git Providers](#git-providers)、[Container Registries](#container-registries)、[Providers](#providers)、[Targets](#targets)を含む、開発環境を管理するための包括的な機能とツールセットを提供します。
+Daytona Open Sourceには、Daytonaとプログラム的にやり取りするための中央インターフェースとして機能する[Daytona API](/docs/ja/tools/api)が含まれています。Open Sourceバージョンは、[インターフェース](#interfaces)、[Git Providers](#git-providers)、[Container Registries](#container-registries)、[Providers](#providers)、[Targets](#targets)を含む、開発環境を管理するための包括的な機能とツールセットを提供します。
 
 ### Interfaces
 
-Daytona Open Sourceは、プラットフォームとやり取りし、開発環境を管理するための様々な[インターフェース](/docs/usage/ide)を提供しています。インターフェースはDaytonaとやり取りする異なる方法を提供し、開発者が自分の好みやワークフローに基づいて最も適切な方法を選択できるようにします。
+Daytona Open Sourceは、プラットフォームとやり取りし、開発環境を管理するための様々な[インターフェース](/docs/ja/usage/ide)を提供しています。インターフェースはDaytonaとやり取りする異なる方法を提供し、開発者が自分の好みやワークフローに基づいて最も適切な方法を選択できるようにします。
 
-これらには、直接制御のための[コマンドラインインターフェース（CLI）](/docs/tools/cli)、[Visual Studio Code（VSCode）](/docs/usage/ide#vs-code)、[Visual Studio Code（VSCode）Browser](/docs/usage/ide#vs-code-browser)、[Visual Studio Code Insiders](/docs/usage/ide#vs-code-insiders)、[Visual Studio Codium](/docs/usage/ide#vscodium)、[Jupyter](/docs/usage/ide#jupyter)、[Zed](/docs/usage/ide#zed)、[Cursor](/docs/usage/ide#cursor)、[Headless](/docs/usage/ide#headless)、[Windsurf](/docs/usage/ide#windsurf)などの[IDE](/docs/usage/ide)、統合開発のためのJetBrains IDE、および[Terminal SSH](/docs/usage/ide#terminal-ssh)が含まれます。
+これらには、直接制御のための[コマンドラインインターフェース（CLI）](/docs/ja/tools/cli)、[Visual Studio Code（VSCode）](/docs/ja/usage/ide#vs-code)、[Visual Studio Code（VSCode）Browser](/docs/ja/usage/ide#vs-code-browser)、[Visual Studio Code Insiders](/docs/ja/usage/ide#vs-code-insiders)、[Visual Studio Codium](/docs/ja/usage/ide#vscodium)、[Jupyter](/docs/ja/usage/ide#jupyter)、[Zed](/docs/ja/usage/ide#zed)、[Cursor](/docs/ja/usage/ide#cursor)、[Headless](/docs/ja/usage/ide#headless)、[Windsurf](/docs/ja/usage/ide#windsurf)などの[IDE](/docs/ja/usage/ide)、統合開発のためのJetBrains IDE、および[Terminal SSH](/docs/ja/usage/ide#terminal-ssh)が含まれます。
 
-さらに、開発者がカスタム統合を作成し、プラットフォーム機能を拡張できるように[Daytona SDK](/docs/sdk)が提供されています。
+さらに、開発者がカスタム統合を作成し、プラットフォーム機能を拡張できるように[Daytona SDK](/docs/ja/sdk)が提供されています。
 
 <DocumentList>
-<DocumentListItem
+  <DocumentListItem
     title="Daytona SDK"
     subtitle="Daytona SDKを使用してカスタム統合を作成し、プラットフォーム機能を拡張する方法を学びます。"
     href="/docs/sdk"
@@ -51,12 +49,12 @@ Daytona Open Sourceは、プラットフォームとやり取りし、開発環�
 
 Daytona Open SourceはGit Providersを統合して、バージョン管理操作を管理し、Gitリポジトリとやり取りします。Git Providersは効率的なソースコード管理とWorkspacesとの同期を可能にします。
 
-サポートされているGit Providersには、[GitHub](/docs/configuration/git-providers#github)、[GitLab](/docs/configuration/git-providers#gitlab)、[Bitbucket](/docs/configuration/git-providers#bitbucket)、[GitHub Enterprise Server](/docs/configuration/git-providers#github-enterprise-server)、[GitLab Self-Managed](/docs/configuration/git-providers#gitlab-self-managed)、[Bitbucket Server](/docs/configuration/git-providers#bitbucket-server)、[Codeberg](/docs/configuration/git-providers#codeberg)、[Gitea](/docs/configuration/git-providers#gitea)、[Gitness](/docs/configuration/git-providers#gitness)、[Azure DevOps](/docs/configuration/git-providers#azure-devops)、[AWS CodeCommit](/docs/configuration/git-providers#aws-codecommit)、[Gogs](/docs/configuration/git-providers#gogs)、[Gitee](/docs/configuration/git-providers#gitee)があります。
+サポートされているGit Providersには、[GitHub](/docs/ja/configuration/git-providers#github)、[GitLab](/docs/ja/configuration/git-providers#gitlab)、[Bitbucket](/docs/ja/configuration/git-providers#bitbucket)、[GitHub Enterprise Server](/docs/ja/configuration/git-providers#github-enterprise-server)、[GitLab Self-Managed](/docs/ja/configuration/git-providers#gitlab-self-managed)、[Bitbucket Server](/docs/ja/configuration/git-providers#bitbucket-server)、[Codeberg](/docs/ja/configuration/git-providers#codeberg)、[Gitea](/docs/ja/configuration/git-providers#gitea)、[Gitness](/docs/ja/configuration/git-providers#gitness)、[Azure DevOps](/docs/ja/configuration/git-providers#azure-devops)、[AWS CodeCommit](/docs/ja/configuration/git-providers#aws-codecommit)、[Gogs](/docs/ja/configuration/git-providers#gogs)、[Gitee](/docs/ja/configuration/git-providers#gitee)があります。
 
 Git Providers統合は、協調開発ワークフローを促進し、リポジトリと開発環境間の接続を合理化します。
 
 <DocumentList>
-<DocumentListItem
+  <DocumentListItem
     title="Git Providerを追加する"
     subtitle="DaytonaにGit Providerを追加し、リポジトリを効果的に管理する方法を学びます。"
     href="/docs/configuration/git-providers#add-a-git-provider"
@@ -66,10 +64,10 @@ Git Providers統合は、協調開発ワークフローを促進し、リポジ�
 
 ### Container Registries
 
-[コンテナレジストリ](/docs/configuration/container-registries)は、指定されたレジストリサーバーからコンテナイメージをプルするために使用される認証情報を保存します。コンテナレジストリ認証情報の追加は、プライベートイメージやプライベートレジストリでホストされているイメージからWorkspacesを作成したいユーザーにとって有用です。
+[コンテナレジストリ](/docs/ja/configuration/container-registries)は、指定されたレジストリサーバーからコンテナイメージをプルするために使用される認証情報を保存します。コンテナレジストリ認証情報の追加は、プライベートイメージやプライベートレジストリでホストされているイメージからWorkspacesを作成したいユーザーにとって有用です。
 
 <DocumentList>
-<DocumentListItem
+  <DocumentListItem
     title="Container Registryを設定する"
     subtitle="Workspaceの環境変数を通じてコンテナレジストリを設定する方法を学びます。"
     href="/docs/configuration/container-registries"
@@ -79,12 +77,12 @@ Git Providers統合は、協調開発ワークフローを促進し、リポジ�
 
 ### Providers
 
-Daytona Open Sourceは[Providers](/docs/configuration/providers)を使用して、開発環境を作成・管理するための様々な技術との統合を可能にします。Providersは基盤技術の複雑さを抽象化し、Daytonaが環境をデプロイ・実行するために活用する基盤エンジンとして機能します。
+Daytona Open Sourceは[Providers](/docs/ja/configuration/providers)を使用して、開発環境を作成・管理するための様々な技術との統合を可能にします。Providersは基盤技術の複雑さを抽象化し、Daytonaが環境をデプロイ・実行するために活用する基盤エンジンとして機能します。
 
-サポートされているProvidersには、[Docker](/docs/configuration/providers#docker)、[DigitalOcean](/docs/configuration/providers#digitalocean)、[AWS](/docs/configuration/providers#aws)、[Azure](/docs/configuration/providers#azure)、[GCP](/docs/configuration/providers#gcp)、[Hetzner](/docs/configuration/providers#hetzner)、[Fly](/docs/configuration/providers#fly)があります。
+サポートされているProvidersには、[Docker](/docs/ja/configuration/providers#docker)、[DigitalOcean](/docs/ja/configuration/providers#digitalocean)、[AWS](/docs/ja/configuration/providers#aws)、[Azure](/docs/ja/configuration/providers#azure)、[GCP](/docs/ja/configuration/providers#gcp)、[Hetzner](/docs/ja/configuration/providers#hetzner)、[Fly](/docs/ja/configuration/providers#fly)があります。
 
 <DocumentList>
-<DocumentListItem
+  <DocumentListItem
     title="Providerをインストールする"
     subtitle="Providerをインストールし、Daytona Serverとインターフェースする方法を学びます。"
     href="/docs/configuration/providers"
@@ -94,10 +92,10 @@ Daytona Open Sourceは[Providers](/docs/configuration/providers)を使用して�
 
 ### Targets
 
-[Targets](/docs/usage/targets)は、Workspaceが実行される分離された処理単位を表します。クラウドベースやオンプレミス環境を含む、さまざまなインフラストラクチャ上で動作できます。Targetsは必要な計算リソースを提供し、定義されたインフラストラクチャ内でセキュリティ要件を満たします。
+[Targets](/docs/ja/usage/targets)は、Workspaceが実行される分離された処理単位を表します。クラウドベースやオンプレミス環境を含む、さまざまなインフラストラクチャ上で動作できます。Targetsは必要な計算リソースを提供し、定義されたインフラストラクチャ内でセキュリティ要件を満たします。
 
 <DocumentList>
-<DocumentListItem
+  <DocumentListItem
     title="Targetを管理する"
     subtitle="開発環境が実行される場所を定義するためのTargetの管理方法を学びます。"
     href="/docs/usage/targets"

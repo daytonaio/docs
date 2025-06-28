@@ -16,7 +16,7 @@ Workspacesは、プロジェクトのコードベース、依存関係、パッ�
 
 WorkspacesはDaytonaの中核コンポーネントとして機能し、制御された安全な環境でプロジェクトを作成、管理、共同作業することを可能にします。
 
-Workspacesは、クラウドベースやオンプレミス環境などの適切な[Target](/docs/usage/targets)インフラストラクチャを使用してホストされます。これにより、あるプロジェクトでの変更が他のプロジェクトに意図せず影響を与えることがなくなり、より安定で信頼性の高いワークフローが促進されます。これは特に共同作業環境において有益で、すべてのチームメンバーが同じ設定で作業することを保証し、環境関連の問題が発生する可能性を減らします。
+Workspacesは、クラウドベースやオンプレミス環境などの適切な[Target](/docs/ja/usage/targets)インフラストラクチャを使用してホストされます。これにより、あるプロジェクトでの変更が他のプロジェクトに意図せず影響を与えることがなくなり、より安定で信頼性の高いワークフローが促進されます。これは特に共同作業環境において有益で、すべてのチームメンバーが同じ設定で作業することを保証し、環境関連の問題が発生する可能性を減らします。
 
 ## Workspaceの作成
 
@@ -29,7 +29,7 @@ Daytonaは、Workspaceを作成するための2つの主要な方法を提供し
 
 ### Gitリポジトリから
 
-GitリポジトリからWorkspaceを作成すると、[接続されたGit Provider](/docs/configuration/git-providers)またはカスタムGitリポジトリURLを使用して新しい開発環境がセットアップされます。
+GitリポジトリからWorkspaceを作成すると、[接続されたGit Provider](/docs/ja/configuration/git-providers)またはカスタムGitリポジトリURLを使用して新しい開発環境がセットアップされます。
 
 1. 次のコマンドを実行して、GitリポジトリからWorkspaceを作成します：
 
@@ -38,7 +38,7 @@ daytona create
 ```
 
 <Aside type="tip">
-`--no-ide`フラグを使用して、[IDE](/docs/usage/ide)でWorkspaceを自動的に開くことをスキップします。
+`--no-ide`フラグを使用して、[IDE](/docs/ja/usage/ide)でWorkspaceを自動的に開くことをスキップします。
 
 ```shell
 daytona create --no-ide
@@ -52,7 +52,7 @@ daytona create --no-ide
 
 - **リポジトリのリストから選択**
 
-   [Git Providerを接続](/docs/configuration/git-providers)している場合、Workspaceと接続するために選択できるリポジトリのリストが表示されます。
+   [Git Providerを接続](/docs/ja/configuration/git-providers)している場合、Workspaceと接続するために選択できるリポジトリのリストが表示されます。
 
 - **カスタムリポジトリURLを入力**
 
@@ -80,12 +80,12 @@ Workspace name
 
 <Aside type="tip">
    `F10`を押してWorkspaceの詳細設定を構成します。
-   これには[Builder](/docs/usage/builders)の設定も含まれます。
+   これには[Builder](/docs/ja/usage/builders)の設定も含まれます。
 </Aside>
 
 <br />
 
-4. WorkspaceをデプロイするTargetを選択します。Targetを選択すると、[Target設定](/docs/configuration/target-config)の入力を求められます。設定は選択されたTargetによって異なります。
+4. WorkspaceをデプロイするTargetを選択します。Targetを選択すると、[Target設定](/docs/ja/configuration/target-config)の入力を求められます。設定は選択されたTargetによって異なります。
 
 Targetの選択と設定が完了すると、Daytonaは指定されたGitリポジトリをクローンし、その内容に基づいて新しいWorkspaceをセットアップします。ターミナルにはWorkspaceの作成プロセスを示す進行状況情報が表示されます。
 
@@ -119,7 +119,7 @@ daytona create <REPO_URL>
 daytona create https://github.com/daytonaio/daytona.git
 ```
 
-2. WorkspaceをデプロイするTargetを選択します。Targetを選択すると、[Target設定](/docs/configuration/target-config)の入力を求められます。設定は選択されたTargetによって異なります。
+2. WorkspaceをデプロイするTargetを選択します。Targetを選択すると、[Target設定](/docs/ja/configuration/target-config)の入力を求められます。設定は選択されたTargetによって異なります。
 
 Targetの選択と設定が完了すると、Daytonaは指定されたGitリポジトリをクローンし、その内容に基づいて新しいWorkspaceをセットアップします。ターミナルにはWorkspaceの作成プロセスを示す進行状況情報が表示されます。
 
@@ -140,7 +140,7 @@ Targetの選択と設定が完了すると、Daytonaは指定されたGitリポ�
 ```
 
 <Aside type="tip">
-コマンドラインフラグを使用してWorkspace作成時にProject Builderを設定します。詳細については**[Builders](/docs/usage/builders)**を参照してください。
+コマンドラインフラグを使用してWorkspace作成時にProject Builderを設定します。詳細については**[Builders](/docs/ja/usage/builders)**を参照してください。
 </Aside>
 
 ## Workspaceの一覧表示
@@ -186,7 +186,7 @@ github.com/username/MyProject.git
 
 :::note
 お好みのIDEを使用するようにDaytonaを設定してください。
-詳細については、**[デフォルトIDEの設定](/docs/usage/ide#set-the-default-ide)**を参照してください。
+詳細については、**[デフォルトIDEの設定](/docs/ja/usage/ide#set-the-default-ide)**を参照してください。
 :::
 
 ## Workspaceの削除

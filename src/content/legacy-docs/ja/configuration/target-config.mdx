@@ -5,11 +5,9 @@ description: DaytonaでTarget Configurationsを設定する方法を学びます
 
 import Label from '@components/Label.astro'
 
-<Label>
-  Distribution: **Open Source**
-</Label>
+<Label>Distribution: **Open Source**</Label>
 
-Target Configurationとは、さまざまな[Providers](/docs/configuration/providers)によって促進される開発セットアップがデプロイされ、管理される特定の宛先または環境を指します。Providersは環境を作成するために使用される方法と技術を定義し、Target Configurationsはこれらの環境が存在する正確な場所またはプラットフォームを指定します。
+Target Configurationとは、さまざまな[Providers](/docs/ja/configuration/providers)によって促進される開発セットアップがデプロイされ、管理される特定の宛先または環境を指します。Providersは環境を作成するために使用される方法と技術を定義し、Target Configurationsはこれらの環境が存在する正確な場所またはプラットフォームを指定します。
 
 Target Configurationは、ローカルマシン、リモートサーバー、またはクラウドインスタンスであり、選択されたProviderに基づいて変化することができます。Target Configurationsは、Daytonaが提供する統一されたインターフェース内で、異なるプラットフォームやアカウント間で環境をデプロイし、管理する柔軟性を提供します。
 
@@ -73,7 +71,7 @@ Note: non-root user required
 Sock Path
 > /var/run/docker.sock
 
-Workspace Data Dir       
+Workspace Data Dir
 The directory on the remote host where the workspace data will be stored
 > /tmp/daytona-data
 
@@ -126,7 +124,7 @@ daytona target-config delete
 Choose a Target Config To Delete
 1 item
 ===
-MyTarget          
+MyTarget
 docker-provider
 ```
 
@@ -293,7 +291,7 @@ v0.0.0
 ```
 
 :::note
-以前に[Runner](/docs/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerの選択を求めます。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
+以前に[Runner](/docs/ja/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerの選択を求めます。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
 :::
 
 <br />
@@ -316,7 +314,7 @@ Disk Size
 >
 
 Image
-> 
+>
 
 Region
 >
@@ -352,7 +350,7 @@ v0.0.0
 ```
 
 :::note
-以前に[Runner](/docs/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerを選択するよう促します。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
+以前に[Runner](/docs/ja/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerを選択するよう促します。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
 :::
 
 <br />
@@ -412,7 +410,7 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html
 
 Volume Type
 The type of volume. Default is gp3.
-List of available volume types: 
+List of available volume types:
 https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html
 >
 ```
@@ -444,7 +442,7 @@ v0.0.0
 ```
 
 :::note
-以前に[Runner](/docs/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerの選択を求めます。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
+以前に[Runner](/docs/ja/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerの選択を求めます。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
 :::
 
 <br />
@@ -466,7 +464,7 @@ https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
 >
 
 Client Secret
-Leave blank if you've set the AZURE_CLIENT_SECRET environment variable, or enter your Client     
+Leave blank if you've set the AZURE_CLIENT_SECRET environment variable, or enter your Client
 Secret here.
 To find the this, look for "password" in the output after generating client credentials
 https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
@@ -477,7 +475,7 @@ The size of the instance volume, in GB. Default is 30 GB. It is recommended that
 >
 
 Disk Type
-The type of the azure managed disk. Default is StandardSSD_LRS. List of available disk types:                                                                    
+The type of the azure managed disk. Default is StandardSSD_LRS. List of available disk types:
 https://docs.microsoft.com/azure/virtual-machines/linux/disks-typesList of available disk types per location can be retrieved using the command:
 az vm list-skus --location <your-region> --output table
 >
@@ -501,19 +499,19 @@ https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage
 
 Subscription ID
 Leave blank if you've set the AZURE_SUBSCRIPTION_ID environment variable, or enter your Subscription Id here.
-How to find subscription id:                                                                     
+How to find subscription id:
 https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription
 >
 
 Tenant ID
 Leave blank if you've set the AZURE_TENANT_ID environment variable, or enter your Tenant Id here.
-To find the this, look for "tenant" in the output after generating client credentials.           
+To find the this, look for "tenant" in the output after generating client credentials.
 https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
 >
 
 VM Size
 Leave blank if you've set the AZURE_TENANT_ID environment variable, or enter your Tenant Id here.
-To find the this, look for "tenant" in the output after generating client credentials.           
+To find the this, look for "tenant" in the output after generating client credentials.
 https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
 >
 ```
@@ -545,7 +543,7 @@ v0.0.0
 ```
 
 :::note
-以前に [Runner](/docs/usage/runners) をインストールしていない場合、Daytona は Provider を管理する Runner を選択するよう促します。選択すると、Daytona はターゲットシステムに Runner をインストールし、Daytona Server に接続します。
+以前に [Runner](/docs/ja/usage/runners) をインストールしていない場合、Daytona は Provider を管理する Runner を選択するよう促します。選択すると、Daytona はターゲットシステムに Runner をインストールし、Daytona Server に接続します。
 :::
 
 <br />
@@ -634,7 +632,7 @@ v0.0.0
 ```
 
 :::note
-以前に[Runner](/docs/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerの選択を求めます。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
+以前に[Runner](/docs/ja/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerの選択を求めます。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
 :::
 
 <br />
@@ -650,13 +648,13 @@ Name
 
 ```text
 API Token
-If empty, token will be fetched from the HETZNER_API_TOKEN environment        
+If empty, token will be fetched from the HETZNER_API_TOKEN environment
 variable.
 >
 
 Disk Image
 The Hetzner image to use for the VM. Default is ubuntu-24.04.
-https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-   
+https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-
 images
 >
 
@@ -703,7 +701,7 @@ v0.0.0
 ```
 
 :::note
-以前に[Runner](/docs/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerの選択を求めます。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
+以前に[Runner](/docs/ja/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerの選択を求めます。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
 :::
 
 <br />
@@ -719,12 +717,12 @@ Target Config Name
 
 ```text
 Auth Token
-If empty, token will be fetched from the FLY_ACCESS_TOKEN environment variable. 
+If empty, token will be fetched from the FLY_ACCESS_TOKEN environment variable.
 >
 
 Disk Size
 The size of the disk in GB.
-> 
+>
 
 Org Slug
 The organization name to create the fly machine in.
@@ -735,7 +733,7 @@ The region where the fly machine resides. If not specified, near region will be 
 >
 
 Size
-The size of the fly machine. Default is shared-cpu-4x. 
+The size of the fly machine. Default is shared-cpu-4x.
 List of available sizes https://fly.io/docs/about/pricing/#started-fly-machines
 >
 ```
