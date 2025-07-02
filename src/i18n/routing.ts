@@ -60,16 +60,11 @@ export async function proxyLocalizedContent(
   try {
     const targetUrl = new URL(targetPath, new URL(originalRequest.url).origin)
 
-    console.log('Fetching:', targetUrl.toString())
-    console.log('Original request origin:', new URL(originalRequest.url).origin)
-
     const response = await fetch(targetUrl.toString(), {
       method: originalRequest.method,
       headers: originalRequest.headers,
       body: originalRequest.body,
     })
-
-    console.log('Response status:', response.status)
 
     // Filter out headers that cause compression issues
     const filteredHeaders = new Headers()
@@ -106,21 +101,16 @@ export async function handleLanguageRouting(
 ): Promise<Response> {
   // Don't handle already-localized paths to prevent infinite loops
   if (isLocalizedPath(slug)) {
-    console.log('isLocalizedPath', slug, 'returning 404')
     return new Response('Not Found', { status: 404 })
   }
-
-  await new Promise(resolve => setTimeout(resolve, 2000))
 
   const preferredLanguage = getPreferredLanguage(request)
 
   if (preferredLanguage !== defaultLocale) {
     // Redirect to localized version (changes URL)
-    console.log('redirecting to', `/docs/${preferredLanguage}/${slug}`)
     return redirectFn(`/docs/${preferredLanguage}/${slug}`)
   } else {
     // Proxy to English version (maintains clean URL)
-    console.log('proxying to', `/docs/${defaultLocale}/${slug}`)
     return proxyLocalizedContent(`/docs/${defaultLocale}/${slug}`, request)
   }
 }

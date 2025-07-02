@@ -3,8 +3,6 @@ import { handleLanguageRouting } from '../i18n/routing'
 
 export const prerender = false
 
-console.log('docs/[...slug].astro')
-
 return await handleLanguageRouting(
   Astro.request,
   Astro.params.slug,
