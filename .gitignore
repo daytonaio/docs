@@ -38,3 +38,6 @@ pnpm-debug.log*
 # unnecessary lockfiles (only using yarn)
 package-lock.json
 pnpm-lock.yaml
+.yarn
+.pnp.cjs
+.pnp.loader.mjs
