@@ -370,3 +370,26 @@ const sandbox = await daytona.create({
 ```
 </TabItem>
 </Tabs>
+
+### Run Indefinitely
+
+By default, Sandboxes auto-stop after 15 minutes of inactivity. To keep a Sandbox running without interruption, set the auto-stop interval to `0` when creating a new Sandbox:
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+sandbox = daytona.create(CreateSandboxFromSnapshotParams(
+    snapshot="my-snapshot-name",
+    auto_stop_interval=0,  # Disables the auto-stop feature - default is 15 minutes
+))
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+const sandbox = await daytona.create({
+    snapshot: "my-snapshot-name",
+    autoStopInterval: 0, // Disables the auto-stop feature - default is 15 minutes
+});
+```
+</TabItem>
+</Tabs>
