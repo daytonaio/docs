@@ -71,11 +71,24 @@ export async function proxyLocalizedContent(
 
     console.log('Response status:', response.status)
 
-    // Create a new response with copied headers to avoid immutability issues
+    // Filter out headers that cause compression issues
+    const filteredHeaders = new Headers()
+    for (const [key, value] of response.headers.entries()) {
+      // Skip headers that can cause decoding issues when proxying
+      if (
+        !['content-encoding', 'content-length', 'transfer-encoding'].includes(
+          key.toLowerCase()
+        )
+      ) {
+        filteredHeaders.set(key, value)
+      }
+    }
+
+    // Create a new response with filtered headers
     return new Response(response.body, {
       status: response.status,
       statusText: response.statusText,
-      headers: response.headers,
+      headers: filteredHeaders,
     })
   } catch (error) {
     console.error('Proxy request failed:', error)
