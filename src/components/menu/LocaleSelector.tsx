@@ -47,9 +47,8 @@ export default function LocaleSelector({
   }
 
   // Set the locale and redirect to the new URL
-  const setLocale = (locale: string) => {
-    console.log('setLocale', locale)
-    setIsOpen(false)
+    const setLocale = (locale: string) => {
+      setIsOpen(false)
     window.location.href = localizePath(
       window.location.pathname,
       locale,

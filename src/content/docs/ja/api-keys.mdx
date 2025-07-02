@@ -2,7 +2,9 @@
 title: API Keys
 ---
 
-import { TabItem, Tabs } from '@astrojs/starlight/components'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
 
 Daytona API keyは[Daytona API](/docs/ja/tools/api)へのリクエストを認証するために使用されます。
 
@@ -18,10 +20,10 @@ Daytona API keyは[Daytona API](/docs/ja/tools/api)へのリクエストを認�
 
 新しいAPI Keyを追加する際、そのキーに対する権限セットの選択を求められます：
 
-| 権限             | 説明                                         |
-| ---------------- | -------------------------------------------- |
-| **`Sandboxes`**  | Sandboxesの作成と管理を行う権限を付与します  |
-| **`Snapshots`**  | Snapshotsの作成と管理を行う権限を付与します  |
+| 権限 | 説明 |
+|------------|-------------|
+| **`Sandboxes`** | Sandboxesの作成と管理を行う権限を付与します |
+| **`Snapshots`** | Snapshotsの作成と管理を行う権限を付与します |
 | **`Registries`** | Registriesの作成と管理を行う権限を付与します |
 
 これらの権限にはそれぞれ、リソースの作成と更新（例：`write:sandboxes`）およびリソースの削除（例：`delete:sandboxes`）のスコープがあり、個別に付与することができます。

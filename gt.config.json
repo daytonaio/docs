@@ -5,19 +5,29 @@
     "mdx": {
       "include": [
         "src/content/docs/[locale]/**/*.mdx",
+        "src/content/legacy-docs/[locale]/**/*.mdx"
+      ]
+    },
+    "md": {
+      "include": [
         "src/content/docs/[locale]/**/*.md",
-        "src/content/legacy-docs/[locale]/**/*.mdx",
         "src/content/legacy-docs/[locale]/**/*.md"
       ]
     },
     "json": {
-      "include": ["src/content/i18n/[locale].json"]
+      "include": [
+        "src/content/i18n/[locale].json"
+      ]
     },
     "gt": {
       "output": "src/data/i18n/[locale].json"
     }
   },
-  "locales": ["en", "ja"],
-  "_versionId": "7ce31cd38af9b70d8b63cc9ee79bcd71f8d1607d74eeb128626d485ad47ac9bc",
-  "ssr": true
+  "locales": [
+    "en",
+    "ja"
+  ],
+  "baseUrl": "https://api.gtx.wtf",
+  "ssr": true,
+  "_versionId": "7ce31cd38af9b70d8b63cc9ee79bcd71f8d1607d74eeb128626d485ad47ac9bc"
 }

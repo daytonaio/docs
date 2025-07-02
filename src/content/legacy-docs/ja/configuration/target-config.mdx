@@ -5,11 +5,13 @@ description: DaytonaでTarget Configurationsを設定する方法を学びます
 
 import Label from '@components/Label.astro'
 
-<Label>Distribution: **Open Source**</Label>
+<Label>
+  Distribution: **Open Source**
+</Label>
 
 Target Configurationとは、さまざまな[Providers](/docs/ja/configuration/providers)によって促進される開発セットアップがデプロイされ、管理される特定の宛先または環境を指します。Providersは環境を作成するために使用される方法と技術を定義し、Target Configurationsはこれらの環境が存在する正確な場所またはプラットフォームを指定します。
 
-Target Configurationは、ローカルマシン、リモートサーバー、またはクラウドインスタンスであり、選択されたProviderに基づいて変化することができます。Target Configurationsは、Daytonaが提供する統一されたインターフェース内で、異なるプラットフォームやアカウント間で環境をデプロイし、管理する柔軟性を提供します。
+Target Configurationは、ローカルマシン、リモートサーバー、またはクラウドインスタンスであり、選択されたProviderに基づいて変化することができます。Target Configurationsは、Daytonaが提供する統一されたインターフェース内で、異なるプラットフォームとアカウント間で環境をデプロイし、管理する柔軟性を提供します。
 
 Target Configurationを追加すると、Daytonaで新しい開発環境を作成する際に選択できるようになります。複数のTarget Configurationsを作成したり、既存のものをリストしたり、不要になったものを削除したりできます。
 
@@ -71,7 +73,7 @@ Note: non-root user required
 Sock Path
 > /var/run/docker.sock
 
-Workspace Data Dir
+Workspace Data Dir       
 The directory on the remote host where the workspace data will be stored
 > /tmp/daytona-data
 
@@ -108,7 +110,7 @@ local             docker-provider         local
 
 ## Target Configurationの削除
 
-Daytonaでは、Target Configurationを削除するオプションを提供しており、不要になったものを管理・削除することができます。Target Configurationが削除されると、そのTarget Configuration上でWorkspaceを管理またはデプロイすることはできなくなります。
+Daytonaでは、Target Configurationを削除するオプションを提供しており、不要になったものを管理・削除することができます。Target Configurationが削除されると、そのTarget Configuration上でWorkspaceを管理またはデプロイすることができなくなります。
 
 1. 以下のコマンドを実行してTarget Configurationを削除します：
 
@@ -116,15 +118,15 @@ Daytonaでは、Target Configurationを削除するオプションを提供し�
 daytona target-config delete
 ```
 
-このコマンドを実行すると、DaytonaはTarget Configurationのリストとその詳細を表示します。Configuration名、Workspaceの一意識別子、および接続されているリポジトリを確認できます。
+このコマンドを実行すると、DaytonaはTarget Configurationの一覧とその詳細を表示します。Configuration名、Workspaceの一意識別子、および接続されているリポジトリを確認できます。
 
-2. 削除したいConfigurationを選択して**`Enter`**を押します。
+2. 削除したいConfigurationで**`Enter`**を押します。
 
 ```text
 Choose a Target Config To Delete
 1 item
 ===
-MyTarget
+MyTarget          
 docker-provider
 ```
 
@@ -314,7 +316,7 @@ Disk Size
 >
 
 Image
->
+> 
 
 Region
 >
@@ -350,7 +352,7 @@ v0.0.0
 ```
 
 :::note
-以前に[Runner](/docs/ja/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerを選択するよう促します。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
+以前に[Runner](/docs/ja/usage/runners)をインストールしていない場合、DaytonaはProviderを管理するRunnerの選択を求めます。選択すると、DaytonaはターゲットシステムにRunnerをインストールし、Daytona Serverに接続します。
 :::
 
 <br />
@@ -410,7 +412,7 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html
 
 Volume Type
 The type of volume. Default is gp3.
-List of available volume types:
+List of available volume types: 
 https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html
 >
 ```
@@ -423,9 +425,9 @@ Target Config <target_config> created successfully
 
 ## Azure
 
-DaytonaはWorkspaceのデプロイと管理に使用するAzure Target Configurationを設定するオプションを提供します。
+Daytonaは、ワークスペースのデプロイと管理に使用するAzure Target Configurationを設定するオプションを提供します。
 
-1. 次のコマンドを実行してTarget Configurationを設定します：
+1. 以下のコマンドを実行してTarget Configurationを設定します：
 
 ```shell
 daytona target-config set
@@ -464,7 +466,7 @@ https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
 >
 
 Client Secret
-Leave blank if you've set the AZURE_CLIENT_SECRET environment variable, or enter your Client
+Leave blank if you've set the AZURE_CLIENT_SECRET environment variable, or enter your Client     
 Secret here.
 To find the this, look for "password" in the output after generating client credentials
 https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
@@ -475,7 +477,7 @@ The size of the instance volume, in GB. Default is 30 GB. It is recommended that
 >
 
 Disk Type
-The type of the azure managed disk. Default is StandardSSD_LRS. List of available disk types:
+The type of the azure managed disk. Default is StandardSSD_LRS. List of available disk types:                                                                    
 https://docs.microsoft.com/azure/virtual-machines/linux/disks-typesList of available disk types per location can be retrieved using the command:
 az vm list-skus --location <your-region> --output table
 >
@@ -499,19 +501,19 @@ https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage
 
 Subscription ID
 Leave blank if you've set the AZURE_SUBSCRIPTION_ID environment variable, or enter your Subscription Id here.
-How to find subscription id:
+How to find subscription id:                                                                     
 https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription
 >
 
 Tenant ID
 Leave blank if you've set the AZURE_TENANT_ID environment variable, or enter your Tenant Id here.
-To find the this, look for "tenant" in the output after generating client credentials.
+To find the this, look for "tenant" in the output after generating client credentials.           
 https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
 >
 
 VM Size
 Leave blank if you've set the AZURE_TENANT_ID environment variable, or enter your Tenant Id here.
-To find the this, look for "tenant" in the output after generating client credentials.
+To find the this, look for "tenant" in the output after generating client credentials.           
 https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
 >
 ```
@@ -648,13 +650,13 @@ Name
 
 ```text
 API Token
-If empty, token will be fetched from the HETZNER_API_TOKEN environment
+If empty, token will be fetched from the HETZNER_API_TOKEN environment        
 variable.
 >
 
 Disk Image
 The Hetzner image to use for the VM. Default is ubuntu-24.04.
-https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-
+https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-   
 images
 >
 
@@ -717,12 +719,12 @@ Target Config Name
 
 ```text
 Auth Token
-If empty, token will be fetched from the FLY_ACCESS_TOKEN environment variable.
+If empty, token will be fetched from the FLY_ACCESS_TOKEN environment variable. 
 >
 
 Disk Size
 The size of the disk in GB.
->
+> 
 
 Org Slug
 The organization name to create the fly machine in.
@@ -733,12 +735,12 @@ The region where the fly machine resides. If not specified, near region will be 
 >
 
 Size
-The size of the fly machine. Default is shared-cpu-4x.
+The size of the fly machine. Default is shared-cpu-4x. 
 List of available sizes https://fly.io/docs/about/pricing/#started-fly-machines
 >
 ```
 
-5. **`Enter`**をクリックしてTarget Configurationの設定を確定します。
+5. **`Enter`**をクリックしてTarget Configurationの設定を確認します。
 
 ```text
 Target Config <target_config> created successfully

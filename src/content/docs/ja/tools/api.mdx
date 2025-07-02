@@ -530,7 +530,7 @@ import Label from '@components/Label.astro'
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`X-Daytona-Organization-ID`** | header | false | undefined | 組織IDを指定するためにJWTと併用 |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | JWTと組み合わせて組織IDを指定する |
 | **`verbose`** | query | false | undefined | 詳細出力を含める |
 | **`sandboxId`** | path | true | undefined | サンドボックスのID |
 
@@ -1279,7 +1279,7 @@ IDによるセッションコマンドの取得
 
 | Name | Location | Required | Type | Description |
 | :--- | :------- | :------- | :--- | :---------- |
-| **`X-Daytona-Organization-ID`** | header | false | undefined | 組織IDを指定するためにJWTと併用 |
+| **`X-Daytona-Organization-ID`** | header | false | undefined | JWTと組み合わせて組織IDを指定する際に使用 |
 | **`sandboxId`** | path | true | undefined | undefined |
 | **`sessionId`** | path | true | undefined | undefined |
 | **`commandId`** | path | true | undefined | undefined |

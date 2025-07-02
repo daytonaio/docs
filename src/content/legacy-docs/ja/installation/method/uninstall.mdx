@@ -32,7 +32,7 @@ sudo rm $(whereis daytona | awk '{print $2}')
 rm -f ~/.ssh/daytona_config
 ```
 
-`~/.ssh/config`ファイルを編集して`Include daytona_config entry`を削除してください。以下のコマンドを実行して手動で行うことができます：
+`~/.ssh/config`ファイルを編集して、`Include daytona_config entry`を削除してください。以下のコマンドを実行して手動で行うことができます：
 
 ```shell
 nano ~/.ssh/config
@@ -44,4 +44,4 @@ nano ~/.ssh/config
 docker rm /daytona-registry
 ```
 
-Daytona用の自動補完スクリプトを生成している場合は、シェル設定ファイル（例：`.bashrc`、`.zshrc`）から手動で削除する必要があります。
+Daytonaの自動補完スクリプトを生成している場合は、シェル設定ファイル（例：`.bashrc`、`.zshrc`）から手動で削除する必要があります。

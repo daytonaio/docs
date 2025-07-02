@@ -24,11 +24,11 @@ Daytona SDKは、Daytonaとやり取りするための公式のPythonおよびTy
 
 ### クイックスタート
 
-Daytona Sandboxで最初のコード行を実行しましょう。AIアシスタントでの高速開発のために、[LLMsコンテキストファイル](/docs/ja/getting-started#additional-examples)をご利用ください。
+Daytonaサンドボックスでコードの最初の行を実行しましょう。AIアシスタントでの高速開発のために、私たちの[LLMsコンテキストファイル](/docs/ja/getting-started#additional-examples)を使用してください。
 
 #### 1. APIキーを取得する
 
-- Daytona [Dashboard](https://app.daytona.io/dashboard)にアクセスします。
+- Daytona [ダッシュボード](https://app.daytona.io/dashboard)にアクセスします。
 - 新しい[APIキー](https://app.daytona.io/dashboard/keys)を作成します。再度表示されないため、
 安全に保存してください。
 
@@ -55,19 +55,19 @@ Daytona Sandboxで最初のコード行を実行しましょう。AIアシスタ
   ```python
   from daytona import Daytona, DaytonaConfig
 
-# 設定を定義
+# Define the configuration
 
   config = DaytonaConfig(api_key="your-api-key")
 
-# Daytonaクライアントを初期化
+# Initialize the Daytona client
 
   daytona = Daytona(config)
 
-# Sandboxインスタンスを作成
+# Create the Sandbox instance
 
   sandbox = daytona.create()
 
-# Sandbox内でコードを安全に実行
+# Run the code securely inside the Sandbox
 
   response = sandbox.process.code_run('print("Hello World from code!")')
   if response.exit_code != 0:
@@ -75,7 +75,7 @@ Daytona Sandboxで最初のコード行を実行しましょう。AIアシスタ
   else:
       print(response.result)
   
-# クリーンアップ
+# Clean up
 
   sandbox.delete()
 
@@ -86,19 +86,19 @@ Daytona Sandboxで最初のコード行を実行しましょう。AIアシスタ
   ```typescript
   import { Daytona } from '@daytonaio/sdk';
 
-  // Daytonaクライアントを初期化
+  // Initialize the Daytona client
   const daytona = new Daytona({ apiKey: 'your-api-key' });
 
-  // Sandboxインスタンスを作成
+  // Create the Sandbox instance
   const sandbox = await daytona.create({
     language: 'typescript',
   });
 
-  // Sandbox内でコードを安全に実行
+  // Run the code securely inside the Sandbox
   const response = await sandbox.process.codeRun('console.log("Hello World from code!")')
   console.log(response.result);
 
-  // クリーンアップ
+  // Clean up
   await sandbox.delete()
   ```
 

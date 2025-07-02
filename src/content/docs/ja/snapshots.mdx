@@ -102,7 +102,7 @@ main()
 
 ### スナップショットリソース
 
-スナップショットには、Daytona Sandboxのリソース要件が含まれています。デフォルトでは、Daytona Sandboxには**1 vCPU**、**1GB RAM**、**3GiB ディスク**が付属しています。
+スナップショットには、Daytona Sandboxのリソース要件が含まれています。デフォルトでは、Daytona Sandboxには**1 vCPU**、**1GB RAM**、**3GiBディスク**が付属しています。
 
 より多くのパワーが必要ですか？`Resources`クラスを使用して、必要なものを正確に定義してください：CPU、メモリ、ディスク容量はすべてカスタマイズ可能です。
 
@@ -197,7 +197,7 @@ main();
 
 ### ローカルイメージの使用
 
-プライベートコンテナレジストリを手動で設定してイメージをプッシュする必要を避けるために、[Daytona CLI](/docs/ja/getting-started#setting-up-the-daytona-cli)では、ローカルイメージまたはローカルのDockerfileからSnapshotを作成し、Sandboxで使用することができます。
+プライベートコンテナレジストリを手動で設定してイメージをプッシュする必要を避けるために、[Daytona CLI](/docs/ja/getting-started#setting-up-the-daytona-cli)では、ローカルイメージまたはローカルDockerfileからSnapshotを作成し、Sandboxで使用することができます。
 
 `docker images`を実行して、使用したいイメージとタグが利用可能であることを確認した後、`daytona snapshot push`コマンドを使用してSnapshotを作成し、Daytonaにプッシュします。例：
 

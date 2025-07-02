@@ -1,6 +1,6 @@
 ---
 title: Git Providers
-description: Daytona を GitHub、GitLab、Bitbucket、その他の Git Providers と連携する。
+description: Daytona を GitHub、GitLab、Bitbucket、その他の Git Providers と接続します。
 sidebar:
   label: プロバイダーの設定
 ---
@@ -11,9 +11,9 @@ import Label from '@components/Label.astro'
   Distribution: **Open Source**, **Cloud**, **Self-Managed**
 </Label>
 
-Git Providers — ソフトウェアフォージやソースコード管理システム（SCM）とも呼ばれる — は、Git を使用してコードベースをホストし、共同作業を行うためのツールセットを提供します。
+Git Providers — ソフトウェアフォージやソースコードマネージャー（SCM）とも呼ばれる — は、Git を使用してコードベースをホストし、共同作業を行うためのツールセットを提供します。
 
-Daytona では、お好みの Git Provider を統合することで、開発ワークフローを強化できます。この統合により、Daytona 内でリポジトリに直接アクセスし、管理することができ、既存のプロジェクトからのワークスペース作成が簡単になります。
+Daytona では、お好みの Git Provider を統合することで、開発ワークフローを強化できます。この統合により、Daytona 内でリポジトリに直接アクセスし、管理することができ、既存のプロジェクトからのワークスペース作成が簡素化されます。
 
 Git Provider を追加することで、認証情報がワークスペースに安全に埋め込まれます。これにより、認証を繰り返すことなく、シームレスな Git 操作が可能になります。
 
@@ -289,7 +289,7 @@ Git provider has been registered
 
 DaytonaはBitbucketアカウントを接続し、Daytonaから直接リポジトリにアクセスするオプションを提供します。
 
-1. 次のコマンドを実行してBitbucketをGit Providerとして追加します：
+1. 以下のコマンドを実行してBitbucketをGit Providerとして追加します：
 
 ```shell
 daytona git-providers add
@@ -326,7 +326,7 @@ Will default to username if left empty
 >
 ```
 
-認証が成功すると、Daytonaは次のメッセージを表示します：
+認証が成功すると、Daytonaは以下のメッセージを表示します：
 
 ```text
 Git provider has been registered
@@ -371,7 +371,7 @@ Personal access token
 >
 ```
 
-3. Daytona内でGit Providerを識別するためのGit Providerエイリアスを入力します。
+3. Daytona内でGit Providerを識別するためのエイリアスを入力します。
 
 ```text
 Alias                                                                         
@@ -411,7 +411,7 @@ GitLab Self-ManagedをGit Providerとして選択した後、Self-Managed API UR
 
 Personal Access Tokenの作成に関する詳細については、GitLabの[Create a personal access token][gl-token]ドキュメントをご覧ください。
 
-2. DaytonaがGitLab Self-Managedリポジトリへの認証と安全なアクセスを可能にするため、Self-Managed API URLとPersonal Access Tokenを入力します。
+2. DaytonaがGitLab Self-Managedリポジトリへの認証と安全なアクセスを有効にするために、Self-Managed API URLとPersonal Access Tokenを入力します。
 
 ```text
 Self-managed API URL
@@ -442,7 +442,7 @@ Git provider has been registered
 
 DaytonaはBitbucket Serverアカウントを接続し、Daytonaから直接リポジトリにアクセスするオプションを提供します。
 
-1. 次のコマンドを実行してBitbucket ServerをGit Providerとして追加します：
+1. 以下のコマンドを実行してBitbucket ServerをGit Providerとして追加します：
 
 ```shell
 daytona git-providers add
@@ -490,7 +490,7 @@ Will default to username if left empty
 >
 ```
 
-認証が成功すると、Daytonaは次のメッセージを表示します：
+認証が成功すると、Daytonaは以下のメッセージを表示します：
 
 ```text
 Git provider has been registered
@@ -518,7 +518,7 @@ Choose a Git provider
 > Codeberg
 ```
 
-Git ProviderとしてCodebergを選択した後、Personal Access Tokenの入力を求められます。
+CodebergをGit Providerとして選択した後、Personal Access Tokenの入力を求められます。
 
 Personal Access Tokenの作成に関する詳細については、Codebergの[Generating an Access Token][codeberg-token]ドキュメントをご覧ください。
 
@@ -529,7 +529,7 @@ Personal access token
 >
 ```
 
-3. Daytona内でGit Providerを識別するためのGit Providerエイリアスを入力します。
+3. Daytona内でGit Providerを識別するためのエイリアスを入力します。
 
 ```text
 Alias                                                                         
@@ -545,7 +545,7 @@ Git provider has been registered
 
 ## Gitea
 
-DaytonaはGiteaアカウントを接続し、Daytonaから直接リポジトリにアクセスするオプションを提供します。
+DaytonaはGiteaアカウントに接続し、Daytonaから直接リポジトリにアクセスするオプションを提供します。
 
 1. 次のコマンドを実行してGiteaをGit Providerとして追加します：
 
@@ -569,7 +569,7 @@ Git ProviderとしてGiteaを選択した後、Self-Managed API URL（Giteaイ�
 
 Personal Access Tokenの作成に関する詳細については、Giteaの[Generating and listing API tokens][gitea-token]ドキュメントをご覧ください。
 
-2. DaytonaがGiteaリポジトリへの認証と安全なアクセスを可能にするため、Self-Managed API URLとPersonal Access Tokenを入力します。
+2. DaytonaがGiteaリポジトリへの認証と安全なアクセスを可能にするために、Self-Managed API URLとPersonal Access Tokenを入力します。
 
 ```text
 Self-managed API URL
@@ -635,7 +635,7 @@ Personal access token
 >
 ```
 
-3. Daytona内でGit Providerを識別するためのGit Providerエイリアスを入力します。
+3. Daytona内でGit Providerを識別するためのエイリアスを入力します。
 
 ```text
 Alias                                                                         
@@ -818,7 +818,7 @@ Personal access token
 >
 ```
 
-3. Daytona内でそれを識別するためのGit Providerエイリアスを入力します。
+3. Daytona内でGit Providerを識別するためのGit Providerエイリアスを入力します。
 
 ```text
 Alias                                                                         

@@ -7,10 +7,11 @@ sidebar:
 
 import Label from '@components/Label.astro'
 
-<Label>Distribution: **Open Source**</Label>
+<Label>
+  Distribution: **Open Source**
+</Label>
 
 import Aside from '@components/Aside.astro'
-
 // import DocumentList from "@components/DocumentList.astro";
 // import DocumentListItem from "@components/DocumentListItem.astro";
 
@@ -77,7 +78,7 @@ daytona provider list
 このコマンドを実行すると、DaytonaはインストールされているProviderとそれぞれのバージョンの一覧を表示します。
 
 ```text
-Name         Runner         Name               Version
+Name         Runner         Name               Version               
 ──────────────────────────────────────────────────────
 Docker       local          docker-provider    v0.0.0
 ```
@@ -310,10 +311,8 @@ Provider azure-provider has been successfully installed
 
 :::note
 Azure Providerが適切なAzureサブスクリプションの`Contributor`ロールを持つサービスプリンシパルにリンクされていることを確認してください。
-
 <br />
-`Contributor`ロールを持つサービスプリンシパルを作成するには、次のAzure
-CLIコマンドを使用します：
+`Contributor`ロールを持つサービスプリンシパルを作成するには、次のAzure CLIコマンドを使用します：
 <br />
 
 ```shell
@@ -325,7 +324,7 @@ az ad sp create-for-rbac --role Contributor --scopes /subscriptions/<subscriptio
 
 ## GCP
 
-GCP Providerを使用すると、DaytonaはGoogle Cloud Platform（GCP）のコンピュートインスタンス上でWorkspaceプロジェクトを作成できます。このProviderはDaytonaをGCPと統合し、スケーラブルで柔軟なクラウド環境でWorkspaceを管理できるようにします。
+GCP Providerを使用すると、DaytonaがGoogle Cloud Platform（GCP）のコンピュートインスタンス上でWorkspaceプロジェクトを作成できるようになります。このProviderはDaytonaとGCPを統合し、スケーラブルで柔軟なクラウド環境でWorkspaceを管理できるようにします。
 
 :::note
 GCP Providerを使用する前に、`Compute Admin`ロールを持つGCPサービスアカウントを作成してください。サービスアカウントキーをJSON形式でダウンロードし、認証のためにGCP providerに提供してください。サービスアカウントの作成と設定に関する詳細な手順は[こちら](https://cloud.google.com/iam/docs/service-accounts-create#console)で確認できます。

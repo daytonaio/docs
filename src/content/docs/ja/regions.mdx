@@ -2,14 +2,14 @@
 title: リージョン選択
 ---
 
-import { TabItem, Tabs } from '@astrojs/starlight/components'
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 Daytonaは現在、以下のリージョンで利用可能です：
 
 - アメリカ合衆国 (US)
 - ヨーロッパ (EU)
 
-リージョンはDaytonaの[設定](/docs/ja/configuration)ステップで選択できます。
+Daytonaの[設定](/docs/ja/configuration)ステップでリージョンを選択できます。
 
 ```python
 from daytona import Daytona, DaytonaConfig
@@ -22,9 +22,9 @@ daytona = Daytona(config)
 ```
 
 ```typescript
-import { Daytona } from '@daytonaio/sdk'
+import { Daytona } from '@daytonaio/sdk';
 
 const daytona: Daytona = new Daytona({
-  target: 'eu',
-})
+    target: "eu"
+});
 ```

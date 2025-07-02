@@ -7,7 +7,9 @@ sidebar:
 
 import Label from '@components/Label.astro'
 
-<Label>Distribution: **Open Source**</Label>
+<Label>
+  Distribution: **Open Source**
+</Label>
 
 import Aside from '@components/Aside.astro'
 import Keyboard from '@components/Keyboard.astro'
@@ -19,19 +21,19 @@ Daytonaは、結果として生成されるProject環境の作成方法を制御
 
 - [**Automatic**](#automatic)
 
-  Daytonaが最も適切なBuilderを自動検出した後、Projectイメージをビルドします。
+   Daytonaが最も適切なBuilderを自動検出した後、Projectイメージをビルドします。
 
 - [**Dev Container**](#dev-container)
 
-  Daytonaがプロジェクト内にあるDev Container設定に従ってProjectイメージをビルドします。
+   Daytonaがプロジェクト内にあるDev Container設定に従ってProjectイメージをビルドします。
 
 - [**Custom Image**](#custom-image)
 
-  Daytonaが指定したイメージを使用してProjectイメージをビルドします。
+   Daytonaが指定したイメージを使用してProjectイメージをビルドします。
 
 - [**None**](#none)
 
-  Daytonaがデフォルトのベースイメージを使用してProjectを作成します。
+   Daytonaがデフォルトのベースイメージを使用してProjectを作成します。
 
 ## Automatic
 
@@ -91,8 +93,8 @@ DaytonaはDev Container標準を使用してProjectイメージをビルドす�
 
 - **Devcontainer file path**
 
-  Dev Container設定が配置されているパス（リポジトリルートからの相対パス）。
-  デフォルト値は`.devcontainer/devcontainer.json`です。
+   Dev Container設定が配置されているパス（リポジトリルートからの相対パス）。
+   デフォルト値は`.devcontainer/devcontainer.json`です。
 
 Dev Container Builderを使用するには、[Workspace creation](/docs/ja/usage/workspaces#create-a-workspace)中に`--devcontainer-path`フラグをリポジトリ内のDev Container設定パスに設定してください。このフラグは、単一のProjectでWorkspaceを作成する場合にのみ適用されます。
 
@@ -111,15 +113,15 @@ Dev Container標準の詳細については、[containers.dev](https://container
 
 - **カスタムコンテナイメージ**
 
-  Projectのベースコンテナイメージの名前。
+   Projectのベースコンテナイメージの名前。
 
 - **コンテナユーザー**
 
-  イメージビルドプロセス中にコマンドを実行するユーザー。
+   イメージビルドプロセス中にコマンドを実行するユーザー。
 
 - **環境変数**
 
-  `KEY=VALUE`形式の環境変数のリスト。
+   `KEY=VALUE`形式の環境変数のリスト。
 
 Custom Image Builderを使用するには、[Workspaceの作成](/docs/ja/usage/workspaces#create-a-workspace)時に`--custom-image`と`--custom-image-user`の両方のフラグを設定します。これらのフラグは、単一のProjectでWorkspaceを作成する場合にのみ適用されます。
 
@@ -152,18 +154,17 @@ daytona container-registry set
 
 - **Server URL**
 
-  カスタムコンテナレジストリへの完全なURL。
+   カスタムコンテナレジストリへの完全なURL。
 
 - **Username**
 
-  Daytonaがコンテナレジストリにログインする際に使用するユーザー名。
+   Daytonaがコンテナレジストリにログインする際に使用するユーザー名。
 
 - **Password**
 
-  コンテナレジストリアカウントのパスワード。
+   コンテナレジストリアカウントのパスワード。
 
-3. <Keyboard shortcuts="Enter" />
-   を押してカスタムビルドレジストリを設定します。
+3. <Keyboard shortcuts="Enter" />を押してカスタムビルドレジストリを設定します。
 4. 以下のコマンドを実行してサーバーを設定します：
 
 ```shell
@@ -178,6 +179,5 @@ To add options, add a container registry with 'daytona cr set'
 > Local registry managed by Daytona
 ```
 
-6. <Keyboard shortcuts="↑" /> / <Keyboard shortcuts="↓" />
-   矢印キーを使用して、以前に設定したカスタムレジストリを選択します。
+6. <Keyboard shortcuts="↑" /> / <Keyboard shortcuts="↓" />矢印キーを使用して、以前に設定したカスタムレジストリを選択します。
 7. 設定を保存するためにコマンドが終了するまで<Keyboard shortcuts="Enter" />を押します。

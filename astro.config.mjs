@@ -5,6 +5,7 @@ import { ExpressiveCodeTheme } from '@astrojs/starlight/expressive-code'
 import { defineConfig } from 'astro/config'
 import fs from 'node:fs'
 import { loadEnv } from 'vite'
+import { generateI18nConfig } from './src/i18n/generateI18nConfig'
 
 const { PUBLIC_WEB_URL } = loadEnv(import.meta.env.MODE, process.cwd(), '')
 
@@ -60,17 +61,7 @@ export default defineConfig({
         minSyntaxHighlightingColorContrast: 0,
         themes: [myThemeDark, myThemeLight],
       },
-      defaultLocale: 'root',
-      locales: {
-        root: {
-          lang: 'en',
-          label: 'English',
-        },
-        ja: {
-          lang: 'ja',
-          label: '日本語',
-        },
-      },
+      ...generateI18nConfig(),
     }),
   ],
   i18n: {

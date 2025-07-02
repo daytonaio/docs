@@ -27,7 +27,7 @@ Daytonaは`/workspace/{workspaceId}/{projectId}/toolbox/files`エンドポイン
 
 Daytonaは`/workspace/{workspaceId}/{projectId}/toolbox/createfolder`エンドポイントで`POST` HTTPメソッドを使用してWorkspace内に新しいフォルダを作成するオプションを提供します。
 
-このAPIは指定された名前でWorkspace内に新しいフォルダを作成します。
+このAPIはWorkspace内に指定された名前で新しいフォルダを作成します。
 
 ### ファイルダウンロード
 
@@ -79,7 +79,7 @@ Daytonaは`/workspace/{workspaceId}/{projectId}/toolbox/upload`エンドポイ�
 
 ## Git操作
 
-DaytonaはWorkspace Toolbox APIを使用してWorkspace Gitリポジトリとプログラム的にやり取りするオプションを提供します。このAPIは以下のGit操作を提供します：
+DaytonaはWorkspace Toolbox APIを使用してWorkspace Gitリポジトリとプログラム的に対話するオプションを提供します。このAPIは以下のGit操作を提供します：
 
 ### ファイルの追加
 
@@ -183,20 +183,20 @@ Daytonaは`/workspace/{workspaceId}/{projectId}/toolbox/lsp/workspacesymbols`エ
 
 ## プロセス操作
 
-DaytonaはWorkspace Toolbox APIを使用してワークスペースプロセスとプログラム的に対話するオプションを提供します。このAPIは以下のプロセス操作を提供します：
+DaytonaはWorkspace Toolbox APIを使用してWorkspaceプロセスとプログラム的に対話するオプションを提供します。このAPIは以下のプロセス操作を提供します：
 
 ### コマンド実行
 
-Daytonaは`/workspace/{workspaceId}/{projectId}/toolbox/execute`エンドポイントで`POST` HTTPメソッドを使用してワークスペース内でコマンドを実行するオプションを提供します。
+Daytonaは`/workspace/{workspaceId}/{projectId}/toolbox/execute`エンドポイントで`POST` HTTPメソッドを使用してWorkspace内でコマンドを実行するオプションを提供します。
 
-このAPIはワークスペース内で指定されたコマンドを実行します。
+このAPIはWorkspace内で指定されたコマンドを実行します。
 
-## プロジェクトディレクトリ
+## Project Directory
 
-Daytonaは、Workspace Toolbox APIを使用してプロジェクトディレクトリとプログラム的にやり取りするオプションを提供します。このAPIは以下のプロジェクトディレクトリ操作を提供します：
+Daytonaは、Workspace Toolbox APIを使用してProjectディレクトリとプログラム的にやり取りするオプションを提供します。このAPIは以下のProjectディレクトリ操作を提供します：
 
-### プロジェクトディレクトリの取得
+### Get Project Directory
 
-Daytonaは、`/workspace/{workspaceId}/{projectId}/toolbox/projectdir`エンドポイントで`GET` HTTPメソッドを使用してプロジェクトディレクトリパスを取得するオプションを提供します。
+Daytonaは、`/workspace/{workspaceId}/{projectId}/toolbox/projectdir`エンドポイントで`GET` HTTPメソッドを使用してProjectディレクトリパスを取得するオプションを提供します。
 
-このAPIは、Workspace内のプロジェクトディレクトリのパスを返します。
+このAPIは、Workspace内のProjectディレクトリのパスを返します。

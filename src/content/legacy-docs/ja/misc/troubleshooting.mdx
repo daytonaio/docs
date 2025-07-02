@@ -12,11 +12,11 @@ sidebar:
 ### VPNとファイアウォール
 
 VPNがすべてのIPトラフィックを処理するように設定されている場合、またはファイアウォールが特定のIPアドレスをブロックするように設定されている場合、Daytonaがリバースプロキシサービスに正常に接続できない可能性があります。
-この問題は、以下のようなさまざまな形で現れることがあります：
+この問題は、以下を含むさまざまな方法で現れる可能性があります：
 
 - `control not running`エラーによりDaytona Serverを開始できない。
-- `Failed to connect to server: Get "http://server/health": lookup server...`エラーによりワークスペースの作成に失敗する。
-- Tailscale接続の確立時にタイムアウトが発生し、`daytona code`または`daytona ssh`を使用してワークスペースに入ることができない。
+- `Failed to connect to server: Get "http://server/health": lookup server...`エラーによりWorkspaceの作成に失敗する。
+- Tailscale接続の確立時にタイムアウトが発生し、`daytona code`または`daytona ssh`を使用してWorkspaceに入ることができない。
 
 この問題を回避するには、VPNまたはファイアウォールに以下のIPアドレス例外を追加する必要がある場合があります：
 
@@ -27,15 +27,15 @@ VPNがすべてのIPトラフィックを処理するように設定されてい
 
 ### 説明
 
-WSL2上でDaytonaを実行すると、Visual Studio Code IDEとシームレスに動作しません。この問題は、Visual Studio CodeがネイティブのWindows SSHクライアントに依存している一方で、Daytonaがワークスペース固有のSSH接続設定を構成するためにLinuxのSSH設定ファイルを変更することから生じます。
+WSL2でDaytonaを実行すると、Visual Studio Code IDEとシームレスに動作しません。この問題は、Visual Studio CodeがネイティブのWindows SSHクライアントに依存している一方で、Daytonaがワークスペース固有のSSH接続設定を構成するためにLinux SSH設定ファイルを変更することから生じます。
 
 DaytonaはSSH設定で定義された`daytona ssh-proxy`を呼び出すProxyCommandを使用します。この設定は、DaytonaバイナリがLinuxファイルシステム内に配置されていることを前提としており、これがVisual Studio CodeのWindows環境への依存と競合を生み出します。
 
-この問題はDaytona固有のものではなく、Visual Studio Codeリモート開発プラグインの制限に起因します。このプラグインは現在、`code` CLIを呼び出す際にカスタムの「remote SSH path」フラグを渡すことをサポートしていません。この機能がないため、DaytonaのLinux固有の設定への依存がVisual Studio CodeのWindows固有ツールへの依存と競合します。
+この問題はDaytona固有のものではなく、Visual Studio Codeリモート開発プラグインの制限に起因します。このプラグインは現在、`code` CLIを呼び出す際にカスタムの「remote SSH path」フラグを渡すことをサポートしていません。この機能がないため、DaytonaのLinux固有の設定への依存がVisual Studio CodeのWindows ネイティブツールへの依存と競合します。
 
 ### 解決策
 
-Visual Studio Codeプラグインで「remote SSH path」フラグの公式サポートを待つ間、以下の回避策でこの問題に対処できます。この解決策では、スクリプトを作成し、設定を変更してWindowsとLinuxのSSHクライアントをシームレスな動作のために調整します。
+Visual Studio Codeプラグインで「remote SSH path」フラグの公式サポートを待つ間、以下の回避策でこの問題に対処できます。この解決策では、スクリプトを作成し、設定を変更してWindowsとLinux SSHクライアントをシームレスな動作のために調整します。
 
 1. 以下の内容で**`wsl_ssh.bat`**スクリプトを作成します：
 
