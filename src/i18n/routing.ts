@@ -92,6 +92,8 @@ export async function handleLanguageRouting(
     return new Response('Not Found', { status: 404 })
   }
 
+  await new Promise(resolve => setTimeout(resolve, 2000))
+
   const preferredLanguage = getPreferredLanguage(request)
 
   if (preferredLanguage !== defaultLocale) {
