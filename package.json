@@ -62,7 +62,10 @@
     "*.{ts,tsx,astro}": [
       "prettier --write"
     ],
-    "*.mdx": [
+    "src/content/docs/en/**/*.mdx": [
+      "markdownlint-cli2 --fix"
+    ],
+    "src/content/legacy-docs/en/**/*.mdx": [
       "markdownlint-cli2 --fix"
     ]
   }
