@@ -197,7 +197,7 @@ main();
 
 ### ローカルイメージの使用
 
-プライベートコンテナレジストリを手動で設定してイメージをプッシュする必要を避けるために、[Daytona CLI](/docs/getting-started#setting-up-the-daytona-cli)では、ローカルイメージまたはローカルDockerfileからSnapshotを作成し、Sandboxで使用することができます。
+プライベートコンテナレジストリを手動で設定してイメージをプッシュする必要を避けるために、[Daytona CLI](/docs/ja/getting-started#setting-up-the-daytona-cli)では、ローカルイメージまたはローカルDockerfileからSnapshotを作成し、Sandboxで使用することができます。
 
 `docker images`を実行して、使用したいイメージとタグが利用可能であることを確認した後、`daytona snapshot push`コマンドを使用してSnapshotを作成し、Daytonaにプッシュします。例：
 
@@ -205,15 +205,15 @@ main();
 daytona snapshot push custom-alpine:3.21 -n my-snapshot-name
 ```
 
-詳細については、[CLIドキュメント](/docs/cli#daytona-snapshot-push)を参照してください。
+詳細については、[CLIドキュメント](/docs/ja/cli#daytona-snapshot-push)を参照してください。
 
 :::tip
 
-DaytonaはローカルイメージがAMD64アーキテクチャ用にビルドされていることを期待しています。そのため、マシンが異なるアーキテクチャで動作している場合、Dockerイメージをビルドする際に`--platform=linux/amd64`フラグが必要です。
+DaytonaはローカルイメージがAMD64アーキテクチャ用にビルドされていることを期待しています。そのため、お使いのマシンが異なるアーキテクチャで動作している場合、Dockerイメージをビルドする際に`--platform=linux/amd64`フラグが必要です。
 
 :::
 
-まだ希望するイメージをビルドしておらず、Dockerfileが準備できている場合は、SDKの[Declarative Builder](/docs/getting-started#declarative-builder)を使用できます。
+まだ希望するイメージをビルドしておらず、Dockerfileが準備できている場合は、SDKの宣言的ビルダーを使用できます - 詳細については[こちら](/docs/ja/getting-started#declarative-builder)をお読みください。
 
 または、CLIを通じて行うには、`create`の下で`--dockerfile`フラグを使用して、使用したいDockerfileのパスを渡すと、DaytonaがSnapshotをビルドしてくれます：
 
