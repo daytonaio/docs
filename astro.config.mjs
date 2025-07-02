@@ -6,6 +6,7 @@ import { defineConfig } from 'astro/config'
 import fs from 'node:fs'
 import { loadEnv } from 'vite'
 import { generateI18nConfig } from './src/i18n/generateI18nConfig'
+import config from './gt.config.json'
 
 const { PUBLIC_WEB_URL } = loadEnv(import.meta.env.MODE, process.cwd(), '')
 
@@ -65,8 +66,8 @@ export default defineConfig({
     }),
   ],
   i18n: {
-    locales: ['en', 'ja'],
-    defaultLocale: 'en',
+    locales: config.locales,
+    defaultLocale: config.defaultLocale,
   },
   output: 'hybrid',
   adapter: node({
