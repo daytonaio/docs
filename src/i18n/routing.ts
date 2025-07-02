@@ -60,12 +60,15 @@ export async function proxyLocalizedContent(
   try {
     const targetUrl = new URL(targetPath, new URL(originalRequest.url).origin)
 
+    console.log('Fetching:', targetUrl.toString())
+    console.log('Original request origin:', new URL(originalRequest.url).origin)
+
     const response = await fetch(targetUrl.toString(), {
       method: originalRequest.method,
       headers: originalRequest.headers,
       body: originalRequest.body,
     })
-    console.log('Fetching:', targetUrl.toString())
+
     console.log('Response status:', response.status)
 
     // Create a new response with copied headers to avoid immutability issues
