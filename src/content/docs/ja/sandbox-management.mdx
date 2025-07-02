@@ -1,26 +1,34 @@
 ---
-title: Sandbox Management
+title: Sandbox管理
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+import Image from 'astro/components/Image.astro';
+import sandboxDiagram from '@assets/docs/sandbox-states.svg?raw';
 
-Sandboxは、Daytonaによって管理される分離された開発環境です。このガイドでは、SDKを使用してSandboxを作成、管理、削除する方法について説明します。
-デフォルトでは、Sandboxは15分間の非アクティブ状態の後に自動停止し、**1 vCPU**、**1GB RAM**、**3GiB disk**を使用します。
+SandboxはDaytonaによって管理される分離された開発環境です。このガイドでは、SDKを使用してSandboxを作成、管理、削除する方法について説明します。
+デフォルトでは、Sandboxは15分間の非アクティブ状態後に自動停止し、**1 vCPU**、**1GB RAM**、**3GiB disk**を使用します。
+
+## Sandbox ライフサイクル
+
+ライフサイクル全体を通して、Daytona Sandboxは複数の異なる状態を持つことができます。以下の図は、状態とそれらの間で可能な遷移を示しています。
+
+<Fragment set:html={sandboxDiagram} />
+
+デフォルトでは、サンドボックスは非アクティブ状態が`15分`続くと自動停止し、停止状態が`7日`続くと自動アーカイブされます。
 
 ## Sandboxの作成
 
-Daytona SDKは、デフォルトまたはカスタム設定でSandboxを作成するオプションを提供します。Sandboxの言語、[Snapshot](/docs/ja/snapshots)、リソース、環境変数、ボリュームを指定できます。
-デフォルトでは、リソースを節約するため、Sandboxは非アクティブ状態が`15分`続くと自動停止しますが、タイムアウト時間は延長できます。
+Daytona SDKは、デフォルトまたはカスタム設定でSandboxを作成するオプションを提供します。Sandboxの言語、[Snapshot](/docs/snapshots)、リソース、環境変数、ボリュームを指定できます。
+実行中のSandboxはCPU、メモリ、ディスクストレージを使用します。すべてのリソースは使用時間に応じて秒単位で課金されます。
 
 :::tip
-自動停止間隔を延長したい場合は、Sandbox作成時に`auto_stop_interval`パラメータを使用できます。このパラメータは分単位で測定されます。
-
-自動停止間隔パラメータを`0`に設定すると、自動停止機能が完全に無効になり、sandboxが無期限に実行されます。
+自動停止間隔を延長したい場合は、Sandboxを作成する際に[自動停止間隔パラメータを設定](/docs/sandbox-management#auto-stop-interval)できます。
 :::
 
-### 基本的なSandbox作成
+### 基本的なSandboxの作成
 
-Daytona SDKは、PythonとTypeScriptを使用して、デフォルト設定、特定の言語、またはカスタムラベルでSandboxを作成するメソッドを提供します。
+Daytona SDKは、デフォルト設定、特定の言語、またはPythonとTypeScriptを使用したカスタムラベルでSandboxを作成するメソッドを提供します。
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -65,14 +73,16 @@ const sandbox = await daytona.create({ labels: { SOME_LABEL: 'my-label' } });
 </TabItem>
 </Tabs>
 
+ Sandboxがアクティブに使用されていない場合は、停止することをお勧めします。これは[stopコマンドを使用](/docs/sandbox-management#stop-and-start-sandbox)して手動で行うか、[自動停止間隔を設定](/docs/sandbox-management#auto-stop-and-auto-archive)して自動的に行うことができます。
+
 :::note
-Daytonaは、デフォルトのSnapshotを使用してウォームSandboxのプールを維持しています。  
-利用可能な場合、Sandboxはコールドブートではなく、ミリ秒で起動します。
+DaytonaはデフォルトのSnapshotを使用してウォームSandboxのプールを保持しています。  
+利用可能な場合、Sandboxはコールドブートではなくミリ秒で起動します。
 :::
 
 ### Sandboxリソース
 
-Daytona Sandboxは、デフォルトで**1 vCPU**、**1GB RAM**、**3GiBディスク**を提供します。  
+Daytona Sandboxはデフォルトで**1 vCPU**、**1GB RAM**、**3GiBディスク**を提供します。  
 
 より多くのパワーが必要ですか？`Resources`クラスを使用して、必要なものを正確に定義してください：CPU、メモリ、ディスク容量はすべてカスタマイズ可能です。
 
@@ -172,27 +182,92 @@ console.log(sandbox.state)
 
 特定のポートのプレビューURLを取得するには、[プレビューと認証](/docs/ja/preview-and-authentication)をご確認ください。
 
-## Sandboxの停止と削除
+## Sandboxの停止と開始
 
-Daytona SDKは、PythonとTypeScriptを使用してSandboxを停止および削除するメソッドを提供します。
+Daytona SDKは、PythonとTypeScriptを使用してSandboxを停止および開始するメソッドを提供します。
+
+停止されたSandboxは、メモリ状態がクリアされる一方で、ファイルシステムの永続性を維持します。これらはディスク使用量のコストのみが発生し、必要に応じて再度開始することができます。
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
 ```python
+sandbox = daytona.create(CreateSandboxParams(language="python"))
+
 # Stop Sandbox
+
 sandbox.stop()
 
-# Delete Sandbox
+print(sandbox.id) # 7cd11133-96c1-4cc8-9baa-c757b8f8c916
 
-sandbox.delete()
+# The sandbox ID can later be used to find the sandbox and start it
+
+sandbox = daytona.find_one("7cd11133-96c1-4cc8-9baa-c757b8f8c916")
+
+# Start Sandbox
+
+sandbox.start()
 
 ```
 </TabItem>
 <TabItem label="TypeScript" icon="seti:typescript">
 ```typescript
+const sandbox = await daytona.create({ language: 'typescript' });
+
 // Stop Sandbox
 await sandbox.stop();
 
+console.log(sandbox.id) // 7cd11133-96c1-4cc8-9baa-c757b8f8c916
+
+// The sandbox ID can later be used to find the sandbox and start it
+
+const sandbox = await daytona.findOne("7cd11133-96c1-4cc8-9baa-c757b8f8c916");
+
+// Start Sandbox
+await sandbox.start();
+```
+
+</TabItem>
+</Tabs>
+
+停止状態は、Sandboxが近いうちに再度開始されることが予想される場合に使用すべきです。そうでなければ、ディスク使用量のコストを削減するために、Sandboxを停止してからアーカイブすることが推奨されます。
+
+## Sandboxのアーカイブ
+
+Daytona SDKは、PythonとTypeScriptを使用してSandboxをアーカイブするメソッドを提供します。
+
+Sandboxがアーカイブされると、ファイルシステム全体の状態が非常にコスト効率の良いオブジェクトストレージに移動され、Sandboxを長期間利用可能な状態で保持することが可能になります。
+アーカイブされたSandboxの開始は、そのサイズに応じて、停止されたSandboxの開始よりも時間がかかります。
+
+Sandboxはアーカイブする前に停止する必要があり、停止されたSandboxと同じ方法で再び開始することができます。
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Archive Sandbox
+sandbox.archive()
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
+// Archive Sandbox
+await sandbox.archive();
+```
+</TabItem>
+</Tabs>
+
+## Sandboxの削除
+
+Daytona SDKは、PythonとTypeScriptを使用してSandboxを削除するメソッドを提供します。
+
+<Tabs>
+<TabItem label="Python" icon="seti:python">
+```python
+# Delete Sandbox
+sandbox.delete()
+```
+</TabItem>
+<TabItem label="TypeScript" icon="seti:typescript">
+```typescript
 // Delete Sandbox
 await sandbox.delete();
 ```
@@ -229,13 +304,22 @@ All sandboxes have been deleted
 
 :::
 
-## Sandboxの状態と永続化
+## 自動停止と自動アーカイブ
 
-Daytonaは、Sandboxのライフサイクル全体を通してファイルシステム全体を保持します。永続化機能はシステムに組み込まれており、ユーザー側で明示的に行う必要はありません。
+Daytona Sandboxは、ユーザー定義の間隔に基づいて自動的に停止およびアーカイブできます。
 
 ### 自動停止間隔
 
-コスト効率を維持するためには、Sandboxの状態を理解することが重要です。便利な組み込み機能の一つが自動停止間隔です。デフォルトでは、`15分間`の非アクティブ状態の後にSandboxを停止することでトリガーされますが、この数値は自動停止を無効にする`0`を含む任意の値に変更できます。
+自動停止間隔パラメータは、実行中のSandboxが自動的に停止されるまでの時間を設定します。
+
+このパラメータは以下のいずれかに設定できます：
+
+- 分単位の時間間隔
+- `0`（自動停止機能を無効にし、sandboxを無期限に実行させる）
+
+パラメータが設定されていない場合、デフォルトの間隔である`15`分が使用されます。
+
+:::
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -259,7 +343,14 @@ const sandbox = await daytona.create({
 
 ### 自動アーカイブ間隔
 
-もう一つの便利な組み込み機能が自動アーカイブ間隔です。デフォルトでは、Sandboxが継続的に停止状態にある`7日間`の後にアーカイブすることでトリガーされますが、この数値は最大間隔の`30日間`が使用される`0`を含む任意の値に変更できます。
+自動アーカイブ間隔パラメータは、継続的に停止されているSandboxが自動的にアーカイブされるまでの時間を設定します。
+
+このパラメータは以下のいずれかに設定できます：
+
+- 分単位の時間間隔
+- `0`（最大間隔の`30日`が使用される）
+
+パラメータが設定されていない場合、デフォルトの間隔である`7日`が使用されます。
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -279,24 +370,3 @@ const sandbox = await daytona.create({
 ```
 </TabItem>
 </Tabs>
-
-Daytona Sandboxは、そのライフサイクル中に3つの状態を持つことができます：
-
-### 実行中
-
-実行中のSandboxはCPU、メモリ、ディスクストレージを利用します。すべてのリソースは使用時間の秒単位で課金されます。Sandboxが積極的に使用されていない場合は、停止することが推奨されます。これは以下の方法で行うことができます：
-
-- stopコマンドを使用して手動で
-- autoStop間隔を設定して自動的に
-
-### 停止中
-
-停止中のSandboxはディスクストレージのみを利用します。必要に応じて即座に開始できます。停止状態は、Sandboxが近いうちに再び開始されることが予想される場合に使用すべきです。そうでなければ、ディスク使用コストを削減するためにSandboxをアーカイブすることが推奨されます。
-
-### アーカイブ済み
-
-Sandboxがアーカイブされると、ファイルシステム状態全体が非常にコスト効率の良いオブジェクトストレージに移動され、Sandboxを長期間利用可能に保つことができます。
-
-### パフォーマンスに関する考慮事項
-
-アーカイブ状態と停止状態のトレードオフは、アーカイブされたSandboxの開始にはそのサイズに応じてより多くの時間がかかることです。
