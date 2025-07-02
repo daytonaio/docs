@@ -1,5 +1,5 @@
 # Daytona Documentation v0.21.0
-# Generated on: 2025-06-27
+# Generated on: 2025-07-02
 
 # Daytona
 
@@ -124,6 +124,7 @@
 - [Auto-stop and Auto-archive](https://daytona.io/docs/sandbox-management#auto-stop-and-auto-archive)
 - [Auto-stop Interval](https://daytona.io/docs/sandbox-management#auto-stop-interval)
 - [Auto-archive Interval](https://daytona.io/docs/sandbox-management#auto-archive-interval)
+- [Run Indefinitely](https://daytona.io/docs/sandbox-management#run-indefinitely)
 - [Run Indefinitely](https://daytona.io/docs/sandbox-management#run-indefinitely)
 - [Snapshots](https://daytona.io/docs/snapshots)
 - [Creating Snapshots](https://daytona.io/docs/snapshots#creating-snapshots)

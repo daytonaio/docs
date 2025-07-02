@@ -1,5 +1,5 @@
 # Daytona Documentation v0.21.0
-# Generated on: 2025-06-27
+# Generated on: 2025-07-02
 
 
 title: API Keys
@@ -2251,7 +2251,7 @@ Throughout its lifecycle, a Daytona Sandbox can have several different states. T
 
 <Fragment set:html={sandboxDiagram} />
 
-By default, sandboxes auto-stop after `15 minutes` of inactivity and auto-archive after `7 days` of being stopped.
+By default, sandboxes auto-stop after `15 minutes` of inactivity and auto-archive after `7 days` of being stopped. To keep the Sandbox running indefinitely without interruption, set the auto-stop value to `0` during creation.
 
 ## Creating Sandboxes
 
@@ -2556,6 +2556,25 @@ sandbox = daytona.create(CreateSandboxFromSnapshotParams(
 const sandbox = await daytona.create({
     snapshot: "my-snapshot-name",
     autoArchiveInterval: 60 // Auto-archive after a Sandbox has been stopped for 1 hour
+});
+```
+
+
+
+### Run Indefinitely
+
+By default, Sandboxes auto-stop after 15 minutes of inactivity. To keep a Sandbox running without interruption, set the auto-stop interval to `0` when creating a new Sandbox:
+
+```python
+sandbox = daytona.create(CreateSandboxFromSnapshotParams(
+    snapshot="my-snapshot-name",
+    auto_stop_interval=0,  # Disables the auto-stop feature - default is 15 minutes
+))
+```
+```typescript
+const sandbox = await daytona.create({
+    snapshot: "my-snapshot-name",
+    autoStopInterval: 0, // Disables the auto-stop feature - default is 15 minutes
 });
 ```
 
