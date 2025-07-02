@@ -1544,132 +1544,12 @@
     "objectID": 193
   },
   {
-    "title": "daytona version",
-    "description": "Print the version number",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-version",
-    "slug": "/tools/cli#daytona-version",
-    "objectID": 194
-  },
-  {
-    "title": "daytona sandbox info",
-    "description": "Get sandbox info",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-sandbox-info",
-    "slug": "/tools/cli#daytona-sandbox-info",
-    "objectID": 195
-  },
-  {
-    "title": "daytona sandbox list",
-    "description": "List sandboxes",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-sandbox-list",
-    "slug": "/tools/cli#daytona-sandbox-list",
-    "objectID": 196
-  },
-  {
-    "title": "daytona sandbox start",
-    "description": "Start a sandbox",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-sandbox-start",
-    "slug": "/tools/cli#daytona-sandbox-start",
-    "objectID": 197
-  },
-  {
-    "title": "daytona sandbox stop",
-    "description": "Stop a sandbox",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-sandbox-stop",
-    "slug": "/tools/cli#daytona-sandbox-stop",
-    "objectID": 198
-  },
-  {
-    "title": "daytona sandbox",
-    "description": "Manage Daytona sandboxes",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-sandbox",
-    "slug": "/tools/cli#daytona-sandbox",
-    "objectID": 199
-  },
-  {
-    "title": "daytona sandbox create",
-    "description": "Create a new sandbox",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-sandbox-create",
-    "slug": "/tools/cli#daytona-sandbox-create",
-    "objectID": 200
-  },
-  {
-    "title": "daytona sandbox delete",
-    "description": "Delete a sandbox",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-sandbox-delete",
-    "slug": "/tools/cli#daytona-sandbox-delete",
-    "objectID": 201
-  },
-  {
-    "title": "daytona snapshot push",
-    "description": "Push local snapshot",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-snapshot-push",
-    "slug": "/tools/cli#daytona-snapshot-push",
-    "objectID": 202
-  },
-  {
-    "title": "daytona login",
-    "description": "Log in to Daytona",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-login",
-    "slug": "/tools/cli#daytona-login",
-    "objectID": 203
-  },
-  {
-    "title": "daytona logout",
-    "description": "Logout from Daytona",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-logout",
-    "slug": "/tools/cli#daytona-logout",
-    "objectID": 204
-  },
-  {
-    "title": "daytona snapshot",
-    "description": "Manage Daytona snapshots",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-snapshot",
-    "slug": "/tools/cli#daytona-snapshot",
-    "objectID": 205
-  },
-  {
-    "title": "daytona snapshot create",
-    "description": "Create a snapshot",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-snapshot-create",
-    "slug": "/tools/cli#daytona-snapshot-create",
-    "objectID": 206
-  },
-  {
-    "title": "daytona snapshot delete",
-    "description": "Delete a snapshot",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-snapshot-delete",
-    "slug": "/tools/cli#daytona-snapshot-delete",
-    "objectID": 207
-  },
-  {
-    "title": "daytona snapshot list",
-    "description": "List all snapshots",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-snapshot-list",
-    "slug": "/tools/cli#daytona-snapshot-list",
-    "objectID": 208
-  },
-  {
     "title": "daytona",
     "description": "Daytona CLI",
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona",
     "slug": "/tools/cli#daytona",
-    "objectID": 209
+    "objectID": 194
   },
   {
     "title": "daytona autocomplete",
@@ -1677,7 +1557,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-autocomplete",
     "slug": "/tools/cli#daytona-autocomplete",
-    "objectID": 210
+    "objectID": 195
   },
   {
     "title": "daytona docs",
@@ -1685,47 +1565,23 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-docs",
     "slug": "/tools/cli#daytona-docs",
-    "objectID": 211
+    "objectID": 196
   },
   {
-    "title": "daytona organization",
-    "description": "Manage Daytona organizations",
+    "title": "daytona login",
+    "description": "Log in to Daytona",
     "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-organization",
-    "slug": "/tools/cli#daytona-organization",
-    "objectID": 212
+    "url": "/docs/tools/cli#daytona-login",
+    "slug": "/tools/cli#daytona-login",
+    "objectID": 197
   },
   {
-    "title": "daytona organization create",
-    "description": "Create a new organization and set it as active",
+    "title": "daytona logout",
+    "description": "Logout from Daytona",
     "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-organization-create",
-    "slug": "/tools/cli#daytona-organization-create",
-    "objectID": 213
-  },
-  {
-    "title": "daytona organization delete",
-    "description": "Delete an organization",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-organization-delete",
-    "slug": "/tools/cli#daytona-organization-delete",
-    "objectID": 214
-  },
-  {
-    "title": "daytona organization list",
-    "description": "List all organizations",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-organization-list",
-    "slug": "/tools/cli#daytona-organization-list",
-    "objectID": 215
-  },
-  {
-    "title": "daytona organization use",
-    "description": "Set active organization",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-organization-use",
-    "slug": "/tools/cli#daytona-organization-use",
-    "objectID": 216
+    "url": "/docs/tools/cli#daytona-logout",
+    "slug": "/tools/cli#daytona-logout",
+    "objectID": 198
   },
   {
     "title": "daytona mcp",
@@ -1733,23 +1589,7 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp",
     "slug": "/tools/cli#daytona-mcp",
-    "objectID": 217
-  },
-  {
-    "title": "daytona mcp init",
-    "description": "Initialize Daytona MCP Server with an agent (currently supported: claude, windsurf, cursor)",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-mcp-init",
-    "slug": "/tools/cli#daytona-mcp-init",
-    "objectID": 218
-  },
-  {
-    "title": "daytona mcp start",
-    "description": "Start Daytona MCP Server",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-mcp-start",
-    "slug": "/tools/cli#daytona-mcp-start",
-    "objectID": 219
+    "objectID": 199
   },
   {
     "title": "daytona mcp config",
@@ -1757,6 +1597,166 @@
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-mcp-config",
     "slug": "/tools/cli#daytona-mcp-config",
+    "objectID": 200
+  },
+  {
+    "title": "daytona mcp init",
+    "description": "Initialize Daytona MCP Server with an agent (currently supported: claude, windsurf, cursor)",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-mcp-init",
+    "slug": "/tools/cli#daytona-mcp-init",
+    "objectID": 201
+  },
+  {
+    "title": "daytona mcp start",
+    "description": "Start Daytona MCP Server",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-mcp-start",
+    "slug": "/tools/cli#daytona-mcp-start",
+    "objectID": 202
+  },
+  {
+    "title": "daytona organization",
+    "description": "Manage Daytona organizations",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization",
+    "slug": "/tools/cli#daytona-organization",
+    "objectID": 203
+  },
+  {
+    "title": "daytona organization create",
+    "description": "Create a new organization and set it as active",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization-create",
+    "slug": "/tools/cli#daytona-organization-create",
+    "objectID": 204
+  },
+  {
+    "title": "daytona organization delete",
+    "description": "Delete an organization",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization-delete",
+    "slug": "/tools/cli#daytona-organization-delete",
+    "objectID": 205
+  },
+  {
+    "title": "daytona organization list",
+    "description": "List all organizations",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization-list",
+    "slug": "/tools/cli#daytona-organization-list",
+    "objectID": 206
+  },
+  {
+    "title": "daytona organization use",
+    "description": "Set active organization",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-organization-use",
+    "slug": "/tools/cli#daytona-organization-use",
+    "objectID": 207
+  },
+  {
+    "title": "daytona sandbox",
+    "description": "Manage Daytona sandboxes",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox",
+    "slug": "/tools/cli#daytona-sandbox",
+    "objectID": 208
+  },
+  {
+    "title": "daytona sandbox create",
+    "description": "Create a new sandbox",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-create",
+    "slug": "/tools/cli#daytona-sandbox-create",
+    "objectID": 209
+  },
+  {
+    "title": "daytona sandbox delete",
+    "description": "Delete a sandbox",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-delete",
+    "slug": "/tools/cli#daytona-sandbox-delete",
+    "objectID": 210
+  },
+  {
+    "title": "daytona sandbox info",
+    "description": "Get sandbox info",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-info",
+    "slug": "/tools/cli#daytona-sandbox-info",
+    "objectID": 211
+  },
+  {
+    "title": "daytona sandbox list",
+    "description": "List sandboxes",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-list",
+    "slug": "/tools/cli#daytona-sandbox-list",
+    "objectID": 212
+  },
+  {
+    "title": "daytona sandbox start",
+    "description": "Start a sandbox",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-start",
+    "slug": "/tools/cli#daytona-sandbox-start",
+    "objectID": 213
+  },
+  {
+    "title": "daytona sandbox stop",
+    "description": "Stop a sandbox",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-sandbox-stop",
+    "slug": "/tools/cli#daytona-sandbox-stop",
+    "objectID": 214
+  },
+  {
+    "title": "daytona snapshot",
+    "description": "Manage Daytona snapshots",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-snapshot",
+    "slug": "/tools/cli#daytona-snapshot",
+    "objectID": 215
+  },
+  {
+    "title": "daytona snapshot create",
+    "description": "Create a snapshot",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-snapshot-create",
+    "slug": "/tools/cli#daytona-snapshot-create",
+    "objectID": 216
+  },
+  {
+    "title": "daytona snapshot delete",
+    "description": "Delete a snapshot",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-snapshot-delete",
+    "slug": "/tools/cli#daytona-snapshot-delete",
+    "objectID": 217
+  },
+  {
+    "title": "daytona snapshot list",
+    "description": "List all snapshots",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-snapshot-list",
+    "slug": "/tools/cli#daytona-snapshot-list",
+    "objectID": 218
+  },
+  {
+    "title": "daytona snapshot push",
+    "description": "Push local snapshot",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-snapshot-push",
+    "slug": "/tools/cli#daytona-snapshot-push",
+    "objectID": 219
+  },
+  {
+    "title": "daytona version",
+    "description": "Print the version number",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-version",
+    "slug": "/tools/cli#daytona-version",
     "objectID": 220
   },
   {
@@ -1768,19 +1768,19 @@
     "objectID": 221
   },
   {
-    "title": "daytona volume list",
-    "description": "List all volumes",
-    "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-volume-list",
-    "slug": "/tools/cli#daytona-volume-list",
-    "objectID": 222
-  },
-  {
     "title": "daytona volume create",
     "description": "Create a volume",
     "tag": "Documentation",
     "url": "/docs/tools/cli#daytona-volume-create",
     "slug": "/tools/cli#daytona-volume-create",
+    "objectID": 222
+  },
+  {
+    "title": "daytona volume delete",
+    "description": "Delete a volume",
+    "tag": "Documentation",
+    "url": "/docs/tools/cli#daytona-volume-delete",
+    "slug": "/tools/cli#daytona-volume-delete",
     "objectID": 223
   },
   {
@@ -1792,11 +1792,11 @@
     "objectID": 224
   },
   {
-    "title": "daytona volume delete",
-    "description": "Delete a volume",
+    "title": "daytona volume list",
+    "description": "List all volumes",
     "tag": "Documentation",
-    "url": "/docs/tools/cli#daytona-volume-delete",
-    "slug": "/tools/cli#daytona-volume-delete",
+    "url": "/docs/tools/cli#daytona-volume-list",
+    "slug": "/tools/cli#daytona-volume-list",
     "objectID": 225
   },
   {

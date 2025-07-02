@@ -202,8 +202,16 @@ In order to avoid having to manually set up a private container registry and pus
 After running `docker images` and ensuring the image and tag you want to use is available use the `daytona snapshot push` command to create a Snapshot and push it to Daytona, e.g.:
 
 ```bash
-daytona snapshot push custom-alpine:3.21
+daytona snapshot push custom-alpine:3.21 -n my-snapshot-name
 ```
+
+For more information, see the [CLI documentation](/docs/en/cli#daytona-snapshot-push).
+
+:::tip
+
+Daytona expects the local image to be built for AMD64 architecture. Therefore, the `--platform=linux/amd64` flag is required when building the Docker image if your machine is running on a different architecture.
+
+:::
 
 If you haven't built the desired image yet, and have a Dockerfile ready, you can use the Declarative Builder in our SDK - read more about it [here](/docs/en/getting-started#declarative-builder).
 
