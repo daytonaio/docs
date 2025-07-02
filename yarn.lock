@@ -3882,9 +3882,9 @@ __metadata:
     dotenv: "npm:^16.4.5"
     envalid: "npm:^8.0.0"
     express: "npm:^4.20.0"
-    generaltranslation: ../../gt-libraries/packages/core/generaltranslation-6.3.2.tgz
+    generaltranslation: "npm:^6.3.2"
     gt-react: "npm:^9.2.30"
-    gtx-cli: ../../gt-libraries/packages/cli/gtx-cli-1.2.33.tgz
+    gtx-cli: "npm:^1.2.34"
     husky: "npm:^9.0.11"
     is-ci: "npm:^3.0.1"
     lint-staged: "npm:^15.2.7"
@@ -4704,16 +4704,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"generaltranslation@file:../../gt-libraries/packages/core/generaltranslation-6.3.2.tgz::locator=docs%40workspace%3A.":
-  version: 6.3.2
-  resolution: "generaltranslation@file:../../gt-libraries/packages/core/generaltranslation-6.3.2.tgz#../../gt-libraries/packages/core/generaltranslation-6.3.2.tgz::hash=8f2957&locator=docs%40workspace%3A."
-  dependencies:
-    crypto-js: "npm:^4.2.0"
-    fast-json-stable-stringify: "npm:^2.1.0"
-  checksum: 10c0/c22517f72814f153cf08f153ad6130c06b736c629449531f9b9e75be0e5b6bc22bde05d022b657da2fdcab3e6667e6351bd0e21ff2d98d5b0c0c9984c1940a7e
-  languageName: node
-  linkType: hard
-
 "generaltranslation@npm:^6.2.10, generaltranslation@npm:^6.3.2":
   version: 6.3.2
   resolution: "generaltranslation@npm:6.3.2"
@@ -4929,9 +4919,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gtx-cli@file:../../gt-libraries/packages/cli/gtx-cli-1.2.33.tgz::locator=docs%40workspace%3A.":
-  version: 1.2.33
-  resolution: "gtx-cli@file:../../gt-libraries/packages/cli/gtx-cli-1.2.33.tgz#../../gt-libraries/packages/cli/gtx-cli-1.2.33.tgz::hash=08c9e2&locator=docs%40workspace%3A."
+"gtx-cli@npm:^1.2.34":
+  version: 1.2.34
+  resolution: "gtx-cli@npm:1.2.34"
   dependencies:
     "@babel/generator": "npm:^7.25.7"
     "@babel/parser": "npm:^7.25.7"
@@ -4951,7 +4941,7 @@ __metadata:
     tsconfig-paths: "npm:^4.2.0"
   bin:
     gtx-cli: dist/main.js
-  checksum: 10c0/8531867cb0a4bc0ea562fe10806d3dafd6d66912f99cfd2df8b0ce70019f3709db9feb4d69b6745cb9d5eb7ef702bf792b572d0458fab45f2ce969dc669e99b6
+  checksum: 10c0/663a5a209a47e44c9418851ffbfffa4f5c03eaf198bd4e985dcee9c20acaa78c8cca873d00806a9c42ea013dc72ede0802316b30ce54d53009f6dacc163e802a
   languageName: node
   linkType: hard
 
