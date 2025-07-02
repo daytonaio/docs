@@ -202,8 +202,10 @@ In order to avoid having to manually set up a private container registry and pus
 After running `docker images` and ensuring the image and tag you want to use is available use the `daytona snapshot push` command to create a Snapshot and push it to Daytona, e.g.:
 
 ```bash
-daytona snapshot push custom-alpine:3.21
+daytona snapshot push custom-alpine:3.21 -n my-snapshot-name
 ```
+
+For more information, see the [CLI documentation](/docs/cli#daytona-snapshot-push).
 
 :::tip
 
