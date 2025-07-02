@@ -19,7 +19,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN yarn
-RUN npx gtx-cli translate --experimental-localize-static-urls --experimental-flatten-json-files
+# RUN npx gtx-cli translate --experimental-localize-static-urls --experimental-flatten-json-files
 RUN yarn build
 
 FROM node:20.10.0-slim
