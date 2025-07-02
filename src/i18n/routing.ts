@@ -65,6 +65,8 @@ export async function proxyLocalizedContent(
       headers: originalRequest.headers,
       body: originalRequest.body,
     })
+    console.log('Fetching:', targetUrl.toString())
+    console.log('Response status:', response.status)
 
     // Create a new response with copied headers to avoid immutability issues
     return new Response(response.body, {
