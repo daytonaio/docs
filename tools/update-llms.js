@@ -22,7 +22,7 @@ const getVersionHeader = () => {
     ].join('\n');
 };
 
-const DOCS_PATH = path.join(__dirname, '../src/content/docs');
+const DOCS_PATH = path.join(__dirname, '../src/content/docs/en'); // Only include en docs for llms
 const SUBFOLDERS = new Set(['about', 'configuration', 'installation', 'misc', 'usage', 'tools', 'sdk']);
 const EXCLUDE_FILES = new Set(['404.md', 'api.mdx']);
 

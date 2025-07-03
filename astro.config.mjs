@@ -62,6 +62,7 @@ export default defineConfig({
         minSyntaxHighlightingColorContrast: 0,
         themes: [myThemeDark, myThemeLight],
       },
+      pagefind: false,
       ...generateI18nConfig(),
     }),
   ],

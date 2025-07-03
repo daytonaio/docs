@@ -20,7 +20,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN yarn
+RUN yarn --prod
 RUN npx gtx-cli translate --experimental-localize-static-urls --experimental-flatten-json-files
 RUN yarn build
 
