@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const fs = _fs.promises
 
-const SDK_DOCS_PATH = path.join(__dirname, '../src/content/docs')
+const SDK_DOCS_PATH = path.join(__dirname, '../src/content/docs/en')
 const PYTHON_SDK_PATH = path.join(SDK_DOCS_PATH, 'python-sdk')
 const TYPESCRIPT_SDK_PATH = path.join(SDK_DOCS_PATH, 'typescript-sdk')
 

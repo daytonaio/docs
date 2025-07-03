@@ -5,6 +5,8 @@ import { ExpressiveCodeTheme } from '@astrojs/starlight/expressive-code'
 import { defineConfig } from 'astro/config'
 import fs from 'node:fs'
 import { loadEnv } from 'vite'
+import { generateI18nConfig } from './src/i18n/generateI18nConfig'
+import config from './gt.config.json'
 
 const { PUBLIC_WEB_URL } = loadEnv(import.meta.env.MODE, process.cwd(), '')
 
@@ -60,8 +62,14 @@ export default defineConfig({
         minSyntaxHighlightingColorContrast: 0,
         themes: [myThemeDark, myThemeLight],
       },
+      pagefind: false,
+      ...generateI18nConfig(),
     }),
   ],
+  i18n: {
+    locales: config.locales,
+    defaultLocale: config.defaultLocale,
+  },
   output: 'hybrid',
   adapter: node({
     mode: 'middleware',
@@ -71,4 +79,5 @@ export default defineConfig({
       noExternal: ['path-to-regexp'],
     },
   },
+  experimental: { contentLayer: true },
 })

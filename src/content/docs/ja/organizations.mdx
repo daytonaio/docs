@@ -1,0 +1,52 @@
+---
+title: Organizations
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+DaytonaのOrganizationsは、リソースをグループ化し、他のユーザーと簡単に協力するための仕組みです。
+Organizationのユーザーは、権限に応じて、Sandboxes、Snapshots、Registriesなどの同じ主要リソースセットを表示・管理し、これらのリソースに対して同じクォータを消費します。
+
+Daytonaにサインアップすると、ユーザーにはPersonal Organizationが割り当てられます。このデフォルトのOrganizationは新しいメンバーを受け入れることができず、削除することもできません。独立した請求システムを持ち、最も一般的にはテスト環境として、または個人開発者によって使用されます。組織間の切り替えは、サイドバー上部のドロップダウンメニューからオプションを選択することで行います。
+
+## Organization Roles
+
+Organization内のユーザーは、`Owner`と`Member`という2つの異なる**Roles**のいずれかを持つことができます。`Owners`はOrganizationとそのリソースに対する完全な管理アクセス権を持ちます。`Members`はOrganizationに対する管理アクセス権を持たず、Organizationリソースへのアクセスは**Assignments**に基づきます。
+
+### Administrative Actions
+
+Organization `Owners`は以下のような管理アクションを実行できます：
+
+- Organizationに新しいユーザーを招待する
+- 保留中の招待を管理する
+- Organization内のユーザーのRoleを変更する
+- Organization MemberのAssignmentsを更新する
+- Organizationからユーザーを削除する
+- Organizationを削除する
+
+## 新しいユーザーの招待
+
+Organization `Owner`として、Organizationに新しいユーザーを招待するには、_Members page_に移動し、
+_Invite Member_をクリックして、招待したいユーザーのメールアドレスを入力し、**Role**を選択します。
+`Member`ロールを選択した場合、**Assignments**も定義できます。
+
+## 利用可能な割り当て
+
+利用可能な**割り当て**のリストには以下が含まれます：
+
+| 割り当て | 説明 |
+|------------|-------------|
+| **`Viewer (required)`** | 組織内のすべてのリソースへの読み取りアクセスを付与します |
+| **`Developer`** | 組織内でサンドボックスとキーを作成する機能を付与します |
+| **`Sandboxes Admin`** | 組織内のサンドボックスへの管理者アクセスを付与します |
+| **`Snapshots Admin`** | 組織内のスナップショットへの管理者アクセスを付与します |
+| **`Registries Admin`** | 組織内のレジストリへの管理者アクセスを付与します |
+| **`Super Admin`** | 組織内のすべてのリソースへの完全なアクセスを付与します |
+
+## 招待の管理
+
+他のOrganizationへの参加の保留中の招待を表示するには、ユーザーはサイドバーの下部にあるドロップダウンを展開し、_Invitations_をクリックして_招待ページ_に移動できます。ユーザーがOrganizationへの参加招待を受け入れると、そのOrganizationに割り当てられたリソースクォータにアクセスできるようになり、新しいAPIキーを発行してサンドボックスを作成することができます。
+
+## Settings
+
+DashboardのSettingsサブページでは、Organization IDと名前を確認でき、不要になった場合はOrganizationを削除することができます。この操作は元に戻すことができないため、慎重に進めてください。Personal Organizationはデフォルトで存在し、削除することはできません。

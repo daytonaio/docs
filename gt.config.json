@@ -1,0 +1,31 @@
+{
+  "framework": "react",
+  "defaultLocale": "en",
+  "files": {
+    "mdx": {
+      "include": [
+        "src/content/docs/[locale]/**/*.mdx",
+        "src/content/legacy-docs/[locale]/**/*.mdx"
+      ]
+    },
+    "md": {
+      "include": [
+        "src/content/docs/[locale]/**/*.md",
+        "src/content/legacy-docs/[locale]/**/*.md"
+      ]
+    },
+    "json": {
+      "include": [
+        "src/content/i18n/[locale].json"
+      ]
+    },
+    "gt": {
+      "output": "src/data/i18n/[locale].json"
+    }
+  },
+  "locales": [
+    "en",
+    "ja"
+  ],
+  "ssr": true
+}
