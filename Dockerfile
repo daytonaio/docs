@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.json yarn.lock ./
 
-RUN yarn
+RUN yarn --prod
 
 FROM node:20.10.0 as build
 
@@ -20,7 +20,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN yarn --prod
+RUN yarn
 RUN npx gtx-cli translate --experimental-localize-static-urls --experimental-flatten-json-files
 RUN yarn build
 
