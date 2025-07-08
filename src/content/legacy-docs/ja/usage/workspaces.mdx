@@ -20,9 +20,9 @@ Workspacesは、クラウドベースやオンプレミス環境などの適切�
 
 ## Workspaceの作成
 
-Daytonaでワークスペースを作成することは、プロジェクト用の専用開発環境を確保するための簡単なプロセスです。
+DaytonaでWorkspaceを作成することは、プロジェクト用の専用開発環境を確保するための簡単なプロセスです。
 
-Daytonaは、ワークスペースを作成するための2つの主要な方法を提供しています：
+Daytonaは、Workspaceを作成するための2つの主要な方法を提供しています：
 
 - [**Gitリポジトリから**](#from-a-git-repository)
 - [**任意のGit URLから**](#from-an-arbitrary-git-url)
@@ -87,7 +87,7 @@ Workspace name
 
 4. Workspaceをデプロイするターゲットを選択します。ターゲットを選択すると、[ターゲット設定](/docs/ja/configuration/target-config)の入力が求められます。設定は選択したターゲットによって異なります。
 
-ターゲットの選択と設定が完了すると、Daytonaは指定されたGitリポジトリをクローンし、その内容に基づいて新しいWorkspaceをセットアップします。ターミナルにはWorkspaceの作成プロセスを示す進行状況情報が表示されます。
+ターゲットの選択と設定が完了すると、Daytonaは指定されたGitリポジトリをクローンし、その内容に基づいて新しいWorkspaceをセットアップします。ターミナルにWorkspace作成プロセスを示す進行状況情報が表示されます。
 
 ```text
 <Target>    | ✓ Request submitted
@@ -121,7 +121,7 @@ daytona create https://github.com/daytonaio/daytona.git
 
 2. Workspaceをデプロイするターゲットを選択します。ターゲットを選択すると、[ターゲット設定](/docs/ja/configuration/target-config)の入力が求められます。設定は選択したターゲットによって異なります。
 
-ターゲットの選択と設定が完了すると、Daytonaは指定されたGitリポジトリをクローンし、その内容に基づいて新しいWorkspaceをセットアップします。ターミナルにはWorkspaceの作成プロセスを示す進行状況情報が表示されます。
+ターゲットの選択と設定が完了すると、Daytonaは指定されたGitリポジトリをクローンし、その内容に基づいて新しいWorkspaceをセットアップします。ターミナルにWorkspace作成プロセスを示す進行状況情報が表示されます。
 
 完了すると、指定されたリポジトリと設定でWorkspaceが使用可能になります。
 
@@ -322,7 +322,7 @@ daytona forward 4321 example-dev-env --public
 Port available at http://localhost:4321
 ```
 
-その後、DaytonaはポートをパブリックURLに転送します。ターミナルには進行状況の情報が表示され、完了時に生成されたパブリックURLが提供されます。
+その後、DaytonaはポートをパブリックURLに転送します。ターミナルには進行状況情報が表示され、完了時に生成されたパブリックURLが提供されます。
 
 ```text
 Forwarding port to a public URL...

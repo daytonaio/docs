@@ -37,12 +37,12 @@ daytona autocomplete [bash|zsh|fish|powershell] [flags]
 __フラグ__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | daytona のヘルプ |
+| `--help` |  | daytonaのヘルプ |
 
 <Aside type="note">
 bashシェル環境を使用している場合は、完全な自動補完機能を利用するためにbash-completionがインストールされていることを確認してください。
-Linux インストール: ```sudo apt-get install bash-completion```
-macOS インストール: ```brew install bash-completion```
+Linuxでのインストール: ```sudo apt-get install bash-completion```
+macOSでのインストール: ```brew install bash-completion```
 </Aside>
 
 ## daytona docs
@@ -113,7 +113,7 @@ __フラグ__
 
 ## daytona mcp init
 
-エージェント（現在サポート：claude、windsurf、cursor）でDaytona MCPサーバーを初期化します
+エージェント（現在サポート: claude, windsurf, cursor）でDaytona MCP Serverを初期化します
 
 ```shell
 daytona mcp init [AGENT_NAME] [flags]
@@ -126,7 +126,7 @@ __フラグ__
 
 ## daytona mcp start
 
-Daytona MCP Serverを開始
+Daytona MCP サーバーを開始
 
 ```shell
 daytona mcp start [flags]
@@ -135,11 +135,11 @@ daytona mcp start [flags]
 __フラグ__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | daytonaのヘルプ |
+| `--help` |  | daytona のヘルプ |
 
 ## daytona organization
 
-Daytonaの組織を管理する
+Daytona組織を管理する
 
 ```shell
 daytona organization [flags]
@@ -161,7 +161,7 @@ daytona organization create [ORGANIZATION_NAME] [flags]
 __フラグ__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | daytonaのヘルプ |
+| `--help` |  | daytona のヘルプ |
 
 ## daytona organization delete
 
@@ -174,7 +174,7 @@ daytona organization delete [ORGANIZATION] [flags]
 __フラグ__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | daytona のヘルプ |
+| `--help` |  | daytonaのヘルプ |
 
 ## daytona organization list
 
@@ -187,7 +187,7 @@ daytona organization list [flags]
 __フラグ__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--format` | `-f` | 出力形式。(yaml, json) のいずれかである必要があります |
+| `--format` | `-f` | 出力形式。次のいずれかである必要があります (yaml, json) |
 | `--help` |  | daytona のヘルプ |
 
 ## daytona organization use
@@ -201,7 +201,7 @@ daytona organization use [ORGANIZATION] [flags]
 __フラグ__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | daytona のヘルプ |
+| `--help` |  | daytonaのヘルプ |
 
 ## daytona sandbox
 
@@ -258,7 +258,7 @@ __フラグ__
 | :--- | :---- | :---------- |
 | `--all` | `-a` | すべてのサンドボックスを削除 |
 | `--force` | `-f` | 強制削除 |
-| `--help` |  | daytona のヘルプ |
+| `--help` |  | daytonaのヘルプ |
 
 ## daytona sandbox info
 
@@ -318,7 +318,7 @@ __フラグ__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | すべてのサンドボックスを停止する |
-| `--help` |  | daytona のヘルプ |
+| `--help` |  | daytonaのヘルプ |
 
 ## daytona snapshot
 
@@ -350,7 +350,7 @@ __フラグ__
 | `--dockerfile` | `-f` | ビルドするDockerfileのパス |
 | `--entrypoint` | `-e` | スナップショットのエントリーポイントコマンド |
 | `--image` | `-i` | スナップショットのイメージ名 |
-| `--memory` |  | 基盤となるサンドボックスに割り当てられるメモリ容量（GB単位）（デフォルト: 1） |
+| `--memory` |  | 基盤となるサンドボックスに割り当てられるメモリ（GB単位）（デフォルト: 1） |
 | `--help` |  | daytonaのヘルプ |
 
 ## daytona snapshot delete
@@ -365,7 +365,7 @@ __フラグ__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
 | `--all` | `-a` | すべてのスナップショットを削除する |
-| `--help` |  | daytona のヘルプ |
+| `--help` |  | daytonaのヘルプ |
 
 ## daytona snapshot list
 

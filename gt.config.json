@@ -27,5 +27,7 @@
     "en",
     "ja"
   ],
-  "ssr": true
+  "baseUrl": "http://localhost:10000",
+  "ssr": true,
+  "_versionId": "ba53427e9a701596a7458f856315f31e67f694e3cd778ffa9a0186b28ad1a281"
 }

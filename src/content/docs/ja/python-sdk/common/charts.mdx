@@ -3,20 +3,20 @@ title: "チャート"
 hideTitleOnPage: true
 ---
 
-## Chart
+## チャート
 
 ```python
 class Chart()
 ```
 
-matplotlibからのメタデータを持つチャートを表します。
+matplotlib のメタデータを持つチャートを表します。
 
 **属性**:
 
-- `type` _ChartType_ - チャートのタイプ
+- `type` _ChartType_ - チャートの種類
 - `title` _str_ - チャートのタイトル
 - `elements` _List[Any]_ - チャートの要素
-- `png` _Optional[str]_ - base64でエンコードされたチャートのPNG表現
+- `png` _Optional[str]_ - base64 でエンコードされたチャートの PNG 表現
 
 ## ChartType
 
@@ -26,7 +26,7 @@ class ChartType(str, Enum)
 
 チャートタイプ
 
-**Enum Members**:
+**列挙メンバー**:
     - `LINE` ("line")
     - `SCATTER` ("scatter")
     - `BAR` ("bar")
@@ -41,7 +41,7 @@ class ChartType(str, Enum)
 class Chart2D(Chart)
 ```
 
-メタデータを持つ2Dチャートを表します。
+メタデータを持つ2次元チャートを表します。
 
 **属性**:
 
@@ -54,12 +54,12 @@ class Chart2D(Chart)
 class PointData()
 ```
 
-2Dチャートの点を表します。
+2Dチャート内のポイントを表します。
 
 **属性**:
 
-- `label` _str_ - 点のラベル
-- `points` _List[Tuple[Union[str, float], Union[str, float]]]_ - チャートの点
+- `label` _str_ - ポイントのラベル
+- `points` _List[Tuple[Union[str, float], Union[str, float]]]_ - チャートのポイント
 
 ## PointChart
 
@@ -89,9 +89,9 @@ class LineChart(PointChart)
 
 **属性**:
 
-- `type` _ChartType_ - チャートの種類
+- `type` _ChartType_ - グラフの種類
 
-## ScatterChart
+## 散布図
 
 ```python
 class ScatterChart(PointChart)
@@ -109,13 +109,13 @@ class ScatterChart(PointChart)
 class BarData()
 ```
 
-棒グラフの棒を表します。
+棒グラフのバーを表します。
 
 **属性**:
 
-- `label` _str_ - 棒のラベル
-- `group` _str_ - 棒のグループ
-- `value` _str_ - 棒の値
+- `label` _str_ - バーのラベル
+- `group` _str_ - バーのグループ
+- `value` _str_ - バーの値
 
 ## BarChart
 
@@ -127,8 +127,8 @@ class BarChart(Chart2D)
 
 **属性**:
 
-- `type` _ChartType_ - チャートの種類
-- `elements` _List[BarData]_ - チャートの棒
+- `type` _ChartType_ - グラフの種類
+- `elements` _List[BarData]_ - グラフのバー
 
 ## PieData
 
@@ -136,14 +136,14 @@ class BarChart(Chart2D)
 class PieData()
 ```
 
-円グラフの円スライスを表します。
+円グラフのスライスを表します。
 
 **属性**:
 
-- `label` _str_ - 円スライスのラベル
-- `angle` _float_ - 円スライスの角度
-- `radius` _float_ - 円スライスの半径
-- `autopct` _float_ - 円スライスのautopct値
+- `label` _str_ - 円グラフスライスのラベル
+- `angle` _float_ - 円グラフスライスの角度
+- `radius` _float_ - 円グラフスライスの半径
+- `autopct` _float_ - 円グラフスライスのautopct値
 
 ## PieChart
 
@@ -155,8 +155,8 @@ class PieChart(Chart)
 
 **属性**:
 
-- `type` _ChartType_ - チャートの種類
-- `elements` _List[PieData]_ - チャートの円スライス
+- `type` _ChartType_ - グラフの種類
+- `elements` _List[PieData]_ - グラフの円グラフのスライス
 
 ## BoxAndWhiskerData
 
@@ -195,9 +195,9 @@ class BoxAndWhiskerChart(Chart2D)
 class CompositeChart(Chart)
 ```
 
-メタデータを持つ複合チャートを表します。複合チャートは、複数のチャート（サブプロット）を含むチャートです。
+メタデータを持つ複合チャートを表します。複合チャートとは、複数のチャート（サブプロット）を含むチャートです。
 
 **属性**:
 
-- `type` _ChartType_ - チャートのタイプ
+- `type` _ChartType_ - チャートの種類
 - `elements` _List[Chart]_ - 複合チャートのチャート（サブプロット）

@@ -81,8 +81,8 @@ completions.items.forEach(item => {
 didClose(path: string): Promise<void>
 ```
 
-ファイルが閉じられたことを言語サーバーに通知します。エディタでファイルが閉じられた際に呼び出すべきで、
-言語サーバーがそのファイルに関連するリソースをクリーンアップできるようにします。
+ファイルが閉じられたことをlanguage serverに通知します。エディタでファイルが閉じられた際に呼び出すべきで、
+language serverがそのファイルに関連するリソースをクリーンアップできるようにします。
 
 **Parameters**:
 
@@ -107,7 +107,7 @@ await lsp.didClose('workspace/project/src/index.ts');
 didOpen(path: string): Promise<void>
 ```
 
-ファイルが開かれたことを言語サーバーに通知し、そのファイルに対する
+ファイルが開かれたことをlanguage serverに通知し、そのファイルに対する
 診断や補完などの言語機能を有効にします。サーバーは
 ファイルの内容の追跡を開始し、言語機能を提供します。
 
@@ -170,7 +170,7 @@ Sandbox全体でクエリ文字列に一致するシンボルを検索します�
 
 **Parameters**:
 
-- `query` _string_ - シンボル名と照合する検索クエリ
+- `query` _string_ - シンボル名に対してマッチングする検索クエリ
 
 **Returns**:
 
@@ -182,7 +182,7 @@ Sandbox全体でクエリ文字列に一致するシンボルを検索します�
 **Example:**
 
 ```ts
-// Search for all symbols containing "User"
+// "User"を含むすべてのシンボルを検索
 const symbols = await lsp.sandboxSymbols('User');
 symbols.forEach(symbol => {
   console.log(`${symbol.name} (${symbol.kind}) in ${symbol.location}`);
@@ -208,8 +208,8 @@ start(): Promise<void>
 
 ```ts
 const lsp = await sandbox.createLspServer('typescript', 'workspace/project');
-await lsp.start();  // Initialize the server
-// Now ready for LSP operations
+await lsp.start();  // サーバーを初期化
+// LSP操作の準備完了
 ```
 
 ***
@@ -220,8 +220,8 @@ await lsp.start();  // Initialize the server
 stop(): Promise<void>
 ```
 
-言語サーバーを停止します。LSPサーバーが不要になった際に、
-システムリソースを解放するために呼び出す必要があります。
+言語サーバーを停止します。LSPサーバーが不要になった際にシステムリソースを
+解放するために呼び出す必要があります。
 
 **戻り値**:
 
@@ -230,8 +230,8 @@ stop(): Promise<void>
 **例:**
 
 ```ts
-// When done with LSP features
-await lsp.stop();  // Clean up resources
+// LSP機能の使用が終了した際
+await lsp.stop();  // リソースをクリーンアップ
 ```
 
 ***
@@ -250,7 +250,7 @@ Sandbox全体でクエリ文字列に一致するシンボルを検索します�
 
 **戻り値**:
 
-- `Promise<LspSymbol[]>` - 全ファイルから一致するシンボルのリスト。各シンボルには以下が含まれます:
+- `Promise<LspSymbol[]>` - すべてのファイルから一致するシンボルのリスト。各シンボルには以下が含まれます:
   - name: シンボルの名前
   - kind: シンボルの種類（関数、クラス、変数など）
   - location: ファイル内のシンボルの位置
@@ -265,7 +265,7 @@ Sandbox全体でクエリ文字列に一致するシンボルを検索します�
 
 サポートされている言語サーバーのタイプ。
 
-**Enum Members**:
+**列挙型メンバー**:
 
 - `JAVASCRIPT` ("javascript")
 - `PYTHON` ("python")

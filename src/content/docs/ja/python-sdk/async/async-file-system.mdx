@@ -295,7 +295,7 @@ async def replace_in_files(files: List[str], pattern: str,
   ユーザーの
   ルートディレクトリを基準に解決されます。
 - `pattern` _str_ - 検索するパターン。
-- `new_value` _str_ - マッチした箇所を置換するテキスト。
+- `new_value` _str_ - マッチした部分を置換するテキスト。
   
 **戻り値**:
 
@@ -373,7 +373,7 @@ async def set_file_permissions(path: str,
 - `path` _str_ - ファイルまたはディレクトリのパス。相対パスはユーザーの
   ルートディレクトリを基準に解決されます。
 - `mode` _Optional[str]_ - 8進形式のファイルモード/権限
-  （例："644"はrw-r--r--）。
+  （例：rw-r--r--の場合は"644"）。
 - `owner` _Optional[str]_ - ファイルのユーザー所有者。
 - `group` _Optional[str]_ - ファイルのグループ所有者。
   

@@ -84,7 +84,7 @@ DaytonaはデフォルトのSnapshotを使用してウォームSandboxのプー�
 
 Daytona Sandboxはデフォルトで**1 vCPU**、**1GB RAM**、**3GiBディスク**を提供します。  
 
-より多くのパワーが必要ですか？`Resources`クラスを使用して、必要なものを正確に定義してください：CPU、メモリ、ディスク容量はすべてカスタマイズ可能です。
+より多くのパワーが必要ですか？`Resources`クラスを使用して必要なものを正確に定義してください：CPU、メモリ、ディスク容量はすべてカスタマイズ可能です。
 
 利用可能なリソースと制限は[ダッシュボード](https://app.daytona.io/dashboard/limits)で確認してください。
 
@@ -186,7 +186,7 @@ console.log(sandbox.state)
 
 Daytona SDKは、PythonとTypeScriptを使用してSandboxを停止および開始するメソッドを提供します。
 
-停止されたSandboxは、メモリ状態がクリアされる一方で、ファイルシステムの永続性を維持します。これらはディスク使用量のコストのみが発生し、必要に応じて再度開始することができます。
+停止されたSandboxは、メモリ状態がクリアされる一方で、ファイルシステムの永続性を維持します。これらはディスク使用量のコストのみが発生し、必要に応じて再び開始することができます。
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -229,7 +229,7 @@ await sandbox.start();
 </TabItem>
 </Tabs>
 
-停止状態は、Sandboxが近いうちに再度開始されることが予想される場合に使用すべきです。そうでなければ、ディスク使用量のコストを削減するために、Sandboxを停止してからアーカイブすることが推奨されます。
+停止状態は、Sandboxが近いうちに再び開始されることが予想される場合に使用すべきです。そうでなければ、ディスク使用量のコストを削減するために、Sandboxを停止してからアーカイブすることが推奨されます。
 
 ## Sandboxのアーカイブ
 
@@ -255,7 +255,7 @@ await sandbox.archive();
 </TabItem>
 </Tabs>
 
-## Sandboxの削除
+## Sandboxを削除する
 
 Daytona SDKは、PythonとTypeScriptを使用してSandboxを削除するメソッドを提供します。
 

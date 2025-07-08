@@ -107,7 +107,7 @@ async def close()
 HTTPセッションを閉じ、リソースをクリーンアップします。
 
 AsyncDaytonaインスタンスの使用が完了したときに、基盤となるHTTPセッションを適切に閉じ、
-リソースリークを回避するために、このメソッドを呼び出す必要があります。
+リソースリークを回避するためにこのメソッドを呼び出す必要があります。
 
 **例**:
 
@@ -189,34 +189,34 @@ async def create(
         on_snapshot_create_logs: Callable[[str], None] = None) -> AsyncSandbox
 ```
 
-指定されたレジストリで利用可能なイメージまたは宣言的なDaytonaイメージからSandboxを作成します。
-リソース、言語、イメージ、環境変数、ボリュームなど、さまざまなパラメータを指定できます。Daytonaは提供されたイメージからスナップショットを作成し、それを使用してSandboxを作成します。
+指定されたレジストリで利用可能なイメージまたは宣言的なDaytona Imageからサンドボックスを作成します。
+リソース、言語、イメージ、環境変数、ボリュームなど、さまざまなパラメータを指定できます。Daytonaは提供されたイメージからスナップショットを作成し、それを使用してサンドボックスを作成します。
 
 **引数**:
 
-- `params` _Optional[CreateSandboxFromImageParams]_ - イメージからのSandbox作成のパラメータ。
-- `timeout` _Optional[float]_ - Sandbox作成のタイムアウト（秒）。0は無制限を意味します。
+- `params` _Optional[CreateSandboxFromImageParams]_ - イメージからのサンドボックス作成のパラメータ。
+- `timeout` _Optional[float]_ - サンドボックス作成のタイムアウト（秒）。0は無制限を意味します。
   デフォルトは60秒です。
 - `on_snapshot_create_logs` _Callable[[str], None]_ - このコールバック関数はスナップショット作成ログを処理します。
   
 **戻り値**:
 
-- `Sandbox` - 作成されたSandboxインスタンス。
+- `Sandbox` - 作成されたサンドボックスインスタンス。
   
 **例外**:
 
 - `DaytonaError` - timeout、auto_stop_interval、またはauto_archive_intervalが負の値の場合；
-  Sandboxの開始に失敗またはタイムアウトした場合
+  サンドボックスの開始に失敗またはタイムアウトした場合
   
 **例**:
 
-  イメージからデフォルトのPython Sandboxを作成：
+  イメージからデフォルトのPythonサンドボックスを作成：
 
 ```python
 sandbox = await daytona.create(CreateSandboxFromImageParams(image="debian:12.9"))
 ```
   
-  宣言的イメージ定義からカスタムSandboxを作成：
+  宣言的イメージ定義からカスタムサンドボックスを作成：
 
 ```python
 declarative_image = (
@@ -246,23 +246,23 @@ sandbox = await daytona.create(
 async def delete(sandbox: AsyncSandbox, timeout: Optional[float] = 60) -> None
 ```
 
-Sandboxを削除します。
+サンドボックスを削除します。
 
 **引数**:
 
-- `sandbox` _Sandbox_ - 削除するSandboxインスタンス。
-- `timeout` _Optional[float]_ - Sandbox削除のタイムアウト（秒）。0は無制限を意味します。
+- `sandbox` _Sandbox_ - 削除するサンドボックスインスタンス。
+- `timeout` _Optional[float]_ - サンドボックス削除のタイムアウト（秒）。0は無制限を意味します。
   デフォルトは60秒です。
   
 **例外**:
 
-- `DaytonaError` - Sandboxの削除に失敗またはタイムアウトした場合
+- `DaytonaError` - サンドボックスの削除に失敗またはタイムアウトした場合
   
 **例**:
 
 ```python
 sandbox = await daytona.create()
-# ... sandboxを使用 ...
+# ... サンドボックスを使用 ...
 await daytona.delete(sandbox)  # 完了時にクリーンアップ
 ```
 
@@ -273,15 +273,15 @@ await daytona.delete(sandbox)  # 完了時にクリーンアップ
 async def get(sandbox_id: str) -> AsyncSandbox
 ```
 
-IDによってSandboxを取得します。
+IDによってサンドボックスを取得します。
 
 **引数**:
 
-- `sandbox_id` _str_ - 取得するSandboxのID。
+- `sandbox_id` _str_ - 取得するサンドボックスのID。
   
 **戻り値**:
 
-- `Sandbox` - Sandboxインスタンス。
+- `Sandbox` - サンドボックスインスタンス。
   
 **例外**:
 
@@ -302,20 +302,20 @@ async def find_one(sandbox_id: Optional[str] = None,
                    labels: Optional[Dict[str, str]] = None) -> AsyncSandbox
 ```
 
-IDまたはラベルによってSandboxを検索します。
+IDまたはラベルによってサンドボックスを検索します。
 
 **引数**:
 
-- `sandbox_id` _Optional[str]_ - 取得するSandboxのID。
-- `labels` _Optional[Dict[str, str]]_ - Sandboxをフィルタリングするラベル。
+- `sandbox_id` _Optional[str]_ - 取得するサンドボックスのID。
+- `labels` _Optional[Dict[str, str]]_ - サンドボックスをフィルタリングするラベル。
   
 **戻り値**:
 
-- `Sandbox` - IDまたはラベルに一致する最初のSandbox。
+- `Sandbox` - IDまたはラベルに一致する最初のサンドボックス。
   
 **例外**:
 
-- `DaytonaError` - Sandboxが見つからない場合。
+- `DaytonaError` - サンドボックスが見つからない場合。
   
 **例**:
 
@@ -331,15 +331,15 @@ print(f"Sandbox ID: {sandbox.id} State: {sandbox.state}")
 async def list(labels: Optional[Dict[str, str]] = None) -> List[AsyncSandbox]
 ```
 
-ラベルでフィルタリングされたSandboxをリストします。
+ラベルでフィルタリングされたサンドボックスをリストします。
 
 **引数**:
 
-- `labels` _Optional[Dict[str, str]]_ - Sandboxをフィルタリングするラベル。
+- `labels` _Optional[Dict[str, str]]_ - サンドボックスをフィルタリングするラベル。
   
 **戻り値**:
 
-- `List[Sandbox]` - ラベルに一致するSandboxインスタンスのリスト。
+- `List[Sandbox]` - ラベルに一致するサンドボックスインスタンスのリスト。
   
 **例**:
 

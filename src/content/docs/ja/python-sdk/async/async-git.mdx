@@ -14,17 +14,17 @@ Sandbox内でGit操作を提供します。
 **例**:
 
 ```python
-# リポジトリをクローン
+# リポジトリをクローンする
 await sandbox.git.clone(
     url="https://github.com/user/repo.git",
     path="workspace/repo"
 )
 
-# リポジトリのステータスを確認
+# リポジトリのステータスを確認する
 status = await sandbox.git.status("workspace/repo")
 print(f"Modified files: {status.modified}")
 
-# 変更をステージしてコミット
+# 変更をステージしてコミットする
 await sandbox.git.add("workspace/repo", ["file.txt"])
 await sandbox.git.commit(
     path="workspace/repo",
@@ -68,10 +68,10 @@ async def add(path: str, files: List[str]) -> None
 **例**:
 
 ```python
-# 単一ファイルをステージ
+# 単一ファイルをステージする
 await sandbox.git.add("workspace/repo", ["file.txt"])
 
-# 複数ファイルをステージ
+# 複数ファイルをステージする
 await sandbox.git.add("workspace/repo", [
     "src/main.py",
     "tests/test_main.py",
@@ -116,7 +116,7 @@ async def clone(url: str,
                 password: Optional[str] = None) -> None
 ```
 
-指定されたパスにGitリポジトリをクローンします。特定のブランチや
+Gitリポジトリを指定されたパスにクローンします。特定のブランチや
 コミットのクローンをサポートし、認証情報が提供された場合は
 リモートリポジトリで認証できます。
 
@@ -135,13 +135,13 @@ async def clone(url: str,
 **例**:
 
 ```python
-# デフォルトブランチをクローン
+# デフォルトブランチをクローンする
 await sandbox.git.clone(
     url="https://github.com/user/repo.git",
     path="workspace/repo"
 )
 
-# 認証付きで特定のブランチをクローン
+# 認証付きで特定のブランチをクローンする
 await sandbox.git.clone(
     url="https://github.com/user/private-repo.git",
     path="workspace/private",
@@ -150,7 +150,7 @@ await sandbox.git.clone(
     password="token"
 )
 
-# 特定のコミットをクローン
+# 特定のコミットをクローンする
 await sandbox.git.clone(
     url="https://github.com/user/repo.git",
     path="workspace/repo-old",

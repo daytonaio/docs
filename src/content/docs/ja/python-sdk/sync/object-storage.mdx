@@ -9,7 +9,7 @@ hideTitleOnPage: true
 class ObjectStorage()
 ```
 
-オブジェクトストレージサービスとやり取りするためのObjectStorageクラス。
+ObjectStorage クラスは、オブジェクトストレージサービスとやり取りするためのものです。
 
 **属性**:
 
@@ -17,7 +17,7 @@ class ObjectStorage()
 - `aws_access_key_id` _str_ - オブジェクトストレージサービスのアクセスキーID。
 - `aws_secret_access_key` _str_ - オブジェクトストレージサービスのシークレットアクセスキー。
 - `aws_session_token` _str_ - オブジェクトストレージサービスのセッショントークン。一時的な認証情報に使用されます。
-- `bucket_name` _str_ - 使用するバケットの名前。
+- `bucket_name` _str_ - 使用するバケット名。
 
 #### ObjectStorage.upload
 
@@ -25,10 +25,10 @@ class ObjectStorage()
 def upload(path, organization_id, archive_base_path=None) -> str
 ```
 
-オブジェクトストレージサービスにファイルをアップロードします。
+ファイルをオブジェクトストレージサービスにアップロードします。
 
 **引数**:
 
 - `path` _str_ - アップロードするファイルのパス。
 - `organization_id` _str_ - 使用する組織ID。
-- `archive_base_path` _str_ - アーカイブに使用するベースパス。
+- `archive_base_path` _str_ - アーカイブ用のベースパス。

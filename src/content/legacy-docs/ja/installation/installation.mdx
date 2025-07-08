@@ -1,6 +1,6 @@
 ---
 title: インストール
-description: Linux、macOS、WindowsでDaytonaをインストールする方法を学びます。
+description: Linux、macOS、Windows への Daytona のインストール方法を学びます。
 sidebar:
   label: インストール
 ---
@@ -14,10 +14,10 @@ import ScriptUnix from './method/script-unix.mdx'
 import Uninstall from './method/uninstall.mdx'
 import UninstallWindows from './method/uninstall-windows.mdx'
 
-Linux、macOS、WindowsシステムにDaytonaをインストールします。
-各オペレーティングシステムは`x86_64`と`ARM64`の両方のアーキテクチャをサポートしています。
+Linux、macOS、Windows システムに Daytona をインストールします。
+各オペレーティングシステムは、`x86_64` および `ARM64` アーキテクチャの両方をサポートしています。
 
-Daytonaは[Docker](https://docs.docker.com/engine/install/)を活用して、分離された開発環境を作成・管理します。
+Daytona は、[Docker](https://docs.docker.com/engine/install/) を活用して、分離された開発環境を作成および管理します。
 
 ## インストール
 
@@ -26,14 +26,14 @@ Daytonaは[Docker](https://docs.docker.com/engine/install/)を活用して、分
 <Tabs>
 <TabItem label="Linux" icon="linux">
 
-以下のインストールスクリプトを使用してLinuxにDaytonaをインストールします：
+以下のインストールスクリプトを使用して、Linux に Daytona をインストールします。
 
 ```shell
 (curl -sf -L https://download.daytona.io/daytona/install.sh | sudo bash) && daytona server -y && daytona
 ```
 
 :::note
-バイナリを手動でダウンロードして`PATH`に配置することでDaytonaをインストールすることもできます。
+バイナリを手動でダウンロードし、ご自身の `PATH` に配置することで Daytona をインストールすることもできます。
 
 ```shell
 # x86-64
@@ -47,14 +47,14 @@ curl -sf -L https://download.daytona.io/daytona/v0.53/daytona-linux-arm64 -o day
 </TabItem>
 <TabItem label="MacOS" icon="apple">
 
-以下のインストールスクリプトを使用してmacOSにDaytonaをインストールします：
+以下のインストールスクリプトを使用して、macOS に Daytona をインストールします。
 
 ```shell
 (curl -sf -L https://download.daytona.io/daytona/install.sh | sudo bash) && daytona server -y && daytona
 ```
 
 :::note
-バイナリを手動でダウンロードして`PATH`に配置することでDaytonaをインストールすることもできます。
+バイナリを手動でダウンロードし、ご自身の `PATH` に配置することで Daytona をインストールすることもできます。
 
 ```shell
 # x86-64/Intel-based
@@ -67,7 +67,7 @@ curl -sf -L https://download.daytona.io/daytona/v0.53/daytona-darwin-arm64 -o da
 
 </TabItem>
 <TabItem label="Windows" icon="seti:windows">
-以下のPowerShellスクリプトを使用してWindowsにDaytonaをインストールします：
+以下の PowerShell スクリプトを使用して、Windows に Daytona をインストールします。
 
 ```powershell
 $architecture = if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") { "amd64" } else { "arm64" }
@@ -78,7 +78,7 @@ daytona serve;
 ```
 
 :::note
-バイナリを手動でダウンロードして`PATH`に配置することでDaytonaをインストールすることもできます。
+バイナリを手動でダウンロードし、ご自身の `PATH` に配置することで Daytona をインストールすることもできます。
 
 ```sh
 # x86-64
@@ -92,7 +92,7 @@ curl -sf -L https://download.daytona.io/daytona/v0.53/daytona-windows-arm64.exe 
 <br />
 
 :::tip
-Windows Subsystem for Linux (WSL)を使用している場合は、SSHクライアントに依存するIDEを使用する際のDaytonaの実行方法について[手順](https://github.com/daytonaio/daytona/issues/282)を参照してください。
+Windows Subsystem for Linux (WSL) をご利用の場合、SSH クライアントに依存する IDE で Daytona を実行する方法については、[こちらの手順](https://github.com/daytonaio/daytona/issues/282) をご参照ください。
 :::
 </TabItem>
 <TabItem label="Homebrew" icon="homebrew">

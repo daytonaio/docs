@@ -265,7 +265,7 @@ Sandboxを開始し、準備完了まで待機します。
 **パラメータ**:
 
 - `sandbox` _Sandbox_ - 開始するSandbox
-- `timeout?` _number_ - オプションのタイムアウト（秒）（0は無制限を意味します）
+- `timeout?` _number_ - オプションのタイムアウト（秒単位、0は無制限を意味します）
 
 **戻り値**:
 
@@ -370,12 +370,12 @@ Daytonaクライアントを初期化するための設定オプション。
 
 **プロパティ**:
 
-- `apiKey?` _string_ - Daytona APIでの認証用のAPIキー
+- `apiKey?` _string_ - Daytona APIでの認証用APIキー
 - `apiUrl?` _string_ - Daytona APIのURL。ここで設定されておらず、環境変数DAYTONA_API_URLでも設定されていない場合、デフォルトで'https://app.daytona.io/api'になります。
-- `jwtToken?` _string_ - Daytona APIでの認証用のJWTトークン。設定されていない場合は、環境変数`DAYTONA_JWT_TOKEN`で提供するか、代わりにAPIキーを提供する必要があります。
+- `jwtToken?` _string_ - Daytona APIでの認証用JWTトークン。設定されていない場合は、環境変数`DAYTONA_JWT_TOKEN`で提供するか、代わりにAPIキーを提供する必要があります。
 - `organizationId?` _string_ - JWTベース認証で使用される組織ID。JWTトークンが提供される場合は必須で、ここまたは環境変数`DAYTONA_ORGANIZATION_ID`で設定する必要があります。
 - ~~`serverUrl?`~~ _string_ - **_非推奨_** - 代わりに`apiUrl`を使用してください。このプロパティは将来のバージョンで削除される予定です。
-- `target?` _string_ - Sandboxesのターゲット場所
+- `target?` _string_ - Sandboxのターゲット場所
 
 **例:**
 
@@ -396,7 +396,7 @@ Sandboxのリソース割り当て。
 
 - `cpu?` _number_ - Sandboxのコア数でのCPU割り当て
 - `disk?` _number_ - SandboxのGiB単位でのディスク容量割り当て
-- `gpu?` _number_ - Sandboxの単位でのGPU割り当て
+- `gpu?` _number_ - Sandbox の単位でのGPU割り当て
 - `memory?` _number_ - SandboxのGiB単位でのメモリ割り当て
 
 **例:**
@@ -424,9 +424,9 @@ Sandboxのボリュームマウントを表します。
 
 **プロパティ**:
 
-- `mountPath` _string_ - Volumeをマウントするsandbox上のパス
+- `mountPath` _string_ - ボリュームをマウントするSandbox上のパス
 
-- `volumeId` _string_ - マウントするVolumeのID
+- `volumeId` _string_ - マウントするボリュームのID
 
 **継承元:**
 

@@ -96,7 +96,7 @@ DaytonaはDev Container標準を使用してProjectイメージをビルドす�
    Dev Container設定が配置されているパス（リポジトリルートからの相対パス）。
    デフォルト値は`.devcontainer/devcontainer.json`です。
 
-Dev Container Builderを使用するには、[Workspace creation](/docs/ja/usage/workspaces#create-a-workspace)中に`--devcontainer-path`フラグをリポジトリ内のDev Container設定パスに設定してください。このフラグは、単一のProjectでWorkspaceを作成する場合にのみ適用されます。
+Dev Container Builderを使用するには、[Workspace creation](/docs/ja/usage/workspaces#create-a-workspace)中に`--devcontainer-path`フラグをリポジトリ内のDev Container設定パスに設定します。このフラグは、単一のProjectでWorkspaceを作成する場合にのみ適用されます。
 
 ```shell showLineNumbers
 daytona create <REPO_URL> --devcontainer-path=.devcontainer/devcontainer.json
@@ -137,7 +137,7 @@ Daytonaはデフォルトのベースイメージを使用してプロジェク�
 
 ## カスタムビルドレジストリ
 
-Daytona Builderによってビルドされたイメージに対してカスタムビルドレジストリを設定できます。
+Daytona Builderによってビルドされたイメージに対して、カスタムビルドレジストリを設定できます。
 イメージがビルドされた後、設定されたコンテナレジストリにアップロードされ、同じプロジェクトの将来のワークスペース作成を高速化します。
 
 **前提条件**
@@ -180,4 +180,4 @@ To add options, add a container registry with 'daytona cr set'
 ```
 
 6. <Keyboard shortcuts="↑" /> / <Keyboard shortcuts="↓" />矢印キーを使用して、以前に設定したカスタムレジストリを選択します。
-7. 設定を保存するためにコマンドが終了するまで<Keyboard shortcuts="Enter" />を押します。
+7. 設定を保存するため、コマンドが終了するまで<Keyboard shortcuts="Enter" />を押します。

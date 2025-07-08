@@ -6,18 +6,18 @@ import Label from '@components/Label.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Label>
-  Distribution: **Open Source**
+  配布形態: **オープンソース**
 </Label>
 
-Daytona SDKは、Sandbox内の`git`モジュールを通じて組み込みのGitサポートを提供します。このガイドでは、利用可能なすべてのGit操作とベストプラクティスについて説明します。
+Daytona SDKは、Sandboxes内の`git`モジュールを通じてGitのサポートを標準で提供しています。本ガイドでは、利用可能なすべてのGit操作とベストプラクティスについて説明します。
 
 ## 基本操作
 
-Daytona SDKは、Sandbox内でGitリポジトリのクローン、ステータス確認、管理を行うオプションを提供します。`git`モジュールを使用してGitリポジトリと対話できます。
+Daytona SDK は、サンドボックス内で Git リポジトリのクローン作成、ステータス確認、管理を行うオプションを提供します。`git` モジュールを使用して Git リポジトリとやり取りできます。
 
 ### リポジトリのクローン
 
-Daytona SDKは、PythonとTypeScriptを使用してGitリポジトリをSandboxにクローンするオプションを提供します。パブリックまたはプライベートリポジトリ、特定のブランチをクローンし、個人アクセストークンを使用して認証できます。
+Daytona SDK は、Python および TypeScript を使用してサンドボックス内に Git リポジトリをクローンするオプションを提供します。パブリックまたはプライベートリポジトリ、特定のブランチのクローン作成や、パーソナルアクセストークンを使った認証が可能です。
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -78,7 +78,7 @@ await workspace.git.clone(
 
 ### リポジトリのステータス
 
-Daytona SDKは、Sandbox内のGitリポジトリのステータスを確認するオプションを提供します。PythonとTypeScriptを使用して、現在のブランチ、変更されたファイル、メインブランチより先行・後行しているコミット数を取得できます。
+Daytona SDK は、サンドボックス内の Git リポジトリのステータスを確認するオプションを提供します。Python および TypeScript を使用して、現在のブランチ、変更されたファイル、メインブランチに対して進んでいるコミット数や遅れているコミット数を取得できます。
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -122,11 +122,11 @@ response.branches.forEach(branch => {
 
 ## ブランチ操作
 
-Daytona SDKは、Gitリポジトリでブランチを管理するオプションを提供します。ブランチの作成、切り替え、削除が可能です。
+Daytona SDK は、Git リポジトリ内のブランチを管理するオプションを提供します。ブランチの作成、切り替え、削除が可能です。
 
 ### ブランチの管理
 
-Daytona SDKは、PythonとTypeScriptを使用してGitリポジトリでブランチの作成、切り替え、削除を行うオプションを提供します。
+Daytona SDK は、Python および TypeScript を使用して Git リポジトリ内のブランチを作成、切り替え、削除するオプションを提供します。
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">
@@ -161,7 +161,7 @@ await workspace.git.deleteBranch("/workspace/repo", "feature/old-feature");
 
 ## ステージングとコミット
 
-Daytona SDKは、Gitリポジトリでの変更をステージングおよびコミットするオプションを提供します。PythonとTypeScriptを使用して、特定のファイル、すべての変更をステージングし、メッセージ付きでコミットできます。
+Daytona SDK は、Git リポジトリで変更をステージングおよびコミットするオプションを提供します。Python や TypeScript を使って、特定のファイルやすべての変更をステージングし、メッセージ付きでコミットできます。
 
 ### 変更の操作
 
@@ -214,11 +214,11 @@ commits.forEach(commit => {
 
 ## リモート操作
 
-Daytona SDKは、Gitでリモートリポジトリとやりとりするオプションを提供します。変更をプッシュしたり、変更をプルしたり、リモートを一覧表示したりできます。
+Daytona SDK は、Git のリモートリポジトリで作業するためのオプションを提供します。変更のプッシュ、プル、リモートの一覧表示が可能です。
 
-### リモートとの作業
+### リモートの操作
 
-Daytona SDKは、PythonとTypeScriptを使用してGitリポジトリでプッシュ、プル、リモートの一覧表示を行うオプションを提供します。
+Daytona SDK は、Python および TypeScript を使用して Git リポジトリでのプッシュ、プル、リモートの一覧表示を行うオプションを提供します。
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">

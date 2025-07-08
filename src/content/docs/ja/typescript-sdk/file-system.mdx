@@ -310,7 +310,7 @@ Sandbox内で名前パターンによってファイルとディレクトリを�
 
 **戻り値**:
 
-- `Promise<SearchFilesResponse>` - マッチするファイルを含む検索結果
+- `Promise<SearchFilesResponse>` - マッチしたファイルを含む検索結果
 
 **例:**
 
@@ -486,6 +486,7 @@ Sandboxにアップロードするファイルを表します。
 
 **プロパティ**:
 
-- `destination` _string_ - Sandbox内の絶対宛先パス。相対パスはユーザーのルートディレクトリを基準に解決されます。
+- `destination` _string_ - Sandbox内の絶対宛先パス。相対パスはユーザーの
+    ルートディレクトリを基準に解決されます。
 - `source` _string \| Buffer\<ArrayBufferLike\>_ - アップロードするファイル。Bufferの場合、メモリに読み込まれるファイルコンテンツとして解釈されます。
     メモリに収まることを確認してください。そうでない場合は、コンテンツがSandboxにストリーミングされるローカルファイルパスを使用してください。

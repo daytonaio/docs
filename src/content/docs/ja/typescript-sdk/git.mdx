@@ -216,12 +216,12 @@ password?: string): Promise<void>
 **例:**
 
 ```ts
-// Pull from a public repository
+// パブリックリポジトリからプル
 await git.pull('workspace/repo');
 ```
 
 ```ts
-// Pull from a private repository
+// プライベートリポジトリからプル
 await git.pull(
   'workspace/repo',
   'user',
@@ -244,7 +244,7 @@ password?: string): Promise<void>
 
 **パラメータ**:
 
-- `path` _string_ - Gitリポジトリのルートへのパス。相対パスはユーザーのルートディレクトリを基準に解決されます。
+- `path` _string_ - Gitリポジトリルートへのパス。相対パスはユーザーのルートディレクトリを基準に解決されます。
 - `username?` _string_ - 認証用のGitユーザー名
 - `password?` _string_ - 認証用のGitパスワードまたはトークン
 
@@ -255,12 +255,12 @@ password?: string): Promise<void>
 **例:**
 
 ```ts
-// Push to a public repository
+// パブリックリポジトリにプッシュ
 await git.push('workspace/repo');
 ```
 
 ```ts
-// Push to a private repository
+// プライベートリポジトリにプッシュ
 await git.push(
   'workspace/repo',
   'user',
@@ -280,7 +280,7 @@ Gitリポジトリの現在のステータスを取得します。
 
 **パラメータ**:
 
-- `path` _string_ - Gitリポジトリのルートへのパス。相対パスはユーザーのルートディレクトリを基準に解決されます。
+- `path` _string_ - Gitリポジトリルートへのパス。相対パスはユーザーのルートディレクトリを基準に解決されます。
 
 **戻り値**:
 

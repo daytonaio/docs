@@ -4,13 +4,13 @@ title: ファイルシステム操作
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-Daytona SDKは、Sandboxes内の`fs`モジュールを通じて包括的なファイルシステム操作を提供します。このガイドでは、利用可能なすべてのファイルシステム操作とベストプラクティスについて説明します。
+Daytona SDKは、Sandbox内の`fs`モジュールを通じて包括的なファイルシステム操作を提供します。このガイドでは、利用可能なすべてのファイルシステム操作とベストプラクティスについて説明します。
 
 ## 基本操作
 
 Daytona SDKは、Sandbox内のファイルシステムと対話するオプションを提供します。ファイルの一覧表示、ディレクトリの作成、ファイルの読み書きなど、さまざまな操作を実行できます。
 
-簡単にするため、ファイル操作はデフォルトでSandboxユーザーのルートディレクトリで操作していることを前提としています。例えば、`workspace`は`/home/[username]/workspace`を意味しますが、先頭にスラッシュ`/`で始まる絶対的なworkdirパスを提供することも可能です。
+簡単にするため、ファイル操作はデフォルトでSandboxユーザーのルートディレクトリで操作していることを前提としています。例えば、`workspace`は`/home/[username]/workspace`を意味しますが、先頭にスラッシュ`/`で始まる絶対パスのworkdirを提供することも可能です。
 
 ### ファイルとディレクトリの一覧表示
 
@@ -180,7 +180,7 @@ console.log('File content:', downloadedFile.toString())
 
 ### ファイルの削除
 
-不要になったファイルは、`delete_file`関数を使用して簡単に削除できます。
+ファイルが不要になったら、`delete_file`関数を使用してファイルを削除するだけです。
 
 <Tabs>
 <TabItem label="Python" icon="seti:python">

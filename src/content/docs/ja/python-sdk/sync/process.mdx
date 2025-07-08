@@ -3,13 +3,13 @@ title: "プロセス"
 hideTitleOnPage: true
 ---
 
-## Process
+## プロセス
 
 ```python
 class Process()
 ```
 
-Sandbox内でのプロセスとコード実行を処理します。
+Sandbox 内でプロセスおよびコードの実行を管理します。
 
 #### Process.\_\_init\_\_
 
@@ -18,14 +18,14 @@ def __init__(sandbox_id: str, code_toolbox: SandboxPythonCodeToolbox,
              toolbox_api: ToolboxApi, get_root_dir: Callable[[], str])
 ```
 
-新しいProcessインスタンスを初期化します。
+新しい Process インスタンスを初期化します。
 
 **引数**:
 
-- `sandbox_id` _str_ - SandboxのID。
+- `sandbox_id` _str_ - Sandbox の ID。
 - `code_toolbox` _SandboxPythonCodeToolbox_ - 言語固有のコード実行ツールボックス。
-- `toolbox_api` _ToolboxApi_ - Sandbox操作用のAPIクライアント。
-- `get_root_dir` _Callable[[], str]_ - Sandboxのデフォルトルートディレクトリを取得する関数。
+- `toolbox_api` _ToolboxApi_ - Sandbox 操作用の API クライアント。
+- `get_root_dir` _Callable[[], str]_ - Sandbox のデフォルトのルートディレクトリを取得する関数。
 
 #### Process.exec
 
@@ -37,24 +37,21 @@ def exec(command: str,
          timeout: Optional[int] = None) -> ExecuteResponse
 ```
 
-Sandbox内でシェルコマンドを実行します。
+Sandbox 内でシェルコマンドを実行します。
 
 **引数**:
 
 - `command` _str_ - 実行するシェルコマンド。
-- `cwd` _Optional[str]_ - コマンド実行の作業ディレクトリ。指定されない場合は、
-  Sandboxルートディレクトリを使用します。デフォルトはユーザーのルートディレクトリです。
+- `cwd` _Optional[str]_ - コマンド実行時の作業ディレクトリ。指定しない場合は Sandbox のルートディレクトリが使用されます。デフォルトはユーザーのルートディレクトリです。
 - `env` _Optional[Dict[str, str]]_ - コマンド用に設定する環境変数。
-- `timeout` _Optional[int]_ - コマンドの完了を待つ最大時間（秒）。
-  0は無期限に待機することを意味します。
+- `timeout` _Optional[int]_ - コマンドの完了を待つ最大秒数。0 の場合は無制限に待機します。
   
 **戻り値**:
 
-- `ExecuteResponse` - 以下を含むコマンド実行結果:
+- `ExecuteResponse` - コマンド実行結果を含みます:
   - exit_code: コマンドの終了ステータス
-  - result: コマンドからの標準出力
-  - artifacts: `stdout`（resultと同じ）と
-  `charts`（matplotlibチャートメタデータ）を含むExecutionArtifactsオブジェクト
+  - result: コマンドの標準出力
+  - artifacts: `stdout`（result と同じ）および `charts`（matplotlib チャートのメタデータ）を含む ExecutionArtifacts オブジェクト
   
 **例**:
 
@@ -78,27 +75,25 @@ def code_run(code: str,
              timeout: Optional[int] = None) -> ExecuteResponse
 ```
 
-適切な言語ランタイムを使用してSandbox内でコードを実行します。
+適切な言語ランタイムを使用して Sandbox 内でコードを実行します。
 
 **引数**:
 
 - `code` _str_ - 実行するコード。
-- `params` _Optional[CodeRunParams]_ - コード実行のパラメータ。
-- `timeout` _Optional[int]_ - コードの完了を待つ最大時間（秒）。
-  0は無期限に待機することを意味します。
+- `params` _Optional[CodeRunParams]_ - コード実行用のパラメータ。
+- `timeout` _Optional[int]_ - コードの完了を待つ最大秒数。0 の場合は無制限に待機します。
   
 **戻り値**:
 
-- `ExecuteResponse` - 以下を含むコード実行結果:
+- `ExecuteResponse` - コード実行結果を含みます:
   - exit_code: 実行の終了ステータス
-  - result: コードからの標準出力
-  - artifacts: `stdout`（resultと同じ）と
-  `charts`（matplotlibチャートメタデータ）を含むExecutionArtifactsオブジェクト
+  - result: コードの標準出力
+  - artifacts: `stdout`（result と同じ）および `charts`（matplotlib チャートのメタデータ）を含む ExecutionArtifacts オブジェクト
   
 **例**:
 
 ```python
-# Pythonコードを実行
+# Python コードの実行
 response = sandbox.process.code_run('''
     x = 10
     y = 20
@@ -107,7 +102,7 @@ response = sandbox.process.code_run('''
 print(response.artifacts.stdout)  # 出力: Sum: 30
 ```
   
-  Matplotlibチャートは自動的に検出され、`ExecutionArtifacts`オブジェクトの`charts`フィールドに返されます。
+  Matplotlib のチャートは自動的に検出され、`ExecutionArtifacts` オブジェクトの `charts` フィールドで返されます。
 
 ```python
 code = '''
@@ -153,13 +148,13 @@ if chart.type == ChartType.LINE and isinstance(chart, LineChart):
 def create_session(session_id: str) -> None
 ```
 
-Sandbox内に新しい長時間実行されるバックグラウンドセッションを作成します。
+Sandbox で新しい長時間実行されるバックグラウンドセッションを作成します。
 
-セッションは、コマンド間で状態を維持するバックグラウンドプロセスであり、複数の関連するコマンドや永続的な環境設定が必要なシナリオに最適です。長時間実行されるコマンドを実行し、プロセスの状態を監視できます。
+セッションはコマンド間で状態を保持するバックグラウンドプロセスであり、複数の関連コマンドや永続的な環境セットアップが必要なシナリオに最適です。長時間実行されるコマンドを実行し、プロセスのステータスを監視できます。
 
 **引数**:
 
-- `session_id` _str_ - 新しいセッションの一意識別子。
+- `session_id` _str_ - 新しいセッションの一意な識別子。
   
 **例**:
 
@@ -179,16 +174,16 @@ sandbox.process.delete_session(session_id)
 def get_session(session_id: str) -> Session
 ```
 
-Sandbox内のセッションを取得します。
+Sandbox 内のセッションを取得します。
 
 **引数**:
 
-- `session_id` _str_ - 取得するセッションの一意識別子。
+- `session_id` _str_ - 取得するセッションの一意な識別子。
   
 **戻り値**:
 
 - `Session` - 以下を含むセッション情報:
-  - session_id: セッションの一意識別子
+  - session_id: セッションの一意な識別子
   - commands: セッション内で実行されたコマンドのリスト
   
 **例**:
@@ -210,13 +205,13 @@ def get_session_command(session_id: str, command_id: str) -> Command
 
 **引数**:
 
-- `session_id` _str_ - セッションの一意識別子。
-- `command_id` _str_ - コマンドの一意識別子。
+- `session_id` _str_ - セッションの一意な識別子。
+- `command_id` _str_ - コマンドの一意な識別子。
   
 **戻り値**:
 
 - `Command` - 以下を含むコマンド情報:
-  - id: コマンドの一意識別子
+  - id: コマンドの一意な識別子
   - command: 実行されたコマンド文字列
   - exit_code: コマンドの終了ステータス（完了している場合）
   
@@ -242,7 +237,7 @@ def execute_session_command(
 
 **引数**:
 
-- `session_id` _str_ - 使用するセッションの一意識別子。
+- `session_id` _str_ - 使用するセッションの一意な識別子。
 - `req` _SessionExecuteRequest_ - 以下を含むコマンド実行リクエスト:
   - command: 実行するコマンド
   - run_async: 非同期で実行するかどうか
@@ -250,14 +245,14 @@ def execute_session_command(
 **戻り値**:
 
 - `SessionExecuteResponse` - 以下を含むコマンド実行結果:
-  - cmd_id: 実行されたコマンドの一意識別子
-  - output: コマンド出力（同期実行の場合）
-  - exit_code: コマンド終了ステータス（同期実行の場合）
+  - cmd_id: 実行されたコマンドの一意な識別子
+  - output: コマンドの出力（同期実行の場合）
+  - exit_code: コマンドの終了ステータス（同期実行の場合）
   
 **例**:
 
 ```python
-# 状態を維持しながらコマンドを順次実行
+# 状態を維持しながらコマンドを順番に実行
 session_id = "my-session"
 
 # ディレクトリを変更
@@ -268,7 +263,7 @@ sandbox.process.execute_session_command(session_id, req)
 req = SessionExecuteRequest(command="echo 'Hello' > test.txt")
 sandbox.process.execute_session_command(session_id, req)
 
-# ファイルを読み取り
+# ファイルを読み込む
 req = SessionExecuteRequest(command="cat test.txt")
 result = sandbox.process.execute_session_command(session_id, req)
 print(result.output)  # 出力: Hello
@@ -281,16 +276,16 @@ print(result.output)  # 出力: Hello
 def get_session_command_logs(session_id: str, command_id: str) -> str
 ```
 
-セッション内で実行されたコマンドのログを取得します。セッション内で実行されたコマンドの完全な出力（stdoutとstderr）を取得します。
+セッション内で実行されたコマンドのログを取得します。セッション内で実行されたコマンドからの完全な出力（stdout および stderr）を取得します。
 
 **引数**:
 
-- `session_id` _str_ - セッションの一意識別子。
-- `command_id` _str_ - コマンドの一意識別子。
+- `session_id` _str_ - セッションの一意な識別子。
+- `command_id` _str_ - コマンドの一意な識別子。
   
 **戻り値**:
 
-- `str` - stdoutとstderrの両方を含む完全なコマンド出力。
+- `str` - stdout と stderr の両方を含むコマンドの完全な出力。
   
 **例**:
 
@@ -311,12 +306,12 @@ async def get_session_command_logs_async(
                                                             None]) -> None
 ```
 
-セッションで実行されたコマンドのログを、利用可能になり次第非同期で取得・処理します。
+セッションで実行されたコマンドのログを、利用可能になり次第、非同期で取得および処理します。
 
 **引数**:
 
-- `session_id` _str_ - セッションの一意識別子。
-- `command_id` _str_ - コマンドの一意識別子。
+- `session_id` _str_ - セッションの一意の識別子。
+- `command_id` _str_ - コマンドの一意の識別子。
 - `on_logs` _Callable[[str], None]_ - ログチャンクが到着した際に処理するコールバック関数。
   
 **例**:
@@ -358,20 +353,20 @@ for session in sessions:
 def delete_session(session_id: str) -> None
 ```
 
-セッションを終了してSandboxから削除し、関連するリソースをクリーンアップします。
+Sandboxからセッションを終了および削除し、それに関連するリソースをクリーンアップします。
 
 **引数**:
 
-- `session_id` _str_ - 削除するセッションの一意識別子。
+- `session_id` _str_ - 削除するセッションの一意の識別子。
   
 **例**:
 
 ```python
-# セッションを作成して使用
+# Create and use a session
 sandbox.process.create_session("temp-session")
-# ... セッションを使用 ...
+# ... use the session ...
 
-# 完了時にクリーンアップ
+# Clean up when done
 sandbox.process.delete_session("temp-session")
 ```
 
@@ -410,12 +405,12 @@ class SessionExecuteRequest(ApiSessionExecuteRequest,
 class ExecutionArtifacts()
 ```
 
-コマンド実行からのアーティファクト。
+コマンド実行から得られるアーティファクト。
 
 **属性**:
 
-- `stdout` _str_ - コマンドからの標準出力、`ExecuteResponse`の`result`と同じ
-- `charts` _Optional[List[Chart]]_ - matplotlibからのチャートメタデータのリスト
+- `stdout` _str_ - コマンドの標準出力。`ExecuteResponse` の `result` と同じ
+- `charts` _Optional[List[Chart]]_ - matplotlib からのチャートメタデータのリスト
 
 ## ExecuteResponse
 
@@ -427,6 +422,6 @@ class ExecuteResponse(ClientExecuteResponse)
 
 **属性**:
 
-- `exit_code` _int_ - コマンド実行からの終了コード
-- `result` _str_ - コマンド実行からの出力
+- `exit_code` _int_ - コマンド実行の終了コード
+- `result` _str_ - コマンド実行の出力
 - `artifacts` _Optional[ExecutionArtifacts]_ - コマンド実行からのアーティファクト

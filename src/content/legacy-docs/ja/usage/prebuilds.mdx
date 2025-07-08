@@ -15,7 +15,7 @@ Prebuildsは、Workspaceを事前にビルドすることで開発を加速す�
 
 Prebuildsは、接続されたGit Providerのリポジトリの変更を監視する[プロジェクト設定](/docs/ja/usage/projects#project-configuration)を設定することでこれを実現します。
 
-PrebuildsはGit ProviderからのWebhookイベントのリスナーを登録することで動作します。パブリックAPIエンドポイントが提供され、Git Providerはこれらのリクエストを送信するためにこれを使用します。
+PrebuildsはGit Providerからのwebhookイベントのリスナーを登録することで動作します。パブリックAPIエンドポイントが提供され、Git Providerはこれらのリクエストを送信するためにこれを使用します。
 
 :::note
 DaytonaはPrebuilds用のGit ProviderとしてGitHub、GitLab、およびGitLab Self-Managedを現在サポートしています。
@@ -75,17 +75,17 @@ daytona create [PROJECT_CONFIG_NAME]
 
 Workspace作成プロセス中に、初回のPrebildが完了している場合、セットアップはほぼ瞬時に行われます。そうでない場合は、新しいビルドがトリガーされ、Workspace作成が遅くなる可能性があります。
 
-## Prebuildsの一覧表示
+## Prebuildの一覧表示
 
-Daytonaは、すべてのPrebuildsを一覧表示するオプションを提供し、各Prebuild設定内に保存されているプロパティの概要を確認できます。
+Daytonaは、すべてのPrebuildを一覧表示するオプションを提供し、各Prebuild設定内に保存されているプロパティの概要を確認できます。
 
-1. 以下のコマンドを実行して、すべてのPrebuildsを一覧表示します：
+1. 以下のコマンドを実行して、すべてのPrebuildを一覧表示します：
 
 ```shell
 daytona prebuilds list
 ```
 
-このコマンドを実行すると、DaytonaはPrebuildsの一覧を表示します。プロジェクト設定、リンクされているブランチ、コミット間隔、トリガーファイル、およびビルド保持期間を確認できます。
+このコマンドを実行すると、DaytonaはPrebuildのリストを表示します。プロジェクト設定、リンクされているブランチ、コミット間隔、トリガーファイル、およびビルド保持期間を確認できます。
 
 ```text
 Project Config   Branch  Commit Interval  Trigger files  Build Retention
@@ -161,7 +161,7 @@ Maximum number of resulting builds stored at a time
 >
 ```
 
-Prebuild設定を更新すると、Daytonaは成功メッセージを表示します。
+Prebuilds設定を更新すると、Daytonaは成功メッセージを表示します。
 
 ```text
 Prebuild updated successfully

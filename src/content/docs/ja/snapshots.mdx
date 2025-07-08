@@ -1,17 +1,17 @@
 ---
-title: Snapshots
+title: スナップショット
 ---
 
 import { TabItem, Tabs } from '@astrojs/starlight/components'
 import Label from '@components/Label.astro'
 
-Snapshotは、Daytona Sandboxに必要なすべての依存関係、ツール、環境設定、リソース要件を含む事前設定済みのテンプレートです。Daytonaは、すべての標準的な[Docker](https://www.docker.com/)または[OCI](https://opencontainers.org/)互換イメージからSnapshotを作成することをサポートしています。
+スナップショットは、Daytona Sandboxに必要なすべての依存関係、ツール、環境設定、リソース要件を含む事前設定済みのテンプレートです。Daytonaは、すべての標準的な[Docker](https://www.docker.com/)または[OCI](https://opencontainers.org/)互換イメージからのスナップショット作成をサポートしています。
 
 ## スナップショットの作成
 
 Sandboxを起動する際、Daytonaは`python`、`node`、`pip`、および一般的なpipパッケージなどの便利なユーティリティがプリインストールされたシンプルなイメージをベースとしたスナップショットを使用します。詳細は[下記](#default-snapshot)をご覧ください。
 
-この動作をオーバーライドして、カスタムスナップショットを作成することも可能です。ダッシュボードにアクセスし、[Snapshots](https://app.daytona.io/dashboard/snapshots)をクリックして、`Create Snapshot`をクリックしてください。
+この動作をオーバーライドして、カスタムスナップショットを作成することが可能です。ダッシュボードにアクセスし、[Snapshots](https://app.daytona.io/dashboard/snapshots)をクリックして、`Create Snapshot`をクリックしてください。
 
 スナップショットイメージには、Docker Hubから公開アクセス可能な任意のイメージの名前とタグ（`alpine:3.21.3`や`debian:12.10`など）、または他の公開コンテナレジストリからのイメージ（例：`my-public-registry.com/custom-alpine:3.21`）を入力できます。
 

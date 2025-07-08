@@ -1,34 +1,34 @@
 ---
-title: API Keys
-description: Daytona API キーの作成と管理方法について学びます。
+title: APIキー
+description: Daytona APIキーの作成と管理方法について説明します。
 ---
 
 import Label from '@components/Label.astro'
 
 <Label>
-  Distribution: **Open Source**
+  配布形態: **オープンソース**
 </Label>
 
-Daytona API キーは、[Daytona API](/docs/ja/tools/api) へのリクエストを認証するために使用されます。Daytona では、API リクエストを管理するための API キーの生成、生成されたすべての API キーの一覧表示、および API キーの取り消しを行うオプションが提供されています。
+Daytona APIキーは、[Daytona API](/docs/ja/tools/api)へのリクエストを認証するために使用されます。Daytonaでは、APIリクエストを管理するためのAPIキーの生成、生成済みAPIキーの一覧表示、APIキーの無効化が可能です。
 
-## API キーの生成
+## APIキーを生成する
 
-Daytona は API キーを生成するオプションを提供しています。
+Daytona では、APIキーを生成するオプションが用意されています。
 
-1. 以下のコマンドを実行して API キーを生成します：
+1. 次のコマンドを実行してAPIキーを生成します:
 
 ```bash
 daytona api-key generate
 ```
 
-このコマンドを実行すると、Daytona は API キーの名前を入力するよう求めます。
+このコマンドを実行すると、Daytona からAPIキーの名前の入力を求められます。
 
 ```text
 Name
 >
 ```
 
-API キーの生成が成功すると、Daytona は以下の確認メッセージを表示します：
+APIキーの生成に成功すると、Daytona は次の確認メッセージを表示します:
 
 ```text
 You have successfully generated a new API Key and Server URL, which you can find below:
@@ -37,17 +37,17 @@ DAYTONA_API_KEY=your-api-key
 DAYTONA_SERVER_URL=your-server-url
 ```
 
-Daytona は、以下のコマンドを実行することで、クライアントマシンから Daytona Server に即座に接続するオプションを提供しています：
+Daytona では、クライアントマシンから次のコマンドを実行することで、Daytona Server にすぐに接続するオプションも用意されています。
 
 ```bash
 daytona profile add -a <your-server-url> -k <your-api-key>
 ```
 
-## API キーの一覧表示
+## APIキーの一覧表示
 
-Daytonaは生成されたすべてのAPIキーを一覧表示するオプションを提供します。
+Daytona では、生成されたすべてのAPIキーを一覧表示するオプションが用意されています。
 
-1. 生成されたすべてのAPIキーを一覧表示するには、以下のコマンドを実行してください：
+1. 次のコマンドを実行して、生成されたすべてのAPIキーを一覧表示します。
 
 ```bash
 daytona api-key list
@@ -62,7 +62,7 @@ default                             client
 ```
 
 :::tip
-Daytonaは既存のDaytona Server API URLを表示するオプションを提供します。
+Daytona では、既存のDaytona Server API URLを表示するオプションも用意されています。
 
 <br />
 
@@ -76,37 +76,37 @@ API URL:  https://<server-id>.try-eu.daytona.app
 
 :::
 
-## API キーを取り消す
+## APIキーの取り消し
 
-Daytona では API キーを取り消すオプションが提供されています。
+Daytona では、APIキーを取り消すオプションが用意されています。
 
-1. 以下のコマンドを実行して API キーを取り消します：
+1. APIキーを取り消すには、次のコマンドを実行します。
 
 ```bash
 daytona api-key revoke
 ```
 
-このコマンドを実行すると、Daytona は取り消したい API キーの名前を入力するよう求めます。
+このコマンドを実行すると、Daytona から取り消したいAPIキーの名前を入力するように求められます。
 
 ```text
-Select an API key to revoke
-1 item
+取り消すAPIキーを選択してください
+1件
 ===
 MyAPIKey
 client
 ```
 
-3. 選択した API キーで **`Enter`** を押して取り消します。
+3. 取り消したいAPIキーを選択し、**`Enter`** キーを押します。
 
-4. **`Yes`** または **`No`** を選択して取り消しを確認します。
+4. **`Yes`** または **`No`** を選択して、取り消しを確認します。
 
 ```text
-Revoke API Key 'test'?
-Are you sure you want to revoke 'test'?
+APIキー 'test' を取り消しますか？
+'test' を本当に取り消してもよろしいですか？
 
 [Yes]     [No]
 ```
 
 ```text
-API key revoked
+APIキーが取り消されました
 ```

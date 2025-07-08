@@ -6,7 +6,7 @@ import Label from '@components/Label.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 VolumesはSandboxファイルシステム上のFUSEベースのマウントで、Sandbox間でのファイル共有と、マウントされたvolume上に既に存在するファイルへの即座のアクセスを可能にします。
-Volumesを使用することで、Sandboxは大きなファイルを即座に読み取ることができ、最初にSandboxファイルシステムにアップロードする必要がなくなります。
+Volumesを使用することで、Sandboxは大きなファイルから即座に読み取ることができ、最初にSandboxファイルシステムにアップロードする必要がなくなります。
 volumeデータはS3互換のオブジェクトストアに保存されます。単一のSandboxに複数のvolumeをマウントでき、各volumeは複数のSandboxに同時にマウントできます。
 
 ## ボリュームの作成
@@ -38,11 +38,11 @@ from daytona import CreateSandboxFromSnapshotParams, Daytona, VolumeMount
 
 daytona = Daytona()
 
-# Create a new volume or get an existing one
+# 新しいボリュームを作成するか、既存のものを取得する
 
 volume = daytona.volume.get("my-volume", create=True)
 
-# Mount the volume to the sandbox
+# ボリュームをsandboxにマウントする
 
 mount_dir_1 = "/home/daytona/volume"
 
@@ -52,9 +52,9 @@ params = CreateSandboxFromSnapshotParams(
 )
 sandbox = daytona.create(params)
 
-# When you're done with the sandbox, you can remove it
+# sandboxでの作業が完了したら、削除できます
 
-# The volume will persist even after the sandbox is removed
+# ボリュームはsandboxが削除された後も永続化されます
 
 sandbox.delete()
 
@@ -69,10 +69,10 @@ import path from 'path'
 async function main() {
   const daytona = new Daytona()
 
-  //  Create a new volume or get an existing one
+  //  新しいボリュームを作成するか、既存のものを取得する
   const volume = await daytona.volume.get('my-volume', true)
 
-  // Mount the volume to the sandbox
+  // ボリュームをsandboxにマウントする
   const mountDir1 = '/home/daytona/volume'
 
   const sandbox1 = await daytona.create({
@@ -80,8 +80,8 @@ async function main() {
     volumes: [{ volumeId: volume.id, mountPath: mountDir1 }],
   })
   
-  // When you're done with the sandbox, you can remove it
-  // The volume will persist even after the sandbox is removed
+  // sandboxでの作業が完了したら、削除できます
+  // ボリュームはsandboxが削除された後も永続化されます
   await daytona.delete(sandbox1)
 }
 
@@ -118,4 +118,4 @@ await daytona.volume.delete(volume)
 ## 制限事項
 
 ボリュームはFUSEベースのマウントであるため、ブロックストレージアクセスを必要とするアプリケーション（データベーステーブルなど）には使用できません。
-ボリュームは一般的に、ローカルのSandboxファイルシステムと比較して、読み取りと書き込みの両方の操作が遅くなります。
+ボリュームは一般的に、ローカルSandboxファイルシステムと比較して、読み取りと書き込みの両方の操作が遅くなります。
