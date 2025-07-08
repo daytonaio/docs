@@ -42,27 +42,27 @@ const algoliaEnabled =
       }
       <SideNavLinks client:load locale={Astro.props.lang} />
     </div>
-    <nav class="mobile-navigation">
-      <div class="logo-divider blur-section">
-        <a
-          href="https://www.daytona.io/"
-          aria-label="Daytona"
-          class="daytona-logo blur-section"
-        >
-          <Fragment set:html={daytonaLogoIcon} />
-        </a>
-      </div>
-      <a href={import.meta.env.BASE_URL} class="dotfiles-logo blur-section"
-        ><Fragment set:html={documentationIcon} />Documentation
+  </nav>
+  <nav class="mobile-navigation">
+    <div class="logo-divider blur-section">
+      <a
+        href="https://www.daytona.io/"
+        aria-label="Daytona"
+        class="daytona-logo blur-section"
+      >
+        <Fragment set:html={daytonaLogoIcon} />
       </a>
-      {
-        algoliaEnabled && (
-          <p id="search-icon-mobile" class="search-click">
-            <Fragment set:html={searchIcon} />
-          </p>
-        )
-      }
-    </nav>
+    </div>
+    <a href={import.meta.env.BASE_URL} class="dotfiles-logo blur-section"
+      ><Fragment set:html={documentationIcon} />Documentation
+    </a>
+    {
+      algoliaEnabled && (
+        <p id="search-icon-mobile" class="search-click">
+          <Fragment set:html={searchIcon} />
+        </p>
+      )
+    }
   </nav>
 
   {algoliaEnabled && <Search client:load />}
