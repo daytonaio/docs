@@ -1,3 +1,6 @@
+# Contents of this repository were transferred to the [Daytona](https://github.com/daytonaio/daytona) repo.
+
+
 <div align="center">
  <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/daytonaio/daytona/raw/main/assets/images/Daytona-logotype-white.png">
